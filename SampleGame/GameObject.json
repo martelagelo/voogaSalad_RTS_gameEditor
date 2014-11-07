@@ -1,0 +1,97 @@
+{
+  "name":"Age of Empires",
+  "description":"An RTS",
+  "resources":{ // begin Resources
+    "images":{ // begin images
+      "soldier":"soldier.png",
+      "tank":"tank.png",
+      "tree":"tree.png",
+      "boss":"boss.png",
+      "land":"land.png",
+      "water":"water.png",
+      }, // end images
+      "sounds":{ // begin sounds
+        "soldier_firing":"soldierfiring.mp3",
+        "soldier_moving":"soldierwalking.mp3",
+        "soldier_dying":"soldierdying.mp3",
+        "tank_firing":"tankfiring.mp3",
+        "tank_moving":"tankmoving.mp3",
+        "tank_dying":"tankdying.mp3",
+        "water_entry":"splash.mp3",
+        "water_exit":"sploosh.mp3",
+        "land_entry":"slosh.mp3",
+        "land_exit":"crunch.mp3",
+      } // end sounds
+      "classes":{ // begin classes
+        "units": { // begin units
+          "soldier":{ // begin unit
+            (GSON OF SOLDIER CLASS)
+          }, // end unit
+          "tank":{ // begin unit
+            (GSON OF TANK CLASS)
+          }, // end unit
+  		  "building":{ // begin unit
+  			(GSON OF BUILDING CLASS)
+ 		  } // end unit
+        }, // end units
+        "terrain": { // begin terrains
+          "water":{ // begin terrain
+            "entry":"(java function)",
+            "exit":"(java function)",
+            "effect":"(java function)",
+          }, // end terrain
+          "land":{ // begin terrain
+            "entry":"(java function)",
+            "exit":"(java function)",
+            "effect":"(java function)",
+          } // end terrain
+        } // end terrains
+      } // end classes
+    } // End Resources
+    "campaigns":[ // begin campaigns
+      {
+        "name":"Fight for France",
+        "description":"Fight to conquer france",
+        "levels":[ // begin levels
+          { // begin level
+            "name":"",
+            "description":"",
+            "map":{ // begin map
+              "rows": "10",
+              "columns": "10",
+              "terrains": [
+                "land",
+                "land",
+                "land",
+                "land",
+                "land",
+                "land",
+             	"water",
+             	"etc. (should be a specified type within resources - units - terrain)",
+             	"100 items in this array"              	
+              ] // end terrains
+              "units": [ // begin units
+                { // begin unit
+                  "type": "Soldier"
+                  "row": "0",
+                  "column": "0",
+                } // end unit
+              ] // end units
+            } // end map
+            "triggers": [
+              {
+		        "name": "End of Level"
+		        "condition": "Enemy defeated",
+                "action": "Begin next level"
+              },
+          	  {
+          		"name:":  "Health hit",
+          		"condition": "Stationary for 10 minutes",
+          		"action:": "Reduce health"
+          	  }
+            ] // end triggers
+          } // end level
+        ] // end levels
+      } // end campaign
+    ] // end campaigns
+  }
