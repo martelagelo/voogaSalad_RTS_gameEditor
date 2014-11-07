@@ -1,7 +1,7 @@
 {
   "name":"Age of Empires",
   "description":"An RTS",
-  "resources":{ // begin Resources
+  "resources":{ // begin resources
     "images":{ // begin images
       "soldier":"soldier.png",
       "tank":"tank.png",
@@ -80,14 +80,14 @@
             } // end map
             "triggers": [
               {
-		        "name": "End of Level"
-		        "condition": "Enemy defeated",
+		            "name": "End of Level"
+		            "condition": "Enemy defeated",
                 "action": "Begin next level"
               },
           	  {
-          		"name:":  "Health hit",
-          		"condition": "Stationary for 10 minutes",
-          		"action:": "Reduce health"
+          		  "name:":  "Health hit",
+          		  "condition": "Stationary for 10 minutes",
+          		  "action:": "Reduce health"
           	  }
             ] // end triggers
           } // end level
