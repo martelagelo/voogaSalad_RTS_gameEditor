@@ -15,7 +15,7 @@ public class UnknownSenderException extends Exception {
      * @param request The sender's request
      */
     public UnknownSenderException(String sender, IRequest request){
-        super(sender + " is not recognized for message: " + request);
+        super(sender + " is not a recognized sender for request: " + request);
         mySender = sender;
         myRequest = request;
     }
