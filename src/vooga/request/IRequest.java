@@ -18,7 +18,7 @@ public interface IRequest {
      * 
      * @return The address of the recipient
      */
-    public String recipient();
+    public String receiver();
     /**
      * Get the time the message was sent
      * 
