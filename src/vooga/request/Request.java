@@ -26,7 +26,7 @@ public class Request implements IRequest{
 
     @Override
     public Map<String, String> message () {
-        return myMessage;
+        return new HashMap<>(myMessage);
     }
 
 }
