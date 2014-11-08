@@ -17,7 +17,7 @@ public class RequestMediator implements IForwarder{
     }
 
     @Override
-    public synchronized void forward (IRequest request) throws InvalidAddressException,
+    public void forward (IRequest request) throws InvalidAddressException,
                                           ReceiverNotFoundException, DeliveryException {
         checkValidAddress(request.sender());
         checkKnownAddress(request.sender());
@@ -32,7 +32,7 @@ public class RequestMediator implements IForwarder{
     }
 
     @Override
-    public synchronized void register (String address, IReceiver receiver) throws InvalidAddressException,
+    public void register (String address, IReceiver receiver) throws InvalidAddressException,
                                                              AddressConflictException {
         checkValidAddress(address);
         if (isKnownAddress(address)){
