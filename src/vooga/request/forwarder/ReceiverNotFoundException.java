@@ -7,7 +7,6 @@ package vooga.request.forwarder;
 public class ReceiverNotFoundException extends Exception {
 
     private static final long serialVersionUID = 2016239501767275842L;
-
     private String myAddress;
 
     /**
