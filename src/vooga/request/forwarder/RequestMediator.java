@@ -10,6 +10,7 @@ import vooga.request.receiver.UnknownSenderException;
  * The main request manager class which forwards messages between game components
  */
 public class RequestMediator implements IForwarder{
+
     private Map<String, IReceiver> myAddresses;
 
     public RequestMediator () {
@@ -18,7 +19,7 @@ public class RequestMediator implements IForwarder{
 
     @Override
     public void forward (IRequest request) throws InvalidAddressException,
-                                          ReceiverNotFoundException, DeliveryException {
+    ReceiverNotFoundException, DeliveryException {
         checkValidAddress(request.sender());
         checkKnownAddress(request.sender());
         checkValidAddress(request.receiver());
@@ -33,7 +34,7 @@ public class RequestMediator implements IForwarder{
 
     @Override
     public void register (String address, IReceiver receiver) throws InvalidAddressException,
-                                                             AddressConflictException {
+    AddressConflictException {
         checkValidAddress(address);
         if (isKnownAddress(address)){
             throw new AddressConflictException(address, myAddresses.get(address));
@@ -44,13 +45,14 @@ public class RequestMediator implements IForwarder{
     private void checkValidAddress (String address) throws InvalidAddressException {
         return;
     }
+
     private void checkKnownAddress (String address) throws ReceiverNotFoundException {
         if (! isKnownAddress(address)){
             throw new ReceiverNotFoundException(address);
         }
     }
+
     private boolean isKnownAddress (String address) {
         return myAddresses.containsKey(address);
     }
-
 }

@@ -6,6 +6,7 @@ import vooga.request.IRequest;
  * An interface which can receive requests
  */
 public interface IReceiver {
+
     /**
      * Receive a request
      * 

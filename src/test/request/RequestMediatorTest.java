@@ -16,6 +16,7 @@ import vooga.request.forwarder.ReceiverNotFoundException;
 import vooga.request.forwarder.RequestMediator;
 
 public class RequestMediatorTest {
+
     IForwarder myMediator;
     List<ReceiverTestStub> myReceivers;
 
@@ -27,6 +28,7 @@ public class RequestMediatorTest {
             myMediator.register(Integer.toString(i), myReceivers.get(i));
         }
     }
+
     /**
      * Test sending to the same receiver
      */
@@ -41,6 +43,7 @@ public class RequestMediatorTest {
         myMediator.forward(request);
         assertEquals("there", myReceivers.get(0).lastRequest().message().get("hi"));
     }
+
     /**
      * Test if a message can be passed back and forth between two receivers
      *  in the correct order.
@@ -75,6 +78,7 @@ public class RequestMediatorTest {
         // to startingRequest
         assertEquals("2", myReceivers.get(0).lastRequest().message().get("pingPong"));
     }
+
     /**
      * Tests that adding two identical addresses actually creates the right exception
      */
@@ -98,6 +102,7 @@ public class RequestMediatorTest {
             throw e;
         }
     }
+
     @Test(expected=ReceiverNotFoundException.class)
     public void testReceiverNotFoundException() throws InvalidAddressException, AddressConflictException, DeliveryException, ReceiverNotFoundException{
         setup(1, 0);

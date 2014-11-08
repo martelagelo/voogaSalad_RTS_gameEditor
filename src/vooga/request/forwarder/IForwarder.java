@@ -7,6 +7,7 @@ import vooga.request.receiver.IReceiver;
  * An interface which forwards IRequests between registered IReceivers.
  */
 public interface IForwarder {
+
     /**
      * Forward a request to a recipient based on the details of that request
      * 
@@ -17,6 +18,7 @@ public interface IForwarder {
      */
     public void forward(IRequest request)
             throws InvalidAddressException, ReceiverNotFoundException, DeliveryException;
+
     /**
      * Register a receiver that can receive messages via forward()
      * 

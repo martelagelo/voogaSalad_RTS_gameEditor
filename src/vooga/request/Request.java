@@ -14,6 +14,7 @@ public class Request implements IRequest{
         myReceiver = receiver;
         myMessage = new HashMap<>(message);
     }
+
     @Override
     public String sender () {
         return mySender;
@@ -28,5 +29,4 @@ public class Request implements IRequest{
     public Map<String, String> message () {
         return new HashMap<>(myMessage);
     }
-
 }

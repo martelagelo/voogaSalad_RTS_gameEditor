@@ -24,6 +24,7 @@ public class DeliveryException extends Exception {
         myRequest = request;
         myReason = reason;
     }
+
     /**
      * Get the request
      * 
@@ -32,6 +33,7 @@ public class DeliveryException extends Exception {
     public IRequest request(){
         return myRequest;
     }
+
     /**
      * Get the reason
      * 

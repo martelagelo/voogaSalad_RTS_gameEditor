@@ -19,6 +19,7 @@ public class ReceiverNotFoundException extends Exception {
         super(address + " could not be found");
         myAddress = address;
     }
+
     /**
      * Get the address
      * @return The address that could not be resolved

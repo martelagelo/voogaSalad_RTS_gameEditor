@@ -4,7 +4,7 @@ package vooga.request.forwarder;
  * An exception capturing when an invalid address has been used
  */
 public class InvalidAddressException extends Exception {
-    
+
     private static final long serialVersionUID = 7207103882222096620L;
 
     private String myAddress;
@@ -21,6 +21,7 @@ public class InvalidAddressException extends Exception {
         myAddress = address;
         myReason = reason;
     }
+
     /**
      * Get the invalid address
      * 
@@ -29,6 +30,7 @@ public class InvalidAddressException extends Exception {
     public String address(){
         return myAddress;
     }
+
     /**
      * Get the reason the address is invalid
      * 

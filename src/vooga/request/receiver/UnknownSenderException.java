@@ -6,6 +6,7 @@ import vooga.request.IRequest;
  * An exception encapsulating when a sender is not recognized as known or valid
  */
 public class UnknownSenderException extends Exception {
+
     private String mySender;
     private IRequest myRequest;
 
@@ -20,6 +21,7 @@ public class UnknownSenderException extends Exception {
         mySender = sender;
         myRequest = request;
     }
+
     /**
      * Get the sender
      * 
@@ -28,6 +30,7 @@ public class UnknownSenderException extends Exception {
     public String sender(){
         return mySender;
     }
+
     /**
      * Get the request
      * 

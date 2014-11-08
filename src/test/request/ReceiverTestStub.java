@@ -14,7 +14,7 @@ import vooga.request.receiver.UnknownSenderException;
  * Stub testing class for testing the receiver functionality
  */
 public class ReceiverTestStub implements IReceiver{
-    
+
     private IRequest myLastRequest;
     private IForwarder myMediator;
     private int myPingPongCountMax;

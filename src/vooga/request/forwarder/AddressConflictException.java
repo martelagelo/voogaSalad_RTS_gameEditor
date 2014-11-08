@@ -23,6 +23,7 @@ public class AddressConflictException extends Exception {
         myConflictingAddress = conflictingAddress;
         myConflictingReceiver = conflictingReceiver;
     }
+
     /**
      * The conflicting address
      * 
@@ -31,6 +32,7 @@ public class AddressConflictException extends Exception {
     public String conflictingAddress(){
         return myConflictingAddress;
     }
+
     /**
      * The conflicting receiver
      * 
