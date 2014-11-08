@@ -8,7 +8,6 @@ import vooga.request.receiver.IReceiver;
 public class AddressConflictException extends Exception {
 
     private static final long serialVersionUID = -3572949740426821224L;
-
     private String myConflictingAddress;
     private IReceiver myConflictingReceiver;
 
