@@ -9,7 +9,6 @@ import vooga.request.IRequest;
 public class DeliveryException extends Exception {
 
     private static final long serialVersionUID = 7788838511248429280L;
-
     private IRequest myRequest;
     private String myReason;
 
