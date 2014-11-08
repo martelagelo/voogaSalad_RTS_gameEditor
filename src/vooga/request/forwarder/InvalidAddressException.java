@@ -6,7 +6,6 @@ package vooga.request.forwarder;
 public class InvalidAddressException extends Exception {
 
     private static final long serialVersionUID = 7207103882222096620L;
-
     private String myAddress;
     private String myReason;
 
