@@ -9,6 +9,7 @@ public class InvalidAddressException extends Exception {
 
     private String myAddress;
     private String myReason;
+
     /**
      * Create a new invalid address exception
      * 

@@ -12,6 +12,7 @@ public class DeliveryException extends Exception {
 
     private IRequest myRequest;
     private String myReason;
+
     /**
      * Create a new delivery exception
      * 

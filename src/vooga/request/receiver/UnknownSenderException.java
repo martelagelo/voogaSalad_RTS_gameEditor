@@ -8,6 +8,7 @@ import vooga.request.IRequest;
 public class UnknownSenderException extends Exception {
     private String mySender;
     private IRequest myRequest;
+
     /**
      * Create a new unknown sender exception
      * 

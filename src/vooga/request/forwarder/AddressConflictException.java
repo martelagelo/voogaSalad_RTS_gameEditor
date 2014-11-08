@@ -11,6 +11,7 @@ public class AddressConflictException extends Exception {
 
     private String myConflictingAddress;
     private IReceiver myConflictingReceiver;
+
     /**
      * Create a new address conflict exception
      * 

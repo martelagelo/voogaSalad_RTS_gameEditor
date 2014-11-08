@@ -17,13 +17,12 @@ public class ReceiverTestStub implements IReceiver{
     
     private IRequest myLastRequest;
     private IForwarder myMediator;
-    private int myPingPongMax;
+    private int myPingPongCountMax;
     private static final String pingPongLabel = "pingPong";
 
     public ReceiverTestStub (IForwarder mediator, int pingPongMax) {
         myMediator = mediator;
-        myLastRequest = null;
-        myPingPongMax = pingPongMax;
+        myPingPongCountMax = pingPongMax;
     }
 
     /**
@@ -35,7 +34,7 @@ public class ReceiverTestStub implements IReceiver{
         myLastRequest = request;
         if (request.message().containsKey(pingPongLabel)){
             int curPingPongIteration = Integer.parseInt(request.message().get(pingPongLabel));
-            if (curPingPongIteration < myPingPongMax) {
+            if (curPingPongIteration < myPingPongCountMax) {
                 Map<String, String> message = request.message();
                 message.put(pingPongLabel, Integer.toString(curPingPongIteration+1));
                 IRequest newRequest = new Request(request.receiver(), request.sender(), message);
