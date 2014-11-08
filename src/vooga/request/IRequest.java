@@ -20,12 +20,6 @@ public interface IRequest {
      */
     public String receiver();
     /**
-     * Get the time the message was sent
-     * 
-     * @return A timestamp of when the message was sent
-     */
-    public ZonedDateTime sendTime();
-    /**
      * Get the message
      * 
      * @return A map of attributes to values representing the message
