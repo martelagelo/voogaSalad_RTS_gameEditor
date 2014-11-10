@@ -1,5 +1,6 @@
 package application;
 	
+import game_editor.GUIPaneGenerator;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -10,8 +11,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
+			GUIPaneGenerator gPG = new GUIPaneGenerator();
+			System.out.println(gPG.splashPage());
+			Scene scene = new Scene(gPG.splashPage(),400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
