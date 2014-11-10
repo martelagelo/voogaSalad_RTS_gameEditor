@@ -10,7 +10,7 @@ import java.util.List;
  * A Campaign class which contains all the necessary
  * information to build a campaign
  */
-public class Campaign extends Describable{
+public class Campaign extends Describable {
 	
 	private List<Level> myLevels = new ArrayList<Level>();
 	
