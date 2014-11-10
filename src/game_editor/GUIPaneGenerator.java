@@ -13,7 +13,7 @@ public class GUIPaneGenerator {
 	}
 	
 	public GridPane splashPage () throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("fxml_example.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("GUIPanes/SplashPage.fxml"));
 		GridPane gp = new GridPane();
 		gp.add(root,0, 0);
 		return gp;

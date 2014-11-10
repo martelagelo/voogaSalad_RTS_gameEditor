@@ -12,7 +12,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			GUIPaneGenerator gPG = new GUIPaneGenerator();
-			System.out.println(gPG.splashPage());
 			Scene scene = new Scene(gPG.splashPage(),400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
