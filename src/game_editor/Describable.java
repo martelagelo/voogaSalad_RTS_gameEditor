@@ -13,7 +13,7 @@ public abstract class Describable {
 	private String myName;
 	private String myDescription;
 	
-	public Describable(String name, String desc){
+	public Describable (String name, String desc) {
 		this.myName = name;
 		this.myDescription = desc;
 	}
@@ -23,7 +23,7 @@ public abstract class Describable {
 	 *
 	 * @return myName a String of the name of the describable
 	 */
-	public String getName(){
+	public String getName () {
 		return myName;
 	}
 	
@@ -32,7 +32,7 @@ public abstract class Describable {
 	 *
 	 * @return myName a String of the description of the describable
 	 */
-	public String getDescription(){
+	public String getDescription () {
 		return myDescription;
 	}
 
