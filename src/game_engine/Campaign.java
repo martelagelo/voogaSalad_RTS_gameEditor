@@ -15,7 +15,7 @@ public class Campaign extends Describable{
 	private List<Level> myLevels = new ArrayList<Level>();
 	
 	public Campaign (String name, String desc) {
-		super(name,desc);
+		super(name, desc);
 	}
 
 }

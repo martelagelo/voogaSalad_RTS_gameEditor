@@ -15,7 +15,7 @@ public class Game extends Describable{
 	private List<Campaign> myCampaigns = new ArrayList<Campaign>();
 	
 	public Game (String name, String desc) {
-		super(name,desc);
+		super(name, desc);
 	}
 
 }

@@ -10,7 +10,7 @@ package game_engine;
 public class Level extends Describable{
 	
 	public Level (String name, String desc) {
-		super(name,desc);
+		super(name, desc);
 	}
 
 }
