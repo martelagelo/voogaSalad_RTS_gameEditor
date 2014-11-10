@@ -1,4 +1,4 @@
-package game_editor;
+package game_engine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * A Game class which contains all the necessary
  * information to build a game
  */
-public class Game extends Describable{
+public class Game extends Describable {
 	
 	private List<Campaign> myCampaigns = new ArrayList<Campaign>();
 	
