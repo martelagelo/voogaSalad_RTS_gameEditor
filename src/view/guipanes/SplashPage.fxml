@@ -6,6 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root type="javafx.scene.layout.GridPane" fx:id="splash" 
-	xmlns:fx="http://javafx.com/fxml">
-</fx:root>
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:id="splash" fx:controller="view.SplashScreen">
+</GridPane>

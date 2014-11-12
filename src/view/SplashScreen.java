@@ -1,19 +1,29 @@
 package view;
 
-import editor.GUIPaneGenerator;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
 
-public class SplashScreen extends GridPane {
+public class SplashScreen implements GUIController {
 
-    private static final String FXML_FILE = "/view/guipanes/SplashPage.fxml";
+    @FXML
+    private GridPane splash;
 
-    public SplashScreen (GUIPaneGenerator guiPaneGenerator) {
-        guiPaneGenerator.generateGUIPane(FXML_FILE, this);    
+    @Override
+    @FXML
+    public void initialize () {
+        System.out.println("initializing splash screen...");
     }
 
-    public String[] getCSS() {
+    @Override
+    public String[] getCSS () {
         return new String[] { "/view/stylesheets/splash.css" };
+    }
+
+    @Override
+    public Node getRoot () {
+        return splash;
     }
 
 }

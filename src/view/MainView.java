@@ -1,57 +1,56 @@
 package view;
 
 import java.awt.Dimension;
-import editor.EditorScreen;
-import editor.GUIPaneGenerator;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import editor.GUILoadStyleUtility;
 
+
+/**
+ * 
+ * @author Jonathan Tseng
+ * @author Nishad Agrawal
+ *
+ */
 public class MainView {
 
     private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
-    private static final String FILE_PATH = "/game_editor/GUIPanes/SplashPage.fxml";
+    private static final String SPLASH_PAGE_PATH = "/view/guipanes/SplashPage.fxml";
+    private static final String EDITOR_ROOT_PATH = "/editor/guipanes/EditorRoot.fxml";
     private Stage myStage;
     private Scene myScene;
-    private EditorScreen myEditorScreen;
 
-    private GUIPaneGenerator myGuiPaneGenerator;
+    private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage) {
         myStage = stage;
-        myGuiPaneGenerator = new GUIPaneGenerator();
+        myLoadStyleUtility = new GUILoadStyleUtility();
     }
 
-    public void start() {
-        //TODO CLEAN DIS SHIT
-        //displaySplashScreen();
+    public void start () {
+        // TODO CLEAN DIS SHIT WITH REQUESTS
+        // displaySplashScreen();
         displayEditorScreen();
         myStage.show();
     }
 
-    private void displaySplashScreen() {
-        SplashScreen splashScreen = new SplashScreen(myGuiPaneGenerator);
-        setScene(splashScreen, splashScreen.getCSS());
+    private void displaySplashScreen () {
+        initializeScreen(SPLASH_PAGE_PATH);
     }
 
-    private void displayEditorScreen() {
-        if (myEditorScreen == null) {
-            myEditorScreen = new EditorScreen(myGuiPaneGenerator);
-        }
-        setScene(myEditorScreen);
+    private void displayEditorScreen () {
+        initializeScreen(EDITOR_ROOT_PATH);
     }
 
-    private void setScene(Parent root, String ... cssFiles) {
-        myScene = new Scene(root, SCENE_DIMENSIONS.width, SCENE_DIMENSIONS.height);
-        try {
-            for (String cssFile : cssFiles) {
-                myScene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
-            }   
-        } catch (Exception e) {
-            System.out.println("css file not found (or some other error)");
-            e.printStackTrace();
-        }
-        myStage.setScene(myScene);
+    private void initializeScreen (String filePath) {
+        GUIController controller = myLoadStyleUtility.generateGUIPane(filePath);
+        Scene styled =
+                myLoadStyleUtility.createStyledScene(myScene,
+                                                     (Parent) controller.getRoot(),
+                                                     SCENE_DIMENSIONS,
+                                                     controller.getCSS());
+        myStage.setScene(styled);
     }
 
 }
