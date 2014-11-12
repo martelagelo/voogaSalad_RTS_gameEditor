@@ -1,9 +1,10 @@
 package vooga.engine.gameRepresentation.conditions;
 
-import java.util.function.BiFunction;
+import java.util.List;
 import vooga.engine.gameRepresentation.GameElement;
 
-
-public abstract class Condition implements BiFunction<GameElement, GameElement, Boolean> {
+public abstract class Condition {
+    
+    public abstract Boolean evaluate(List<GameElement> parameters);
 
 }
