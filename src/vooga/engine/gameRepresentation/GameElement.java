@@ -1,10 +1,13 @@
 package vooga.engine.gameRepresentation;
 
 import java.util.Map;
-import java.util.function.BiFunction;
+import vooga.engine.gameRepresentation.actions.Action;
+import vooga.engine.gameRepresentation.conditions.Condition;
 
 
 public class GameElement {
 
-    private Map<BiFunction<GameElement, GameElement, Boolean>, BiFunction<GameElement, GameElement, Boolean>> ifThisThenThat;
+    private Map<Condition, Action> ifThisThenThat;
+    private Map<String, Number> numericalAttributes;
+    private Map<String, String> textualAttributes;
 }
