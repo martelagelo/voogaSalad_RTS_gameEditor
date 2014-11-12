@@ -1,29 +1,31 @@
 package test.request;
 
 import static org.junit.Assert.assertEquals;
+import game_requests.IRequest;
+import game_requests.Request;
+import game_requests.forwarding.AddressConflictException;
+import game_requests.forwarding.DeliveryException;
+import game_requests.forwarding.IForwarder;
+import game_requests.forwarding.InvalidAddressException;
+import game_requests.forwarding.ReceiverNotFoundException;
+import game_requests.forwarding.RequestMediator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
-import vooga.request.IRequest;
-import vooga.request.Request;
-import vooga.request.forwarder.AddressConflictException;
-import vooga.request.forwarder.DeliveryException;
-import vooga.request.forwarder.IForwarder;
-import vooga.request.forwarder.InvalidAddressException;
-import vooga.request.forwarder.ReceiverNotFoundException;
-import vooga.request.forwarder.RequestMediator;
+
 
 public class RequestMediatorTest {
 
     IForwarder myMediator;
     List<ReceiverTestStub> myReceivers;
 
-    public void setup(int receiverCount, int pingPongMax) throws InvalidAddressException, AddressConflictException{
+    public void setup (int receiverCount, int pingPongMax) throws InvalidAddressException,
+                                                          AddressConflictException {
         myMediator = new RequestMediator();
         myReceivers = new ArrayList<>();
-        for (int i = 0; i < receiverCount; i++){
+        for (int i = 0; i < receiverCount; i++) {
             myReceivers.add(i, new ReceiverTestStub(myMediator, pingPongMax));
             myMediator.register(Integer.toString(i), myReceivers.get(i));
         }
@@ -33,8 +35,9 @@ public class RequestMediatorTest {
      * Test sending to the same receiver
      */
     @Test
-    public void testSendToSelf()
-            throws InvalidAddressException, AddressConflictException, ReceiverNotFoundException, DeliveryException{
+    public void testSendToSelf ()
+                                 throws InvalidAddressException, AddressConflictException,
+                                 ReceiverNotFoundException, DeliveryException {
         setup(1, 0);
 
         Map<String, String> message = new HashMap<>();
@@ -46,15 +49,16 @@ public class RequestMediatorTest {
 
     /**
      * Test if a message can be passed back and forth between two receivers
-     *  in the correct order.
-     * <br><br>
+     * in the correct order. <br>
+     * <br>
      * ReceiverTestStub contains special "ping pong" logic where if the
      * special key "pingPong" is in the message, the ReceiverTestStub will
      * send back a new message to the sender, incrementing a counter until
      * it reaches a certain value.
      */
     @Test
-    public void testSendPingPong() throws InvalidAddressException, AddressConflictException, ReceiverNotFoundException, DeliveryException {
+    public void testSendPingPong () throws InvalidAddressException, AddressConflictException,
+                                   ReceiverNotFoundException, DeliveryException {
         setup(2, 2);
 
         Map<String, String> initialMessage = new HashMap<>();
@@ -82,8 +86,9 @@ public class RequestMediatorTest {
     /**
      * Tests that adding two identical addresses actually creates the right exception
      */
-    @Test(expected=AddressConflictException.class)
-    public void testAddressConflictException() throws InvalidAddressException, AddressConflictException{
+    @Test(expected = AddressConflictException.class)
+    public void testAddressConflictException () throws InvalidAddressException,
+                                               AddressConflictException {
         try {
             setup(0, 0);
         }
@@ -103,8 +108,10 @@ public class RequestMediatorTest {
         }
     }
 
-    @Test(expected=ReceiverNotFoundException.class)
-    public void testReceiverNotFoundException() throws InvalidAddressException, AddressConflictException, DeliveryException, ReceiverNotFoundException{
+    @Test(expected = ReceiverNotFoundException.class)
+    public void testReceiverNotFoundException () throws InvalidAddressException,
+                                                AddressConflictException, DeliveryException,
+                                                ReceiverNotFoundException {
         setup(1, 0);
         try {
             myMediator.forward(new Request("1", "0", new HashMap<>()));
