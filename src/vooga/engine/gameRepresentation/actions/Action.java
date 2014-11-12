@@ -3,6 +3,7 @@ package vooga.engine.gameRepresentation.actions;
 import java.util.function.BiFunction;
 import vooga.engine.gameRepresentation.GameElement;
 
+
 public class Action implements BiFunction<GameElement, GameElement, Boolean> {
 
     @Override
