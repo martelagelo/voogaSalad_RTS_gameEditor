@@ -1,7 +1,7 @@
 package game_engine;
 
-import vooga.engine.computers.CollisionComputer;
-import vooga.engine.computers.VisionComputer;
+import game_engine.computers.CollisionComputer;
+import game_engine.computers.VisionComputer;
 import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
