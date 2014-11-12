@@ -1,8 +1,8 @@
-package vooga.request.forwarder;
+package game_requests.forwarding;
 
 /**
  * An exception encapsulating when a receiver address could not be resolved
- * to a receiver 
+ * to a receiver
  */
 public class ReceiverNotFoundException extends Exception {
 
@@ -14,16 +14,17 @@ public class ReceiverNotFoundException extends Exception {
      * 
      * @param address The address that could not be resolved
      */
-    public ReceiverNotFoundException(String address){
+    public ReceiverNotFoundException (String address) {
         super(address + " could not be found");
         myAddress = address;
     }
 
     /**
      * Get the address
+     * 
      * @return The address that could not be resolved
      */
-    public String address(){
+    public String address () {
         return myAddress;
     }
 }

@@ -1,6 +1,7 @@
-package vooga.request.forwarder;
+package game_requests.forwarding;
 
-import vooga.request.receiver.IReceiver;
+import game_requests.receiving.IReceiver;
+
 
 /**
  * An exception capturing when an address conflicts with a pre-existing address
@@ -17,7 +18,7 @@ public class AddressConflictException extends Exception {
      * @param conflictingAddress The address that conflicts with a pre-existing address
      * @param conflictingReceiver The receiver that already possesses that address
      */
-    public AddressConflictException(String conflictingAddress, IReceiver conflictingReceiver){
+    public AddressConflictException (String conflictingAddress, IReceiver conflictingReceiver) {
         super(conflictingAddress + " is already in use by " + conflictingReceiver);
         myConflictingAddress = conflictingAddress;
         myConflictingReceiver = conflictingReceiver;
@@ -28,7 +29,7 @@ public class AddressConflictException extends Exception {
      * 
      * @return The address that conflicts with a pre-existing address
      */
-    public String conflictingAddress(){
+    public String conflictingAddress () {
         return myConflictingAddress;
     }
 
@@ -37,7 +38,7 @@ public class AddressConflictException extends Exception {
      * 
      * @return The receiver that already possesses that address
      */
-    public IReceiver conflictingReceiver(){
+    public IReceiver conflictingReceiver () {
         return myConflictingReceiver;
     }
 }

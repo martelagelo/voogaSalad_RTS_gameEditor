@@ -1,15 +1,16 @@
-package vooga.request.forwarder;
+package game_requests.forwarding;
 
+import game_requests.IRequest;
+import game_requests.receiving.IReceiver;
+import game_requests.receiving.UnknownSenderException;
 import java.util.HashMap;
 import java.util.Map;
-import vooga.request.IRequest;
-import vooga.request.receiver.IReceiver;
-import vooga.request.receiver.UnknownSenderException;
+
 
 /**
  * The main request manager class which forwards messages between game components
  */
-public class RequestMediator implements IForwarder{
+public class RequestMediator implements IForwarder {
 
     private Map<String, IReceiver> myAddresses;
 
@@ -19,7 +20,7 @@ public class RequestMediator implements IForwarder{
 
     @Override
     public void forward (IRequest request) throws InvalidAddressException,
-    ReceiverNotFoundException, DeliveryException {
+                                          ReceiverNotFoundException, DeliveryException {
         checkValidAddress(request.sender());
         checkKnownAddress(request.sender());
         checkValidAddress(request.receiver());
@@ -34,11 +35,10 @@ public class RequestMediator implements IForwarder{
 
     @Override
     public void register (String address, IReceiver receiver) throws InvalidAddressException,
-    AddressConflictException {
+                                                             AddressConflictException {
         checkValidAddress(address);
-        if (isKnownAddress(address)){
-            throw new AddressConflictException(address, myAddresses.get(address));
-        }
+        if (isKnownAddress(address)) { throw new AddressConflictException(address,
+                                                                          myAddresses.get(address)); }
         myAddresses.put(address, receiver);
     }
 
@@ -47,9 +47,7 @@ public class RequestMediator implements IForwarder{
     }
 
     private void checkKnownAddress (String address) throws ReceiverNotFoundException {
-        if (! isKnownAddress(address)){
-            throw new ReceiverNotFoundException(address);
-        }
+        if (!isKnownAddress(address)) { throw new ReceiverNotFoundException(address); }
     }
 
     private boolean isKnownAddress (String address) {
