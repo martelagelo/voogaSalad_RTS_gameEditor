@@ -1,4 +1,4 @@
-package vooga.engine;
+package game_engine;
 
 public class GameLoop {
 

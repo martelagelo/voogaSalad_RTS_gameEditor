@@ -1,6 +1,7 @@
-package vooga.request.forwarder;
+package game_requests.forwarding;
 
-import vooga.request.IRequest;
+import game_requests.IRequest;
+
 
 /**
  * An exception capturing when an error occurred during delivery of an request
@@ -18,7 +19,7 @@ public class DeliveryException extends Exception {
      * @param request The request that failed to deliver
      * @param reason The reason the delivery failed
      */
-    public DeliveryException(IRequest request, String reason){
+    public DeliveryException (IRequest request, String reason) {
         super("Delivery of " + request + " failed, because: " + reason);
         myRequest = request;
         myReason = reason;
@@ -29,7 +30,7 @@ public class DeliveryException extends Exception {
      * 
      * @return The request that failed to deliver
      */
-    public IRequest request(){
+    public IRequest request () {
         return myRequest;
     }
 
@@ -38,7 +39,7 @@ public class DeliveryException extends Exception {
      * 
      * @return The reason the delivery failed
      */
-    public String reason(){
+    public String reason () {
         return myReason;
     }
 }

@@ -1,9 +1,10 @@
-package vooga.request;
+package game_requests;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Request implements IRequest{
+
+public class Request implements IRequest {
 
     private String mySender;
     private String myReceiver;

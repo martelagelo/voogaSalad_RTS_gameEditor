@@ -1,4 +1,4 @@
-package vooga.request.forwarder;
+package game_requests.forwarding;
 
 /**
  * An exception capturing when an invalid address has been used
@@ -15,7 +15,7 @@ public class InvalidAddressException extends Exception {
      * @param address The invalid address
      * @param reason The reason the address is invalid
      */
-    public InvalidAddressException(String address, String reason){
+    public InvalidAddressException (String address, String reason) {
         super(address + " is invalid: " + reason);
         myAddress = address;
         myReason = reason;
@@ -26,7 +26,7 @@ public class InvalidAddressException extends Exception {
      * 
      * @return The invalid address
      */
-    public String address(){
+    public String address () {
         return myAddress;
     }
 
@@ -35,7 +35,7 @@ public class InvalidAddressException extends Exception {
      * 
      * @return The reason the address is invalid
      */
-    public String reason(){
+    public String reason () {
         return myReason;
     }
 }
