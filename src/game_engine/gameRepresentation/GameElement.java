@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GameElement {
 
-    private Map<Condition, Action> ifThisThenThat;
-    private Map<String, Number> numericalAttributes;
-    private Map<String, String> textualAttributes;
+    protected Map<Condition, Action> ifThisThenThat;
+    protected Map<String, Number> numericalAttributes;
+    protected Map<String, String> textualAttributes;
 }
