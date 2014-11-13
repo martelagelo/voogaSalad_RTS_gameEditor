@@ -4,30 +4,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 
+ * Utility class handling saving a JSONable object.
  * @author Rahul Harikrishnan
  *
  */
-public class SaveUtility implements JSONable {
+public class SaveUtility {
 
     /**
      * Save a JSONable object to a library file
      * @param object that can be converted to JSON format
      * @return result of save operation (true if successful, else false)
      */
-    public boolean save (JSONable object) {
+    public void save (JSONable object, String filename) throws IOException {
         String json = object.toJSON();
-        try {
-            FileWriter writer = new FileWriter("c:\\file.json");
-            writer.write(json);
-            writer.close();
-     
-        } catch (IOException e) {
-            System.out.println("Error Saving");
-        }
-        return true;
+        FileWriter writer = new FileWriter("resources/" + filename);
+        writer.write(json);
+        writer.close();
     }
-    
-    
-
 }
