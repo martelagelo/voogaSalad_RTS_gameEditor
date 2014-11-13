@@ -13,12 +13,12 @@
 	<left>
 		<VBox BorderPane.alignment="CENTER">
 			<children>
-				<TreeView fx:id="rootViewProjectExplorer" VBox.vgrow="ALWAYS" />
-				<VBox fx:id="rootViewGameInfoVBox" VBox.vgrow="NEVER" />
+				<fx:include source="ProjectExplorerView.fxml" fx:id="projectExplorer" VBox.vgrow="ALWAYS" />
+				<VBox fx:id="gameInfoVBox" VBox.vgrow="NEVER" />
 			</children>
 		</VBox>
 	</left>
 	<center>
-		<TabPane fx:id="rootViewTabPane" BorderPane.alignment="CENTER" />
+		<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" />
 	</center>
 </BorderPane>

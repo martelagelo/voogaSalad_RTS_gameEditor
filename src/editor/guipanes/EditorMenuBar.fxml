@@ -8,7 +8,7 @@
 	<menus>
 		<Menu text="File">
 			<items>
-				<MenuItem text="New Tab" />
+				<MenuItem id="myNewLevelMenuItem" text="New Level" />
 			</items>
 		</Menu>
 	</menus>

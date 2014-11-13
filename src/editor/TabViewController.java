@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -21,60 +22,32 @@ import javafx.scene.shape.Rectangle;
  */
 public class TabViewController implements GUIController {
 
-    @FXML
-    private Accordion levelElementAccordian;
-    @FXML
-    private VBox levelInfoView;
-    @FXML
-    private ScrollPane levelTriggersView;
-    @FXML
-    private ScrollPane levelMapView;
-    @FXML
-    private BorderPane levelMiniMapView;
-    @FXML
-    private ScrollPane levelElementAttributesView;
-    @FXML
-    private ScrollPane levelElementTriggersView;
-    
-    @FXML
-    private BorderPane tabPane;
+    @FXML private Accordion levelElementAccordian;
+    @FXML private VBox levelInfoView;
+    @FXML private ScrollPane levelTriggersView;
+    @FXML private ScrollPane levelMapView;
+    @FXML private BorderPane levelMiniMapView;
+    @FXML private ScrollPane levelElementAttributesView;
+    @FXML private ScrollPane levelElementTriggersView;
+    @FXML private BorderPane tabPane;
   
-    @Override
-    @FXML
+    @Override @FXML
     public void initialize() {
-        //initAccordianPanes();
+        initAccordianPanes();
         initLevelInfoInputs();
     }
 
+    //TODO: Clean up this function
     private void initAccordianPanes() {
         //TODO Get Accordian Pane MetaData
-        /*
-        GameElementAccordianPane pane = new GameElementAccordianPane("temp1");
-        Rectangle r = new Rectangle(100, 20);
-        r.setFill(Color.BLUE);
-        Rectangle r2 = new Rectangle(100, 20);
-        r2.setFill(Color.RED);
-        Rectangle r3 = new Rectangle(100, 20);
-        r3.setFill(Color.GREEN);
-        pane.addElement("item1", r);
-        pane.addElement("item2", r2);
-        pane.addElement("item3", r3);
+        String filePath = "/editor/guipanes/GameElementDropDown.fxml";
+        GUILoadStyleUtility util = new GUILoadStyleUtility();
+        ElementDropDownControl dropDownController = (ElementDropDownControl) util.generateGUIPane(filePath);
+        dropDownController.setGameElement("Unit");
+        dropDownController.addElement("item1", null);
+        dropDownController.addElement("item2", new Rectangle(50,50));
         
-        
-        GameElementAccordianPane pane2 = new GameElementAccordianPane("temp2");
-        Rectangle r4 = new Rectangle(100, 20);
-        r4.setFill(Color.BLUE);
-        Rectangle r5 = new Rectangle(100, 20);
-        r5.setFill(Color.RED);
-        Rectangle r6 = new Rectangle(100, 20);
-        r6.setFill(Color.GREEN);
-        pane2.addElement("item1", r4);
-        pane2.addElement("item2", r5);
-        pane2.addElement("item3", r6);
-        */
-        ElementDropDownControl pane = new ElementDropDownControl();
-        
-//        levelElementAccordian.getPanes().addAll(pane);  
+        levelElementAccordian.getPanes().add((TitledPane)dropDownController.getRoot());  
     }
 
     private void initLevelInfoInputs() {
