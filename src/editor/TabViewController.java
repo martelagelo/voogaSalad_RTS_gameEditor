@@ -30,11 +30,10 @@ public class TabViewController implements GUIController {
     @FXML private ScrollPane levelElementAttributesView;
     @FXML private ScrollPane levelElementTriggersView;
     @FXML private BorderPane tabPane;
-  
+
     @Override @FXML
     public void initialize() {
         initAccordianPanes();
-        initLevelInfoInputs();
     }
 
     //TODO: Clean up this function
@@ -46,20 +45,8 @@ public class TabViewController implements GUIController {
         dropDownController.setGameElement("Unit");
         dropDownController.addElement("item1", null);
         dropDownController.addElement("item2", new Rectangle(50,50));
-        
+
         levelElementAccordian.getPanes().add((TitledPane)dropDownController.getRoot());  
-    }
-
-    private void initLevelInfoInputs() {
-        Label levelNameLabel = new Label("Level Name: ");
-        TextField levelNameTextField = new TextField();
-        Label levelInfoLabel = new Label("Level Description: ");
-        TextArea levelInfoTextArea = new TextArea();
-        levelInfoView.getChildren().addAll(levelNameLabel,
-                                           levelNameTextField,
-                                           levelInfoLabel,
-                                           levelInfoTextArea);
-
     }
 
     @Override

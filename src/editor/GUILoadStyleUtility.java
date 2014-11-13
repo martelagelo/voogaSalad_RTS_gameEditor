@@ -11,6 +11,7 @@ import view.GUIController;
 /**
  * A class for the generation and styling of GUIPanes based on FXML files
  * 
+ * @author Jonathan Tseng
  * @author Nishad Agrawal
  * @author Joshua Miller
  * 
