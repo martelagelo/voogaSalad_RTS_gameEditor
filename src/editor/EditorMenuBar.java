@@ -8,6 +8,7 @@ import view.GUIController;
 /**
  * 
  * @author Nishad Agrawal
+ * @author Jonathan Tseng
  *
  */
 public class EditorMenuBar implements GUIController {
