@@ -1,4 +1,4 @@
-package game_engine;
+package game_engine.stateManaging;
 
 import game_engine.computers.CollisionComputer;
 import game_engine.computers.VisionComputer;
