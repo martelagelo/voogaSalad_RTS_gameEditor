@@ -1,4 +1,4 @@
-package game_engine.computers.boundsComputers;
+package game_engine.computers;
 
 import java.util.List;
 import java.util.stream.Collectors;

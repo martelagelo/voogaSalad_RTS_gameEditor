@@ -1,6 +1,7 @@
 package game_engine.computers.boundsComputers;
 
-import game_engine.computers.boundsComputer.Bounded;
+import game_engine.computers.Computer;
+
 
 
 

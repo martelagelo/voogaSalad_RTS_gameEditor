@@ -1,7 +1,7 @@
 package vooga.engine.computers.boundsComputers;
 
-import game_engine.computers.boundsComputer.Bounded;
-import game_engine.computers.boundsComputers.Computer;
+import game_engine.computers.Computer;
+import game_engine.computers.boundsComputers.Bounded;
 
 
 /**

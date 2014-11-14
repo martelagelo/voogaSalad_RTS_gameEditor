@@ -1,4 +1,4 @@
-package game_engine.computers.boundsComputer;
+package game_engine.computers.boundsComputers;
 
 import javafx.geometry.Bounds;
 import javafx.scene.shape.Polygon;
