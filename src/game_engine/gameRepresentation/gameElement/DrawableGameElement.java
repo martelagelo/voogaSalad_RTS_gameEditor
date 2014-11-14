@@ -21,7 +21,7 @@ public class DrawableGameElement extends GameElement implements Boundable {
     protected Map<String, List<DrawableGameElement>> interactingElements;
 
     public DrawableGameElement (Image image, Point2D position, String name) {
-        this.textualAttributes.put("Name", name);
+        this.textualAttributes.add(new Attribute<String>("Name", name));
         this.visualRepresentation.setTranslateX(position.getX());
         this.visualRepresentation.setTranslateY(position.getY());
         this.visualRepresentation.getChildren().add(new ImageView(image));

@@ -14,9 +14,9 @@ import javafx.scene.shape.Rectangle;
 public class SelectableGameElement extends DrawableGameElement implements
         Sighted {
 
-    protected Map<String,Consumer > abilityRepresentation;
+    protected Map<String, Map<String, ObscureAction>> allAbilityRepresentations;
+    private Map<String, ObscureAction> currentAbilityRepresentation;
     protected Node informationRepresentation;
-    protected Boolean myIsActive;
 
     public SelectableGameElement (Image image, Point2D position, String name) {
         super(image, position, name);
@@ -40,19 +40,18 @@ public class SelectableGameElement extends DrawableGameElement implements
         return polygon;
     }
 
-    public boolean getIsActive () {
-        return myIsActive;
-    }
-
     public void updateSelfDueToSelection () {
         // TODO Auto-generated method stub
-        // update representation? 
+        // update representation?
 
     }
 
-    public Map<String, ObscureAction> getCurrentButtonInformation () {
-        // TODO Auto-generated method stub
-        return null;
+    private void updateAbilityRepresentation (String identifier) {
+        currentAbilityRepresentation = allAbilityRepresentations.get(identifier);
+    }
+
+    public Map<String, ObscureAction> getCurrentInteractionInformation () {
+        return currentAbilityRepresentation;
     }
 
 }

@@ -7,21 +7,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class Level implements Describable {
-    private String name;
-    private String description;
+public class Level {
+    
+    public String name;
+    public String description;
+    private boolean isActiveLevel = false;
     private List<DrawableGameElement> terrain;
     private List<SelectableGameElement> units;
     private List<GameElement> goal;
-
-    @Override
-    public String getName () {
-        return name;
-    }
-
-    @Override
-    public String getDescription () {
-        return description;
+    
+    public boolean isActive(){
+        return isActiveLevel;
     }
 
     public List<DrawableGameElement> getTerrain () {

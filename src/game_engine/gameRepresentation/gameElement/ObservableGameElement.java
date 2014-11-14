@@ -1,19 +1,15 @@
 package game_engine.gameRepresentation.gameElement;
 
 import java.util.Map;
-import java.util.function.Consumer;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 
-public class ObservableGameElement {
+public class ObservableGameElement implements Observable {
     
     private SelectableGameElement currentlySelectedElement;
     
     public ObservableGameElement(SelectableGameElement selectedElement){
         currentlySelectedElement = selectedElement;
-    }
-    
-    public void selectNewElement(SelectableGameElement elementToSelect){
-        currentlySelectedElement = elementToSelect;
-        currentlySelectedElement.updateSelfDueToSelection();
     }
     
     public String getTextualAttribute (String attributeName ) {
@@ -24,7 +20,19 @@ public class ObservableGameElement {
         return currentlySelectedElement.getNumericalAttribute(attributeName);
     }
     
-    public Map<String,PureConsumer> getButtonInformation(){
-        return currentlySelectedElement.getCurrentButtonInformation();
+    public Map<String,ObscureAction> getButtonInformation(){
+        return currentlySelectedElement.getCurrentInteractionInformation();
+    }
+
+    @Override
+    public void addListener (InvalidationListener arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void removeListener (InvalidationListener arg0) {
+        // TODO Auto-generated method stub
+        
     }
 }
