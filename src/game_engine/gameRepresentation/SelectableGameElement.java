@@ -35,5 +35,14 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
                                    });
         return polygon;
     }
+    
+    public void select(boolean selecting){
+        if(selecting){
+        
+        }
+        else{
+        
+        }
+    }
 
 }

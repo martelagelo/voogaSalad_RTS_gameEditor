@@ -1,7 +1,7 @@
 package game_engine.stateManaging;
 
-import game_engine.computers.CollisionComputer;
-import game_engine.computers.VisionComputer;
+import game_engine.computers.boundsComputers.CollisionComputer;
+import game_engine.computers.boundsComputers.VisionComputer;
 import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

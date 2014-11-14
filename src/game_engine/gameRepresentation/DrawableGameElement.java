@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 
 public class DrawableGameElement extends GameElement implements Boundable {
 
-    protected Group visualRepresentation;
+    protected Group visualRepresentation = new Group();
     protected Map<String, List<GameElement>> interactingElements;
 
     public DrawableGameElement (Image image, Point2D position, String name) {
@@ -48,6 +48,11 @@ public class DrawableGameElement extends GameElement implements Boundable {
     @Override
     public Bounds getBounds () {
         return this.visualRepresentation.getChildren().get(0).getBoundsInParent();
+    }
+    
+    public Group getVisibleRepresentation(){
+        // TODO added this getter for testing purposes, really not sure how to actually add a drawable game element to the scene?
+        return this.visualRepresentation;
     }
 
 }
