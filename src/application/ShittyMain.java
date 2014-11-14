@@ -22,7 +22,7 @@ public class ShittyMain extends Application {
 
     public void shittyRun (Group g) {
         System.out.println("Shitty running");
-
+        
     }
 
 }
