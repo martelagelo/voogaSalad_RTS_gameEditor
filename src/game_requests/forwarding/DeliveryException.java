@@ -16,8 +16,10 @@ public class DeliveryException extends Exception {
     /**
      * Create a new delivery exception
      * 
-     * @param request The request that failed to deliver
-     * @param reason The reason the delivery failed
+     * @param request
+     *        The request that failed to deliver
+     * @param reason
+     *        The reason the delivery failed
      */
     public DeliveryException (IRequest request, String reason) {
         super("Delivery of " + request + " failed, because: " + reason);

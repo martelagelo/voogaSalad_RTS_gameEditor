@@ -27,22 +27,27 @@ public class ReceiverTestStub implements IReceiver {
     }
 
     /**
-     * Receive here will pass back a new request to the sender of the original message
-     * as long as the number of "pings"/"pongs" hasn't exceeded a certain value
+     * Receive here will pass back a new request to the sender of the original
+     * message as long as the number of "pings"/"pongs" hasn't exceeded a
+     * certain value
      */
     @Override
     public void receive (IRequest request) throws UnknownSenderException {
         myLastRequest = request;
         if (request.message().containsKey(pingPongLabel)) {
-            int curPingPongIteration = Integer.parseInt(request.message().get(pingPongLabel));
+            int curPingPongIteration = Integer.parseInt(request.message().get(
+                                                                              pingPongLabel));
             if (curPingPongIteration < myPingPongCountMax) {
                 Map<String, String> message = request.message();
-                message.put(pingPongLabel, Integer.toString(curPingPongIteration + 1));
-                IRequest newRequest = new Request(request.receiver(), request.sender(), message);
+                message.put(pingPongLabel,
+                            Integer.toString(curPingPongIteration + 1));
+                IRequest newRequest = new Request(request.receiver(),
+                                                  request.sender(), message);
                 try {
                     myMediator.forward(newRequest);
                 }
-                catch (InvalidAddressException | ReceiverNotFoundException | DeliveryException e) {
+                catch (InvalidAddressException | ReceiverNotFoundException
+                        | DeliveryException e) {
                     e.printStackTrace();
                 }
             }

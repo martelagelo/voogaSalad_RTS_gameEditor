@@ -15,11 +15,15 @@ public class AddressConflictException extends Exception {
     /**
      * Create a new address conflict exception
      * 
-     * @param conflictingAddress The address that conflicts with a pre-existing address
-     * @param conflictingReceiver The receiver that already possesses that address
+     * @param conflictingAddress
+     *        The address that conflicts with a pre-existing address
+     * @param conflictingReceiver
+     *        The receiver that already possesses that address
      */
-    public AddressConflictException (String conflictingAddress, IReceiver conflictingReceiver) {
-        super(conflictingAddress + " is already in use by " + conflictingReceiver);
+    public AddressConflictException (String conflictingAddress,
+                                     IReceiver conflictingReceiver) {
+        super(conflictingAddress + " is already in use by "
+              + conflictingReceiver);
         myConflictingAddress = conflictingAddress;
         myConflictingReceiver = conflictingReceiver;
     }

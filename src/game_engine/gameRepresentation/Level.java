@@ -1,10 +1,10 @@
 package game_engine.gameRepresentation;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Level implements Describable {
-
     private String name;
     private String description;
     private List<DrawableGameElement> terrain;

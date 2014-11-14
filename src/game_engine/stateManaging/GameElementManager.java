@@ -19,7 +19,7 @@ public class GameElementManager {
                 .filter(o -> o.getType().equals(typeName))
                 .collect(Collectors.toList());
     }
-    
+
     public void addElementToLevel (String typeName) {
         // TODO: add factories
     }

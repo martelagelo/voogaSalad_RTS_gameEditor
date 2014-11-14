@@ -6,8 +6,8 @@ import java.util.function.Function;
 
 
 public class ElementAttributeCondtion extends Condition {
-    
-    public ElementAttributeCondtion (String type, Function<GameElement, Boolean> function){
+
+    public ElementAttributeCondtion (String type, Function<GameElement, Boolean> function) {
         conditionType = type;
         myFunction = function;
     }

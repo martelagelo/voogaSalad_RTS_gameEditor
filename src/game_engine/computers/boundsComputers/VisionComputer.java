@@ -13,17 +13,22 @@ import java.util.List;
  * @author Zachary Bears
  *
  */
-public class VisionComputer extends Computer<SelectableGameElement, DrawableGameElement> {
+public class VisionComputer extends
+        Computer<SelectableGameElement, DrawableGameElement> {
     /**
-     * Return true if the other object is contained within the primary object's vision bounds
+     * Return true if the other object is contained within the primary object's
+     * vision bounds
      */
     @Override
-    protected boolean checkComputingCondition (SelectableGameElement primaryObject,
+    protected boolean checkComputingCondition (
+                                               SelectableGameElement primaryObject,
                                                DrawableGameElement otherObject) {
-        if (primaryObject instanceof Sighted && otherObject instanceof Boundable) {
+        if (primaryObject instanceof Sighted
+            && otherObject instanceof Boundable) {
             Sighted sightedObject = (Sighted) primaryObject;
             Boundable boundableObject = (Boundable) otherObject;
-            return sightedObject.getVisionPolygon().intersects(boundableObject.getBounds());
+            return sightedObject.getVisionPolygon().intersects(
+                                                               boundableObject.getBounds());
         }
         else {
             return false;
@@ -31,7 +36,8 @@ public class VisionComputer extends Computer<SelectableGameElement, DrawableGame
     }
 
     @Override
-    protected void addInteractingElementsToObject (SelectableGameElement primaryObject,
+    protected void addInteractingElementsToObject (
+                                                   SelectableGameElement primaryObject,
                                                    List<DrawableGameElement> listToAdd) {
         primaryObject.addVisibleElements(listToAdd);
     }

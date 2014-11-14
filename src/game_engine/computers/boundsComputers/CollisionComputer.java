@@ -13,17 +13,21 @@ import java.util.List;
  * @author Zachary Bears
  *
  */
-public class CollisionComputer extends Computer<SelectableGameElement, DrawableGameElement> {
+public class CollisionComputer extends
+        Computer<SelectableGameElement, DrawableGameElement> {
     /**
      * Returns true if there is a collision between the two bounded objects
      */
     @Override
-    protected boolean checkComputingCondition (SelectableGameElement primaryObject,
+    protected boolean checkComputingCondition (
+                                               SelectableGameElement primaryObject,
                                                DrawableGameElement otherObject) {
-        if (primaryObject instanceof Boundable && otherObject instanceof Boundable) {
+        if (primaryObject instanceof Boundable
+            && otherObject instanceof Boundable) {
             Boundable boundableObject = (Boundable) primaryObject;
             Boundable otherBoundableObject = (Boundable) otherObject;
-            return boundableObject.getBounds().intersects(otherBoundableObject.getBounds());
+            return boundableObject.getBounds().intersects(
+                                                          otherBoundableObject.getBounds());
         }
         else {
             return false;
@@ -31,7 +35,8 @@ public class CollisionComputer extends Computer<SelectableGameElement, DrawableG
     }
 
     @Override
-    protected void addInteractingElementsToObject (SelectableGameElement primaryObject,
+    protected void addInteractingElementsToObject (
+                                                   SelectableGameElement primaryObject,
                                                    List<DrawableGameElement> listToAdd) {
         primaryObject.addCollidingElements(listToAdd);
     }

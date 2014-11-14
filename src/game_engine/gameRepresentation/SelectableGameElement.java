@@ -9,7 +9,8 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 
-public class SelectableGameElement extends DrawableGameElement implements Sighted {
+public class SelectableGameElement extends DrawableGameElement implements
+        Sighted {
 
     protected GridPane abilityRepresentation;
     protected Node informationRepresentation;
@@ -22,19 +23,28 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
     @Override
     public Polygon getVisionPolygon () {
         Polygon polygon = new Polygon();
-        polygon.getPoints().addAll(new Double[] {
+        polygon.getPoints().addAll(
+                                   new Double[] {
                                                  this.getBounds().getMinX(),
                                                  this.getBounds().getMinY(),
-                                                 this.getBounds().getMinX() +
-                                                         this.getBounds().getWidth(),
+                                                 this.getBounds().getMinX()
+                                                         + this.getBounds().getWidth(),
                                                  this.getBounds().getMinY(),
                                                  this.getBounds().getMaxX(),
                                                  this.getBounds().getMaxY(),
                                                  this.getBounds().getMinX(),
-                                                 this.getBounds().getMinY() +
-                                                         this.getBounds().getHeight(),
-        });
+                                                 this.getBounds().getMinY()
+                                                         + this.getBounds().getHeight(), });
         return polygon;
+    }
+
+    public void select (boolean selecting) {
+        if (selecting) {
+
+        }
+        else {
+
+        }
     }
 
     public boolean getIsActive () {
