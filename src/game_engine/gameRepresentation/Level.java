@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 
 
 public class Level {
-    
+
     public String name;
     public String description;
     private boolean isActiveLevel = false;
     private List<DrawableGameElement> terrain;
     private List<SelectableGameElement> units;
     private List<GameElement> goal;
-    
-    public boolean isActive(){
+
+    public boolean isActive () {
         return isActiveLevel;
     }
 

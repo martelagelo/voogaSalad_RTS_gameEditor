@@ -1,5 +1,9 @@
-package game_engine.gameRepresentation;
+package game_engine.gameRepresentation.observableRepresentation;
 
+import game_engine.gameRepresentation.Campaign;
+import game_engine.gameRepresentation.Describable;
+import game_engine.gameRepresentation.Game;
+import game_engine.gameRepresentation.Level;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

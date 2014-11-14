@@ -26,7 +26,7 @@ public class GameElement {
                 .filter(o -> o.getName().equals(name))
                 .collect(Collectors.toList()).get(0).getData();
     }
-    
+
     public Number getNumericalAttribute (String name) {
         return numericalAttributes.stream()
                 .filter(o -> o.getName().equals(name))

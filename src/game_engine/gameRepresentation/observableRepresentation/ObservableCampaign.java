@@ -1,5 +1,7 @@
-package game_engine.gameRepresentation;
+package game_engine.gameRepresentation.observableRepresentation;
 
+import game_engine.gameRepresentation.Campaign;
+import game_engine.gameRepresentation.Describable;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.InvalidationListener;
