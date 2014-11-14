@@ -21,11 +21,15 @@ public abstract class Computer<T, E> {
 	 * these objects in a list for use by other modules.
 	 * 
 	 */
-	public List<E> compute(T primaryObject, List<E> objectsToCheck) {
-		return objectsToCheck.stream()
+	public void compute(T primaryObject, List<E> objectsToCheck) {
+		List<E> listToAdd = objectsToCheck.stream()
 				.filter(o -> checkComputingCondition(primaryObject, o))
 				.collect(Collectors.toList());
+		addInteractingElementsToObject(primaryObject, listToAdd);
 	}
+
+	protected abstract void addInteractingElementsToObject(T primaryObject,
+			List<E> listToAdd);
 
 	/**
 	 * Returns true if a condition between the two objects is satisfied
