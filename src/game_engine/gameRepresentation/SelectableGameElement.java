@@ -32,7 +32,7 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
                                                  this.getBounds().getMinX(),
                                                  this.getBounds().getMinY() +
                                                          this.getBounds().getHeight(),
-                                   });
+        });
         return polygon;
     }
 

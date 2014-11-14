@@ -8,16 +8,14 @@ import javafx.event.EventHandler;
 import javafx.util.Duration;
 
 
-
-
 public class GameLoop {
-	
-	private Level myCurrentLevel;
-	
-	public GameLoop(Level level) {
-		myCurrentLevel = level;
-		
-	}
+
+    private Level myCurrentLevel;
+
+    public GameLoop (Level level) {
+        myCurrentLevel = level;
+
+    }
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -27,11 +25,11 @@ public class GameLoop {
     };
 
     private void filterObjects () {
-    	
+
     }
 
     public void init () {
-    	
+
     }
 
     /**

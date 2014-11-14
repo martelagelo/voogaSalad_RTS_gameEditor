@@ -29,11 +29,11 @@ public class ShittyMain extends Application {
         System.out.println("Shitty running");
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
-        
-        
+
         Level currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new Level();
         GameLoop gameLoop = new GameLoop(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-        GameElementManager elementManager = new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
+        GameElementManager elementManager =
+                new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
     }
 
 }
