@@ -4,6 +4,9 @@ import game_engine.gameRepresentation.SelectableGameElement;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import game_engine.gameRepresentation.Level;
+import game_engine.stateManaging.GameElementManager;
+import game_engine.stateManaging.GameLoop;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import visualComponents.ScrollableScene;
-
 
 public class ShittyMain extends Application {
     @Override
@@ -52,14 +54,22 @@ public class ShittyMain extends Application {
         primaryStage.show();
     }
 
-    public static void main (String[] args) {
-        launch(args);
-    }
 
-    public void shittyRun (Group g) {
-        System.out.println("Shitty running");
-        Image poop = new Image("resources/img/poop.png");
-        //g.getChildren().add(new ImageView(poop));
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	public void shittyRun(Group g) {
+		System.out.println("Shitty running");
+		Image poop = new Image("resources/img/poop.png");
+		g.getChildren().add(new ImageView(poop));
+
+
+		Level currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new Level();
+		GameLoop gameLoop = new GameLoop(
+				currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
+		GameElementManager elementManager = new GameElementManager(
+				currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
+	}
 
 }

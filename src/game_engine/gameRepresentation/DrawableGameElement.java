@@ -9,41 +9,41 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
 public class DrawableGameElement extends GameElement implements Boundable {
 
     protected Group visualRepresentation = new Group();
-    protected Map<String, List<GameElement>> interactingElements;
+    protected Map<String, List<DrawableGameElement>> interactingElements;
 
-    public DrawableGameElement (Image image, Point2D position, String name) {
-        this.textualAttributes.put("Name", name);
-        this.visualRepresentation.setTranslateX(position.getX());
-        this.visualRepresentation.setTranslateY(position.getY());
-        this.visualRepresentation.getChildren().add(new ImageView(image));
-    }
 
-    public void addCollidingElements (List<GameElement> collidingElements) {
-        interactingElements.put("CollidingElements", collidingElements);
-    }
+	public DrawableGameElement(Image image, Point2D position, String name) {
+		this.textualAttributes.put("Name", name);
+		this.visualRepresentation.setTranslateX(position.getX());
+		this.visualRepresentation.setTranslateY(position.getY());
+		this.visualRepresentation.getChildren().add(new ImageView(image));
+	}
 
-    public void addVisibleElements (List<GameElement> visibleElements) {
-        interactingElements.put("VisibleElements", visibleElements);
-    }
+	public void addCollidingElements(List<DrawableGameElement> collidingElements) {
+		interactingElements.put("CollidingElements", collidingElements);
+	}
 
-    public void update () {
-        updateSelfDueToCollisions();
-        updateSelfDueToVisions();
-    }
+	public void addVisibleElements(List<DrawableGameElement> visibleElements) {
+		interactingElements.put("VisibleElements", visibleElements);
+	}
 
-    private void updateSelfDueToVisions () {
-        // TODO Auto-generated method stub
+	public void update() {
+		updateSelfDueToCollisions();
+		updateSelfDueToVisions();
+	}
 
-    }
+	private void updateSelfDueToVisions() {
+		// TODO Auto-generated method stub
 
-    private void updateSelfDueToCollisions () {
-        // TODO Auto-generated method stub
+	}
 
-    }
+	private void updateSelfDueToCollisions() {
+		// TODO Auto-generated method stub
+
+	}
 
     @Override
     public Bounds getBounds () {
@@ -54,5 +54,6 @@ public class DrawableGameElement extends GameElement implements Boundable {
         // TODO added this getter for testing purposes, really not sure how to actually add a drawable game element to the scene?
         return this.visualRepresentation;
     }
+
 
 }
