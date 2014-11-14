@@ -1,7 +1,9 @@
 package game_engine.gameRepresentation;
 
+import game_engine.computers.boundsComputer.Boundable;
 import java.util.List;
 import java.util.Map;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -41,6 +43,11 @@ public class DrawableGameElement extends GameElement implements Boundable {
     private void updateSelfDueToCollisions () {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public Bounds getBounds () {
+        return this.visualRepresentation.getChildren().get(0).getBoundsInParent();
     }
 
 }

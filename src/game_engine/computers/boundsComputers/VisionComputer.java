@@ -1,7 +1,7 @@
 package game_engine.computers.boundsComputers;
 
-import game_engine.computers.boundsComputer.Bounded;
-
+import game_engine.computers.Computer;
+import game_engine.computers.boundsComputer.Boundable;
 
 
 /**
@@ -10,12 +10,12 @@ import game_engine.computers.boundsComputer.Bounded;
  * @author Zachary Bears
  *
  */
-public class VisionComputer extends Computer<Sighted, Bounded> {
+public class VisionComputer extends Computer<Sighted, Boundable> {
     /**
      * Return true if the other object is contained within the primary object's vision bounds
      */
     @Override
-    protected boolean checkComputingCondition (Sighted primaryObject, Bounded otherObject) {
+    protected boolean checkComputingCondition (Sighted primaryObject, Boundable otherObject) {
         return primaryObject.getVisionPolygon().intersects(otherObject.getBounds());
     }
 

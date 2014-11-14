@@ -11,7 +11,7 @@ import javafx.scene.shape.Polygon;
  * @author Zachary Bears
  *
  */
-public interface Bounded {
+public interface Boundable {
     /**
      * @return the bounds of the bounded object
      */
