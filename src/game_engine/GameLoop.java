@@ -18,7 +18,7 @@ public class GameLoop {
     };
 
     private void filterObjects () {
-
+    	
     }
 
     public void init () {
