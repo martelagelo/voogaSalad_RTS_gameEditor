@@ -11,7 +11,13 @@ import java.util.stream.Collectors;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
-
+/**
+ * This wrapper allows for the Engine to pass an Object to the GUI without exposing internal state
+ * we want hidden.
+ * 
+ * @author Steve
+ *
+ */
 public class ObservableGame implements Observable, Describable {
 
     private Game myGame;

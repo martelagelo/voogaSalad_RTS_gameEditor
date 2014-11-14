@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 
+/**
+ * This type of Condition needs information about two GameElements that are interacting.
+ * 
+ * @author Steve
+ *
+ */
 public class ElementInteractionCondition extends Condition {
 
     private BiFunction<GameElement, GameElement, Boolean> function;

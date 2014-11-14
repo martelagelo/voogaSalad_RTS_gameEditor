@@ -7,6 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+/**
+ * The Level class is the direct point of interaction for most gameplay and editing - this class
+ * holds all of the GameElements being used for the current editing and/or game running session.
+ * 
+ * @author Steve
+ *
+ */
 public class Level {
 
     public String name;

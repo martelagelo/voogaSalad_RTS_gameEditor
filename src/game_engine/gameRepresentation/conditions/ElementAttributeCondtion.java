@@ -5,6 +5,14 @@ import java.util.List;
 import java.util.function.Function;
 
 
+/**
+ * This type of Condition can be evaluated without knowledge of more than the GameElement that holds
+ * the Condition.
+ * 
+ * @author Steve
+ *
+ */
+
 public class ElementAttributeCondtion extends Condition {
 
     public ElementAttributeCondtion (String type, Function<GameElement, Boolean> function) {

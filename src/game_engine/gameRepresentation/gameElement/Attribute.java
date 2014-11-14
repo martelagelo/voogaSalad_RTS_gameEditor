@@ -1,5 +1,12 @@
 package game_engine.gameRepresentation.gameElement;
 
+/**
+ * This is the manner in which all basic attributes will be encoded in a GameElement.
+ * 
+ * @author Steve
+ *
+ * @param <T> - the type of attribute that is being encoded.
+ */
 public class Attribute<T> {
 
     private T myData;

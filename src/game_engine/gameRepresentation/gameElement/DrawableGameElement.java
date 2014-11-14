@@ -15,6 +15,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
+/**
+ * This GameElement is drawable but not necessarily selectable - examples include terrain. These
+ * elements must have a bounding box.
+ * 
+ * @author Steve
+ *
+ */
+
 public class DrawableGameElement extends GameElement implements Boundable {
 
     protected Group visualRepresentation = new Group();
@@ -25,64 +33,6 @@ public class DrawableGameElement extends GameElement implements Boundable {
         this.visualRepresentation.setTranslateX(position.getX());
         this.visualRepresentation.setTranslateY(position.getY());
         this.visualRepresentation.getChildren().add(new ImageView(image));
-    }
-
-    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
-        interactingElements.put("CollidingElements", collidingElements);
-    }
-
-    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
-        interactingElements.put("VisibleElements", visibleElements);
-    }
-
-    public void update () {
-        updateSelfDueToCollisions();
-        updateSelfDueToVisions();
-        updateSelfDueToInternalFactors();
-        updateSelfDueToCurrentObjective();
-    }
-
-    private void updateSelfDueToCurrentObjective () {
-        // TODO Auto-generated method stub
-
-    }
-
-    private void updateSelfDueToInternalFactors () {
-        // TODO Auto-generated method stub
-
-    }
-
-    private void updateSelfDueToVisions () {
-        evaluateConditionActionPairsOnInteractingElementsSubset("VisionCondition",
-                                                                "VisibleElements");
-    }
-
-    private void updateSelfDueToCollisions () {
-        evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
-                                                                "CollidingElements");
-    }
-
-    private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-        return this.ifThisThenThat.entrySet().stream()
-                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
-                .collect(Collectors.toList());
-    }
-
-    private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
-                                                                          String elementIdentifier) {
-        List<Entry<Condition, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs(conditionActionPairIdentifier);
-
-        for (DrawableGameElement element : interactingElements.get(elementIdentifier)) {
-            List<GameElement> immediatelyInteractingElements = new ArrayList<GameElement>();
-            immediatelyInteractingElements.add(this);
-            immediatelyInteractingElements.add(element);
-            for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
-                if (conditionActionPair.getKey().evaluate(immediatelyInteractingElements)) {
-                    conditionActionPair.getValue().doAction(immediatelyInteractingElements);
-                }
-            }
-        }
     }
 
     @Override

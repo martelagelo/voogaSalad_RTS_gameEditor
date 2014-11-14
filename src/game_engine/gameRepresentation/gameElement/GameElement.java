@@ -7,6 +7,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
+/**
+ * The most basic flavor of GameElement - this type of element has no on-screen representation.
+ * Examples include triggers and goals.
+ * 
+ * @author Steve
+ *
+ */
 public class GameElement {
 
     protected Map<Condition, Action> ifThisThenThat;
@@ -31,5 +38,14 @@ public class GameElement {
         return numericalAttributes.stream()
                 .filter(o -> o.getName().equals(name))
                 .collect(Collectors.toList()).get(0).getData();
+    }
+
+    public void update () {
+        updateSelfDueToInternalFactors();
+    }
+
+    private void updateSelfDueToInternalFactors () {
+        // TODO Auto-generated method stub
+
     }
 }
