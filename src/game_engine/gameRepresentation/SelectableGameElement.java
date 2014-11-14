@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 
 
-public class SelectableGameElement extends DrawableGameElement {
+public class SelectableGameElement extends DrawableGameElement implements Sighted {
 
     protected GridPane abilityRepresentation;
     protected Node informationRepresentation;
