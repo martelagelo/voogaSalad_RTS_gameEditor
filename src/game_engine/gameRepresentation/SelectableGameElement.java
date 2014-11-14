@@ -13,6 +13,7 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
 
     protected GridPane abilityRepresentation;
     protected Node informationRepresentation;
+    protected Boolean myIsActive;
 
     public SelectableGameElement (Image image, Point2D position, String name) {
         super(image, position, name);
@@ -34,6 +35,10 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
                                                          this.getBounds().getHeight(),
         });
         return polygon;
+    }
+    
+    public boolean getIsActive() {
+    	return myIsActive;
     }
 
 }
