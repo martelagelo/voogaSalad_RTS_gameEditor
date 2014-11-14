@@ -10,4 +10,12 @@ public class GameElement {
     protected Map<Condition, Action> ifThisThenThat;
     protected Map<String, Number> numericalAttributes;
     protected Map<String, String> textualAttributes;
+    
+    public String getName(){
+        return textualAttributes.get("Name");
+    }
+    
+    public String getType(){
+        return textualAttributes.get("Type");
+    }
 }
