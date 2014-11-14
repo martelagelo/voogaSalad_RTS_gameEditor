@@ -1,5 +1,8 @@
 package application;
 
+import game_engine.gameRepresentation.Level;
+import game_engine.stateManaging.GameElementManager;
+import game_engine.stateManaging.GameLoop;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -26,6 +29,11 @@ public class ShittyMain extends Application {
         System.out.println("Shitty running");
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
+        
+        
+        Level currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new Level();
+        GameLoop gameLoop = new GameLoop(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
+        GameElementManager elementManager = new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
     }
 
 }
