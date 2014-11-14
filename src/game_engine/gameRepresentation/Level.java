@@ -1,5 +1,8 @@
 package game_engine.gameRepresentation;
 
+import game_engine.gameRepresentation.gameElement.DrawableGameElement;
+import game_engine.gameRepresentation.gameElement.GameElement;
+import game_engine.gameRepresentation.gameElement.SelectableGameElement;
 import java.util.List;
 import java.util.stream.Collectors;
 

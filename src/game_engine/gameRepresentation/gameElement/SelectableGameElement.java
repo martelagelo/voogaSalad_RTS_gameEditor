@@ -1,5 +1,7 @@
-package game_engine.gameRepresentation;
+package game_engine.gameRepresentation.gameElement;
 
+import java.util.Map;
+import java.util.function.Consumer;
 import game_engine.computers.boundsComputers.Sighted;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
@@ -12,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 public class SelectableGameElement extends DrawableGameElement implements
         Sighted {
 
-    protected GridPane abilityRepresentation;
+    protected Map<String,Consumer > abilityRepresentation;
     protected Node informationRepresentation;
     protected Boolean myIsActive;
 
@@ -38,17 +40,19 @@ public class SelectableGameElement extends DrawableGameElement implements
         return polygon;
     }
 
-    public void select (boolean selecting) {
-        if (selecting) {
-
-        }
-        else {
-
-        }
-    }
-
     public boolean getIsActive () {
         return myIsActive;
+    }
+
+    public void updateSelfDueToSelection () {
+        // TODO Auto-generated method stub
+        // update representation? 
+
+    }
+
+    public Map<String, ObscureAction> getCurrentButtonInformation () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

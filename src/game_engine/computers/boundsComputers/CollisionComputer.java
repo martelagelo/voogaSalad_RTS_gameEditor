@@ -2,8 +2,8 @@ package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
-import game_engine.gameRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.gameElement.DrawableGameElement;
+import game_engine.gameRepresentation.gameElement.SelectableGameElement;
 import java.util.List;
 
 

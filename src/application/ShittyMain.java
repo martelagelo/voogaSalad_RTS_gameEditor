@@ -1,10 +1,10 @@
 package application;
 
-import game_engine.gameRepresentation.SelectableGameElement;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.gameElement.SelectableGameElement;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import javafx.application.Application;

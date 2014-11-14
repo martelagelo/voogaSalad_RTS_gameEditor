@@ -1,7 +1,7 @@
 package game_engine.stateManaging;
 
-import game_engine.gameRepresentation.GameElement;
 import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.gameElement.GameElement;
 import java.util.List;
 import java.util.stream.Collectors;
 

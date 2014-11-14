@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.GameElement;
+import game_engine.gameRepresentation.gameElement.GameElement;
 import java.util.List;
 
 
