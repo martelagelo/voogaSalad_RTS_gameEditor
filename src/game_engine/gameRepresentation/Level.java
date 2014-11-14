@@ -21,4 +21,16 @@ public class Level implements Describable {
         return description;
     }
 
+    public List<GameElement> getTerrain () {
+        return terrain;
+    }
+
+    public List<GameElement> getUnits () {
+        return units;
+    }
+
+    public List<GameElement> getGoal () {
+        return goal;
+    }
+
 }

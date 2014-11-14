@@ -1,7 +1,7 @@
 package game_engine.stateManaging;
 
-import game_engine.computers.CollisionComputer;
-import game_engine.computers.VisionComputer;
+import game_engine.gameRepresentation.GameElement;
+import game_engine.gameRepresentation.Level;
 import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +9,13 @@ import javafx.util.Duration;
 
 
 public class GameLoop {
+
+    private Level myCurrentLevel;
+
+    public GameLoop (Level level) {
+        myCurrentLevel = level;
+
+    }
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -22,8 +29,7 @@ public class GameLoop {
     }
 
     public void init () {
-        CollisionComputer collisionComputer = new CollisionComputer();
-        VisionComputer visionComputer = new VisionComputer();
+
     }
 
     /**
@@ -34,6 +40,6 @@ public class GameLoop {
     }
 
     public void update () {
-
+    	for (GameElement GE: myCurrentLevel.g)
     }
 }
