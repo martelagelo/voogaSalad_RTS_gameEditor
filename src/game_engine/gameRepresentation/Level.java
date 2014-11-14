@@ -7,8 +7,8 @@ public class Level implements Describable {
 
     private String name;
     private String description;
-    private List<GameElement> terrain;
-    private List<GameElement> units;
+    private List<DrawableGameElement> terrain;
+    private List<SelectableGameElement> units;
     private List<GameElement> goal;
 
     @Override
@@ -21,11 +21,11 @@ public class Level implements Describable {
         return description;
     }
 
-    public List<GameElement> getTerrain () {
+    public List<DrawableGameElement> getTerrain () {
         return terrain;
     }
 
-    public List<GameElement> getUnits () {
+    public List<SelectableGameElement> getUnits () {
         return units;
     }
 
