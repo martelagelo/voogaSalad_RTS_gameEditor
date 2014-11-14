@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class Condition {
 
-    private String conditionType;
+    protected String conditionType;
 
     public String getType () {
         return conditionType;

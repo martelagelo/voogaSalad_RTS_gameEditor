@@ -6,8 +6,13 @@ import java.util.function.Function;
 
 
 public class ElementAttributeCondtion extends Condition {
+    
+    public ElementAttributeCondtion (String type, Function<GameElement, Boolean> function){
+        conditionType = type;
+        myFunction = function;
+    }
 
-    private Function<GameElement, Boolean> function;
+    private Function<GameElement, Boolean> myFunction;
 
     @Override
     public Boolean evaluate (List<GameElement> parameters) {
