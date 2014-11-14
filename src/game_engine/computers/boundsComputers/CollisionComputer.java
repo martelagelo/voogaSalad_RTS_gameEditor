@@ -3,7 +3,6 @@ package game_engine.computers.boundsComputers;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
 
-
 /**
  * Checks for collisions between groups of objects
  *
@@ -11,12 +10,13 @@ import game_engine.computers.boundsComputer.Boundable;
  *
  */
 public class CollisionComputer extends Computer<Boundable, Boundable> {
-    /**
-     * Returns true if there is a collision between the two bounded objects
-     */
-    @Override
-    protected boolean checkComputingCondition (Boundable primaryObject, Boundable otherObject) {
-        return primaryObject.getBounds().equals(otherObject.getBounds());
-    }
+	/**
+	 * Returns true if there is a collision between the two bounded objects
+	 */
+	@Override
+	protected boolean checkComputingCondition(Boundable primaryObject,
+			Boundable otherObject) {
+		return primaryObject.getBounds().equals(otherObject.getBounds());
+	}
 
 }
