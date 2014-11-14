@@ -1,9 +1,11 @@
 package application;
 
+import visualComponents.ScrollableScene;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.gameElement.SelectableGameElement;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
 import game_engine.stateManaging.GameElementManager;
