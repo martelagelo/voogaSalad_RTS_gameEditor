@@ -117,7 +117,7 @@ public class SelectableGameElement extends DrawableGameElement implements
             }
         }
     }
-    
+
     private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
         return this.ifThisThenThat.entrySet().stream()
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))

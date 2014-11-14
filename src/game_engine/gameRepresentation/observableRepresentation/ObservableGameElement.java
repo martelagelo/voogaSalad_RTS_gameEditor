@@ -6,6 +6,7 @@ import java.util.Map;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
+
 /**
  * This wrapper allows for the Engine to pass an Object to the GUI without exposing internal state
  * we want hidden.
