@@ -1,8 +1,8 @@
 package game_requests.forwarding;
 
 /**
- * An exception encapsulating when a receiver address could not be resolved
- * to a receiver
+ * An exception encapsulating when a receiver address could not be resolved to a
+ * receiver
  */
 public class ReceiverNotFoundException extends Exception {
 
@@ -12,7 +12,8 @@ public class ReceiverNotFoundException extends Exception {
     /**
      * Create a new receiver not found exception
      * 
-     * @param address The address that could not be resolved
+     * @param address
+     *        The address that could not be resolved
      */
     public ReceiverNotFoundException (String address) {
         super(address + " could not be found");

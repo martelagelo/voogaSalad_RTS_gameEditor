@@ -1,7 +1,13 @@
 package game_engine.stateManaging;
 
-import game_engine.gameRepresentation.GameElement;
+import game_engine.computers.Computer;
+import game_engine.computers.boundsComputers.CollisionComputer;
+import game_engine.computers.boundsComputers.VisionComputer;
 import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.gameElement.DrawableGameElement;
+import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,10 +17,13 @@ import javafx.util.Duration;
 public class GameLoop {
 
     private Level myCurrentLevel;
+    private List<SelectableGameElement> myActiveElements = new ArrayList<SelectableGameElement>();
+    private List<Computer> myComputerList = new ArrayList<Computer>();
 
     public GameLoop (Level level) {
         myCurrentLevel = level;
-
+        myComputerList.add(new CollisionComputer());
+        myComputerList.add(new VisionComputer());
     }
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
@@ -40,6 +49,18 @@ public class GameLoop {
     }
 
     public void update () {
-    	for (GameElement GE: myCurrentLevel.g)
+        List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
+        allElements.addAll(myCurrentLevel.getUnits());
+        allElements.addAll(myCurrentLevel.getTerrain());
+        for (SelectableGameElement selectableElement : myActiveElements) {
+            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
+                c.compute(selectableElement, allElements);
+            }
+        }
+
+        for (SelectableGameElement selectableElement : myActiveElements) {
+            selectableElement.update();
+        }
     }
+
 }

@@ -3,20 +3,19 @@ package game_engine.gameRepresentation;
 import java.util.List;
 
 
-public class Game implements Describable {
+/**
+ * This class is analogous to a genre of game or a game tile such as Warcraft (tm).
+ * 
+ * @author Steve
+ *
+ */
+public class Game {
 
-    private String name;
-    private String description;
+    public String name;
+    public String description;
     private List<Campaign> campaigns;
 
-    @Override
-    public String getName () {
-        return name;
+    public List<Campaign> getCampaigns () {
+        return campaigns;
     }
-
-    @Override
-    public String getDescription () {
-        return description;
-    }
-
 }
