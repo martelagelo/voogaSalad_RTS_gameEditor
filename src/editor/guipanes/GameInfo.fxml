@@ -6,12 +6,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="infoRoot" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="editor.InformationBox">
+<VBox fx:id="infoRoot" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="editor.InformationBox">
 	<children>
-		<Label fx:id="nameLabel" text="Label" />
+		<Label fx:id="nameLabel" />
 		<TextField fx:id="nameTextField" visible="false" />
-		<Label fx:id="descriptionLabel" text="Label" />
+		<Label fx:id="descriptionLabel" />
 		<TextArea fx:id="descriptionTextArea" visible="false" />
 		<HBox>
 			<children>
@@ -19,9 +19,8 @@
 					preserveRatio="true" />
 				<VBox>
 					<children>
-						<Label fx:id="iconLabel" alignment="CENTER" text="Label" />
-						<Button fx:id="iconFileChooser" alignment="CENTER"
-							mnemonicParsing="false" text="Button" />
+						<Label fx:id="iconLabel" />
+						<Button fx:id="iconFileChooserButton" />
 					</children>
 				</VBox>
 			</children>

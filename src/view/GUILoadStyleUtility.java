@@ -1,11 +1,10 @@
-package editor;
+package view;
 
 import java.awt.Dimension;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import view.GUIController;
 
 
 /**

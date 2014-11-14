@@ -1,6 +1,7 @@
 package editor;
 
 import view.GUIController;
+import view.GUILoadStyleUtility;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;

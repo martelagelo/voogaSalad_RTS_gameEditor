@@ -19,7 +19,7 @@ public class EditorMenuBar implements GUIController {
     @Override
     @FXML
     public void initialize () {
-        System.out.println("initializing menu bar...");
+        System.out.println("(TODO) initializing menu bar...");
     }
 
     @Override
