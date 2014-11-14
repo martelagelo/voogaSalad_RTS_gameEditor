@@ -23,9 +23,6 @@ public class GameLoop {
 
     public GameLoop (Level level) {
         myCurrentLevel = level;
-        // myAllElements.addAll(myCurrentLevel.getUnits());
-        // myAllElements.addAll(myCurrentLevel.getGoal());
-        // myAllElements.addAll(myCurrentLevel.getTerrain());
         myComputerList.add(new CollisionComputer());
         myComputerList.add(new VisionComputer());
     }
@@ -60,6 +57,10 @@ public class GameLoop {
             for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
                 c.compute(selectableElement, allElements);
             }
+        }
+        
+        for (SelectableGameElement selectableElement : myActiveElements) { 
+            selectableElement.update();
         }
     }
 }
