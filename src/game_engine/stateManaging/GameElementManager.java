@@ -13,7 +13,7 @@ public class GameElementManager {
     public GameElementManager (Level level) {
         myLevel = level;
     }
-    
+
     public List<GameElement> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))

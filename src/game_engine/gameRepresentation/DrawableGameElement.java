@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 public class DrawableGameElement extends GameElement implements Boundable {
 
     protected Group visualRepresentation;
-    protected Map<String, List<GameElement>> interactingElements;
+    protected Map<String, List<DrawableGameElement>> interactingElements;
 
     public DrawableGameElement (Image image, Point2D position, String name) {
         this.textualAttributes.put("Name", name);
@@ -22,11 +22,11 @@ public class DrawableGameElement extends GameElement implements Boundable {
         this.visualRepresentation.getChildren().add(new ImageView(image));
     }
 
-    public void addCollidingElements (List<GameElement> collidingElements) {
+    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
         interactingElements.put("CollidingElements", collidingElements);
     }
 
-    public void addVisibleElements (List<GameElement> visibleElements) {
+    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
         interactingElements.put("VisibleElements", visibleElements);
     }
 
