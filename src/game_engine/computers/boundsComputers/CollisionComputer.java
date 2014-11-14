@@ -1,6 +1,6 @@
 package game_engine.computers.boundsComputers;
 
-import game_engine.computers.boundsComputer.Bounded;
+import game_engine.computers.boundsComputer.Boundable;
 
 
 
@@ -10,12 +10,12 @@ import game_engine.computers.boundsComputer.Bounded;
  * @author Zachary Bears
  *
  */
-public class CollisionComputer extends Computer<Bounded, Bounded> {
+public class CollisionComputer extends Computer<Boundable, Boundable> {
     /**
      * Returns true if there is a collision between the two bounded objects
      */
     @Override
-    protected boolean checkComputingCondition (Bounded primaryObject, Bounded otherObject) {
+    protected boolean checkComputingCondition (Boundable primaryObject, Boundable otherObject) {
         return primaryObject.getBounds().equals(otherObject.getBounds());
     }
 
