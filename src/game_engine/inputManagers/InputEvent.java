@@ -2,6 +2,8 @@ package game_engine.inputManagers;
 
 import java.util.function.Consumer;
 import javafx.event.Event;
+import javafx.event.EventType;
+
 
 /**
  * A generic input event that specifies an action and an object to apply the action to
@@ -10,21 +12,26 @@ import javafx.event.Event;
  * @author Zachary Bears
  *
  */
-public class InputEvent <T>{
-    
-    private Event myEvent;
+
+//TODO need to have input events take requests and have input events able to check conditions on the eventType. need another lambda
+public class InputEvent<E extends Event, T> {
+
+    private EventType<E> myEventType;
     private Consumer<T> myAction;
-    
-    
-    public InputEvent(Event event, Consumer<T> action){
-        myEvent = event;
+    private T myActionAcceptor;
+
+    public InputEvent (EventType<E> event, T actionAcceptor, Consumer<T> action) {
+        myEventType = event;
         myAction = action;
+        myActionAcceptor = actionAcceptor;
     }
-    public Event getEvent(){
-        return myEvent;
+
+    public EventType<E> getEventType () {
+        return myEventType;
     }
-    public Consumer<T> getAction(){
-        return myAction;
+
+    public void executeAction () {
+        myAction.accept(myActionAcceptor);
     }
 
 }
