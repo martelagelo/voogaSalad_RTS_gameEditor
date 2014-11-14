@@ -3,6 +3,8 @@ package application;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -22,7 +24,8 @@ public class ShittyMain extends Application {
 
     public void shittyRun (Group g) {
         System.out.println("Shitty running");
-        
+        Image poop = new Image("resources/img/poop.png");
+        g.getChildren().add(new ImageView(poop));
     }
 
 }

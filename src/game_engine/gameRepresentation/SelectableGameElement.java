@@ -13,7 +13,7 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
 
     protected GridPane abilityRepresentation;
     protected Node informationRepresentation;
-    
+
     public SelectableGameElement (Image image, Point2D position, String name) {
         super(image, position, name);
     }
@@ -21,12 +21,18 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
     @Override
     public Polygon getVisionPolygon () {
         Polygon polygon = new Polygon();
-        polygon.getPoints().addAll(new Double[]{
-                                    this.getBounds().getMinX(), this.getBounds().getMinY(),
-                                    this.getBounds().getMinX() + this.getBounds().getWidth(), this.getBounds().getMinY(),
-                                    this.getBounds().getMaxX(), this.getBounds().getMaxY(),
-                                    this.getBounds().getMinX(), this.getBounds().getMinY() + this.getBounds().getHeight(),
-        });
+        polygon.getPoints().addAll(new Double[] {
+                                                 this.getBounds().getMinX(),
+                                                 this.getBounds().getMinY(),
+                                                 this.getBounds().getMinX() +
+                                                         this.getBounds().getWidth(),
+                                                 this.getBounds().getMinY(),
+                                                 this.getBounds().getMaxX(),
+                                                 this.getBounds().getMaxY(),
+                                                 this.getBounds().getMinX(),
+                                                 this.getBounds().getMinY() +
+                                                         this.getBounds().getHeight(),
+                                   });
         return polygon;
     }
 
