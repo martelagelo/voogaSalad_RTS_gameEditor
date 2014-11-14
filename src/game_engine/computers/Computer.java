@@ -13,22 +13,22 @@ import java.util.stream.Collectors;
  *
  * @param <T> The type of object the computer will be interacting with
  */
-public abstract class Computer<DrawableGameElement> {
+public abstract class Computer<T, E> {
     /**
      * Take in the object of interest and return a list of the objects that match the computer's
      * criteria relative to the primary object. Return these objects in a list for use by other
      * modules.
      * 
      */
-    public void compute (DrawableGameElement primaryObject, List<DrawableGameElement> objectsToCheck) {
+    public void compute (T primaryObject, List<E> objectsToCheck) {
         List<E> listToAdd = objectsToCheck.stream()
                 .filter(o -> checkComputingCondition(primaryObject, o))
                 .collect(Collectors.toList());
         addInteractingElementsToObject(primaryObject, listToAdd);
     }
 
-    protected abstract void addInteractingElementsToObject (DrawableGameElement primaryObject,
-                                                            List<DrawableGameElement> listToAdd);
+    protected abstract void addInteractingElementsToObject (T primaryObject,
+                                                            List<E> listToAdd);
 
     /**
      * Returns true if a condition between the two objects is satisfied
@@ -37,7 +37,7 @@ public abstract class Computer<DrawableGameElement> {
      * @param otherObject
      * @return
      */
-    protected abstract boolean checkComputingCondition (DrawableGameElement primaryObject,
-                                                        DrawableGameElement otherObject);
+    protected abstract boolean checkComputingCondition (T primaryObject,
+                                                        E otherObject);
 
 }

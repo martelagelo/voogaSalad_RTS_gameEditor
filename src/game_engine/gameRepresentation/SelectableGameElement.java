@@ -36,9 +36,9 @@ public class SelectableGameElement extends DrawableGameElement implements Sighte
         });
         return polygon;
     }
-    
-    public boolean getIsActive() {
-    	return myIsActive;
+
+    public boolean getIsActive () {
+        return myIsActive;
     }
 
 }

@@ -3,6 +3,7 @@ package game_engine.computers.boundsComputers;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
 import game_engine.gameRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.SelectableGameElement;
 import java.util.List;
 
 
@@ -12,12 +13,12 @@ import java.util.List;
  * @author Zachary Bears
  *
  */
-public class CollisionComputer extends Computer<DrawableGameElement> {
+public class CollisionComputer extends Computer<SelectableGameElement, DrawableGameElement> {
     /**
      * Returns true if there is a collision between the two bounded objects
      */
     @Override
-    protected boolean checkComputingCondition (DrawableGameElement primaryObject,
+    protected boolean checkComputingCondition (SelectableGameElement primaryObject,
                                                DrawableGameElement otherObject) {
         if (primaryObject instanceof Boundable && otherObject instanceof Boundable) {
             Boundable boundableObject = (Boundable) primaryObject;
@@ -30,7 +31,7 @@ public class CollisionComputer extends Computer<DrawableGameElement> {
     }
 
     @Override
-    protected void addInteractingElementsToObject (DrawableGameElement primaryObject,
+    protected void addInteractingElementsToObject (SelectableGameElement primaryObject,
                                                    List<DrawableGameElement> listToAdd) {
         primaryObject.addCollidingElements(listToAdd);
     }

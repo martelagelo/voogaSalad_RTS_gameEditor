@@ -3,6 +3,7 @@ package game_engine.computers.boundsComputers;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
 import game_engine.gameRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.SelectableGameElement;
 import java.util.List;
 
 
@@ -12,12 +13,12 @@ import java.util.List;
  * @author Zachary Bears
  *
  */
-public class VisionComputer extends Computer<DrawableGameElement> {
+public class VisionComputer extends Computer<SelectableGameElement, DrawableGameElement> {
     /**
      * Return true if the other object is contained within the primary object's vision bounds
      */
     @Override
-    protected boolean checkComputingCondition (DrawableGameElement primaryObject,
+    protected boolean checkComputingCondition (SelectableGameElement primaryObject,
                                                DrawableGameElement otherObject) {
         if (primaryObject instanceof Sighted && otherObject instanceof Boundable) {
             Sighted sightedObject = (Sighted) primaryObject;
@@ -30,7 +31,7 @@ public class VisionComputer extends Computer<DrawableGameElement> {
     }
 
     @Override
-    protected void addInteractingElementsToObject (DrawableGameElement primaryObject,
+    protected void addInteractingElementsToObject (SelectableGameElement primaryObject,
                                                    List<DrawableGameElement> listToAdd) {
         primaryObject.addVisibleElements(listToAdd);
     }
