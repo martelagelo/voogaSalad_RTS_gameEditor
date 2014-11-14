@@ -1,8 +1,12 @@
 package game_engine.gameRepresentation;
 
 import game_engine.computers.boundsComputer.Boundable;
+import game_engine.gameRepresentation.actions.Action;
+import game_engine.gameRepresentation.conditions.Condition;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -41,7 +45,18 @@ public class DrawableGameElement extends GameElement implements Boundable {
     }
 
     private void updateSelfDueToCollisions () {
-        // TODO Auto-generated method stub
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
+                this.ifThisThenThat.entrySet().stream()
+                        .filter(o -> o.getKey().getType().equals("CollisionCondition"))
+                        .collect(Collectors.toList());
+
+        for (DrawableGameElement collidingElement : interactingElements.get("CollidingElements")) {
+            for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
+                if (conditionActionPair.getKey().evaluate()) {
+                    conditionActionPair.getValue().doAction();
+                }
+            }
+        }
 
     }
 

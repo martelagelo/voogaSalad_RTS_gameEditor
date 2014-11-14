@@ -4,7 +4,6 @@ import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.computers.boundsComputers.VisionComputer;
 import game_engine.gameRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.GameElement;
 import game_engine.gameRepresentation.Level;
 import game_engine.gameRepresentation.SelectableGameElement;
 import java.util.ArrayList;
@@ -58,8 +57,8 @@ public class GameLoop {
                 c.compute(selectableElement, allElements);
             }
         }
-        
-        for (SelectableGameElement selectableElement : myActiveElements) { 
+
+        for (SelectableGameElement selectableElement : myActiveElements) {
             selectableElement.update();
         }
     }
