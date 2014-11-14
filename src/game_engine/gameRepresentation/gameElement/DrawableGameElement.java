@@ -1,13 +1,8 @@
 package game_engine.gameRepresentation.gameElement;
 
 import game_engine.computers.boundsComputer.Boundable;
-import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Condition;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;

@@ -78,12 +78,16 @@ public class SelectableGameElement extends DrawableGameElement implements
 
     private void updateSelfDueToCurrentObjective () {
         // TODO Auto-generated method stub
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
+                getApplicableConditionActionPairs("ObjectiveCondition");
 
     }
 
     public void updateSelfDueToSelection () {
         // TODO Auto-generated method stub
         // update representation?
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
+                getApplicableConditionActionPairs("SelfCondition");
 
     }
 
@@ -95,12 +99,6 @@ public class SelectableGameElement extends DrawableGameElement implements
     private void updateSelfDueToCollisions () {
         evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
                                                                 "CollidingElements");
-    }
-
-    private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-        return this.ifThisThenThat.entrySet().stream()
-                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
-                .collect(Collectors.toList());
     }
 
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
@@ -118,6 +116,12 @@ public class SelectableGameElement extends DrawableGameElement implements
                 }
             }
         }
+    }
+    
+    private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
+        return this.ifThisThenThat.entrySet().stream()
+                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
+                .collect(Collectors.toList());
     }
 
 }

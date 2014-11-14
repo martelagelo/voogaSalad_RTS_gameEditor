@@ -5,7 +5,6 @@ import game_engine.gameRepresentation.Describable;
 import game_engine.gameRepresentation.Game;
 import game_engine.gameRepresentation.Level;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.InvalidationListener;
