@@ -10,6 +10,6 @@ public class RenderedDrawableGameElement {
     private AnimationPlayer animation;
 
     public RenderedDrawableGameElement (DrawableGameElement element) {
-
+        // TODO: use input to set state
     }
 }

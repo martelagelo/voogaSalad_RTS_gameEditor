@@ -1,4 +1,4 @@
-package game_engine;
+package game_engine.elementFactories;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
