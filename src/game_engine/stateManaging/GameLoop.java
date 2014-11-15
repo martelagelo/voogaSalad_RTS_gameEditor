@@ -3,9 +3,10 @@ package game_engine.stateManaging;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.computers.boundsComputers.VisionComputer;
-import game_engine.gameRepresentation.Level;
-import game_engine.gameRepresentation.gameElement.DrawableGameElement;
 import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.RenderedDrawableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.RenderedLevel;
+import game_engine.gameRepresentation.renderedRepresentation.RenderedSelectableGameElement;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.KeyFrame;
@@ -16,11 +17,10 @@ import javafx.util.Duration;
 
 public class GameLoop {
 
-    private Level myCurrentLevel;
-    private List<SelectableGameElement> myActiveElements = new ArrayList<SelectableGameElement>();
+    private RenderedLevel myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
 
-    public GameLoop (Level level) {
+    public GameLoop (RenderedLevel level) {
         myCurrentLevel = level;
         myComputerList.add(new CollisionComputer());
         myComputerList.add(new VisionComputer());
@@ -34,20 +34,22 @@ public class GameLoop {
     };
 
     public void update () {
-        List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
+        List<RenderedDrawableGameElement> allElements =
+                new ArrayList<RenderedDrawableGameElement>();
         allElements.addAll(myCurrentLevel.getUnits());
         allElements.addAll(myCurrentLevel.getTerrain());
-        for (SelectableGameElement selectableElement : myActiveElements) {
-            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
+        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+            for (Computer<RenderedSelectableGameElement, RenderedDrawableGameElement> c : myComputerList) {
                 c.compute(selectableElement, allElements);
             }
         }
 
-        for (SelectableGameElement selectableElement : myActiveElements) {
+        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+            // TODO : flag for active
             selectableElement.update();
         }
     }
-    
+
     public KeyFrame start (Double frameRate) {
         return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
     }
@@ -59,7 +61,7 @@ public class GameLoop {
 
     public void pause () {
         // TODO Auto-generated method stub
-        
+
     }
 
 }
