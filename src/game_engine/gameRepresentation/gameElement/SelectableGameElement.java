@@ -1,20 +1,17 @@
 package game_engine.gameRepresentation.gameElement;
 
+import game_engine.animationEngine.AnimationEngine;
+import game_engine.computers.boundsComputers.Sighted;
+import game_engine.gameRepresentation.actions.Action;
+import game_engine.gameRepresentation.conditions.Condition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import game_engine.computers.boundsComputers.Sighted;
-import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Condition;
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 
 
 /**
@@ -29,7 +26,6 @@ public class SelectableGameElement extends DrawableGameElement implements
 
     protected Map<String, Map<String, ObscureAction>> allAbilityRepresentations;
     private Map<String, ObscureAction> currentAbilityRepresentation;
-    protected Object visualRepresentation;
 
     public SelectableGameElement (Image image, Point2D position, String name) {
         super(image, position, name);

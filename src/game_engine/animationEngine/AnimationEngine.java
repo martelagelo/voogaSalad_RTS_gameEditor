@@ -3,11 +3,13 @@ package game_engine.animationEngine;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Polygon;
 
 
 /**
@@ -120,6 +122,20 @@ public class AnimationEngine implements Updatable, Displayable {
         return new Rectangle2D(colNumber * myTileSize.getX(), rowNumber * myTileSize.getY(),
                                (colNumber + 1) * myTileSize.getX(), (rowNumber + 1) *
                                                                     myTileSize.getY());
+    }
+
+    public void setSelected () {
+        setAnimation("Selected", true);        
+    }
+
+    public Bounds getBounds () {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public Polygon getVisionPolygon () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
