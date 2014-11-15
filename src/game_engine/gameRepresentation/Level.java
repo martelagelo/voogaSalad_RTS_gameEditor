@@ -39,4 +39,8 @@ public class Level {
         return goal;
     }
 
+    public void setActive () {
+        isActiveLevel = true;
+    }
+
 }
