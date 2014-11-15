@@ -1,13 +1,11 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-import game_engine.animationEngine.AnimationEngine;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-
-
+import game_engine.visuals.AnimationPlayer;
 public class DrawableGameElement {
 
     private DrawableGameElementState state;
-    private AnimationEngine animation;
+    private AnimationPlayer animation;
 
     public DrawableGameElement (DrawableGameElementState element) {
         // TODO: use input to set state

@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
-import game_engine.animationEngine.AnimationEngine;
 import game_engine.computers.boundsComputer.Boundable;
+import game_engine.visuals.AnimationPlayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import javafx.scene.image.Image;
 
 public class DrawableGameElementState extends GameElementState implements Boundable {
 
-    protected AnimationEngine visualRepresentation;
+    protected AnimationPlayer visualRepresentation;
 
     public DrawableGameElementState (Image image, Point2D position, String name) {
         this.textualAttributes.add(new Attribute<String>("Name", name));
