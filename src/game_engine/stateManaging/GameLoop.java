@@ -21,7 +21,7 @@ public class GameLoop {
     private Level myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
-    
+
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
         public void handle (ActionEvent evt) {
@@ -37,7 +37,7 @@ public class GameLoop {
         start(60.0);
 
     }
-    
+
     public void start (Double framesPerSecond) {
         KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
         timeline.setCycleCount(Animation.INDEFINITE);

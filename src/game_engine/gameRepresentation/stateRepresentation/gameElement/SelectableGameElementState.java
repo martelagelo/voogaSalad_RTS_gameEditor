@@ -71,15 +71,16 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
                                                                           String elementIdentifier) {
         List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs(conditionActionPairIdentifier);
-
-        for (DrawableGameElementState element : interactingElements.get(elementIdentifier)) {
-            List<GameElementState> immediatelyInteractingElements =
-                    new ArrayList<GameElementState>();
-            immediatelyInteractingElements.add(this);
-            immediatelyInteractingElements.add(element);
-            for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
-                if (conditionActionPair.getKey().evaluate(immediatelyInteractingElements)) {
-                    conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+        if (interactingElements.containsKey(elementIdentifier)) {
+            for (DrawableGameElementState element : interactingElements.get(elementIdentifier)) {
+                List<GameElementState> immediatelyInteractingElements =
+                        new ArrayList<GameElementState>();
+                immediatelyInteractingElements.add(this);
+                immediatelyInteractingElements.add(element);
+                for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
+                    if (conditionActionPair.getKey().evaluate(immediatelyInteractingElements)) {
+                        conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+                    }
                 }
             }
         }
