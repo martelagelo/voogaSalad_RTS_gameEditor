@@ -13,43 +13,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import player.ScrollableScene;
+import player.VisualManager;
 
 
 public class ShittyMain extends Application {
     @Override
     public void start (Stage primaryStage) {
         Group g = new Group();
-
-        Group gameObjects = new Group();
-
-        ScrollableScene scrollingScene = new ScrollableScene(g, 600, 600);
-        scrollingScene.addObjects(gameObjects);
-
-        Duration oneFrameAmt = Duration.millis(1000 / 60);
-//        final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
-//                                               new EventHandler<ActionEvent>() {
-//                                                   @Override
-//                                                   public void handle (ActionEvent event) {
-//                                                       scrollingScene.update();
-//                                                   }
-//                                               });
-//
-//        Timeline timeline = new Timeline();
-//
-//        timeline.setCycleCount(Animation.INDEFINITE);
-//        timeline.getKeyFrames().clear();
-//        timeline.getKeyFrames().add(oneFrame);
-//        timeline.playFromStart();
         
+        VisualManager manager = new VisualManager(g, 600, 600);
         Object saveLoadUtility = new Object(); // loololol
         
         Game game = hardCodeAGame();
-        Engine engine = new Engine(game,saveLoadUtility);
-
-
-        primaryStage.setScene(scrollingScene);
-        shittyRun(gameObjects);
-        primaryStage.show();
+        Engine engine = new Engine(game,saveLoadUtility, manager);
+        
     }
 
     private Game hardCodeAGame () {
