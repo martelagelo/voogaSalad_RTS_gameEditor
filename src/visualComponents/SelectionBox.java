@@ -27,5 +27,7 @@ public class SelectionBox extends Rectangle implements Observable {
     public void removeListener (InvalidationListener listener) {
         // TODO Auto-generated method stub
         
-    }    
+    }
+    
+    
 }

@@ -33,21 +33,21 @@ public class ShittyMain extends Application {
         ScrollableScene scrollingScene = new ScrollableScene(g, 600, 600);
         scrollingScene.addObjects(gameObjects);
 
-        Duration oneFrameAmt = Duration.millis(1000 / 60);
-        final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
-                                               new EventHandler<ActionEvent>() {
-                                                   @Override
-                                                   public void handle (ActionEvent event) {
-                                                       scrollingScene.update();
-                                                   }
-                                               });
-
-        Timeline timeline = new Timeline();
-
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().clear();
-        timeline.getKeyFrames().add(oneFrame);
-        timeline.playFromStart();
+//        Duration oneFrameAmt = Duration.millis(1000 / 60);
+//        final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
+//                                               new EventHandler<ActionEvent>() {
+//                                                   @Override
+//                                                   public void handle (ActionEvent event) {
+//                                                       scrollingScene.update();
+//                                                   }
+//                                               });
+//
+//        Timeline timeline = new Timeline();
+//
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.getKeyFrames().clear();
+//        timeline.getKeyFrames().add(oneFrame);
+//        timeline.playFromStart();
 
         primaryStage.setScene(scrollingScene);
         shittyRun(gameObjects);
