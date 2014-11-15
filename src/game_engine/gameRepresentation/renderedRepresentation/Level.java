@@ -24,6 +24,8 @@ public class Level {
         units = new ArrayList<>();
         goals = new ArrayList<>();
         myLevelState = level;
+        name = level.name;
+        description = level.description;
         for (DrawableGameElementState element : level.getTerrain()) {
             terrain.add(new DrawableGameElement(element));
         }

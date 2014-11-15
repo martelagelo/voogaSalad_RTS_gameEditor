@@ -19,6 +19,8 @@ public class CampaignState {
 
     public CampaignState () {
         levels = new ArrayList<>();
+        name = "";
+        description = "";
     }
 
     public List<LevelState> getLevels () {

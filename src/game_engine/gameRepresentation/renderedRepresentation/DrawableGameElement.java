@@ -21,6 +21,7 @@ public class DrawableGameElement implements Displayable {
     private AnimationPlayer player;
 
     public DrawableGameElement (DrawableGameElementState element) {
+        state = element;
         Spritesheet spritesheet = element.getSpritesheet();
         player =
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
@@ -28,7 +29,7 @@ public class DrawableGameElement implements Displayable {
     }
 
     public void update () {
-        state.update();
+        //state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable
         player.setAnimation(state.getAnimation());

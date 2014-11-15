@@ -26,11 +26,11 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     protected Map<String, Map<String, ObscureAction>> allAbilityRepresentations;
     private Map<String, ObscureAction> currentAbilityRepresentation;
-    protected Map<String, ArrayList<DrawableGameElementState>> interactingElements =
-            new HashMap<String, ArrayList<DrawableGameElementState>>();
+    protected Map<String, ArrayList<DrawableGameElementState>> interactingElements;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition);
+        interactingElements = new HashMap<String, ArrayList<DrawableGameElementState>>();
         // TODO Auto-generated constructor stub
     }
 

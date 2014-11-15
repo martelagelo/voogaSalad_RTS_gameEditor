@@ -21,21 +21,30 @@ public class GameLoop {
     private Level myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
-
-    public GameLoop (Level level) {
-        myCurrentLevel = level;
-        // myComputerList.add(new CollisionComputer());
-        // myComputerList.add(new VisionComputer());
-        timeline = new Timeline();
-
-    }
-
+    
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
         public void handle (ActionEvent evt) {
             update();
         }
     };
+
+    public GameLoop (Level level) {
+        myCurrentLevel = level;
+        // myComputerList.add(new CollisionComputer());
+        // myComputerList.add(new VisionComputer());
+        timeline = new Timeline();
+        start(60.0);
+
+    }
+    
+    public void start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
+    }
 
     public void update () {
         List<DrawableGameElement> allElements =
@@ -52,14 +61,6 @@ public class GameLoop {
             // TODO : flag for active
             selectableElement.update();
         }
-    }
-
-    public void start (Double framesPerSecond) {
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().clear();
-        timeline.getKeyFrames().add(frame);
-        timeline.playFromStart();
     }
 
     public void play () {

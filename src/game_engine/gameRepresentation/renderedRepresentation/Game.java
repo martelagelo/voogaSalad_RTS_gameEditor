@@ -37,6 +37,7 @@ public class Game {
         for (Campaign campaign : campaigns) {
             for (Level level : campaign.levels) {
                 levels.add(level);
+                System.out.println(level.name + ", " + name);
             }
         }
 

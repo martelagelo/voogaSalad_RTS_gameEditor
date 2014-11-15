@@ -1,4 +1,4 @@
-    package application;
+package application;
 
 import game_engine.Engine;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
@@ -23,30 +23,27 @@ import player.VisualManager;
 public class ShittyMain extends Application {
     @Override
     public void start (Stage primaryStage) {
-        
         Object saveLoadUtility = new Object(); // loololol
-        Engine engine = new Engine(hardCodeAGame(),saveLoadUtility);
+        Engine engine = new Engine(hardCodeAGame(), saveLoadUtility);
         engine.selectLevel("FuckYouSteve");
         primaryStage.setScene(engine.getScene());
         primaryStage.show();
-        
-        
     }
 
     private GameState hardCodeAGame () {
-        SelectableGameElementState archerState = new SelectableGameElementState(10,10);
-        archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",new Dimension(40,40),7));
-        archerState.addAnimation(new AnimationSequence("Walk",0,13,true));
+        SelectableGameElementState archerState = new SelectableGameElementState(10, 10);
+        archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",
+                                                   new Dimension(40, 40), 7));
+        archerState.addAnimation(new AnimationSequence("Walk", 0, 13, true));
         archerState.setAnimation("Walk");
         LevelState levelState = new LevelState();
-        levelState.setActive();
         levelState.addUnit(archerState);
         levelState.name = "FuckYouSteve";
         CampaignState campaignState = new CampaignState();
         campaignState.addLevel(levelState);
         GameState gameState = new GameState();
         gameState.addCampaign(campaignState);
-       return gameState;
+        return gameState;
     }
 
     public static void main (String[] args) {
@@ -57,7 +54,6 @@ public class ShittyMain extends Application {
         System.out.println("Shitty running");
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
-
 
         // Add the input handler to the group
         InputHandler handler = new InputHandler(g);

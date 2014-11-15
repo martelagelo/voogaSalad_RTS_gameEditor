@@ -27,6 +27,8 @@ public class LevelState {
         terrains = new ArrayList<>();
         units = new ArrayList<>();
         goals = new ArrayList<>();
+        name = "";
+        description = "";
     }
 
     public boolean isActive () {
