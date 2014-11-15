@@ -7,13 +7,13 @@ package game_engine.visuals;
  * @author Zach
  *
  */
-public class Animation implements Updatable {
+public class AnimationSequence implements Updatable {
 
     private int myStartFrame;
     private int myStopFrame;
     private int myCurrentFrame;
     private String myName;
-    private Animation myNextAnimation;
+    private AnimationSequence myNextAnimation;
 
     /**
      * Initialize the animation
@@ -22,11 +22,11 @@ public class Animation implements Updatable {
      * @param startFrame the start frame of the animation
      * @param stopFrame the stop frame of the animation
      */
-    public Animation (String name, int startFrame, int stopFrame) {
+    public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats) {
         myStartFrame = startFrame;
         myStopFrame = stopFrame;
         myName = name;
-        myNextAnimation = new NullAnimation();
+        myNextAnimation = repeats ? this : new NullAnimation();
     }
 
     /**
@@ -34,16 +34,20 @@ public class Animation implements Updatable {
      *
      * @param nextAnimation
      */
-    public Animation (String name, int startFrame, int stopFrame, Animation nextAnimation) {
-        this(name, startFrame, stopFrame);
+    public AnimationSequence (String name,
+                              int startFrame,
+                              int stopFrame,
+                              AnimationSequence nextAnimation) {
+        this(name, startFrame, stopFrame, false);
         myNextAnimation = nextAnimation;
     }
 
     /**
      * Reset the animation to the start frame
      */
-    public void reset () {
+    public AnimationSequence reset () {
         myCurrentFrame = myStartFrame;
+        return this;
     }
 
     /**
@@ -51,25 +55,25 @@ public class Animation implements Updatable {
      *
      * @param animation
      */
-    public void setNextAnimation (Animation animation) {
+    public void setNextAnimation (AnimationSequence animation) {
         myNextAnimation = animation;
     }
 
     /**
-     * Get the next animation
+     * Get the next animation, resetting it to ensure it starts from the beginning
      *
      * @return
      */
-    public Animation getNextAnimation () {
-        return myNextAnimation;
+    public AnimationSequence getNextAnimation () {
+        return myNextAnimation.reset();
     }
 
     /**
-     * Incriments the animation frame. Return true if the animation is complete.
+     * Increments the animation frame. Return true if the animation is complete.
      */
     @Override
     public boolean update () {
-        if (myCurrentFrame <= myStopFrame) {
+        if (myCurrentFrame < myStopFrame) {
             myCurrentFrame++;
             return false;
         }

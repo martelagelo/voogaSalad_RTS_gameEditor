@@ -1,4 +1,4 @@
-package visualComponents;
+package player;
 
 import javafx.scene.Group;
 
@@ -13,6 +13,10 @@ public class VisualManager {
     
     public void update(){
         scene.update();
+    }
+
+    public Group getVisualRepresentation () {
+        return new Group(background.getChildren());
     }
     
 }

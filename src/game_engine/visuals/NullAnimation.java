@@ -6,10 +6,10 @@ package game_engine.visuals;
  * @author Zach
  *
  */
-public class NullAnimation extends Animation {
+public class NullAnimation extends AnimationSequence {
 
     public NullAnimation () {
-        super("", 0, 0);
+        super("", 0, 0,false);
 
     }
 

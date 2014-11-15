@@ -1,4 +1,4 @@
-package visualComponents;
+package player;
 
 import javafx.scene.Group;
 import javafx.scene.layout.StackPane;

@@ -1,10 +1,11 @@
-package visualComponents;
+package player;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 
 public class ScrollableScene extends Scene {
@@ -17,6 +18,7 @@ public class ScrollableScene extends Scene {
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
+    private Rectangle myBox;
     private double myScreenHeight;
     private double myScreenWidth;
     private double pressedX, pressedY;
@@ -27,7 +29,8 @@ public class ScrollableScene extends Scene {
         this.myScreenWidth = width;
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
-        root.getChildren().addAll(myBackground, mySelectionBox);
+        myBox = mySelectionBox.getBox();
+        root.getChildren().addAll(myBackground, myBox);
         initializeHandlers();
     }
 
@@ -79,15 +82,15 @@ public class ScrollableScene extends Scene {
                 pressedX = event.getSceneX();
                 pressedY = event.getSceneY();
                 if (event.isPrimaryButtonDown()) {
-                    mySelectionBox.setVisible(true);
-                    mySelectionBox.setWidth(0);
-                    mySelectionBox.setHeight(0);
-                    mySelectionBox.setStroke(Color.RED);
-                    mySelectionBox.setStrokeWidth(2);
-                    mySelectionBox.setFill(Color.TRANSPARENT);
+                    myBox.setVisible(true);
+                    myBox.setWidth(0);
+                    myBox.setHeight(0);
+                    myBox.setStroke(Color.RED);
+                    myBox.setStrokeWidth(2);
+                    myBox.setFill(Color.TRANSPARENT);
 
-                    mySelectionBox.setX(pressedX);
-                    mySelectionBox.setY(pressedY);
+                    myBox.setX(pressedX);
+                    myBox.setY(pressedY);
                 }
                 else {
                     // TODO call the input event for right click
@@ -98,15 +101,15 @@ public class ScrollableScene extends Scene {
         setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
-                mySelectionBox.setVisible(false);
+                myBox.setVisible(false);
                 // do the math to determine the box's location relative to the map, rather than on
                 // the screen
                 double xTopLeftMap =
-                        -myBackground.getTranslateX() + mySelectionBox.xProperty().doubleValue();
+                        -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
                 double yTopLeftMap =
-                        -myBackground.getTranslateY() + mySelectionBox.yProperty().doubleValue();
-                double xBottomRight = xTopLeftMap + mySelectionBox.getWidth();
-                double yBottomRight = yTopLeftMap + mySelectionBox.getHeight();
+                        -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
+                double xBottomRight = xTopLeftMap + myBox.getWidth();
+                double yBottomRight = yTopLeftMap + myBox.getHeight();
 
                 mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight, yBottomRight);
             }
@@ -128,11 +131,11 @@ public class ScrollableScene extends Scene {
                 double difX = newX - pressedX;
                 double difY = newY - pressedY;
 
-                mySelectionBox.setWidth(Math.abs(difX));
-                mySelectionBox.setHeight(Math.abs(difY));
+                myBox.setWidth(Math.abs(difX));
+                myBox.setHeight(Math.abs(difY));
 
-                if (difX <= 0) mySelectionBox.setX(newX);
-                if (difY <= 0) mySelectionBox.setY(newY);
+                if (difX <= 0) myBox.setX(newX);
+                if (difY <= 0) myBox.setY(newY);
 
                 event.consume();
             }

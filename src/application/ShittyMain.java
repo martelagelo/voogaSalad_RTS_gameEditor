@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import visualComponents.ScrollableScene;
+import player.ScrollableScene;
 
 
 public class ShittyMain extends Application {

@@ -1,7 +1,5 @@
 package game_engine.visuals;
 
-import java.util.Collection;
-import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -10,7 +8,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * An animation player that allows for the playing of animations using a given
- * spritesheet. This p =  assumes all spritesheets are given with a horizontally traversable sheet
+ * spritesheet. This p = assumes all spritesheets are given with a horizontally traversable sheet
  *
  * @author Zach
  *
@@ -18,9 +16,10 @@ import javafx.scene.image.ImageView;
 public class AnimationPlayer implements Updatable, Displayable {
 
     private Dimension myTileSize;
-    private Animation myCurrentAnimation;
+    private AnimationSequence myCurrentAnimation;
     private int myNumCols;
     private ImageView myDisplay;
+    private Rectangle2D myImageBounds;
 
     /**
      * Initialize the player
@@ -36,21 +35,24 @@ public class AnimationPlayer implements Updatable, Displayable {
         myNumCols = numCols;
         myDisplay = new ImageView(spriteSheet);
         myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(), tileSize.getHeight()));
+        myImageBounds = getImageBounds(spriteSheet);
 
     }
+    //TODO comment
+    private Rectangle2D getImageBounds(Image img){
+        return new Rectangle2D(0,0,img.getWidth(),img.getHeight());
+        
+    }
+    
 
     /**
      * Set and play the current animation
      *
      * @param animation the current animation
-     * @param repeat a boolean indicating whether the animation should loop infinitely
      * @return true
      */
-    public boolean setAnimation (Animation animation, boolean repeat) {
+    public boolean setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;
-        if (repeat) {
-            myCurrentAnimation.setNextAnimation(myCurrentAnimation);
-        }
         return true;
     }
 
@@ -74,12 +76,15 @@ public class AnimationPlayer implements Updatable, Displayable {
         }
         // Get a viewport and make sure it fits
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
-        if (!myDisplay.getViewport().contains(viewport))
+        System.out.println("Viewport: "+viewport.getMinX()+"  "+viewport.getMinY()+"  "+viewport.getMaxX()+"  "+viewport.getMaxY());
+        System.out.println("Image: "+myImageBounds.getMinX()+"  "+myImageBounds.getMinY()+"  "+myImageBounds.getMaxX()+"  "+myImageBounds.getMaxY());
+        if (!myImageBounds.contains(viewport))
             return false;
         // Set the display viewport to the new viewport
         myDisplay.setViewport(viewport);
         return true;
     }
+    
 
     /**
      * Creates and returns a viewport based on a frame number. Assumes horizontal traversal of
@@ -88,8 +93,9 @@ public class AnimationPlayer implements Updatable, Displayable {
     private Rectangle2D getViewport (int frameNumber) {
         int colNumber = frameNumber % myNumCols;
         int rowNumber = frameNumber / myNumCols;
-        return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber * myTileSize.getHeight(),
+        return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
+                                                                  myTileSize.getHeight(),
                                (colNumber + 1) * myTileSize.getWidth(), (rowNumber + 1) *
-                                                                    myTileSize.getHeight());
+                                                                        myTileSize.getHeight());
     }
 }
