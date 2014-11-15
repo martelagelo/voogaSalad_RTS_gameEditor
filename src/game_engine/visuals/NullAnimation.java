@@ -1,4 +1,4 @@
-package game_engine.animationEngine;
+package game_engine.visuals;
 
 /**
  * An empty animation following the Null pattern

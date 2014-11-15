@@ -1,4 +1,4 @@
-package game_engine.animationEngine;
+package game_engine.visuals;
 
 /**
  * A basic animation. Keeps track of progress, the frame bounds, and the animation that will be

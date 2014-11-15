@@ -1,34 +1,29 @@
-package game_engine.animationEngine;
+package game_engine.visuals;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Polygon;
 
 
 /**
- * An animation engine that allows for the playing and storing of animations using a given
- * spritesheet. This engine assumes all spritesheets are given with a horizontally traversable sheet
+ * An animation player that allows for the playing of animations using a given
+ * spritesheet. This player assumes all spritesheets are given with a horizontally traversable sheet
  *
  * @author Zach
  *
  */
-public class AnimationEngine implements Updatable, Displayable {
+public class AnimationPlayer implements Updatable, Displayable {
 
     private Point2D myTileSize;
     private Animation myCurrentAnimation;
     private int myNumCols;
     private ImageView myDisplay;
-    private Map<String, Animation> myAnimations;
 
     /**
-     * Initialize the animation engine.
+     * Initialize the player
      *
      * @param spriteSheet the image containing the spritesheet
      * @param tileSize a point2D containing the width(x) and height(y) of each frame in the
@@ -36,10 +31,9 @@ public class AnimationEngine implements Updatable, Displayable {
      * @param numCols the number of columns across the spritesheet goes before moving to the next
      *        row
      */
-    public AnimationEngine (Image spriteSheet, Point2D tileSize, int numCols) {
+    public AnimationPlayer (Image spriteSheet, Point2D tileSize, int numCols) {
         myTileSize = tileSize;
         myNumCols = numCols;
-        myAnimations = new HashMap<>();
         myDisplay = new ImageView(spriteSheet);
         myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getX(), tileSize.getY()));
 
@@ -48,41 +42,26 @@ public class AnimationEngine implements Updatable, Displayable {
     /**
      * Initialize the animation engine with a given collection of animations
      */
-    public AnimationEngine (Image spriteSheet,
+    public AnimationPlayer (Image spriteSheet,
                             Point2D tileSize,
                             int numCols,
                             Collection<Animation> animations) {
         this(spriteSheet, tileSize, numCols);
-        animations.forEach(animation -> myAnimations.put(animation.toString(), animation));
     }
 
     /**
-     * Set the current animation. Automatically adds it to the map of animations
+     * Set and play the current animation
      *
      * @param animation the current animation
      * @param repeat a boolean indicating whether the animation should loop infinitely
      * @return true
      */
     public boolean setAnimation (Animation animation, boolean repeat) {
-        myAnimations.put(animation.toString(), animation);
         myCurrentAnimation = animation;
         if (repeat) {
             myCurrentAnimation.setNextAnimation(myCurrentAnimation);
         }
         return true;
-    }
-
-    /**
-     * Set the animation to one given by the string corresponding to the animation's name
-     *
-     * @return true if animation found in engine. False if not.
-     */
-    public boolean setAnimation (String animation, boolean repeat) {
-        if (myAnimations.containsKey(animation)) {
-            setAnimation(myAnimations.get(animation), repeat);
-        }
-        return false;
-
     }
 
     /**
@@ -123,19 +102,4 @@ public class AnimationEngine implements Updatable, Displayable {
                                (colNumber + 1) * myTileSize.getX(), (rowNumber + 1) *
                                                                     myTileSize.getY());
     }
-
-    public void setSelected () {
-        setAnimation("Selected", true);
-    }
-
-    public Bounds getBounds () {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public Polygon getVisionPolygon () {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

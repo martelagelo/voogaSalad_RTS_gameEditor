@@ -1,4 +1,4 @@
-package game_engine.animationEngine;
+package game_engine.visuals;
 
 /**
  * An object capable of being updated and returning a status

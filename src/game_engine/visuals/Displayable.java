@@ -1,4 +1,4 @@
-package game_engine.animationEngine;
+package game_engine.visuals;
 
 import javafx.scene.Node;
 

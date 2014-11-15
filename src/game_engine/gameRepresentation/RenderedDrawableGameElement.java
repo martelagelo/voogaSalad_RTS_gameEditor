@@ -1,13 +1,13 @@
 package game_engine.gameRepresentation;
 
-import game_engine.animationEngine.AnimationEngine;
 import game_engine.gameRepresentation.gameElement.DrawableGameElement;
+import game_engine.visuals.AnimationPlayer;
 
 
 public class RenderedDrawableGameElement {
 
     private DrawableGameElement state;
-    private AnimationEngine animation;
+    private AnimationPlayer animation;
 
     public RenderedDrawableGameElement (DrawableGameElement element) {
 
