@@ -1,14 +1,14 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-import game_engine.animationEngine.AnimationEngine;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.AnimationPlayer;
 
 
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState state;
-    private AnimationEngine animation;
+    private AnimationPlayer animation;
 
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
