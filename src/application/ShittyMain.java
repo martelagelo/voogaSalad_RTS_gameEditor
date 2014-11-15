@@ -5,6 +5,7 @@ import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
@@ -32,12 +33,16 @@ public class ShittyMain extends Application {
 
     private GameState hardCodeAGame () {
         SelectableGameElementState archerState = new SelectableGameElementState(10, 10);
-        archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",
-                                                   new Dimension(40, 40), 7));
-        archerState.addAnimation(new AnimationSequence("Walk", 0, 13, true));
-        archerState.setAnimation("Walk");
+        archerState.setSpritesheet(new Spritesheet("resources/img/graphics/units/archer/stand/forward/stand_fwd.png",
+                                                   new Dimension(49, 51), 1));
+        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
+        archerState.setAnimation("stand_fwd");
         LevelState levelState = new LevelState();
+        DrawableGameElementState grassState = new DrawableGameElementState(0,0);
+        grassState.setSpritesheet(new Spritesheet("resources/img/graphics/terrain/grass/1.png", new Dimension(96, 48), 1));
+        levelState.addTerrain(grassState);
         levelState.addUnit(archerState);
+        
         levelState.name = "FuckYouSteve";
         CampaignState campaignState = new CampaignState();
         campaignState.addLevel(levelState);

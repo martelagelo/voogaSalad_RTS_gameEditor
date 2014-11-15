@@ -35,8 +35,8 @@ public class Level {
         goals.addAll(level.getGoal());
 
         List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
-        allElements.addAll(units);
         allElements.addAll(terrain);
+        allElements.addAll(units);
         myGroup = new Group();
         for (DrawableGameElement element : allElements) {
             myGroup.getChildren().add(element.getNode());
