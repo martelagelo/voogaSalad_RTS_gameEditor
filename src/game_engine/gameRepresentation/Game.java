@@ -21,7 +21,7 @@ public class Game {
     public List<Campaign> getCampaigns () {
         return campaigns;
     }
-    
+
     public void setCurrentLevel (String name) {
         List<Level> levels = new ArrayList<Level>();
         for (Campaign campaign : campaigns) {
