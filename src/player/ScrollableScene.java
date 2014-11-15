@@ -143,10 +143,6 @@ public class ScrollableScene extends Scene {
         });
     }
 
-    public void addObjects (Group g) {
-        this.myBackground.addObjects(g);
-    }
-
     public void update () {
         myBackground.update();
     }

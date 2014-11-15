@@ -29,7 +29,15 @@ public class VisualManager {
 
     public void addBoxObserver (Observer o) {
         scene.addBoxObserver(o);
-        
+
+    }
+
+    public void addObjects (Group g) {
+        background.addObjects(g);
+    }
+
+    public ScrollableBackground getBackground () {
+        return background;
     }
 
 }

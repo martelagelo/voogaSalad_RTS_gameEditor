@@ -33,7 +33,7 @@ public class Engine implements Observer, Observable {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myGame = new Game(game);
         mySaveLoadUtility = saveLoadUtility;
-        myVisualManager = new VisualManager(myGame.getCurrentLevel().getGroup(), 600, 600);
+        myVisualManager = new VisualManager(new Group(), 600, 600);
     }
 
     public Group getVisualRepresentation () {
@@ -43,9 +43,11 @@ public class Engine implements Observer, Observable {
 
     public void selectLevel (String name) {
         myGame.setCurrentLevel(name);
-        myGameLoop = new GameLoop(myGame.getCurrentLevel());
+        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
         myElementManager = new GameElementManager(myGame.getCurrentLevel());
+        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
         myVisualManager.addBoxObserver(myElementManager);
+
     }
 
     public void play () {

@@ -8,7 +8,8 @@ import java.util.Observer;
 import java.util.stream.Collectors;
 import player.SelectionBox;
 
-public class GameElementManager implements Observer{
+
+public class GameElementManager implements Observer {
 
     private Level myLevel;
 
@@ -31,7 +32,7 @@ public class GameElementManager implements Observer{
     public void update (Observable o, Object arg) {
         if (o instanceof SelectionBox) {
             double[] points = ((SelectionBox) o).getPoints();
-            System.out.println(points[0]+" "+points[1]);
+            System.out.println(points[0] + " " + points[1]);
         }
     }
 }

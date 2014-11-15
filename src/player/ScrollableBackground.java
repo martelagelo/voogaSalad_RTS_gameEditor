@@ -1,10 +1,10 @@
 package player;
 
 import javafx.scene.Group;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 
 
-public class ScrollableBackground extends StackPane
+public class ScrollableBackground extends Pane
 {
     private double myXScrollSpeed, myYScrollSpeed;
     private double myXBoundary, myYBoundary;

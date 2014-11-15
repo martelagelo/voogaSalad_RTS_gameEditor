@@ -18,13 +18,16 @@ import javafx.scene.Node;
  */
 
 public class DrawableGameElementState extends GameElementState implements Boundable {
+    public static final String X_POS_STRING = "xPosition";
+    public static final String Y_POS_STRING = "yPosition";
+    
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
     private AnimationSequence myAnimation;
 
     public DrawableGameElementState (Number xPosition, Number yPosition) {
-        this.numericalAttributes.add(new Attribute<Number>("xPosition", xPosition));
-        this.numericalAttributes.add(new Attribute<Number>("yPosition", yPosition));
+        this.numericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
+        this.numericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
         myAnimations = new HashMap<>();
     }
 
@@ -35,8 +38,9 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public AnimationSequence getAnimation () {
         return myAnimation;
     }
-    //TODO remove this method
-    public void setAnimation(String animationName){
+
+    // TODO remove this method
+    public void setAnimation (String animationName) {
         myAnimation = myAnimations.get(animationName);
     }
 
