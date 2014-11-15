@@ -22,8 +22,6 @@ import javafx.scene.image.Image;
 public class DrawableGameElement extends GameElement implements Boundable {
 
     protected AnimationEngine visualRepresentation;
-    protected Map<String, ArrayList<DrawableGameElement>> interactingElements =
-            new HashMap<String, ArrayList<DrawableGameElement>>();
 
     public DrawableGameElement (Image image, Point2D position, String name) {
         this.textualAttributes.add(new Attribute<String>("Name", name));
