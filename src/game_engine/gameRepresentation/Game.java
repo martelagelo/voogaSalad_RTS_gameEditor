@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation;
 
-import game_engine.gameRepresentation.observableRepresentation.ObservableLevel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,5 +34,20 @@ public class Game {
                 .collect(Collectors.toList()).get(0);
 
         activeLevel.setActive();
+    }
+    
+    public Level getCurrentLevel () {
+        List<Level> levels = new ArrayList<Level>();
+        for (Campaign campaign : campaigns) {
+            for (Level level : campaign.getLevels()) {
+                levels.add(level);
+            }
+        }
+
+        Level activeLevel = levels.stream()
+                .filter(o -> o.isActive())
+                .collect(Collectors.toList()).get(0);
+
+        return activeLevel;
     }
 }

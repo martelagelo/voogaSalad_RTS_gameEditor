@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.observableRepresentation;
 
-import game_engine.gameRepresentation.Campaign;
 import game_engine.gameRepresentation.Describable;
 import game_engine.gameRepresentation.Game;
 import game_engine.gameRepresentation.Level;
@@ -30,18 +29,18 @@ public class ObservableGame implements Observable, Describable {
     }
 
     public ObservableLevel getCurrentLevel () {
-        List<Level> levels = new ArrayList<Level>();
-        for (Campaign campaign : myGame.getCampaigns()) {
-            for (Level level : campaign.getLevels()) {
+        List<ObservableLevel> levels = new ArrayList<ObservableLevel>();
+        for (ObservableCampaign campaign : campaigns) {
+            for (ObservableLevel level : campaign.levels) {
                 levels.add(level);
             }
         }
 
-        Level activeLevel = levels.stream()
+        ObservableLevel activeLevel = levels.stream()
                 .filter(o -> o.isActive())
                 .collect(Collectors.toList()).get(0);
 
-        return new ObservableLevel(activeLevel);
+        return activeLevel;
     }
 
     @Override

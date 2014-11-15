@@ -32,7 +32,9 @@ public class Engine implements Observer, Observable {
     }
 
     public void selectLevel (String name) {
-        // TODO: ??
+        myGame.setCurrentLevel(name);
+        myGameLoop = new GameLoop(myGame.getCurrentLevel());
+        myElementManager = new GameElementManager(myGame.getCurrentLevel());
     }
 
     public void play () {

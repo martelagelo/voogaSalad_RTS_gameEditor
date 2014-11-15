@@ -33,21 +33,6 @@ public class GameLoop {
         }
     };
 
-    private void filterObjects () {
-
-    }
-
-    public void init () {
-
-    }
-
-    /**
-     * Create the game's frame
-     */
-    public KeyFrame start (Double frameRate) {
-        return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
-    }
-
     public void update () {
         List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
         allElements.addAll(myCurrentLevel.getUnits());
@@ -61,6 +46,20 @@ public class GameLoop {
         for (SelectableGameElement selectableElement : myActiveElements) {
             selectableElement.update();
         }
+    }
+    
+    public KeyFrame start (Double frameRate) {
+        return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
+    }
+
+    public void play () {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void pause () {
+        // TODO Auto-generated method stub
+        
     }
 
 }
