@@ -2,6 +2,9 @@ package application;
 
 import game_engine.Engine;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
+import game_engine.gameRepresentation.stateRepresentation.CampaignState;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
@@ -11,8 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import player.ScrollableScene;
 import player.VisualManager;
 
 
@@ -30,9 +31,16 @@ public class ShittyMain extends Application {
     }
 
     private Game hardCodeAGame () {
-        SelectableGameElementState archer = new SelectableGameElementState(10,10);
+        SelectableGameElementState archerState = new SelectableGameElementState(10,10);
         
-        return null;
+        LevelState levelState = new LevelState();
+        levelState.addUnit(archerState);
+        CampaignState campaignState = new CampaignState();
+        campaignState.addLevel(levelState);
+        GameState gameState = new GameState();
+        gameState.addCampaign(campaignState);
+        Game game = new Game(gameState);
+        return game;
     }
 
     public static void main (String[] args) {

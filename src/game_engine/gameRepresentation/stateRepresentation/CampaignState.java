@@ -20,4 +20,8 @@ public class CampaignState {
         return levels;
     }
 
+    public void addLevel (LevelState level) {
+        levels.add(level);
+    }
+
 }

@@ -21,4 +21,8 @@ public class GameState {
         return campaigns;
     }
 
+    public void addCampaign (CampaignState campaign) {
+        campaigns.add(campaign);
+    }
+
 }
