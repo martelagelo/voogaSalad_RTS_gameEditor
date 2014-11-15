@@ -45,6 +45,7 @@ public class Engine implements Observer, Observable {
         myGame.setCurrentLevel(name);
         myGameLoop = new GameLoop(myGame.getCurrentLevel());
         myElementManager = new GameElementManager(myGame.getCurrentLevel());
+        myVisualManager.addBoxObserver(myElementManager);
     }
 
     public void play () {

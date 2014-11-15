@@ -1,5 +1,7 @@
 package player;
 
+import java.util.Observer;
+import game_engine.stateManaging.GameElementManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
@@ -23,6 +25,11 @@ public class VisualManager {
 
     public Group getVisualRepresentation () {
         return new Group(background.getChildren());
+    }
+
+    public void addBoxObserver (Observer o) {
+        scene.addBoxObserver(o);
+        
     }
 
 }

@@ -1,5 +1,6 @@
 package player;
 
+import java.util.Observer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -148,6 +149,10 @@ public class ScrollableScene extends Scene {
 
     public void update () {
         myBackground.update();
+    }
+
+    public void addBoxObserver (Observer o) {
+        mySelectionBox.addObserver(o);
     }
 
 }
