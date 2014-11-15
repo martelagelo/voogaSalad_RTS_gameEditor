@@ -10,14 +10,14 @@ import javafx.scene.image.ImageView;
 
 /**
  * An animation player that allows for the playing of animations using a given
- * spritesheet. This player assumes all spritesheets are given with a horizontally traversable sheet
+ * spritesheet. This p =  assumes all spritesheets are given with a horizontally traversable sheet
  *
  * @author Zach
  *
  */
 public class AnimationPlayer implements Updatable, Displayable {
 
-    private Point2D myTileSize;
+    private Dimension myTileSize;
     private Animation myCurrentAnimation;
     private int myNumCols;
     private ImageView myDisplay;
@@ -25,28 +25,18 @@ public class AnimationPlayer implements Updatable, Displayable {
     /**
      * Initialize the player
      *
-     * @param spriteSheet the image containing the spritesheet
+     * @param spriteSheet the image containing the spriteshee
      * @param tileSize a point2D containing the width(x) and height(y) of each frame in the
      *        spritesheet
      * @param numCols the number of columns across the spritesheet goes before moving to the next
      *        row
      */
-    public AnimationPlayer (Image spriteSheet, Point2D tileSize, int numCols) {
+    public AnimationPlayer (Image spriteSheet, Dimension tileSize, int numCols) {
         myTileSize = tileSize;
         myNumCols = numCols;
         myDisplay = new ImageView(spriteSheet);
-        myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getX(), tileSize.getY()));
+        myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(), tileSize.getHeight()));
 
-    }
-
-    /**
-     * Initialize the animation engine with a given collection of animations
-     */
-    public AnimationPlayer (Image spriteSheet,
-                            Point2D tileSize,
-                            int numCols,
-                            Collection<Animation> animations) {
-        this(spriteSheet, tileSize, numCols);
     }
 
     /**
@@ -98,8 +88,8 @@ public class AnimationPlayer implements Updatable, Displayable {
     private Rectangle2D getViewport (int frameNumber) {
         int colNumber = frameNumber % myNumCols;
         int rowNumber = frameNumber / myNumCols;
-        return new Rectangle2D(colNumber * myTileSize.getX(), rowNumber * myTileSize.getY(),
-                               (colNumber + 1) * myTileSize.getX(), (rowNumber + 1) *
-                                                                    myTileSize.getY());
+        return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber * myTileSize.getHeight(),
+                               (colNumber + 1) * myTileSize.getWidth(), (rowNumber + 1) *
+                                                                    myTileSize.getHeight());
     }
 }
