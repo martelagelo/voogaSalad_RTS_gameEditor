@@ -1,19 +1,23 @@
 package test.util;
 
 import java.io.IOException;
+
 import org.junit.Test;
+
+import util.JSONable;
 import util.LoadUtility;
 
 /**
  * Test class to verify object creation from reading JSON files.
- * @author Rahul Harikrishnan
+ * @author Rahul
  *
  */
 public class TestLoadUtility {
     private LoadUtility myLoadUtility = new LoadUtility();
     @Test
     public void testLoadFunction () throws IOException {
-        TestDescribable campaign = myLoadUtility.loadResource("campaign.json", TestCampaign.class);
-        System.out.println(campaign.myDescription);
+        TestCampaign campaign = myLoadUtility.<TestCampaign> loadResource("campaign.json");
+        TestCampaign foo = (TestCampaign) campaign;
+        System.out.println(foo.myDescription);
     }
 }

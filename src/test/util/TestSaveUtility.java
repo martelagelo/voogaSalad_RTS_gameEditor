@@ -6,7 +6,7 @@ import util.SaveUtility;
 
 /**
  * Test class to verify JSON-rendered object output to the file.
- * @author Rahul Harikrishnan
+ * @author Rahul
  *
  */
 public class TestSaveUtility {
