@@ -27,19 +27,23 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         this.numericalAttributes.add(new Attribute<Number>("yPosition", yPosition));
         myAnimations = new HashMap<>();
     }
-    public void addAnimation(AnimationSequence animation){
+
+    public void addAnimation (AnimationSequence animation) {
         myAnimations.put(animation.toString(), animation);
     }
 
-    public AnimationSequence getAnimation(){
+    public AnimationSequence getAnimation () {
         return myAnimation;
     }
-    public void setSpritesheet(Spritesheet spritesheet){
+
+    public void setSpritesheet (Spritesheet spritesheet) {
         mySpritesheet = spritesheet;
     }
-    public Spritesheet getSpritesheet(){
+
+    public Spritesheet getSpritesheet () {
         return mySpritesheet;
     }
+
     @Override
     public Bounds getBounds () {
         return null;

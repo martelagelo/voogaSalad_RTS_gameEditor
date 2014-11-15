@@ -103,7 +103,7 @@ public class AnimationPlayer implements Updatable, Displayable {
         int colNumber = frameNumber % myNumCols;
         int rowNumber = frameNumber / myNumCols;
         return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
-                               myTileSize.getHeight(),
+                                                                  myTileSize.getHeight(),
                                myTileSize.getWidth(),
                                myTileSize.getHeight());
     }

@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class Game {
-    
+
     private GameState myGameState;
     public List<Campaign> campaigns;
 
@@ -15,7 +16,7 @@ public class Game {
         campaigns = new ArrayList<Campaign>();
         myGameState.getCampaigns().stream().forEach(c -> campaigns.add(new Campaign(c)));
     }
-    
+
     public Level getCurrentLevel () {
         List<Level> levels = new ArrayList<Level>();
         for (Campaign campaign : campaigns) {

@@ -11,6 +11,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 
 
 /**
@@ -28,12 +29,11 @@ public class Engine implements Observer, Observable {
     private Object mySaveLoadUtility;
     private VisualManager myVisualManager;
 
-    public Engine (GameState game, Object saveLoadUtility, VisualManager vm) {
+    public Engine (GameState game, Object saveLoadUtility) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myGame = new Game(game);
         mySaveLoadUtility = saveLoadUtility;
-        myVisualManager = vm;
-        
+        myVisualManager = new VisualManager(myGame.getCurrentLevel().getGroup(), 600, 600);
     }
 
     public Group getVisualRepresentation () {
@@ -56,8 +56,8 @@ public class Engine implements Observer, Observable {
     }
 
     public void save () {
-        //TODO save stuff
-        //mySaveLoadUtility.save(myGame);
+        // TODO save stuff
+        // mySaveLoadUtility.save(myGame);
     }
 
     public void load (GameState game) {
@@ -81,5 +81,9 @@ public class Engine implements Observer, Observable {
     public void update (java.util.Observable arg0, Object arg1) {
         // TODO Auto-generated method stub
 
+    }
+
+    public Scene getScene () {
+        return myVisualManager.getScene();
     }
 }

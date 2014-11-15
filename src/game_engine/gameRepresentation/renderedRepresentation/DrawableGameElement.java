@@ -9,30 +9,33 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 
-//TODO comment
+// TODO comment
 /**
  * 
  * @author Zach
  *
  */
-public class DrawableGameElement implements Displayable{
+public class DrawableGameElement implements Displayable {
 
     private DrawableGameElementState state;
     private AnimationPlayer player;
 
     public DrawableGameElement (DrawableGameElementState element) {
         Spritesheet spritesheet = element.getSpritesheet();
-        player = new AnimationPlayer(new Image(spritesheet.imageTag),spritesheet.frameDimensions,spritesheet.numCols);
+        player =
+                new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
+                                    spritesheet.numCols);
     }
 
     public void update () {
         state.update();
-        //Use polling because java.util.observable requires inheritance
-        //and javafx.beans.observable isn't serializable
+        // Use polling because java.util.observable requires inheritance
+        // and javafx.beans.observable isn't serializable
         player.setAnimation(state.getAnimation());
         player.update();
     }
-    public void setAnimation(AnimationSequence animation){
+
+    public void setAnimation (AnimationSequence animation) {
         player.setAnimation(animation);
     }
 

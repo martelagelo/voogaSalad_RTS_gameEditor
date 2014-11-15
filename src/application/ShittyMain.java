@@ -1,4 +1,4 @@
-package application;
+    package application;
 
 import game_engine.Engine;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
@@ -23,14 +23,10 @@ import player.VisualManager;
 public class ShittyMain extends Application {
     @Override
     public void start (Stage primaryStage) {
-        Group g = new Group();
         
-        VisualManager manager = new VisualManager(g, 600, 600);
         Object saveLoadUtility = new Object(); // loololol
-        
-       
-        Engine engine = new Engine(hardCodeAGame(),saveLoadUtility, manager);
-        primaryStage.setScene(manager.getScene());
+        Engine engine = new Engine(hardCodeAGame(),saveLoadUtility);
+        primaryStage.setScene(engine.getScene());
         primaryStage.show();
         
         

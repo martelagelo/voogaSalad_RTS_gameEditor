@@ -6,6 +6,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.Group;
 
 
 public class Level {
@@ -13,6 +14,7 @@ public class Level {
     public String name;
     public String description;
     private LevelState myLevelState;
+    private Group myGroup;
     private List<DrawableGameElement> terrain;
     private List<SelectableGameElement> units;
     private List<GameElementState> goals;
@@ -29,6 +31,13 @@ public class Level {
             units.add(new SelectableGameElement(element));
         }
         goals.addAll(level.getGoal());
+
+        List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
+        allElements.addAll(units);
+        allElements.addAll(terrain);
+        for (DrawableGameElement element : allElements) {
+            myGroup.getChildren().add(element.getNode());
+        }
     }
 
     public List<DrawableGameElement> getTerrain () {
@@ -49,6 +58,10 @@ public class Level {
 
     public void setActive () {
         myLevelState.setActive();
+    }
+
+    public Group getGroup () {
+        return myGroup;
     }
 
 }

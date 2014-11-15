@@ -17,9 +17,10 @@ public class CampaignState {
     public String description;
     private List<LevelState> levels;
 
-    public CampaignState(){
+    public CampaignState () {
         levels = new ArrayList<>();
     }
+
     public List<LevelState> getLevels () {
         return levels;
     }

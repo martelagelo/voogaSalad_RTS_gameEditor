@@ -31,7 +31,7 @@ public class VisualTester extends Application {
     public void start (Stage primaryStage) {
         Group display = getDisplay();
         Bounds bounds = display.getLayoutBounds();
-        Scene scene = new Scene(display, bounds.getWidth(),bounds.getHeight());
+        Scene scene = new Scene(display, bounds.getWidth(), bounds.getHeight());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -43,10 +43,10 @@ public class VisualTester extends Application {
     protected Group getDisplay () {
         Group group = new Group();
         Image image = new Image("resources/img/exploBig.png");
-        AnimationPlayer player = new AnimationPlayer(image,new Dimension(40,40),7);
-        AnimationSequence animation = new AnimationSequence("explode",0,13,true,0.01);
+        AnimationPlayer player = new AnimationPlayer(image, new Dimension(40, 40), 7);
+        AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
         player.setAnimation(animation);
-        Duration oneFrameAmt = Duration.millis(1000/60);
+        Duration oneFrameAmt = Duration.millis(1000 / 60);
         final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
                                                new EventHandler<ActionEvent>() {
                                                    @Override
@@ -61,9 +61,9 @@ public class VisualTester extends Application {
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(oneFrame);
         timeline.playFromStart();
-        
+
         group.getChildren().add(player.getNode());
-        
+
         return group;
     }
 
