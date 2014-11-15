@@ -2,14 +2,10 @@ package application;
 
 import game_engine.Engine;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -57,7 +53,8 @@ public class ShittyMain extends Application {
     }
 
     private Game hardCodeAGame () {
-        // TODO Auto-generated method stub
+        SelectableGameElementState archer = new SelectableGameElementState(10,10);
+        
         return null;
     }
 
