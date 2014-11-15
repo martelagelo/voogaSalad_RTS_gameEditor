@@ -4,11 +4,13 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import com.sun.istack.internal.NotNull;
 
 
 /**
  * An animation player that allows for the playing of animations using a given
- * spritesheet. This p = assumes all spritesheets are given with a horizontally traversable sheet
+ * spritesheet. This utility assumes all spritesheets are given with a horizontally traversable
+ * sheet
  *
  * @author Zach
  *
@@ -38,22 +40,32 @@ public class AnimationPlayer implements Updatable, Displayable {
         myImageBounds = getImageBounds(spriteSheet);
 
     }
-    //TODO comment
-    private Rectangle2D getImageBounds(Image img){
-        return new Rectangle2D(0,0,img.getWidth(),img.getHeight());
-        
+
+    /**
+     * Get a rectangular bounds of an image based on its dimensions
+     *
+     * @param img the image of interest
+     * @return the bounds
+     */
+    private Rectangle2D getImageBounds (Image img) {
+        return new Rectangle2D(0, 0, img.getWidth(), img.getHeight());
+
     }
-    
 
     /**
      * Set and play the current animation
      *
      * @param animation the current animation
-     * @return true
      */
-    public boolean setAnimation (AnimationSequence animation) {
+    public void setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;
-        return true;
+    }
+
+    /**
+     * Set the animation to be played once the current animation completes
+     */
+    public void setNextAnimation (@NotNull AnimationSequence animation) {
+        myCurrentAnimation.setNextAnimation(animation);
     }
 
     /**
@@ -76,15 +88,12 @@ public class AnimationPlayer implements Updatable, Displayable {
         }
         // Get a viewport and make sure it fits
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
-        System.out.println("Viewport: "+viewport.getMinX()+"  "+viewport.getMinY()+"  "+viewport.getMaxX()+"  "+viewport.getMaxY());
-        System.out.println("Image: "+myImageBounds.getMinX()+"  "+myImageBounds.getMinY()+"  "+myImageBounds.getMaxX()+"  "+myImageBounds.getMaxY());
         if (!myImageBounds.contains(viewport))
             return false;
         // Set the display viewport to the new viewport
         myDisplay.setViewport(viewport);
         return true;
     }
-    
 
     /**
      * Creates and returns a viewport based on a frame number. Assumes horizontal traversal of
@@ -94,8 +103,8 @@ public class AnimationPlayer implements Updatable, Displayable {
         int colNumber = frameNumber % myNumCols;
         int rowNumber = frameNumber / myNumCols;
         return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
-                                                                  myTileSize.getHeight(),
-                               (colNumber + 1) * myTileSize.getWidth(), (rowNumber + 1) *
-                                                                        myTileSize.getHeight());
+                               myTileSize.getHeight(),
+                               myTileSize.getWidth(),
+                               myTileSize.getHeight());
     }
 }

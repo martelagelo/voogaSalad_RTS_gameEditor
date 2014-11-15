@@ -3,6 +3,7 @@ package test.animations;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.Dimension;
+import game_engine.visuals.NullAnimationSequence;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -42,16 +43,15 @@ public class VisualTester extends Application {
     protected Group getDisplay () {
         Group group = new Group();
         Image image = new Image("resources/img/exploBig.png");
-        //ImageView imageView = new ImageView(image);
-        AnimationPlayer player = new AnimationPlayer(image,new Dimension(40,40),5);
-        AnimationSequence animation = new AnimationSequence("exprode",0,6,true);
+        AnimationPlayer player = new AnimationPlayer(image,new Dimension(40,40),7);
+        AnimationSequence animation = new AnimationSequence("explode",0,13,true,0.01);
         player.setAnimation(animation);
-        Duration oneFrameAmt = Duration.millis(1000);
+        Duration oneFrameAmt = Duration.millis(1000/60);
         final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
                                                new EventHandler<ActionEvent>() {
                                                    @Override
                                                    public void handle (ActionEvent event) {
-                                                       System.out.println(player.update());
+                                                       player.update();
                                                    }
                                                });
 
