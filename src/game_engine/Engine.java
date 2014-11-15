@@ -1,6 +1,7 @@
 package game_engine;
 
 import game_engine.gameRepresentation.Game;
+import game_engine.gameRepresentation.renderedRepresentation.RenderedLevel;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import java.util.Observer;
@@ -21,9 +22,11 @@ public class Engine implements Observer, Observable {
     private Game myGame;
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
+    private Object mySaveLoadUtility;
 
-    public Engine (Game game) {
+    public Engine (Game game, Object saveLoadUtility) {
         myGame = game;
+        mySaveLoadUtility = saveLoadUtility;
     }
 
     public Node getVisualRepresentation () {
@@ -32,22 +35,21 @@ public class Engine implements Observer, Observable {
     }
 
     public void selectLevel (String name) {
-        // TODO: ??
+        myGame.setCurrentLevel(name);
+        myGameLoop = new GameLoop(new RenderedLevel(myGame.getCurrentLevel()));
+        myElementManager = new GameElementManager(myGame.getCurrentLevel());
     }
 
     public void play () {
-        // TODO Auto-generated method stub
-
+        myGameLoop.play();
     }
 
     public void pause () {
-        // TODO Auto-generated method stub
-
-    }
+        myGameLoop.pause();
+    }   
 
     public void save () {
-        // TODO Auto-generated method stub
-
+        mySaveLoadUtility.save(myGame);
     }
 
     public void load (Game game) {

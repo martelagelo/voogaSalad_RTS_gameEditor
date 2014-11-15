@@ -32,4 +32,8 @@ public class ObservableLevel implements Observable {
 
     }
 
+    public boolean isActive () {
+        return myLevel.isActive();
+    }
+
 }
