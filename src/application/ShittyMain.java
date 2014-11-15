@@ -30,11 +30,6 @@ public class ShittyMain extends Application {
 
         Group gameObjects = new Group();
 
-        SelectableGameElementState el =
-                new SelectableGameElementState(new Image("resources/img/EnemyCombat_Right.png"),
-                                               new Point2D(0, 0), "unit1");
-        gameObjects.getChildren().add(el.getVisibleRepresentation());
-
         ScrollableScene scrollingScene = new ScrollableScene(g, 600, 600);
         scrollingScene.addObjects(gameObjects);
 
