@@ -42,8 +42,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     }
     @Override
     public Bounds getBounds () {
-        //TODO fix
-        return visualRepresentation.getBounds();
+        return null;
     }
 
 }

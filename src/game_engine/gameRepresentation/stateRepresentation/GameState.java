@@ -16,7 +16,9 @@ public class GameState {
     public String name;
     public String description;
     private List<CampaignState> campaigns;
-
+    public GameState(){
+        campaigns = new ArrayList<>();
+    }
     public List<CampaignState> getCampaigns () {
         return campaigns;
     }

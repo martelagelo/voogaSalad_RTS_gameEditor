@@ -4,6 +4,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,6 +18,9 @@ public class Level {
     private List<GameElementState> goals;
 
     public Level (LevelState level) {
+        terrain = new ArrayList<>();
+        units = new ArrayList<>();
+        goals = new ArrayList<>();
         myLevelState = level;
         for (DrawableGameElementState element : level.getTerrain()) {
             terrain.add(new DrawableGameElement(element));

@@ -44,10 +44,4 @@ public class DrawableGameElement implements Displayable{
     public Node getNode () {
         return player.getNode();
     }
-
-    @Override
-    public void update (Observable o, Object arg) {
-        // TODO Auto-generated method stub
-        
-    }
 }

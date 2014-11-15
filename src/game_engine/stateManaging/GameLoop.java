@@ -24,8 +24,8 @@ public class GameLoop {
 
     public GameLoop (Level level) {
         myCurrentLevel = level;
-        myComputerList.add(new CollisionComputer());
-        myComputerList.add(new VisionComputer());
+       // myComputerList.add(new CollisionComputer());
+        //myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         
     }

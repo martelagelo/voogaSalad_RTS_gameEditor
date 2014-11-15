@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.stateRepresentation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,6 +17,9 @@ public class CampaignState {
     public String description;
     private List<LevelState> levels;
 
+    public CampaignState(){
+        levels = new ArrayList<>();
+    }
     public List<LevelState> getLevels () {
         return levels;
     }

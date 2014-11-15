@@ -28,9 +28,9 @@ public class Engine implements Observer, Observable {
     private Object mySaveLoadUtility;
     private VisualManager myVisualManager;
 
-    public Engine (Game game, Object saveLoadUtility, VisualManager vm) {
+    public Engine (GameState game, Object saveLoadUtility, VisualManager vm) {
         // TODO hard-coding the visual representation for now, should remove this dependency
-        myGame = game;
+        myGame = new Game(game);
         mySaveLoadUtility = saveLoadUtility;
         myVisualManager = vm;
         
@@ -56,7 +56,8 @@ public class Engine implements Observer, Observable {
     }
 
     public void save () {
-        mySaveLoadUtility.save(myGame);
+        //TODO save stuff
+        //mySaveLoadUtility.save(myGame);
     }
 
     public void load (GameState game) {
