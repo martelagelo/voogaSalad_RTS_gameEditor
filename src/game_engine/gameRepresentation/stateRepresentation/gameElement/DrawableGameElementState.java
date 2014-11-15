@@ -35,6 +35,10 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public AnimationSequence getAnimation () {
         return myAnimation;
     }
+    //TODO remove this method
+    public void setAnimation(String animationName){
+        myAnimation = myAnimations.get(animationName);
+    }
 
     public void setSpritesheet (Spritesheet spritesheet) {
         mySpritesheet = spritesheet;

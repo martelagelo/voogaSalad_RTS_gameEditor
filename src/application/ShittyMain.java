@@ -26,6 +26,7 @@ public class ShittyMain extends Application {
         
         Object saveLoadUtility = new Object(); // loololol
         Engine engine = new Engine(hardCodeAGame(),saveLoadUtility);
+        engine.selectLevel("FuckYouSteve");
         primaryStage.setScene(engine.getScene());
         primaryStage.show();
         
@@ -36,9 +37,11 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState = new SelectableGameElementState(10,10);
         archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",new Dimension(40,40),7));
         archerState.addAnimation(new AnimationSequence("Walk",0,13,true));
-        
+        archerState.setAnimation("Walk");
         LevelState levelState = new LevelState();
+        levelState.setActive();
         levelState.addUnit(archerState);
+        levelState.name = "FuckYouSteve";
         CampaignState campaignState = new CampaignState();
         campaignState.addLevel(levelState);
         GameState gameState = new GameState();
