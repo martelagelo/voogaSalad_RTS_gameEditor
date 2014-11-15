@@ -2,13 +2,9 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.computers.boundsComputer.Boundable;
 import game_engine.visuals.AnimationPlayer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import game_engine.visuals.Spritesheet;
 import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 
 
 /**
@@ -22,12 +18,11 @@ import javafx.scene.image.Image;
 public class DrawableGameElementState extends GameElementState implements Boundable {
 
     protected AnimationPlayer visualRepresentation;
+    protected Spritesheet spriteSheet;
 
-    public DrawableGameElementState (Image image, Point2D position, String name) {
-        this.textualAttributes.add(new Attribute<String>("Name", name));
-        // this.visualRepresentation.setTranslateX(position.getX());
-        // this.visualRepresentation.setTranslateY(position.getY());
-        // this.visualRepresentation.getChildren().add(new ImageView(image));
+    public DrawableGameElementState (Number xPosition, Number yPosition) {
+        this.numericalAttributes.add(new Attribute<Number>("xPosition", xPosition));
+        this.numericalAttributes.add(new Attribute<Number>("yPosition", yPosition));
     }
 
     @Override

@@ -29,8 +29,9 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     protected Map<String, ArrayList<DrawableGameElementState>> interactingElements =
             new HashMap<String, ArrayList<DrawableGameElementState>>();
 
-    public SelectableGameElementState (Image image, Point2D position, String name) {
-        super(image, position, name);
+    public SelectableGameElementState (Number xPosition, Number yPosition) {
+        super(xPosition, yPosition);
+        // TODO Auto-generated constructor stub
     }
 
     public void update () {
