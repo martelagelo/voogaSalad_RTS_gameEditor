@@ -4,7 +4,7 @@ package game_engine.visuals;
  * A basic animation. Keeps track of progress, the frame bounds, and the animation that will be
  * played after it
  *
- * @author Zach
+ * @author Zachary Bears
  *
  */
 public class AnimationSequence implements Updatable {
@@ -14,6 +14,8 @@ public class AnimationSequence implements Updatable {
     private int myCurrentFrame;
     private String myName;
     private AnimationSequence myNextAnimation;
+    private double mySlownessMultiplier;
+    private int myFrameCounter;
 
     /**
      * Initialize the animation
@@ -26,7 +28,24 @@ public class AnimationSequence implements Updatable {
         myStartFrame = startFrame;
         myStopFrame = stopFrame;
         myName = name;
-        myNextAnimation = repeats ? this : new NullAnimation();
+        mySlownessMultiplier = 1;
+        myNextAnimation = repeats ? this : new NullAnimationSequence();
+    }
+
+    /**
+     * Initialize the animation and insert a multiplier for slowness
+     *
+     * @param slownessMultiplier a multiplier for the speed of the animation. Must be less than 1.
+     */
+    public AnimationSequence (String name,
+                              int startFrame,
+                              int stopFrame,
+                              boolean repeats,
+                              double slownessMultiplier) {
+        this(name, startFrame, stopFrame, repeats);
+        if (slownessMultiplier < 1) {
+            mySlownessMultiplier = slownessMultiplier;
+        }
     }
 
     /**
@@ -73,11 +92,18 @@ public class AnimationSequence implements Updatable {
      */
     @Override
     public boolean update () {
-        if (myCurrentFrame < myStopFrame) {
-            myCurrentFrame++;
-            return false;
+        if (myFrameCounter < 1 / mySlownessMultiplier) {
+            myFrameCounter++;
         }
-        return true;
+        else {
+            myFrameCounter = 0;
+            if (myCurrentFrame < myStopFrame) {
+                myCurrentFrame++;
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
