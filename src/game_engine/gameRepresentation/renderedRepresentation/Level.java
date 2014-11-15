@@ -11,12 +11,13 @@ public class Level {
 
     public String name;
     public String description;
-    private boolean isActiveLevel = false;
+    private LevelState myLevelState;
     private List<DrawableGameElement> terrain;
     private List<SelectableGameElement> units;
     private List<GameElementState> goals;
 
     public Level (LevelState level) {
+        myLevelState = level;
         for (DrawableGameElementState element : level.getTerrain()) {
             terrain.add(new DrawableGameElement(element));
         }
@@ -36,6 +37,14 @@ public class Level {
 
     public List<GameElementState> getGoal () {
         return goals;
+    }
+
+    public boolean isActive () {
+        return myLevelState.isActive();
+    }
+
+    public void setActive () {
+        myLevelState.setActive();
     }
 
 }

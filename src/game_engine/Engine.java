@@ -1,5 +1,6 @@
 package game_engine;
 
+import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.stateManaging.GameElementManager;
@@ -19,12 +20,12 @@ import javafx.scene.Node;
  */
 public class Engine implements Observer, Observable {
 
-    private GameState myGame;
+    private Game myGame;
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
     private Object mySaveLoadUtility;
 
-    public Engine (GameState game, Object saveLoadUtility) {
+    public Engine (Game game, Object saveLoadUtility) {
         myGame = game;
         mySaveLoadUtility = saveLoadUtility;
     }
@@ -36,8 +37,8 @@ public class Engine implements Observer, Observable {
 
     public void selectLevel (String name) {
         myGame.setCurrentLevel(name);
-        myGameLoop = new GameLoop(new Level(myGame.getCurrentLevel()));
-        myElementManager = new GameElementManager(new Level(myGame.getCurrentLevel()));
+        myGameLoop = new GameLoop(myGame.getCurrentLevel());
+        myElementManager = new GameElementManager(myGame.getCurrentLevel());
     }
 
     public void play () {

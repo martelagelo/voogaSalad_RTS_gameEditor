@@ -1,26 +1,22 @@
 package application;
 
-import visualComponents.ScrollableScene;
+import game_engine.Engine;
+import game_engine.gameRepresentation.renderedRepresentation.Game;
+import game_engine.inputManagers.InputEvent;
+import game_engine.inputManagers.InputHandler;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import game_engine.gameRepresentation.stateRepresentation.LevelState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.inputManagers.InputEvent;
-import game_engine.inputManagers.InputHandler;
-import game_engine.stateManaging.GameElementManager;
-import game_engine.stateManaging.GameLoop;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import visualComponents.ScrollableScene;
 
 
 public class ShittyMain extends Application {
@@ -48,10 +44,20 @@ public class ShittyMain extends Application {
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(oneFrame);
         timeline.playFromStart();
+        
+        Object saveLoadUtility = new Object(); // loololol
+        
+        Game game = hardCodeAGame();
+        Engine engine = new Engine(game,saveLoadUtility);
 
         primaryStage.setScene(scrollingScene);
         shittyRun(gameObjects);
         primaryStage.show();
+    }
+
+    private Game hardCodeAGame () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     public static void main (String[] args) {
@@ -63,9 +69,6 @@ public class ShittyMain extends Application {
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
 
-        LevelState currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new LevelState();
-        new GameLoop(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-        new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
 
         // Add the input handler to the group
         InputHandler handler = new InputHandler(g);
@@ -75,12 +78,6 @@ public class ShittyMain extends Application {
                             .setRotate(group.getChildren().get(0).getRotate() + 20);
                     System.out.println("Clicked");
                 });
-        GameLoop gameLoop = new GameLoop(
-                                         currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-        GameElementManager elementManager =
-                new GameElementManager(
-                                       currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-
     }
 
 }
