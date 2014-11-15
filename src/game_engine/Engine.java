@@ -6,9 +6,10 @@ import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import java.util.Observer;
-import visualComponents.VisualManager;
+import player.VisualManager;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.scene.Group;
 import javafx.scene.Node;
 
 
@@ -27,14 +28,17 @@ public class Engine implements Observer, Observable {
     private Object mySaveLoadUtility;
     private VisualManager myVisualManager;
 
-    public Engine (Game game, Object saveLoadUtility) {
+    public Engine (Game game, Object saveLoadUtility, VisualManager vm) {
+        // TODO hard-coding the visual representation for now, should remove this dependency
         myGame = game;
         mySaveLoadUtility = saveLoadUtility;
+        myVisualManager = vm;
+        
     }
 
-    public Node getVisualRepresentation () {
+    public Group getVisualRepresentation () {
         // TODO: figure out what stores our shit
-        return;
+        return myVisualManager.getVisualRepresentation();
     }
 
     public void selectLevel (String name) {

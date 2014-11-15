@@ -4,6 +4,7 @@ import game_engine.Engine;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
+import player.ScrollableScene;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import visualComponents.ScrollableScene;
 
 
 public class ShittyMain extends Application {
