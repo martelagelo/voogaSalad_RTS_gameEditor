@@ -8,6 +8,9 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
+import game_engine.visuals.AnimationSequence;
+import game_engine.visuals.Dimension;
+import game_engine.visuals.Spritesheet;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -32,6 +35,8 @@ public class ShittyMain extends Application {
 
     private Game hardCodeAGame () {
         SelectableGameElementState archerState = new SelectableGameElementState(10,10);
+        archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",new Dimension(40,40),7));
+        archerState.addAnimation(new AnimationSequence("Walk",0,13,true));
         
         LevelState levelState = new LevelState();
         levelState.addUnit(archerState);
