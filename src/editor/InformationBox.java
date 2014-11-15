@@ -1,16 +1,15 @@
 package editor;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import view.GUIController;
@@ -19,24 +18,13 @@ import view.GUIController;
 public class InformationBox implements GUIController {
 
     private SimpleStringProperty myIconButtonText = new SimpleStringProperty("Load Icon");
-    private SimpleStringProperty myIconLabelText = new SimpleStringProperty("/{filepath}");
-    
-    @FXML
-    private VBox infoRoot;
-    @FXML
-    private Label nameLabel;
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private Label descriptionLabel;
-    @FXML
-    private TextArea descriptionTextArea;
-    @FXML
-    private ImageView iconImageView;
-    @FXML
-    private Label iconLabel;
-    @FXML
-    private Button iconFileChooserButton;
+
+    @FXML private VBox infoRoot;
+    @FXML private TextField nameTextField;
+    @FXML private TextArea descriptionTextArea;
+    @FXML private ImageView iconImageView;
+    @FXML private Label iconLabel;
+    @FXML private Button iconFileChooserButton;
 
     @Override
     @FXML
@@ -45,32 +33,35 @@ public class InformationBox implements GUIController {
         initLabelInputSwitching();
     }
 
+    /**
+     * 
+     * @param name
+     * @param description
+     * @param iconFilePath
+     * @param icon
+     */
+    public void setInfo (String name, String description, String iconFilePath, Image icon) {
+        nameTextField.setText(name);;
+        descriptionTextArea.setText(description);
+        iconLabel.setText(iconFilePath);
+        iconImageView.setImage(icon);
+    }
+
     private void initIconFileChoosing () {
         iconFileChooserButton.textProperty().bind(myIconButtonText);
         iconFileChooserButton.setOnAction(e -> System.out.println("clicked!"));
-        iconLabel.textProperty().bind(myIconLabelText);
     }
 
     private void initLabelInputSwitching () {
-        nameLabel.setText("1");
-        nameTextField.setEditable(false);
-        
-        nameLabel.setOnMouseClicked(e->{
-            nameLabel.setVisible(false);
-            nameTextField.setVisible(true);
-            nameTextField.requestFocus();
-        });
-        nameTextField.setOnMouseClicked(e->{
-            nameTextField.setEditable(true);
-        });
-        nameTextField.focusedProperty().addListener((e,oldVal,newVal)->{
-            if (!newVal) {
-                //nameTextField.setVisible(false);
-                nameLabel.setText(nameTextField.getText());
-                nameLabel.setVisible(true);
-                nameTextField.setEditable(false);
-            }
-        });
+        setEditableToggle(nameTextField);
+        setEditableToggle(descriptionTextArea);
+    }
+
+    //TODO: in CSS style such that looks different depending on editable or not
+    private void setEditableToggle(TextInputControl textInputControl) {
+        textInputControl.setEditable(false);
+        textInputControl.setOnMouseClicked(e->textInputControl.setEditable(true));
+        textInputControl.focusedProperty().addListener((e,oldVal,newVal)->textInputControl.setEditable(newVal));
     }
 
     @Override

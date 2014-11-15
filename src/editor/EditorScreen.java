@@ -2,15 +2,17 @@ package editor;
 
 import java.util.HashMap;
 import java.util.Optional;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.GUIController;
@@ -24,7 +26,7 @@ import view.GUILoadStyleUtility;
  *
  */
 public class EditorScreen implements GUIController {
-
+    
     @FXML private TabPane tabPane;
     @FXML private TreeView<String> projectExplorer;
     @FXML private ProjectExplorerController projectExplorerController;
@@ -65,7 +67,9 @@ public class EditorScreen implements GUIController {
     }
 
     private void initGameInfoVBox () {
-
+        String val = projectExplorerController.selectedProjectItemProperty().get();
+        Image icon = new Image("file:\\C:\\Users\\Jonathan Tseng\\Desktop\\Duke Schedule.jpg");
+        gameInfoBoxController.setInfo(val, val, val, icon);
     }
 
     private void initTabs () {

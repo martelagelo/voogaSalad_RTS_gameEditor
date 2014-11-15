@@ -9,10 +9,8 @@
 <VBox fx:id="infoRoot" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="editor.InformationBox">
 	<children>
-		<Label fx:id="nameLabel" />
-		<TextField fx:id="nameTextField" visible="false" />
-		<Label fx:id="descriptionLabel" />
-		<TextArea fx:id="descriptionTextArea" visible="false" />
+		<TextField fx:id="nameTextField"/>
+		<TextArea fx:id="descriptionTextArea"/>
 		<HBox>
 			<children>
 				<ImageView fx:id="iconImageView" pickOnBounds="true"

@@ -1,11 +1,10 @@
 package editor;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,24 +34,14 @@ public class ProjectExplorerController implements GUIController {
         myCampaigns = myGameNode.getChildren();
         myLevelMap = new HashMap<>();
         myTreeView.setRoot(myGameNode);
+        myTreeView.getSelectionModel().select(myGameNode);
         initListeners();
     }
 
-    private void initListeners() {
-        myTreeView.setOnMouseClicked(e->itemClicked(e));
-        myTreeView
-        .getSelectionModel()
-        .selectedItemProperty()
-        .addListener(e->mySelectionChangedConsumer.accept(myTreeView.getSelectionModel().getSelectedItem().getValue()));
+    public ObjectProperty<String> selectedProjectItemProperty() {
+        return myTreeView.getSelectionModel().selectedItemProperty().get().valueProperty();
     }
-
-    private void itemClicked(MouseEvent mouseEvent) {
-        if (mouseEvent.getClickCount() == 2) {
-            ProjectExplorerTreeItem<String> selected = (ProjectExplorerTreeItem<String>) myTreeView.getSelectionModel().getSelectedItem();
-            selected.onClicked(selected);
-        }
-    }
-
+    
     public void bindGameName(SimpleStringProperty gameName) {
         myGameNode.valueProperty().bind(gameName);
     }
@@ -89,6 +78,21 @@ public class ProjectExplorerController implements GUIController {
                 });
             });
         });
+    }
+    
+    private void initListeners() {
+        myTreeView.setOnMouseClicked(e->itemClicked(e));
+        myTreeView
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(e->mySelectionChangedConsumer.accept(myTreeView.getSelectionModel().getSelectedItem().getValue()));
+    }
+
+    private void itemClicked(MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 2) {
+            ProjectExplorerTreeItem<String> selected = (ProjectExplorerTreeItem<String>) myTreeView.getSelectionModel().getSelectedItem();
+            selected.onClicked(selected);
+        }
     }
 
     @Override
