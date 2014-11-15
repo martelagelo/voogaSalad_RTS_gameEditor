@@ -29,44 +29,10 @@ public class SelectableGameElement extends DrawableGameElement implements
 
     protected Map<String, Map<String, ObscureAction>> allAbilityRepresentations;
     private Map<String, ObscureAction> currentAbilityRepresentation;
-    protected Node informationRepresentation;
+    protected Object visualRepresentation;
 
     public SelectableGameElement (Image image, Point2D position, String name) {
         super(image, position, name);
-    }
-
-    @Override
-    public Polygon getVisionPolygon () {
-        Polygon polygon = new Polygon();
-        polygon.getPoints().addAll(
-                                   new Double[] {
-                                                 this.getBounds().getMinX(),
-                                                 this.getBounds().getMinY(),
-                                                 this.getBounds().getMinX()
-                                                         + this.getBounds().getWidth(),
-                                                 this.getBounds().getMinY(),
-                                                 this.getBounds().getMaxX(),
-                                                 this.getBounds().getMaxY(),
-                                                 this.getBounds().getMinX(),
-                                                 this.getBounds().getMinY()
-                                                         + this.getBounds().getHeight(), });
-        return polygon;
-    }
-
-    private void updateAbilityRepresentation (String identifier) {
-        currentAbilityRepresentation = allAbilityRepresentations.get(identifier);
-    }
-
-    public Map<String, ObscureAction> getCurrentInteractionInformation () {
-        return currentAbilityRepresentation;
-    }
-
-    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
-        interactingElements.put("CollidingElements", collidingElements);
-    }
-
-    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
-        interactingElements.put("VisibleElements", visibleElements);
     }
 
     public void update () {
@@ -86,8 +52,10 @@ public class SelectableGameElement extends DrawableGameElement implements
     public void updateSelfDueToSelection () {
         // TODO Auto-generated method stub
         // update representation?
+        visualRepresentation.setSelected();
         List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("SelfCondition");
+        
 
     }
 
@@ -122,6 +90,38 @@ public class SelectableGameElement extends DrawableGameElement implements
         return this.ifThisThenThat.entrySet().stream()
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
                 .collect(Collectors.toList());
+    }
+    
+    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
+        for (DrawableGameElement element : collidingElements) {
+            addInteractingElement("CollidingElements", element);
+        }
+    }
+
+    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
+        for (DrawableGameElement element : visibleElements) {
+            addInteractingElement("VisibleElements", element);
+        }
+    }
+
+    public void addInteractingElement (String elementType, DrawableGameElement element) {
+        ArrayList<DrawableGameElement> elements = new ArrayList<DrawableGameElement>();
+        elements.addAll(interactingElements.get(elementType));
+        elements.add(element);
+        interactingElements.put(elementType, elements);
+    }
+    
+    @Override
+    public Polygon getVisionPolygon () {
+        return visualRepresentation.getVisionPolygon();
+    }
+
+    private void updateAbilityRepresentation (String identifier) {
+        currentAbilityRepresentation = allAbilityRepresentations.get(identifier);
+    }
+
+    public Map<String, ObscureAction> getCurrentInteractionInformation () {
+        return currentAbilityRepresentation;
     }
 
 }

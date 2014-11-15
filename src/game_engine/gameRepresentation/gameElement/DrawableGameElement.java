@@ -1,6 +1,8 @@
 package game_engine.gameRepresentation.gameElement;
 
 import game_engine.computers.boundsComputer.Boundable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.geometry.Bounds;
@@ -21,7 +23,8 @@ import javafx.scene.image.ImageView;
 public class DrawableGameElement extends GameElement implements Boundable {
 
     protected Group visualRepresentation = new Group();
-    protected Map<String, List<DrawableGameElement>> interactingElements;
+    protected Map<String, ArrayList<DrawableGameElement>> interactingElements =
+            new HashMap<String, ArrayList<DrawableGameElement>>();
 
     public DrawableGameElement (Image image, Point2D position, String name) {
         this.textualAttributes.add(new Attribute<String>("Name", name));
