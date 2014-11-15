@@ -11,14 +11,14 @@ public class PlayableLevel {
     public String name;
     public String description;
     private boolean isActiveLevel = false;
-    private List<DrawableGameElement> terrain;
+    private List<RenderedDrawableGameElement> terrain;
     private List<SelectableGameElement> units;
     private List<GameElement> goal;
 
     public PlayableLevel (Level level) {
-        for (DrawableGameElement element : terrain) {
+        for (DrawableGameElement element : level.getTerrain()) {
             terrain.add(new RenderedDrawableGameElement(element));
-            
+
         }
     }
 

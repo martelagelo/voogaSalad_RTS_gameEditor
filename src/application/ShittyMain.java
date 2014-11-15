@@ -75,8 +75,9 @@ public class ShittyMain extends Application {
         // Add the input handler to the group
         InputHandler handler = new InputHandler(g);
         InputEvent<MouseEvent, Group> keyPressedInput =
-                new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED,g, group -> {
-                    group.getChildren().get(0).setRotate(group.getChildren().get(0).getRotate()+20);
+                new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
+                    group.getChildren().get(0)
+                            .setRotate(group.getChildren().get(0).getRotate() + 20);
                     System.out.println("Clicked");
                 });
         GameLoop gameLoop = new GameLoop(

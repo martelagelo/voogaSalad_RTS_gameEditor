@@ -13,7 +13,8 @@ import javafx.event.EventType;
  *
  */
 
-//TODO need to have input events take requests and have input events able to check conditions on the eventType. need another lambda
+// TODO need to have input events take requests and have input events able to check conditions on
+// the eventType. need another lambda
 public class InputEvent<E extends Event, T> {
 
     private EventType<E> myEventType;

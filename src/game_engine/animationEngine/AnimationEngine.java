@@ -125,7 +125,7 @@ public class AnimationEngine implements Updatable, Displayable {
     }
 
     public void setSelected () {
-        setAnimation("Selected", true);        
+        setAnimation("Selected", true);
     }
 
     public Bounds getBounds () {

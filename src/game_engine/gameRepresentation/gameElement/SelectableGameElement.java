@@ -53,7 +53,6 @@ public class SelectableGameElement extends DrawableGameElement implements
         visualRepresentation.setSelected();
         List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("SelfCondition");
-        
 
     }
 
@@ -89,7 +88,7 @@ public class SelectableGameElement extends DrawableGameElement implements
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
                 .collect(Collectors.toList());
     }
-    
+
     public void addCollidingElements (List<DrawableGameElement> collidingElements) {
         for (DrawableGameElement element : collidingElements) {
             addInteractingElement("CollidingElements", element);
@@ -108,7 +107,7 @@ public class SelectableGameElement extends DrawableGameElement implements
         elements.add(element);
         interactingElements.put(elementType, elements);
     }
-    
+
     @Override
     public Polygon getVisionPolygon () {
         return visualRepresentation.getVisionPolygon();
