@@ -13,4 +13,8 @@ public class RenderedSelectableGameElement extends RenderedDrawableGameElement{
         super(element);
         // TODO Auto-generated constructor stub
     }
+
+    public String getType () {
+        return state.getType();
+    }
 }

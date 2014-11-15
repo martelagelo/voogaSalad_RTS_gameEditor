@@ -16,4 +16,8 @@ public class RenderedDrawableGameElement {
     public void update () {
         state.update();
     }
+    
+    public DrawableGameElement getState() { 
+        return state;
+    }
 }
