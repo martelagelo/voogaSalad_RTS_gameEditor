@@ -1,20 +1,20 @@
 package game_engine.stateManaging;
 
-import game_engine.gameRepresentation.gameElement.GameElement;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedLevel;
+import game_engine.gameRepresentation.renderedRepresentation.Level;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class GameElementManager {
 
-    private RenderedLevel myLevel;
+    private Level myLevel;
 
-    public GameElementManager (RenderedLevel level) {
+    public GameElementManager (Level level) {
         myLevel = level;
     }
 
-    public List<GameElement> findAllElementsOfType (String typeName) {
+    public List<GameElementState> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
                 .map(o -> o.getState())

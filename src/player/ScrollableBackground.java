@@ -1,4 +1,4 @@
-package visualComponents;
+package player;
 
 import javafx.scene.Group;
 import javafx.scene.layout.StackPane;
@@ -22,7 +22,7 @@ public class ScrollableBackground extends StackPane
         this.myYBoundary = yBoundary;
         this.setMinSize(xBoundary, yBoundary);
 
-        setStyle("-fx-border-color: blue;");
+        setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
 
     }
 

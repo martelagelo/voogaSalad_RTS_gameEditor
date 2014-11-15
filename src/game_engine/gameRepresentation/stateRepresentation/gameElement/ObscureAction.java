@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 /**
  * This functional interface is used to represent the actions of buttons specific to

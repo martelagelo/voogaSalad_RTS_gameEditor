@@ -1,6 +1,6 @@
-package game_engine.gameRepresentation.observableRepresentation;
+package game_engine.gameRepresentation.immutableRepresentation;
 
-import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
@@ -12,11 +12,11 @@ import javafx.beans.Observable;
  * @author Steve
  *
  */
-public class ObservableLevel implements Observable {
+public class ImmutableLevel implements Observable {
 
-    private Level myLevel;
+    private LevelState myLevel;
 
-    public ObservableLevel (Level level) {
+    public ImmutableLevel (LevelState level) {
         myLevel = level;
     }
 

@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation;
+package game_engine.gameRepresentation.stateRepresentation;
 
 import java.util.List;
 
@@ -10,13 +10,13 @@ import java.util.List;
  * @author Steve
  *
  */
-public class Campaign {
+public class CampaignState {
 
     public String name;
     public String description;
-    private List<Level> levels;
+    private List<LevelState> levels;
 
-    public List<Level> getLevels () {
+    public List<LevelState> getLevels () {
         return levels;
     }
 

@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.actions;
 
-import game_engine.gameRepresentation.gameElement.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 
 
@@ -14,6 +14,6 @@ import java.util.List;
 
 public abstract class Action {
 
-    public abstract void doAction (List<GameElement> elementList);
+    public abstract void doAction (List<GameElementState> elementList);
 
 }

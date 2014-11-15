@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.gameElement.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 
 
@@ -20,6 +20,6 @@ public abstract class Condition {
         return conditionType;
     }
 
-    public abstract Boolean evaluate (List<GameElement> parameters);
+    public abstract Boolean evaluate (List<GameElementState> parameters);
 
 }

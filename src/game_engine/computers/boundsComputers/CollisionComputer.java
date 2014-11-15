@@ -2,8 +2,8 @@ package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
-import game_engine.gameRepresentation.gameElement.DrawableGameElement;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
 
 
@@ -14,14 +14,14 @@ import java.util.List;
  *
  */
 public class CollisionComputer extends
-        Computer<SelectableGameElement, DrawableGameElement> {
+        Computer<SelectableGameElementState, DrawableGameElementState> {
     /**
      * Returns true if there is a collision between the two bounded objects
      */
     @Override
     protected boolean checkComputingCondition (
-                                               SelectableGameElement primaryObject,
-                                               DrawableGameElement otherObject) {
+                                               SelectableGameElementState primaryObject,
+                                               DrawableGameElementState otherObject) {
         if (primaryObject instanceof Boundable
             && otherObject instanceof Boundable) {
             Boundable boundableObject = (Boundable) primaryObject;
@@ -36,8 +36,8 @@ public class CollisionComputer extends
 
     @Override
     protected void addInteractingElementsToObject (
-                                                   SelectableGameElement primaryObject,
-                                                   List<DrawableGameElement> listToAdd) {
+                                                   SelectableGameElementState primaryObject,
+                                                   List<DrawableGameElementState> listToAdd) {
         primaryObject.addCollidingElements(listToAdd);
     }
 

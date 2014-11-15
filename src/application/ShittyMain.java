@@ -1,23 +1,19 @@
 package application;
 
-import visualComponents.ScrollableScene;
+import game_engine.Engine;
+import game_engine.gameRepresentation.renderedRepresentation.Game;
+import game_engine.inputManagers.InputEvent;
+import game_engine.inputManagers.InputHandler;
+import player.ScrollableScene;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import game_engine.gameRepresentation.Level;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
-import game_engine.inputManagers.InputEvent;
-import game_engine.inputManagers.InputHandler;
-import game_engine.stateManaging.GameElementManager;
-import game_engine.stateManaging.GameLoop;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,33 +26,39 @@ public class ShittyMain extends Application {
 
         Group gameObjects = new Group();
 
-        SelectableGameElement el =
-                new SelectableGameElement(new Image("resources/img/EnemyCombat_Right.png"),
-                                          new Point2D(0, 0), "unit1");
-        gameObjects.getChildren().add(el.getVisibleRepresentation());
-
         ScrollableScene scrollingScene = new ScrollableScene(g, 600, 600);
         scrollingScene.addObjects(gameObjects);
 
         Duration oneFrameAmt = Duration.millis(1000 / 60);
-        final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
-                                               new EventHandler<ActionEvent>() {
-                                                   @Override
-                                                   public void handle (ActionEvent event) {
-                                                       scrollingScene.update();
-                                                   }
-                                               });
+//        final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
+//                                               new EventHandler<ActionEvent>() {
+//                                                   @Override
+//                                                   public void handle (ActionEvent event) {
+//                                                       scrollingScene.update();
+//                                                   }
+//                                               });
+//
+//        Timeline timeline = new Timeline();
+//
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.getKeyFrames().clear();
+//        timeline.getKeyFrames().add(oneFrame);
+//        timeline.playFromStart();
+        
+        Object saveLoadUtility = new Object(); // loololol
+        
+        Game game = hardCodeAGame();
+        Engine engine = new Engine(game,saveLoadUtility);
 
-        Timeline timeline = new Timeline();
-
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().clear();
-        timeline.getKeyFrames().add(oneFrame);
-        timeline.playFromStart();
 
         primaryStage.setScene(scrollingScene);
         shittyRun(gameObjects);
         primaryStage.show();
+    }
+
+    private Game hardCodeAGame () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     public static void main (String[] args) {
@@ -68,9 +70,6 @@ public class ShittyMain extends Application {
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
 
-        Level currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new Level();
-        new GameLoop(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-        new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
 
         // Add the input handler to the group
         InputHandler handler = new InputHandler(g);
@@ -80,12 +79,6 @@ public class ShittyMain extends Application {
                             .setRotate(group.getChildren().get(0).getRotate() + 20);
                     System.out.println("Clicked");
                 });
-        GameLoop gameLoop = new GameLoop(
-                                         currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-        GameElementManager elementManager =
-                new GameElementManager(
-                                       currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
-
     }
 
 }

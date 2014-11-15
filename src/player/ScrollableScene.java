@@ -1,11 +1,11 @@
-package visualComponents;
+package player;
 
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 
 public class ScrollableScene extends Scene {
@@ -18,23 +18,28 @@ public class ScrollableScene extends Scene {
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
-    private double myHeight;
-    private double myWidth;
+    private Rectangle myBox;
+    private double myScreenHeight;
+    private double myScreenWidth;
     private double pressedX, pressedY;
 
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
-        this.myHeight = height;
-        this.myWidth = width;
+        this.myScreenHeight = height;
+        this.myScreenWidth = width;
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
-        root.getChildren().addAll(myBackground, mySelectionBox);
+        myBox = mySelectionBox.getBox();
+        root.getChildren().addAll(myBackground, myBox);
         initializeHandlers();
+    }
+
+    public ScrollableBackground getBackground () {
+        return myBackground;
     }
 
     private void initializeHandlers () {
         this.setOnMouseMoved(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle (MouseEvent event) {
                 double mouseX = event.getSceneX();
@@ -51,15 +56,14 @@ public class ScrollableScene extends Scene {
                     myBackground.setYScrollSpeed(-SLOW_SPEED);
                     if (mouseY < FAST_SCROLL_BOUNDARY) myBackground.setYScrollSpeed(-FAST_SPEED);
                 }
-
-                else if (mouseX > myWidth - SLOW_SCROLL_BOUNDARY) {
+                else if (mouseX > myScreenWidth - SLOW_SCROLL_BOUNDARY) {
                     myBackground.setXScrollSpeed(SLOW_SPEED);
-                    if (mouseX > myWidth - FAST_SCROLL_BOUNDARY)
+                    if (mouseX > myScreenWidth - FAST_SCROLL_BOUNDARY)
                         myBackground.setXScrollSpeed(FAST_SPEED);
                 }
-                else if (mouseY > myHeight - SLOW_SCROLL_BOUNDARY) {
+                else if (mouseY > myScreenHeight - SLOW_SCROLL_BOUNDARY) {
                     myBackground.setYScrollSpeed(SLOW_SPEED);
-                    if (mouseY > myHeight - FAST_SCROLL_BOUNDARY)
+                    if (mouseY > myScreenHeight - FAST_SCROLL_BOUNDARY)
                         myBackground.setYScrollSpeed(FAST_SPEED);
                 }
                 else {
@@ -67,7 +71,6 @@ public class ScrollableScene extends Scene {
                     myBackground.setYScrollSpeed(0);
                 }
             }
-
         });
 
         setOnMousePressed(new EventHandler<MouseEvent>()
@@ -79,40 +82,37 @@ public class ScrollableScene extends Scene {
                 pressedX = event.getSceneX();
                 pressedY = event.getSceneY();
                 if (event.isPrimaryButtonDown()) {
-                    // c.unselect();
-                    mySelectionBox.setVisible(true);
-                    mySelectionBox.setWidth(0);
-                    mySelectionBox.setHeight(0);
-                    mySelectionBox.setStroke(Color.RED);
-                    mySelectionBox.setStrokeWidth(2);
-                    mySelectionBox.setFill(Color.TRANSPARENT);
+                    myBox.setVisible(true);
+                    myBox.setWidth(0);
+                    myBox.setHeight(0);
+                    myBox.setStroke(Color.RED);
+                    myBox.setStrokeWidth(2);
+                    myBox.setFill(Color.TRANSPARENT);
 
-                    mySelectionBox.setX(pressedX);
-                    mySelectionBox.setY(pressedY);
+                    myBox.setX(pressedX);
+                    myBox.setY(pressedY);
                 }
                 else {
-                    // if(c.isSelected){
-                    // c.setCenterX(pressedX);
-                    // c.setCenterY(pressedY);
-                    // }
+                    // TODO call the input event for right click
                 }
             }
         });
 
         setOnMouseReleased(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle (MouseEvent event) {
-                mySelectionBox.setVisible(false);
-                Point2D center =
-                        new Point2D(mySelectionBox.xProperty().doubleValue(), mySelectionBox
-                                .yProperty().doubleValue());
-                // if(mySelectionBox.contains(new Point2D(c.getCenterX(), c.getCenterY())) ||
-                // c.contains(center)){
-                // c.select();
-                // }
-            }
+                myBox.setVisible(false);
+                // do the math to determine the box's location relative to the map, rather than on
+                // the screen
+                double xTopLeftMap =
+                        -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
+                double yTopLeftMap =
+                        -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
+                double xBottomRight = xTopLeftMap + myBox.getWidth();
+                double yBottomRight = yTopLeftMap + myBox.getHeight();
 
+                mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight, yBottomRight);
+            }
         });
 
         setOnMouseDragged(new EventHandler<MouseEvent>()
@@ -122,22 +122,24 @@ public class ScrollableScene extends Scene {
                 double newX = event.getSceneX();
                 double newY = event.getSceneY();
 
+                // stops the drag at the edge of the scene
+                if (newX < 0) newX = 0;
+                if (newY < 0) newY = 0;
+                if (newX > myScreenWidth) newX = myScreenWidth;
+                if (newY > myScreenHeight) newY = myScreenHeight;
+
                 double difX = newX - pressedX;
                 double difY = newY - pressedY;
 
-                mySelectionBox.setWidth(Math.abs(difX));
-                mySelectionBox.setHeight(Math.abs(difY));
+                myBox.setWidth(Math.abs(difX));
+                myBox.setHeight(Math.abs(difY));
 
-                if (difX <= 0) {
-                    mySelectionBox.setX(newX);
-                }
-                if (difY <= 0) {
-                    mySelectionBox.setY(newY);
-                }
+                if (difX <= 0) myBox.setX(newX);
+                if (difY <= 0) myBox.setY(newY);
+
                 event.consume();
             }
         });
-
     }
 
     public void addObjects (Group g) {

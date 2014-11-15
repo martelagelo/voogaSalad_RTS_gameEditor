@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 /**
  * This is the manner in which all basic attributes will be encoded in a GameElement.

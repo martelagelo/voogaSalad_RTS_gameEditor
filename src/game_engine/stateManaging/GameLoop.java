@@ -3,13 +3,14 @@ package game_engine.stateManaging;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.computers.boundsComputers.VisionComputer;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedDrawableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedLevel;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedSelectableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.Level;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
@@ -17,13 +18,16 @@ import javafx.util.Duration;
 
 public class GameLoop {
 
-    private RenderedLevel myCurrentLevel;
+    private Level myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
+    private Timeline timeline;
 
-    public GameLoop (RenderedLevel level) {
+    public GameLoop (Level level) {
         myCurrentLevel = level;
         myComputerList.add(new CollisionComputer());
         myComputerList.add(new VisionComputer());
+        timeline = new Timeline();
+        
     }
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
@@ -34,34 +38,36 @@ public class GameLoop {
     };
 
     public void update () {
-        List<RenderedDrawableGameElement> allElements =
-                new ArrayList<RenderedDrawableGameElement>();
+        List<DrawableGameElement> allElements =
+                new ArrayList<DrawableGameElement>();
         allElements.addAll(myCurrentLevel.getUnits());
         allElements.addAll(myCurrentLevel.getTerrain());
-        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<RenderedSelectableGameElement, RenderedDrawableGameElement> c : myComputerList) {
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
                 c.compute(selectableElement, allElements);
             }
         }
 
-        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             // TODO : flag for active
             selectableElement.update();
         }
     }
 
-    public KeyFrame start (Double frameRate) {
-        return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
+    public void start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
     }
 
     public void play () {
-        // TODO Auto-generated method stub
-
+        timeline.play();
     }
 
     public void pause () {
-        // TODO Auto-generated method stub
-
+        timeline.pause();
     }
 
 }
