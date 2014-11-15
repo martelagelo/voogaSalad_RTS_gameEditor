@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.computers.boundsComputers.Sighted;
 import game_engine.gameRepresentation.actions.Action;
@@ -21,15 +21,15 @@ import javafx.scene.shape.Polygon;
  * @author Steve
  *
  */
-public class SelectableGameElement extends DrawableGameElement implements
+public class SelectableGameElementState extends DrawableGameElementState implements
         Sighted {
 
     protected Map<String, Map<String, ObscureAction>> allAbilityRepresentations;
     private Map<String, ObscureAction> currentAbilityRepresentation;
-    protected Map<String, ArrayList<DrawableGameElement>> interactingElements =
-            new HashMap<String, ArrayList<DrawableGameElement>>();
+    protected Map<String, ArrayList<DrawableGameElementState>> interactingElements =
+            new HashMap<String, ArrayList<DrawableGameElementState>>();
 
-    public SelectableGameElement (Image image, Point2D position, String name) {
+    public SelectableGameElementState (Image image, Point2D position, String name) {
         super(image, position, name);
     }
 
@@ -71,8 +71,9 @@ public class SelectableGameElement extends DrawableGameElement implements
         List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs(conditionActionPairIdentifier);
 
-        for (DrawableGameElement element : interactingElements.get(elementIdentifier)) {
-            List<GameElement> immediatelyInteractingElements = new ArrayList<GameElement>();
+        for (DrawableGameElementState element : interactingElements.get(elementIdentifier)) {
+            List<GameElementState> immediatelyInteractingElements =
+                    new ArrayList<GameElementState>();
             immediatelyInteractingElements.add(this);
             immediatelyInteractingElements.add(element);
             for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
@@ -89,20 +90,20 @@ public class SelectableGameElement extends DrawableGameElement implements
                 .collect(Collectors.toList());
     }
 
-    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
-        for (DrawableGameElement element : collidingElements) {
+    public void addCollidingElements (List<DrawableGameElementState> collidingElements) {
+        for (DrawableGameElementState element : collidingElements) {
             addInteractingElement("CollidingElements", element);
         }
     }
 
-    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
-        for (DrawableGameElement element : visibleElements) {
+    public void addVisibleElements (List<DrawableGameElementState> visibleElements) {
+        for (DrawableGameElementState element : visibleElements) {
             addInteractingElement("VisibleElements", element);
         }
     }
 
-    public void addInteractingElement (String elementType, DrawableGameElement element) {
-        ArrayList<DrawableGameElement> elements = new ArrayList<DrawableGameElement>();
+    public void addInteractingElement (String elementType, DrawableGameElementState element) {
+        ArrayList<DrawableGameElementState> elements = new ArrayList<DrawableGameElementState>();
         elements.addAll(interactingElements.get(elementType));
         elements.add(element);
         interactingElements.put(elementType, elements);

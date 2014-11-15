@@ -2,8 +2,8 @@ package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
-import game_engine.gameRepresentation.gameElement.DrawableGameElement;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
 
 
@@ -14,15 +14,15 @@ import java.util.List;
  *
  */
 public class VisionComputer extends
-        Computer<SelectableGameElement, DrawableGameElement> {
+        Computer<SelectableGameElementState, DrawableGameElementState> {
     /**
      * Return true if the other object is contained within the primary object's
      * vision bounds
      */
     @Override
     protected boolean checkComputingCondition (
-                                               SelectableGameElement primaryObject,
-                                               DrawableGameElement otherObject) {
+                                               SelectableGameElementState primaryObject,
+                                               DrawableGameElementState otherObject) {
         if (primaryObject instanceof Sighted
             && otherObject instanceof Boundable) {
             Sighted sightedObject = (Sighted) primaryObject;
@@ -37,8 +37,8 @@ public class VisionComputer extends
 
     @Override
     protected void addInteractingElementsToObject (
-                                                   SelectableGameElement primaryObject,
-                                                   List<DrawableGameElement> listToAdd) {
+                                                   SelectableGameElementState primaryObject,
+                                                   List<DrawableGameElementState> listToAdd) {
         primaryObject.addVisibleElements(listToAdd);
     }
 

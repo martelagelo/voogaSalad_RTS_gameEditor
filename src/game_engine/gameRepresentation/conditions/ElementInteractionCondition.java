@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.gameElement.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -13,10 +13,10 @@ import java.util.function.BiFunction;
  */
 public class ElementInteractionCondition extends Condition {
 
-    private BiFunction<GameElement, GameElement, Boolean> function;
+    private BiFunction<GameElementState, GameElementState, Boolean> function;
 
     @Override
-    public Boolean evaluate (List<GameElement> parameters) {
+    public Boolean evaluate (List<GameElementState> parameters) {
         // TODO: Add exception return when error checking fails
         return function.apply(parameters.get(0), parameters.get(1));
     }

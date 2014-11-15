@@ -1,23 +1,23 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.animationEngine.AnimationEngine;
-import game_engine.gameRepresentation.gameElement.DrawableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 
 
-public class RenderedDrawableGameElement {
+public class DrawableGameElement {
 
-    private DrawableGameElement state;
+    private DrawableGameElementState state;
     private AnimationEngine animation;
 
-    public RenderedDrawableGameElement (DrawableGameElement element) {
+    public DrawableGameElement (DrawableGameElementState element) {
         // TODO: use input to set state
     }
 
     public void update () {
         state.update();
     }
-    
-    public DrawableGameElement getState() { 
+
+    public DrawableGameElementState getState () {
         return state;
     }
 }

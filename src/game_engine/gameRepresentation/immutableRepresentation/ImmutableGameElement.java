@@ -1,7 +1,7 @@
-package game_engine.gameRepresentation.observableRepresentation;
+package game_engine.gameRepresentation.immutableRepresentation;
 
-import game_engine.gameRepresentation.gameElement.ObscureAction;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.ObscureAction;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.Map;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -14,11 +14,11 @@ import javafx.beans.Observable;
  * @author Steve
  *
  */
-public class ObservableGameElement implements Observable {
+public class ImmutableGameElement implements Observable {
 
-    private SelectableGameElement currentlySelectedElement;
+    private SelectableGameElementState currentlySelectedElement;
 
-    public ObservableGameElement (SelectableGameElement selectedElement) {
+    public ImmutableGameElement (SelectableGameElementState selectedElement) {
         currentlySelectedElement = selectedElement;
     }
 

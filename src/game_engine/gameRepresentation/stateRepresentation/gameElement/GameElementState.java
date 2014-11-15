@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Condition;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * @author Steve
  *
  */
-public class GameElement {
+public class GameElementState {
 
     protected Map<Condition, Action> ifThisThenThat;
     protected List<Attribute<Number>> numericalAttributes;

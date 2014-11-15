@@ -4,8 +4,8 @@ import visualComponents.ScrollableScene;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import game_engine.gameRepresentation.Level;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.inputManagers.InputEvent;
 import game_engine.inputManagers.InputHandler;
 import game_engine.stateManaging.GameElementManager;
@@ -30,9 +30,9 @@ public class ShittyMain extends Application {
 
         Group gameObjects = new Group();
 
-        SelectableGameElement el =
-                new SelectableGameElement(new Image("resources/img/EnemyCombat_Right.png"),
-                                          new Point2D(0, 0), "unit1");
+        SelectableGameElementState el =
+                new SelectableGameElementState(new Image("resources/img/EnemyCombat_Right.png"),
+                                               new Point2D(0, 0), "unit1");
         gameObjects.getChildren().add(el.getVisibleRepresentation());
 
         ScrollableScene scrollingScene = new ScrollableScene(g, 600, 600);
@@ -68,7 +68,7 @@ public class ShittyMain extends Application {
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
 
-        Level currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new Level();
+        LevelState currentLevelBeingPlayedYayJavaNamingIsSoMuchFun = new LevelState();
         new GameLoop(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
         new GameElementManager(currentLevelBeingPlayedYayJavaNamingIsSoMuchFun);
 

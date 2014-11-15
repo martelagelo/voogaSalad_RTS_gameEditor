@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.animationEngine.AnimationEngine;
 import game_engine.computers.boundsComputer.Boundable;
@@ -19,11 +19,11 @@ import javafx.scene.image.Image;
  *
  */
 
-public class DrawableGameElement extends GameElement implements Boundable {
+public class DrawableGameElementState extends GameElementState implements Boundable {
 
     protected AnimationEngine visualRepresentation;
 
-    public DrawableGameElement (Image image, Point2D position, String name) {
+    public DrawableGameElementState (Image image, Point2D position, String name) {
         this.textualAttributes.add(new Attribute<String>("Name", name));
         // this.visualRepresentation.setTranslateX(position.getX());
         // this.visualRepresentation.setTranslateY(position.getY());

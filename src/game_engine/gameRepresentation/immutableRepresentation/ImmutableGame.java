@@ -1,8 +1,8 @@
-package game_engine.gameRepresentation.observableRepresentation;
+package game_engine.gameRepresentation.immutableRepresentation;
 
 import game_engine.gameRepresentation.Describable;
-import game_engine.gameRepresentation.Game;
-import game_engine.gameRepresentation.Level;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,26 +17,26 @@ import javafx.beans.Observable;
  * @author Steve
  *
  */
-public class ObservableGame implements Observable, Describable {
+public class ImmutableGame implements Observable, Describable {
 
-    private Game myGame;
-    public List<ObservableCampaign> campaigns;
+    private GameState myGame;
+    public List<ImmutableCampaign> campaigns;
 
-    public ObservableGame (Game game) {
+    public ImmutableGame (GameState game) {
         myGame = game;
-        campaigns = new ArrayList<ObservableCampaign>();
-        myGame.getCampaigns().stream().forEach(c -> campaigns.add(new ObservableCampaign(c)));
+        campaigns = new ArrayList<ImmutableCampaign>();
+        myGame.getCampaigns().stream().forEach(c -> campaigns.add(new ImmutableCampaign(c)));
     }
 
-    public ObservableLevel getCurrentLevel () {
-        List<ObservableLevel> levels = new ArrayList<ObservableLevel>();
-        for (ObservableCampaign campaign : campaigns) {
-            for (ObservableLevel level : campaign.levels) {
+    public ImmutableLevel getCurrentLevel () {
+        List<ImmutableLevel> levels = new ArrayList<ImmutableLevel>();
+        for (ImmutableCampaign campaign : campaigns) {
+            for (ImmutableLevel level : campaign.levels) {
                 levels.add(level);
             }
         }
 
-        ObservableLevel activeLevel = levels.stream()
+        ImmutableLevel activeLevel = levels.stream()
                 .filter(o -> o.isActive())
                 .collect(Collectors.toList()).get(0);
 

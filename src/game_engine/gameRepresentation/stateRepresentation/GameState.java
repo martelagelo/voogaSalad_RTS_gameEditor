@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation;
+package game_engine.gameRepresentation.stateRepresentation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,40 +11,40 @@ import java.util.stream.Collectors;
  * @author Steve
  *
  */
-public class Game {
+public class GameState {
 
     public String name;
     public String description;
-    private List<Campaign> campaigns;
+    private List<CampaignState> campaigns;
 
-    public List<Campaign> getCampaigns () {
+    public List<CampaignState> getCampaigns () {
         return campaigns;
     }
 
     public void setCurrentLevel (String name) {
-        List<Level> levels = new ArrayList<Level>();
-        for (Campaign campaign : campaigns) {
-            for (Level level : campaign.getLevels()) {
+        List<LevelState> levels = new ArrayList<LevelState>();
+        for (CampaignState campaign : campaigns) {
+            for (LevelState level : campaign.getLevels()) {
                 levels.add(level);
             }
         }
 
-        Level activeLevel = levels.stream()
+        LevelState activeLevel = levels.stream()
                 .filter(o -> o.name.equals(name))
                 .collect(Collectors.toList()).get(0);
 
         activeLevel.setActive();
     }
-    
-    public Level getCurrentLevel () {
-        List<Level> levels = new ArrayList<Level>();
-        for (Campaign campaign : campaigns) {
-            for (Level level : campaign.getLevels()) {
+
+    public LevelState getCurrentLevel () {
+        List<LevelState> levels = new ArrayList<LevelState>();
+        for (CampaignState campaign : campaigns) {
+            for (LevelState level : campaign.getLevels()) {
                 levels.add(level);
             }
         }
 
-        Level activeLevel = levels.stream()
+        LevelState activeLevel = levels.stream()
                 .filter(o -> o.isActive())
                 .collect(Collectors.toList()).get(0);
 

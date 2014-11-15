@@ -3,10 +3,10 @@ package game_engine.stateManaging;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.computers.boundsComputers.VisionComputer;
-import game_engine.gameRepresentation.gameElement.SelectableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedDrawableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedLevel;
-import game_engine.gameRepresentation.renderedRepresentation.RenderedSelectableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.Level;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.KeyFrame;
@@ -17,10 +17,10 @@ import javafx.util.Duration;
 
 public class GameLoop {
 
-    private RenderedLevel myCurrentLevel;
+    private Level myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
 
-    public GameLoop (RenderedLevel level) {
+    public GameLoop (Level level) {
         myCurrentLevel = level;
         myComputerList.add(new CollisionComputer());
         myComputerList.add(new VisionComputer());
@@ -34,17 +34,17 @@ public class GameLoop {
     };
 
     public void update () {
-        List<RenderedDrawableGameElement> allElements =
-                new ArrayList<RenderedDrawableGameElement>();
+        List<DrawableGameElement> allElements =
+                new ArrayList<DrawableGameElement>();
         allElements.addAll(myCurrentLevel.getUnits());
         allElements.addAll(myCurrentLevel.getTerrain());
-        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<RenderedSelectableGameElement, RenderedDrawableGameElement> c : myComputerList) {
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
                 c.compute(selectableElement, allElements);
             }
         }
 
-        for (RenderedSelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             // TODO : flag for active
             selectableElement.update();
         }

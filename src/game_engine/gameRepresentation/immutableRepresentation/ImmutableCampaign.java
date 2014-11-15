@@ -1,7 +1,7 @@
-package game_engine.gameRepresentation.observableRepresentation;
+package game_engine.gameRepresentation.immutableRepresentation;
 
-import game_engine.gameRepresentation.Campaign;
 import game_engine.gameRepresentation.Describable;
+import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.InvalidationListener;
@@ -15,15 +15,15 @@ import javafx.beans.Observable;
  * @author Steve
  *
  */
-public class ObservableCampaign implements Observable, Describable {
+public class ImmutableCampaign implements Observable, Describable {
 
-    private Campaign myCampaign;
-    public List<ObservableLevel> levels;
+    private CampaignState myCampaign;
+    public List<ImmutableLevel> levels;
 
-    public ObservableCampaign (Campaign campaign) {
+    public ImmutableCampaign (CampaignState campaign) {
         myCampaign = campaign;
-        levels = new ArrayList<ObservableLevel>();
-        myCampaign.getLevels().stream().forEach(l -> levels.add(new ObservableLevel(l)));
+        levels = new ArrayList<ImmutableLevel>();
+        myCampaign.getLevels().stream().forEach(l -> levels.add(new ImmutableLevel(l)));
     }
 
     @Override
