@@ -6,6 +6,7 @@ import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import java.util.Observer;
+import visualComponents.VisualManager;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Node;
@@ -24,6 +25,7 @@ public class Engine implements Observer, Observable {
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
     private Object mySaveLoadUtility;
+    private VisualManager myVisualManager;
 
     public Engine (Game game, Object saveLoadUtility) {
         myGame = game;

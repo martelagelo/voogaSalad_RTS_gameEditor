@@ -6,10 +6,11 @@ import game_engine.computers.boundsComputers.VisionComputer;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
@@ -19,11 +20,14 @@ public class GameLoop {
 
     private Level myCurrentLevel;
     private List<Computer> myComputerList = new ArrayList<Computer>();
+    private Timeline timeline;
 
     public GameLoop (Level level) {
         myCurrentLevel = level;
         myComputerList.add(new CollisionComputer());
         myComputerList.add(new VisionComputer());
+        timeline = new Timeline();
+        
     }
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
@@ -50,18 +54,20 @@ public class GameLoop {
         }
     }
 
-    public KeyFrame start (Double frameRate) {
-        return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
+    public void start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
     }
 
     public void play () {
-        // TODO Auto-generated method stub
-
+        timeline.play();
     }
 
     public void pause () {
-        // TODO Auto-generated method stub
-
+        timeline.pause();
     }
 
 }
