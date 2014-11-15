@@ -42,14 +42,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     }
     @Override
     public Bounds getBounds () {
-        //TODO fix
-        return visualRepresentation.getBounds();
-    }
-
-    public Node getVisibleRepresentation () {
-        // TODO added this getter for testing purposes, really not sure how to actually add a
-        // drawable game element to the scene?
-        return visualRepresentation.getNode();
+        return null;
     }
 
 }

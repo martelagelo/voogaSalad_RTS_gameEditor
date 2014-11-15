@@ -28,12 +28,15 @@ public class ShittyMain extends Application {
         VisualManager manager = new VisualManager(g, 600, 600);
         Object saveLoadUtility = new Object(); // loololol
         
-        Game game = hardCodeAGame();
-        Engine engine = new Engine(game,saveLoadUtility, manager);
+       
+        Engine engine = new Engine(hardCodeAGame(),saveLoadUtility, manager);
+        primaryStage.setScene(manager.getScene());
+        primaryStage.show();
+        
         
     }
 
-    private Game hardCodeAGame () {
+    private GameState hardCodeAGame () {
         SelectableGameElementState archerState = new SelectableGameElementState(10,10);
         archerState.setSpritesheet(new Spritesheet("resources/img/exploBig.png",new Dimension(40,40),7));
         archerState.addAnimation(new AnimationSequence("Walk",0,13,true));
@@ -44,8 +47,7 @@ public class ShittyMain extends Application {
         campaignState.addLevel(levelState);
         GameState gameState = new GameState();
         gameState.addCampaign(campaignState);
-        Game game = new Game(gameState);
-        return game;
+       return gameState;
     }
 
     public static void main (String[] args) {

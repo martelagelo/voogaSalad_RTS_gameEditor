@@ -51,7 +51,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     public void updateSelfDueToSelection () {
         // TODO Auto-generated method stub
         // update representation?
-        visualRepresentation.setSelected();
+       // visualRepresentation.setSelected();
         List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("SelfCondition");
 
@@ -112,7 +112,9 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     @Override
     public Polygon getVisionPolygon () {
-        return visualRepresentation.getVisionPolygon();
+        //TODO do this
+        return null;
+        //return visualRepresentation.getVisionPolygon();
     }
 
     private void updateAbilityRepresentation (String identifier) {
