@@ -6,7 +6,7 @@ package game_engine.gameRepresentation.conditions.evaluators;
  * @author Zach
  *
  */
-public class GreaterThanEqualEvaluator extends DoubleEvaluator {
+public class GreaterThanEqualEvaluator extends Evaluator {
 
     public GreaterThanEqualEvaluator () {
         super(">=");

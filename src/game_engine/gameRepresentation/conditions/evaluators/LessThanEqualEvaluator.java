@@ -1,14 +1,18 @@
 package game_engine.gameRepresentation.conditions.evaluators;
+/**
+ * 
+ * @author zed
+ *
+ */
+public class LessThanEqualEvaluator extends Evaluator {
 
-public class LessThanEqualEvaluator extends DoubleEvaluator{
-
-    public LessThanEqualEvaluator (String evaluatorRepresentation) {
-        super(evaluatorRepresentation);
+    public LessThanEqualEvaluator () {
+        super("<=");
     }
 
     @Override
     public boolean Evaluate (double number1, double number2) {
-        return number1<=number2;
+        return number1 <= number2;
     }
 
 }
