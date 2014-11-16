@@ -52,6 +52,40 @@ public class GameElementState {
     	Attribute numTrait = new Attribute(name, value);
     	this.numericalAttributes.add(numTrait);
     }
+    
+    public void updateTextualAttribute (String name, String value) {
+    	for(Attribute<String> attr: textualAttributes) {
+    		if (attr.getName().equals(name)) {
+    			attr.setData(value);
+    		}
+    	}
+    }
+    
+    public void updateNumericalAttribute (String name, Number value) {
+    	for(Attribute<Number> attr: numericalAttributes) {
+    		if (attr.getName().equals(name)) {
+    			attr.setData(value);
+    		}
+    	}
+    }
+    
+    public void deleteTextualAttribute (String name) {
+    	for(Attribute<String> attr: textualAttributes) {
+    		if (attr.getName().equals(name)) {
+    			textualAttributes.remove(attr);
+    			break;
+    		}
+    	}
+    }
+    
+    public void deleteNumericalAttribute (String name) {
+    	for(Attribute<Number> attr: numericalAttributes) {
+    		if (attr.getName().equals(name)) {
+    			numericalAttributes.remove(attr);
+    			break;
+    		}
+    	}
+    }
 
     public void update () {
         updateSelfDueToInternalFactors();
