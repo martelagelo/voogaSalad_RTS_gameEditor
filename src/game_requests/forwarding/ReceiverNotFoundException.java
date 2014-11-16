@@ -6,26 +6,26 @@ package game_requests.forwarding;
  */
 public class ReceiverNotFoundException extends Exception {
 
-	private static final long serialVersionUID = 2016239501767275842L;
-	private String myAddress;
+    private static final long serialVersionUID = 2016239501767275842L;
+    private String myAddress;
 
-	/**
-	 * Create a new receiver not found exception
-	 * 
-	 * @param address
-	 *            The address that could not be resolved
-	 */
-	public ReceiverNotFoundException(String address) {
-		super(address + " could not be found");
-		myAddress = address;
-	}
+    /**
+     * Create a new receiver not found exception
+     * 
+     * @param address
+     *        The address that could not be resolved
+     */
+    public ReceiverNotFoundException (String address) {
+        super(address + " could not be found");
+        myAddress = address;
+    }
 
-	/**
-	 * Get the address
-	 * 
-	 * @return The address that could not be resolved
-	 */
-	public String address() {
-		return myAddress;
-	}
+    /**
+     * Get the address
+     * 
+     * @return The address that could not be resolved
+     */
+    public String address () {
+        return myAddress;
+    }
 }

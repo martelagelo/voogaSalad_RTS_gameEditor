@@ -2,9 +2,10 @@ package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputer.Boundable;
-import game_engine.gameRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
+
 
 /**
  * Checks for collisions between groups of objects
@@ -13,29 +14,31 @@ import java.util.List;
  *
  */
 public class CollisionComputer extends
-		Computer<SelectableGameElement, DrawableGameElement> {
-	/**
-	 * Returns true if there is a collision between the two bounded objects
-	 */
-	@Override
-	protected boolean checkComputingCondition(
-			SelectableGameElement primaryObject, DrawableGameElement otherObject) {
-		if (primaryObject instanceof Boundable
-				&& otherObject instanceof Boundable) {
-			Boundable boundableObject = (Boundable) primaryObject;
-			Boundable otherBoundableObject = (Boundable) otherObject;
-			return boundableObject.getBounds().intersects(
-					otherBoundableObject.getBounds());
-		} else {
-			return false;
-		}
-	}
+        Computer<SelectableGameElementState, DrawableGameElementState> {
+    /**
+     * Returns true if there is a collision between the two bounded objects
+     */
+    @Override
+    protected boolean checkComputingCondition (
+                                               SelectableGameElementState primaryObject,
+                                               DrawableGameElementState otherObject) {
+        if (primaryObject instanceof Boundable
+            && otherObject instanceof Boundable) {
+            Boundable boundableObject = (Boundable) primaryObject;
+            Boundable otherBoundableObject = (Boundable) otherObject;
+            return boundableObject.getBounds().intersects(
+                                                          otherBoundableObject.getBounds());
+        }
+        else {
+            return false;
+        }
+    }
 
-	@Override
-	protected void addInteractingElementsToObject(
-			SelectableGameElement primaryObject,
-			List<DrawableGameElement> listToAdd) {
-		primaryObject.addCollidingElements(listToAdd);
-	}
+    @Override
+    protected void addInteractingElementsToObject (
+                                                   SelectableGameElementState primaryObject,
+                                                   List<DrawableGameElementState> listToAdd) {
+        primaryObject.addCollidingElements(listToAdd);
+    }
 
 }

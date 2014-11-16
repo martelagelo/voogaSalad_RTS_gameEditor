@@ -2,6 +2,7 @@ package game_engine.computers.boundsComputers;
 
 import javafx.scene.shape.Polygon;
 
+
 /**
  * An interface required for object that have sight.
  *
@@ -9,9 +10,9 @@ import javafx.scene.shape.Polygon;
  *
  */
 public interface Sighted {
-	/**
-	 * Gets the vision polygon of the sighted object
-	 */
-	public Polygon getVisionPolygon();
+    /**
+     * Gets the vision polygon of the sighted object
+     */
+    public Polygon getVisionPolygon ();
 
 }

@@ -3,28 +3,27 @@ package game_engine.stateManaging;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.computers.boundsComputers.VisionComputer;
-import game_engine.gameRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.GameElement;
-import game_engine.gameRepresentation.Level;
-import game_engine.gameRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.Level;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import java.util.ArrayList;
 import java.util.List;
+import player.ScrollableBackground;
+import player.VisualManager;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 
+
 public class GameLoop {
 
     private Level myCurrentLevel;
-    private List<SelectableGameElement> myActiveElements = new ArrayList<SelectableGameElement>();
+    private ScrollableBackground myBackground;
     private List<Computer> myComputerList = new ArrayList<Computer>();
-
-    public GameLoop (Level level) {
-        myCurrentLevel = level;
-        myComputerList.add(new CollisionComputer());
-        myComputerList.add(new VisionComputer());
-    }
+    private Timeline timeline;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -33,34 +32,47 @@ public class GameLoop {
         }
     };
 
-    private void filterObjects () {
+    public GameLoop (Level level, VisualManager visualManager) {
+        myBackground = visualManager.getBackground();
+        myCurrentLevel = level;
+        // myComputerList.add(new CollisionComputer());
+        // myComputerList.add(new VisionComputer());
+        timeline = new Timeline();
+        start(60.0);
 
     }
 
-    public void init () {
-
-    }
-
-    /**
-     * Create the game's frame
-     */
-    public KeyFrame start (Double frameRate) {
-        return new KeyFrame(Duration.millis(1000 / 60), oneFrame);
+    public void start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
     }
 
     public void update () {
-        List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
+        myBackground.update();
+        List<DrawableGameElement> allElements =
+                new ArrayList<DrawableGameElement>();
         allElements.addAll(myCurrentLevel.getUnits());
         allElements.addAll(myCurrentLevel.getTerrain());
-        for (SelectableGameElement selectableElement : myActiveElements) {
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
                 c.compute(selectableElement, allElements);
             }
         }
-        
-        for (SelectableGameElement selectableElement : myActiveElements) { 
+
+        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             selectableElement.update();
         }
+    }
+
+    public void play () {
+        timeline.play();
+    }
+
+    public void pause () {
+        timeline.pause();
     }
 
 }
