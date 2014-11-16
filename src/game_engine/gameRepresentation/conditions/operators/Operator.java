@@ -44,9 +44,9 @@ public abstract class Operator implements Evaluatable {
      * @return the result of the operator being applied
      */
     protected abstract boolean applyOperator (boolean boolean1, boolean boolean2);
-    
+
     @Override
-    public String toString(){
+    public String toString () {
         return myOperatorString;
     }
 

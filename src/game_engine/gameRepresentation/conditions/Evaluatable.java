@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.conditions;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
+
 /**
  * An object that can evaluate a condition on an element to return a boolean value
  * 
@@ -11,8 +12,9 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
 public interface Evaluatable {
     /**
      * Evaluate and return a boolean of the result
+     * 
      * @param element an optional element for the Evaluatable to evaluate on.
      */
-    //TODO implement the idea of null elements to allow this to evaluate on standard elements
-    public boolean evaluate(GameElementState element);
+    // TODO implement the idea of null elements to allow this to evaluate on standard elements
+    public boolean evaluate (GameElementState element);
 }

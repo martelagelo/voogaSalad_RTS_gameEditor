@@ -11,16 +11,16 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  */
 public class OrOperator extends Operator {
     public OrOperator (Evaluatable firstCondition, Evaluatable secondCondition) {
-        super(firstCondition, secondCondition,"||");
+        super(firstCondition, secondCondition, "||");
     }
 
     @Override
     protected boolean applyOperator (boolean boolean1, boolean boolean2) {
-        return boolean1||boolean2;
+        return boolean1 || boolean2;
     }
 
     @Override
-    public String toString(){
+    public String toString () {
         return "||";
     }
 }
