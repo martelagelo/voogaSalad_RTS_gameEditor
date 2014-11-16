@@ -4,11 +4,11 @@ import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.SelectionBox;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
-import player.SelectionBox;
 
 
 public class GameElementManager implements Observer {
@@ -40,6 +40,7 @@ public class GameElementManager implements Observer {
                             .doubleValue();
             if (xLoc > rectPoints[0] && xLoc < rectPoints[2]) {
                 if (yLoc > rectPoints[1] && yLoc < rectPoints[3]) {
+                    System.out.println("selected a unit");
                     e.select(true);
                 }
             }

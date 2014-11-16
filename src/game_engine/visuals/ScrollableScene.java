@@ -1,4 +1,4 @@
-package player;
+package game_engine.visuals;
 
 import java.util.Observer;
 import javafx.event.EventHandler;

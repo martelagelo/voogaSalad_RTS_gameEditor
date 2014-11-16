@@ -1,4 +1,4 @@
-package player;
+package game_engine.visuals;
 
 import java.util.Observable;
 import javafx.scene.shape.Rectangle;

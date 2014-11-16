@@ -1,4 +1,4 @@
-package player;
+package game_engine.visuals;
 
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
