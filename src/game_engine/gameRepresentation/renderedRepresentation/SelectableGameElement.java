@@ -8,7 +8,6 @@ import game_engine.visuals.AnimationPlayer;
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState state;
-    private AnimationPlayer animation;
     private boolean selected;
 
     public SelectableGameElement (DrawableGameElementState element) {
@@ -22,6 +21,6 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public void select (boolean select) {
         selected = select;
-        // TODO implement
+        myAnimation.select(select);
     }
 }
