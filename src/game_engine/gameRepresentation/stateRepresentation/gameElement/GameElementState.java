@@ -30,7 +30,7 @@ public class GameElementState {
     public String getType () {
         return getTextualAttribute("Type");
     }
-
+    
     public String getTextualAttribute (String name) {
         return textualAttributes.stream()
                 .filter(o -> o.getName().equals(name))
@@ -41,6 +41,16 @@ public class GameElementState {
         return numericalAttributes.stream()
                 .filter(o -> o.getName().equals(name))
                 .collect(Collectors.toList()).get(0).getData();
+    }
+    
+    public void addTextualAttribute (String name, String value) {
+    	Attribute textTrait = new Attribute(name, value);
+    	this.textualAttributes.add(textTrait);
+    }
+    
+    public void addNumericalAttribute (String name, Number value) {
+    	Attribute numTrait = new Attribute(name, value);
+    	this.numericalAttributes.add(numTrait);
     }
 
     public void update () {

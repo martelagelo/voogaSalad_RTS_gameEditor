@@ -39,12 +39,19 @@ public class ShittyMain extends Application {
                                                 new Dimension(49, 51), 1));
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
         archerState.setAnimation("stand_fwd");
+        
+        SelectableGameElementState archerState2 = new SelectableGameElementState(80,10);
+        archerState2.setSpritesheet(new Spritesheet( "resources/img/graphics/units/archer/stand/forward/stand_fwd.png", new Dimension(49, 51), 1));
+        archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
+        archerState2.setAnimation("stand_fwd");
+        
         LevelState levelState = new LevelState();
         DrawableGameElementState grassState = new DrawableGameElementState(0, 0);
         grassState.setSpritesheet(new Spritesheet("resources/img/graphics/terrain/grass/1.png",
                                                   new Dimension(96, 48), 1));
         levelState.addTerrain(grassState);
         levelState.addUnit(archerState);
+        levelState.addUnit(archerState2);
 
         levelState.name = "FuckYouSteve";
         CampaignState campaignState = new CampaignState();
