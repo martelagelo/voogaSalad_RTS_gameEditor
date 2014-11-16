@@ -1,20 +1,20 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
 /**
- * A greater than evaluator
+ * A less than evaluator
  * 
  * @author Zach
  *
  */
-public class GreaterThanEvaluator extends Evaluator {
+public class LessThanEvaluator extends Evaluator {
 
-    public GreaterThanEvaluator () {
-        super(">");
+    public LessThanEvaluator () {
+        super("<");
     }
 
     @Override
     public boolean evaluate (double number1, double number2) {
-        return number1 > number2;
+        return number1 < number2;
     }
 
 }

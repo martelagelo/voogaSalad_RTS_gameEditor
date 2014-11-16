@@ -1,8 +1,9 @@
 package game_engine.gameRepresentation.conditions.globalElementConditions;
 
-import java.util.List;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
+import java.util.List;
+
 
 
 /**
@@ -13,16 +14,15 @@ import game_engine.stateManaging.GameElementManager;
  *
  */
 public class NumberRemoteElementsCondition extends GlobalElementCondition {
-
-    public NumberRemoteElementsCondition (String elementName,
+    public NumberRemoteElementsCondition (Evaluator evaluator,String elementName,
                                           int evaluationValue,
                                           GameElementManager elementManager) {
-        super(elementName, evaluationValue, elementManager);
+        super(evaluator,elementName, evaluationValue, elementManager);
     }
 
     @Override
     protected boolean evaluateOnObjects (List<GameElementState> elements) {
-        return elements.size() < getEvaluationValue();
+        return getEvaluator().evaluate(elements.size(), getEvaluationValue());
     }
 
 }

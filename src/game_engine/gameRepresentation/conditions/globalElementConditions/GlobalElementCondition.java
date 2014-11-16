@@ -1,26 +1,28 @@
 package game_engine.gameRepresentation.conditions.globalElementConditions;
 
-import java.util.List;
-import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.conditions.Condition;
+import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
+import java.util.List;
 
 
 /**
  * A condition that can be applied to a globally defined element type
- * 
+ *
  * @author Zach
  *
  */
-public abstract class GlobalElementCondition implements Evaluatable {
+public abstract class GlobalElementCondition extends Condition {
 
     private String myElementName;
     private int myEvaluationValue;
     private GameElementManager myElementManager;
 
-    public GlobalElementCondition (String elementName,
+    public GlobalElementCondition (Evaluator evaluator, String elementName,
                                    int evaluationValue,
                                    GameElementManager elementManager) {
+        super(evaluator);
         myElementName = elementName;
         myEvaluationValue = evaluationValue;
         myElementManager = elementManager;
