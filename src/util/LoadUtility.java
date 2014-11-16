@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import javafx.scene.image.Image;
 import test.util.TestCampaign;
 import test.util.TestDescribable;
 
@@ -16,7 +17,7 @@ import com.google.gson.JsonSyntaxException;
  * @author Rahul
  *
  */
-public class LoadUtility implements ILoad {
+public class LoadUtility implements ILoad, IMedia {
 
     public <T> T loadResource (String filename) {
         Gson gson = new Gson();
@@ -31,5 +32,6 @@ public class LoadUtility implements ILoad {
         
         
         return jsonRepresentation;
-    }      
+    }
+   
 }

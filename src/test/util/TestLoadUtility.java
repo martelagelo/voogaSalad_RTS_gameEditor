@@ -17,6 +17,7 @@ public class TestLoadUtility {
     @Test
     public void testLoadFunction () throws IOException {
         TestCampaign campaign = myLoadUtility.<TestCampaign> loadResource("campaign.json");
+        myLoadUtility.loadImage();
         TestCampaign foo = (TestCampaign) campaign;
         System.out.println(foo.myDescription);
     }
