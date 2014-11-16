@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Condition;
+import game_engine.gameRepresentation.conditions.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class GameElementState {
 
-    protected Map<Condition, Action> ifThisThenThat = new HashMap<>();
+    protected Map<ConditionOnImmediateElements, Action> ifThisThenThat = new HashMap<>();
     protected List<Attribute<Number>> numericalAttributes = new ArrayList<>();
     protected List<Attribute<String>> textualAttributes = new ArrayList<>();
 
