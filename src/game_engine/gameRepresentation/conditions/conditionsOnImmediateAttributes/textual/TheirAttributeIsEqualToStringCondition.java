@@ -1,11 +1,11 @@
-package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes;
+package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.textual;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 
-public class TheirAttributeIsEqualToValueCondition extends AttributeIsEqualToValueCondition {
+public class TheirAttributeIsEqualToStringCondition extends AttributeIsEqualToStringCondition {
 
-    public TheirAttributeIsEqualToValueCondition (String attribute, Number value) {
+    public TheirAttributeIsEqualToStringCondition (String attribute, Number value) {
         super(attribute, value);
     }
 

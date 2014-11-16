@@ -1,11 +1,11 @@
-package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes;
+package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.numerical;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 
-public class TheirAttributeIsLessThanValueCondition extends AttributeIsLessThanValueCondition {
+public class TheirAttributeIsGreaterThanValueCondition extends AttributeIsGreaterThanValueCondition {
 
-    public TheirAttributeIsLessThanValueCondition (String attribute, Number value) {
+    public TheirAttributeIsGreaterThanValueCondition (String attribute, Number value) {
         super(attribute, value);
     }
 
