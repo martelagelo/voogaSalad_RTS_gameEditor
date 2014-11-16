@@ -32,6 +32,7 @@ public class DrawableGameElement extends GameElement implements Boundable {
 	public void update() {
 		updateSelfDueToCollisions();
 		updateSelfDueToVisions();
+		//TODO add more occurences to activate condition action pairs
 	}
 
 	private void updateSelfDueToVisions() {
