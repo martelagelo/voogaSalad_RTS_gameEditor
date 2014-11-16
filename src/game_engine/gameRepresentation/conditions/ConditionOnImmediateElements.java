@@ -5,8 +5,8 @@ import java.util.List;
 
 
 /**
- * The Condition class is the former part of the Condition-Action pair, by use of which each
- * GameElement will define how it interacts with the world around it.
+ * The ConditionOnImmediateElements interface is an interface implemented by Condition strategies
+ * that can evaluate knowing only GameElements given to them. 
  * 
  * @author Steve
  *

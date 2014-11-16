@@ -1,8 +1,8 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +25,10 @@ public class Condition {
         myRemoteConditions = remoteConditions;
     }
 
-    public boolean evaluate (SelectableGameElement parent, DrawableGameElement interactingElement) {
+    public boolean evaluate (SelectableGameElementState parent, DrawableGameElementState interactingElement) {
         List<GameElementState> immediateElements = new ArrayList<GameElementState>();
-        immediateElements.add(parent.getState());
-        immediateElements.add(interactingElement.getState());
+        immediateElements.add(parent);
+        immediateElements.add(interactingElement);
         
         List<Boolean> returnValues = new ArrayList<Boolean>();
         for (ConditionOnImmediateElements immediateCondition : myImmediateConditions) {

@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.computers.boundsComputers.Sighted;
 import game_engine.gameRepresentation.actions.Action;
+import game_engine.gameRepresentation.conditions.Condition;
 import game_engine.gameRepresentation.conditions.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
 import javafx.scene.shape.Polygon;
 
 
@@ -43,7 +42,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     private void updateSelfDueToCurrentObjective () {
         // TODO Auto-generated method stub
-        List<Entry<ConditionOnImmediateElements, Action>> applicableConditionActionPairs =
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("ObjectiveCondition");
 
     }
@@ -52,7 +51,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
         // TODO Auto-generated method stub
         // update representation?
         // visualRepresentation.setSelected();
-        List<Entry<ConditionOnImmediateElements, Action>> applicableConditionActionPairs =
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("SelfCondition");
 
     }
@@ -69,16 +68,14 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
-        List<Entry<ConditionOnImmediateElements, Action>> applicableConditionActionPairs =
+        List<Entry<Condition, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs(conditionActionPairIdentifier);
         if (interactingElements.containsKey(elementIdentifier)) {
             for (DrawableGameElementState element : interactingElements.get(elementIdentifier)) {
                 List<GameElementState> immediatelyInteractingElements =
                         new ArrayList<GameElementState>();
-                immediatelyInteractingElements.add(this);
-                immediatelyInteractingElements.add(element);
-                for (Entry<ConditionOnImmediateElements, Action> conditionActionPair : applicableConditionActionPairs) {
-                    if (conditionActionPair.getKey().evaluate(immediatelyInteractingElements)) {
+                for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
+                    if (conditionActionPair.getKey().evaluate(this,element)) {
                         conditionActionPair.getValue().doAction(immediatelyInteractingElements);
                     }
                 }
@@ -86,7 +83,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
         }
     }
 
-    private List<Entry<ConditionOnImmediateElements, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
+    private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
         return this.ifThisThenThat.entrySet().stream()
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
                 .collect(Collectors.toList());
