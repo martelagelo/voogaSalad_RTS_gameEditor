@@ -20,7 +20,7 @@ import javafx.scene.Node;
 public class DrawableGameElementState extends GameElementState implements Boundable {
     public static final String X_POS_STRING = "xPosition";
     public static final String Y_POS_STRING = "yPosition";
-    
+
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
     private AnimationSequence myAnimation;

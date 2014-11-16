@@ -19,8 +19,8 @@ public class SelectableGameElement extends DrawableGameElement {
     public String getType () {
         return state.getType();
     }
-    
-    public void select(boolean select){
+
+    public void select (boolean select) {
         selected = select;
         // TODO implement
     }

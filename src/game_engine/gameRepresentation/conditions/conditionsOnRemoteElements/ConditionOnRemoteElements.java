@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions;
+package game_engine.gameRepresentation.conditions.conditionsOnRemoteElements;
 
 public interface ConditionOnRemoteElements {
 

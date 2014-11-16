@@ -1,5 +1,7 @@
 package game_engine.gameRepresentation.conditions;
 
+import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
+import game_engine.gameRepresentation.conditions.conditionsOnRemoteElements.ConditionOnRemoteElements;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;

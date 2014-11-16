@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.textual;
 
 import java.util.List;
-import game_engine.gameRepresentation.conditions.ConditionOnImmediateElements;
+import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 

@@ -3,6 +3,7 @@ package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttribute
 import java.util.List;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
+
 public class MyAttributeIsEqualToValueCondition extends AttributeIsEqualToValueCondition {
 
     public MyAttributeIsEqualToValueCondition (String attribute, Number value) {

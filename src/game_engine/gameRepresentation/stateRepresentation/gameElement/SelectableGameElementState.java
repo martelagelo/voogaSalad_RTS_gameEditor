@@ -3,7 +3,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 import game_engine.computers.boundsComputers.Sighted;
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Condition;
-import game_engine.gameRepresentation.conditions.ConditionOnImmediateElements;
+import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +75,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
                 List<GameElementState> immediatelyInteractingElements =
                         new ArrayList<GameElementState>();
                 for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
-                    if (conditionActionPair.getKey().evaluate(this,element)) {
+                    if (conditionActionPair.getKey().evaluate(this, element)) {
                         conditionActionPair.getValue().doAction(immediatelyInteractingElements);
                     }
                 }
@@ -122,5 +122,5 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     public Map<String, ObscureAction> getCurrentInteractionInformation () {
         return currentAbilityRepresentation;
     }
-    
+
 }

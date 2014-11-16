@@ -3,6 +3,7 @@ package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttribute
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 
+
 public class TheirAttributeIsGreaterThanValueCondition extends AttributeIsGreaterThanValueCondition {
 
     public TheirAttributeIsGreaterThanValueCondition (String attribute, Number value) {

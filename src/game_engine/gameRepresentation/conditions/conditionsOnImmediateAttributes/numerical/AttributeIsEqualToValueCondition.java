@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.numerical;
 
-import game_engine.gameRepresentation.conditions.ConditionOnImmediateElements;
+import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.List;
 

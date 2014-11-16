@@ -29,13 +29,17 @@ public class GameElementManager implements Observer {
     public void addElementToLevel (String typeName) {
         // TODO: add factories
     }
-    
-    private void selectPlayerUnits(double[] rectPoints){
-        for(SelectableGameElement e : myLevel.getUnits()){
-            double xLoc = e.getState().getNumericalAttribute(SelectableGameElementState.X_POS_STRING).doubleValue();
-            double yLoc = e.getState().getNumericalAttribute(SelectableGameElementState.Y_POS_STRING).doubleValue();
-            if(xLoc > rectPoints[0] && xLoc < rectPoints[2]){
-                if(yLoc > rectPoints[1] && yLoc < rectPoints[3]){
+
+    private void selectPlayerUnits (double[] rectPoints) {
+        for (SelectableGameElement e : myLevel.getUnits()) {
+            double xLoc =
+                    e.getState().getNumericalAttribute(SelectableGameElementState.X_POS_STRING)
+                            .doubleValue();
+            double yLoc =
+                    e.getState().getNumericalAttribute(SelectableGameElementState.Y_POS_STRING)
+                            .doubleValue();
+            if (xLoc > rectPoints[0] && xLoc < rectPoints[2]) {
+                if (yLoc > rectPoints[1] && yLoc < rectPoints[3]) {
                     e.select(true);
                 }
             }

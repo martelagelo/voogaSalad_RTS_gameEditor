@@ -29,7 +29,7 @@ public class DrawableGameElement implements Displayable {
     }
 
     public void update () {
-        //state.update();
+        // state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable
         player.setAnimation(state.getAnimation());
@@ -47,9 +47,11 @@ public class DrawableGameElement implements Displayable {
     @Override
     public Node getNode () {
         Node n = player.getNode();
-        n.setLayoutX(state.getNumericalAttribute(DrawableGameElementState.X_POS_STRING).doubleValue());
-        n.setLayoutY(state.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING).doubleValue());
-        System.out.println("node layout: "+n.getLayoutX()+", "+n.getLayoutY());
+        n.setLayoutX(state.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
+                .doubleValue());
+        n.setLayoutY(state.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
+                .doubleValue());
+        System.out.println("node layout: " + n.getLayoutX() + ", " + n.getLayoutY());
         return n;
     }
 }
