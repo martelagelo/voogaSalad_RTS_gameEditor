@@ -11,7 +11,7 @@ public class LessThanEqualEvaluator extends Evaluator {
     }
 
     @Override
-    public boolean Evaluate (double number1, double number2) {
+    public boolean evaluate (double number1, double number2) {
         return number1 <= number2;
     }
 

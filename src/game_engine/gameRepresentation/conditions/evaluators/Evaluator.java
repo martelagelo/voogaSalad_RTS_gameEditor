@@ -28,22 +28,22 @@ public abstract class Evaluator {
      * @param number2
      * @return
      */
-    public abstract boolean Evaluate (double number1, double number2);
+    public abstract boolean evaluate (double number1, double number2);
 
-    public boolean Evaluate (int number1, int number2) {
-        return Evaluate(number1 * 1.0, number2 * 1.0);
+    public boolean evaluate (int number1, int number2) {
+        return evaluate(number1 * 1.0, number2 * 1.0);
     }
 
-    public boolean Evaluate (int number1, double number2) {
-        return Evaluate(number1 * 1.0, number2);
+    public boolean evaluate (int number1, double number2) {
+        return evaluate(number1 * 1.0, number2);
     }
 
-    public boolean Evaluate (double number1, int number2) {
-        return Evaluate(number1, number2 * 1.0);
+    public boolean evaluate (double number1, int number2) {
+        return evaluate(number1, number2 * 1.0);
     }
     
-    public boolean Evaluate (boolean item1, boolean item2) {
-        return Evaluate(item1?1:0,item2?1:0);
+    public boolean evaluate (boolean item1, boolean item2) {
+        return evaluate(item1?1:0,item2?1:0);
     }
 
     /**
@@ -51,7 +51,7 @@ public abstract class Evaluator {
      * generic objects
      * 
      */
-    public boolean Evaluate (Object item1, Object item2) {
+    public boolean evaluate (Object item1, Object item2) {
         return false;
     }
 

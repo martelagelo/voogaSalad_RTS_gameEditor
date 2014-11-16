@@ -1,7 +1,6 @@
 package application;
 
 import game_engine.Engine;
-import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -18,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import player.VisualManager;
 
 
 public class ShittyMain extends Application {
@@ -34,9 +32,9 @@ public class ShittyMain extends Application {
     private GameState hardCodeAGame () {
         SelectableGameElementState archerState = new SelectableGameElementState(10, 10);
         archerState
-                .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/archer/stand/forward/stand_fwd.png",
-                                                new Dimension(49, 51), 1));
+        .setSpritesheet(new Spritesheet(
+                                        "resources/img/graphics/units/archer/stand/forward/stand_fwd.png",
+                                        new Dimension(49, 51), 1));
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
         archerState.setAnimation("stand_fwd");
         LevelState levelState = new LevelState();
@@ -63,14 +61,12 @@ public class ShittyMain extends Application {
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
 
-        // Add the input handler to the group
-        InputHandler handler = new InputHandler(g);
-        InputEvent<MouseEvent, Group> keyPressedInput =
-                new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
-                    group.getChildren().get(0)
-                            .setRotate(group.getChildren().get(0).getRotate() + 20);
-                    System.out.println("Clicked");
-                });
+        new InputHandler(g);
+        new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
+            group.getChildren().get(0)
+            .setRotate(group.getChildren().get(0).getRotate() + 20);
+            System.out.println("Clicked");
+        });
     }
 
 }
