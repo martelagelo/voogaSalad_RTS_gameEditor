@@ -16,6 +16,7 @@ public class CampaignState {
     public String name;
     public String description;
     private List<LevelState> levels;
+    private boolean isCampaignActive = false;
 
     public CampaignState () {
         levels = new ArrayList<>();
@@ -29,6 +30,10 @@ public class CampaignState {
 
     public void addLevel (LevelState level) {
         levels.add(level);
+    }
+    
+    public boolean isActive() {
+    	return isCampaignActive;
     }
 
 }

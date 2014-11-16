@@ -23,6 +23,19 @@ public class GameElementState {
     protected List<Attribute<Number>> numericalAttributes = new ArrayList<>();
     protected List<Attribute<String>> textualAttributes = new ArrayList<>();
 
+    public void addConditionActionPair (Condition condition, Action action) {
+    	ifThisThenThat.put(condition, action);
+    }
+    
+    public void updateConditionActionPair (Condition condition, Action action) {
+    	ifThisThenThat.remove(condition);
+    	ifThisThenThat.put(condition, action);
+    }
+    
+    public void removeConditionActionPair (Condition condition) {
+    	ifThisThenThat.remove(condition);
+    }
+    
     public String getName () {
         return getTextualAttribute("Name");
     }
