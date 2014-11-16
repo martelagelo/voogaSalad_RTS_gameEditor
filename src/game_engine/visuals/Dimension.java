@@ -41,4 +41,9 @@ public class Dimension {
         }
         return false;
     }
+    
+    @Override
+    public String toString(){
+        return "(" + myWidth + ", " + myHeight + ")";
+    }
 }

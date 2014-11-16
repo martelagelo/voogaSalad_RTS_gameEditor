@@ -36,7 +36,7 @@ public class GameElementManager implements Observer {
         for (SelectableGameElement e : myLevel.getUnits()) {
             double[] bounds = e.getBounds();
             System.out.println("Unit bounding box:");
-            System.out.println("("+bounds[0]+", "+bounds[1]+") , (" + bounds[0]+bounds[2]+", "+bounds[1]+bounds[3]+")");
+            System.out.println("("+bounds[0]+", "+bounds[1]+") , (" + (bounds[0]+bounds[2])+", "+(bounds[1]+bounds[3])+")");
             Polygon polygonBounds = new Polygon();
             polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
                                                            bounds[0] + bounds[2], bounds[1],
