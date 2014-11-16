@@ -18,7 +18,7 @@ public class AmountOfRemoteElementsIsLessThanValueCondition implements Condition
     }
 
     @Override
-    public boolean evaluate (String identifier) {
+    public boolean evaluate () {
         return theElementManager.findAllElementsOfType(myElementName).size() < myValue.intValue();
     }
 

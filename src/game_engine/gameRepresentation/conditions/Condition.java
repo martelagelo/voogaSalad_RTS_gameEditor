@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class Condition {
 
     private Map<Boolean, ConditionOnImmediateElements> myImmediateConditions;
-    private Map<Boolean, Map<ConditionOnRemoteElements, String>> myRemoteConditions;
+    private Map<Boolean, ConditionOnRemoteElements> myRemoteConditions;
     protected String conditionType;
 
     public String getType () {
@@ -30,7 +30,7 @@ public class Condition {
     }
 
     public Condition (Map<Boolean, ConditionOnImmediateElements> immediateConditions,
-                      Map<Boolean, Map<ConditionOnRemoteElements, String>> remoteConditions) {
+                      Map<Boolean, ConditionOnRemoteElements> remoteConditions) {
         myImmediateConditions = immediateConditions;
         myRemoteConditions = remoteConditions;
     }
@@ -47,14 +47,10 @@ public class Condition {
             Boolean augmentingValue = entry.getKey();
             returnValues.add(augmentingValue && immediateCondition.evaluate(immediateElements));
         }
-        for (Entry<Boolean, Map<ConditionOnRemoteElements, String>> entry : myRemoteConditions
-                .entrySet()) {
+        for (Entry<Boolean, ConditionOnRemoteElements> entry : myRemoteConditions.entrySet()) {
             Boolean augmentingValue = entry.getKey();
-            for (Entry<ConditionOnRemoteElements, String> subEntry : entry.getValue().entrySet()) {
-                ConditionOnRemoteElements remoteCondition = subEntry.getKey();
-                String parameters = subEntry.getValue();
-                returnValues.add(augmentingValue && remoteCondition.evaluate(parameters));
-            }
+            ConditionOnRemoteElements remoteCondition = entry.getValue();
+            returnValues.add(augmentingValue && remoteCondition.evaluate());
         }
         boolean finalValue = returnValues.get(0);
         returnValues.remove(0);
