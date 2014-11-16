@@ -21,7 +21,8 @@ public class RequestMediatorTest {
     IForwarder myMediator;
     List<ReceiverTestStub> myReceivers;
 
-    public void setup (int receiverCount, int pingPongMax) throws InvalidAddressException,
+    public void setup (int receiverCount, int pingPongMax)
+                                                          throws InvalidAddressException,
                                                           AddressConflictException {
         myMediator = new RequestMediator();
         myReceivers = new ArrayList<>();
@@ -35,30 +36,32 @@ public class RequestMediatorTest {
      * Test sending to the same receiver
      */
     @Test
-    public void testSendToSelf ()
-                                 throws InvalidAddressException, AddressConflictException,
-                                 ReceiverNotFoundException, DeliveryException {
+    public void testSendToSelf () throws InvalidAddressException,
+                                 AddressConflictException, ReceiverNotFoundException,
+                                 DeliveryException {
         setup(1, 0);
 
         Map<String, String> message = new HashMap<>();
         message.put("hi", "there");
         IRequest request = new Request("0", "0", message);
         myMediator.forward(request);
-        assertEquals("there", myReceivers.get(0).lastRequest().message().get("hi"));
+        assertEquals("there",
+                     myReceivers.get(0).lastRequest().message().get("hi"));
     }
 
     /**
-     * Test if a message can be passed back and forth between two receivers
-     * in the correct order. <br>
+     * Test if a message can be passed back and forth between two receivers in
+     * the correct order. <br>
      * <br>
-     * ReceiverTestStub contains special "ping pong" logic where if the
-     * special key "pingPong" is in the message, the ReceiverTestStub will
-     * send back a new message to the sender, incrementing a counter until
-     * it reaches a certain value.
+     * ReceiverTestStub contains special "ping pong" logic where if the special
+     * key "pingPong" is in the message, the ReceiverTestStub will send back a
+     * new message to the sender, incrementing a counter until it reaches a
+     * certain value.
      */
     @Test
-    public void testSendPingPong () throws InvalidAddressException, AddressConflictException,
-                                   ReceiverNotFoundException, DeliveryException {
+    public void testSendPingPong () throws InvalidAddressException,
+                                   AddressConflictException, ReceiverNotFoundException,
+                                   DeliveryException {
         setup(2, 2);
 
         Map<String, String> initialMessage = new HashMap<>();
@@ -75,16 +78,21 @@ public class RequestMediatorTest {
         // Receiver 0 checks and sees that the pingPong limit, 2, has been
         // reached, and so it doesn't send a message back
         myMediator.forward(startingRequest);
-        // Receiver 1's last message should be the one sent by Receiver 0 the first time
+        // Receiver 1's last message should be the one sent by Receiver 0 the
+        // first time
         // (startingRequest)
-        assertEquals("1", myReceivers.get(1).lastRequest().message().get("pingPong"));
-        // Receiver 0's last message should be the one that Receiver 1 sent back in response
+        assertEquals("1",
+                     myReceivers.get(1).lastRequest().message().get("pingPong"));
+        // Receiver 0's last message should be the one that Receiver 1 sent back
+        // in response
         // to startingRequest
-        assertEquals("2", myReceivers.get(0).lastRequest().message().get("pingPong"));
+        assertEquals("2",
+                     myReceivers.get(0).lastRequest().message().get("pingPong"));
     }
 
     /**
-     * Tests that adding two identical addresses actually creates the right exception
+     * Tests that adding two identical addresses actually creates the right
+     * exception
      */
     @Test(expected = AddressConflictException.class)
     public void testAddressConflictException () throws InvalidAddressException,

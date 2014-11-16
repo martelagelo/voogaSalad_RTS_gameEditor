@@ -12,8 +12,10 @@ public class InvalidAddressException extends Exception {
     /**
      * Create a new invalid address exception
      * 
-     * @param address The invalid address
-     * @param reason The reason the address is invalid
+     * @param address
+     *        The invalid address
+     * @param reason
+     *        The reason the address is invalid
      */
     public InvalidAddressException (String address, String reason) {
         super(address + " is invalid: " + reason);

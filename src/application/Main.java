@@ -1,19 +1,20 @@
 package application;
 
+import game_editor.GUIPaneGenerator;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.MainView;
-
 
 public class Main extends Application {
-
     @Override
     public void start (Stage primaryStage) {
         try {
-            MainView mainView = new MainView(primaryStage);
-            mainView.start();
-        }
-        catch (Exception e) {
+            GUIPaneGenerator gPG = new GUIPaneGenerator();
+            Scene scene = new Scene(gPG.splashPage());
+            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
