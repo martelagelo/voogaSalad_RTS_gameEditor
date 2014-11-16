@@ -5,8 +5,6 @@ import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
 
 
 /**
@@ -24,6 +22,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
     private AnimationSequence myAnimation;
+    private double[] myBounds;
 
     public DrawableGameElementState (Number xPosition, Number yPosition) {
         this.numericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
@@ -39,13 +38,18 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         return myAnimation;
     }
 
-    // TODO remove this method
+    // TODO remove these methods
     public void setAnimation (String animationName) {
         myAnimation = myAnimations.get(animationName);
     }
 
     public void setSpritesheet (Spritesheet spritesheet) {
         mySpritesheet = spritesheet;
+        myBounds = new double[4]; // x, y, width, height
+        myBounds[0] = getNumericalAttribute(X_POS_STRING).doubleValue();
+        myBounds[1] = getNumericalAttribute(Y_POS_STRING).doubleValue();
+        myBounds[2] = mySpritesheet.frameDimensions.getWidth();
+        myBounds[2] = mySpritesheet.frameDimensions.getHeight();
     }
 
     public Spritesheet getSpritesheet () {
@@ -53,8 +57,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     }
 
     @Override
-    public Bounds getBounds () {
-        return null;
+    public double[] getBounds () {
+        return myBounds;
     }
 
 }

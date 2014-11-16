@@ -54,4 +54,8 @@ public class DrawableGameElement implements Displayable {
         System.out.println("node layout: " + n.getLayoutX() + ", " + n.getLayoutY());
         return n;
     }
+    
+    public double[] getBounds(){
+        return state.getBounds();
+    }
 }
