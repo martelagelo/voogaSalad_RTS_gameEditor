@@ -63,7 +63,6 @@ public class GameLoop {
         }
 
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            // TODO : flag for active
             selectableElement.update();
         }
     }
