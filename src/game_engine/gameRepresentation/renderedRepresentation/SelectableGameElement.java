@@ -9,6 +9,7 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState state;
     private AnimationPlayer animation;
+    private boolean selected;
 
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
@@ -17,5 +18,10 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public String getType () {
         return state.getType();
+    }
+    
+    public void select(boolean select){
+        selected = select;
+        // TODO implement
     }
 }

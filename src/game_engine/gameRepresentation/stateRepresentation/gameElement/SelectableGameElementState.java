@@ -125,5 +125,5 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     public Map<String, ObscureAction> getCurrentInteractionInformation () {
         return currentAbilityRepresentation;
     }
-
+    
 }
