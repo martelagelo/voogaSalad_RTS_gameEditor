@@ -32,9 +32,9 @@ public class ShittyMain extends Application {
     private GameState hardCodeAGame () {
         SelectableGameElementState archerState = new SelectableGameElementState(96, 0);
         archerState
-                .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/archer/stand/forward/stand_fwd.png",
-                                                new Dimension(49, 51), 1));
+        .setSpritesheet(new Spritesheet(
+                                        "resources/img/graphics/units/archer/stand/forward/stand_fwd.png",
+                                        new Dimension(49, 51), 1));
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
         archerState.setAnimation("stand_fwd");
         DrawableGameElementState grassState = new DrawableGameElementState(0, 0);
@@ -73,14 +73,12 @@ public class ShittyMain extends Application {
         Image poop = new Image("resources/img/poop.png");
         g.getChildren().add(new ImageView(poop));
 
-        // Add the input handler to the group
-        InputHandler handler = new InputHandler(g);
-        InputEvent<MouseEvent, Group> keyPressedInput =
-                new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
-                    group.getChildren().get(0)
-                            .setRotate(group.getChildren().get(0).getRotate() + 20);
-                    System.out.println("Clicked");
-                });
+        new InputHandler(g);
+        new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
+            group.getChildren().get(0)
+            .setRotate(group.getChildren().get(0).getRotate() + 20);
+            System.out.println("Clicked");
+        });
     }
 
 }
