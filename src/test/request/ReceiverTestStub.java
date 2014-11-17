@@ -1,19 +1,20 @@
 package test.request;
 
+import game_requests.IRequest;
+import game_requests.Request;
+import game_requests.forwarding.DeliveryException;
+import game_requests.forwarding.IForwarder;
+import game_requests.forwarding.InvalidAddressException;
+import game_requests.forwarding.ReceiverNotFoundException;
+import game_requests.receiving.IReceiver;
+import game_requests.receiving.UnknownSenderException;
 import java.util.Map;
-import vooga.request.IRequest;
-import vooga.request.Request;
-import vooga.request.forwarder.DeliveryException;
-import vooga.request.forwarder.IForwarder;
-import vooga.request.forwarder.InvalidAddressException;
-import vooga.request.forwarder.ReceiverNotFoundException;
-import vooga.request.receiver.IReceiver;
-import vooga.request.receiver.UnknownSenderException;
+
 
 /**
  * Stub testing class for testing the receiver functionality
  */
-public class ReceiverTestStub implements IReceiver{
+public class ReceiverTestStub implements IReceiver {
 
     private IRequest myLastRequest;
     private IForwarder myMediator;
@@ -32,11 +33,11 @@ public class ReceiverTestStub implements IReceiver{
     @Override
     public void receive (IRequest request) throws UnknownSenderException {
         myLastRequest = request;
-        if (request.message().containsKey(pingPongLabel)){
+        if (request.message().containsKey(pingPongLabel)) {
             int curPingPongIteration = Integer.parseInt(request.message().get(pingPongLabel));
             if (curPingPongIteration < myPingPongCountMax) {
                 Map<String, String> message = request.message();
-                message.put(pingPongLabel, Integer.toString(curPingPongIteration+1));
+                message.put(pingPongLabel, Integer.toString(curPingPongIteration + 1));
                 IRequest newRequest = new Request(request.receiver(), request.sender(), message);
                 try {
                     myMediator.forward(newRequest);
@@ -48,7 +49,7 @@ public class ReceiverTestStub implements IReceiver{
         }
     }
 
-    public IRequest lastRequest(){
+    public IRequest lastRequest () {
         return myLastRequest;
     }
 }
