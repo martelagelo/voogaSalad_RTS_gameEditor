@@ -41,9 +41,9 @@ public class MainView {
 
     private void displayEditorScreen () {
         initializeScreen(EDITOR_ROOT_PATH);
-        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-        util.initLanguages(System.getProperty("user.dir") + "\\src\\resources\\languages");
-        util.setLanguage("Chinese");
+//        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+//        util.initLanguages(System.getProperty("user.dir") + "\\src\\resources\\languages");
+//        util.setLanguage("Chinese");
     }
 
     private void initializeScreen (String filePath) {
