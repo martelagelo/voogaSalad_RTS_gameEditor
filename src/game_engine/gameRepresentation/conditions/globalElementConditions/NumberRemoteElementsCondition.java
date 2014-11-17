@@ -1,9 +1,9 @@
 package game_engine.gameRepresentation.conditions.globalElementConditions;
 
-import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 import java.util.List;
+
 
 
 /**
@@ -14,7 +14,6 @@ import java.util.List;
  *
  */
 public class NumberRemoteElementsCondition extends GlobalElementCondition {
-    
     public NumberRemoteElementsCondition (Evaluator evaluator,String elementName,
                                           int evaluationValue,
                                           GameElementManager elementManager) {
