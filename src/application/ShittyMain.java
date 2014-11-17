@@ -11,7 +11,6 @@ import game_engine.inputManagers.InputHandler;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
-import game_engine.visuals.VisualManager;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
