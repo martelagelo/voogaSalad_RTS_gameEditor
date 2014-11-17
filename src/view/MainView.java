@@ -1,10 +1,10 @@
 package view;
 
 import java.awt.Dimension;
-import util.MultiLanguageUtility;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import util.MultiLanguageUtility;
 
 
 /**
@@ -41,9 +41,9 @@ public class MainView {
 
     private void displayEditorScreen () {
         initializeScreen(EDITOR_ROOT_PATH);
-        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-        util.initLanguages(System.getProperty("user.dir") + "\\src\\resources\\languages");
-        util.setLanguage("fuck");
+//        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+//        util.initLanguages(System.getProperty("user.dir") + "\\src\\resources\\languages");
+//        util.setLanguage("Chinese");
     }
 
     private void initializeScreen (String filePath) {
