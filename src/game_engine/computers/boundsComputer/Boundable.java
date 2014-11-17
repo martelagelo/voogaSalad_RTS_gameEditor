@@ -1,7 +1,5 @@
 package game_engine.computers.boundsComputer;
 
-import javafx.geometry.Bounds;
-import javafx.scene.shape.Polygon;
 
 
 /**
@@ -16,6 +14,6 @@ public interface Boundable {
     /**
      * @return the bounds of the bounded object
      */
-    public Bounds getBounds ();
+    public double[] getBounds ();
 
 }

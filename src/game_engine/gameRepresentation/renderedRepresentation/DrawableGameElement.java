@@ -18,12 +18,12 @@ import javafx.scene.image.Image;
 public class DrawableGameElement implements Displayable {
 
     private DrawableGameElementState state;
-    private AnimationPlayer player;
+    protected AnimationPlayer myAnimation;
 
     public DrawableGameElement (DrawableGameElementState element) {
         state = element;
         Spritesheet spritesheet = element.getSpritesheet();
-        player =
+        myAnimation =
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
                                     spritesheet.numCols);
     }
@@ -32,12 +32,12 @@ public class DrawableGameElement implements Displayable {
         // state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable
-        player.setAnimation(state.getAnimation());
-        player.update();
+        myAnimation.setAnimation(state.getAnimation());
+        myAnimation.update();
     }
 
     public void setAnimation (AnimationSequence animation) {
-        player.setAnimation(animation);
+        myAnimation.setAnimation(animation);
     }
 
     public DrawableGameElementState getState () {
@@ -46,12 +46,16 @@ public class DrawableGameElement implements Displayable {
 
     @Override
     public Node getNode () {
-        Node n = player.getNode();
+        Node n = myAnimation.getNode();
         n.setLayoutX(state.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
                 .doubleValue());
         n.setLayoutY(state.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
                 .doubleValue());
         System.out.println("node layout: " + n.getLayoutX() + ", " + n.getLayoutY());
         return n;
+    }
+    
+    public double[] getBounds(){
+        return state.getBounds();
     }
 }
