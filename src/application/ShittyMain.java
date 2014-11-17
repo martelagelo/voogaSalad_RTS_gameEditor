@@ -1,7 +1,6 @@
 package application;
 
 import game_engine.Engine;
-import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -12,7 +11,6 @@ import game_engine.inputManagers.InputHandler;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
-import game_engine.visuals.VisualManager;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
