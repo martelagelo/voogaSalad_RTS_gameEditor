@@ -19,13 +19,20 @@ public class TestLoadSaveUtility {
 
     @Test
     public void testLoadFunction () throws IOException {
-        myLoadSaveUtility.save(new TestCampaign("hola", "howdy"), "campaign.json");
-        TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource("campaign.json");
+        myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"), "src"
+                + LoadSaveUtility.FILE_SEPARATOR + "resources" + LoadSaveUtility.FILE_SEPARATOR + "game"
+                + LoadSaveUtility.FILE_SEPARATOR + "campaign.json");
+        TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
+                "src" + LoadSaveUtility.FILE_SEPARATOR + "resources"
+                        + LoadSaveUtility.FILE_SEPARATOR + "game" + LoadSaveUtility.FILE_SEPARATOR
+                        + "campaign.json");
         myLoadSaveUtility.loadImage("exploBig.png");
         myLoadSaveUtility.saveImage(
-                new Image(getClass().getResourceAsStream("/resources/img/exploBig.png")),
-                "exploBigCopy.png");
-        TestCampaign foo = (TestCampaign) campaign;
-        System.out.println(foo.myDescription);
+                new Image(getClass().getResourceAsStream("/resources/img/exploBig.png")), "src"
+                        + LoadSaveUtility.FILE_SEPARATOR + "resources"
+                        + LoadSaveUtility.FILE_SEPARATOR + "img" + LoadSaveUtility.FILE_SEPARATOR
+                        + "exploBigCopy.png");
+        TestCampaign loadedCampaign = campaign;
+        System.out.println(loadedCampaign.myDescription);
     }
 }

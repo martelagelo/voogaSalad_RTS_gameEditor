@@ -1,18 +1,15 @@
 package util;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-import test.util.TestCampaign;
-import test.util.TestDescribable;
+
+import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -32,10 +29,8 @@ public class LoadSaveUtility implements ILoadSave {
 
         T jsonRepresentation = null;
         try {
-            System.out.println(FILE_SEPARATOR);
-            jsonRepresentation = (T) gson.fromJson(new FileReader(new File("src" + FILE_SEPARATOR
-                    + "resources" + FILE_SEPARATOR + "game" + FILE_SEPARATOR + filePath)),
-                    className.class);
+            jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)),
+                    className);
         } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
             // TODO Need to communicate exception to calling class
         }
@@ -45,24 +40,19 @@ public class LoadSaveUtility implements ILoadSave {
 
     public void save (JSONable object, String filePath) throws IOException {
         String json = object.toJSON();
-        FileWriter writer = new FileWriter("src" + FILE_SEPARATOR + "resources" + FILE_SEPARATOR
-                + "game" + FILE_SEPARATOR + filePath);
+        FileWriter writer = new FileWriter(filePath);
         writer.write(json);
         writer.close();
     }
 
-    public void saveImage (Image image, String filePath) {
-        File output = new File("src" + FILE_SEPARATOR + "resources" + FILE_SEPARATOR + "img"
-                + FILE_SEPARATOR + filePath);
-        try {
-            boolean b = ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
-            System.out.println(b);
-
-        } catch (Exception s) {
-        }
+    public void saveImage (Image image, String filePath) throws IOException {
+        File output = new File(filePath);
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
+        
     }
 
     public Image loadImage (String filePath) {
+        // TODO need to figure out a way to take a filePath to load an image.
         Image image = new Image(getClass().getResourceAsStream("/resources/img/" + filePath));
         return image;
     }

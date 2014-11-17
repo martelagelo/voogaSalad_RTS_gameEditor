@@ -36,8 +36,9 @@ public interface ILoadSave {
      * 
      * @param image
      * @param filePath
+     * @throws IOException 
      */
-    public void saveImage (Image image, String filePath);
+    public void saveImage (Image image, String filePath) throws IOException;
 
     /**
      * 
