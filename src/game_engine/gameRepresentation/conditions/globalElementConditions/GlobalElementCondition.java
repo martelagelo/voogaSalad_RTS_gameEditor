@@ -1,6 +1,7 @@
 package game_engine.gameRepresentation.conditions.globalElementConditions;
 
 import game_engine.gameRepresentation.conditions.Condition;
+import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
@@ -29,7 +30,7 @@ public abstract class GlobalElementCondition extends Condition {
     }
 
     @Override
-    public boolean evaluate (GameElementState element) {
+    public boolean evaluate (ElementPair elementPair) {
         return evaluateOnObjects(myElementManager.findAllElementsOfType(myElementName));
     }
 

@@ -14,5 +14,5 @@ public interface Evaluatable {
      * @param element an optional element for the Evaluatable to evaluate on.
      */
     //TODO implement the idea of null elements to allow this to evaluate on standard elements
-    public boolean evaluate(GameElementState element);
+    public boolean evaluate(ElementPair elements);
 }

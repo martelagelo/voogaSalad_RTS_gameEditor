@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.conditions.referencedElementConditions;
 
+import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
@@ -10,16 +11,16 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
  * @author Zach
  *
  */
-public class NumericalReferencedElementCondition extends ReferencedElementCondition {
+public class NumericalCondition extends ReferencedElementCondition {
 
-    public NumericalReferencedElementCondition (Evaluator evaluator,
-                                                String attributeName,
-                                                double attributeValue) {
-        super(evaluator, attributeName, attributeValue);
+    public NumericalCondition (Evaluator evaluator,
+                               String attributeName,
+                               double attributeValue, boolean selfOrOther) {
+        super(evaluator, attributeName, attributeValue, selfOrOther);
     }
 
     @Override
-    public boolean evaluate (GameElementState element) {
+    protected boolean evaluate (GameElementState element) {
         return getEvaluator().evaluate(element.getNumericalAttribute(getAttributeName())
                 .doubleValue(), getAttributeValue());
     }

@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.conditions.operators;
 
+import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 
 /**
@@ -31,9 +31,9 @@ public abstract class Operator implements Evaluatable {
     }
 
     @Override
-    public boolean evaluate (GameElementState element) {
-        return applyOperator(myFirstCondition.evaluate(element),
-                             mySecondCondition.evaluate(element));
+    public boolean evaluate (ElementPair elements) {
+        return applyOperator(myFirstCondition.evaluate(elements),
+                             mySecondCondition.evaluate(elements));
     }
 
     /**
