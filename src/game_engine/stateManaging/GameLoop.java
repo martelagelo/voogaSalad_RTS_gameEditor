@@ -55,7 +55,9 @@ public class GameLoop {
 	}
 
 	private void update () {
+		//Updates the background of the application
 		myBackground.update();
+		//Updates all of the conditions and actions of the game elements
 		List<DrawableGameElement> allElements =
 				new ArrayList<DrawableGameElement>();
 		allElements.addAll(myCurrentLevel.getUnits());
@@ -65,9 +67,9 @@ public class GameLoop {
 				c.compute(selectableElement, allElements);
 			}
 		}
-
+		//
 		for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-			selectableElement.updateAnimation();
+			selectableElement.update();
 		}
 	}
 	
