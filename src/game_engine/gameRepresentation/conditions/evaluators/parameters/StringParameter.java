@@ -23,12 +23,12 @@ public class StringParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements, String elementTag) {
+    public String getValue (ElementPair elements) {
         return myString;
     }
 
     @Override
-    public boolean setValue (ElementPair elements, String elementTag, String value) {
+    public boolean setValue (ElementPair elements, String value) {
         myString = value;
         return true;
     }

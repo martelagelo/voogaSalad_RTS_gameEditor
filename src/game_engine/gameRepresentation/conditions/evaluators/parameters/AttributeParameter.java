@@ -16,6 +16,7 @@ import java.util.List;
 public abstract class AttributeParameter implements Parameter {
 
     private String myAttributeTag;
+    private String myElementTag;
     private ObjectOfInterestIdentifier myObjectIdentifier;
     private GameElementManager myManager;
 
@@ -32,6 +33,23 @@ public abstract class AttributeParameter implements Parameter {
         myAttributeTag = attributeTag;
         myManager = manager;
         myObjectIdentifier = objectOfInterestIdentifier;
+        myElementTag = "";
+    }
+
+    /**
+     * Specify an attribute parameter with an element tag. Used for referencing global variables
+     * 
+     * @param attributeTag
+     * @param manager
+     * @param objectOfInterestIdentifier
+     * @param elementTag
+     */
+    public AttributeParameter (String attributeTag,
+                               GameElementManager manager,
+                               ObjectOfInterestIdentifier objectOfInterestIdentifier,
+                               String elementTag) {
+        this(attributeTag, manager, objectOfInterestIdentifier);
+        myElementTag = elementTag;
     }
 
     /**
@@ -59,9 +77,8 @@ public abstract class AttributeParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements,
-                            String elementTag) {
-        return getValue(getElementsOfInterest(myManager, elements, elementTag), myAttributeTag);
+    public String getValue (ElementPair elements) {
+        return getValue(getElementsOfInterest(myManager, elements, myElementTag), myAttributeTag);
     }
 
     /**
@@ -72,8 +89,8 @@ public abstract class AttributeParameter implements Parameter {
     protected abstract String getValue (List<GameElementState> elements, String attributeTag);
 
     @Override
-    public boolean setValue (ElementPair elements, String elementTag, String attributeValue) {
-        return setValue(getElementsOfInterest(myManager, elements, elementTag), myAttributeTag,
+    public boolean setValue (ElementPair elements, String attributeValue) {
+        return setValue(getElementsOfInterest(myManager, elements, myElementTag), myAttributeTag,
                         attributeValue);
     }
 

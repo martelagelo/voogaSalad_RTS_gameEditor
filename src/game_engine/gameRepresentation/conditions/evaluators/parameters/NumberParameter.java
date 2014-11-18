@@ -23,14 +23,12 @@ public class NumberParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements,
-                            String elementTag) {
+    public String getValue (ElementPair elements) {
         return Double.toString(myValue);
     }
 
     @Override
     public boolean setValue (ElementPair elements,
-                             String elementTag,
                              String value) {
         myValue = Double.valueOf(value);
         return true;

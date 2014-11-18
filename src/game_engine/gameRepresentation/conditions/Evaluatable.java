@@ -1,7 +1,5 @@
 package game_engine.gameRepresentation.conditions;
 
-
-
 /**
  * An object that can evaluate a condition on an element to return a boolean value
  *
@@ -10,9 +8,10 @@ package game_engine.gameRepresentation.conditions;
  */
 public interface Evaluatable {
     /**
-     * Evaluate and return a boolean of the result
+     * Take in a pair of elements, evaluate a condition on the elements, and return a boolean
+     * representing the
+     * condition's return value.
      *
-     * @param element an optional element for the Evaluatable to evaluate on.
      */
     public boolean evaluate (ElementPair elements);
 
