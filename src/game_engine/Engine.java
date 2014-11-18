@@ -23,6 +23,9 @@ import javafx.scene.Scene;
  */
 public class Engine implements Observer, Observable {
 
+	public static final Integer SCREEN_WIDTH = 600;
+	public static final Integer SCREEN_HEIGHT = 600;
+	
     private Game myGame;
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
@@ -33,7 +36,7 @@ public class Engine implements Observer, Observable {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myGame = new Game(game);
         mySaveLoadUtility = saveLoadUtility;
-        myVisualManager = new VisualManager(new Group(), 600, 600);
+        myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
     public Group getVisualRepresentation () {
