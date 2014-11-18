@@ -15,8 +15,10 @@ public interface ILoadSave {
      * Load a resource from a given file and return Java object representation
      * 
      * @param className
+     *            Java class object that is being loaded
      * @param filePath
-     * @return
+     *            that resource to be loaded from
+     * @return Java class object
      */
     public <T> T loadResource (Class className, String filePath);
 
@@ -33,17 +35,20 @@ public interface ILoadSave {
     public void save (JSONable object, String filePath) throws IOException;
 
     /**
+     * Save an image to a particular file path
      * 
      * @param image
      * @param filePath
-     * @throws IOException 
+     * @throws IOException
      */
     public void saveImage (Image image, String filePath) throws IOException;
 
     /**
+     * Load an image at given file path
      * 
-     * @param filePath
-     * @return
+     * @param String
+     *            encoding of file path
+     * @return Image object at that file path
      */
     public Image loadImage (String filePath);
 
