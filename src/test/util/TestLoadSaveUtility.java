@@ -1,5 +1,6 @@
 package test.util;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.scene.image.Image;
@@ -26,7 +27,9 @@ public class TestLoadSaveUtility {
                 "src" + LoadSaveUtility.FILE_SEPARATOR + "resources"
                         + LoadSaveUtility.FILE_SEPARATOR + "game" + LoadSaveUtility.FILE_SEPARATOR
                         + "campaign.json");
-        myLoadSaveUtility.loadImage("exploBig.png");
+        myLoadSaveUtility.loadImage("src" + LoadSaveUtility.FILE_SEPARATOR + "resources"
+                + LoadSaveUtility.FILE_SEPARATOR + "img" + LoadSaveUtility.FILE_SEPARATOR
+                + "exploBig.png");
         myLoadSaveUtility.saveImage(
                 new Image(getClass().getResourceAsStream("/resources/img/exploBig.png")), "src"
                         + LoadSaveUtility.FILE_SEPARATOR + "resources"

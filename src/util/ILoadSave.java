@@ -49,7 +49,8 @@ public interface ILoadSave {
      * @param String
      *            encoding of file path
      * @return Image object at that file path
+     * @throws IOException 
      */
-    public Image loadImage (String filePath);
+    public Image loadImage (String filePath) throws IOException;
 
 }
