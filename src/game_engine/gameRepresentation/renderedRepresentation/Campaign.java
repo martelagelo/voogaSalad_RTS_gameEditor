@@ -15,4 +15,8 @@ public class Campaign {
         levels = new ArrayList<Level>();
         myCampaignState.getLevels().stream().forEach(l -> levels.add(new Level(l)));
     }
+    
+    public CampaignState getCampaignState() {
+    	return myCampaignState;
+    }
 }
