@@ -2,14 +2,12 @@ package game_engine.gameRepresentation.conditions.operators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import game_engine.gameRepresentation.conditions.evaluators.EqualsEvaluator;
-import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 
 
 /**
  * An abstract class that performs a boolean operation on two evaluatable objects. e.g. &&, ||, !
  * and returns the result
- * 
+ *
  * @author Zach
  *
  */
@@ -21,25 +19,15 @@ public abstract class Operator implements Evaluatable {
 
     /**
      * Initialize the operator with the necessary conditions
-     * 
-     * @param firstCondition
-     * @param secondCondition
+     *
+     * @param firstCondition the leftmost condition for the operator to act on
+     * @param secondCondition the rightmost condition for the operator to act on
      * @param operatorString the string representation for the operator
      */
     public Operator (Evaluatable firstCondition, Evaluatable secondCondition, String operatorString) {
         myFirstCondition = firstCondition;
         mySecondCondition = secondCondition;
         myOperatorString = operatorString;
-    }
-    public Operator(String firstCondition, String secondCondition, String operatorString){
-       //TODO figure this logic out this(createCondition(firstCondition),createCondition(secondCondition),operatorString);
-    }
-    /**
-     * Create a condition based on the condition string
-     */
-    private Evaluator createCondition(String conditionString){
-        //TODO implement
-        return new EqualsEvaluator();
     }
 
     @Override
@@ -50,7 +38,7 @@ public abstract class Operator implements Evaluatable {
 
     /**
      * Apply the operator's function on two booleans
-     * 
+     *
      * @param boolean1 the first boolean
      * @param boolean2 the second boolean
      * @return the result of the operator being applied
