@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 /**
  * An object that can evaluate a condition on an element to return a boolean value

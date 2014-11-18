@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:id="menuBar" fx:controller="editor.EditorMenuBar">
+	<menus>
+		<Menu text="File">
+			<items>
+				<MenuItem id="myNewLevelMenuItem" text="New Level" />
+			</items>
+		</Menu>
+	</menus>
+</MenuBar>

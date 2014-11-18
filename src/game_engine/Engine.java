@@ -1,16 +1,15 @@
 package game_engine;
 
-import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
-import game_engine.gameRepresentation.stateRepresentation.GameState;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.VisualManager;
+import gamemodel.MainModel;
+import gamemodel.exceptions.DescribableStateException;
+import java.util.Observable;
 import java.util.Observer;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 
 
@@ -18,22 +17,23 @@ import javafx.scene.Scene;
  * The concrete boundary of the Engine - this class exposes the public API of the Engine to the rest
  * of the project.
  * 
- * @author Steve
+ * @author Steve, Jonathan, Nishad, Rahul
  *
  */
-public class Engine implements Observer, Observable {
+public class Engine extends Observable implements Observer {
 
-    private Game myGame;
+    public static final Integer SCREEN_WIDTH = 600;
+    public static final Integer SCREEN_HEIGHT = 600;
+
+    private MainModel myMainModel;
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
-    private Object mySaveLoadUtility;
     private VisualManager myVisualManager;
 
-    public Engine (GameState game, Object saveLoadUtility) {
+    public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
-        myGame = new Game(game);
-        mySaveLoadUtility = saveLoadUtility;
-        myVisualManager = new VisualManager(new Group(), 600, 600);
+        myMainModel = mainModel;
+        myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
     public Group getVisualRepresentation () {
@@ -41,16 +41,14 @@ public class Engine implements Observer, Observable {
         return myVisualManager.getVisualRepresentation();
     }
 
-    public void selectLevel (String name) {
-        myGame.setCurrentLevel(name);
-        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
-        myElementManager = new GameElementManager(myGame.getCurrentLevel());
-        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
-        myVisualManager.addBoxObserver(myElementManager);
-
+    // TODO Refactor to be in mainmodel
+    public void selectLevel (String campaignName, String levelName)
+                                                                   throws DescribableStateException {
+        myMainModel.setCurrentLevel(campaignName, levelName);
     }
 
     public void play () {
+        updateGameLoop(myMainModel.getCurrentLevel());
         myGameLoop.play();
     }
 
@@ -58,35 +56,25 @@ public class Engine implements Observer, Observable {
         myGameLoop.pause();
     }
 
-    public void save () {
-        // TODO save stuff
-        // mySaveLoadUtility.save(myGame);
-    }
-
-    public void load (GameState game) {
-        // TODO Auto-generated method stub
-
-    }
-
     @Override
-    public void addListener (InvalidationListener arg0) {
+    public void update (Observable observable, Object arg) {
         // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void removeListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void update (java.util.Observable arg0, Object arg1) {
-        // TODO Auto-generated method stub
-
+        updateGameLoop(myMainModel.getCurrentLevel());
     }
 
     public Scene getScene () {
         return myVisualManager.getScene();
     }
+
+    private void updateGameLoop (LevelState levelState) {
+        // TODO check equlity
+        if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
+            Level nextLevel = new Level(levelState);
+            myGameLoop = new GameLoop(nextLevel, myVisualManager);
+            myElementManager = new GameElementManager(nextLevel);
+            myVisualManager.addObjects(nextLevel.getGroup());
+            myVisualManager.addBoxObserver(myElementManager);
+        }
+    }
+
 }

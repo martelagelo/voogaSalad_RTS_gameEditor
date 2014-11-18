@@ -1,6 +1,0 @@
-#splash{
-    -fx-background-image: url("../resources/img/splashpagebackground.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 1024 768;
-    -fx-background-position: center center;
-}

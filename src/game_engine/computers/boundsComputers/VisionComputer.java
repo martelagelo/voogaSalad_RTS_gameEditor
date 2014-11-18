@@ -5,12 +5,13 @@ import game_engine.computers.boundsComputer.Boundable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
+import javafx.scene.shape.Polygon;
 
 
 /**
  * A computer that indicates which objects an object with sight can see
  *
- * @author Zachary Bears
+ * @author Zachary Bears, Jonathan
  *
  */
 public class VisionComputer extends
@@ -27,8 +28,8 @@ public class VisionComputer extends
             && otherObject instanceof Boundable) {
             Sighted sightedObject = (Sighted) primaryObject;
             Boundable boundableObject = (Boundable) otherObject;
-            return sightedObject.getVisionPolygon().intersects(
-                                                               boundableObject.getBounds());
+            return new Polygon(sightedObject.getVisionBounds())
+                    .intersects(new Polygon(boundableObject.getBounds()).getBoundsInLocal());
         }
         else {
             return false;
