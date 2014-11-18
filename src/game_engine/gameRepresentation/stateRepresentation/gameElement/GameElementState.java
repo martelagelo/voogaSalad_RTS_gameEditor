@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 /**
- * The most basic flavor of GameElement - this type of element has no on-screen representation.
- * Examples include triggers and goals.
+ * The most basic flavor of GameElement - this type of element has no on-screen
+ * representation. Examples include triggers and goals.
  * 
  * @author Steve, Jonathan, Rahul, Nishad
  *
@@ -41,15 +40,13 @@ public class GameElementState {
 
     // TODO: handle when attribute doesn't exist
     public String getTextualAttribute (String name) {
-        return textualAttributes.stream()
-                .filter(o -> o.getName().equals(name))
+        return textualAttributes.stream().filter(o -> o.getName().equals(name))
                 .collect(Collectors.toList()).get(0).getData();
     }
 
     // TODO: handle when attribute doesn't exist
     public Number getNumericalAttribute (String name) {
-        return numericalAttributes.stream()
-                .filter(o -> o.getName().equals(name))
+        return numericalAttributes.stream().filter(o -> o.getName().equals(name))
                 .collect(Collectors.toList()).get(0).getData();
     }
 
