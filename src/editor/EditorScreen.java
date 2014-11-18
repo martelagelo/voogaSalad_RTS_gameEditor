@@ -3,6 +3,7 @@ package editor;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Optional;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.GUIController;
 import view.GUILoadStyleUtility;
+import view.GUIScene;
 
 
 /**
@@ -26,7 +28,7 @@ import view.GUILoadStyleUtility;
  * @author Nishad Agrawal
  *
  */
-public class EditorScreen implements GUIController {
+public class EditorScreen extends GUIScene implements GUIController {
     
     @FXML private TabPane tabPane;
     @FXML private TreeView<String> projectExplorer;

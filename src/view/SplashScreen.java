@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 
 
 
-public class SplashScreen implements GUIController {
+public class SplashScreen extends GUIScene implements GUIController {
 
     @FXML private GridPane splash;
     @FXML private Button launchEditorButton;
@@ -22,12 +22,11 @@ public class SplashScreen implements GUIController {
         launchEditorButton.setText(LAUNCH_EDITOR);
         launchRunnerButton.setText(LAUNCH_RUNNER);
         
-        launchEditorButton.setOnAction(e -> launchEditor(""));
+        launchEditorButton.setOnAction(e -> switchScene(ViewScreen.EDITOR, ""));
+        //TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
+        launchRunnerButton.setOnAction(e -> switchScene(ViewScreen.EDITOR, ""));
     }
-    
-    private void launchEditor(String chosenGame) {
-        
-    }
+
 
     @Override
     public String[] getCSS () {

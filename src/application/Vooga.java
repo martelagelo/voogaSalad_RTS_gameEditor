@@ -1,22 +1,21 @@
 package application;
 
-import javafx.stage.Stage;
+import game_engine.Engine;
 import gamemodel.MainModel;
+import javafx.stage.Stage;
 import view.MainView;
 
 public class Vooga {
-    
     private MainView myMainView;
     private MainModel myMainModel;
-    //TODO: IMPLEMENT GAME ENGINE HERE
-    //private GameEngine myGameEngine;
+    private Engine myGameEngine;
     
     public Vooga(Stage stage) {
         myMainModel = new MainModel();
         myMainView = new MainView(stage, myMainModel);        
-        
+        myGameEngine = new Engine(myMainModel);
+        myMainModel.addObserver(myGameEngine);
         myMainModel.addObserver(myMainView);
-        //
     }
     
     /**
