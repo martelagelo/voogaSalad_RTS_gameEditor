@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import util.MultiLanguageUtility;
 
-
 /**
  * 
  * @author Jonathan Tseng
@@ -17,14 +16,11 @@ import util.MultiLanguageUtility;
  *
  */
 public class MainView implements Observer {
-
     private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
-    private static final String SPLASH_PAGE_PATH = "/view/guipanes/SplashPage.fxml";
-    private static final String EDITOR_ROOT_PATH = "/editor/guipanes/EditorRoot.fxml";
     private Stage myStage;
     private Scene myScene;
     private MainModel myMainModel;
-    private GUIController myCurrentController;
+    private GUIScene myCurrentController;
 
     private GUILoadStyleUtility myLoadStyleUtility;
 
@@ -35,39 +31,31 @@ public class MainView implements Observer {
     }
 
     public void start () {
-         displaySplashScreen();
-//        displayEditorScreen();
+        launchScene(ViewScreen.SPLASH, "");
         myStage.show();
     }
-    
-    public void launchScene() {
-        
-    }
 
-    private void displaySplashScreen () {
-        initializeScreen(SPLASH_PAGE_PATH);
-    }
-
-    private void displayEditorScreen () {
-        initializeScreen(EDITOR_ROOT_PATH);
-//        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-//        util.initLanguages(System.getProperty("user.dir") + "\\src\\resources\\languages");
-//        util.setLanguage("Chinese");
+    public void launchScene (ViewScreen screen, String game) {
+        // MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        // util.initLanguages(System.getProperty("user.dir") +
+        // "\\src\\resources\\languages");
+        // util.setLanguage("Chinese");
+        myMainModel.loadGame(game);
+        initializeScreen(screen.getFilePath());
     }
 
     private void initializeScreen (String filePath) {
-        myCurrentController = myLoadStyleUtility.generateGUIPane(filePath);
-        Scene styled =
-                myLoadStyleUtility.createStyledScene(myScene,
-                                                     (Parent) myCurrentController.getRoot(),
-                                                     SCENE_DIMENSIONS,
-                                                     myCurrentController.getCSS());
+        myCurrentController = (GUIScene) myLoadStyleUtility.generateGUIPane(filePath);
+        Scene styled = myLoadStyleUtility.createStyledScene(myScene,
+                (Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS,
+                myCurrentController.getCSS());
         myStage.setScene(styled);
+        myCurrentController.attachSceneHandler(this);
     }
 
     @Override
     public void update (Observable o, Object arg) {
-        
+
     }
 
 }

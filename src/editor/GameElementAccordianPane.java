@@ -1,6 +1,8 @@
+<<<<<<< HEAD
 package editor;
 
 import java.util.HashMap;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

@@ -8,8 +8,8 @@ public abstract class GUIScene implements GUIController {
         myMainView = mainView;
     }
     
-    protected launchScene(GUIScene scene) {
-        
+    protected void switchScene(ViewScreen screen, String game) {
+        myMainView.launchScene(screen, game);
     }
 
 }

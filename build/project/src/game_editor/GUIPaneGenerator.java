@@ -1,17 +1,16 @@
 package game_editor;
 
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
+
 
 /**
  * 
  * @author Joshua Miller
  *
- * A class for the generation of GUIPanes based on
- * FXML files
+ *         A class for the generation of GUIPanes based on FXML files
  */
 public class GUIPaneGenerator {
 
