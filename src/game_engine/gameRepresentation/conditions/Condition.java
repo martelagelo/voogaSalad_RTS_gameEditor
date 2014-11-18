@@ -1,11 +1,25 @@
 package game_engine.gameRepresentation.conditions;
 
-import game_engine.gameRepresentation.GameElement;
-import java.util.List;
+import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 
 
-public abstract class Condition {
+/**
+ * The basic representation for a condition. Takes an evaluator and evaluates a given condition
+ * based on the evaluator's logic
+ * 
+ * @author Zach
+ *
+ */
+public abstract class Condition implements Evaluatable {
 
-    public abstract Boolean evaluate (List<GameElement> parameters);
+    private Evaluator myEvaluator;
+
+    public Condition (Evaluator evaluator) {
+        myEvaluator = evaluator;
+    }
+
+    protected Evaluator getEvaluator () {
+        return myEvaluator;
+    }
 
 }

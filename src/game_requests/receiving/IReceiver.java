@@ -11,9 +11,11 @@ public interface IReceiver {
     /**
      * Receive a request
      * 
-     * @param request The request to receive
-     * @throws UnknownSenderException If the receiver does not recognize the
-     *         sender as a known and valid sender
+     * @param request
+     *        The request to receive
+     * @throws UnknownSenderException
+     *         If the receiver does not recognize the sender as a known and
+     *         valid sender
      */
     public void receive (IRequest request) throws UnknownSenderException;
 }

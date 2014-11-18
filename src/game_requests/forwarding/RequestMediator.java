@@ -8,7 +8,8 @@ import java.util.Map;
 
 
 /**
- * The main request manager class which forwards messages between game components
+ * The main request manager class which forwards messages between game
+ * components
  */
 public class RequestMediator implements IForwarder {
 
@@ -34,7 +35,8 @@ public class RequestMediator implements IForwarder {
     }
 
     @Override
-    public void register (String address, IReceiver receiver) throws InvalidAddressException,
+    public void register (String address, IReceiver receiver)
+                                                             throws InvalidAddressException,
                                                              AddressConflictException {
         checkValidAddress(address);
         if (isKnownAddress(address)) { throw new AddressConflictException(address,
@@ -42,11 +44,13 @@ public class RequestMediator implements IForwarder {
         myAddresses.put(address, receiver);
     }
 
-    private void checkValidAddress (String address) throws InvalidAddressException {
+    private void checkValidAddress (String address)
+                                                   throws InvalidAddressException {
         return;
     }
 
-    private void checkKnownAddress (String address) throws ReceiverNotFoundException {
+    private void checkKnownAddress (String address)
+                                                   throws ReceiverNotFoundException {
         if (!isKnownAddress(address)) { throw new ReceiverNotFoundException(address); }
     }
 
