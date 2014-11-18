@@ -28,7 +28,7 @@ public class DrawableGameElement implements Displayable {
                                     spritesheet.numCols);
     }
 
-    public void update () {
+    public void updateAnimation () {
         // state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable
