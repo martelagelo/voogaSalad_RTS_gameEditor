@@ -1,6 +1,7 @@
 package game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
+import game_engine.stateManaging.GameElementManager;
 
 
 /**
@@ -23,7 +24,10 @@ public class NumberParameter implements EvaluatorParameter {
     }
 
     @Override
-    public String getValue (ElementPair elements) {
+    public String getValue (ElementPair elements,
+                            GameElementManager manager,
+                            String elementTag,
+                            String attributeTag) {
         return Double.toString(myValue);
     }
 
