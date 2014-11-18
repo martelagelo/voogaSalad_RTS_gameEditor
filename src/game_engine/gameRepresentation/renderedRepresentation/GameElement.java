@@ -9,4 +9,10 @@ public class GameElement {
 	public GameElement(GameElementState GES) {
 		myGameElementState = GES;
 	}
+	
+	public GameElementState getGameElementState() {
+		return myGameElementState;
+	}
+	
+	
 }
