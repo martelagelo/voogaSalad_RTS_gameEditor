@@ -9,7 +9,7 @@ import java.util.List;
  * @author Jonathan Tseng
  *
  */
-public class SavableLevelState extends SavableDescribableState {
+public class SavableLevelState extends SavableState {
 
     private List<SavableDrawableGameElementState> myTerrains;
     private List<SavableSelectableGameElementState> myUnits;

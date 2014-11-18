@@ -5,12 +5,12 @@ package gamemodel;
  * @author Jonathan Tseng
  *
  */
-public abstract class SavableDescribableState {
+public abstract class SavableState {
 
     private String myName;
     private String myDescription;
 
-    protected SavableDescribableState (String name) {
+    protected SavableState (String name) {
         myName = name;
     }
 

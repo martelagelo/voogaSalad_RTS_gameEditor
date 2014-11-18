@@ -17,10 +17,10 @@ public class MainModel {
     private SavableGameState mySavableGameState;
     private SavableCampaignState myCurrentSavableCampaignState;
     private SavableLevelState myCurrentSavableLevelState;
-    private String myEditorSelectedElement;
+    private SavableGameElementState myEditorSelectedElement;
 
     public MainModel (String game) {
-        // TODO: create/get mySavableGameState based on game name
+        // TODO: create/get mySavableGameState based on game name (save/load utility)
     }
 
     /**
@@ -28,8 +28,8 @@ public class MainModel {
      * 
      * @param element
      */
-    public void setEditorSelected (String element) {
-        myEditorSelectedElement = element;
+    public void setEditorSelected (String elementName) {
+        myEditorSelectedElement = mySavableGameState.getGameUniverse().getElement(elementName);
     }
 
     /**

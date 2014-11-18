@@ -23,7 +23,7 @@ public class SavableGameElementState {
     private List<Attribute<Number>> myNumericalAttributes;
 
     public String getName () {
-        new ArrayList<>().stream().anyMatch((attribute)->attribute.getName().equals(name))
+        new ArrayList<>().stream().anyMatch((attribute)->attribute.getName().equals(name));
         return getTextualAttribute(NAME_ATTRIBUTE_STRING);
     }
 
@@ -44,7 +44,7 @@ public class SavableGameElementState {
                 .equals(name))) ?
                                myNumericalAttributes.stream()
                                        .filter(o -> o.getName().equals(name))
-                                       .collect(Collectors.toList()).get(0).getData() : "";
+                                       .collect(Collectors.toList()).get(0).getData() : Double.NaN;
     }
 
     public void update () {

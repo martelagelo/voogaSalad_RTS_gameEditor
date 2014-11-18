@@ -19,4 +19,8 @@ public class SavableGameUniverse {
 
     }
 
+    public SavableGameElementState getElement (String elementName) {
+        return null;
+    }
+
 }

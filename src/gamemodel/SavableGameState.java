@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @author Jonathan Tseng
  *
  */
-public class SavableGameState extends SavableDescribableState {
+public class SavableGameState extends SavableState {
 
     private List<SavableCampaignState> myCampaigns;
     private SavableGameUniverse myGameUniverse;

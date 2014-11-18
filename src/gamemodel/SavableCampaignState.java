@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @author Jonathan Tseng
  *
  */
-public class SavableCampaignState extends SavableDescribableState {
+public class SavableCampaignState extends SavableState {
 
     private List<SavableLevelState> myLevels;
 
