@@ -24,9 +24,9 @@ public class Attribute<T> {
     public T getData () {
         return myData;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString () {
         return myName + " : " + myData.toString();
     }
 

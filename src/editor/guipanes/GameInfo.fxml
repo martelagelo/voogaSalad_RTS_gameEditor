@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="infoRoot" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="editor.InformationBox">
+	<children>
+		<TextField fx:id="nameTextField"/>
+		<TextArea fx:id="descriptionTextArea"/>
+		<HBox>
+			<children>
+				<ImageView fx:id="iconImageView" pickOnBounds="true"
+					preserveRatio="true" />
+				<VBox>
+					<children>
+						<Label fx:id="iconLabel" />
+						<Button fx:id="iconFileChooserButton" />
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+	</children>
+</VBox>
