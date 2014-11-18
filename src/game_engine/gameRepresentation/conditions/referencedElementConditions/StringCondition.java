@@ -2,7 +2,7 @@ package game_engine.gameRepresentation.conditions.referencedElementConditions;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.AttributeParameter;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.AttributeParameter;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 

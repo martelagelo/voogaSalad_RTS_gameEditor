@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.objectIdentifiers;
+package game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;

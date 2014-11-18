@@ -1,7 +1,7 @@
-package game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters;
+package game_engine.gameRepresentation.conditions.evaluators.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 import java.util.List;
@@ -37,6 +37,25 @@ public class NumericalAttributeParameter extends AttributeParameter {
             valueSum += element.getNumericalAttribute(attributeTag).doubleValue();
         }
         return Double.toString(valueSum / elementsOfInterest.size());
+    }
+
+    @Override
+    public boolean setValue (ElementPair elements,
+                             GameElementManager manager,
+                             String elementTag,
+                             String attributeTag,
+                             String value) {
+        try {
+
+            getElementsOfInterest(manager, elements, attributeTag).stream()
+                    .forEach(element -> element
+                            .setNumericalAttribute(attributeTag,
+                                                   new Double(value)));
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 }

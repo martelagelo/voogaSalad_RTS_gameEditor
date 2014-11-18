@@ -1,7 +1,7 @@
-package game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters;
+package game_engine.gameRepresentation.conditions.evaluators.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Zach
  *
  */
-public abstract class AttributeParameter implements EvaluatorParameter {
+public abstract class AttributeParameter implements Parameter {
 
     private String myAttributeTag;
     private ObjectOfInterestIdentifier myObjectIdentifier;

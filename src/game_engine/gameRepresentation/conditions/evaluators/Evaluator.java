@@ -2,8 +2,8 @@ package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameter;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameterFactory;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.ParameterFactory;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.Parameter;
 
 
 /**
@@ -17,8 +17,8 @@ import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.
  */
 public abstract class Evaluator implements Evaluatable {
     String myEvaluatorRepresentation;
-    private EvaluatorParameter myParameter1;
-    private EvaluatorParameter myParameter2;
+    private Parameter myParameter1;
+    private Parameter myParameter2;
 
     /**
      * Create the evaluator with the string representation of the evaluator
@@ -27,7 +27,7 @@ public abstract class Evaluator implements Evaluatable {
      */
     public Evaluator (String evaluatorRepresentation,  String parameter1, String parameter2) {
         myEvaluatorRepresentation = evaluatorRepresentation;
-        EvaluatorParameterFactory factory = new EvaluatorParameterFactory();
+        ParameterFactory factory = new ParameterFactory();
         myParameter1 = factory.createParameter(parameter1);
         myParameter2 = factory.createParameter(parameter2);
         

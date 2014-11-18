@@ -2,7 +2,7 @@ package game_engine.gameRepresentation.conditions.referencedElementConditions;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameter;
+import game_engine.gameRepresentation.conditions.evaluators.parameters.Parameter;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 
@@ -12,7 +12,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
  * @author Zach
  *
  */
-public abstract class NumericAttributeParameter implements EvaluatorParameter {
+public abstract class NumericAttributeParameter implements Parameter {
 
     public NumericAttributeParameter (Evaluator evaluator,
                                String attributeName,
