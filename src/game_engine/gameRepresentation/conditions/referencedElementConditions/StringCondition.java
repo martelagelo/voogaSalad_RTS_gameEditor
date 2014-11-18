@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.conditions.referencedElementConditions;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
+import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.AttributeParameter;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 
@@ -11,7 +12,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
  * @author Zach
  *
  */
-public class StringCondition extends ReferencedElementCondition {
+public class StringCondition extends AttributeParameter {
 
     public StringCondition (Evaluator evaluator,
                             String attributeName,

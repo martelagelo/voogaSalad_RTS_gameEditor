@@ -2,18 +2,19 @@ package game_engine.gameRepresentation.conditions.referencedElementConditions;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
+import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameter;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 
 /**
- * A condition that applies an evaluator on a numerical condition on a given element
+ * Get a numerical attribute from an object
  * 
  * @author Zach
  *
  */
-public class NumericalCondition extends ReferencedElementCondition {
+public abstract class NumericAttributeParameter implements EvaluatorParameter {
 
-    public NumericalCondition (Evaluator evaluator,
+    public NumericAttributeParameter (Evaluator evaluator,
                                String attributeName,
                                double attributeValue, boolean selfOrOther) {
         super(evaluator, attributeName, attributeValue, selfOrOther);

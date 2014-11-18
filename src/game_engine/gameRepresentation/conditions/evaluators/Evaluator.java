@@ -2,6 +2,8 @@ package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameter;
+import game_engine.gameRepresentation.conditions.evaluators.evaluatorParameters.EvaluatorParameterFactory;
 
 
 /**
@@ -66,7 +68,7 @@ public abstract class Evaluator implements Evaluatable {
     }
     @Override
     public boolean evaluate (ElementPair elements){
-        evaluate(myParameter1.getValue(elements),myParameter2.getValue(elements));
+       return evaluate(myParameter1.getValue(elements),myParameter2.getValue(elements));
     }
 
     @Override
