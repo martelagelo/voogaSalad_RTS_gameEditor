@@ -1,5 +1,6 @@
 package gamemodel;
 
+import java.util.Observable;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.LevelExistsException;
@@ -12,15 +13,20 @@ import gamemodel.exceptions.LevelNotFoundException;
  * @author Jonathan Tseng
  *
  */
-public class MainModel {
+public class MainModel extends Observable {
 
     private SavableGameState mySavableGameState;
     private SavableCampaignState myCurrentSavableCampaignState;
     private SavableLevelState myCurrentSavableLevelState;
     private SavableGameElementState myEditorSelectedElement;
-
-    public MainModel (String game) {
-        // TODO: create/get mySavableGameState based on game name (save/load utility)
+    
+    /**
+     * Sets the game of the Model.
+     * 
+     * @param game 
+     */
+    public void setGame(String game) {
+        // TODO
     }
 
     /**
@@ -68,6 +74,9 @@ public class MainModel {
         myCurrentSavableCampaignState = mySavableGameState.getCampaign(campaignName);
         myCurrentSavableCampaignState.addLevel(new SavableLevelState(levelName));
         myCurrentSavableLevelState = myCurrentSavableCampaignState.getLevel(levelName);
+        setChanged();        
+        notifyObservers();
+        clearChanged();
     }
 
     /**

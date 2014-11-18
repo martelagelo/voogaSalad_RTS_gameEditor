@@ -10,8 +10,9 @@ public class Main extends Application {
     @Override
     public void start (Stage primaryStage) {
         try {
-            MainView mainView = new MainView(primaryStage);
-            mainView.start();
+            Vooga salad = new Vooga(primaryStage);                        
+            salad.toss();
+            // gotta have some freshly tossed salad
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -3,35 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="editor.TabViewController">
-   <left>
-      <Accordion fx:id="levelElementAccordian" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="levelInfoView" VBox.vgrow="NEVER" />
-            <ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
-         </children>
-      </VBox>
-   </right>
-   <center>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <BorderPane VBox.vgrow="ALWAYS">
-               <center>
-                  <ScrollPane fx:id="levelMapView" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <HBox VBox.vgrow="NEVER">
-               <children>
-                  <BorderPane fx:id="levelMiniMapView" />
-                  <ScrollPane fx:id="levelElementAttributesView" />
-                  <ScrollPane fx:id="levelElementTriggersView" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
+	<left>
+		<Accordion fx:id="levelElementAccordian"
+			BorderPane.alignment="CENTER" />
+	</left>
+	<right>
+		<VBox BorderPane.alignment="CENTER">
+			<children>
+				<VBox fx:id="levelInfoView" VBox.vgrow="NEVER" />
+				<ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
+			</children>
+		</VBox>
+	</right>
+	<!-- temporary placeholder, will put game runner here (fetched from engine) -->
+	<center>
+		<Circle fill="DODGERBLUE" radius="200.0" stroke="BLACK"
+			strokeType="INSIDE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+	</center>
 </BorderPane>

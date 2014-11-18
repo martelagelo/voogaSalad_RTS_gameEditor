@@ -3,6 +3,7 @@ package editor;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 import java.util.function.Consumer;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -103,6 +104,12 @@ public class ProjectExplorerController implements GUIController {
     @Override
     public Node getRoot () {
         return myTreeView;
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

@@ -1,5 +1,6 @@
 package editor;
 
+import java.util.Observable;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.MenuBar;
@@ -30,6 +31,12 @@ public class EditorMenuBar implements GUIController {
     @Override
     public Node getRoot () {
         return menuBar;
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

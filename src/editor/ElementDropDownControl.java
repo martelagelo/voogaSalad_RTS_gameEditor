@@ -1,6 +1,7 @@
 package editor;
 
 import java.util.HashMap;
+import java.util.Observable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableStringValue;
@@ -102,6 +103,12 @@ public class ElementDropDownControl implements GUIController {
     @Override
     public Node getRoot () {
         return elementDropDown;
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

@@ -1,6 +1,7 @@
 package editor;
 
 import java.util.HashMap;
+import java.util.Observable;
 import java.util.Optional;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -107,6 +108,12 @@ public class EditorScreen implements GUIController {
     private void tabChanged (ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
         System.out.println("tab changed");
         myCurrentTab = newTab;
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

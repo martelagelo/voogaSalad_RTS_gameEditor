@@ -1,6 +1,9 @@
 package view;
 
+import gamemodel.MainModel;
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,26 +16,32 @@ import util.MultiLanguageUtility;
  * @author Nishad Agrawal
  *
  */
-public class MainView {
+public class MainView implements Observer {
 
     private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
     private static final String SPLASH_PAGE_PATH = "/view/guipanes/SplashPage.fxml";
     private static final String EDITOR_ROOT_PATH = "/editor/guipanes/EditorRoot.fxml";
     private Stage myStage;
     private Scene myScene;
+    private MainModel myMainModel;
+    private GUIController myCurrentController;
 
     private GUILoadStyleUtility myLoadStyleUtility;
 
-    public MainView (Stage stage) {
+    public MainView (Stage stage, MainModel model) {
         myStage = stage;
+        myMainModel = model;
         myLoadStyleUtility = new GUILoadStyleUtility();
     }
 
     public void start () {
-        // TODO CLEAN DIS SHIT WITH REQUESTS
-        // displaySplashScreen();
-        displayEditorScreen();
+         displaySplashScreen();
+//        displayEditorScreen();
         myStage.show();
+    }
+    
+    public void launchScene() {
+        
     }
 
     private void displaySplashScreen () {
@@ -47,13 +56,18 @@ public class MainView {
     }
 
     private void initializeScreen (String filePath) {
-        GUIController controller = myLoadStyleUtility.generateGUIPane(filePath);
+        myCurrentController = myLoadStyleUtility.generateGUIPane(filePath);
         Scene styled =
                 myLoadStyleUtility.createStyledScene(myScene,
-                                                     (Parent) controller.getRoot(),
+                                                     (Parent) myCurrentController.getRoot(),
                                                      SCENE_DIMENSIONS,
-                                                     controller.getCSS());
+                                                     myCurrentController.getCSS());
         myStage.setScene(styled);
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        
     }
 
 }

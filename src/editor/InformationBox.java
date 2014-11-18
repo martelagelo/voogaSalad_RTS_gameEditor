@@ -1,5 +1,6 @@
 package editor;
 
+import java.util.Observable;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -72,6 +73,12 @@ public class InformationBox implements GUIController {
     @Override
     public String[] getCSS () {
         return new String[0];
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

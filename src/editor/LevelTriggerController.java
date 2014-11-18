@@ -1,5 +1,6 @@
 package editor;
 
+import java.util.Observable;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -22,6 +23,12 @@ public class LevelTriggerController implements GUIController {
     @Override
     public void initialize () {
         System.out.println("initializing level trigger editor...");
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
     
 

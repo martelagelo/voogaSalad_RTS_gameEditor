@@ -1,5 +1,6 @@
 package editor;
 
+import java.util.Observable;
 import view.GUIController;
 import view.GUILoadStyleUtility;
 import javafx.fxml.FXML;
@@ -58,6 +59,12 @@ public class TabViewController implements GUIController {
     @Override
     public String[] getCSS () {
         return new String[] { "/editor/stylesheets/editorTab.css" };
+    }
+
+    @Override
+    public void update (Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        
     }
 
 }
