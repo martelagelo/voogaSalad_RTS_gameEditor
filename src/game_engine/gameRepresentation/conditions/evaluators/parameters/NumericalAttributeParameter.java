@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.conditions.evaluators.parameters;
 
-import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
@@ -15,42 +14,36 @@ import java.util.List;
  */
 public class NumericalAttributeParameter extends AttributeParameter {
 
-    public NumericalAttributeParameter (String attributeTag,
+    public NumericalAttributeParameter (String attributeTag, GameElementManager elementManager,
                                         ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(attributeTag, objectOfInterestIdentifier);
+        super(attributeTag, elementManager, objectOfInterestIdentifier);
     }
 
     /**
      * Return the average value of the attribute of all the elements of interest
      */
     @Override
-    public String getValue (ElementPair elements,
-                            GameElementManager manager,
-                            String elementTag,
+    public String getValue (List<GameElementState> elements,
                             String attributeTag) {
-        List<GameElementState> elementsOfInterest =
-                getElementsOfInterest(manager, elements, attributeTag);
-        if (elementsOfInterest.size() == 0)
+        if (elements.size() == 0)
             return "0";
         double valueSum = 0.0;
-        for (GameElementState element : elementsOfInterest) {
+        for (GameElementState element : elements) {
             valueSum += element.getNumericalAttribute(attributeTag).doubleValue();
         }
-        return Double.toString(valueSum / elementsOfInterest.size());
+        return Double.toString(valueSum / elements.size());
     }
 
     @Override
-    public boolean setValue (ElementPair elements,
-                             GameElementManager manager,
-                             String elementTag,
+    public boolean setValue (List<GameElementState> elements,
                              String attributeTag,
                              String value) {
         try {
 
-            getElementsOfInterest(manager, elements, attributeTag).stream()
-                    .forEach(element -> element
-                            .setNumericalAttribute(attributeTag,
-                                                   new Double(value)));
+            elements.stream()
+            .forEach(element -> element
+                     .setNumericalAttribute(attributeTag,
+                                            new Double(value)));
             return true;
         }
         catch (NumberFormatException e) {

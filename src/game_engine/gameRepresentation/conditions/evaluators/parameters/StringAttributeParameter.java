@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.conditions.evaluators.parameters;
 
-import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
@@ -15,32 +14,26 @@ import java.util.List;
  */
 public class StringAttributeParameter extends AttributeParameter {
 
-    public StringAttributeParameter (String attributeTag,
+    public StringAttributeParameter (String attributeTag, GameElementManager manager,
                                      ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(attributeTag, objectOfInterestIdentifier);
+        super(attributeTag, manager, objectOfInterestIdentifier);
     }
 
     /**
      * Return the first string with the tag from the list of elements of interest
      */
     @Override
-    public String getValue (ElementPair elements,
-                            GameElementManager manager,
-                            String elementTag,
+    public String getValue (List<GameElementState> elements,
                             String attributeTag) {
-        List<GameElementState> elementsOfInterest =
-                getElementsOfInterest(manager, elements, attributeTag);
-        return (elementsOfInterest.size() > 0) ? elementsOfInterest.get(0)
+        return (elements.size() > 0) ? elements.get(0)
                 .getTextualAttribute(attributeTag) : "";
     }
 
     @Override
-    public boolean setValue (ElementPair elements,
-                             GameElementManager manager,
-                             String elementTag,
+    public boolean setValue (List<GameElementState> elements,
                              String attributeTag,
                              String value) {
-        getElementsOfInterest(manager, elements, attributeTag).stream()
+        elements
                 .forEach(element -> element.setTextualAttribute(attributeTag, value));
         return true;
     }

@@ -1,12 +1,11 @@
 package game_engine.gameRepresentation.conditions.evaluators.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
-import game_engine.stateManaging.GameElementManager;
 
 
 /**
  * A basic string parameter
- * 
+ *
  * @author Zach
  *
  */
@@ -16,7 +15,7 @@ public class StringParameter implements Parameter {
 
     /**
      * Create a number parameter feeding in a single value
-     * 
+     *
      * @param value
      */
     public StringParameter (String string) {
@@ -24,19 +23,12 @@ public class StringParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements,
-                            GameElementManager manager,
-                            String elementTag,
-                            String attributeTag) {
+    public String getValue (ElementPair elements, String elementTag) {
         return myString;
     }
 
     @Override
-    public boolean setValue (ElementPair elements,
-                             GameElementManager manager,
-                             String elementTag,
-                             String attributeTag,
-                             String value) {
+    public boolean setValue (ElementPair elements, String elementTag, String value) {
         myString = value;
         return true;
     }

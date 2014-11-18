@@ -25,7 +25,7 @@ public abstract class Evaluator implements Evaluatable {
      * 
      * @param evaluatorRepresentation
      */
-    public Evaluator (String evaluatorRepresentation,  String parameter1, String parameter2) {
+    public Evaluator (GameEngine gameEngine,String evaluatorRepresentation,  String parameter1, String parameter2) {
         myEvaluatorRepresentation = evaluatorRepresentation;
         ParameterFactory factory = new ParameterFactory();
         myParameter1 = factory.createParameter(parameter1);
