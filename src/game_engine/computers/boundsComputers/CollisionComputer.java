@@ -5,12 +5,13 @@ import game_engine.computers.boundsComputer.Boundable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
+import javafx.scene.shape.Polygon;
 
 
 /**
  * Checks for collisions between groups of objects
  *
- * @author Zachary Bears
+ * @author Zachary Bears, Jonathan, Rahul, Nishad
  *
  */
 public class CollisionComputer extends
@@ -26,8 +27,8 @@ public class CollisionComputer extends
             && otherObject instanceof Boundable) {
             Boundable boundableObject = (Boundable) primaryObject;
             Boundable otherBoundableObject = (Boundable) otherObject;
-            return boundableObject.getBounds().intersects(
-                                                          otherBoundableObject.getBounds());
+            return new Polygon(boundableObject.getBounds())
+                    .intersects(new Polygon(otherBoundableObject.getBounds()).getBoundsInLocal());
         }
         else {
             return false;

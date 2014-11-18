@@ -5,7 +5,7 @@ package gamemodel.exceptions;
  * @author Jonathan Tseng
  *
  */
-public class LevelExistsException extends SavableDescribableStateExistsException {
+public class LevelExistsException extends DescribableStateExistsException {
 
     /**
      * Auto-generated

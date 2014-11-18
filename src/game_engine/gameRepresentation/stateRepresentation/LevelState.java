@@ -11,56 +11,55 @@ import java.util.List;
  * The Level class is the direct point of interaction for most gameplay and editing - this class
  * holds all of the GameElements being used for the current editing and/or game running session.
  *
- * @author Steve
+ * @author Steve, Jonathan, Nishad, Rahul
  *
  */
-public class LevelState {
+public class LevelState extends DescribableState {
 
-    public String name;
-    public String description;
-    private boolean isActiveLevel = false;
-    private List<DrawableGameElementState> terrains;
-    private List<SelectableGameElementState> units;
-    private List<GameElementState> goals;
+    private List<DrawableGameElementState> myTerrains;
+    private List<SelectableGameElementState> myUnits;
+    private List<GameElementState> myGoals;
+    private CampaignState myCampaignState;
 
-    public LevelState () {
-        terrains = new ArrayList<>();
-        units = new ArrayList<>();
-        goals = new ArrayList<>();
-        name = "";
-        description = "";
-    }
-
-    public boolean isActive () {
-        return isActiveLevel;
+    public LevelState (String name, CampaignState campaign) {
+        super(name);
+        myCampaignState = campaign;
+        myTerrains = new ArrayList<>();
+        myUnits = new ArrayList<>();
+        myGoals = new ArrayList<>();
     }
 
     public List<DrawableGameElementState> getTerrain () {
-        return terrains;
+        return myTerrains;
     }
 
     public void addTerrain (DrawableGameElementState terrain) {
-        terrains.add(terrain);
+        myTerrains.add(terrain);
     }
 
     public List<SelectableGameElementState> getUnits () {
-        return units;
+        return myUnits;
     }
 
     public void addUnit (SelectableGameElementState unit) {
-        units.add(unit);
+        myUnits.add(unit);
     }
 
-    public List<GameElementState> getGoal () {
-        return goals;
+    public List<GameElementState> getGoals () {
+        return myGoals;
     }
 
     public void addGoal (GameElementState goal) {
-        goals.add(goal);
+        myGoals.add(goal);
     }
 
-    public void setActive () {
-        isActiveLevel = true;
+    public CampaignState getCampaignState () {
+        return myCampaignState;
+    }
+
+    public boolean sameLevel (LevelState otherLevel) {
+        return getName().equals(otherLevel.getName()) &&
+               myCampaignState.getName().equals(otherLevel.getCampaignState().getName());
     }
 
 }

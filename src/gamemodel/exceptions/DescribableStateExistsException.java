@@ -5,8 +5,8 @@ package gamemodel.exceptions;
  * @author Jonathan Tseng
  *
  */
-public abstract class SavableDescribableStateExistsException extends
-        SavableDescribableStateException {
+public abstract class DescribableStateExistsException extends
+        DescribableStateException {
 
     /**
      * Auto-generated
@@ -14,7 +14,7 @@ public abstract class SavableDescribableStateExistsException extends
     private static final long serialVersionUID = 2965454764348670978L;
     private static final String MESSAGE_FORMAT = "%s: %s already exists.";
 
-    protected SavableDescribableStateExistsException (String describableStateType,
+    protected DescribableStateExistsException (String describableStateType,
                                                       String describableStateName) {
         super(describableStateType, describableStateName, MESSAGE_FORMAT);
     }

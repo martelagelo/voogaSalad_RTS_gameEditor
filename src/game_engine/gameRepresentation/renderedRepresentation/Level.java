@@ -2,37 +2,38 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
 
 
+/**
+ * 
+ * @author Jonathan Tseng, Nishad, Rahul
+ *
+ */
 public class Level {
 
-    public String name;
-    public String description;
     private LevelState myLevelState;
     private Group myGroup;
     private List<DrawableGameElement> terrain;
     private List<SelectableGameElement> units;
-    private List<GameElementState> goals;
+    private List<GameElement> goals;
 
     public Level (LevelState level) {
         terrain = new ArrayList<>();
         units = new ArrayList<>();
         goals = new ArrayList<>();
         myLevelState = level;
-        name = level.name;
-        description = level.description;
         for (DrawableGameElementState element : level.getTerrain()) {
             terrain.add(new DrawableGameElement(element));
         }
         for (SelectableGameElementState element : level.getUnits()) {
             units.add(new SelectableGameElement(element));
         }
-        goals.addAll(level.getGoal());
+        // TODO Use factory to create game elements from game element states and add to this list
+        //goals.addAll(level.getGoals());
 
         List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
         allElements.addAll(terrain);
@@ -41,6 +42,18 @@ public class Level {
         for (DrawableGameElement element : allElements) {
             myGroup.getChildren().add(element.getNode());
         }
+    }
+    
+    public LevelState getLevelState() {
+        return myLevelState;
+    }
+
+    public String getName () {
+        return myLevelState.getName();
+    }
+
+    public String getDescription () {
+        return myLevelState.getDescription();
     }
 
     public List<DrawableGameElement> getTerrain () {
@@ -51,16 +64,8 @@ public class Level {
         return units;
     }
 
-    public List<GameElementState> getGoal () {
+    public List<GameElement> getGoal () {
         return goals;
-    }
-
-    public boolean isActive () {
-        return myLevelState.isActive();
-    }
-
-    public void setActive () {
-        myLevelState.setActive();
     }
 
     public Group getGroup () {

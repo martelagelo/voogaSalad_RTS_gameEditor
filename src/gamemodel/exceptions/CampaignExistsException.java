@@ -5,7 +5,7 @@ package gamemodel.exceptions;
  * @author Jonathan Tseng
  *
  */
-public class CampaignExistsException extends SavableDescribableStateExistsException {
+public class CampaignExistsException extends DescribableStateExistsException {
 
     /**
      * Auto-generated

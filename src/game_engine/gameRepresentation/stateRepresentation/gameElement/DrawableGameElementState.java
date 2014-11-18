@@ -11,7 +11,7 @@ import java.util.Map;
  * This GameElement is drawable but not necessarily selectable - examples include terrain. These
  * elements must have a bounding box.
  * 
- * @author Steve
+ * @author Steve, Jonathan, Rahul
  *
  */
 

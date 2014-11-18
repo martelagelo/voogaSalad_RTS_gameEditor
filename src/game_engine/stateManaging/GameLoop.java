@@ -1,11 +1,10 @@
 package game_engine.stateManaging;
 
 import game_engine.computers.Computer;
-import game_engine.computers.boundsComputers.CollisionComputer;
-import game_engine.computers.boundsComputers.VisionComputer;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ public class GameLoop {
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         start(60.0);
-
     }
 
     public void start (Double framesPerSecond) {
@@ -73,6 +71,10 @@ public class GameLoop {
 
     public void pause () {
         timeline.pause();
+    }
+
+    public boolean isCurrentLevel (LevelState level) {
+        return level.sameLevel(myCurrentLevel.getLevelState());
     }
 
 }

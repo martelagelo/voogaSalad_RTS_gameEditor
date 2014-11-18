@@ -5,7 +5,7 @@ package gamemodel.exceptions;
  * @author Jonathan Tseng
  *
  */
-public class LevelNotFoundException extends SavableDescribableStateNotFoundException {
+public class LevelNotFoundException extends DescribableStateNotFoundException {
 
     /**
      * Auto-generated

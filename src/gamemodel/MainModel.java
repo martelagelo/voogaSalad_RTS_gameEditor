@@ -1,10 +1,15 @@
 package gamemodel;
 
-import java.util.Observable;
+import game_engine.gameRepresentation.stateRepresentation.CampaignState;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+import java.util.Observable;
 
 
 /**
@@ -15,34 +20,44 @@ import gamemodel.exceptions.LevelNotFoundException;
  */
 public class MainModel extends Observable {
 
-    private SavableGameState mySavableGameState;
-    private SavableCampaignState myCurrentSavableCampaignState;
-    private SavableLevelState myCurrentSavableLevelState;
-    private SavableGameElementState myEditorSelectedElement;
+    private GameState myGameState;
+    private CampaignState myCurrentCampaignState;
+    private LevelState myCurrentLevelState;
+    private GameElementState myEditorSelectedElement;
     
     /**
      * Sets the game of the Model.
      * 
      * @param game 
      */
-    public void setGame(String game) {
-        // TODO
+    public void loadGame(String game) {
+        // TODO get game info and load it (save/load utility)
+        myGameState = new GameState(game);
+    }
+    
+    public GameState getCurrentGame() {
+        return myGameState;
     }
 
+    public void setCurrentLevel(String campaignName, String levelName) throws DescribableStateException {
+        myCurrentCampaignState = myGameState.getCampaign(campaignName);
+        myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
+    }
+    
     /**
      * called by editor when user selects new element from accordian pane
      * 
      * @param element
      */
     public void setEditorSelected (String elementName) {
-        myEditorSelectedElement = mySavableGameState.getGameUniverse().getElement(elementName);
+        myEditorSelectedElement = myGameState.getGameUniverse().getElement(elementName);
     }
 
     /**
      * called by engine when registers click and needs what the editor has
      * selected to place on the map
      */
-    public String getEditorSelected () {
+    public GameElementState getEditorSelected () {
         return myEditorSelectedElement;
     }
 
@@ -56,11 +71,10 @@ public class MainModel extends Observable {
      */
     public void createCampaign (String campaignName) throws CampaignExistsException,
                                                     CampaignNotFoundException {
-        mySavableGameState.addCampaign(new SavableCampaignState(campaignName));
-        myCurrentSavableCampaignState = mySavableGameState.getCampaign(campaignName);
+        myGameState.addCampaign(new CampaignState(campaignName));
+        myCurrentCampaignState = myGameState.getCampaign(campaignName);
     }
 
-    // TODO: LevelExistsException class
     /**
      * called by editor when creating a new level under a certain campaign
      * 
@@ -68,12 +82,12 @@ public class MainModel extends Observable {
      * @param levelName
      * @throws LevelExistsException
      */
-    public void createLevel (String campaignName, String levelName) throws LevelExistsException,
+    public void createLevel (String levelName, String campaignName) throws LevelExistsException,
                                                                    CampaignNotFoundException,
                                                                    LevelNotFoundException {
-        myCurrentSavableCampaignState = mySavableGameState.getCampaign(campaignName);
-        myCurrentSavableCampaignState.addLevel(new SavableLevelState(levelName));
-        myCurrentSavableLevelState = myCurrentSavableCampaignState.getLevel(levelName);
+        myCurrentCampaignState = myGameState.getCampaign(campaignName);
+        myCurrentCampaignState.addLevel(new LevelState(levelName, myCurrentCampaignState));
+        myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
         setChanged();        
         notifyObservers();
         clearChanged();
@@ -86,8 +100,8 @@ public class MainModel extends Observable {
      */
     public void createGameElement (GameElementInfoBundle bundle) {
         // TODO: use factory to create game element
-        SavableGameElementState gameElement = SavableGameElementFactory.createElement(bundle);
-        mySavableGameState.addElement(gameElement);
+        GameElementState gameElement = GameElementStateFactory.createElement(bundle);
+        myGameState.getGameUniverse().addElement(gameElement);
     }
 
     /**
@@ -95,8 +109,8 @@ public class MainModel extends Observable {
      * 
      * @return
      */
-    public SavableCampaignState getCurrentCampaign () {
-        return myCurrentSavableCampaignState;
+    public CampaignState getCurrentCampaign () {
+        return myCurrentCampaignState;
     }
 
     /**
@@ -104,8 +118,8 @@ public class MainModel extends Observable {
      * 
      * @return
      */
-    public SavableLevelState getCurrentLevel () {
-        return myCurrentSavableLevelState;
+    public LevelState getCurrentLevel () {
+        return myCurrentLevelState;
     }
 
     /**
@@ -114,8 +128,8 @@ public class MainModel extends Observable {
      * 
      * @return
      */
-    public SavableGameUniverse getGameUniverse () {
-        return mySavableGameState.getGameUniverse();
+    public GameUniverse getGameUniverse () {
+        return myGameState.getGameUniverse();
     }
 
 }

@@ -1,6 +1,6 @@
 package game_engine.computers.boundsComputers;
 
-import javafx.scene.shape.Polygon;
+
 
 
 /**
@@ -13,6 +13,6 @@ public interface Sighted {
     /**
      * Gets the vision polygon of the sighted object
      */
-    public Polygon getVisionPolygon ();
+    public double[] getVisionBounds ();
 
 }

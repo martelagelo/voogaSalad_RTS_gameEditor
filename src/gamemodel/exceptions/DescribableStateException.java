@@ -5,7 +5,7 @@ package gamemodel.exceptions;
  * @author Jonathan Tseng
  *
  */
-public abstract class SavableDescribableStateException extends Exception {
+public abstract class DescribableStateException extends Exception {
 
     /**
      * Auto-generated
@@ -14,7 +14,7 @@ public abstract class SavableDescribableStateException extends Exception {
     private String myDescribableType;
     private String myDescribableName;
 
-    protected SavableDescribableStateException (String describableStateType,
+    protected DescribableStateException (String describableStateType,
                                                 String describableStateName,
                                                 String messageFormat) {
         super(String.format(messageFormat, describableStateType, describableStateName));
