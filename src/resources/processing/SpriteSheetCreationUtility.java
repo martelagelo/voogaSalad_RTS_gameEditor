@@ -1,5 +1,7 @@
 package resources.processing;
 
+import game_engine.visuals.Dimension;
+import game_engine.visuals.Spritesheet;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -19,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.imageio.ImageIO;
+import util.JSONable;
+import util.SaveUtility;
 
 
 /**
@@ -31,48 +35,18 @@ public class SpriteSheetCreationUtility {
 
     public static void main (String[] args) throws IOException {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-        String baseDirectoryPath = "src/resources/processing/archer/";
-        List<String> inputDirectoryPaths = new ArrayList<String>();
-        inputDirectoryPaths.add(baseDirectoryPath + "attack/");
-        inputDirectoryPaths.add(baseDirectoryPath + "move/");
-        inputDirectoryPaths.add(baseDirectoryPath + "stand/");
-        inputDirectoryPaths.add(baseDirectoryPath + "die/");
-        inputDirectoryPaths.add(baseDirectoryPath + "decay/");
+        String baseDirectoryPath = "src/resources/processing/";
         int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
-        List<int[]> allUniqueStateIndicies = new ArrayList<int[]>();
-        allUniqueStateIndicies.add(uniqueStateIndicies);
-        allUniqueStateIndicies.add(uniqueStateIndicies);
-        allUniqueStateIndicies.add(uniqueStateIndicies);
-        allUniqueStateIndicies.add(uniqueStateIndicies);
-        allUniqueStateIndicies.add(uniqueStateIndicies);
         int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
-        List<int[]> allExtrapolatedStateIndicies = new ArrayList<int[]>();
-        allExtrapolatedStateIndicies.add(extrapolatedStateIndicies);
-        allExtrapolatedStateIndicies.add(extrapolatedStateIndicies);
-        allExtrapolatedStateIndicies.add(extrapolatedStateIndicies);
-        allExtrapolatedStateIndicies.add(extrapolatedStateIndicies);
-        allExtrapolatedStateIndicies.add(extrapolatedStateIndicies);
         boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,
                                                                 false, false, true, true, true };
-        List<boolean[]> allExtrapolatedStateMirrorFlags = new ArrayList<boolean[]>();
-        allExtrapolatedStateMirrorFlags.add(extrapolatedStateMirrorFlags);
-        allExtrapolatedStateMirrorFlags.add(extrapolatedStateMirrorFlags);
-        allExtrapolatedStateMirrorFlags.add(extrapolatedStateMirrorFlags);
-        allExtrapolatedStateMirrorFlags.add(extrapolatedStateMirrorFlags);
-        allExtrapolatedStateMirrorFlags.add(extrapolatedStateMirrorFlags);
 
-        processor.createSpriteSheet(inputDirectoryPaths,
-                                    "src/resources/processing/archer/", "spritesheet",
-                                    allUniqueStateIndicies,
-                                    allExtrapolatedStateIndicies,
-                                    allExtrapolatedStateMirrorFlags);
-        
-        processor.doThing();
-    }
-    
-    private void doThing() throws IOException{
-        ImageIO.write(toBufferedImage(pinkToTransparency(loadFilesInDirectory(new File("src/resources/img/graphics/interface/")).get(0))), "PNG",
-                      new File("src/resources/img/graphics/interface/interface.png"));
+        processor.createSpriteSheet(baseDirectoryPath,
+                                    uniqueStateIndicies,
+                                    extrapolatedStateIndicies,
+                                    extrapolatedStateMirrorFlags,
+                                    new Color(0xFFFF00FF));
+
     }
 
     /**
@@ -85,78 +59,66 @@ public class SpriteSheetCreationUtility {
      * @param extrapolatedStateIndicies - order of states in output
      * @param extrapolatedStateMirrorFlags - which states to mirror horizontally in output
      */
-    public void createSpriteSheet (List<String> inputDirectoryPaths,
-                                   String outputDirectoryPath,
-                                   String outputFileName,
-                                   List<int[]> uniqueStateIndicies,
-                                   List<int[]> extrapolatedStateIndicies,
-                                   List<boolean[]> extrapolatedStateMirrorFlags) {
-        if (inputDirectoryPaths.size() != uniqueStateIndicies.size() ||
-            inputDirectoryPaths.size() != extrapolatedStateIndicies.size() ||
-            inputDirectoryPaths.size() != extrapolatedStateMirrorFlags.size()) { return; }
+    public void createSpriteSheet (String baseInputDirectoryPath,
+                                   int[] uniqueStateIndicies,
+                                   int[] extrapolatedStateIndicies,
+                                   boolean[] extrapolatedStateMirrorFlags,
+                                   Color maskColor) {
         try {
-            List<ArrayList<BufferedImage>> allSpriteLists =
-                    new ArrayList<ArrayList<BufferedImage>>();
-            for (int i = 0; i < inputDirectoryPaths.size(); i++) {
-                File baseDir = new File(inputDirectoryPaths.get(i));
-                List<BufferedImage> loadedImages = loadFilesInDirectory(baseDir);
-                ArrayList<BufferedImage> extrapolatedImages =
-                        (ArrayList<BufferedImage>) extrapolateSprites(loadedImages,
-                                                                      uniqueStateIndicies.get(i),
-                                                                      extrapolatedStateIndicies
-                                                                              .get(i),
-                                                                      extrapolatedStateMirrorFlags
-                                                                              .get(i));
-                allSpriteLists.add(extrapolatedImages);
-            }
-            List<BufferedImage> allSprites = new ArrayList<BufferedImage>();
-            allSpriteLists.stream().forEach(l -> allSprites.addAll(l));
-            int frameWidth = findMaximumImageWidth(allSprites);
-            int frameHeight = findMaximumImageHeight(allSprites);
+            File baseDirectory = new File(baseInputDirectoryPath);
+            if (!baseDirectory.isDirectory()) { return; }
+            for (File unitDirectory : baseDirectory.listFiles()) {
+                if (!unitDirectory.isDirectory()) {
+                    continue;
+                }
+                String unitName = unitDirectory.getName();
+                List<ArrayList<BufferedImage>> allSpriteLists =
+                        new ArrayList<ArrayList<BufferedImage>>();
+                extractAllSpriteLists(uniqueStateIndicies, extrapolatedStateIndicies,
+                                      extrapolatedStateMirrorFlags, unitDirectory, allSpriteLists);
+                
+                List<BufferedImage> allSprites = new ArrayList<BufferedImage>();
+                allSpriteLists.stream().forEach(l -> allSprites.addAll(l));
+                int frameWidth = findMaximumImageWidth(allSprites);
+                int frameHeight = findMaximumImageHeight(allSprites);
 
-            List<BufferedImage> spritesheets = new ArrayList<BufferedImage>();
-            for (int i = 0; i < inputDirectoryPaths.size(); i++) {
-                BufferedImage protoSpritesheet =
-                        tileImagesIntoColumns(allSpriteLists.get(i),
-                                              extrapolatedStateIndicies.get(i).length,
-                                              frameWidth, frameHeight);
-                BufferedImage spritesheet = pinkToTransparency(protoSpritesheet);
-                spritesheets.add(spritesheet);
-            }
+                List<BufferedImage> stateSpritesheets = new ArrayList<BufferedImage>();
+                createStateSpritesheets(extrapolatedStateIndicies, maskColor, allSpriteLists,
+                                        stateSpritesheets, frameWidth, frameHeight);
 
-            BufferedImage finalSpritesheet =
-                    tileSpritesheets(spritesheets, frameWidth, frameHeight);
-            ImageIO.write(finalSpritesheet, "PNG",
-                          new File(outputDirectoryPath + File.separator + outputFileName + ".png"));
+                BufferedImage finalSpritesheet =
+                        tileSpritesheets(stateSpritesheets, frameWidth, frameHeight);
+                String filePath = baseDirectory.getAbsolutePath() + File.separator + unitName;
+                ImageIO.write(finalSpritesheet, "PNG", new File(filePath + ".png"));
+                int numTotalColumns = stateSpritesheets.size()*8;
+                Spritesheet spritesheetObject =
+                        new Spritesheet(filePath, new Dimension(frameWidth, frameHeight), numTotalColumns);
+                SaveUtility saveUtil = new SaveUtility();
+                //saveUtil.save((JSONable) spritesheetObject, filePath + ".json");
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private BufferedImage tileSpritesheets (List<BufferedImage> spritesheets,
-                                            int frameWidth,
-                                            int frameHeight) {
-        int width = 0;
-        int height = 0;
-        for (BufferedImage spritesheet : spritesheets) {
-            width += spritesheet.getWidth();
-            if (spritesheet.getHeight() > height) {
-                height = spritesheet.getHeight();
+    private void extractAllSpriteLists (int[] uniqueStateIndicies,
+                                        int[] extrapolatedStateIndicies,
+                                        boolean[] extrapolatedStateMirrorFlags,
+                                        File unitDirectory,
+                                        List<ArrayList<BufferedImage>> allSpriteLists) {
+        for (File directory : unitDirectory.listFiles()) {
+            if (!directory.isDirectory()) {
+                continue;
             }
+            List<BufferedImage> loadedImages = loadFilesInDirectory(directory);
+            ArrayList<BufferedImage> extrapolatedImages =
+                    (ArrayList<BufferedImage>) extrapolateSprites(loadedImages,
+                                                                  uniqueStateIndicies,
+                                                                  extrapolatedStateIndicies,
+                                                                  extrapolatedStateMirrorFlags);
+            allSpriteLists.add(extrapolatedImages);
         }
-
-        int type = BufferedImage.TYPE_INT_ARGB;
-        BufferedImage finalSpritesheet =
-                new BufferedImage(width, height, type);
-        Graphics2D spritesheetGraphics = finalSpritesheet.createGraphics();
-        int currentWidth = 0;
-        for (BufferedImage spritesheet : spritesheets) {
-            spritesheetGraphics.drawImage(spritesheet, currentWidth, 0, null);
-            currentWidth += spritesheet.getWidth();
-        }
-
-        return finalSpritesheet;
     }
 
     /**
@@ -191,12 +153,12 @@ public class SpriteSheetCreationUtility {
         for (int i = 0; i < uniqueStateIndicies.length; i++) {
             uniqueStatesIndexed.put(uniqueStateIndicies[i], uniqueStates.get(i));
         }
-        
+
         // duplicate last frame of backwards animation as they are all lacking one
         ArrayList<BufferedImage> backwardsSprites = uniqueStatesIndexed.get(4);
-        backwardsSprites.add(backwardsSprites.get(backwardsSprites.size()-1));
-        uniqueStatesIndexed.put(4,backwardsSprites);
-        
+        backwardsSprites.add(backwardsSprites.get(backwardsSprites.size() - 1));
+        uniqueStatesIndexed.put(4, backwardsSprites);
+
         List<BufferedImage> extrapolatedSprites = new ArrayList<BufferedImage>();
         for (int i = 0; i < extrapolatedStateIndicies.length; i++) {
             int index = extrapolatedStateIndicies[i];
@@ -227,6 +189,22 @@ public class SpriteSheetCreationUtility {
         return operation.filter(input, null);
     }
 
+    private void createStateSpritesheets (int[] extrapolatedStateIndicies,
+                                          Color maskColor,
+                                          List<ArrayList<BufferedImage>> allSpriteLists,
+                                          List<BufferedImage> spritesheets,
+                                          int frameWidth,
+                                          int frameHeight) throws IOException {
+        for (ArrayList<BufferedImage> spriteList : allSpriteLists) {
+            BufferedImage protoSpritesheet =
+                    tileImagesIntoColumns(spriteList,
+                                          extrapolatedStateIndicies.length,
+                                          frameWidth, frameHeight, maskColor);
+            BufferedImage spritesheet = colorToTransparency(protoSpritesheet, maskColor);
+            spritesheets.add(spritesheet);
+        }
+    }
+
     /**
      * Tiles many images into columns in a spritesheet.
      * 
@@ -237,7 +215,8 @@ public class SpriteSheetCreationUtility {
     private BufferedImage tileImagesIntoColumns (List<BufferedImage> images,
                                                  int numColumns,
                                                  int frameWidth,
-                                                 int frameHeight) {
+                                                 int frameHeight,
+                                                 Color maskColor) {
         int numRows = (int) Math.ceil((double) images.size() / numColumns);
         Location[][] locations = new Location[numColumns][numRows];
         for (int r = 0; r < numRows; r++) {
@@ -249,7 +228,7 @@ public class SpriteSheetCreationUtility {
         BufferedImage spritesheet =
                 new BufferedImage(numColumns * frameWidth, numRows * frameHeight, type);
         Graphics2D spritesheetGraphics = spritesheet.createGraphics();
-        spritesheetGraphics.setColor(new Color(0xFFFF00FF));
+        spritesheetGraphics.setColor(maskColor);
         spritesheetGraphics.fillRect(0, 0, spritesheet.getWidth(), spritesheet.getHeight());
 
         for (int i = 0; i < images.size(); i++) {
@@ -262,6 +241,31 @@ public class SpriteSheetCreationUtility {
                                                   .intValue(), null);
         }
         return spritesheet;
+    }
+
+    private BufferedImage tileSpritesheets (List<BufferedImage> spritesheets,
+                                            int frameWidth,
+                                            int frameHeight) {
+        int width = 0;
+        int height = 0;
+        for (BufferedImage spritesheet : spritesheets) {
+            width += spritesheet.getWidth();
+            if (spritesheet.getHeight() > height) {
+                height = spritesheet.getHeight();
+            }
+        }
+
+        int type = BufferedImage.TYPE_INT_ARGB;
+        BufferedImage finalSpritesheet =
+                new BufferedImage(width, height, type);
+        Graphics2D spritesheetGraphics = finalSpritesheet.createGraphics();
+        int currentWidth = 0;
+        for (BufferedImage spritesheet : spritesheets) {
+            spritesheetGraphics.drawImage(spritesheet, currentWidth, 0, null);
+            currentWidth += spritesheet.getWidth();
+        }
+
+        return finalSpritesheet;
     }
 
     private int findMaximumImageHeight (List<BufferedImage> images) {
@@ -328,12 +332,13 @@ public class SpriteSheetCreationUtility {
      * @return - image with all pink (0xFFFF00FF) pixels now transparent
      * @throws IOException
      */
-    private BufferedImage pinkToTransparency (BufferedImage input) throws IOException {
+    private BufferedImage colorToTransparency (BufferedImage input, Color maskColor)
+                                                                                    throws IOException {
         ImageFilter filter = new RGBImageFilter()
         {
             public final int filterRGB (int x, int y, int rgb)
             {
-                if (rgb == 0xFFFF00FF) {
+                if (rgb == maskColor.getRGB()) {
                 return rgb & 0xFFFFFF;
                 }
                 return rgb;

@@ -1,5 +1,7 @@
 package game_engine.visuals;
 
+import util.JSONable;
+
 /**
  * A data wrapper object used to group the pertinent information for a spritesheet.
  * Internal data is intentionally made public as this is just a data wrapper to simplify the passing
@@ -8,7 +10,7 @@ package game_engine.visuals;
  * @author Zach
  *
  */
-public class Spritesheet {
+public class Spritesheet implements JSONable {
     public String imageTag;
     public Dimension frameDimensions;
     public int numCols;
