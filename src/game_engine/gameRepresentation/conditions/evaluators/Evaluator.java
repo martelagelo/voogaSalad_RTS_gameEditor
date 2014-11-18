@@ -1,5 +1,9 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.gameRepresentation.conditions.ElementPair;
+import game_engine.gameRepresentation.conditions.Evaluatable;
+
+
 /**
  * An abstract class for double evaluators that acts on datatypes to provide for functionality such
  * as
@@ -9,16 +13,22 @@ package game_engine.gameRepresentation.conditions.evaluators;
  * @author Zach
  *
  */
-public abstract class Evaluator {
+public abstract class Evaluator implements Evaluatable {
     String myEvaluatorRepresentation;
+    private EvaluatorParameter myParameter1;
+    private EvaluatorParameter myParameter2;
 
     /**
      * Create the evaluator with the string representation of the evaluator
      * 
      * @param evaluatorRepresentation
      */
-    public Evaluator (String evaluatorRepresentation) {
+    public Evaluator (String evaluatorRepresentation,  String parameter1, String parameter2) {
         myEvaluatorRepresentation = evaluatorRepresentation;
+        EvaluatorParameterFactory factory = new EvaluatorParameterFactory();
+        myParameter1 = factory.createParameter(parameter1);
+        myParameter2 = factory.createParameter(parameter2);
+        
     }
 
     /**
@@ -28,22 +38,22 @@ public abstract class Evaluator {
      * @param number2
      * @return
      */
-    public abstract boolean evaluate (double number1, double number2);
+    protected abstract boolean evaluate (double number1, double number2);
 
-    public boolean evaluate (int number1, int number2) {
+    private boolean evaluate (int number1, int number2) {
         return evaluate(number1 * 1.0, number2 * 1.0);
     }
 
-    public boolean evaluate (int number1, double number2) {
+    private boolean evaluate (int number1, double number2) {
         return evaluate(number1 * 1.0, number2);
     }
 
-    public boolean evaluate (double number1, int number2) {
+    private boolean evaluate (double number1, int number2) {
         return evaluate(number1, number2 * 1.0);
     }
-    
-    public boolean evaluate (boolean item1, boolean item2) {
-        return evaluate(item1?1:0,item2?1:0);
+
+    private boolean evaluate (boolean item1, boolean item2) {
+        return evaluate(item1 ? 1 : 0, item2 ? 1 : 0);
     }
 
     /**
@@ -51,8 +61,12 @@ public abstract class Evaluator {
      * generic objects
      * 
      */
-    public boolean evaluate (Object item1, Object item2) {
+    protected boolean evaluate (Object item1, Object item2) {
         return false;
+    }
+    @Override
+    public boolean evaluate (ElementPair elements){
+        evaluate(myParameter1.getValue(elements),myParameter2.getValue(elements));
     }
 
     @Override

@@ -2,6 +2,8 @@ package game_engine.gameRepresentation.conditions.operators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.conditions.evaluators.EqualsEvaluator;
+import game_engine.gameRepresentation.conditions.evaluators.Evaluator;
 
 
 /**
@@ -28,6 +30,16 @@ public abstract class Operator implements Evaluatable {
         myFirstCondition = firstCondition;
         mySecondCondition = secondCondition;
         myOperatorString = operatorString;
+    }
+    public Operator(String firstCondition, String secondCondition, String operatorString){
+       //TODO figure this logic out this(createCondition(firstCondition),createCondition(secondCondition),operatorString);
+    }
+    /**
+     * Create a condition based on the condition string
+     */
+    private Evaluator createCondition(String conditionString){
+        //TODO implement
+        return new EqualsEvaluator();
     }
 
     @Override
