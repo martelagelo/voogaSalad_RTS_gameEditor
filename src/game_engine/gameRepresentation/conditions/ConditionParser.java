@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  *
  */
 public class ConditionParser {
-
+    //TODO make work
     public final static String REGEX_LOCATION = "resources.properties.CommentRegex";
     private ResourceBundle myBundle;
     private Stack<String> stack1;

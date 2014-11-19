@@ -2,10 +2,11 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -14,13 +15,19 @@ import java.util.stream.Collectors;
  * Examples include triggers and goals.
  *
  * @author Steve
+ * @author Zach
  *
  */
 public class GameElementState {
 
     protected Map<Evaluatable, Action> ifThisThenThat = new HashMap<>();
-    protected List<Attribute<Number>> numericalAttributes = new ArrayList<>();
-    protected List<Attribute<String>> textualAttributes = new ArrayList<>();
+    protected Set<Attribute<Number>> numericalAttributes;
+    protected Set<Attribute<String>> textualAttributes;
+
+    public GameElementState () {
+        numericalAttributes = new HashSet<>();
+        textualAttributes = new HashSet<>();
+    }
 
     public String getName () {
         return getTextualAttribute("Name");
@@ -31,23 +38,29 @@ public class GameElementState {
     }
 
     public String getTextualAttribute (String name) {
-        return textualAttributes.stream()
+        List<Attribute<String>> attributes = textualAttributes.stream()
                 .filter(o -> o.getName().equals(name))
-                .collect(Collectors.toList()).get(0).getData();
+                .collect(Collectors.toList());
+        return (attributes.size() != 0) ? attributes.get(0).getData() : "";
     }
 
     public Number getNumericalAttribute (String name) {
-        return numericalAttributes.stream()
+        List<Attribute<Number>> attributes = numericalAttributes.stream()
                 .filter(o -> o.getName().equals(name))
-                .collect(Collectors.toList()).get(0).getData();
+                .collect(Collectors.toList());
+        return (attributes.size() != 0) ? attributes.get(0).getData() : new Double(0);
     }
 
     public void setTextualAttribute (String name, String value) {
-       //TODO implement
+        Attribute<String> attribute = new Attribute<>(name, value);
+        textualAttributes.remove(attribute); // Remove any old attribute that conflicts
+        textualAttributes.add(attribute); // Add the new attribute to the set
     }
 
     public void setNumericalAttribute (String name, Number value) {
-      //TODO implement
+        Attribute<Number> attribute = new Attribute<>(name,value);
+        numericalAttributes.remove(attribute); // Remove any old attribute that conflicts
+        numericalAttributes.add(attribute); // Add the new attribute to the set
     }
 
     public void update () {
