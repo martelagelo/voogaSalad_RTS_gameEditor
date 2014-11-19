@@ -12,31 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 
-public class GameElementWizard  implements GUIController{
+public class GameElementWizard  extends Wizard{
 	
 	@FXML private TextField name;
-	@FXML private SplitPane root;
 	@FXML private Button trigger;
 	@FXML private Button attribute;
-	@FXML private Button save;
 	private GameElementInfoBundle myGameElementInfoBundle;
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Node getRoot() {
-		return root;
-	}
-
-	@Override
-	public String[] getCSS(){ 
-		return new String[0];
-	}
-	
 	public void setSubmit(Consumer<GameElementInfoBundle> c){
 		save.setOnAction(e -> c.accept(myGameElementInfoBundle));
 	}
@@ -44,6 +26,5 @@ public class GameElementWizard  implements GUIController{
 	@Override
 	public void initialize() {
 		myGameElementInfoBundle = new GameElementInfoBundle();
-		
 	}
 }
