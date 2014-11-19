@@ -35,7 +35,7 @@ public class SpriteSheetCreationUtility {
 
     public static void main (String[] args) throws IOException {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-        String baseDirectoryPath = "src/resources/processing/";
+        String baseDirectoryPath = "src/resources/img/graphics/units/";
         int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
         int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
         boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,

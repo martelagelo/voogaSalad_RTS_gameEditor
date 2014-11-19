@@ -24,7 +24,23 @@ public class ColorMaskExtractor {
         originalImage = image;
     }
     
+    public static void main(String[] args) throws IOException{
+        File f = new File("src/resources/img/graphics/units/hussar/0032.bmp");
+        BufferedImage image = ImageIO.read(f);
+        printColorValues(image);
+    }
+    
     public static void printColorValues (BufferedImage img) {
+        List<Color> acceptableBlueColors = new ArrayList<Color>();
+        acceptableBlueColors.add(new Color(74, 121, 208));
+        acceptableBlueColors.add(new Color(151, 206, 255));
+        acceptableBlueColors.add(new Color(48, 93, 182));
+        acceptableBlueColors.add(new Color(19, 49, 161));
+        acceptableBlueColors.add(new Color(205, 250, 255));
+        acceptableBlueColors.add(new Color(110, 166, 235));
+        acceptableBlueColors.add(new Color(0, 21, 130));
+        acceptableBlueColors.add(new Color(0, 0, 82));
+        
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
                 int clr = img.getRGB(x, y);
@@ -34,7 +50,7 @@ public class ColorMaskExtractor {
                 if (red == 255 && green == 0 && blue == 255) {
                     System.out.print("             \t");
                 }
-                else if (blue > (red + green)) {
+                else if (acceptableBlueColors.contains(new Color(img.getRGB(x, y)))){
                     System.out.print(String.format("%13s\t", "BLUEBLUEBLUE"));
                 }
                 else {
@@ -53,6 +69,8 @@ public class ColorMaskExtractor {
         acceptableBlueColors.add(new Color(19, 49, 161));
         acceptableBlueColors.add(new Color(205, 250, 255));
         acceptableBlueColors.add(new Color(110, 166, 235));
+        acceptableBlueColors.add(new Color(0, 21, 130));
+        acceptableBlueColors.add(new Color(0, 0, 82));
 
         ImageFilter colorFilter = new RGBImageFilter() {
             public final int filterRGB (int x, int y, int rgb) {
