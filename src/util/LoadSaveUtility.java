@@ -41,6 +41,10 @@ public class LoadSaveUtility implements ILoadSave {
 
     public void save (JSONable object, String filePath) throws IOException {
         String json = object.toJSON();
+        File file = new File(filePath);
+        if(!file.exists()){
+            file.createNewFile();
+        }
         FileWriter writer = new FileWriter(filePath);
         writer.write(json);
         writer.close();

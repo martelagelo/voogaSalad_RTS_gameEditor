@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import util.JSONable;
-import util.SaveUtility;
+import util.LoadSaveUtility;
 
 
 /**
@@ -98,11 +98,11 @@ public class SpriteSheetCreationUtility {
                 ImageIO.write(colorMask, "PNG", new File(filePathForColorMask + ".png"));
                 int numTotalColumns = stateSpritesheets.size() * 8;
                 Spritesheet spritesheetObject =
-                        new Spritesheet(filePathForSpritesheet, new Dimension(frameWidth, frameHeight),
+                        new Spritesheet(unitName, new Dimension(frameWidth, frameHeight),
                                         numTotalColumns);
                 
-                SaveUtility saveUtil = new SaveUtility();
-                // saveUtil.save((JSONable) spritesheetObject, filePath + ".json");
+                LoadSaveUtility saveUtil = new LoadSaveUtility();
+                saveUtil.save((JSONable) spritesheetObject, filePathForSpritesheet + ".json");
             }
         }
         catch (IOException e) {
