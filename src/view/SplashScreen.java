@@ -28,9 +28,10 @@ public class SplashScreen extends GUIScene implements GUIController {
     @FXML private GridPane splash;
     @FXML private Button launchEditorButton;
     @FXML private Button launchRunnerButton;
-    @FXML private ComboBox myGames;
+    @FXML private ComboBox<String> myGames;
     private static final String LAUNCH_EDITOR = "Launch Editor";
     private static final String LAUNCH_RUNNER = "Launch Runner";
+    private static final String GAMES_DIRECTORY = "./myGames/";
 
     @Override
     @FXML
@@ -38,7 +39,7 @@ public class SplashScreen extends GUIScene implements GUIController {
         launchEditorButton.setText(LAUNCH_EDITOR);
         launchRunnerButton.setText(LAUNCH_RUNNER);
         
-        File folder = new File("./myGames/");
+        File folder = new File(GAMES_DIRECTORY);
         List<File> files = Arrays.asList(folder.listFiles());
         List<String> gameNames = files
         		.stream()
