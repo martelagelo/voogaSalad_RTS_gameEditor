@@ -18,6 +18,7 @@ public class ScrollableScene extends Scene {
     public static final double FIELD_HEIGHT = 2000;
 
     private ScrollableBackground myBackground;
+    private ClickManager myClickManager;
     private SelectionBox mySelectionBox;
     private Rectangle myBox;
     private double myScreenHeight;
@@ -28,6 +29,7 @@ public class ScrollableScene extends Scene {
         super(root, width, height);
         this.myScreenHeight = height;
         this.myScreenWidth = width;
+        myClickManager = new ClickManager();
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         myBox = mySelectionBox.getBox();
@@ -92,10 +94,17 @@ public class ScrollableScene extends Scene {
 
                     myBox.setX(pressedX);
                     myBox.setY(pressedY);
+                    
+                    
                 }
                 else {
                     // TODO call the input event for right click
                 }
+                
+                double xLoc = -myBackground.getTranslateX() + pressedX;
+                double yLoc = -myBackground.getTranslateY() + pressedY;
+                
+                myClickManager.clicked(event, xLoc, yLoc);
             }
         });
 
@@ -120,25 +129,27 @@ public class ScrollableScene extends Scene {
         {
             public void handle (MouseEvent event)
             {
-                double newX = event.getSceneX();
-                double newY = event.getSceneY();
+                if (event.isPrimaryButtonDown()) {
+                    double newX = event.getSceneX();
+                    double newY = event.getSceneY();
 
-                // stops the drag at the edge of the scene
-                if (newX < 0) newX = 0;
-                if (newY < 0) newY = 0;
-                if (newX > myScreenWidth) newX = myScreenWidth;
-                if (newY > myScreenHeight) newY = myScreenHeight;
+                    // stops the drag at the edge of the scene
+                    if (newX < 0) newX = 0;
+                    if (newY < 0) newY = 0;
+                    if (newX > myScreenWidth) newX = myScreenWidth;
+                    if (newY > myScreenHeight) newY = myScreenHeight;
 
-                double difX = newX - pressedX;
-                double difY = newY - pressedY;
+                    double difX = newX - pressedX;
+                    double difY = newY - pressedY;
 
-                myBox.setWidth(Math.abs(difX));
-                myBox.setHeight(Math.abs(difY));
+                    myBox.setWidth(Math.abs(difX));
+                    myBox.setHeight(Math.abs(difY));
 
-                if (difX <= 0) myBox.setX(newX);
-                if (difY <= 0) myBox.setY(newY);
+                    if (difX <= 0) myBox.setX(newX);
+                    if (difY <= 0) myBox.setY(newY);
 
-                event.consume();
+                    event.consume();
+                }
             }
         });
     }
@@ -149,6 +160,10 @@ public class ScrollableScene extends Scene {
 
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
+    }
+    
+    public void addClickObserver(Observer o) {
+        myClickManager.addObserver(o);
     }
 
 }

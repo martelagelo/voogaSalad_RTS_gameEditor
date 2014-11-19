@@ -41,10 +41,13 @@ public class Engine extends Observable implements Observer {
         return myVisualManager.getVisualRepresentation();
     }
 
-    // TODO Refactor to be in mainmodel
-    public void selectLevel (String campaignName, String levelName)
-                                                                   throws DescribableStateException {
-        myMainModel.setCurrentLevel(campaignName, levelName);
+    public void selectLevel (String name) {
+        myGame.setCurrentLevel(name);
+        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
+        myElementManager = new GameElementManager(myGame.getCurrentLevel());
+        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
+        myVisualManager.addBoxObserver(myElementManager);
+        myVisualManager.addClickObserver(myElementManager);
     }
 
     public void play () {
