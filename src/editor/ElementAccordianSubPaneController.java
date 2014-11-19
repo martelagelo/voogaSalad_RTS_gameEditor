@@ -23,7 +23,7 @@ import javafx.util.Callback;
  * @author Nishad Agrawal
  *
  */
-public class GameElementAccordianPane extends TitledPane {
+public class ElementAccordianSubPaneController extends TitledPane {
 
     private final static String CREATE_NEW_STRING = "Create new ";
     private String myGameElement;
@@ -32,7 +32,7 @@ public class GameElementAccordianPane extends TitledPane {
     private ObservableList<String> myElementsList;
     private HashMap<String, Node> myElementsMap;
     
-    public GameElementAccordianPane (String gameElement) {
+    public ElementAccordianSubPaneController (String gameElement) {
         myGameElement = gameElement;
         initAddElementButton();
         initListView();

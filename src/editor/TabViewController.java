@@ -1,17 +1,15 @@
 package editor;
 
-import java.util.Observable;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import view.GUIController;
+import view.GUIContainer;
 import view.GUILoadStyleUtility;
+
 
 /**
  * 
@@ -19,30 +17,18 @@ import view.GUILoadStyleUtility;
  * @author Nishad Agrawal
  *
  */
-public class TabViewController implements GUIController {
+public class TabViewController extends GUIContainer {
 
     @FXML
     private Accordion levelElementAccordian;
     @FXML
-    private VBox levelInfoView;
+    private ElementAccordianController levelElementAccordianController;
     @FXML
     private ScrollPane levelTriggersView;
     @FXML
-    private ScrollPane levelMapView;
-    @FXML
-    private BorderPane levelMiniMapView;
-    @FXML
-    private ScrollPane levelElementAttributesView;
-    @FXML
-    private ScrollPane levelElementTriggersView;
+    private BorderPane gameRunnerPane;
     @FXML
     private BorderPane tabPane;
-
-    @Override
-    @FXML
-    public void initialize () {
-        initAccordianPanes();
-    }
 
     // TODO: Clean up this function
     private void initAccordianPanes () {
@@ -57,21 +43,21 @@ public class TabViewController implements GUIController {
 
         levelElementAccordian.getPanes().add((TitledPane) dropDownController.getRoot());
     }
+    
+    @Override
+    public void update () {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void initialize () {
+        initAccordianPanes();
+    }
 
     @Override
     public Node getRoot () {
         return tabPane;
     }
-
-    @Override
-    public String[] getCSS () {
-        return new String[] { "/editor/stylesheets/editorTab.css" };
-    }
-
-    @Override
-    public void update (Observable o, Object arg) {
-        // TODO Auto-generated method stub
-
-    }
-
+    
 }

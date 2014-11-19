@@ -7,7 +7,6 @@ import java.util.Observer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import util.MultiLanguageUtility;
 
 /**
  * 
@@ -20,7 +19,7 @@ public class MainView implements Observer {
     private Stage myStage;
     private Scene myScene;
     private MainModel myMainModel;
-    private GUIScene myCurrentController;
+    private GUIScreen myCurrentController;
 
     private GUILoadStyleUtility myLoadStyleUtility;
 
@@ -31,11 +30,11 @@ public class MainView implements Observer {
     }
 
     public void start () {
-        launchScene(ViewScreen.SPLASH, "");
+        launchScreen(ViewScreen.SPLASH, "");
         myStage.show();
     }
 
-    public void launchScene (ViewScreen screen, String game) {
+    public void launchScreen (ViewScreen screen, String game) {
         // MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         // util.initLanguages(System.getProperty("user.dir") +
         // "\\src\\resources\\languages");
@@ -43,19 +42,17 @@ public class MainView implements Observer {
         myMainModel.loadGame(game);
         initializeScreen(screen.getFilePath());
     }
-
+    
     private void initializeScreen (String filePath) {
-        myCurrentController = (GUIScene) myLoadStyleUtility.generateGUIPane(filePath);
-        Scene styled = myLoadStyleUtility.createStyledScene(myScene,
-                (Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS,
-                myCurrentController.getCSS());
-        myStage.setScene(styled);
+        myCurrentController = (GUIScreen) myLoadStyleUtility.generateGUIPane(filePath);
+        myScene = new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(), SCENE_DIMENSIONS.getHeight());
+        myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
     }
 
     @Override
-    public void update (Observable o, Object arg) {
-
+    public void update (Observable arg0, Object arg1) {
+        myCurrentController.update();        
     }
 
 }

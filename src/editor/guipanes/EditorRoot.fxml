@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import editor.EditorMenuBar?>
+<?import editor.EditorMenuBarController?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="editorRoot" fx:controller="editor.EditorScreen">
@@ -14,7 +14,7 @@
 		<VBox BorderPane.alignment="CENTER" >
 			<children>
 				<fx:include source="ProjectExplorerView.fxml" fx:id="projectExplorer" VBox.vgrow="ALWAYS" />
-				<fx:include source="GameInfo.fxml" fx:id="gameInfoBox" VBox.vgrow="NEVER" />
+				<fx:include source="DescribableInfoBox.fxml" fx:id="gameInfoBox" VBox.vgrow="NEVER" />
 			</children>
 		</VBox>
 	</left>

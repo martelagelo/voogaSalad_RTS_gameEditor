@@ -11,11 +11,10 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
  */
 public class GameUniverse {
 
-    // TODO THIS WHOLE CLASS
     public GameUniverse () {
 
     }
-
+    
     // TODO
     public void addElement (GameElementState gameElementState) {
         //TODO

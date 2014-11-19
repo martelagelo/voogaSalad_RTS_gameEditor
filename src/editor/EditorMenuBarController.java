@@ -1,10 +1,10 @@
 package editor;
 
-import java.util.Observable;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.MenuBar;
 import view.GUIController;
+
 
 /**
  * 
@@ -12,21 +12,10 @@ import view.GUIController;
  * @author Jonathan Tseng
  *
  */
-public class EditorMenuBar implements GUIController {
+public class EditorMenuBarController implements GUIController {
 
     @FXML
     private MenuBar menuBar;
-
-    @Override
-    @FXML
-    public void initialize () {
-        System.out.println("(TODO) initializing menu bar...");
-    }
-
-    @Override
-    public String[] getCSS () {
-        return new String[] { "/editor/stylesheets/editorMenuBar.css" };
-    }
 
     @Override
     public Node getRoot () {
@@ -34,7 +23,7 @@ public class EditorMenuBar implements GUIController {
     }
 
     @Override
-    public void update (Observable o, Object arg) {
+    public void initialize () {
         // TODO Auto-generated method stub
         
     }

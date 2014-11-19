@@ -1,10 +1,7 @@
 package view;
 
-import java.awt.Dimension;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 
 /**
@@ -29,7 +26,8 @@ public class GUILoadStyleUtility {
             throw new RuntimeException(e);
         }
     }
-
+    
+    /*
     public Scene createStyledScene (Scene scene, Parent root, Dimension dim, String ... cssFiles) {
         scene = new Scene(root, dim.width, dim.height);
         try {
@@ -42,6 +40,6 @@ public class GUILoadStyleUtility {
             e.printStackTrace();
         }
         return scene;
-    }
+    }*/
 
 }
