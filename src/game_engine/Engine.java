@@ -47,6 +47,7 @@ public class Engine implements Observer, Observable {
         myElementManager = new GameElementManager(myGame.getCurrentLevel());
         myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
         myVisualManager.addBoxObserver(myElementManager);
+        myVisualManager.addClickObserver(myElementManager);
 
     }
 

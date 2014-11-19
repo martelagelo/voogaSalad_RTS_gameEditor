@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
+import javafx.geometry.Point2D;
+import player.ClickManager;
 import player.SelectionBox;
 
 
@@ -51,6 +53,13 @@ public class GameElementManager implements Observer {
         if (o instanceof SelectionBox) {
             double[] points = ((SelectionBox) o).getPoints();
             selectPlayerUnits(points);
+        }
+        
+        else if (o instanceof ClickManager){
+            Point2D click = ((ClickManager) o).getLoc();
+            // TODO implement sending orders to units based on click
+            // ((ClickManager) o).isPrimary(), ((ClickManager) o).isSecondary()
+                    
         }
     }
 }

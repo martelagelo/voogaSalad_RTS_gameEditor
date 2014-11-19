@@ -29,7 +29,10 @@ public class VisualManager {
 
     public void addBoxObserver (Observer o) {
         scene.addBoxObserver(o);
+    }
 
+    public void addClickObserver (Observer o) {
+        scene.addClickObserver(o);
     }
 
     public void addObjects (Group g) {

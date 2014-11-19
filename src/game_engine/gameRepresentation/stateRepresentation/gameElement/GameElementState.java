@@ -2,7 +2,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Condition;
-import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
+//import game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
