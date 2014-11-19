@@ -1,5 +1,6 @@
 package game_engine;
 
+import game_engine.gameRepresentation.conditions.evaluators.parameters.ParameterFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Game;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
