@@ -76,7 +76,7 @@ public class SpriteSheetCreationUtility {
                         new ArrayList<ArrayList<BufferedImage>>();
                 extractAllSpriteLists(uniqueStateIndicies, extrapolatedStateIndicies,
                                       extrapolatedStateMirrorFlags, unitDirectory, allSpriteLists);
-                
+
                 List<BufferedImage> allSprites = new ArrayList<BufferedImage>();
                 allSpriteLists.stream().forEach(l -> allSprites.addAll(l));
                 int frameWidth = findMaximumImageWidth(allSprites);
@@ -88,13 +88,21 @@ public class SpriteSheetCreationUtility {
 
                 BufferedImage finalSpritesheet =
                         tileSpritesheets(stateSpritesheets, frameWidth, frameHeight);
-                String filePath = baseDirectory.getAbsolutePath() + File.separator + unitName;
-                ImageIO.write(finalSpritesheet, "PNG", new File(filePath + ".png"));
-                int numTotalColumns = stateSpritesheets.size()*8;
+                ColorMaskExtractor extractor = new ColorMaskExtractor(finalSpritesheet);
+                extractor.extractColorMask();
+                BufferedImage finalSpritesheetColorRemoved = extractor.spritesheetColorRemoved;
+                BufferedImage colorMask = extractor.colorMask;
+                String filePathForSpritesheet = baseDirectory.getAbsolutePath() + File.separator + unitName;
+                String filePathForColorMask = filePathForSpritesheet + "ColorMask";
+                ImageIO.write(finalSpritesheetColorRemoved, "PNG", new File(filePathForSpritesheet + ".png"));
+                ImageIO.write(colorMask, "PNG", new File(filePathForColorMask + ".png"));
+                int numTotalColumns = stateSpritesheets.size() * 8;
                 Spritesheet spritesheetObject =
-                        new Spritesheet(filePath, new Dimension(frameWidth, frameHeight), numTotalColumns);
+                        new Spritesheet(filePathForSpritesheet, new Dimension(frameWidth, frameHeight),
+                                        numTotalColumns);
+                
                 SaveUtility saveUtil = new SaveUtility();
-                //saveUtil.save((JSONable) spritesheetObject, filePath + ".json");
+                // saveUtil.save((JSONable) spritesheetObject, filePath + ".json");
             }
         }
         catch (IOException e) {
@@ -349,7 +357,7 @@ public class SpriteSheetCreationUtility {
         return toBufferedImage(Toolkit.getDefaultToolkit().createImage(ip));
     }
 
-    private static BufferedImage toBufferedImage (Image src) {
+    static BufferedImage toBufferedImage (Image src) {
         int w = src.getWidth(null);
         int h = src.getHeight(null);
         int type = BufferedImage.TYPE_INT_ARGB;  // other options
