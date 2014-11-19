@@ -40,15 +40,27 @@ public class LoadSaveUtility implements ILoadSave {
     }
 
     public void save (JSONable object, String filePath) throws IOException {
+        File file =  obtainFile(filePath);
+        FileWriter writer = new FileWriter(file);
         String json = object.toJSON();
-        FileWriter writer = new FileWriter(filePath);
+        
         writer.write(json);
         writer.close();
     }
 
-    public void saveImage (Image image, String filePath) throws IOException {
-        File output = new File(filePath);
+    private File obtainFile (String filePath) throws IOException {
+        File file = new File(filePath);
+        if(!file.exists()){
+            file.getParentFile().mkdir();
+            file.createNewFile();
+        }
+        return file;
+    }
+
+    public String saveImage (Image image, String filePath) throws IOException {
+        File output = obtainFile(filePath);
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
+        return output.getPath();
 
     }
 
