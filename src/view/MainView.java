@@ -4,6 +4,7 @@ import gamemodel.MainModel;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.beans.binding.DoubleBinding;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -46,10 +47,10 @@ public class MainView implements Observer {
 
     private void initializeScreen (String filePath) {
         myCurrentController = (GUIScene) myLoadStyleUtility.generateGUIPane(filePath);
-        Scene styled = myLoadStyleUtility.createStyledScene(myScene,
+        myScene = myLoadStyleUtility.createStyledScene(myScene,
                 (Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS,
-                myCurrentController.getCSS());
-        myStage.setScene(styled);
+                myCurrentController.getCSS());        
+        myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
     }
 
