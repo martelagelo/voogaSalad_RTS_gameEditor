@@ -24,6 +24,10 @@ public class Attribute<T> {
     public T getData () {
         return myData;
     }
+    
+    public void setData(T newData) {
+    	this.myData = newData;
+    }
 
     @Override
     public String toString () {

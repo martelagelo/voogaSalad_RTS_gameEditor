@@ -2,15 +2,15 @@ package game_engine.gameRepresentation.stateRepresentation;
 
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 /**
- * This class is a collection of Levels used to string together gameplay in order to make a cohesive
- * user experience.
+ * This class is a collection of Levels used to string together gameplay in
+ * order to make a cohesive user experience.
  * 
  * @author Steve, Jonathan, Nishad, Rahul
  *
@@ -37,8 +37,7 @@ public class CampaignState extends DescribableState {
         }).collect(Collectors.toList());
         if (levels.isEmpty()) {
             throw new LevelNotFoundException(levelName);
-        }
-        else {
+        } else {
             return levels.get(0);
         }
     }
@@ -63,8 +62,7 @@ public class CampaignState extends DescribableState {
             return levelToAdd.getName().equals(campaign.getName());
         })) {
             throw new LevelExistsException(levelToAdd.getName());
-        }
-        else {
+        } else {
             myLevels.add(levelToAdd);
         }
     }
