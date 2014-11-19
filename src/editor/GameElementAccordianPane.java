@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package editor;
 
 import java.util.HashMap;
