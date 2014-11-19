@@ -25,10 +25,12 @@ public abstract class GUIContainer implements Observer, GUIController {
     }
 
     protected void attachChildContainers (GUIContainer ... child) {
+        checkAndCreateChildContainers();
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(child)));
     }
 
     protected void clearChildContainers () {
+        checkAndCreateChildContainers();
         myChildContainers.clear();
     }
 
@@ -39,9 +41,16 @@ public abstract class GUIContainer implements Observer, GUIController {
     @Override
     public final void update (Observable o, Object arg) {
         update();
+        checkAndCreateChildContainers();
         myChildContainers.forEach( (child) -> child.update());
     }
 
     public abstract void update ();
+    
+    private void checkAndCreateChildContainers() {
+        if (myChildContainers == null) {
+            myChildContainers = new ArrayList<>();
+        }
+    }
 
 }
