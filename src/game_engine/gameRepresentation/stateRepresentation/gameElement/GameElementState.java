@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,50 +21,100 @@ import java.util.stream.Collectors;
  */
 public class GameElementState {
 
-    protected Map<Evaluatable, Action> ifThisThenThat = new HashMap<>();
-    protected Set<Attribute<Number>> numericalAttributes;
-    protected Set<Attribute<String>> textualAttributes;
+    protected Map<Evaluatable, Action> myConditionActionPairings;
+    protected Set<Attribute<Number>> myNumericalAttributes;
+    protected Set<Attribute<String>> myTextualAttributes;
 
     public GameElementState () {
-        numericalAttributes = new HashSet<>();
-        textualAttributes = new HashSet<>();
+        myNumericalAttributes = new HashSet<>();
+        myTextualAttributes = new HashSet<>();
+        myConditionActionPairings = new HashMap<>();
     }
 
+    /**
+     * Get the name of the element, if it has been set
+     * 
+     * @return
+     */
     public String getName () {
         return getTextualAttribute("Name");
     }
 
+    /**
+     * Get the type of the element, if it has been set
+     * 
+     * @return
+     */
     public String getType () {
         return getTextualAttribute("Type");
     }
 
+    /**
+     * Get an attribute from an internal collection
+     * 
+     * @param collection the collection to extract the element from
+     * @param attributeName the name of the attribute to extract
+     * @param defaultReturnObject the value that should be returned if no attribute of the specified
+     *        type was found
+     * @return the attribute's value or the default return object if the attribute was not found
+     */
+    private <T> T getAttribute (Collection<Attribute<T>> collection,
+                                String attributeName,
+                                T defaultReturnObject) {
+        List<Attribute<T>> attributes =
+                collection.stream().filter(o -> o.getName().equals(attributeName))
+                        .collect(Collectors.toList());
+        return (attributes.size() != 0) ? attributes.get(0).getData() : defaultReturnObject;
+
+    }
+
+    /**
+     * Get a textual attribute with the given name
+     */
     public String getTextualAttribute (String name) {
-        List<Attribute<String>> attributes = textualAttributes.stream()
-                .filter(o -> o.getName().equals(name))
-                .collect(Collectors.toList());
-        return (attributes.size() != 0) ? attributes.get(0).getData() : "";
+        return getAttribute(myTextualAttributes, name, "");
     }
 
+    /**
+     * Get a numerical attribute with the given name
+     */
     public Number getNumericalAttribute (String name) {
-        List<Attribute<Number>> attributes = numericalAttributes.stream()
-                .filter(o -> o.getName().equals(name))
-                .collect(Collectors.toList());
-        return (attributes.size() != 0) ? attributes.get(0).getData() : new Double(0);
+        return getAttribute(myNumericalAttributes, name, new Double(0));
     }
 
+    /**
+     * Add an attribute with the given values to a given collection. Used to make switching between
+     * internal collection implementations easy
+     * 
+     * @param collection
+     * @param attributeName
+     * @param attributeValue
+     */
+    private <T> void setAttribute (Collection<Attribute<T>> collection,
+                                   String attributeName,
+                                   T attributeValue) {
+        Attribute<T> attribute = new Attribute<>(attributeName, attributeValue);
+        collection.remove(attribute); // Remove any old attribute that might conflict with this new
+                                      // one
+        collection.add(attribute); // Add the new attribute to the set
+    }
+
+    /**
+     * Set a textual attribute with the given name to the given value
+     */
     public void setTextualAttribute (String name, String value) {
-        Attribute<String> attribute = new Attribute<>(name, value);
-        textualAttributes.remove(attribute); // Remove any old attribute that conflicts
-        textualAttributes.add(attribute); // Add the new attribute to the set
+        setAttribute(myTextualAttributes, name, value);
     }
 
+    /**
+     * Set a numerical attribute with the given name to the given value
+     */
     public void setNumericalAttribute (String name, Number value) {
-        Attribute<Number> attribute = new Attribute<>(name,value);
-        numericalAttributes.remove(attribute); // Remove any old attribute that conflicts
-        numericalAttributes.add(attribute); // Add the new attribute to the set
+        setAttribute(myNumericalAttributes, name, value);
     }
 
     public void update () {
+        // TODO comment this
         updateSelfDueToInternalFactors();
     }
 

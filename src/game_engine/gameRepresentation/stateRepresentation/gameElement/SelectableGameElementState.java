@@ -84,7 +84,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     }
 
     private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-        return this.ifThisThenThat.entrySet().stream()
+        return this.myConditionActionPairings.entrySet().stream()
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
                 .collect(Collectors.toList());
     }
