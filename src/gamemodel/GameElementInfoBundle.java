@@ -26,13 +26,36 @@ public class GameElementInfoBundle {
     	myTriggers.put(condition, value);
     }
     
-    public void addAttribute(String key, String value){
-    	try{
-    		myNumberAttributes.put(key, Double.parseDouble(value));
+    public void addStringAttribute(String key, String value){
+    	myStringAttributes.put(key, value);
+    }
+    
+    public void addNumberAttribute(String key, double value){
+    	myNumberAttributes.put(key, value);
+    }
+    
+    @Override
+    public String toString(){
+    	StringBuilder s = new StringBuilder();
+    	for(String k : myTriggers.keySet()){
+    		s.append("Trigger - " + k);
+    		s.append(" : ");
+    		s.append(myTriggers.get(k));
+    		s.append("\n");
     	}
-    	catch(Exception e){
-    		myStringAttributes.put(key, value);
+    	for(String k : myStringAttributes.keySet()){
+    		s.append("StringAttribute - " + k);
+    		s.append(" : ");
+    		s.append(myStringAttributes.get(k));
+    		s.append("\n");
     	}
+    	for(String k : myNumberAttributes.keySet()){
+    		s.append("NumberAttribute - " + k);
+    		s.append(" : ");
+    		s.append(myNumberAttributes.get(k));
+    		s.append("\n");
+    	}
+    	return s.toString();
     }
 
 }
