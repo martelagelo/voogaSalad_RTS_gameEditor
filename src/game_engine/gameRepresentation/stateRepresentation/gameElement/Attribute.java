@@ -26,7 +26,7 @@ public class Attribute<T> {
     }
     
     public void setData(T newData) {
-    	this.myData = newData;
+        this.myData = newData;
     }
 
     @Override
