@@ -120,8 +120,8 @@ public class ScrollableScene extends Scene {
                         -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
                 double xBottomRight = xTopLeftMap + myBox.getWidth();
                 double yBottomRight = yTopLeftMap + myBox.getHeight();
-
-                mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight, yBottomRight);
+                if(xTopLeftMap!=xBottomRight && yTopLeftMap!=yBottomRight)
+                    mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight, yBottomRight);
             }
         });
 
