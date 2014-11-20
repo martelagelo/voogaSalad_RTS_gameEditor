@@ -1,5 +1,8 @@
 package editor;
 
+import editor.wizards.Wizard;
+import editor.wizards.WizardData;
+import game_engine.visuals.Dimension;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -18,9 +21,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
-import editor.wizards.GameElementWizard;
-import editor.wizards.TerrainWizard;
-import gamemodel.GameElementInfoBundle;
 
 
 /**
@@ -50,32 +50,30 @@ public class EditorScreen extends GUIScreen {
      * TODO: Jonathan is cleaning up the load utility
      */
     private void openGameElementWizard(){
-    	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
-    	GameElementWizard GEW = (GameElementWizard) glsu.generateGUIPane("/editor/wizards/guipanes/GameElementWizard.fxml");
-        Scene myScene = new Scene((Parent) GEW.getRoot(), 600, 300);   
-        Stage s = new Stage();
-        s.setScene(myScene);
-        s.show();
-        Consumer<GameElementInfoBundle> c = (infoBundle) -> {
-        	System.out.println(infoBundle);
-        };
-        GEW.setSubmit(c);
+        Dimension dim = new Dimension(600, 300);
+        loadWizard("/editor/wizards/guipanes/GameElementWizard.fxml", dim);
     }
     
     /**
      * TODO: Jonathan is cleaning up the load utility
      */
-    private void openTerrainWizard(){
-    	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
-    	TerrainWizard TW = (TerrainWizard) glsu.generateGUIPane("/editor/wizards/guipanes/TerrainWizard.fxml");
-    	Scene myScene = new Scene((Parent) TW.getRoot(), 600, 300);  
+    private void openTerrainWizard(){                        
+        Dimension dim = new Dimension(600, 300);
+        loadWizard("/editor/wizards/guipanes/TerrainWizard.fxml", dim);
+    }
+    
+    private void loadWizard(String filePath, Dimension dim) {
+        GUILoadStyleUtility glsu = new GUILoadStyleUtility();
+        Wizard wiz = (Wizard) glsu.generateGUIPane(filePath);
         Stage s = new Stage();
+        Scene myScene = new Scene((Parent) wiz.getRoot(), dim.getWidth(), dim.getHeight());   
         s.setScene(myScene);
-        s.show();
-        Consumer<GameElementInfoBundle> c = (infoBundle) -> {
-        	System.out.println(infoBundle);
+        s.show(); 
+        Consumer<WizardData> c = (data) -> {
+            System.out.println(data);
+            s.close();
         };
-        TW.setSubmit(c);
+        wiz.setSubmit(c);
     }
 
     @Override

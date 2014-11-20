@@ -1,28 +1,28 @@
 package editor.wizards;
 
-import java.util.function.BiConsumer;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+
 /**
  * 
- * @author joshua
+ * @author Joshua, Nishad
  *
  */
-public class StringAttributeWizard extends Wizard{
-	@FXML private TextField key;
-	@FXML private TextField stringValue;
-	
-	/**
-	 * Takes in a biconsumer that uses the key
-	 * and stringValue fields to do leverage the
-	 * StringAttributeWizard without revealing
-	 * its internals to the StringAttributeWizard
-	 * 
-	 * @param BiConsumer c, a consumer which takes
-	 * in two strings
-	 */
-	public void setSubmit(BiConsumer<String, String> c){
-		save.setOnAction(e -> c.accept(key.getText(), stringValue.getText()));
-	}
+public class StringAttributeWizard extends Wizard {
+    @FXML
+    private TextField key;
+    @FXML
+    private TextField stringValue;
+
+    @Override
+    public boolean checkCanSave () {
+        return !key.getText().isEmpty() && !stringValue.getText().isEmpty();
+    }
+
+    @Override
+    public void updateData () {
+        addToData("StringAttribute", key.getText());
+        addToData("Value", stringValue.getText());
+    }
 }
