@@ -20,5 +20,9 @@
 	</left>
 	<center>
 		<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" />
+		<VBox>
+		<Button fx:id="newGameElement" text="New Game Element" />
+		<Button fx:id="newTerrain" text="New Terrain" />
+		</VBox>
 	</center>
 </BorderPane>
