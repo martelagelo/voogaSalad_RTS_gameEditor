@@ -41,9 +41,9 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState = new SelectableGameElementState(96, 0);
         archerState
                 .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/archer.png",
-                                                new Dimension(100, 103), 50));
-        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 10, true, 0.3));
+                                                "resources/img/graphics/units/eagleWarrior.png",
+                                                new Dimension(294, 98), 14));
+        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState.setAnimation("stand_fwd");
 //        DrawableGameElementState grassState = new DrawableGameElementState(0, 0);
 //        grassState.setSpritesheet(new Spritesheet("resources/img/graphics/terrain/grass/1.png",
