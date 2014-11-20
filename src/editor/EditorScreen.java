@@ -31,44 +31,53 @@ import view.GUIScreen;
  */
 
 public class EditorScreen extends GUIScreen {
-    
-    @FXML private TabPane tabPane;
-    @FXML private TreeView<String> projectExplorer;
-    @FXML private ProjectExplorerController projectExplorerController;
-    @FXML private VBox gameInfoBox;
-    @FXML private DescribableInfoBoxController gameInfoBoxController;
-    @FXML private Parent editorMenuBar;
-    @FXML private EditorMenuBarController editorMenuBarController;
-    @FXML private BorderPane editorRoot;
-    @FXML private Button newGameElement;
-    @FXML private Button newTerrain;
+
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private TreeView<String> projectExplorer;
+    @FXML
+    private ProjectExplorerController projectExplorerController;
+    @FXML
+    private VBox gameInfoBox;
+    @FXML
+    private DescribableInfoBoxController gameInfoBoxController;
+    @FXML
+    private Parent editorMenuBar;
+    @FXML
+    private EditorMenuBarController editorMenuBarController;
+    @FXML
+    private BorderPane editorRoot;
+    @FXML
+    private Button newGameElement;
+    @FXML
+    private Button newTerrain;
 
     private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
-    
+
     /**
      * TODO: Jonathan is cleaning up the load utility
      */
-    private void openGameElementWizard(){
+    private void openGameElementWizard () {
         Dimension dim = new Dimension(600, 300);
         loadWizard("/editor/wizards/guipanes/GameElementWizard.fxml", dim);
     }
-    
+
     /**
      * TODO: Jonathan is cleaning up the load utility
      */
-    private void openTerrainWizard(){                        
+    private void openTerrainWizard () {
         Dimension dim = new Dimension(600, 300);
         loadWizard("/editor/wizards/guipanes/TerrainWizard.fxml", dim);
     }
-    
-    private void loadWizard(String filePath, Dimension dim) {
-        GUILoadStyleUtility glsu = new GUILoadStyleUtility();
-        Wizard wiz = (Wizard) glsu.generateGUIPane(filePath);
+
+    private void loadWizard (String filePath, Dimension dim) {
+        Wizard wiz = (Wizard) GUILoadStyleUtility.generateGUIPane(filePath);
         Stage s = new Stage();
-        Scene myScene = new Scene((Parent) wiz.getRoot(), dim.getWidth(), dim.getHeight());   
+        Scene myScene = new Scene((Parent) wiz.getRoot(), dim.getWidth(), dim.getHeight());
         s.setScene(myScene);
-        s.show(); 
+        s.show();
         Consumer<WizardData> c = (data) -> {
             System.out.println(data);
             s.close();
@@ -123,11 +132,11 @@ public class EditorScreen extends GUIScreen {
         tab.setId(level);
 
         String filePath = "/editor/guipanes/EditorTabView.fxml";
-        GUILoadStyleUtility util = new GUILoadStyleUtility();
-        TabViewController tabController = (TabViewController) util.generateGUIPane(filePath);
+        TabViewController tabController =
+                (TabViewController) GUILoadStyleUtility.generateGUIPane(filePath);
         clearChildContainers();
         attachChildContainers(tabController);
-        
+
         myCurrentTab = tab;
         tab.setContent((BorderPane) tabController.getRoot());
         tabPane.getTabs().add(tab);
@@ -143,7 +152,7 @@ public class EditorScreen extends GUIScreen {
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
-        initGameInfoVBox();        
+        initGameInfoVBox();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
     }
@@ -151,7 +160,7 @@ public class EditorScreen extends GUIScreen {
     @Override
     public void update () {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

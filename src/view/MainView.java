@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -20,13 +21,14 @@ public class MainView implements Observer {
     private Scene myScene;
     private MainModel myMainModel;
     private GUIScreen myCurrentController;
-
     private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage, MainModel model) {
         myStage = stage;
         myMainModel = model;
-        myLoadStyleUtility = new GUILoadStyleUtility();
+        myScene = new Scene(new Pane());
+        myLoadStyleUtility = GUILoadStyleUtility.getInstance();
+        myLoadStyleUtility.setScene(myScene);
     }
 
     public void start () {
@@ -44,7 +46,7 @@ public class MainView implements Observer {
     }
     
     private void initializeScreen (String filePath) {
-        myCurrentController = (GUIScreen) myLoadStyleUtility.generateGUIPane(filePath);
+        myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
         myScene = new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(), SCENE_DIMENSIONS.getHeight());
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);

@@ -34,8 +34,7 @@ public class TabViewController extends GUIContainer {
     private void initAccordianPanes () {
         // TODO Get Accordian Pane MetaData
         String filePath = "/editor/guipanes/GameElementDropDown.fxml";
-        GUILoadStyleUtility util = new GUILoadStyleUtility();
-        ElementDropDownControl dropDownController = (ElementDropDownControl) util
+        ElementDropDownControl dropDownController = (ElementDropDownControl) GUILoadStyleUtility
                 .generateGUIPane(filePath);
         dropDownController.setGameElement("Unit");
         dropDownController.addElement("item1", null);
