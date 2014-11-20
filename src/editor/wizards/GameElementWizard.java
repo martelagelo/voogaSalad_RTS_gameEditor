@@ -1,19 +1,15 @@
 package editor.wizards;
 
 import gamemodel.GameElementInfoBundle;
-
-import java.awt.Dimension;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import view.GUIController;
-import view.GUILoadStyleUtility;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import view.GUILoadStyleUtility;
 
 /**
  * 
@@ -49,10 +45,7 @@ public class GameElementWizard  extends Wizard{
 	private void launchTriggerEditor(){
     	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
     	TriggerWizard TW = (TriggerWizard) glsu.generateGUIPane("/editor/wizards/guipanes/TriggerWizard.fxml");
-        Scene myScene = new Scene(new BorderPane());
-        myScene = glsu.createStyledScene(myScene,
-                (Parent) TW.getRoot(), new Dimension(300, 300),
-                TW.getCSS());    
+        Scene myScene = new Scene((Parent) TW.getRoot(), 600, 300);  
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();
@@ -73,10 +66,7 @@ public class GameElementWizard  extends Wizard{
 	private void launchStringAttributeEditor(){
     	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
     	StringAttributeWizard SAW = (StringAttributeWizard) glsu.generateGUIPane("/editor/wizards/guipanes/StringAttributeWizard.fxml");
-        Scene myScene = new Scene(new BorderPane());
-        myScene = glsu.createStyledScene(myScene,
-                (Parent) SAW.getRoot(), new Dimension(300, 300),
-                SAW.getCSS());    
+        Scene myScene = new Scene((Parent) SAW.getRoot(), 600, 300);  
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();
@@ -97,10 +87,7 @@ public class GameElementWizard  extends Wizard{
 	private void launchNumberAttributeEditor(){
     	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
     	NumberAttributeWizard NAW = (NumberAttributeWizard) glsu.generateGUIPane("/editor/wizards/guipanes/NumberAttributeWizard.fxml");
-        Scene myScene = new Scene(new BorderPane());
-        myScene = glsu.createStyledScene(myScene,
-                (Parent) NAW.getRoot(), new Dimension(300, 300),
-                NAW.getCSS());    
+        Scene myScene = new Scene((Parent) NAW.getRoot(), 600, 300);     
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();

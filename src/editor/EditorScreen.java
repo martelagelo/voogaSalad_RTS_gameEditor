@@ -1,6 +1,5 @@
 package editor;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -17,7 +16,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.GUIController;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
 import editor.wizards.GameElementWizard;
@@ -54,10 +52,7 @@ public class EditorScreen extends GUIScreen {
     private void openGameElementWizard(){
     	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
     	GameElementWizard GEW = (GameElementWizard) glsu.generateGUIPane("/editor/wizards/guipanes/GameElementWizard.fxml");
-        Scene myScene = new Scene(new BorderPane());
-        myScene = glsu.createStyledScene(myScene,
-                (Parent) GEW.getRoot(), new Dimension(600, 300),
-                GEW.getCSS());    
+        Scene myScene = new Scene((Parent) GEW.getRoot(), 600, 300);   
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();
@@ -73,10 +68,7 @@ public class EditorScreen extends GUIScreen {
     private void openTerrainWizard(){
     	GUILoadStyleUtility glsu = new GUILoadStyleUtility();
     	TerrainWizard TW = (TerrainWizard) glsu.generateGUIPane("/editor/wizards/guipanes/TerrainWizard.fxml");
-        Scene myScene = new Scene(new BorderPane());
-        myScene = glsu.createStyledScene(myScene,
-                (Parent) TW.getRoot(), new Dimension(600, 300),
-                TW.getCSS());    
+    	Scene myScene = new Scene((Parent) TW.getRoot(), 600, 300);  
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();
