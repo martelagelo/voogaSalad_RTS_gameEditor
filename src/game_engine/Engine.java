@@ -6,6 +6,7 @@ import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
+import gamemodel.exceptions.DescribableStateException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Group;
@@ -40,13 +41,14 @@ public class Engine extends Observable implements Observer {
         return myVisualManager.getVisualRepresentation();
     }
 
-    public void selectLevel (String name) {
-//        myGame.setCurrentLevel(name);
-//        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
-//        myElementManager = new GameElementManager(myGame.getCurrentLevel());
-//        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
-//        myVisualManager.addBoxObserver(myElementManager);
-//        myVisualManager.addClickObserver(myElementManager);
+    public void selectLevel (String campaignName, String levelName) throws DescribableStateException {
+        myMainModel.setCurrentLevel(campaignName, levelName);
+        Level newLevel = new Level(myMainModel.getCurrentLevel());
+        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myElementManager = new GameElementManager(newLevel);
+        myVisualManager.addObjects(newLevel.getGroup());
+        myVisualManager.addBoxObserver(myElementManager);
+        myVisualManager.addClickObserver(myElementManager);
     }
 
     public void play () {
@@ -76,6 +78,7 @@ public class Engine extends Observable implements Observer {
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
+            myVisualManager.addClickObserver(myElementManager);
         }
     }
 

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
 
@@ -51,20 +52,21 @@ public class GameElementManager implements Observer {
     private void selectPlayerUnits (double[] rectPoints) {
         for (SelectableGameElement e : myLevel.getUnits()) {
             double[] bounds = e.getBounds();
-            System.out.println("Unit bounding box:");
-            System.out.println("(" + bounds[0] + ", " + bounds[1] + ") , (" +
-                    (bounds[0] + bounds[2]) + ", " + (bounds[1] + bounds[3]) + ")");
+            // System.out.println("Unit bounding box:");
+            // System.out.println("(" + bounds[0] + ", " + bounds[1] + ") , (" +
+            // (bounds[0] + bounds[2]) + ", " + (bounds[1] + bounds[3]) + ")");
             Polygon polygonBounds = new Polygon();
             polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
-                                                            bounds[0] + bounds[2], bounds[1],
-                                                            bounds[0] + bounds[2],
-                                                            bounds[1] + bounds[3], bounds[0],
-                                                            bounds[1] + bounds[3] });
+                                                           bounds[0] + bounds[2], bounds[1],
+                                                           bounds[0] + bounds[2],
+                                                           bounds[1] + bounds[3], bounds[0],
+                                                           bounds[1] + bounds[3] });
 
             if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2] -
-                                         rectPoints[0],
+                                                                       rectPoints[0],
                                          rectPoints[3] - rectPoints[1])) {
                 System.out.println("selected a unit with new system");
+
                 e.select(true);
             }
         }
@@ -80,9 +82,13 @@ public class GameElementManager implements Observer {
             double[] points = ((SelectionBox) o).getPoints();
             selectPlayerUnits(points);
         }
-
         else if (o instanceof ClickManager) {
-            ((ClickManager) o).getLoc();
+            Point2D click = ((ClickManager) o).getLoc();
+            // TODO implement sending orders to units based on click
+            // ((ClickManager) o).isPrimary(), ((ClickManager) o).isSecondary()
+            System.out.println("Click: " +
+                               (((ClickManager) o).isPrimary() ? "primary" : "secondary") +
+                               ", loc: " + click.getX() + ", " + click.getY());
 
         }
     }

@@ -3,7 +3,6 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -26,7 +25,7 @@ public class GameElement {
      */
     public GameElement (GameElementState gameElementState) {
         myGameElementState = gameElementState;
-        myConditionActionPairs = new HashMap<>();
+        // myConditionActionPairs = new HashMap<>();
         // TODO: Parse the condition action pairs in state (string->string) into (condition->action)
     }
 

@@ -19,13 +19,13 @@ public class ProjectExplorerTreeItem<T> extends TreeItem<T> {
         super(name);
     }
     
-    private Consumer<ProjectExplorerTreeItem<T>> myAction = (ProjectExplorerTreeItem<T> item)->{};
+    private Consumer<T> myAction = (T value)->{};
     
-    public void setAction(Consumer<ProjectExplorerTreeItem<T>> action) {
+    public void setAction(Consumer<T> action) {
         myAction = action;
     }
     
-    public void onClicked(ProjectExplorerTreeItem<T> item) {
-        myAction.accept(item);
+    public void onClicked(T value) {
+        myAction.accept(value);
     }
 }

@@ -2,8 +2,12 @@ package test.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-public class TestJSON {
+/**
+ * Test of GSON and JSON rendered output.
+ * @author Rahul
+ *
+ */
+public class TestGSON {
     
     
     public static void main(String [] args) {

@@ -25,9 +25,7 @@ import javafx.util.Duration;
  *
  */
 public class GameLoop {
-
-    public static final Double framesPerSecond = 60.0;
-
+    public static final Double framesPerSecond = 60.0;  
     private Level myCurrentLevel;
     private ScrollableBackground myBackground;
     private List<Computer> myComputerList = new ArrayList<Computer>();

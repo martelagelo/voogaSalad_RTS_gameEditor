@@ -1,22 +1,18 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 
 /**
  * A wrapper for game elements capable of being selected. Adds a "selected" visual appearance to the
  * appearance defined by the DrawableGameElement and handles animations for actions resulting from
  * being selected.
- * 
+ *
  * @author Jonathan , Steve, Nishad, Rahul
  *
  */
@@ -41,7 +37,7 @@ public class SelectableGameElement extends DrawableGameElement {
 
     /**
      * Select the element
-     * 
+     *
      * @param select a boolean indicating whether the object should be selected
      */
     public void select (boolean select) {
@@ -62,53 +58,48 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        // TODO Auto-generated method stub
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs("ObjectiveCondition");
+        getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
     public void updateSelfDueToSelection () {
-        // TODO Auto-generated method stub
-        // update representation?
-        // visualRepresentation.setSelected();
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs("SelfCondition");
+        getApplicableConditionActionPairs("SelfCondition");
     }
 
     private void updateSelfDueToVisions () {
         evaluateConditionActionPairsOnInteractingElementsSubset("VisionCondition",
-                                                                "VisibleElements");
+                "VisibleElements");
     }
 
     private void updateSelfDueToCollisions () {
         evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
-                                                                "CollidingElements");
+                "CollidingElements");
     }
 
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs(conditionActionPairIdentifier);
-        if (myState.getInteractingElements().containsKey(elementIdentifier)) {
-            for (DrawableGameElementState element : myState.getInteractingElements()
-                    .get(elementIdentifier)) {
-                List<GameElementState> immediatelyInteractingElements =
-                        new ArrayList<GameElementState>();
-                for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
-                    if (conditionActionPair.getKey().evaluate(new ElementPair(getState(), element))) {
-                        conditionActionPair.getValue().doAction(immediatelyInteractingElements);
-                    }
-                }
-            }
-        }
+
+        // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+        // getApplicableConditionActionPairs(conditionActionPairIdentifier);
+        // if (myState.getInteractingElements().containsKey(elementIdentifier)) {
+        // for (DrawableGameElementState element : myState.getInteractingElements()
+        // .get(elementIdentifier)) {
+        // List<GameElementState> immediatelyInteractingElements =
+        // new ArrayList<GameElementState>();
+        // for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
+        // if (conditionActionPair.getKey().evaluate(this, element)) {
+        // conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+        // }
+        // }
+        // }
+        // }
     }
 
     // TODO FIX THIS SHIT
     private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-       // return this.getConditionActionPairs().entrySet().stream()
-               // .filter(o -> o.getKey()..equals(conditionActionPairIdentifier))
-               // .collect(Collectors.toList());
+        // return this.getConditionActionPairs().entrySet().stream()
+        // .filter(o -> o.getKey()..equals(conditionActionPairIdentifier))
+        // .collect(Collectors.toList());
         return null;
     }
 
