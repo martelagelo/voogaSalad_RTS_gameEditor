@@ -29,15 +29,18 @@ public interface ISaveLoad {
      *            that can be converted to JSON format
      * @param filePath
      *            to which object should be saved
+     * @return filePath to which the json file is saved
      * @throws IOException
      *             in case of trouble reading
      */
-    public void save (JSONable object, String filePath) throws IOException;
+    public String save (JSONable object, String filePath) throws IOException;
 
     /**
      * Save an image from a particular file path
+     * 
      * @param image
-     * @param filePath at which image is located
+     * @param filePath
+     *            at which image is located
      * @return filePath where the image is saved to
      * @throws IOException
      */
@@ -49,7 +52,7 @@ public interface ISaveLoad {
      * @param String
      *            encoding of file path
      * @return Image object at that file path
-     * @throws IOException 
+     * @throws IOException
      */
     public Image loadImage (String filePath) throws IOException;
 
