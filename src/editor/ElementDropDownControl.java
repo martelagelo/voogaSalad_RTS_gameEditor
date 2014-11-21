@@ -1,8 +1,6 @@
 package editor;
 
 import java.util.HashMap;
-import java.util.Observable;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -50,15 +48,7 @@ public class ElementDropDownControl implements GUIController {
         elementDropDown.setText(myGameElement);
         myButtonText.setValue(CREATE_NEW_STRING + myGameElement);
     }
-
-    @Override
-    @FXML
-    public void initialize () {
-        myButtonText = new SimpleStringProperty();
-        initListView();
-        initNewElementButton();
-    }
-
+    
     private void initListView () {
         myElementsList = FXCollections.observableArrayList();
         myElementsMap = new HashMap<>();
@@ -100,19 +90,15 @@ public class ElementDropDownControl implements GUIController {
     }
 
     @Override
-    public String[] getCSS () {
-        return new String[0];
-    }
-
-    @Override
     public Node getRoot () {
         return elementDropDown;
     }
 
     @Override
-    public void update (Observable o, Object arg) {
-        // TODO Auto-generated method stub
-
+    public void initialize () {
+        myButtonText = new SimpleStringProperty();
+        initListView();
+        initNewElementButton();        
     }
-
+    
 }
