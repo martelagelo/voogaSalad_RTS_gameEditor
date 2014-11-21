@@ -4,11 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Rectangle;
 import view.GUIContainer;
-import view.GUILoadStyleUtility;
 
 
 /**
@@ -33,24 +30,18 @@ public class TabViewController extends GUIContainer {
     // TODO: Clean up this function
     private void initAccordianPanes () {
         // TODO Get Accordian Pane MetaData
-        String filePath = "/editor/guipanes/GameElementDropDown.fxml";
-        ElementDropDownControl dropDownController = (ElementDropDownControl) GUILoadStyleUtility
-                .generateGUIPane(filePath);
-        dropDownController.setGameElement("Unit");
-        dropDownController.addElement("item1", null);
-        dropDownController.addElement("item2", new Rectangle(50, 50));
-
-        levelElementAccordian.getPanes().add((TitledPane) dropDownController.getRoot());
+        // call to levelElementAccordianController to set up the data
     }
     
     @Override
     public void update () {
-        // TODO Auto-generated method stub
-
+        // Get Accordian Pane MetaData
+        // call to levelElementAccordianController to update the data
     }
 
     @Override
     public void initialize () {
+        attachChildContainers(levelElementAccordianController);
         initAccordianPanes();
     }
 

@@ -1,11 +1,10 @@
 package editor;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,34 +25,39 @@ public class ProjectExplorerController implements GUIController {
     private TreeView<String> myTreeView;
     private ProjectExplorerTreeItem<String> myGameNode;
     private ObservableList<TreeItem<String>> myCampaigns;
-    private Map<String, ObservableList<TreeItem<String>>> myLevelMap;
+    private List<ProjectExplorerTreeItem<String>> myLevels;
     private Consumer<String> mySelectionChangedConsumer = (String s) -> {
     };
+    private Consumer<String> myLevelClickedConsumer = (String s) -> {
+    };
 
-    public ObjectProperty<String> selectedProjectItemProperty () {
-        return myTreeView.getSelectionModel().selectedItemProperty().get().valueProperty();
-    }
-
-    public void bindGameName (SimpleStringProperty gameName) {
-        myGameNode.valueProperty().bind(gameName);
-    }
-
-    public void addCampaigns (String ... campaignNames) {
-        Arrays.stream(campaignNames)
-                .forEach( (campaignName) ->
-                {
-                    ProjectExplorerTreeItem<String> campaignNode =
-                            new ProjectExplorerTreeItem<>(campaignName);
-                    myCampaigns.add(campaignNode);
-                    myLevelMap.put(campaignName, campaignNode.getChildren());
-                });
-    }
-
-    public void addLevels (String campaignName, String ... levelNames) {
-        Arrays.stream(levelNames).forEach( (levelName) ->
-        {
-            myLevelMap.get(campaignName).add(new ProjectExplorerTreeItem<>(levelName));
+    public void update (String game, Map<String, List<String>> campaignLevelMap) {
+        System.out.println(game);
+        TreeItem<String> selectedItem = myTreeView.getSelectionModel().selectedItemProperty().get();
+        int selectedIndex = myTreeView.getSelectionModel().selectedIndexProperty().get();
+        myGameNode.setValue(game);
+        myCampaigns.clear();
+        myLevels.clear();
+        campaignLevelMap.forEach( (campaign, levels) -> {
+            ProjectExplorerTreeItem<String> campaignNode = new ProjectExplorerTreeItem<>(campaign);
+            campaignNode.getChildren().addAll(levels.stream().map( (level) -> {
+                ProjectExplorerTreeItem<String> levelNode = new ProjectExplorerTreeItem<>(level);
+                levelNode.setAction(myLevelClickedConsumer);
+                myLevels.add(levelNode);
+                return levelNode;
+            }).collect(Collectors.toList()));
+            myCampaigns.add(campaignNode);
         });
+
+        if (myTreeView.getChildrenUnmodifiable().contains(selectedItem)) {
+            myTreeView.getSelectionModel().select(selectedItem);
+        }
+        else if (myTreeView.getChildrenUnmodifiable().size() > selectedIndex) {
+            myTreeView.getSelectionModel().select(selectedIndex);
+        }
+        else {
+            myTreeView.getSelectionModel().select(myGameNode);
+        }
     }
 
     public void setOnSelectionChanged (Consumer<String> selectionChangedConsumer) {
@@ -61,19 +65,10 @@ public class ProjectExplorerController implements GUIController {
     }
 
     public void setOnLevelClicked (Consumer<String> levelClicked) {
-        myLevelMap.values()
-                .forEach( (list) ->
-                {
-                    list.forEach( (treeItem) ->
-                    {
-                        ProjectExplorerTreeItem<String> explorerItem =
-                                (ProjectExplorerTreeItem<String>) treeItem;
-                        explorerItem.setAction( (ProjectExplorerTreeItem<String> item) ->
-                        {
-                            levelClicked.accept(item.getValue());
-                        });
-                    });
-                });
+        myLevelClickedConsumer = levelClicked;
+        myLevels.forEach((levelNode)->{
+            levelNode.setAction(myLevelClickedConsumer);
+        });
     }
 
     private void initListeners () {
@@ -90,7 +85,7 @@ public class ProjectExplorerController implements GUIController {
             ProjectExplorerTreeItem<String> selected =
                     (ProjectExplorerTreeItem<String>) myTreeView.getSelectionModel()
                             .getSelectedItem();
-            selected.onClicked(selected);
+            selected.onClicked(selected.getValue());
         }
     }
 
@@ -103,7 +98,7 @@ public class ProjectExplorerController implements GUIController {
     public void initialize () {
         myGameNode = new ProjectExplorerTreeItem<>();
         myCampaigns = myGameNode.getChildren();
-        myLevelMap = new HashMap<>();
+        myLevels = new ArrayList<>();
         myTreeView.setRoot(myGameNode);
         myTreeView.getSelectionModel().select(myGameNode);
         initListeners();

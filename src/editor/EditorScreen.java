@@ -2,11 +2,14 @@ package editor;
 
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.visuals.Dimension;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
-import javafx.beans.property.SimpleStringProperty;
+import java.util.stream.Collectors;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -91,11 +94,8 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void initProjectExplorer () {
-        projectExplorerController.bindGameName(new SimpleStringProperty("Game test"));
-        projectExplorerController.addCampaigns("campaign1", "campaign2");
-        projectExplorerController.addLevels("campaign1", "howdy", "howdy2");
         projectExplorerController.setOnSelectionChanged( (String s) -> {
-            System.out.println("cool" + s);
+            System.out.println("selection changed: " + s);
         });
         projectExplorerController.setOnLevelClicked( (String s) -> {
             launchTab(s);
@@ -103,8 +103,7 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void initGameInfoVBox () {
-        String val = projectExplorerController.selectedProjectItemProperty().get();
-        gameInfoBoxController.setInfo(val, val, val, null);
+
     }
 
     private void initTabs () {
@@ -159,7 +158,23 @@ public class EditorScreen extends GUIScreen {
 
     @Override
     public void update () {
-        // TODO Auto-generated method stub
+        updateProjectExplorer();
+        updateTabViewControllers();
+    }
+
+    private void updateProjectExplorer () {
+        GameState game = myMainModel.getCurrentGame();
+        Map<String, List<String>> campaignLevelMap = new HashMap<>();
+        game.getCampaigns().forEach( (campaignState) -> {
+            campaignLevelMap.put(campaignState.getName(), campaignState
+                    .getLevels().stream().map( (level) -> {
+                        return level.getName();
+                    }).collect(Collectors.toList()));
+        });
+        projectExplorerController.update(game.getName(), campaignLevelMap);
+    }
+
+    private void updateTabViewControllers () {
 
     }
 

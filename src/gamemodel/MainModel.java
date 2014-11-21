@@ -24,33 +24,40 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-    
+
     /**
      * Sets the game of the Model.
      * 
-     * @param game 
+     * @param game
      */
-    public void loadGame(String game) {
+    public void loadGame (String game) {
         // TODO get game info and load it (save/load utility)
         myGameState = new GameState(game);
+        setChanged();
+        notifyObservers();
+        clearChanged();
     }
-    
-    public GameState getCurrentGame() {
+
+    public GameState getCurrentGame () {
         return myGameState;
     }
 
-    public void setCurrentLevel(String campaignName, String levelName) throws DescribableStateException {
+    public void setCurrentLevel (String campaignName, String levelName)
+                                                                       throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
-    
+
     /**
-     * called by editor when user selects new element from accordian pane
+     * called by editor when user selects new element from accordion pane
      * 
      * @param element
      */
     public void setEditorSelected (String elementName) {
         myEditorSelectedElement = myGameState.getGameUniverse().getElement(elementName);
+        setChanged();
+        notifyObservers();
+        clearChanged();
     }
 
     /**
@@ -73,6 +80,9 @@ public class MainModel extends Observable {
                                                     CampaignNotFoundException {
         myGameState.addCampaign(new CampaignState(campaignName));
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
+        setChanged();
+        notifyObservers();
+        clearChanged();
     }
 
     /**
@@ -88,7 +98,7 @@ public class MainModel extends Observable {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentCampaignState.addLevel(new LevelState(levelName, myCurrentCampaignState));
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
-        setChanged();        
+        setChanged();
         notifyObservers();
         clearChanged();
     }
@@ -102,6 +112,9 @@ public class MainModel extends Observable {
         // TODO: use factory to create game element
         GameElementState gameElement = GameElementStateFactory.createElement(bundle);
         myGameState.getGameUniverse().addElement(gameElement);
+        setChanged();
+        notifyObservers();
+        clearChanged();
     }
 
     /**
