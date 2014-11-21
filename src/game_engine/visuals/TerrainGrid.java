@@ -14,15 +14,24 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
  */
 public class TerrainGrid {
     
-    public static final double GRASS_X_DIMENSION = 96;
-    public static final double GRASS_Y_DIMENSION = 48;
+    public static final double TILE_X_DIMENSION = 96;
+    public static final double TILE_Y_DIMENSION = 48;
     
     int[][] grid;
-    // 0 for grass, 1 for road, -1 for nothing
-    // default is 0
     
+    public TerrainGrid(double mapWidth, double mapHeight){
+        this.grid = generateDefaultGrid(mapWidth, mapHeight);
+    }
+    
+    /**
+     * Generates a grid with size determined by the tile dimensions and the total
+     * map size. Contains a 0 in every element, representing the default terrain type
+     * @param mapWidth the number of pixels for the entire map width
+     * @param mapHeight the number of pixels for the entire map height
+     * @return a two dimensional array with zeros
+     */
     public int[][] generateDefaultGrid(double mapWidth, double mapHeight){
-        int[][] g = new int[(int) (mapWidth/GRASS_X_DIMENSION) + 2][(int) (2*mapHeight/GRASS_Y_DIMENSION + 3)];
+        int[][] g = new int[(int) (mapWidth/TILE_X_DIMENSION) + 2][(int) (2*mapHeight/TILE_Y_DIMENSION + 3)];
         for(int i = 0; i<g.length; i++){
             for(int j = 0; j<g[0].length; j++){
                 g[i][j] = 0;
@@ -31,16 +40,21 @@ public class TerrainGrid {
         return g;
     }
     
-    public List<DrawableGameElementState> renderTerrain (double mapWidth, double mapHeight) {
+    /**
+     * Creates a new DrawableGameElementState with settings for the proper location
+     * @param mapWidth the number of pixels for the entire map width
+     * @param mapHeight the number of pixels for the entire map height
+     * @return the list of DrawableGameElementStates representing all the terrain objects
+     */
+    public List<DrawableGameElementState> renderTerrain (int[][] terrainArray) {
         Random r = new Random();
         List<DrawableGameElementState> list = new ArrayList<>();
-        this.grid = generateDefaultGrid(mapWidth, mapHeight);
-        for (int i = 0; i < grid.length; i++) {
-            for(int j = 0; j<grid[0].length; j++){
-                double deltaX = j%2==1?GRASS_X_DIMENSION/2:0;
+        for (int i = 0; i < terrainArray.length; i++) {
+            for(int j = 0; j<terrainArray[0].length; j++){
+                double deltaX = j%2==1?TILE_X_DIMENSION/2:0;
                 DrawableGameElementState grass = 
-                        new DrawableGameElementState(-GRASS_X_DIMENSION+i*GRASS_X_DIMENSION+deltaX,
-                                                     -GRASS_Y_DIMENSION+j*GRASS_Y_DIMENSION/2);
+                        new DrawableGameElementState(-TILE_X_DIMENSION+i*TILE_X_DIMENSION+deltaX,
+                                                     -TILE_Y_DIMENSION+j*TILE_Y_DIMENSION/2);
                 grass.setSpritesheet(new Spritesheet("resources/img/graphics/terrain/grass/"+(r.nextInt(99)+1)+".png",
                                                            new Dimension(96, 48), 1));
                 list.add(grass);
@@ -49,8 +63,7 @@ public class TerrainGrid {
         return list;
     }
     
-    public static void main(String[] args){
-        TerrainGrid g = new TerrainGrid();
-        g.renderTerrain(2000, 500);
+    public List<DrawableGameElementState> renderTerrain(){
+        return renderTerrain(this.grid);
     }
 }

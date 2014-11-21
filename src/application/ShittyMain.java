@@ -45,20 +45,15 @@ public class ShittyMain extends Application {
                                                 new Dimension(294, 98), 14));
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState.setAnimation("stand_fwd");
-//        DrawableGameElementState grassState = new DrawableGameElementState(0, 0);
-//        grassState.setSpritesheet(new Spritesheet("resources/img/graphics/terrain/grass/1.png",
-//                                                  new Dimension(96, 48), 1));
 
-        TerrainGrid grid = new TerrainGrid();
-        List<DrawableGameElementState> grassTerrain = grid.renderTerrain(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
+        TerrainGrid grid = new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
+        List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
         
         MainModel model = new MainModel();
         model.loadGame("TestGame");
         model.createCampaign("TestCampaign");
         model.createLevel("TestLevel", "TestCampaign");
         LevelState levelState = model.getCurrentLevel();
-
-//        levelState.addTerrain(grassState);
 
         for(DrawableGameElementState s : grassTerrain){
             levelState.addTerrain(s);
