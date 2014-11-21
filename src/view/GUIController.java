@@ -1,20 +1,19 @@
 package view;
 
-import java.util.Observer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 
+
 /**
  * 
- * @author Nishad Agrawal
+ * @author Jonathan Tseng, Nishad Agrawal
  *
  */
-public interface GUIController extends Observer {
-    
-    public Node getRoot();
+public interface GUIController {
 
-    public String[] getCSS ();
+    public abstract Node getRoot ();
 
     @FXML
-    public void initialize();
+    public abstract void initialize ();
+
 }

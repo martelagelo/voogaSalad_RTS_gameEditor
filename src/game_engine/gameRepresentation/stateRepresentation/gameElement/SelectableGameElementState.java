@@ -1,17 +1,19 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.computers.boundsComputers.Sighted;
-
+// import
+// game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * This is the most widely used GameElement. This type of GameElement has both a
  * bounding box and a vision box. This is the element that reacts to collisions
  * with DrawableGameElements.
- * 
+ *
  * @author Steve, Jonathan, Rahul
  *
  */

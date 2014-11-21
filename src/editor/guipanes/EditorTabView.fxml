@@ -8,20 +8,18 @@
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="editor.TabViewController">
 	<left>
-		<Accordion fx:id="levelElementAccordian"
-			BorderPane.alignment="CENTER" />
+		<fx:include source="EditorElementAccordian.fxml" fx:id="levelElementAccordian" />
 	</left>
 	<right>
-		<VBox BorderPane.alignment="CENTER">
-			<children>
-				<VBox fx:id="levelInfoView" VBox.vgrow="NEVER" />
-				<ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
-			</children>
-		</VBox>
+		<ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
 	</right>
 	<!-- temporary placeholder, will put game runner here (fetched from engine) -->
 	<center>
-		<Circle fill="DODGERBLUE" radius="200.0" stroke="BLACK"
-			strokeType="INSIDE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+		<BorderPane fx:id="gameRunnerPane">
+			<center>
+				<Circle fill="DODGERBLUE" radius="200.0" stroke="BLACK"
+					strokeType="INSIDE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+			</center>
+		</BorderPane>
 	</center>
 </BorderPane>

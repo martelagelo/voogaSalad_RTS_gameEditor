@@ -38,13 +38,19 @@ public class Engine extends Observable implements Observer {
 
     public Group getVisualRepresentation () {
         // TODO: figure out what stores our shit
+        // TODO: currently unused, possibly remove this
         return myVisualManager.getVisualRepresentation();
     }
 
-    // TODO Refactor to be in mainmodel
-    public void selectLevel (String campaignName, String levelName)
-                                                                   throws DescribableStateException {
+    public void selectLevel (String campaignName, String levelName) throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
+        Level newLevel = new Level(myMainModel.getCurrentLevel());
+        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myElementManager = new GameElementManager(newLevel);
+        myVisualManager.addObjects(newLevel.getGroup());
+        myVisualManager.addBoxObserver(myElementManager);
+        myVisualManager.addClickObserver(myElementManager);
+        myVisualManager.addKeyboardObserver(myElementManager);
     }
 
     public void play () {
@@ -74,6 +80,8 @@ public class Engine extends Observable implements Observer {
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
+            myVisualManager.addClickObserver(myElementManager);
+            myVisualManager.addKeyboardObserver(myElementManager);
         }
     }
 

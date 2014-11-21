@@ -35,13 +35,13 @@ public interface ILoadSave {
     public void save (JSONable object, String filePath) throws IOException;
 
     /**
-     * Save an image to a particular file path
-     * 
+     * Save an image from a particular file path
      * @param image
-     * @param filePath
+     * @param filePath at which image is located
+     * @return filePath where the image is saved to
      * @throws IOException
      */
-    public void saveImage (Image image, String filePath) throws IOException;
+    public String saveImage (Image image, String filePath) throws IOException;
 
     /**
      * Load an image at given file path

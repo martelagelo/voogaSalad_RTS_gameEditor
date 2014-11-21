@@ -7,9 +7,11 @@ import java.util.Observer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import util.MultiLanguageUtility;
+
 
 /**
+ * 
+ * MainView that has control of the stage and handles switching between different scenes
  * 
  * @author Jonathan Tseng
  * @author Nishad Agrawal
@@ -20,42 +22,63 @@ public class MainView implements Observer {
     private Stage myStage;
     private Scene myScene;
     private MainModel myMainModel;
-    private GUIScene myCurrentController;
-
+    private GUIScreen myCurrentController;
     private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage, MainModel model) {
         myStage = stage;
         myMainModel = model;
-        myLoadStyleUtility = new GUILoadStyleUtility();
+        launchScreen(ViewScreen.SPLASH);
+        myLoadStyleUtility = GUILoadStyleUtility.getInstance();
+        myLoadStyleUtility.setScene(myScene);
     }
 
     public void start () {
-        launchScene(ViewScreen.SPLASH, "");
         myStage.show();
     }
 
-    public void launchScene (ViewScreen screen, String game) {
-        // MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-        // util.initLanguages(System.getProperty("user.dir") +
-        // "\\src\\resources\\languages");
-        // util.setLanguage("Chinese");
-        myMainModel.loadGame(game);
-        initializeScreen(screen.getFilePath());
+    public void launchScreen (ViewScreen screen) {
+        launchScreen(screen.getFilePath());
     }
 
-    private void initializeScreen (String filePath) {
-        myCurrentController = (GUIScene) myLoadStyleUtility.generateGUIPane(filePath);
-        Scene styled = myLoadStyleUtility.createStyledScene(myScene,
-                (Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS,
-                myCurrentController.getCSS());
-        myStage.setScene(styled);
+    public void launchScreen (ViewScreen screen, String game) {
+        myMainModel.loadGame(game);
+
+        // Shitty test code
+        try {
+            myMainModel.loadGame("Shitty Game");
+            myMainModel.createCampaign("Shitty campaign 1");
+            myMainModel.createCampaign("Shitty campaign 2");
+            myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
+            myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
+            myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        launchScreen(screen);
+    }
+
+    /**
+     * private helper method to launch a screen for the stage
+     * 
+     * @param filePath
+     */
+    private void launchScreen (String filePath) {
+        myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
+        myScene =
+                new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(),
+                          SCENE_DIMENSIONS.getHeight());
+        myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
+        myCurrentController.setModel(myMainModel);
+        myCurrentController.update();
     }
 
     @Override
-    public void update (Observable o, Object arg) {
-
+    public void update (Observable arg0, Object arg1) {
+        myCurrentController.update();
     }
 
 }

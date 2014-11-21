@@ -30,6 +30,7 @@ public class Level {
             terrain.add(new DrawableGameElement(element));
         }
         for (SelectableGameElementState element : level.getUnits()) {
+            SelectableGameElement e = new SelectableGameElement(element);
             units.add(new SelectableGameElement(element));
         }
         // TODO Use factory to create game elements from game element states and add to this list

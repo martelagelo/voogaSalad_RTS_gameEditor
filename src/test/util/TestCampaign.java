@@ -7,6 +7,11 @@ import util.JSONable;
 
 import com.google.gson.Gson;
 
+/**
+ * Campaign test class composed of levels used to test GSON->JSON conversion. 
+ * @author Rahul
+ *
+ */
 public class TestCampaign extends TestDescribable implements JSONable {
     private List<TestLevel> myLevels = new ArrayList<TestLevel>();
 
