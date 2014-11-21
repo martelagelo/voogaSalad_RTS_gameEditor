@@ -70,27 +70,29 @@ public class SelectableGameElement extends DrawableGameElement {
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs(conditionActionPairIdentifier);
-        if (myState.getInteractingElements().containsKey(elementIdentifier)) {
-            for (DrawableGameElementState element : myState.getInteractingElements()
-                    .get(elementIdentifier)) {
-                List<GameElementState> immediatelyInteractingElements =
-                        new ArrayList<GameElementState>();
-                for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
-                    if (conditionActionPair.getKey().evaluate(this, element)) {
-                        conditionActionPair.getValue().doAction(immediatelyInteractingElements);
-                    }
-                }
-            }
-        }
+//        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+//                getApplicableConditionActionPairs(conditionActionPairIdentifier);
+//        if (myState.getInteractingElements().containsKey(elementIdentifier)) {
+//            for (DrawableGameElementState element : myState.getInteractingElements()
+//                    .get(elementIdentifier)) {
+//                List<GameElementState> immediatelyInteractingElements =
+//                        new ArrayList<GameElementState>();
+//                for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
+//                    if (conditionActionPair.getKey().evaluate(this, element)) {
+//                        conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+//                    }
+//                }
+//            }
+//        }
     }
 
     // TODO FIX THIS SHIT
     private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-        return this.myConditionActionPairs.entrySet().stream()
-                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
-                .collect(Collectors.toList());
+//        return this.myConditionActionPairs.entrySet().stream()
+//                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
+//                .collect(Collectors.toList());
+        return null;
+
     }
 
 }

@@ -39,7 +39,7 @@ public class GameLoop {
 		// myComputerList.add(new CollisionComputer());
 		// myComputerList.add(new VisionComputer());
 		timeline = new Timeline();
-		start(framesPerSecond);
+		startGameLoop();
 	}
 	
 	public void startGameLoop() {

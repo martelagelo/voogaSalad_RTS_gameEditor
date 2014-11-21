@@ -26,7 +26,7 @@ public class SelectionBox extends Observable {
         points = new double[] { topLeftX, topLeftY, bottomRightX, bottomRightY };
         setChanged();
         notifyObservers();
-        System.out.println("(" + topLeftX + ", " + topLeftY + ") , (" + bottomRightX + ", " +
+        System.out.println("SelectionBox: (" + topLeftX + ", " + topLeftY + ") , (" + bottomRightX + ", " +
                            bottomRightY + ")");
     }
 
