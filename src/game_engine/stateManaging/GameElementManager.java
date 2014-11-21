@@ -4,9 +4,10 @@ import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.ClickManager;
 import game_engine.visuals.Dimension;
-import game_engine.visuals.SelectionBox;
+import game_engine.visuals.UI.ClickManager;
+import game_engine.visuals.UI.KeyboardManager;
+import game_engine.visuals.UI.SelectionBox;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -67,6 +68,9 @@ public class GameElementManager implements Observer {
             System.out.println("Click: "+(((ClickManager) o).isPrimary()?"primary":"secondary")+
                                ", loc: "+click.getX()+", "+click.getY());
                     
+        }
+        else if( o instanceof KeyboardManager){
+            System.out.println("Typed: "+((KeyboardManager) o).getLastCharacter());
         }
     }
 }

@@ -1,4 +1,4 @@
-package game_engine.visuals;
+package game_engine.visuals.UI;
 
 import java.util.Observable;
 import javafx.geometry.Point2D;
