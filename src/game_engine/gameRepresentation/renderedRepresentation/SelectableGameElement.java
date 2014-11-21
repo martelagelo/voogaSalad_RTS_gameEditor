@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Condition;
+import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
@@ -45,7 +45,7 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void updateSelfDueToCurrentObjective () {
         // TODO Auto-generated method stub
-        List<Entry<Condition, Action>> applicableConditionActionPairs =
+        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
@@ -53,7 +53,7 @@ public class SelectableGameElement extends DrawableGameElement {
         // TODO Auto-generated method stub
         // update representation?
         // visualRepresentation.setSelected();
-        List<Entry<Condition, Action>> applicableConditionActionPairs =
+        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs("SelfCondition");
     }
 
@@ -70,14 +70,14 @@ public class SelectableGameElement extends DrawableGameElement {
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
-        List<Entry<Condition, Action>> applicableConditionActionPairs =
+        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
                 getApplicableConditionActionPairs(conditionActionPairIdentifier);
         if (myState.getInteractingElements().containsKey(elementIdentifier)) {
             for (DrawableGameElementState element : myState.getInteractingElements()
                     .get(elementIdentifier)) {
                 List<GameElementState> immediatelyInteractingElements =
                         new ArrayList<GameElementState>();
-                for (Entry<Condition, Action> conditionActionPair : applicableConditionActionPairs) {
+                for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
                     if (conditionActionPair.getKey().evaluate(this, element)) {
                         conditionActionPair.getValue().doAction(immediatelyInteractingElements);
                     }
@@ -87,7 +87,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     // TODO FIX THIS SHIT
-    private List<Entry<Condition, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
+    private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
         return this.myConditionActionPairs.entrySet().stream()
                 .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
                 .collect(Collectors.toList());
