@@ -16,6 +16,8 @@ import view.GUIController;
 
 /**
  * 
+ * Controller for the project explorer 
+ * 
  * @author Jonathan Tseng
  *
  */
@@ -32,7 +34,6 @@ public class ProjectExplorerController implements GUIController {
     };
 
     public void update (String game, Map<String, List<String>> campaignLevelMap) {
-        System.out.println(game);
         TreeItem<String> selectedItem = myTreeView.getSelectionModel().selectedItemProperty().get();
         int selectedIndex = myTreeView.getSelectionModel().selectedIndexProperty().get();
         myGameNode.setValue(game);
