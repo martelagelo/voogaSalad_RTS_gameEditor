@@ -4,6 +4,7 @@ import gamemodel.MainModel;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import util.multilanguage.MultiLanguageUtility;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,6 +19,12 @@ import javafx.stage.Stage;
  *
  */
 public class MainView implements Observer {
+
+    private static final String[] myLanguages = new String[] {
+                                                              "resources.languages.English.properties",
+                                                              "resources.languages.Chinese.properties"
+    };
+
     private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
     private Stage myStage;
     private Scene myScene;
@@ -26,6 +33,8 @@ public class MainView implements Observer {
     private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage, MainModel model) {
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        util.initLanguages(myLanguages);
         myStage = stage;
         myMainModel = model;
         launchScreen(ViewScreen.SPLASH);
