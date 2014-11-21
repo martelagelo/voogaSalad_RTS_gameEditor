@@ -37,8 +37,7 @@ public class ShittyMain extends Application {
     }
 
     private MainModel hardCodeAGame () throws Exception {
-
-        SelectableGameElementState archerState = new SelectableGameElementState(96, 0);
+        SelectableGameElementState archerState = new SelectableGameElementState(150, 100);
         archerState
                 .setSpritesheet(new Spritesheet(
                                                 "resources/img/graphics/units/eagleWarrior.png",

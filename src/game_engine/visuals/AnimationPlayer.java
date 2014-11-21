@@ -112,4 +112,7 @@ public class AnimationPlayer implements Updatable, Displayable {
         this.myDisplay.setStyle("-fx-border-color: green;");
         System.out.println("selected animation");
     }
+    public Dimension getDimension(){
+        return myTileSize;
+    }
 }

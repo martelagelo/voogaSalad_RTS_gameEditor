@@ -62,7 +62,6 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         myBounds[1] = getNumericalAttribute(Y_POS_STRING).doubleValue();
         myBounds[2] = mySpritesheet.frameDimensions.getWidth();
         myBounds[3] = mySpritesheet.frameDimensions.getHeight();
-//        System.out.println(mySpritesheet.frameDimensions);
     }
 
     public Spritesheet getSpritesheet () {

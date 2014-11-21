@@ -6,6 +6,8 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
 import java.util.Map.Entry;
+import javafx.geometry.Point2D;
+
 
 
 /**
@@ -13,26 +15,35 @@ import java.util.Map.Entry;
  * appearance defined by the DrawableGameElement and handles animations for actions resulting from
  * being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul
+ * @author Jonathan , Steve, Nishad, Rahul, John
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState myState;
     private boolean isSelected;
+//    private SelectableGameElementState myState;
+    private Point2D heading;
+    private boolean selected;
+    // TODO temporary, should be in the attributes
+    private double speed = 3;
 
     /**
      * @see DrawableGameElementState
      */
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
+
+        this.isSelected = false;
+        // TODO Auto-generated constructor stub
     }
 
     /**
      * @return the type of the element
      */
     public String getType () {
-        return myState.getType();
+        return getState().getType();
+//        return myState.getType();
     }
 
     /**
@@ -55,6 +66,29 @@ public class SelectableGameElement extends DrawableGameElement {
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
+        move();
+    }
+
+    private void move () {
+        if(heading==null) heading = getLocation();
+        if (!heading.equals(getLocation())) {
+            Point2D delta =
+                    new Point2D(heading.getX() - getLocation().getX(), heading.getY() - getLocation().getY());
+            if(delta.magnitude()>speed) delta = delta.normalize().multiply(speed);
+            this.setLocation(getLocation().add(delta));
+        }
+    }
+    
+    private Point2D getLoc(){
+        return new Point2D(getState().getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
+                           .doubleValue(), getState().getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
+                           .doubleValue());
+    }
+    
+    private void setLoc(Point2D location){
+        getState().setNumericalAttribute(DrawableGameElementState.X_POS_STRING, location.getX());
+        getState().setNumericalAttribute(DrawableGameElementState.Y_POS_STRING, location.getY());
+
     }
 
     private void updateSelfDueToCurrentObjective () {
@@ -101,6 +135,14 @@ public class SelectableGameElement extends DrawableGameElement {
         // .filter(o -> o.getKey()..equals(conditionActionPairIdentifier))
         // .collect(Collectors.toList());
         return null;
+    }
+    
+    public boolean isSelected(){
+        return this.selected;
+    }
+
+    public void setHeading (Point2D click) {
+        this.heading = click;
     }
 
 }

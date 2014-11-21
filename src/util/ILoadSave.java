@@ -36,20 +36,23 @@ public interface ILoadSave {
 
     /**
      * Save an image from a particular file path
+     * 
      * @param image
-     * @param filePath at which image is located
+     * @param filePath
+     *            at which image is located
      * @return filePath where the image is saved to
      * @throws IOException
      */
     public String saveImage (Image image, String filePath) throws IOException;
 
     /**
+     *
      * Load an image at given file path
      * 
-     * @param String
-     *            encoding of file path
-     * @return Image object at that file path
-     * @throws IOException 
+     * @param filePath
+     *            of image
+     * @return Image object loaded if exists
+     * @throws IOException
      */
     public Image loadImage (String filePath) throws IOException;
 
