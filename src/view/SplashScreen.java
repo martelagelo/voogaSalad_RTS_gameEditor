@@ -22,6 +22,7 @@ import javafx.scene.layout.GridPane;
 
 public class SplashScreen extends GUIScreen {
 
+    
     @FXML private GridPane splash;
     @FXML private Button launchEditorButton;
     @FXML private Button launchRunnerButton;
@@ -29,6 +30,7 @@ public class SplashScreen extends GUIScreen {
     private static final String LAUNCH_EDITOR = "Launch Editor";
     private static final String LAUNCH_RUNNER = "Launch Runner";
     private static final String GAMES_DIRECTORY = "./myGames/";
+    private static final String NEW_GAME = "New Game";
 
     @Override
     public Node getRoot () {
@@ -47,9 +49,21 @@ public class SplashScreen extends GUIScreen {
         		.filter(f -> f.isDirectory())
         		.map(f -> f.getName())
         		.collect(Collectors.toList());   
+        gameNames.add(0, NEW_GAME);
         myGames.setItems(FXCollections.observableArrayList(gameNames));
         
-        launchEditorButton.setOnAction(e -> switchScreen(ViewScreen.EDITOR, ""));
+        //TODO we need to link this up with save load in MainView and MainModel
+        launchEditorButton.setOnAction(e -> {
+            if (myGames.getSelectionModel().getSelectedItem() != null) {
+                switchScreen(ViewScreen.EDITOR, myGames.getSelectionModel().getSelectedItem());
+            }
+            else {
+                //TODO: ERROR POPUP ON SPLASH SCREEN, nishad... animation controller thingy
+                System.out.println("ERROR: NO GAME SELECTED");
+            }
+            
+        });
+        
         //TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
         launchRunnerButton.setOnAction(e -> switchScreen(ViewScreen.EDITOR, ""));          
     }

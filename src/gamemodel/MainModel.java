@@ -4,13 +4,16 @@ import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.util.Observable;
+import util.LoadSaveUtility;
 
 
 /**
@@ -25,6 +28,7 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
+    private LoadSaveUtility mySLUtil;
 
     /**
      * Sets the game of the Model.
@@ -32,8 +36,14 @@ public class MainModel extends Observable {
      * @param game
      */
     public void loadGame (String game) {
-        // TODO get game info and load it (save/load utility)
-        myGameState = new GameState(game);
+        if (game.equals("New Game")) {
+            myGameState = new GameState(game);
+            System.out.println("yay");
+        }
+        else {
+            //TODO: insert Save Load code here and instantiate myGameState
+//            myGameState = my
+        }        
         setChanged();
         notifyObservers();
         clearChanged();
@@ -107,13 +117,41 @@ public class MainModel extends Observable {
     /**
      * called by editor when creating a new game element
      * 
-     * @param bundle
+     * @param data
      */
     public void createGameElement (WizardData data) {
         // TODO: use factory to create game element
         GameElementState gameElement = GameElementStateFactory.createGameElementState(data);
         System.out.println(gameElement);
-//        myGameState.getGameUniverse().addElement(gameElement);
+        myGameState.getGameUniverse().addGameElementState(gameElement);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+    }
+    
+    /**
+     * called by editor when creating a new game element
+     * 
+     * @param data
+     */
+    public void createDrawableGameElement (WizardData data) {
+        DrawableGameElementState gameElement = GameElementStateFactory.createDrawableGameElementState(data);
+        System.out.println(gameElement);
+        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+    }
+    
+    /**
+     * called by editor when creating a new game element
+     * 
+     * @param data
+     */
+    public void createSelectableGameElement (WizardData data) {
+        SelectableGameElementState gameElement = GameElementStateFactory.createSelectableGameElementState(data);
+        System.out.println(gameElement);
+        myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
         setChanged();
         notifyObservers();
         clearChanged();
