@@ -31,7 +31,7 @@ public class TerrainGrid {
      * @return a two dimensional array with zeros
      */
     public int[][] generateDefaultGrid(double mapWidth, double mapHeight){
-        int[][] g = new int[(int) (mapWidth/TILE_X_DIMENSION) + 2][(int) (2*mapHeight/TILE_Y_DIMENSION + 3)];
+        int[][] g = new int[(int) (mapWidth/TILE_X_DIMENSION) + 3][(int) (2*mapHeight/TILE_Y_DIMENSION + 6)];
         for(int i = 0; i<g.length; i++){
             for(int j = 0; j<g[0].length; j++){
                 g[i][j] = 0;
