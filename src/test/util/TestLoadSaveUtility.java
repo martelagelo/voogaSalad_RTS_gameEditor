@@ -9,7 +9,8 @@ import org.junit.Test;
 import util.LoadSaveUtility;
 
 /**
- * Test class to verify object creation from reading JSON files.
+ * Test class to verify LoadSave Utility's method calls loading/saving images as well as 
+ * loading/saving GSON<->JSON.  
  * 
  * @author Rahul
  *
@@ -28,11 +29,11 @@ public class TestLoadSaveUtility {
         myLoadSaveUtility.loadImage("src" + LoadSaveUtility.FILE_SEPARATOR + "resources"
                 + LoadSaveUtility.FILE_SEPARATOR + "img" + LoadSaveUtility.FILE_SEPARATOR
                 + "exploBig.png");
-      String savedImage =   myLoadSaveUtility.saveImage(
+        String savedImage = myLoadSaveUtility.saveImage(
                 new Image(getClass().getResourceAsStream("/resources/img/exploBig.png")),
                 "resources" + LoadSaveUtility.FILE_SEPARATOR + "img"
                         + LoadSaveUtility.FILE_SEPARATOR + "exploBigCopy.png");
-      myLoadSaveUtility.loadImage(savedImage);
+        myLoadSaveUtility.loadImage(savedImage);
         TestCampaign loadedCampaign = campaign;
         System.out.println(loadedCampaign.myDescription);
     }
