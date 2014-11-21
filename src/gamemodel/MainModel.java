@@ -61,7 +61,7 @@ public class MainModel extends Observable {
     
     public void saveGame() throws RuntimeException {
         try {
-            mySLUtil.save(myGameState, "myGames" + System.getProperty("file.separator") + myGameState.getName());
+            mySLUtil.save(myGameState, myGameState.getName());
         }
         catch (IOException e) { 
             e.printStackTrace();
