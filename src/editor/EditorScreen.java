@@ -84,6 +84,7 @@ public class EditorScreen extends GUIScreen {
         s.show();
         Consumer<WizardData> c = (data) -> {
             System.out.println(data);
+            myMainModel.createGameElement(data);
             s.close();
         };
         wiz.setSubmit(c);

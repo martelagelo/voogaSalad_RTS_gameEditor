@@ -1,5 +1,6 @@
 package gamemodel;
 
+import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -54,7 +55,7 @@ public class MainModel extends Observable {
      * @param element
      */
     public void setEditorSelected (String elementName) {
-        myEditorSelectedElement = myGameState.getGameUniverse().getElement(elementName);
+//        myEditorSelectedElement = myGameState.getGameUniverse().getElement(elementName);
         setChanged();
         notifyObservers();
         clearChanged();
@@ -108,10 +109,11 @@ public class MainModel extends Observable {
      * 
      * @param bundle
      */
-    public void createGameElement (GameElementInfoBundle bundle) {
+    public void createGameElement (WizardData data) {
         // TODO: use factory to create game element
-        GameElementState gameElement = GameElementStateFactory.createElement(bundle);
-        myGameState.getGameUniverse().addElement(gameElement);
+        GameElementState gameElement = GameElementStateFactory.createGameElementState(data);
+        System.out.println(gameElement);
+//        myGameState.getGameUniverse().addElement(gameElement);
         setChanged();
         notifyObservers();
         clearChanged();

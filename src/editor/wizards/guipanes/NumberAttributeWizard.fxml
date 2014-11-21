@@ -3,16 +3,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<SplitPane fx:id="root" fx:controller="editor.wizards.NumberAttributeWizard" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <items>
-    <AnchorPane>
-         <children>
-         <VBox>
-            <TextField fx:id="key"/>
-            <TextField fx:id="numberValue" />
-            <Button fx:id="save" text = "save"/>
-            </VBox>
-         </children></AnchorPane>
-  </items>
+<SplitPane fx:id="root" fx:controller="editor.wizards.NumberAttributeWizard"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<AnchorPane>
+			<children>
+				<VBox>
+					<TextField fx:id="key" />
+					<TextField fx:id="numberValue" />
+					<Button fx:id="save" text="save" />
+					<Text fx:id="errorMessage" />
+				</VBox>
+			</children>
+		</AnchorPane>
+	</items>
 </SplitPane>

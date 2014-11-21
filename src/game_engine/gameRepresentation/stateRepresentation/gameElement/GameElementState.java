@@ -1,8 +1,6 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 
-import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Evaluatable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,18 +10,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
-<<<<<<< HEAD
  * The most basic flavor of GameElement - this type of element has no on-screen
  * representation. Examples include triggers and goals.
  * 
- * @author Steve, Jonathan, Rahul, Nishad
-=======
- * The most basic flavor of GameElement - this type of element has no on-screen representation.
- * Examples include triggers and goals.
- *
- * @author Steve
- * @author Zach
->>>>>>> engine_conditions
+ * @author Steve, Jonathan, Rahul, Nishad, Zach
  *
  */
 public class GameElementState {
@@ -31,7 +21,7 @@ public class GameElementState {
     private static final String NAME_ATTRIBUTE_STRING = "Name";
     private static final String TYPE_ATTRIBUTE_STRING = "Type";
 
-    protected Map<Evaluatable, Action> myConditionActionPairings;
+    protected Map<String, String> myConditionActionPairings;
     protected Set<Attribute<Number>> myNumericalAttributes;
     protected Set<Attribute<String>> myTextualAttributes;
 
@@ -124,6 +114,10 @@ public class GameElementState {
         setAttribute(myNumericalAttributes, name, value);
     }
 
+    public void addConditionActionPair (String condition, String action) {
+        myConditionActionPairings.put(condition, action);
+    }
+    
     public void update () {
         // TODO comment this
         updateSelfDueToInternalFactors();

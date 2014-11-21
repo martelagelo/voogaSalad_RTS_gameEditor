@@ -46,7 +46,6 @@ public abstract class Wizard implements GUIController {
     }
     
     private void save() {       
-        System.out.println("hererer");
         if (checkCanSave()) {
             updateData();
             
@@ -63,6 +62,14 @@ public abstract class Wizard implements GUIController {
     
     protected void addToData(String key, String value) {
         userInput.addDataPair(key, value);
+    }
+    
+    protected void addWizardData(WizardData wizData) {
+        userInput.addWizardData(wizData);
+    }
+    
+    protected void setDataName(String name) {
+        userInput.setName(name);
     }
     
     public abstract boolean checkCanSave();

@@ -1,5 +1,7 @@
 package editor.wizards;
 
+import gamemodel.GameElementFactory;
+import gamemodel.GameElementStateFactory;
 import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -29,7 +31,6 @@ public class GameElementWizard extends Wizard {
     private Button stringAttribute;
     @FXML
     private Button numberAttribute;
-    protected WizardData myWizardData;
 
     /**
      * Launches a TriggerEditorWizard
@@ -43,8 +44,7 @@ public class GameElementWizard extends Wizard {
         s.setScene(myScene);
         s.show();
         Consumer<WizardData> bc = (data) -> {
-            myWizardData.addWizardData(data);
-            System.out.println(data);
+            addWizardData(data);
             s.close();
         };
         TW.setSubmit(bc);
@@ -65,8 +65,7 @@ public class GameElementWizard extends Wizard {
         s.setScene(myScene);
         s.show();
         Consumer<WizardData> bc = (data) -> {
-            myWizardData.addWizardData(data);
-            System.out.println(data);
+            addWizardData(data);
             s.close();
         };
         SAW.setSubmit(bc);
@@ -88,8 +87,7 @@ public class GameElementWizard extends Wizard {
         s.setScene(myScene);
         s.show();
         Consumer<WizardData> bc = (data) -> {
-            myWizardData.addWizardData(data);
-            System.out.println(data);
+            addWizardData(data);
             s.close();
         };
         NAW.setSubmit(bc);
@@ -102,7 +100,6 @@ public class GameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        myWizardData = new WizardData();
         trigger.setOnAction(e -> launchTriggerEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
@@ -110,13 +107,13 @@ public class GameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        // also requires an image
         return !name.getText().isEmpty();
     }
 
     @Override
     public void updateData () {
-        addToData("Name", name.getText());
+        setDataName(GameElementStateFactory.GAME_ELEMENT);
+        addToData(GameElementStateFactory.NAME, name.getText());
     }
 
 }

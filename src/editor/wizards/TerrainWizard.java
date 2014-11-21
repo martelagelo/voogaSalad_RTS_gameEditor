@@ -54,5 +54,11 @@ public class TerrainWizard extends GameElementWizard {
     public boolean checkCanSave () {
         return super.checkCanSave() && image != null;
     }
+    
+    @Override
+    public void updateData() {
+        super.updateData();
+        setDataName("Terrain");
+    }
 
 }
