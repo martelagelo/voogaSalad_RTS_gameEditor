@@ -35,18 +35,33 @@ public class SpriteSheetCreationUtility {
 
     public static void main (String[] args) throws IOException {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-        String baseDirectoryPath = "src/resources/img/graphics/units/";
-        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
-        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
-        boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,
-                                                                false, false, true, true, true };
+        // String baseDirectoryPath = "src/resources/img/graphics/units/";
+        // int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
+        // int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
+        // boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,
+        // false, false, true, true, true };
+        //
+        // processor.createSpriteSheet(baseDirectoryPath,
+        // uniqueStateIndicies,
+        // extrapolatedStateIndicies,
+        // extrapolatedStateMirrorFlags,
+        // new Color(0xFFFF00FF));
 
-        processor.createSpriteSheet(baseDirectoryPath,
-                                    uniqueStateIndicies,
-                                    extrapolatedStateIndicies,
-                                    extrapolatedStateMirrorFlags,
-                                    new Color(0xFFFF00FF));
+        //processor.doThing();
 
+    }
+
+    private void doThing () throws IOException {
+        List<BufferedImage> grassTiles = loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
+        List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
+        for(BufferedImage image: grassTiles) {
+            betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
+        }
+        int i = 1;
+        for(BufferedImage image: betterTiles) {
+            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i + ".png"));
+            i++;
+        }
     }
 
     /**
@@ -92,15 +107,17 @@ public class SpriteSheetCreationUtility {
                 extractor.extractColorMask();
                 BufferedImage finalSpritesheetColorRemoved = extractor.spritesheetColorRemoved;
                 BufferedImage colorMask = extractor.colorMask;
-                String filePathForSpritesheet = baseDirectory.getAbsolutePath() + File.separator + unitName;
+                String filePathForSpritesheet =
+                        baseDirectory.getAbsolutePath() + File.separator + unitName;
                 String filePathForColorMask = filePathForSpritesheet + "ColorMask";
-                ImageIO.write(finalSpritesheetColorRemoved, "PNG", new File(filePathForSpritesheet + ".png"));
+                ImageIO.write(finalSpritesheetColorRemoved, "PNG", new File(filePathForSpritesheet +
+                                                                            ".png"));
                 ImageIO.write(colorMask, "PNG", new File(filePathForColorMask + ".png"));
                 int numTotalColumns = stateSpritesheets.size() * 8;
                 Spritesheet spritesheetObject =
                         new Spritesheet(unitName, new Dimension(frameWidth, frameHeight),
                                         numTotalColumns);
-                
+
                 LoadSaveUtility saveUtil = new LoadSaveUtility();
                 saveUtil.save((JSONable) spritesheetObject, filePathForSpritesheet + ".json");
             }
