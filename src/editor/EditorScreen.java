@@ -57,6 +57,8 @@ public class EditorScreen extends GUIScreen {
     private Button newGameElement;
     @FXML
     private Button newTerrain;
+    @FXML
+    private Button save;
 
     private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
@@ -152,6 +154,7 @@ public class EditorScreen extends GUIScreen {
         initProjectExplorer();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
+        save.setOnAction(e -> myMainModel.saveGame());
     }
 
     @Override

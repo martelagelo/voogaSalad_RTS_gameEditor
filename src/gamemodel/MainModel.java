@@ -12,6 +12,7 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+import java.io.IOException;
 import java.util.Observable;
 import util.SaveLoadUtility;
 
@@ -29,6 +30,10 @@ public class MainModel extends Observable {
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
     private SaveLoadUtility mySLUtil;
+    
+    public MainModel() {
+        mySLUtil = new SaveLoadUtility();
+    }
 
     /**
      * Sets the game of the Model.
@@ -42,11 +47,21 @@ public class MainModel extends Observable {
         }
         else {
             //TODO: insert Save Load code here and instantiate myGameState
-//            myGameState = my
+            myGameState = mySLUtil.loadResource(GameState.class, game);            
         }        
         setChanged();
         notifyObservers();
         clearChanged();
+    }
+    
+    public void saveGame() throws RuntimeException {
+        try {
+            mySLUtil.save(myGameState, "myGames" + System.getProperty("file.separator") + myGameState.getName());
+        }
+        catch (IOException e) { 
+            e.printStackTrace();
+//            throw new RuntimeException(e);
+        }
     }
 
     public GameState getCurrentGame () {

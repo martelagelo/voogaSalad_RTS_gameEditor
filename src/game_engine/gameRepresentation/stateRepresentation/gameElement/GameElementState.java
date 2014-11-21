@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import util.JSONable;
 
 /**
  * The most basic flavor of GameElement - this type of element has no on-screen
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * @author Steve, Jonathan, Rahul, Nishad, Zach
  *
  */
-public class GameElementState {
+public class GameElementState implements JSONable {
 
     private static final String NAME_ATTRIBUTE_STRING = "Name";
     private static final String TYPE_ATTRIBUTE_STRING = "Type";
