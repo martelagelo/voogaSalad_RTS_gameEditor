@@ -17,7 +17,7 @@ import java.util.Observer;
  */
 public abstract class GUIContainer implements Observer, GUIController {
 
-    private MainModel myMainModel;
+    protected MainModel myMainModel;
     private List<GUIContainer> myChildContainers;
 
     public void setModel (MainModel model) {
@@ -34,15 +34,12 @@ public abstract class GUIContainer implements Observer, GUIController {
         myChildContainers.clear();
     }
 
-    protected MainModel getMainModel () {
-        return myMainModel;
-    }
-
     @Override
     public final void update (Observable o, Object arg) {
         update();
         checkAndCreateChildContainers();
-        myChildContainers.forEach( (child) -> child.update());
+        System.out.println("why");
+        myChildContainers.forEach( (child) -> child.update(o, arg));
     }
 
     public abstract void update ();

@@ -20,34 +20,50 @@ public class MainView implements Observer {
     private Scene myScene;
     private MainModel myMainModel;
     private GUIScreen myCurrentController;
-
     private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage, MainModel model) {
         myStage = stage;
         myMainModel = model;
-        myLoadStyleUtility = new GUILoadStyleUtility();
+        launchScreen(ViewScreen.SPLASH);
+        myLoadStyleUtility = GUILoadStyleUtility.getInstance();
+        myLoadStyleUtility.setScene(myScene);
     }
 
     public void start () {
-        launchScreen(ViewScreen.SPLASH, "");
         myStage.show();
     }
 
-    public void launchScreen (ViewScreen screen, String game) {
-        // MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-        // util.initLanguages(System.getProperty("user.dir") +
-        // "\\src\\resources\\languages");
-        // util.setLanguage("Chinese");
-        myMainModel.loadGame(game);
+    public void launchScreen (ViewScreen screen) {
         initializeScreen(screen.getFilePath());
     }
     
+    public void launchScreen (ViewScreen screen, String game) {
+        myMainModel.loadGame(game);
+
+        // Shitty test code
+        try {
+            myMainModel.loadGame("Shitty Game");
+            myMainModel.createCampaign("Shitty campaign 1");
+            myMainModel.createCampaign("Shitty campaign 2");
+            myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
+            myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
+            myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        launchScreen(screen);
+    }
+    
     private void initializeScreen (String filePath) {
-        myCurrentController = (GUIScreen) myLoadStyleUtility.generateGUIPane(filePath);
+        myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
         myScene = new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(), SCENE_DIMENSIONS.getHeight());
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
+        myCurrentController.setModel(myMainModel);
+        myCurrentController.update();
     }
 
     @Override

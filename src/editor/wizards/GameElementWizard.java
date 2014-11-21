@@ -30,7 +30,6 @@ public class GameElementWizard extends Wizard {
     @FXML
     private Button numberAttribute;
     protected WizardData myWizardData;
-    private GUILoadStyleUtility loadStyleUtility;
 
     /**
      * Launches a TriggerEditorWizard
@@ -38,7 +37,7 @@ public class GameElementWizard extends Wizard {
      */
     private void launchTriggerEditor () {
         TriggerWizard TW =
-                (TriggerWizard) loadStyleUtility.generateGUIPane(TRIGGER_WIZARD);
+                (TriggerWizard) GUILoadStyleUtility.generateGUIPane(TRIGGER_WIZARD);
         Scene myScene = new Scene((Parent) TW.getRoot(), 600, 300);
         Stage s = new Stage();
         s.setScene(myScene);
@@ -60,7 +59,7 @@ public class GameElementWizard extends Wizard {
      */
     private void launchStringAttributeEditor () {
         StringAttributeWizard SAW =
-                (StringAttributeWizard) loadStyleUtility.generateGUIPane(STRING_ATTR_WIZARD);
+                (StringAttributeWizard) GUILoadStyleUtility.generateGUIPane(STRING_ATTR_WIZARD);
         Scene myScene = new Scene((Parent) SAW.getRoot(), 600, 300);
         Stage s = new Stage();
         s.setScene(myScene);
@@ -82,7 +81,7 @@ public class GameElementWizard extends Wizard {
      */
     private void launchNumberAttributeEditor () {
         NumberAttributeWizard NAW =
-                (NumberAttributeWizard) loadStyleUtility
+                (NumberAttributeWizard) GUILoadStyleUtility
                         .generateGUIPane(NUM_ATTR_WIZARD);
         Scene myScene = new Scene((Parent) NAW.getRoot(), 600, 300);
         Stage s = new Stage();
@@ -103,7 +102,6 @@ public class GameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        loadStyleUtility = new GUILoadStyleUtility();
         myWizardData = new WizardData();
         trigger.setOnAction(e -> launchTriggerEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
