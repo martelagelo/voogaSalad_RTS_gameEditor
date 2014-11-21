@@ -49,6 +49,7 @@ public class GameElementManager implements Observer {
             
             if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2]-rectPoints[0], rectPoints[3]-rectPoints[1])){
                 e.select(true);
+                System.out.println("Selected Unit");
             }
         }
     }

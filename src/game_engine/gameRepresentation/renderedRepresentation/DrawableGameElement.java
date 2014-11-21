@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 // TODO comment
 /**
  * 
- * @author Zach, Jonathan, Nishad, Rahul
+ * @author Zach, Jonathan, Nishad, Rahul, John L.
  *
  */
 public class DrawableGameElement extends GameElement implements Displayable {
