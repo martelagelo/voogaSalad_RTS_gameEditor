@@ -1,11 +1,13 @@
 package game_engine.gameRepresentation.stateRepresentation;
 
+import util.JSONable;
+
 /**
  * 
  * @author Jonathan Tseng, Nishad Agrawal, Rahul
  *
  */
-public abstract class DescribableState {
+public abstract class DescribableState implements JSONable{
 
     private String myName;
     private String myDescription;
