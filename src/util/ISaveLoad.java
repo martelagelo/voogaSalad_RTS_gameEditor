@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
  * @author Rahul
  *
  */
-public interface ILoadSave {
+public interface ISaveLoad {
 
     /**
      * Load a resource from a given file and return Java object representation

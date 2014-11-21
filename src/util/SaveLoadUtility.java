@@ -20,11 +20,11 @@ import com.google.gson.JsonSyntaxException;
  * @author Rahul
  *
  */
-public class LoadSaveUtility implements ILoadSave {
+public class SaveLoadUtility implements ISaveLoad {
     private static final String BAD_FILE_PATH = "Bad File Path";
     public static String FILE_SEPARATOR = File.separator;
-    public String myDefaultLocation = "resources" + LoadSaveUtility.FILE_SEPARATOR + "img"
-            + LoadSaveUtility.FILE_SEPARATOR;
+    public String myDefaultLocation = "resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
+            + SaveLoadUtility.FILE_SEPARATOR;
 
     public <T> T loadResource (Class className, String filePath) {
         Gson gson = new Gson();

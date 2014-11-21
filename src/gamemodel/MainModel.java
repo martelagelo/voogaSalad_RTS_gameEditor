@@ -13,7 +13,7 @@ import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.util.Observable;
-import util.LoadSaveUtility;
+import util.SaveLoadUtility;
 
 
 /**
@@ -28,7 +28,7 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-    private LoadSaveUtility mySLUtil;
+    private SaveLoadUtility mySLUtil;
 
     /**
      * Sets the game of the Model.
