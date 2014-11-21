@@ -100,8 +100,8 @@ public class AnimationPlayer implements Updatable, Displayable {
      * frames
      */
     private Rectangle2D getViewport (int frameNumber) {
-        int colNumber = frameNumber % myNumCols;
-        int rowNumber = frameNumber / myNumCols;
+        int colNumber = frameNumber / myNumCols; //TODO changed by John to vertical traversal of frames to match our spritesheets
+        int rowNumber = frameNumber % myNumCols;
         return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
                                                                   myTileSize.getHeight(),
                                myTileSize.getWidth(),

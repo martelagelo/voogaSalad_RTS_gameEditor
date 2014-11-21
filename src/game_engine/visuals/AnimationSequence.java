@@ -26,6 +26,7 @@ public class AnimationSequence implements Updatable {
      */
     public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats) {
         myStartFrame = startFrame;
+        myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
         myName = name;
         mySlownessMultiplier = 1;

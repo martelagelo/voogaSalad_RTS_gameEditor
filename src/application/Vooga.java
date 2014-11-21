@@ -6,6 +6,13 @@ import javafx.stage.Stage;
 import view.MainView;
 
 
+/**
+ * Functions as a main method to instantiate the modules of the program and
+ * set them up to communicate between each other.
+ * 
+ * @author Jonathan Tseng
+ *
+ */
 public class Vooga {
     private MainView myMainView;
     private MainModel myMainModel;
@@ -27,6 +34,9 @@ public class Vooga {
         initialize();
     }
 
+    /**
+     * starts the program 
+     */
     private void initialize () {
         myMainView.start();
     }
