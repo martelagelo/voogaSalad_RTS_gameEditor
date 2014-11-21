@@ -3,6 +3,7 @@ package test.conditions;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import game_engine.gameRepresentation.conditions.ConditionParser;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,56 +48,17 @@ public class ConditionParsingTest {
     @Test
     public void testInputStripping () throws Exception {
         String input = "Hello\n";
-        String[] result = ((String[]) getMethod("stripAndSplitInput").invoke(myParser, input));
-        assertEquals("Hello", result[0]);
-        assertEquals(1, result.length);
+        String result = ((String) getMethod("stripInput").invoke(myParser, input));
+        assertEquals("Hello", result);
         input = "Hello World";
-        result = ((String[]) getMethod("stripAndSplitInput").invoke(myParser, input));
-        assertEquals("Hello", result[0]);
-        assertEquals(2, result.length);
-        input = "this.property(typo)";
-        String[] desiredResult = { "this.property", "typo" };
-        result = ((String[]) getMethod("stripAndSplitInput").invoke(myParser, input));
-        assertArrayEquals(desiredResult, result);
+        result = ((String) getMethod("stripInput").invoke(myParser, input));
+        assertEquals(input, result);
     }
 
-    @Test
-    public void testRegexMatching () throws Exception {
-        // Test the operators
-        String input = "||";
-        assertEquals(true, (boolean) getMethod("matchesPattern")
-                     .invoke(myParser, input, "operator"));
-        input = "&&";
-        assertEquals(true, (boolean) getMethod("matchesPattern")
-                     .invoke(myParser, input, "operator"));
-        input = "bob..";
-        assertEquals(false,
-                     (boolean) getMethod("matchesPattern").invoke(myParser, input, "operator"));
-        // Test the evaluators
-        String[] evaluators = { ">", "<", ">=", "<=", "==" };
-        for (String evaluator : evaluators) {
-            assertEquals(true,
-                         (boolean) getMethod("matchesPattern").invoke(myParser, evaluator,
-                                 "evaluators"));
-        }
-        // Test for numbers
-        String[] evaluators2 = { "66", "100.01", "100.50000", "500" };
-        for (String evaluator : evaluators2) {
-            assertEquals(true,
-                         (boolean) getMethod("matchesPattern").invoke(myParser, evaluator,
-                                 "numbers"));
-        }
-        // Test for object-property pairings
-        String[] objectPropertyEvaluators = { "object1.properties", "object.property", "a.d" };
-        for (String evaluator : objectPropertyEvaluators) {
-            assertEquals(true,
-                         (boolean) getMethod("matchesPattern").invoke(myParser, evaluator,
-                                 "elementproperty"));
-        }
-    }
+   
 
     @Test
-    public void testConditionParsing () {
-
+    public void testConditionParsing () throws Exception {
+        //getMethod("parseCondition").invoke(myParser, "this||other");
     }
 }

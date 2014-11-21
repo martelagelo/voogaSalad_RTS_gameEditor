@@ -1,15 +1,20 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.stateManaging.GameElementManager;
+
+
 /**
  * A less than evaluator
- * 
+ *
  * @author Zach
  *
  */
 public class LessThanEvaluator extends Evaluator {
 
-    public LessThanEvaluator () {
-        super("<");
+    public LessThanEvaluator (GameElementManager elementManager,
+                              String parameter1,
+                              String parameter2) {
+        super("<", elementManager, parameter1, parameter2);
     }
 
     @Override
