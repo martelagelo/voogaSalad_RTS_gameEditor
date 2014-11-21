@@ -38,6 +38,7 @@ public class Engine extends Observable implements Observer {
 
     public Group getVisualRepresentation () {
         // TODO: figure out what stores our shit
+        // TODO: currently unused, possibly remove this
         return myVisualManager.getVisualRepresentation();
     }
 
@@ -49,6 +50,7 @@ public class Engine extends Observable implements Observer {
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
         myVisualManager.addClickObserver(myElementManager);
+        myVisualManager.addKeyboardObserver(myElementManager);
     }
 
     public void play () {
@@ -79,6 +81,7 @@ public class Engine extends Observable implements Observer {
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
             myVisualManager.addClickObserver(myElementManager);
+            myVisualManager.addKeyboardObserver(myElementManager);
         }
     }
 

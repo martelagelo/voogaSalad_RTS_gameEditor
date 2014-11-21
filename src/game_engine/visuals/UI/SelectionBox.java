@@ -1,6 +1,7 @@
-package game_engine.visuals;
+package game_engine.visuals.UI;
 
 import java.util.Observable;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
@@ -36,5 +37,21 @@ public class SelectionBox extends Observable {
 
     public Rectangle getBox () {
         return myRectangle;
+    }
+    
+    public void resetBox(){
+        myRectangle.setVisible(true);
+        myRectangle.setWidth(0);
+        myRectangle.setHeight(0);
+        myRectangle.setStroke(Color.RED);
+        myRectangle.setStrokeWidth(2);
+        myRectangle.setFill(Color.TRANSPARENT);
+        myRectangle.setX(0);
+        myRectangle.setY(0);
+    }
+
+    public void setLocation (double pressedX, double pressedY) {
+        myRectangle.setX(pressedX);
+        myRectangle.setY(pressedY);        
     }
 }
