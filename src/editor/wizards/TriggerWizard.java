@@ -1,13 +1,30 @@
 package editor.wizards;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import view.GUIController;
 
-public class TriggerWizard extends GameElementWizard{
-	
-	@FXML private TextField key;
-	@FXML private TextField trigger;
+
+/**
+ * 
+ * @author Joshua, Nishad
+ *
+ */
+public class TriggerWizard extends Wizard {
+
+    @FXML
+    private TextField condition;
+    @FXML
+    private TextField action;       
+    
+    @Override
+    public boolean checkCanSave () {
+        return !condition.getText().isEmpty() && !action.getText().isEmpty();
+    }
+
+    @Override
+    public void updateData () {
+        addToData("Condition", condition.getText());
+        addToData("Action", condition.getText());
+    }
 
 }

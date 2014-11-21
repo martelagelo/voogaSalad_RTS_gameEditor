@@ -1,7 +1,5 @@
 package editor;
 
-import java.util.Observable;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,23 +14,27 @@ import javafx.scene.layout.VBox;
 import view.GUIController;
 
 
-public class InformationBox implements GUIController {
+/**
+ * 
+ * @author Jonathan Tseng
+ *
+ */
+public class DescribableInfoBoxController implements GUIController {
 
     private SimpleStringProperty myIconButtonText = new SimpleStringProperty("Load Icon");
 
-    @FXML private VBox infoRoot;
-    @FXML private TextField nameTextField;
-    @FXML private TextArea descriptionTextArea;
-    @FXML private ImageView iconImageView;
-    @FXML private Label iconLabel;
-    @FXML private Button iconFileChooserButton;
-
-    @Override
     @FXML
-    public void initialize () {
-        initIconFileChoosing();
-        initLabelInputSwitching();
-    }
+    private VBox infoRoot;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextArea descriptionTextArea;
+    @FXML
+    private ImageView iconImageView;
+    @FXML
+    private Label iconLabel;
+    @FXML
+    private Button iconFileChooserButton;
 
     /**
      * 
@@ -42,7 +44,8 @@ public class InformationBox implements GUIController {
      * @param icon
      */
     public void setInfo (String name, String description, String iconFilePath, Image icon) {
-        nameTextField.setText(name);;
+        nameTextField.setText(name);
+        ;
         descriptionTextArea.setText(description);
         iconLabel.setText(iconFilePath);
         iconImageView.setImage(icon);
@@ -58,11 +61,12 @@ public class InformationBox implements GUIController {
         setEditableToggle(descriptionTextArea);
     }
 
-    //TODO: in CSS style such that looks different depending on editable or not
-    private void setEditableToggle(TextInputControl textInputControl) {
+    // TODO: in CSS style such that looks different depending on editable or not
+    private void setEditableToggle (TextInputControl textInputControl) {
         textInputControl.setEditable(false);
-        textInputControl.setOnMouseClicked(e->textInputControl.setEditable(true));
-        textInputControl.focusedProperty().addListener((e,oldVal,newVal)->textInputControl.setEditable(newVal));
+        textInputControl.setOnMouseClicked(e -> textInputControl.setEditable(true));
+        textInputControl.focusedProperty().addListener( (e, oldVal, newVal) -> textInputControl
+                                                               .setEditable(newVal));
     }
 
     @Override
@@ -71,14 +75,9 @@ public class InformationBox implements GUIController {
     }
 
     @Override
-    public String[] getCSS () {
-        return new String[0];
-    }
-
-    @Override
-    public void update (Observable o, Object arg) {
-        // TODO Auto-generated method stub
-        
+    public void initialize () {
+        initIconFileChoosing();
+        initLabelInputSwitching();        
     }
 
 }
