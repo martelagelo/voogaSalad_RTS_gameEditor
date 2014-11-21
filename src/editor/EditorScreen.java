@@ -28,6 +28,8 @@ import view.GUIScreen;
 
 /**
  * 
+ * Screen for the Editor. Holds many sub-GUI panes
+ * 
  * @author Jonathan Tseng
  * @author Nishad Agrawal
  *
@@ -59,22 +61,21 @@ public class EditorScreen extends GUIScreen {
     private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
 
-    /**
-     * TODO: Jonathan is cleaning up the load utility
-     */
     private void openGameElementWizard () {
         Dimension dim = new Dimension(600, 300);
         loadWizard("/editor/wizards/guipanes/GameElementWizard.fxml", dim);
     }
 
-    /**
-     * TODO: Jonathan is cleaning up the load utility
-     */
     private void openTerrainWizard () {
         Dimension dim = new Dimension(600, 300);
         loadWizard("/editor/wizards/guipanes/TerrainWizard.fxml", dim);
     }
 
+    /**
+     * loads and shows a popout wizard based on a filepath and a size for the popout
+     * @param filePath
+     * @param dim
+     */
     private void loadWizard (String filePath, Dimension dim) {
         Wizard wiz = (Wizard) GUILoadStyleUtility.generateGUIPane(filePath);
         Stage s = new Stage();
@@ -94,16 +95,13 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void initProjectExplorer () {
+        // TODO: on selection changed should update the info box
         projectExplorerController.setOnSelectionChanged( (String s) -> {
             System.out.println("selection changed: " + s);
         });
         projectExplorerController.setOnLevelClicked( (String s) -> {
             launchTab(s);
         });
-    }
-
-    private void initGameInfoVBox () {
-
     }
 
     private void initTabs () {
@@ -151,7 +149,6 @@ public class EditorScreen extends GUIScreen {
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
-        initGameInfoVBox();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
     }

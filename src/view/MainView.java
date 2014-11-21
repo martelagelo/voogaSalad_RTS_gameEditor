@@ -8,7 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 /**
+ * 
+ * MainView that has control of the stage and handles switching between different scenes
  * 
  * @author Jonathan Tseng
  * @author Nishad Agrawal
@@ -35,9 +38,9 @@ public class MainView implements Observer {
     }
 
     public void launchScreen (ViewScreen screen) {
-        initializeScreen(screen.getFilePath());
+        launchScreen(screen.getFilePath());
     }
-    
+
     public void launchScreen (ViewScreen screen, String game) {
         myMainModel.loadGame(game);
 
@@ -53,13 +56,20 @@ public class MainView implements Observer {
         catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         launchScreen(screen);
     }
-    
-    private void initializeScreen (String filePath) {
+
+    /**
+     * private helper method to launch a screen for the stage
+     * 
+     * @param filePath
+     */
+    private void launchScreen (String filePath) {
         myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
-        myScene = new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(), SCENE_DIMENSIONS.getHeight());
+        myScene =
+                new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(),
+                          SCENE_DIMENSIONS.getHeight());
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
         myCurrentController.setModel(myMainModel);
@@ -68,7 +78,7 @@ public class MainView implements Observer {
 
     @Override
     public void update (Observable arg0, Object arg1) {
-        myCurrentController.update();        
+        myCurrentController.update();
     }
 
 }
