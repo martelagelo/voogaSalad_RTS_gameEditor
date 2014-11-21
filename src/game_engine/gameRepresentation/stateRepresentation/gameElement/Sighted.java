@@ -1,4 +1,4 @@
-package game_engine.computers.boundsComputers;
+package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 
 
@@ -11,7 +11,7 @@ package game_engine.computers.boundsComputers;
  */
 public interface Sighted {
     /**
-     * Gets the vision polygon of the sighted object
+     * Gets the vision bounds of the sighted object
      */
     public double[] getVisionBounds ();
 

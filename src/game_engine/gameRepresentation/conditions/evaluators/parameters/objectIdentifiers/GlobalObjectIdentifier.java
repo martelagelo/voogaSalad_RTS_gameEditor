@@ -7,7 +7,8 @@ import java.util.List;
 
 
 /**
- * Get all the objects corresponding to a global object identifier
+ * Get all the objects corresponding to a global object identifier e.g. all the objects of type
+ * "tank"
  * 
  * @author Zach
  *

@@ -5,7 +5,11 @@ import game_engine.stateManaging.GameElementManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
-
+/**
+ * A class that is responsible for managing the visual interactions of objects in the game
+ * @author John?
+ *
+ */
 public class VisualManager {
     private ScrollableScene scene;
     private ScrollableBackground background;

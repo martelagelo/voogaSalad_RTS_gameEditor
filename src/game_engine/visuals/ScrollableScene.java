@@ -9,6 +9,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
+/**
+ * A scene that contains a scrollable backgroun
+ * 
+ * @author John
+ *
+ */
 public class ScrollableScene extends Scene {
     public static final double SLOW_SCROLL_BOUNDARY = 75;
     public static final double FAST_SCROLL_BOUNDARY = 30;
@@ -25,6 +31,13 @@ public class ScrollableScene extends Scene {
     private double myScreenWidth;
     private double pressedX, pressedY;
 
+    /**
+     * Create a scrollable scene
+     * 
+     * @param root the root group for the scene
+     * @param width the width of the scene
+     * @param height the height of the scene
+     */
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
         this.myScreenHeight = height;
@@ -37,10 +50,16 @@ public class ScrollableScene extends Scene {
         initializeHandlers();
     }
 
+    /**
+     * @return the background of the scrollable scene
+     */
     public ScrollableBackground getBackground () {
         return myBackground;
     }
 
+    /**
+     * Add all the necessary click and scroll handlers to the scene
+     */
     private void initializeHandlers () {
         this.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
@@ -94,16 +113,15 @@ public class ScrollableScene extends Scene {
 
                     myBox.setX(pressedX);
                     myBox.setY(pressedY);
-                    
-                    
+
                 }
                 else {
                     // TODO call the input event for right click
                 }
-                
+
                 double xLoc = -myBackground.getTranslateX() + pressedX;
                 double yLoc = -myBackground.getTranslateY() + pressedY;
-                
+
                 myClickManager.clicked(event, xLoc, yLoc);
             }
         });
@@ -158,11 +176,21 @@ public class ScrollableScene extends Scene {
         myBackground.update();
     }
 
+    /**
+     * Add an observer to the selection box
+     * 
+     * @param o
+     */
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
     }
-    
-    public void addClickObserver(Observer o) {
+
+    /**
+     * Add a click observer to monitor clicks on the scrollable scene
+     * 
+     * @param o
+     */
+    public void addClickObserver (Observer o) {
         myClickManager.addObserver(o);
     }
 

@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
-
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import java.util.Collection;
@@ -11,19 +10,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
 /**
-<<<<<<< HEAD
  * The most basic flavor of GameElement - this type of element has no on-screen
  * representation. Examples include triggers and goals.
  * 
- * @author Steve, Jonathan, Rahul, Nishad
-=======
- * The most basic flavor of GameElement - this type of element has no on-screen representation.
- * Examples include triggers and goals.
- *
- * @author Steve
- * @author Zach
->>>>>>> engine_conditions
+ * @author Steve, Jonathan, Rahul, Nishad, Zach
  *
  */
 public class GameElementState {
@@ -42,24 +34,20 @@ public class GameElementState {
     }
 
     /**
-     * Get the name of the element, if it has been set
-     * 
-     * @return
+     * @return the name of the element, if it has been set
      */
     public String getName () {
         return getTextualAttribute(NAME_ATTRIBUTE_STRING);
     }
 
-    // TODO: handle if type attribute doesn't exist
     /**
-     * Get the type of the element, if it has been set
-     * 
-     * @return
+     *
+     * @return the type of the element, if it has been set
      */
     public String getType () {
         return getTextualAttribute(TYPE_ATTRIBUTE_STRING);
     }
-    
+
     /**
      * Get an attribute from an internal collection
      * 
@@ -124,6 +112,7 @@ public class GameElementState {
         setAttribute(myNumericalAttributes, name, value);
     }
 
+    // TODO is this repeated in GameElement??
     public void update () {
         // TODO comment this
         updateSelfDueToInternalFactors();

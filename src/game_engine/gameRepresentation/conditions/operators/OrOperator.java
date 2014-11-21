@@ -4,7 +4,7 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
 
 
 /**
- * The Or boolean
+ * The Or operator for booleans
  *
  * @author Zach
  *

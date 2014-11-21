@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.event.Event;
 import javafx.scene.Node;
-
+//TODO fix/ delete this +inputEvent
 public class InputHandler {
     private List<InputEvent> eventHandlers;
     private Node myAttachmentNode;
@@ -12,8 +12,6 @@ public class InputHandler {
         eventHandlers = new ArrayList<>();
         myAttachmentNode = attachmentNode;
     }
-
-    //TODO fix this shittyness
     public void handleEvent(Event e){
 
         eventHandlers.stream().filter(inputEvent->e instanceof inputEvent.getEventType()).forEach(inputEvent -> inputEvent.getAction().accept(null));

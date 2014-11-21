@@ -10,8 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 
-// TODO comment
 /**
+ * A game element that is capable of being drawn. Combines a game element state as well as an
+ * animation player. Essentially wraps a savable game element state with a drawable wrapper to avoid
+ * JavaFX serialization problems.
  * 
  * @author Zach, Jonathan, Nishad, Rahul
  *
@@ -21,12 +23,11 @@ public class DrawableGameElement extends GameElement implements Displayable {
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
 
-    // TODO: Handle possible class cast exception?
-    // factory needs to handle this
-    public DrawableGameElement (GameElementState gameElementState) {
-        this((DrawableGameElementState) gameElementState);
-    }
-
+    /**
+     * Create a drawable game element from the given state
+     * 
+     * @param element the state of the drawable element
+     */
     public DrawableGameElement (DrawableGameElementState element) {
         super(element);
         myState = element;
@@ -36,24 +37,34 @@ public class DrawableGameElement extends GameElement implements Displayable {
                                     spritesheet.numCols);
     }
 
+    /**
+     * Update the drawable game element and its visual appearance.
+     */
     @Override
     public void update () {
         super.update();
         // state.update();
         // Use polling because java.util.observable requires inheritance
-        // and javafx.beans.observable isn't serializable
+        // and javafx.beans.observable isn't serializable.
         myAnimation.setAnimation(myState.getAnimation());
         myAnimation.update();
     }
 
+    /**
+     * Set the element's animation to a given sequence
+     * 
+     * @param animation the animation sequence to set
+     */
     public void setAnimation (AnimationSequence animation) {
         myAnimation.setAnimation(animation);
     }
-
+    /**
+     * @return the current state of the element
+     */
     public DrawableGameElementState getState () {
         return myState;
     }
-
+    
     @Override
     public Node getNode () {
         Node n = myAnimation.getNode();
@@ -64,7 +75,10 @@ public class DrawableGameElement extends GameElement implements Displayable {
         System.out.println("node layout: " + n.getLayoutX() + ", " + n.getLayoutY());
         return n;
     }
-
+    /**
+     * Get the bound array of the object
+     * @return the object's bounds
+     */
     public double[] getBounds () {
         return myState.getBounds();
     }

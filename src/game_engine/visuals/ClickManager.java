@@ -19,9 +19,13 @@ public class ClickManager extends Observable {
     boolean isSecondary;
     double xLoc, yLoc;
 
-    public ClickManager () {
-    }
-
+    /**
+     * Update the click manager based on a new mouse event
+     * 
+     * @param event
+     * @param xLoc
+     * @param yLoc
+     */
     public void clicked (MouseEvent event, double xLoc, double yLoc) {
         this.xLoc = xLoc;
         this.yLoc = yLoc;
