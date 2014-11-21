@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Returns the actee of a given condition (i.e. the object that the currently selected object is
  * examining)
- * 
+ *
  * @author Zach
  *
  */

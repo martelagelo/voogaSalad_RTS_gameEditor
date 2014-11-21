@@ -6,7 +6,7 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
 
 /**
  * An abstract class that performs a boolean operation on two evaluatable objects. e.g. &&, ||, !
- * and returns the result
+ * and returns the resulting boolean
  *
  * @author Zach
  *

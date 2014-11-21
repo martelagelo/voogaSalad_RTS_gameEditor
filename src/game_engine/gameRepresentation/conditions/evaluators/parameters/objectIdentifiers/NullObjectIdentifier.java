@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Use the null pattern to identify no objects of interest for parameters that are not tied to an
- * object
+ * object. Useful for stuff like getting a game time parameter or goal attributes, etc.
  *
  * @author Zach
  *

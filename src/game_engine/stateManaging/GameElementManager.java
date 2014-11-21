@@ -16,8 +16,15 @@ import java.util.stream.Collectors;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Polygon;
 
 
+/**
+ * A manager for selecting, deselecting, and interacting with game elements
+ *
+ * @author John, Steve
+ *
+ */
 public class GameElementManager implements Observer {
 
     private Level myLevel;
@@ -26,6 +33,12 @@ public class GameElementManager implements Observer {
         myLevel = level;
     }
 
+    /**
+     * Get all the game elements of a given type
+     *
+     * @param typeName the name of the type of the game elements
+     * @return all the game elements with the given type
+     */
     public List<GameElementState> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
@@ -37,6 +50,11 @@ public class GameElementManager implements Observer {
         // TODO: add factories
     }
 
+    /**
+     * Select all the elements in a given rectangle
+     *
+     * @param rectPoints the points in the rectangle surrounding the player's units
+     */
     private void selectPlayerUnits (double[] rectPoints) {
         for (SelectableGameElement e : myLevel.getUnits()) {
             e.select(false);
@@ -49,9 +67,7 @@ public class GameElementManager implements Observer {
                                                            bounds[1] + bounds[3], bounds[0],
                                                            bounds[1] + bounds[3] });
 
-            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2] -
-                                                                       rectPoints[0],
-                                         rectPoints[3] - rectPoints[1])) {
+            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2]-rectPoints[0], rectPoints[3]-rectPoints[1])){
                 e.select(true);
                 System.out.println("Selected Unit");
             }
@@ -67,13 +83,16 @@ public class GameElementManager implements Observer {
         }
     }
 
+    /**
+     * Update the rectangle on the image and check for clicks
+     */
+    // TODO move this functionality to a more appropriate class
     @Override
     public void update (Observable o, Object arg) {
         if (o instanceof SelectionBox) {
             double[] points = ((SelectionBox) o).getPoints();
             selectPlayerUnits(points);
         }
-
         else if (o instanceof ClickManager) {
             Point2D click = ((ClickManager) o).getLoc();
             // TODO implement sending orders to units based on click

@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * The Level class is the direct point of interaction for most gameplay and editing - this class
  * holds all of the GameElements being used for the current editing and/or game running session.
+ * Essentially a data wrapper class for all objects and states contained in a level.
  *
  * @author Steve, Jonathan, Nishad, Rahul
  *

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
@@ -38,12 +39,20 @@ public class ScrollableScene extends Scene {
     private double pressedX, pressedY;
 
     /**
+<<<<<<< HEAD
+     * Create a scrollable scene
+     * 
+     * @param root the root group for the scene
+     * @param width the width of the scene
+     * @param height the height of the scene
+=======
      * Creates a new ScrollableScene for the map.
      * 
      * @param root the group of elements to add to the Scene initially. If
      *        no objects have been created yet to add, just add an empty new Group()
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
@@ -59,17 +68,25 @@ public class ScrollableScene extends Scene {
     }
 
     /**
+<<<<<<< HEAD
+     * @return the background of the scrollable scene
+=======
      * gets the background map that objects actually get added to
      * 
      * @return
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableBackground getBackground () {
         return myBackground;
     }
 
     /**
+<<<<<<< HEAD
+     * Add all the necessary click and scroll handlers to the scene
+=======
      * initializes the handlers that respond to JavaFX events necessary for scrolling and
      * registering clicks/ drags
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     private void initializeHandlers () {
         this.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -124,8 +141,23 @@ public class ScrollableScene extends Scene {
                 pressedX = event.getSceneX();
                 pressedY = event.getSceneY();
                 if (event.isPrimaryButtonDown()) {
+                    myBox.setVisible(true);
+                    myBox.setWidth(0);
+                    myBox.setHeight(0);
+                    myBox.setStroke(Color.RED);
+                    myBox.setStrokeWidth(2);
+                    myBox.setFill(Color.TRANSPARENT);
+
+                    myBox.setX(pressedX);
+                    myBox.setY(pressedY);
+
+                }
+                else {
+                    // TODO call the input event for right click
+
                     mySelectionBox.resetBox();
                     mySelectionBox.setLocation(pressedX, pressedY);
+
                 }
 
                 double xLoc = -myBackground.getTranslateX() + pressedX;

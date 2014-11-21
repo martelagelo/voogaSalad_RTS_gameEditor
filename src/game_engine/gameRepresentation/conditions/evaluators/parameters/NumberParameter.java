@@ -4,7 +4,7 @@ import game_engine.gameRepresentation.conditions.ElementPair;
 
 
 /**
- * A basic numeric parameter
+ * A basic numeric parameter. i.e. a double
  *
  * @author Zach
  *

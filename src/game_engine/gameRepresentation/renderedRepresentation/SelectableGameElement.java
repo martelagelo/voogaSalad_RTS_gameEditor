@@ -3,44 +3,63 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import javafx.geometry.Point2D;
 
 
+
 /**
- * 
- * @author Jonathan Tseng, Steve, Nishad, Rahul, John L.
+ * A wrapper for game elements capable of being selected. Adds a "selected" visual appearance to the
+ * appearance defined by the DrawableGameElement and handles animations for actions resulting from
+ * being selected.
+ *
+ * @author Jonathan , Steve, Nishad, Rahul, John
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-    // private SelectableGameElementState myState;
+
+    private boolean isSelected;
+//    private SelectableGameElementState myState;
     private Point2D heading;
     private boolean selected;
     // TODO temporary, should be in the attributes
     private double speed = 3;
 
+    /**
+     * @see DrawableGameElementState
+     */
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
-        this.selected = false;
+
+        this.isSelected = false;
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * @return the type of the element
+     */
     public String getType () {
         return getState().getType();
         // return myState.getType();
     }
 
+    /**
+     * Select the element
+     *
+     * @param select a boolean indicating whether the object should be selected
+     */
     public void select (boolean select) {
-        selected = select;
+        isSelected = select;
         myAnimation.select(select);
     }
 
+    /**
+     * Update the object due to internal influences then update the object due to collisions,
+     * visible objects, and the current objective of the object
+     */
     @Override
     public void update () {
         super.update();
@@ -75,32 +94,27 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        // TODO Auto-generated method stub
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs("ObjectiveCondition");
+        getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
     public void updateSelfDueToSelection () {
-        // TODO Auto-generated method stub
-        // update representation?
-        // visualRepresentation.setSelected();
-        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-                getApplicableConditionActionPairs("SelfCondition");
+        getApplicableConditionActionPairs("SelfCondition");
     }
 
     private void updateSelfDueToVisions () {
         evaluateConditionActionPairsOnInteractingElementsSubset("VisionCondition",
-                                                                "VisibleElements");
+                "VisibleElements");
     }
 
     private void updateSelfDueToCollisions () {
         evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
-                                                                "CollidingElements");
+                "CollidingElements");
     }
 
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
+
         // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
         // getApplicableConditionActionPairs(conditionActionPairIdentifier);
         // if (myState.getInteractingElements().containsKey(elementIdentifier)) {
@@ -120,10 +134,9 @@ public class SelectableGameElement extends DrawableGameElement {
     // TODO FIX THIS SHIT
     private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
         // return this.myConditionActionPairs.entrySet().stream()
-        // .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
+
         // .collect(Collectors.toList());
         return null;
-
     }
 
     public boolean isSelected () {
