@@ -6,7 +6,6 @@ import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
-import gamemodel.exceptions.DescribableStateException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Group;
@@ -16,7 +15,7 @@ import javafx.scene.Scene;
 /**
  * The concrete boundary of the Engine - this class exposes the public API of the Engine to the rest
  * of the project.
- * 
+ *
  * @author Steve, Jonathan, Nishad, Rahul
  *
  */
@@ -42,12 +41,12 @@ public class Engine extends Observable implements Observer {
     }
 
     public void selectLevel (String name) {
-        myGame.setCurrentLevel(name);
-        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
-        myElementManager = new GameElementManager(myGame.getCurrentLevel());
-        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
-        myVisualManager.addBoxObserver(myElementManager);
-        myVisualManager.addClickObserver(myElementManager);
+//        myGame.setCurrentLevel(name);
+//        myGameLoop = new GameLoop(myGame.getCurrentLevel(), myVisualManager);
+//        myElementManager = new GameElementManager(myGame.getCurrentLevel());
+//        myVisualManager.addObjects(myGame.getCurrentLevel().getGroup());
+//        myVisualManager.addBoxObserver(myElementManager);
+//        myVisualManager.addClickObserver(myElementManager);
     }
 
     public void play () {
