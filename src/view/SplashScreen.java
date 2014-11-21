@@ -60,10 +60,17 @@ public class SplashScreen extends GUIScreen {
                 .map(f -> f.getName())
                 .collect(Collectors.toList());
         gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
+        
+        newGameButton.setOnAction(e -> {
+            myMainModel.newGame();
+            switchScreen(ViewScreen.EDITOR);
+        });
+        
         // TODO we need to link this up with save load in MainView and MainModel
         launchEditorButton.setOnAction(e -> {
             if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
-                switchScreen(ViewScreen.EDITOR, gameDropDown.getSelectionModel().getSelectedItem());
+                myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
+                switchScreen(ViewScreen.EDITOR);
             }
                 else {
                     // TODO: ERROR POPUP ON SPLASH SCREEN, nishad... animation controller thingy
@@ -73,11 +80,14 @@ public class SplashScreen extends GUIScreen {
         });
 
         // TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
-        launchRunnerButton.setOnAction(e -> switchScreen(ViewScreen.EDITOR, ""));
+        launchRunnerButton.setOnAction(e -> {
+            // TODO Load a game
+                switchScreen(ViewScreen.EDITOR);
+            });
         attachStringProperties();
     }
-    
-    private void attachStringProperties() {
+
+    private void attachStringProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             launchEditorButton.textProperty().bind(util.getStringProperty(LAUNCH_EDITOR_KEY));
