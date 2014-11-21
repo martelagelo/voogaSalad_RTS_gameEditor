@@ -62,25 +62,26 @@ public class DrawableGameElement extends GameElement implements Displayable {
                 .doubleValue());
         n.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
                 .doubleValue());
-        n.setTranslateX(-myAnimation.getDimension().getWidth()/2);
-        n.setTranslateY(-myAnimation.getDimension().getHeight()/2);
+        n.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
+        n.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
         return n;
     }
 
     public double[] getBounds () {
         return myState.getBounds();
     }
-    
-    public void setLocation(Point2D location){
+
+    public void setLocation (Point2D location) {
         Node n = myAnimation.getNode();
         n.setLayoutX(location.getX());
         myState.setNumericalAttribute(DrawableGameElementState.X_POS_STRING, location.getX());
         n.setLayoutY(location.getY());
         myState.setNumericalAttribute(DrawableGameElementState.Y_POS_STRING, location.getY());
     }
-    
-    public Point2D getLocation(){
-        Point2D p = new Point2D(myAnimation.getNode().getLayoutX(), myAnimation.getNode().getLayoutY());
+
+    public Point2D getLocation () {
+        Point2D p =
+                new Point2D(myAnimation.getNode().getLayoutX(), myAnimation.getNode().getLayoutY());
         return p;
     }
 }

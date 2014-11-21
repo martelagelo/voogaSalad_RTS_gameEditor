@@ -45,16 +45,17 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState.setAnimation("stand_fwd");
 
-        TerrainGrid grid = new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
+        TerrainGrid grid =
+                new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
-        
+
         MainModel model = new MainModel();
         model.loadGame("TestGame");
         model.createCampaign("TestCampaign");
         model.createLevel("TestLevel", "TestCampaign");
         LevelState levelState = model.getCurrentLevel();
 
-        for(DrawableGameElementState s : grassTerrain){
+        for (DrawableGameElementState s : grassTerrain) {
             levelState.addTerrain(s);
         }
         levelState.addUnit(archerState);

@@ -42,7 +42,8 @@ public class Engine extends Observable implements Observer {
         return myVisualManager.getVisualRepresentation();
     }
 
-    public void selectLevel (String campaignName, String levelName) throws DescribableStateException {
+    public void selectLevel (String campaignName, String levelName)
+                                                                   throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
         myGameLoop = new GameLoop(newLevel, myVisualManager);

@@ -100,7 +100,8 @@ public class AnimationPlayer implements Updatable, Displayable {
      * frames
      */
     private Rectangle2D getViewport (int frameNumber) {
-        int colNumber = frameNumber / myNumCols; //TODO changed by John to vertical traversal of frames to match our spritesheets
+        int colNumber = frameNumber / myNumCols; // TODO changed by John to vertical traversal of
+                                                 // frames to match our spritesheets
         int rowNumber = frameNumber % myNumCols;
         return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
                                                                   myTileSize.getHeight(),
@@ -111,7 +112,8 @@ public class AnimationPlayer implements Updatable, Displayable {
     public void select (boolean select) {
         this.myDisplay.setStyle("-fx-border-color: green;");
     }
-    public Dimension getDimension(){
+
+    public Dimension getDimension () {
         return myTileSize;
     }
 }

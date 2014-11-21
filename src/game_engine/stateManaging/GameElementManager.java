@@ -14,6 +14,7 @@ import java.util.Observer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
 
 
@@ -40,23 +41,27 @@ public class GameElementManager implements Observer {
         for (SelectableGameElement e : myLevel.getUnits()) {
             e.select(false);
             double[] bounds = e.getBounds();
+            // TODO: this doesn't work once the screen has scrolled
             Polygon polygonBounds = new Polygon();
             polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
                                                            bounds[0] + bounds[2], bounds[1],
                                                            bounds[0] + bounds[2],
                                                            bounds[1] + bounds[3], bounds[0],
                                                            bounds[1] + bounds[3] });
-            
-            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2]-rectPoints[0], rectPoints[3]-rectPoints[1])){
+
+            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2] -
+                                                                       rectPoints[0],
+                                         rectPoints[3] - rectPoints[1])) {
                 e.select(true);
                 System.out.println("Selected Unit");
             }
         }
     }
-    
-    private void sendClickToSelectedUnits(Point2D click, boolean isPrimary){
-        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e-> e.isSelected()).collect(Collectors.toList())) {
-            if(!isPrimary){
+
+    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary) {
+        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
+                .collect(Collectors.toList())) {
+            if (!isPrimary) {
                 e.setHeading(click);
             }
         }
@@ -68,21 +73,22 @@ public class GameElementManager implements Observer {
             double[] points = ((SelectionBox) o).getPoints();
             selectPlayerUnits(points);
         }
-        
-        else if (o instanceof ClickManager){
+
+        else if (o instanceof ClickManager) {
             Point2D click = ((ClickManager) o).getLoc();
             // TODO implement sending orders to units based on click
             // ((ClickManager) o).isPrimary(), ((ClickManager) o).isSecondary()
             boolean isSecondary;
-            if(isSecondary = ((ClickManager) o).isSecondary()){
+            if (isSecondary = ((ClickManager) o).isSecondary()) {
                 sendClickToSelectedUnits(click, !isSecondary);
             }
-            System.out.println("Click: "+(((ClickManager) o).isPrimary()?"primary":"secondary")+
-                               ", loc: "+click.getX()+", "+click.getY());
-                    
+            System.out.println("Click: " +
+                               (((ClickManager) o).isPrimary() ? "primary" : "secondary") +
+                               ", loc: " + click.getX() + ", " + click.getY());
+
         }
-        else if( o instanceof KeyboardManager){
-            System.out.println("Typed: "+((KeyboardManager) o).getLastCharacter());
+        else if (o instanceof KeyboardManager) {
+            System.out.println("Typed: " + ((KeyboardManager) o).getLastCharacter());
         }
     }
 }

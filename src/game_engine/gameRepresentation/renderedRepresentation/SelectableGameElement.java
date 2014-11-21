@@ -19,12 +19,11 @@ import javafx.geometry.Point2D;
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-//    private SelectableGameElementState myState;
+    // private SelectableGameElementState myState;
     private Point2D heading;
     private boolean selected;
     // TODO temporary, should be in the attributes
     private double speed = 3;
-    
 
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
@@ -34,7 +33,7 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public String getType () {
         return getState().getType();
-//        return myState.getType();
+        // return myState.getType();
     }
 
     public void select (boolean select) {
@@ -52,22 +51,24 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void move () {
-        if(heading==null) heading = getLocation();
+        if (heading == null) heading = getLocation();
         if (!heading.equals(getLocation())) {
             Point2D delta =
-                    new Point2D(heading.getX() - getLocation().getX(), heading.getY() - getLocation().getY());
-            if(delta.magnitude()>speed) delta = delta.normalize().multiply(speed);
+                    new Point2D(heading.getX() - getLocation().getX(), heading.getY() -
+                                                                       getLocation().getY());
+            if (delta.magnitude() > speed) delta = delta.normalize().multiply(speed);
             this.setLocation(getLocation().add(delta));
         }
     }
-    
-    private Point2D getLoc(){
+
+    private Point2D getLoc () {
         return new Point2D(getState().getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
-                           .doubleValue(), getState().getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
-                           .doubleValue());
+                .doubleValue(), getState()
+                .getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
+                .doubleValue());
     }
-    
-    private void setLoc(Point2D location){
+
+    private void setLoc (Point2D location) {
         getState().setNumericalAttribute(DrawableGameElementState.X_POS_STRING, location.getX());
         getState().setNumericalAttribute(DrawableGameElementState.Y_POS_STRING, location.getY());
 
@@ -100,32 +101,32 @@ public class SelectableGameElement extends DrawableGameElement {
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
-//        List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-//                getApplicableConditionActionPairs(conditionActionPairIdentifier);
-//        if (myState.getInteractingElements().containsKey(elementIdentifier)) {
-//            for (DrawableGameElementState element : myState.getInteractingElements()
-//                    .get(elementIdentifier)) {
-//                List<GameElementState> immediatelyInteractingElements =
-//                        new ArrayList<GameElementState>();
-//                for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
-//                    if (conditionActionPair.getKey().evaluate(this, element)) {
-//                        conditionActionPair.getValue().doAction(immediatelyInteractingElements);
-//                    }
-//                }
-//            }
-//        }
+        // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+        // getApplicableConditionActionPairs(conditionActionPairIdentifier);
+        // if (myState.getInteractingElements().containsKey(elementIdentifier)) {
+        // for (DrawableGameElementState element : myState.getInteractingElements()
+        // .get(elementIdentifier)) {
+        // List<GameElementState> immediatelyInteractingElements =
+        // new ArrayList<GameElementState>();
+        // for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
+        // if (conditionActionPair.getKey().evaluate(this, element)) {
+        // conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+        // }
+        // }
+        // }
+        // }
     }
 
     // TODO FIX THIS SHIT
     private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-//        return this.myConditionActionPairs.entrySet().stream()
-//                .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
-//                .collect(Collectors.toList());
+        // return this.myConditionActionPairs.entrySet().stream()
+        // .filter(o -> o.getKey().getType().equals(conditionActionPairIdentifier))
+        // .collect(Collectors.toList());
         return null;
 
     }
-    
-    public boolean isSelected(){
+
+    public boolean isSelected () {
         return this.selected;
     }
 
