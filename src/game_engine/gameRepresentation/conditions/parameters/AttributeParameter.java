@@ -1,9 +1,10 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters;
+package game_engine.gameRepresentation.conditions.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
-import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import game_engine.gameRepresentation.conditions.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
+
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Zach
  *
  */
-public abstract class AttributeParameter implements Parameter {
+public abstract class AttributeParameter <T> implements Parameter<T> {
 
     private String myAttributeTag;
     private String myElementTag;
@@ -71,7 +72,7 @@ public abstract class AttributeParameter implements Parameter {
      *        used for globals
      * @return
      */
-    // TODO make this take in fewer parameters
+    // TODO fix hierarchy to make this take in fewer parameters
     private List<GameElementState> getElementsOfInterest (GameElementManager elementManager,
                                                           ElementPair elementPair,
                                                           String elementTag) {
@@ -79,7 +80,7 @@ public abstract class AttributeParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements) {
+    public T getValue (ElementPair elements) {
         return getValue(getElementsOfInterest(myManager, elements, myElementTag), myAttributeTag);
     }
 
@@ -90,10 +91,10 @@ public abstract class AttributeParameter implements Parameter {
      * @param attributeTag the tag for the attribute that is being referenced by the parameter
      * @return the value of the parameter that is being requested
      */
-    protected abstract String getValue (List<GameElementState> elements, String attributeTag);
+    protected abstract T getValue (List<GameElementState> elements, String attributeTag);
 
     @Override
-    public boolean setValue (ElementPair elements, String attributeValue) {
+    public boolean setValue (ElementPair elements, T attributeValue) {
         return setValue(getElementsOfInterest(myManager, elements, myElementTag), myAttributeTag,
                         attributeValue);
     }
@@ -106,5 +107,5 @@ public abstract class AttributeParameter implements Parameter {
      */
     protected abstract boolean setValue (List<GameElementState> elements,
                                          String attributeTag,
-                                         String attributeValue);
+                                         T attributeValue);
 }

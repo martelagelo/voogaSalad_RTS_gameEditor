@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters;
+package game_engine.gameRepresentation.conditions.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 
@@ -9,9 +9,9 @@ import game_engine.gameRepresentation.conditions.ElementPair;
  * @author Zach
  *
  */
-public class NumberParameter implements Parameter {
+public class NumberParameter implements Parameter<Number> {
 
-    private double myValue;
+    private Number myValue;
 
     /**
      * Create a number parameter feeding in a single value
@@ -23,14 +23,14 @@ public class NumberParameter implements Parameter {
     }
 
     @Override
-    public String getValue (ElementPair elements) {
-        return Double.toString(myValue);
+    public Number getValue (ElementPair elements) {
+        return myValue;
     }
 
     @Override
     public boolean setValue (ElementPair elements,
-                             String value) {
-        myValue = Double.valueOf(value);
+                             Number value) {
+        myValue = value;
         return true;
     }
 

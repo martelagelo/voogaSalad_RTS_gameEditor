@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters.exceptions;
+package game_engine.gameRepresentation.conditions.parameters.exceptions;
 
 /**
  * Throw an exception if a poorly formed parameter is received.

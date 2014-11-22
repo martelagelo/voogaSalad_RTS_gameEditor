@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.NumberEvaluator;
 import game_engine.stateManaging.GameElementManager;
-
 
 /**
  * A greater than or equal to evaluator
@@ -9,18 +9,18 @@ import game_engine.stateManaging.GameElementManager;
  * @author Zach
  *
  */
-public class GreaterThanEqualEvaluator extends Evaluator {
+public class GreaterThanEqualEvaluator<A, B> extends Evaluator<A, B, Boolean>
+		implements NumberEvaluator<Boolean> {
 
-    public GreaterThanEqualEvaluator (GameElementManager elementManager,
-                                      String parameter1,
-                                      String parameter2) {
-        super(">=", elementManager, parameter1, parameter2);
+	public GreaterThanEqualEvaluator(GameElementManager elementManager,
+			String parameter1, String parameter2) {
+		super(">=", elementManager, parameter1, parameter2);
 
-    }
+	}
 
-    @Override
-    public boolean evaluate (double number1, double number2) {
-        return number1 >= number2;
-    }
+	@Override
+	public Boolean evaluate(Number num1, Number num2) {
+		return num1.doubleValue() >= num2.doubleValue();
+	}
 
 }

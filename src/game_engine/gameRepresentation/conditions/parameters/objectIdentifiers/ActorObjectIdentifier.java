@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers;
+package game_engine.gameRepresentation.conditions.parameters.objectIdentifiers;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
@@ -8,19 +8,19 @@ import java.util.List;
 
 
 /**
- * Returns the actee of a given condition (i.e. the object that the currently selected object is
- * examining)
+ * An identifier that returns the object evaluating the condition on other objects
  *
  * @author Zach
  *
  */
-public class ActeeObjectIdentifier implements ObjectOfInterestIdentifier {
+public class ActorObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
     public List<GameElementState> getElementOfInterest (GameElementManager elementManager,
                                                         ElementPair elementPair, String elementTag) {
         List<GameElementState> elementsOfInterest = new ArrayList<GameElementState>();
-        elementsOfInterest.add(elementPair.getActee());
+        elementsOfInterest.add(elementPair.getActor());
         return elementsOfInterest;
     }
+
 }

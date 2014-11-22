@@ -1,9 +1,10 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters;
+package game_engine.gameRepresentation.conditions.parameters;
 
 import java.util.HashMap;
 import java.util.Map;
-import game_engine.gameRepresentation.conditions.evaluators.parameters.exceptions.BadParameterFormatException;
-import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.*;
+
+import game_engine.gameRepresentation.conditions.parameters.exceptions.BadParameterFormatException;
+import game_engine.gameRepresentation.conditions.parameters.objectIdentifiers.*;
 import game_engine.stateManaging.GameElementManager;
 
 

@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters;
+package game_engine.gameRepresentation.conditions.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 
@@ -12,14 +12,14 @@ import game_engine.gameRepresentation.conditions.ElementPair;
  * @author Zach
  *
  */
-public interface Parameter {
+public interface Parameter <T extends Object>{
     /**
      * Given an element pair, extract required parameter and return it as a string
      *
      * @param elements the element pair to act on
      * @return the value of the evaluator
      */
-    public String getValue (ElementPair elements);
+    public T getValue (ElementPair elements);
 
     /**
      * Sets the value of the given parameter. Note: modifies the actual attribute of the object
@@ -30,5 +30,5 @@ public interface Parameter {
      * @return true if value setting was successful. False if value could not be found
      */
     public boolean setValue (ElementPair elements,
-                             String value);
+                             T value);
 }

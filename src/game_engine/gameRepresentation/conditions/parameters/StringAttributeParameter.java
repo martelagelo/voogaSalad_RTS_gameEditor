@@ -1,8 +1,9 @@
-package game_engine.gameRepresentation.conditions.evaluators.parameters;
+package game_engine.gameRepresentation.conditions.parameters;
 
-import game_engine.gameRepresentation.conditions.evaluators.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import game_engine.gameRepresentation.conditions.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
+
 import java.util.List;
 
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Zach
  *
  */
-public class StringAttributeParameter extends AttributeParameter {
+public class StringAttributeParameter extends AttributeParameter<String> {
     /**
      * @see AttributeParameter
      */

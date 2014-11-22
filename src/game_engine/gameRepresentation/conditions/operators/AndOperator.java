@@ -11,12 +11,12 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  */
 public class AndOperator extends Operator {
 
-    public AndOperator (Evaluatable firstCondition, Evaluatable secondCondition) {
+    public AndOperator (Evaluatable<Boolean> firstCondition, Evaluatable<Boolean> secondCondition) {
         super(firstCondition, secondCondition, "&&");
     }
 
     @Override
-    protected boolean applyOperator (boolean boolean1, boolean boolean2) {
+    protected Boolean applyOperator (boolean boolean1, boolean boolean2) {
         return boolean1 && boolean2;
     }
 

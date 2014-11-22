@@ -10,12 +10,12 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  *
  */
 public class OrOperator extends Operator {
-    public OrOperator (Evaluatable firstCondition, Evaluatable secondCondition) {
+    public OrOperator (Evaluatable<Boolean> firstCondition, Evaluatable<Boolean> secondCondition) {
         super(firstCondition, secondCondition, "||");
     }
 
     @Override
-    protected boolean applyOperator (boolean boolean1, boolean boolean2) {
+    protected Boolean applyOperator (boolean boolean1, boolean boolean2) {
         return boolean1 || boolean2;
     }
 
