@@ -36,14 +36,31 @@
 		<RowConstraints vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<TextArea GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="title"></TextArea>
-		<Button defaultButton="true" fx:id="launchEditorButton" GridPane.columnIndex="1"
-			GridPane.rowIndex="6" />
-		<Button  defaultButton="true" fx:id="launchRunnerButton" GridPane.columnIndex="3"
-			GridPane.rowIndex="6" />
-		<VBox GridPane.columnIndex="2" GridPane.rowIndex="7" alignment="CENTER">
-			<Button defaultButton="true" fx:id="newGameButton" />
-			<ComboBox fx:id="gameDropDown" />
+		<Label GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="title"
+			GridPane.columnSpan="3" GridPane.rowSpan="4" />
+		<Button defaultButton="true" fx:id="launchEditorButton"
+			GridPane.columnIndex="1" GridPane.rowIndex="5">
+			<maxWidth>
+				<Double fx:constant="MAX_VALUE" />
+			</maxWidth>
+		</Button>
+		<Button defaultButton="true" fx:id="launchRunnerButton"
+			GridPane.columnIndex="3" GridPane.rowIndex="5">
+			<maxWidth>
+				<Double fx:constant="MAX_VALUE" />
+			</maxWidth>
+		</Button>
+		<VBox GridPane.columnIndex="2" GridPane.rowIndex="6" alignment="CENTER">
+			<Button defaultButton="true" fx:id="newGameButton">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</Button>
+			<ComboBox fx:id="gameDropDown">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</ComboBox>
 		</VBox>
 	</children>
 </GridPane>
