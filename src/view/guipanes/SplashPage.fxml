@@ -36,12 +36,12 @@
 		<RowConstraints vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Button fx:id="launchEditorButton" GridPane.columnIndex="1"
+		<Button defaultButton="true" fx:id="launchEditorButton" GridPane.columnIndex="1"
 			GridPane.rowIndex="6" />
-		<Button fx:id="launchRunnerButton" GridPane.columnIndex="3"
+		<Button  defaultButton="true" fx:id="launchRunnerButton" GridPane.columnIndex="3"
 			GridPane.rowIndex="6" />
 		<VBox GridPane.columnIndex="2" GridPane.rowIndex="7" alignment="CENTER">
-			<Button fx:id="newGameButton" />
+			<Button defaultButton="true" fx:id="newGameButton" />
 			<ComboBox fx:id="gameDropDown" />
 		</VBox>
 	</children>
