@@ -27,6 +27,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
     protected Group myDisplay;
+    protected VBox myDisplayVBox;
 
     /**
      * Create a drawable game element from the given state
@@ -41,6 +42,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
                                     spritesheet.numCols);
         myDisplay = new Group();
+        myDisplayVBox = new VBox(2);
         initializeDisplay();
     }
 
@@ -72,11 +74,25 @@ public class DrawableGameElement extends GameElement implements Displayable {
         return myState;
     }
     
-    //TODO: Fix. Move logic into group
+    /**
+     * Gets the node that is being displayed on the scene
+     * 
+     * @return The game element
+     */
     @Override
     public Node getNode () {
         return myDisplay;
     }
+    
+    /**
+     * Gets the VBox of stats of the game element
+     * 
+     * @return The VBox of the game element
+     */
+    public VBox getDisplayVBox() {
+    	return myDisplayVBox;
+    }
+    
     /**
      * Get the bound array of the object
      * @return the object's bounds
@@ -104,6 +120,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
      */
     private void initializeDisplay() {
     	 myDisplay.getChildren().add(myAnimation.getNode());
+    	 myDisplay.getChildren().add(myDisplayVBox);
          myDisplay.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
                  .doubleValue());
          myDisplay.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)

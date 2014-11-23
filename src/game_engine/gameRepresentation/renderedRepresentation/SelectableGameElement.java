@@ -4,9 +4,16 @@ import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+
 import java.util.List;
 import java.util.Map.Entry;
+
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
 
@@ -20,21 +27,26 @@ import javafx.geometry.Point2D;
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-
+	final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
     private boolean isSelected;
 //    private SelectableGameElementState myState;
     private Point2D heading;
-    private boolean selected;
+    //private boolean selected;
     // TODO temporary, should be in the attributes
     private double speed = 3;
+    
+    private Image mySelectedImage;
+	private ImageView mySelectedImageView;
 
     /**
      * @see DrawableGameElementState
      */
     public SelectableGameElement (DrawableGameElementState element) {
         super(element);
-
         this.isSelected = false;
+        mySelectedImage = new Image(SELECT_ARROW_URL);
+        mySelectedImageView = new ImageView(mySelectedImage);
+
         // TODO Auto-generated constructor stub
     }
 
@@ -53,7 +65,7 @@ public class SelectableGameElement extends DrawableGameElement {
      */
     public void select (boolean select) {
         isSelected = select;
-        myAnimation.select(select);
+        //myAnimation.select(select);
     }
 
     /**
@@ -66,6 +78,7 @@ public class SelectableGameElement extends DrawableGameElement {
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
+        updateSelectedIndicator();
         move();
     }
 
@@ -110,6 +123,16 @@ public class SelectableGameElement extends DrawableGameElement {
         evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
                 "CollidingElements");
     }
+    
+    private void updateSelectedIndicator() {
+    	VBox myDisplayVBox = super.getDisplayVBox();
+    	if(isSelected) {
+    		myDisplayVBox.getChildren().add(mySelectedImageView);
+    	} 
+    	else {
+    		myDisplayVBox.getChildren().add(mySelectedImageView);
+    	}
+    }
 
     // TODO FIX THIS SHIT
     private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
@@ -140,7 +163,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public boolean isSelected () {
-        return this.selected;
+        return this.isSelected;
     }
 
     public void setHeading (Point2D click) {
