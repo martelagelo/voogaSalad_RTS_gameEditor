@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 public class ColorMaskExtractor {
 
     public BufferedImage colorMask;
+    public BufferedImage mutatedMask;
     public BufferedImage spritesheetColorRemoved;
     private BufferedImage originalImage;
 
@@ -99,5 +100,21 @@ public class ColorMaskExtractor {
                 SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
                         .createImage(ip2));
 
+    }
+    
+    public void mutateColorMask (int desiredHue){
+        ImageFilter mutatingFilter = new RGBImageFilter() {
+            public final int filterRGB (int x, int y, int rgb) {
+                Color original = new Color(rgb);
+                float[] hsbRepresentation = original.RGBtoHSB(original.getRed(), original.getGreen(), original.getBlue(), null);
+                hsbRepresentation[0] = desiredHue;
+                Color newColor = Color.getHSBColor(hsbRepresentation[0],hsbRepresentation[1],hsbRepresentation[2]);
+                return newColor.getRGB();
+            }
+        };
+
+        ImageProducer ip = new FilteredImageSource(originalImage.getSource(), mutatingFilter);
+        mutatedMask = SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
+                .createImage(ip));
     }
 }

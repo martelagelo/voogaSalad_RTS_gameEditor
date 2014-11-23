@@ -47,23 +47,21 @@ public class SpriteSheetCreationUtility {
         // extrapolatedStateMirrorFlags,
         // new Color(0xFFFF00FF));
 
-        // processor.doThing();
+        processor.doThing();
 
     }
 
     private void doThing () throws IOException {
-        List<BufferedImage> grassTiles =
-                loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
-        List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
-        for (BufferedImage image : grassTiles) {
-            betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
-        }
-        int i = 1;
-        for (BufferedImage image : betterTiles) {
-            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i +
-                                                 ".png"));
-            i++;
-        }
+        List<BufferedImage> colorMask =
+                loadFilesInDirectory(new File("src/resources/img/graphics/units/"));
+        ColorMaskExtractor extractor = new ColorMaskExtractor(colorMask.get(1));
+        extractor.mutateColorMask(122);
+        BufferedImage mutatedMask = extractor.mutatedMask;
+        ImageIO.write(mutatedMask, "PNG",
+                      new File(
+                               "src/resources/img/graphics/units/archerColorMaskGreen"
+                                       +
+                                       ".png"));
     }
 
     /**
@@ -315,7 +313,7 @@ public class SpriteSheetCreationUtility {
         return max;
     }
 
-    static final String[] EXTENSIONS = new String[] { "bmp" }; // acceptable image file extensions
+    static final String[] EXTENSIONS = new String[] { "png" }; // acceptable image file extensions
 
     /**
      * Filters for acceptable images.
