@@ -149,6 +149,7 @@ public class EditorScreen extends GUIScreen {
 
     @Override
     public void initialize () {
+        editorMenuBarController.setModel(myMainModel);
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
