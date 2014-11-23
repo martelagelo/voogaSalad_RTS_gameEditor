@@ -11,7 +11,7 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
 public class EqualsEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
 	public EqualsEvaluator(Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
-		super(Boolean.class, "=", parameter1, parameter2);
+		super(Boolean.class, "==", parameter1, parameter2);
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class EqualsEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 	}
 
 	@Override
-	protected Boolean evaluate(Double num1, Double num2) {
+	protected Boolean evaluate(Number num1, Number num2) {
 		return num1 == num2;
 	}
 

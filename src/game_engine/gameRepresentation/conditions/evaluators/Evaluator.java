@@ -69,7 +69,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	/**
 	 * Evaluate on two doubles
 	 */
-	protected T evaluate(Double item1, Double item2) {
+	protected T evaluate(Number item1, Number item2) {
 		return null;
 	}
 
@@ -116,8 +116,8 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	public T delegateEvaluator(A parameter1Value, B parameter2Value) {
 		Class<A> type1 = myParameter1.getType();
 		Class<B> type2 = myParameter2.getType();
-		if (type1.equals(Double.class) && type2.equals(Double.class)) {
-			return evaluate((Double) parameter1Value, (Double) parameter2Value);
+		if (type1.equals(Number.class) && type2.equals(Number.class)) {
+			return evaluate((Number) parameter1Value, (Number) parameter2Value);
 		}
 		if (type1.equals(GameElementState.class)
 				&& type2.equals(GameElementState.class)) {
@@ -139,17 +139,22 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	}
 
 	/**
-	 * @return the second parameter
+	 * Set the value of the first parameter to a given value. Used by all
+	 * assignment operators.
+	 * 
+	 * @param value
+	 *            the value to set the first parameter to
+	 * @return a boolean indicating whether the setting was successful
 	 */
-	protected Evaluatable<B> getParameter2() {
-		return myParameter2;
-	}
-
-	/**
-	 * @return the current element pair
-	 */
-	protected ElementPair getElementPair() {
-		return myElementPair;
+	protected boolean setParameter1Value(Object value) {
+		try {
+			myParameter1.setValue(myElementPair,
+					myParameter1.getType().cast(value));
+			return true;
+		} catch (Exception e) {
+			// parameter could not be set. Do nothing
+			return false;
+		}
 	}
 
 	@Override

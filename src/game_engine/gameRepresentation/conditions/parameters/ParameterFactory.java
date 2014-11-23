@@ -48,7 +48,7 @@ public class ParameterFactory {
         Map<String, Class<?>> map = new HashMap<>();
 
         // TODO build this map using reflection from a properties file
-        map.put("double", NumericalAttributeParameter.class);
+        map.put("double", NumericAttributeParameter.class);
         map.put("string", StringAttributeParameter.class);
 
         Class<?> c = getClassFromString(map, dataType);

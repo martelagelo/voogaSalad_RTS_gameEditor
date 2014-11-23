@@ -16,7 +16,7 @@ public class GreaterThanEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 	}
 
 	@Override
-	protected Boolean evaluate(Double num1, Double num2) {
+	protected Boolean evaluate(Number num1, Number num2) {
 		return num1.doubleValue() > num2.doubleValue();
 	}
 

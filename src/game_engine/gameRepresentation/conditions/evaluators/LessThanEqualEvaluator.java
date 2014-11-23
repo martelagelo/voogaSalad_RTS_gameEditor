@@ -16,7 +16,7 @@ public class LessThanEqualEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 	}
 
 	@Override
-	protected Boolean evaluate(Double number1, Double number2) {
+	protected Boolean evaluate(Number number1, Number number2) {
 		return number1.doubleValue() <= number2.doubleValue();
 	}
 

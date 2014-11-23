@@ -12,14 +12,14 @@ import java.util.List;
  * @author Zach
  *
  */
-public class NumericalAttributeParameter extends AttributeParameter<Double> {
+public class NumericAttributeParameter extends AttributeParameter<Number> {
 	/**
 	 * @see AttriubteParameter
 	 */
-	public NumericalAttributeParameter(String attributeTag,
+	public NumericAttributeParameter(String attributeTag,
 			GameElementManager elementManager,
 			ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-		super(Double.class, attributeTag, elementManager,
+		super(Number.class, attributeTag, elementManager,
 				objectOfInterestIdentifier);
 	}
 
@@ -29,7 +29,7 @@ public class NumericalAttributeParameter extends AttributeParameter<Double> {
 	 * @see AttributeParameter#getValue
 	 */
 	@Override
-	public Double getValue(List<GameElementState> elements, String attributeTag) {
+	public Number getValue(List<GameElementState> elements, String attributeTag) {
 		if (elements.size() == 0)
 			return 0d;
 		double valueSum = 0.0;
@@ -47,7 +47,7 @@ public class NumericalAttributeParameter extends AttributeParameter<Double> {
 	 */
 	@Override
 	public boolean setValue(List<GameElementState> elements,
-			String attributeTag, Double value) {
+			String attributeTag, Number value) {
 		elements.stream().forEach(
 				element -> element.setNumericalAttribute(attributeTag, value));
 		return true;

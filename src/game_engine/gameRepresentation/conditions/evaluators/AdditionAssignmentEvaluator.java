@@ -21,11 +21,8 @@ public class AdditionAssignmentEvaluator<A, B> extends Evaluator<A, B, Boolean> 
 	}
 
 	@Override
-	protected Boolean evaluate(Double num1, Double num2) {
-		return getParameter1().setValue(
-				getElementPair(),
-				getParameter1().getType().cast(
-						num1.doubleValue() + num2.doubleValue()));
+	protected Boolean evaluate(Number num1, Number num2) {
+		return setParameter1Value(num1.doubleValue() + num2.doubleValue());
 	}
 
 }

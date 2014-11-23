@@ -8,27 +8,27 @@ import game_engine.gameRepresentation.conditions.ElementPair;
  * @author Zach
  *
  */
-public class NumberParameter extends Parameter<Double> {
+public class NumberParameter extends Parameter<Number> {
 
-	private Double myValue;
+	private Number myValue;
 
 	/**
 	 * Create a number parameter feeding in a single value
 	 *
 	 * @param value
 	 */
-	public NumberParameter(Double value) {
-		super(Double.class);
+	public NumberParameter(Number value) {
+		super(Number.class);
 		myValue = value;
 	}
 
 	@Override
-	public Double getValue(ElementPair elements) {
+	public Number getValue(ElementPair elements) {
 		return myValue;
 	}
 
 	@Override
-	public boolean setValue(ElementPair elements, Double value) {
+	public boolean setValue(ElementPair elements, Number value) {
 		myValue = value;
 		return true;
 	}
