@@ -11,12 +11,12 @@ import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
-
+import gamemodel.exceptions.LevelNotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadUtility;
+
 
 /**
  * Main class for the model of the game
@@ -82,7 +82,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-            throws DescribableStateException {
+                                                                       throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -133,7 +133,7 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-            CampaignNotFoundException {
+                                                                   CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
         myCurrentLevelState = new LevelState(levelName.trim());
         myCurrentCampaignState.addLevel(myCurrentLevelState);
@@ -163,13 +163,24 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElement (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data);
-        System.out.println(gameElement);
-        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-        setChanged();
-        notifyObservers();
-        clearChanged();
+        // TODO: figure out the actual save loction for this
+        String saveLocation = "testSpritesheet";
+        try {
+            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
+            mySLUtil.saveImage(data.getValueByKey(GameElementStateFactory.IMAGE),
+                               saveLocation + System.getProperty("file.separator") +
+                                       data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+            DrawableGameElementState gameElement = GameElementStateFactory
+                    .createDrawableGameElementState(data, saveLocation);
+            System.out.println(gameElement);
+            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+            setChanged();
+            notifyObservers();
+            clearChanged();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
