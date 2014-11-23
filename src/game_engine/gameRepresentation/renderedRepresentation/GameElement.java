@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 // import game_engine.gameRepresentation.conditions.Condition;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 import java.util.Map;
@@ -14,13 +15,11 @@ import java.util.Map;
  * @author Jonathan, Nishad, Rahul, Steve
  *
  */
-public class GameElement {
-
-    // TODO: FIX THIS SHIT, not sure if right ???
-    // protected Map<Condition, Action> myConditionActionPairs;
+public class GameElement{
 
     private Map<Evaluatable<Boolean>, Evaluatable<?>> myConditionActionPairs;
     private GameElementState myGameElementState;
+
 
     /**
      * Create a game element with the given state

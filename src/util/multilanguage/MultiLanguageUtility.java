@@ -96,10 +96,6 @@ public class MultiLanguageUtility {
         myLanguages.setValue(FXCollections.observableArrayList());
         initLanguages(paths);
         updateProperties();
-        myLanguagesToStringsMap.forEach( (language, map) -> {
-            System.out.println("LANGUAGE " + language);
-            System.out.println(map.toString());
-        });
     }
 
     /**

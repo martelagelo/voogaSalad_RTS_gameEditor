@@ -138,7 +138,6 @@ public class SelectableGameElement extends DrawableGameElement {
         // .collect(Collectors.toList());
         return null;
     }
-
     public boolean isSelected () {
         return this.selected;
     }

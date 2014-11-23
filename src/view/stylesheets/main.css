@@ -1,0 +1,43 @@
+.grid, #splash, #editorRoot, #myTreeView, #menuBar  {
+-fx-background-color: #000000;
+    -fx-background: #000000;
+-fx-color: #6BB8F6;
+-fx-border-color:#6BB8F6;
+}
+
+.menu-item{
+-fx-color: #6BB8F6;
+}
+
+.menu .label
+{
+   -fx-text-fill: #6BB8F6;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color: #000000;;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #000000;
+}
+
+.tab .tab-label { 
+    -fx-text-fill: #6BB8F6;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #6BB8F6;
+}
+
+.tree-cell {
+  fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+}

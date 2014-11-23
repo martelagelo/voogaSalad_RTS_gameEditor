@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers;
 
 import game_engine.gameRepresentation.evaluatables.ElementPair;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.stateManaging.GameElementManager;
 
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ import java.util.List;
 public class ActorObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
-    public List<GameElementState> getElementOfInterest (GameElementManager elementManager,
+    public List<GameElement> getElementOfInterest (GameElementManager elementManager,
                                                         ElementPair elementPair, String elementTag) {
-        List<GameElementState> elementsOfInterest = new ArrayList<GameElementState>();
+        List<GameElement> elementsOfInterest = new ArrayList<GameElement>();
         elementsOfInterest.add(elementPair.getActor());
         return elementsOfInterest;
     }

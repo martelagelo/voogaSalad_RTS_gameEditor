@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -23,8 +24,9 @@ public class TriggerWizard extends Wizard {
 
     @Override
     public void updateData () {
-        addToData("Condition", condition.getText());
-        addToData("Action", condition.getText());
+        setDataName(GameElementStateFactory.TRIGGER);
+        addToData(GameElementStateFactory.CONDITION, condition.getText());
+        addToData(GameElementStateFactory.ACTION, condition.getText());
     }
 
 }

@@ -1,17 +1,13 @@
 package gamemodel;
 
 import game_engine.elementFactories.DeepCopy;
-import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**

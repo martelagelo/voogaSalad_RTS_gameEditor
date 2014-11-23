@@ -1,12 +1,17 @@
 package view;
 
 import gamemodel.MainModel;
+
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -18,7 +23,14 @@ import javafx.stage.Stage;
  *
  */
 public class MainView implements Observer {
-    private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
+
+    private static final String[] myLanguages =
+            new String[] {
+                          "resources.languages.English.properties",
+                          "resources.languages.Chinese.properties"
+            };
+
+    private static final Dimension SCENE_DIMENSIONS = Toolkit.getDefaultToolkit().getScreenSize();
     private Stage myStage;
     private Scene myScene;
     private MainModel myMainModel;
@@ -26,11 +38,17 @@ public class MainView implements Observer {
     private GUILoadStyleUtility myLoadStyleUtility;
 
     public MainView (Stage stage, MainModel model) {
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        util.initLanguages(myLanguages);
         myStage = stage;
+        myScene = new Scene(new Pane(), SCENE_DIMENSIONS.getWidth(),
+                SCENE_DIMENSIONS.getHeight());
         myMainModel = model;
         launchScreen(ViewScreen.SPLASH);
         myLoadStyleUtility = GUILoadStyleUtility.getInstance();
         myLoadStyleUtility.setScene(myScene);
+        myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
+        myLoadStyleUtility.addStyle("./stylesheets/main.css");
     }
 
     public void start () {
@@ -41,25 +59,6 @@ public class MainView implements Observer {
         launchScreen(screen.getFilePath());
     }
 
-    public void launchScreen (ViewScreen screen, String game) {
-        myMainModel.loadGame(game);
-
-        // Shitty test code
-        try {
-            myMainModel.loadGame("Shitty Game");
-            myMainModel.createCampaign("Shitty campaign 1");
-            myMainModel.createCampaign("Shitty campaign 2");
-            myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
-            myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
-            myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        launchScreen(screen);
-    }
-
     /**
      * private helper method to launch a screen for the stage
      * 
@@ -67,9 +66,7 @@ public class MainView implements Observer {
      */
     private void launchScreen (String filePath) {
         myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
-        myScene =
-                new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(),
-                          SCENE_DIMENSIONS.getHeight());
+        myScene.setRoot((Parent) myCurrentController.getRoot());
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
         myCurrentController.setModel(myMainModel);

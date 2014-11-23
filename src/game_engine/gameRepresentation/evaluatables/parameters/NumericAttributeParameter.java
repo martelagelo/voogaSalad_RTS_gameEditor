@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.evaluatables.parameters;
 
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.stateManaging.GameElementManager;
 
 import java.util.List;
@@ -29,13 +29,13 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
 	 * @see AttributeParameter#getValue
 	 */
 	@Override
-	public Number getValue(List<GameElementState> elements, String attributeTag) {
+	public Number getValue(List<GameElement> elements, String attributeTag) {
 		if (elements.size() == 0)
 			return 0d;
 		double valueSum = 0.0;
-		for (GameElementState element : elements) {
-			valueSum += element.getNumericalAttribute(attributeTag)
-					.doubleValue();
+		for (GameElement element : elements) {
+			valueSum += element.getGameElementState()
+					.getNumericalAttribute(attributeTag).doubleValue();
 		}
 		return valueSum / elements.size();
 	}
@@ -46,10 +46,11 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
 	 * @see AttributeParameter#setValue
 	 */
 	@Override
-	public boolean setValue(List<GameElementState> elements,
-			String attributeTag, Number value) {
+	public boolean setValue(List<GameElement> elements, String attributeTag,
+			Number value) {
 		elements.stream().forEach(
-				element -> element.setNumericalAttribute(attributeTag, value));
+				element -> element.getGameElementState().setNumericalAttribute(
+						attributeTag, value));
 		return true;
 	}
 

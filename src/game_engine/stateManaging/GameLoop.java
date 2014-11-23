@@ -9,7 +9,6 @@ import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -38,6 +37,7 @@ public class GameLoop {
         }
     };
 
+<<<<<<< HEAD
     /**
      * Create the game loop given a level to reference and a visual manager to manage object visuals
      *
@@ -52,6 +52,13 @@ public class GameLoop {
         timeline = new Timeline();
         start(framesPerSecond);
     }
+=======
+	private String myCampaignName;
+	private Level myCurrentLevel;
+	private ScrollableBackground myBackground;
+	private List<Computer> myComputerList = new ArrayList<Computer>();
+	private Timeline timeline;
+>>>>>>> origin/model
 
     /**
      * Start the game loop
@@ -61,6 +68,7 @@ public class GameLoop {
         startTimeline(frame);
     }
 
+<<<<<<< HEAD
     /**
      * Create a keyframe with the given framerate
      *
@@ -71,6 +79,22 @@ public class GameLoop {
         KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
         return frame;
     }
+=======
+	public GameLoop (String campaignName, Level level, VisualManager visualManager) {
+		myBackground = visualManager.getBackground();
+		myCampaignName = campaignName;
+		myCurrentLevel = level;
+		// myComputerList.add(new CollisionComputer());
+		// myComputerList.add(new VisionComputer());
+		timeline = new Timeline();
+		startGameLoop();
+	}
+	
+	public void startGameLoop() {
+		KeyFrame frame = start(framesPerSecond);
+		startTimeline(frame);
+	}
+>>>>>>> origin/model
 
     /**
      * Update the states of all prominant elements and aspects of the game
@@ -94,6 +118,7 @@ public class GameLoop {
         }
     }
 
+<<<<<<< HEAD
     /**
      * Start the timeline
      *
@@ -105,6 +130,32 @@ public class GameLoop {
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
     }
+=======
+	private void update () {
+		//Updates the background of the application
+		myBackground.update();
+		//Updates all of the conditions and actions of the game elements
+		List<DrawableGameElement> allElements =
+				new ArrayList<DrawableGameElement>();
+		allElements.addAll(myCurrentLevel.getUnits());
+		allElements.addAll(myCurrentLevel.getTerrain());
+		for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+			for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
+				c.compute(selectableElement, allElements);
+			}
+		}
+		for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+			selectableElement.update();
+		}
+	}
+	
+	private void startTimeline(KeyFrame frame) {
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.getKeyFrames().clear();
+		timeline.getKeyFrames().add(frame);
+		timeline.playFromStart();
+	}
+>>>>>>> origin/model
 
     /**
      * Play the game
@@ -127,6 +178,7 @@ public class GameLoop {
         timeline.stop();
     }
 
+<<<<<<< HEAD
     /**
      * Indicate if this level is the current levels
      *
@@ -135,6 +187,10 @@ public class GameLoop {
      */
     public boolean isCurrentLevel (LevelState level) {
         return level.sameLevel(myCurrentLevel.getLevelState());
+=======
+    public boolean isCurrentLevel (LevelState level, String campaignName) {
+        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName.equals(campaignName));
+>>>>>>> origin/model
     }
 
 }

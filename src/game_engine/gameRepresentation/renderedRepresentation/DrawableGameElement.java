@@ -33,9 +33,15 @@ public class DrawableGameElement extends GameElement implements Displayable {
         super(element);
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();
+        //TODO uncomment. For testing only
+        try{
         myAnimation =
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
                                     spritesheet.numCols);
+        }
+        catch (Exception e){
+        	//DO nothing
+        }
     }
 
     /**
