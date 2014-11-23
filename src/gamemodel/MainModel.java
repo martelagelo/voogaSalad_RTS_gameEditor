@@ -38,7 +38,7 @@ public class MainModel extends Observable {
 
     public void newGame () {
         // TODO CLEAN THIS UP
-        myGameState = new GameState("New Game");
+        myGameState = new GameState("NewGame");
     }
 
     /**
