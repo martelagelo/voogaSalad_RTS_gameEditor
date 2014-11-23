@@ -13,8 +13,7 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  * @author Zach
  *
  */
-public abstract class Parameter<T> implements Evaluatable<T> {
-	private final Class<T> myType;
+public abstract class Parameter<T> extends Evaluatable<T> {
 
 	/**
 	 * Create a parameter. Note that the type of the generic was included in the
@@ -27,7 +26,7 @@ public abstract class Parameter<T> implements Evaluatable<T> {
 	 *            is the type of this generic
 	 */
 	public Parameter(Class<T> type) {
-		myType = type;
+		super(type);
 	}
 
 	/**
@@ -54,8 +53,4 @@ public abstract class Parameter<T> implements Evaluatable<T> {
 	 */
 	public abstract boolean setValue(ElementPair elements, T value);
 
-	public Class<T> getType() {
-		return myType;
-	}
-	
 }

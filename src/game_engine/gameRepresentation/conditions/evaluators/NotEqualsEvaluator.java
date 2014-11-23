@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.NumberEvaluator;
-import game_engine.stateManaging.GameElementManager;
 
 /**
  * A not equals evaluator
@@ -11,9 +11,9 @@ import game_engine.stateManaging.GameElementManager;
  */
 public class NotEqualsEvaluator<A, B> extends Evaluator<A, B, Boolean>
 		implements NumberEvaluator<Boolean> {
-	public NotEqualsEvaluator(GameElementManager elementManager,
-			String parameter1, String parameter2) {
-		super("!=", elementManager, parameter1, parameter2);
+	public NotEqualsEvaluator(Evaluatable<A> parameter1,
+			Evaluatable<B> parameter2) {
+		super(Boolean.class, "!=", parameter1, parameter2);
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class NotEqualsEvaluator<A, B> extends Evaluator<A, B, Boolean>
 	}
 
 	@Override
-	public Boolean evaluate(Number num1, Number num2) {
+	public Boolean evaluate(Double num1, Double num2) {
 		return num1.doubleValue() != num2.doubleValue();
 	}
 

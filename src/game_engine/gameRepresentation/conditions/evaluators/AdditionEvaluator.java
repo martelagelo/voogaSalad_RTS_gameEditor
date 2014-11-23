@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.NumberEvaluator;
 import game_engine.stateManaging.GameElementManager;
 /**
@@ -9,17 +10,16 @@ import game_engine.stateManaging.GameElementManager;
  * @param <A> the first number
  * @param <B> the second number
  */
-public class AdditionEvaluator<A, B> extends Evaluator<A, B, Number> implements
-		NumberEvaluator<Number> {
+public class AdditionEvaluator<A, B> extends Evaluator<A, B, Double> implements
+		NumberEvaluator<Double> {
 
 	public AdditionEvaluator(String evaluatorRepresentation,
-			GameElementManager elementManager, String parameter1,
-			String parameter2) {
-		super(evaluatorRepresentation, elementManager, parameter1, parameter2);
+			Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
+		super(Double.class,evaluatorRepresentation, parameter1, parameter2);
 	}
-
+	//TODO fix this implementation. Currently does not set a value
 	@Override
-	public Number evaluate(Number num1, Number num2) {
+	public Double evaluate(Double num1, Double num2) {
 		return num1.doubleValue() + num2.doubleValue();
 	}
 

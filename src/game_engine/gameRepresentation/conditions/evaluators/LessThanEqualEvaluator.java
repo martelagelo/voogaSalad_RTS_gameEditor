@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
+import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.NumberEvaluator;
-import game_engine.stateManaging.GameElementManager;
 
 /**
  * A less than or equal to evaluator
@@ -12,13 +12,13 @@ import game_engine.stateManaging.GameElementManager;
 public class LessThanEqualEvaluator<A, B> extends Evaluator<A, B, Boolean>
 		implements NumberEvaluator<Boolean> {
 
-	public LessThanEqualEvaluator(GameElementManager elementManager,
-			String parameter1, String parameter2) {
-		super("<=", elementManager, parameter1, parameter2);
+	public LessThanEqualEvaluator(Evaluatable<A> parameter1,
+			Evaluatable<B> parameter2) {
+		super(Boolean.class, "<=", parameter1, parameter2);
 	}
 
 	@Override
-	public Boolean evaluate(Number number1, Number number2) {
+	public Boolean evaluate(Double number1, Double number2) {
 		return number1.doubleValue() <= number2.doubleValue();
 	}
 

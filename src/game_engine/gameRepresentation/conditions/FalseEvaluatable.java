@@ -9,7 +9,11 @@ package game_engine.gameRepresentation.conditions;
  * @author Zach
  *
  */
-public class FalseEvaluatable implements Evaluatable<Boolean>{
+public class FalseEvaluatable extends Evaluatable<Boolean> {
+
+	public FalseEvaluatable() {
+		super(Boolean.class);
+	}
 
 	@Override
 	public Boolean evaluate(ElementPair elements) {

@@ -20,9 +20,8 @@ public class ConditionFunctionalityTest {
 		NumberParameter testParam = new NumberParameter(Double.valueOf(45));
 		NumberParameter testParam2 = new NumberParameter(Double.valueOf(50));
 		LessThanEvaluator<Double,Double> evaluator = new LessThanEvaluator<>(testParam,testParam2);
-		System.out.println(evaluator.evaluate(new NullElementPair(), testParam, testParam2));
+		System.out.println(evaluator.evaluate(new NullElementPair(), Double.class,Double.class,testParam, testParam2));
 
-		//System.out.println(TypeFinder.UnEraseJavaGenerics(testParam.getType()));
 		
 
 	}

@@ -2,10 +2,6 @@ package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import game_engine.gameRepresentation.conditions.TypeFinder;
-import game_engine.gameRepresentation.conditions.parameters.Parameter;
-import game_engine.gameRepresentation.conditions.parameters.ParameterFactory;
-import game_engine.stateManaging.GameElementManager;
 
 /**
  * An abstract class for evaluators that acts on parameters to provide for
@@ -21,7 +17,7 @@ import game_engine.stateManaging.GameElementManager;
  * @param <T>
  *            the type returned by the evaluatable
  */
-public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
+public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	private String myEvaluatorRepresentation;
 	private Evaluatable<A> myParameter1;
 	private Evaluatable<B> myParameter2;
@@ -31,6 +27,9 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 	 * This string representation will be set by the children of the evaluator
 	 * and will be used in the creation of evaluators by a factory.
 	 *
+	 * @param type
+	 *            the return type of the evaluator. Used to bypass Java generic
+	 *            type erasure
 	 * @param evaluatorRepresentation
 	 *            the representation of the evaluator e.g. "<=", "==","+="
 	 * @param elementManager
@@ -42,7 +41,9 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 	 *            a string representation of the parameter on the right side of
 	 *            the evaluator
 	 */
-	public Evaluator(String evaluatorRepresentation, Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
+	public Evaluator(Class<T> type, String evaluatorRepresentation,
+			Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
+		super(type);
 		myEvaluatorRepresentation = evaluatorRepresentation;
 		myParameter1 = parameter1;
 		myParameter2 = parameter2;
@@ -80,16 +81,7 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 		A parameter1Value = myParameter1.evaluate(elements);
 		B parameter2Value = myParameter2.evaluate(elements);
 		System.out.println(parameter1Value.getClass());
-		return evaluate(parameter1Value,
-				parameter2Value);
-	}
-	public T evaluate(ElementPair elements,Evaluatable<A> myParameter1, Evaluatable<B> myParameter2) {
-		A parameter1Value = myParameter1.evaluate(elements);
-		B parameter2Value = myParameter2.evaluate(elements);
-		System.out.println("Got parameters");
-		System.out.println(parameter1Value.getClass());
-		return evaluate(parameter1Value,
-				parameter2Value);
+		return evaluate(parameter1Value, parameter2Value);
 	}
 
 	@Override
