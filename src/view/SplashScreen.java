@@ -107,17 +107,21 @@ public class SplashScreen extends GUIScreen {
     }
     
     private void drawTitle () {
-    	File fuck = new File("duvall.txt");
-    	System.out.println(fuck.exists());
     	EventHandler<ActionEvent> action;
 			action = new EventHandler<ActionEvent>(){
-				//InputStream iS = this.getClass().getClassLoader().getResourceAsStream("../duvall.txt");
-				//File f = new File("../duvall.txt");
+				Scanner myScanner = new Scanner(this.getClass().getClassLoader().getResourceAsStream("resources/duvall.txt"));
+				String contents = "";
 				public void handle(ActionEvent t) {
-
+					if(myScanner.hasNextLine()){
+						title.setPrefRowCount(1000);
+						title.setPrefColumnCount(60);
+						contents+=myScanner.nextLine();
+						contents+="\n";
+						title.setText(contents);
+					}
 				}
 			};
-			KeyFrame keyFrame = new KeyFrame(new Duration(100), action);
+			KeyFrame keyFrame = new KeyFrame(new Duration(50), action);
 			Timeline gameLoop = new Timeline(keyFrame);
 			gameLoop.setCycleCount(Animation.INDEFINITE);
 			gameLoop.play();
