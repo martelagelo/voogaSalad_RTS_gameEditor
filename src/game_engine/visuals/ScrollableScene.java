@@ -1,18 +1,11 @@
 package game_engine.visuals;
 
-import game_engine.visuals.UI.ClickManager;
-import game_engine.visuals.UI.KeyboardManager;
-import game_engine.visuals.UI.SelectionBox;
+import game_engine.UI.InputManager;
 import java.util.Observer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 
 /**
@@ -31,11 +24,8 @@ public class ScrollableScene extends Scene {
     public static final double FIELD_HEIGHT = 2000;
 
     private ScrollableBackground myBackground;
-    private ClickManager myClickManager;
     private SelectionBox mySelectionBox;
-    private KeyboardManager myKeyboardManager;
-    private Rectangle myBox;
-    private double pressedX, pressedY;
+    private InputManager myInputManager;
     private Group root;
 
     /**
@@ -46,15 +36,15 @@ public class ScrollableScene extends Scene {
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
      */
-    public ScrollableScene (Group root, double width, double height) {
+    public ScrollableScene (Group root, InputManager inputManager, double width, double height) {
         super(root, width, height);
+        myInputManager = inputManager;
         this.root = root;
-        myClickManager = new ClickManager();
-        myKeyboardManager = new KeyboardManager();
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
-        myBox = mySelectionBox.getBox();
-        root.getChildren().addAll(myBackground, myBox);
+        myInputManager.addClickObserver(mySelectionBox);
+        myInputManager.addMouseDragObserver(mySelectionBox);
+        root.getChildren().addAll(myBackground, mySelectionBox.getBox());
         initializeHandlers();
     }
 
@@ -72,117 +62,58 @@ public class ScrollableScene extends Scene {
      * registering clicks/ drags
      */
     private void initializeHandlers () {
-        this.setOnKeyTyped(new EventHandler<KeyEvent>() {
 
-            @Override
-            public void handle (KeyEvent event) {
-                myKeyboardManager.keyPressed(event);
-            }
+        setOnKeyTyped(e -> myInputManager.inputOccurred(e));
+        setOnMousePressed(e -> mousePressed(e));
+        setOnMouseReleased(e -> myInputManager.inputOccurred(e, -myBackground.getTranslateX(),
+                                                             -myBackground.getTranslateY(), false));
+        setOnMouseDragged(e -> myInputManager.inputOccurred(e, -myBackground.getTranslateX(),
+                                                            -myBackground.getTranslateY(), true));
 
-        });
-
-        this.setOnMouseMoved(new EventHandler<MouseEvent>() {
+        setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
                 double mouseX = event.getSceneX();
                 double mouseY = event.getSceneY();
+
+                // doesn't make sense to route this through the inputManager, since it would just go
+                // right back here again
                 setScrollSpeed(mouseX, mouseY);
             }
-
-            private void setScrollSpeed (double mouseX, double mouseY) {
-                if (mouseX < SLOW_SCROLL_BOUNDARY) {
-                    myBackground.setXScrollSpeed(-SLOW_SPEED);
-                    if (mouseX < FAST_SCROLL_BOUNDARY) myBackground.setXScrollSpeed(-FAST_SPEED);
-                }
-                else if (mouseY < SLOW_SCROLL_BOUNDARY) {
-                    myBackground.setYScrollSpeed(-SLOW_SPEED);
-                    if (mouseY < FAST_SCROLL_BOUNDARY) myBackground.setYScrollSpeed(-FAST_SPEED);
-                }
-                else if (mouseX > getWidth() - SLOW_SCROLL_BOUNDARY) {
-                    myBackground.setXScrollSpeed(SLOW_SPEED);
-                    if (mouseX > getWidth() - FAST_SCROLL_BOUNDARY)
-                        myBackground.setXScrollSpeed(FAST_SPEED);
-                }
-                else if (mouseY > getHeight() - SLOW_SCROLL_BOUNDARY) {
-                    myBackground.setYScrollSpeed(SLOW_SPEED);
-                    if (mouseY > getHeight() - FAST_SCROLL_BOUNDARY)
-                        myBackground.setYScrollSpeed(FAST_SPEED);
-                }
-                else {
-                    myBackground.setXScrollSpeed(0);
-                    myBackground.setYScrollSpeed(0);
-                }
-            }
         });
+    }
 
-        setOnMousePressed(new EventHandler<MouseEvent>()
-        {
-            public void handle (MouseEvent event)
-            {
-                mySelectionBox.resetBox();
-                myBackground.setXScrollSpeed(0);
-                myBackground.setYScrollSpeed(0);
-                pressedX = event.getSceneX();
-                pressedY = event.getSceneY();
-                mySelectionBox.setLocation(pressedX, pressedY);
+    public void mousePressed (MouseEvent event) {
+        myBackground.setXScrollSpeed(0);
+        myBackground.setYScrollSpeed(0);
 
-                if (!event.isPrimaryButtonDown()) {
-                    mySelectionBox.setVisible(false);
-                }
+        myInputManager.inputOccurred(event, -myBackground.getTranslateX(),
+                                     -myBackground.getTranslateY(), false);
+    }
 
-                double xLoc = -myBackground.getTranslateX() + pressedX;
-                double yLoc = -myBackground.getTranslateY() + pressedY;
-
-                myClickManager.clicked(event, xLoc, yLoc);
-            }
-        });
-
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle (MouseEvent event) {
-                if (event.getButton().equals(MouseButton.PRIMARY)) {
-                    mySelectionBox.setVisible(false);
-                    // do the math to determine the box's location relative to the map, rather than
-                    // on the screen
-                    double xTopLeftMap =
-                            -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
-                    double yTopLeftMap =
-                            -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
-                    double xBottomRight = xTopLeftMap + myBox.getWidth();
-                    double yBottomRight = yTopLeftMap + myBox.getHeight();
-                    if (xTopLeftMap != xBottomRight && yTopLeftMap != yBottomRight)
-                        mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight,
-                                                yBottomRight);
-                }
-            }
-        });
-
-        setOnMouseDragged(new EventHandler<MouseEvent>()
-        {
-            public void handle (MouseEvent event)
-            {
-                if (event.isPrimaryButtonDown()) {
-                    double newX = event.getSceneX();
-                    double newY = event.getSceneY();
-
-                    // stops the drag at the edge of the scene
-                    if (newX < 0) newX = 0;
-                    if (newY < 0) newY = 0;
-                    if (newX > getWidth()) newX = getWidth();
-                    if (newY > getHeight()) newY = getHeight();
-
-                    double difX = newX - pressedX;
-                    double difY = newY - pressedY;
-
-                    mySelectionBox.setSize(Math.abs(difX), Math.abs(difY));
-
-                    if (difX <= 0) mySelectionBox.setX(newX);
-                    if (difY <= 0) mySelectionBox.setY(newY);
-
-                    event.consume();
-                }
-            }
-        });
+    private void setScrollSpeed (double mouseX, double mouseY) {
+        if (mouseX < SLOW_SCROLL_BOUNDARY) {
+            myBackground.setXScrollSpeed(-SLOW_SPEED);
+            if (mouseX < FAST_SCROLL_BOUNDARY) myBackground.setXScrollSpeed(-FAST_SPEED);
+        }
+        else if (mouseY < SLOW_SCROLL_BOUNDARY) {
+            myBackground.setYScrollSpeed(-SLOW_SPEED);
+            if (mouseY < FAST_SCROLL_BOUNDARY) myBackground.setYScrollSpeed(-FAST_SPEED);
+        }
+        else if (mouseX > getWidth() - SLOW_SCROLL_BOUNDARY) {
+            myBackground.setXScrollSpeed(SLOW_SPEED);
+            if (mouseX > getWidth() - FAST_SCROLL_BOUNDARY)
+                myBackground.setXScrollSpeed(FAST_SPEED);
+        }
+        else if (mouseY > getHeight() - SLOW_SCROLL_BOUNDARY) {
+            myBackground.setYScrollSpeed(SLOW_SPEED);
+            if (mouseY > getHeight() - FAST_SCROLL_BOUNDARY)
+                myBackground.setYScrollSpeed(FAST_SPEED);
+        }
+        else {
+            myBackground.setXScrollSpeed(0);
+            myBackground.setYScrollSpeed(0);
+        }
     }
 
     /**
@@ -201,29 +132,16 @@ public class ScrollableScene extends Scene {
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
     }
-
-    /**
-     * adds an observer to the clicks on the scene
-     * 
-     * @param o the object that wants to be notified about the location
-     *        on the map that was clicked and which button was used
-     */
-    public void addClickObserver (Observer o) {
-        myClickManager.addObserver(o);
+    
+    public void addToScene(Group g){
+        root.getChildren().add(g);
     }
 
-    /**
-     * adds an observer to the keys pressed while focused on the scene
-     * 
-     * @param o the object that wants to be notified about the key
-     *        that was pressed
-     */
-    public void addKeyboardObserver (Observer o) {
-        myKeyboardManager.addObserver(o);
-    }
-
+<<<<<<< HEAD
     public void addObjects (Canvas c) {
         root.getChildren().add(c);
     }
 
+=======
+>>>>>>> c85bcd8cb098bfcec96f3956de1af2150f5c0326
 }

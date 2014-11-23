@@ -1,4 +1,4 @@
-package game_engine.visuals.UI;
+package game_engine.UI;
 
 import java.util.Observable;
 import javafx.scene.input.KeyEvent;

@@ -1,9 +1,9 @@
 package game_engine.visuals.UI;
 
+import game_engine.UI.ClickManager;
+import game_engine.UI.KeyboardManager;
 import java.util.Observable;
-import java.util.Observer;
 import javafx.event.Event;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
 

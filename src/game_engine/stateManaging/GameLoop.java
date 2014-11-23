@@ -5,10 +5,13 @@ import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.visuals.MiniMap;
 import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -29,7 +32,8 @@ public class GameLoop {
     private Level myCurrentLevel;
     // private ScrollableBackground myBackground;
     private VisualManager myVisualManager;
-
+    private MiniMap myMiniMap;
+    
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
 
@@ -46,10 +50,11 @@ public class GameLoop {
      * @param level the level that the gameLoop will be running
      * @param visualManager a visual manager wrapped around the level
      */
-    public GameLoop (Level level, VisualManager visualManager) {
-        // myBackground = visualManager.getBackground();
+    public GameLoop (Level level, VisualManager visualManager, MiniMap miniMap) {
+//        myBackground = visualManager.getBackground();
         myVisualManager = visualManager;
         myCurrentLevel = level;
+        myMiniMap = miniMap;
         // myComputerList.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
@@ -85,6 +90,7 @@ public class GameLoop {
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             selectableElement.update();
         }
+        myMiniMap.updateMiniMap();
     }
 
     /**

@@ -1,11 +1,13 @@
 package game_engine;
 
 import game_engine.gameRepresentation.factories.GameElementFactory;
+import game_engine.UI.InputManager;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.MiniMap;
+import game_engine.visuals.ScrollableScene;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
@@ -31,6 +33,7 @@ public class Engine extends Observable implements Observer {
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
+    private InputManager myInputManager;
     private MiniMap myMiniMap;
     private GameElementFactory myElementFactory;
 
@@ -38,8 +41,10 @@ public class Engine extends Observable implements Observer {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
         myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
-        myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
-        myMiniMap = new MiniMap();
+        myInputManager = new InputManager();
+        myVisualManager =
+                new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
+        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
     }
 
     public Group getVisualRepresentation () {
@@ -52,12 +57,14 @@ public class Engine extends Observable implements Observer {
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
-        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myMiniMap.setUnits(newLevel.getUnits());
+        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
-        myVisualManager.addClickObserver(myElementManager);
-        myVisualManager.addKeyboardObserver(myElementManager);
+        myInputManager.addClickObserver(myElementManager);
+        myInputManager.addKeyboardObserver(myElementManager);
+        myVisualManager.addMiniMap(myMiniMap.getDisplay());
     }
 
     public void play () {
@@ -67,6 +74,10 @@ public class Engine extends Observable implements Observer {
 
     public void pause () {
         myGameLoop.pause();
+    }
+
+    public MiniMap getMiniMap () {
+        return myMiniMap;
     }
 
     @Override
@@ -82,12 +93,13 @@ public class Engine extends Observable implements Observer {
         // TODO: check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
-            myGameLoop = new GameLoop(nextLevel, myVisualManager);
+            myMiniMap.setUnits(nextLevel.getUnits());
+            myGameLoop = new GameLoop(nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
-            myVisualManager.addClickObserver(myElementManager);
-            myVisualManager.addKeyboardObserver(myElementManager);
+            myInputManager.addClickObserver(myElementManager);
+            myInputManager.addKeyboardObserver(myElementManager);
             myVisualManager.addMiniMap(myMiniMap.getDisplay());
         }
     }
