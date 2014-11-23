@@ -1,9 +1,12 @@
 package view;
 
 import gamemodel.MainModel;
+
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
+
 import util.multilanguage.MultiLanguageUtility;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,7 +29,7 @@ public class MainView implements Observer {
                           "resources.languages.Chinese.properties"
             };
 
-    private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
+    private static final Dimension SCENE_DIMENSIONS = Toolkit.getDefaultToolkit().getScreenSize();
     private Stage myStage;
     private Scene myScene;
     private MainModel myMainModel;
@@ -49,20 +52,6 @@ public class MainView implements Observer {
 
     public void launchScreen (ViewScreen screen) {
         launchScreen(screen.getFilePath());
-
-        // Shitty test code
-        // try {
-        // myMainModel.loadGame("Shitty Game");
-        // myMainModel.createCampaign("Shitty campaign 1");
-        // myMainModel.createCampaign("Shitty campaign 2");
-        // myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
-        // myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
-        // myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
-        // }
-        // catch (Exception e) {
-        // e.printStackTrace();
-        // }
-
     }
 
     /**
