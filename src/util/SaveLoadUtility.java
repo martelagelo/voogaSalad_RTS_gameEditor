@@ -30,12 +30,10 @@ public class SaveLoadUtility implements ISaveLoad {
 
     }
 
-
     public <T> T loadResource (Class className, String filePath) throws Exception {
         Gson gson = new Gson();
         T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
         return jsonRepresentation;
-
     }
 
     public String save (JSONable object, String filePath) throws IOException {

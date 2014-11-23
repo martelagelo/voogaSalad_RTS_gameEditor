@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -69,7 +70,13 @@ public class SplashScreen extends GUIScreen {
         // TODO we need to link this up with save load in MainView and MainModel
         launchEditorButton.setOnAction(e -> {
             if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
-                myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
+                try {
+                    myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
+                } catch (Exception e1) {
+                    // TODO: handle exception and display to view
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
                 switchScreen(ViewScreen.EDITOR);
             }
                 else {

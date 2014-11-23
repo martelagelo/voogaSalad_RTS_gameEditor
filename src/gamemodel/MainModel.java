@@ -12,10 +12,12 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-import util.SaveLoadUtility;
 
+import util.SaveLoadUtility;
 
 /**
  * Main class for the model of the game
@@ -30,43 +32,54 @@ public class MainModel extends Observable {
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
     private SaveLoadUtility mySLUtil;
-    
-    public MainModel() {
+
+    public MainModel () {
         mySLUtil = new SaveLoadUtility();
     }
 
     public void newGame () {
-        //TODO CLEAN THIS UP
+        // TODO CLEAN THIS UP
         myGameState = new GameState("New Game");
     }
-    
+
     /**
      * Sets the game of the Model.
      * 
      * @param game
+     * @throws Exception
      */
-    public void loadGame (String game) {
-        if (game.equals("New Game")) {
-            myGameState = new GameState(game);
-            System.out.println("yay");
+    public void loadGame (String game) throws Exception {
+
+        try {
+            if (game.equals("New Game")) {
+                myGameState = new GameState(game);
+                System.out.println("yay");
+            } else {
+                // TODO: insert Save Load code here and instantiate myGameState
+                myGameState = mySLUtil.loadResource(GameState.class, getSaveLocation(game));
+            }
+        } catch (Exception e) {
+            //TODO Get rid of stack trace printing
+            e.printStackTrace();
         }
-        else {
-            //TODO: insert Save Load code here and instantiate myGameState
-            myGameState = mySLUtil.loadResource(GameState.class, game);            
-        }        
         setChanged();
         notifyObservers();
         clearChanged();
     }
-    
-    public void saveGame() throws RuntimeException {
-        try {
-            mySLUtil.save(myGameState, myGameState.getName());
-        }
-        catch (IOException e) { 
+
+    public void saveGame () throws RuntimeException {
+        try { 
+            mySLUtil.save(myGameState, getSaveLocation(myGameState.getName()));
+        } catch (IOException e) {
+            // TODO: eliminate stack trace printing
             e.printStackTrace();
-//            throw new RuntimeException(e);
+            // throw new RuntimeException(e);
         }
+    }
+
+    private String getSaveLocation (String name) {
+        return "MyGames" + File.separator + name + File.separator
+                + name;
     }
 
     public GameState getCurrentGame () {
@@ -74,7 +87,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-                                                                       throws DescribableStateException {
+            throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -85,7 +98,8 @@ public class MainModel extends Observable {
      * @param element
      */
     public void setEditorSelected (String elementName) {
-//        myEditorSelectedElement = myGameState.getGameUniverse().getElement(elementName);
+        // myEditorSelectedElement =
+        // myGameState.getGameUniverse().getElement(elementName);
         setChanged();
         notifyObservers();
         clearChanged();
@@ -99,7 +113,8 @@ public class MainModel extends Observable {
         return myEditorSelectedElement;
     }
 
-    // TODO: error handling is done by view, but need to create exception classes
+    // TODO: error handling is done by view, but need to create exception
+    // classes
     // for when campaign exists already
     /**
      * called by editor when creating a new campaign
@@ -123,8 +138,7 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-                                                                   CampaignNotFoundException,
-                                                                   LevelNotFoundException {
+            CampaignNotFoundException, LevelNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentCampaignState.addLevel(new LevelState(levelName, myCurrentCampaignState));
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
@@ -147,28 +161,30 @@ public class MainModel extends Observable {
         notifyObservers();
         clearChanged();
     }
-    
+
     /**
      * called by editor when creating a new game element
      * 
      * @param data
      */
     public void createDrawableGameElement (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory.createDrawableGameElementState(data);
+        DrawableGameElementState gameElement = GameElementStateFactory
+                .createDrawableGameElementState(data);
         System.out.println(gameElement);
         myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
         setChanged();
         notifyObservers();
         clearChanged();
     }
-    
+
     /**
      * called by editor when creating a new game element
      * 
      * @param data
      */
     public void createSelectableGameElement (WizardData data) {
-        SelectableGameElementState gameElement = GameElementStateFactory.createSelectableGameElementState(data);
+        SelectableGameElementState gameElement = GameElementStateFactory
+                .createSelectableGameElementState(data);
         System.out.println(gameElement);
         myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
         setChanged();
