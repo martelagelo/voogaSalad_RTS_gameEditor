@@ -121,8 +121,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
 	}
 
 	public Point2D getLocation() {
-		Point2D p = new Point2D(myAnimation.getNode().getLayoutX(), myAnimation
-				.getNode().getLayoutY());
+		Point2D p = new Point2D(getNode().getLayoutX(), getNode().getLayoutY());
 		return p;
 	}
 

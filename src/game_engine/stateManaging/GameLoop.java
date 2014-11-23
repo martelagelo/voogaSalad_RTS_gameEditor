@@ -50,27 +50,18 @@ public class GameLoop {
         // myComputerList.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
-        start(framesPerSecond);
+        startGameLoop();
     }
 
     /**
      * Start the game loop
      */
     public void startGameLoop () {
-        KeyFrame frame = start(framesPerSecond);
+        
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
         startTimeline(frame);
     }
 
-    /**
-     * Create a keyframe with the given framerate
-     *
-     * @param framesPerSecond the number of frames per second of the keyframe
-     * @return the keyframe
-     */
-    private KeyFrame start (Double framesPerSecond) {
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
-        return frame;
-    }
 
     /**
      * Update the states of all prominant elements and aspects of the game

@@ -27,7 +27,8 @@ public class SelectionBox extends Observable {
         points = new double[] { topLeftX, topLeftY, bottomRightX, bottomRightY };
         setChanged();
         notifyObservers();
-        System.out.println("SelectionBox: (" + topLeftX + ", " + topLeftY + ") , (" + bottomRightX + ", " +
+        System.out.println("SelectionBox: (" + topLeftX + ", " + topLeftY + ") , (" + bottomRightX +
+                           ", " +
                            bottomRightY + ")");
     }
 
@@ -38,8 +39,8 @@ public class SelectionBox extends Observable {
     public Rectangle getBox () {
         return myRectangle;
     }
-    
-    public void resetBox(){
+
+    public void resetBox () {
         myRectangle.setVisible(true);
         myRectangle.setWidth(0);
         myRectangle.setHeight(0);
@@ -52,6 +53,11 @@ public class SelectionBox extends Observable {
 
     public void setLocation (double pressedX, double pressedY) {
         myRectangle.setX(pressedX);
-        myRectangle.setY(pressedY);        
+        myRectangle.setY(pressedY);
     }
+
+    public void setVisible (boolean b) {
+        myRectangle.setVisible(b);
+    }
+
 }
