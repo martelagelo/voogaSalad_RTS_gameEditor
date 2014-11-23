@@ -30,6 +30,19 @@
     -fx-font-weight: bold;
 }
 
+.label .content {
+   -fx-background-color: black;
+   -fx-text-fill: white;
+}
+
+.label{
+  -fx-text-fill: white;
+  -fx-font-family: "Courier New";
+  -fx-font-weight: bolder;
+  -fx-font-size: 0.25em;
+  -fx-line-spacing: -2.5;
+}
+
 .tab:selected .tab-label { 
     -fx-alignment: CENTER;
     -fx-text-fill: #6BB8F6;
