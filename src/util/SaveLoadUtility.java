@@ -60,7 +60,7 @@ public class SaveLoadUtility implements ISaveLoad {
     }
 
     private String topLevelDirectory (String filePath) throws Exception {
-        String contents = filePath.substring(0, filePath.lastIndexOf("\\")+1);
+        String contents = filePath.substring(0, filePath.lastIndexOf("\\") + 1);
 
         return contents;
 
@@ -69,10 +69,9 @@ public class SaveLoadUtility implements ISaveLoad {
     private void setDefaults (String filePath) throws Exception {
         File file = new File("src/resources/img");
         File file2 = new File(filePath);
-        FileUtils.copyDirectory(file,  file2);
-        //Files.copy(file.toPath(), file2.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-        
+        FileUtils.copyDirectory(file, file2);
+        // Files.copy(file.toPath(), file2.toPath(),
+        // StandardCopyOption.REPLACE_EXISTING);
 
     }
 
@@ -89,9 +88,7 @@ public class SaveLoadUtility implements ISaveLoad {
     public void saveImage (String source, String destination) throws IOException {
         File sourceFile = obtainFile(source);
         File destFile = obtainFile(destination);
-        System.out.println(sourceFile.toString());
-        System.out.println(destFile.toString());
-        FileUtils.copyDirectory(sourceFile, destFile);
+        Files.copy(sourceFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
     }
 

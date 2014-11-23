@@ -18,29 +18,24 @@ public class TestLoadSaveUtility {
 
     @Test
     public void testLoadSaveFunction () throws Exception {
-       try {
-           myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
-       
-                "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
-                        + SaveLoadUtility.FILE_SEPARATOR + "campaign");
+        myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
+
+        "resources" + SaveLoadUtility.FILE_SEPARATOR + "game" + SaveLoadUtility.FILE_SEPARATOR
+                + "campaign");
         TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
-                        + SaveLoadUtility.FILE_SEPARATOR + "campaign2.json");
+                        + SaveLoadUtility.FILE_SEPARATOR + "campaign");
         myLoadSaveUtility.loadImage("src" + SaveLoadUtility.FILE_SEPARATOR + "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
                 + "exploBig.png");
-        myLoadSaveUtility.saveImage(
-                ("src/resources/img/exploBig.png"),
-                "resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
-                        + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
-       Image image =  myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
-                        + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
-       System.out.println(image.getHeight());
+        myLoadSaveUtility.saveImage(("src/resources/img/exploBig.png"), "resources"
+                + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
+                + "exploBigCopy.png");
+        Image image = myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR
+                + "img" + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
+        System.out.println(image.getHeight());
         TestCampaign loadedCampaign = campaign;
         System.out.println(loadedCampaign.myDescription);
-       }
-       catch (Exception e) {
-           System.out.println(e.getMessage());
-       }
+
     }
 }

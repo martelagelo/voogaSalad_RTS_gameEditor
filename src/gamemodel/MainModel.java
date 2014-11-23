@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.util.Observable;
 import util.SaveLoadUtility;
 
-
 /**
  * Main class for the model of the game
  * 
@@ -82,7 +81,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-                                                                       throws DescribableStateException {
+            throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -133,7 +132,7 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-                                                                   CampaignNotFoundException {
+            CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
         myCurrentLevelState = new LevelState(levelName.trim());
         myCurrentCampaignState.addLevel(myCurrentLevelState);
@@ -167,9 +166,10 @@ public class MainModel extends Observable {
         String saveLocation = "testSpritesheet";
         try {
             System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
-            mySLUtil.saveImage(data.getValueByKey(GameElementStateFactory.IMAGE),
-                               saveLocation + System.getProperty("file.separator") +
-                                       data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+            mySLUtil.saveImage(
+                    data.getValueByKey(GameElementStateFactory.IMAGE),
+                    saveLocation + System.getProperty("file.separator")
+                            + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, saveLocation);
             System.out.println(gameElement);
@@ -177,8 +177,7 @@ public class MainModel extends Observable {
             setChanged();
             notifyObservers();
             clearChanged();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
