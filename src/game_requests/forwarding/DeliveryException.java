@@ -2,7 +2,6 @@ package game_requests.forwarding;
 
 import game_requests.IRequest;
 
-
 /**
  * An exception capturing when an error occurred during delivery of an request
  * to a known receiver
@@ -17,9 +16,9 @@ public class DeliveryException extends Exception {
      * Create a new delivery exception
      * 
      * @param request
-     *        The request that failed to deliver
+     *            The request that failed to deliver
      * @param reason
-     *        The reason the delivery failed
+     *            The reason the delivery failed
      */
     public DeliveryException (IRequest request, String reason) {
         super("Delivery of " + request + " failed, because: " + reason);
