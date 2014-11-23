@@ -7,6 +7,7 @@ import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.Spritesheet;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -24,10 +25,13 @@ import javafx.scene.layout.VBox;
  */
 public class DrawableGameElement extends GameElement implements Displayable {
 
+	final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
     protected Group myDisplay;
     protected VBox myDisplayVBox;
+    private Image mySelectedImage;
+	private ImageView mySelectedImageView;
 
     /**
      * Create a drawable game element from the given state
@@ -42,8 +46,11 @@ public class DrawableGameElement extends GameElement implements Displayable {
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
                                     spritesheet.numCols);
         myDisplay = new Group();
-        myDisplayVBox = new VBox(2);
+        myDisplayVBox = new VBox(1);
+        mySelectedImage = new Image(SELECT_ARROW_URL);
+		mySelectedImageView = new ImageView(mySelectedImage);
         initializeDisplay();
+        
     }
 
     /**
@@ -119,8 +126,11 @@ public class DrawableGameElement extends GameElement implements Displayable {
      * Initializes the display for each game element
      */
     private void initializeDisplay() {
-    	 myDisplay.getChildren().add(myAnimation.getNode());
     	 myDisplay.getChildren().add(myDisplayVBox);
+    	 myDisplayVBox.setAlignment(Pos.TOP_CENTER);
+    	 myDisplayVBox.getChildren().add(mySelectedImageView);
+    	 mySelectedImageView.setOpacity(0.0);
+    	 myDisplayVBox.getChildren().add(myAnimation.getNode());
          myDisplay.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
                  .doubleValue());
          myDisplay.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
