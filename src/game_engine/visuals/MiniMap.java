@@ -18,7 +18,8 @@ import javafx.scene.shape.ArcType;
  */
 public class MiniMap {
 
-	private Group myMiniMap;
+	private final static Integer MINIMAP_WIDTH = 250;
+	private final static Integer MINIMAP_HEIGHT = 250;
 	private Canvas myDisplay;
 	private GraphicsContext myGraphicsContext;
 	private List<Point2D> gameElementPoints;
@@ -27,14 +28,11 @@ public class MiniMap {
 	 * Constructor for the MiniMap
 	 */
 	public MiniMap() {
-		myMiniMap = new Group();
-		myDisplay = new Canvas(300, 250);
+		myDisplay = new Canvas();
 		myGraphicsContext = myDisplay.getGraphicsContext2D();
 		initializeDisplay();
+		initializeGraphicsContext();
 		gameElementPoints = new ArrayList<Point2D>();
-		myMiniMap.setLayoutX(0);
-		myMiniMap.setLayoutY(0);
-		myMiniMap.getChildren().add(myDisplay);
 	}
 
 	/**
@@ -46,43 +44,44 @@ public class MiniMap {
 		return myDisplay;
 	}
 
-	public Group getMiniMap() {
-		return myMiniMap;
-	}
-
 	private void moveUnits() {
 
 	}
 
 	private void initializeDisplay() {
-		// myDisplay.setLayoutX(0);
-		// myDisplay.setLayoutY(0);
-		// myDisplay.setWidth(100);
-		// myDisplay.setHeight(100);
-		// myDisplay.setStyle("-fx-border-width: 3; -fx-border-color: black;" );
+		myDisplay.setLayoutX(0);
+		myDisplay.setLayoutY(0);
+		myDisplay.setWidth(MINIMAP_WIDTH);
+		myDisplay.setHeight(MINIMAP_HEIGHT);
+		myDisplay.setOpacity(0.5);
 	}
 
 	private void initializeGraphicsContext() {
-		// myGraphicsContext.setFill(Color.WHITE);
-		// myGraphicsContext.fillOval(10, 60, 30, 30);
-		drawShapes(myGraphicsContext);
+		myGraphicsContext.setFill(Color.WHITE);
+		myGraphicsContext.setStroke(Color.BLACK);
+		myGraphicsContext.setLineWidth(5);
+		myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
+		myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
+		//myGraphicsContext
+		//myGraphicsContext
+		//drawShapes(myGraphicsContext);
 	}
 
 	private void drawShapes(GraphicsContext gc) {
-		gc.setFill(Color.GREEN);
-		gc.setStroke(Color.BLUE);
+		gc.setFill(Color.WHITE);
+		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(5);
-		gc.strokeLine(40, 10, 10, 40);
-		gc.fillOval(10, 60, 30, 30);
-		gc.strokeOval(60, 60, 30, 30);
-		gc.fillRoundRect(110, 60, 30, 30, 10, 10);
-		gc.strokeRoundRect(160, 60, 30, 30, 10, 10);
-		gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
-		gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.CHORD);
-		gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.ROUND);
-		gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.OPEN);
-		gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.CHORD);
-		gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.ROUND);
+		//gc.strokeLine(40, 10, 10, 40);
+		//gc.fillOval(10, 60, 30, 30);
+		//gc.strokeOval(60, 60, 30, 30);
+		gc.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
+		gc.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
+		//gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
+		//gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.CHORD);
+		//gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.ROUND);
+		//gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.OPEN);
+		//gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.CHORD);
+		//gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.ROUND);
 		gc.fillPolygon(new double[] { 10, 40, 10, 40 }, new double[] { 210,
 				210, 240, 240 }, 4);
 		gc.strokePolygon(new double[] { 60, 90, 60, 90 }, new double[] { 210,

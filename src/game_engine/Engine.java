@@ -20,7 +20,7 @@ import javafx.scene.Scene;
  * The concrete boundary of the Engine - this class exposes the public API of the Engine to the rest
  * of the project.
  *
- * @author Steve, Jonathan, Nishad, Rahul
+ * @author Steve, Jonathan, Nishad, Rahul, Michael D.
  *
  */
 public class Engine extends Observable implements Observer {
@@ -88,7 +88,7 @@ public class Engine extends Observable implements Observer {
             myVisualManager.addBoxObserver(myElementManager);
             myVisualManager.addClickObserver(myElementManager);
             myVisualManager.addKeyboardObserver(myElementManager);
-            myVisualManager.addObjects(myMiniMap.getMiniMap());
+            myVisualManager.addMiniMap(myMiniMap.getDisplay());
         }
     }
 

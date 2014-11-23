@@ -3,10 +3,13 @@ package game_engine.visuals;
 import game_engine.visuals.UI.ClickManager;
 import game_engine.visuals.UI.KeyboardManager;
 import game_engine.visuals.UI.SelectionBox;
+
 import java.util.Observer;
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +40,7 @@ public class ScrollableScene extends Scene {
     private double myScreenHeight;
     private double myScreenWidth;
     private double pressedX, pressedY;
+    private Group root;
 
     /**
      * <<<<<<< HEAD
@@ -56,6 +60,7 @@ public class ScrollableScene extends Scene {
      */
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
+        this.root = root;
         this.myScreenHeight = height;
         this.myScreenWidth = width;
         myClickManager = new ClickManager();
@@ -241,5 +246,9 @@ public class ScrollableScene extends Scene {
     public void addKeyboardObserver (Observer o) {
         myKeyboardManager.addObserver(o);
     }
+
+	public void addObjects(Canvas c) {
+		root.getChildren().add(c);
+	}
 
 }
