@@ -83,5 +83,9 @@ public abstract class Wizard implements GUIController {
     public WizardData getWizardData() {
         return userInput;
     }
+    
+    public void setErrorMesssage(String error) {
+        errorMessage.setText(error);
+    }
 
 }
