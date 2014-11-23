@@ -36,13 +36,16 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
         this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
     }
+
     /**
      * Add an animation to the DrawableGameElementState's list of possible animations
+     * 
      * @param animation
      */
     public void addAnimation (AnimationSequence animation) {
         myAnimations.put(animation.toString(), animation);
     }
+
     /**
      * @return the animation that is currently being displayed by the state
      */

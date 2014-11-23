@@ -25,7 +25,7 @@ public class EditorMenuBarController implements GUIController {
     @Override
     public void initialize () {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

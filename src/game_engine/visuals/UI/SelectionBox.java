@@ -44,22 +44,23 @@ public class SelectionBox extends Observable {
 
     public void resetBox () {
         myRectangle.setVisible(true);
-        setSize(0,0);
-        setLocation(0,0);
+        setSize(0, 0);
+        setLocation(0, 0);
     }
-    
-    public void setSize(double width, double height){
+
+    public void setSize (double width, double height) {
         myRectangle.setWidth(width);
         myRectangle.setHeight(height);
     }
-    
-    public void setX(double x){
+
+    public void setX (double x) {
         myRectangle.setX(x);
     }
-    public void setY(double y){
+
+    public void setY (double y) {
         myRectangle.setY(y);
     }
-    
+
     public void setLocation (double x, double y) {
         setX(x);
         setY(y);

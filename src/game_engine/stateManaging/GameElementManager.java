@@ -68,27 +68,25 @@ public class GameElementManager implements Observer {
                                                            bounds[1] + bounds[3], bounds[0],
                                                            bounds[1] + bounds[3] });
 
-            if (contains(rectPoints, e.getLocation())){
+            if (contains(rectPoints, e.getLocation())) {
                 e.select(true);
                 System.out.println("Selected Unit");
             }
         }
     }
-    
-    private boolean contains(double[] rectPoints, Point2D unitLocationCenter){
-        
+
+    private boolean contains (double[] rectPoints, Point2D unitLocationCenter) {
+
         double topLeftX = rectPoints[0];
         double topLeftY = rectPoints[1];
         double bottomRightX = rectPoints[2];
         double bottomRightY = rectPoints[3];
-        
-        if(topLeftX<=unitLocationCenter.getX() && bottomRightX>=unitLocationCenter.getX()){
-            if(topLeftY<=unitLocationCenter.getY()&&bottomRightY>=unitLocationCenter.getY()){
-                return true;
-            }
+
+        if (topLeftX <= unitLocationCenter.getX() && bottomRightX >= unitLocationCenter.getX()) {
+            if (topLeftY <= unitLocationCenter.getY() && bottomRightY >= unitLocationCenter.getY()) { return true; }
         }
         return false;
-        
+
     }
 
     private void sendClickToSelectedUnits (Point2D click, boolean isPrimary) {

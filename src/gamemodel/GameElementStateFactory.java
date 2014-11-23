@@ -2,6 +2,7 @@ package gamemodel;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
+
 /**
  * Factory that creates a SavableGameElementState based on the info args
  * 

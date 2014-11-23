@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * 
  * @author Nishad Agrawal
@@ -13,8 +14,8 @@ import java.util.Map;
 public class WizardData {
     private Map<String, String> myData;
     private List<WizardData> myWizards;
-    
-    public WizardData() {
+
+    public WizardData () {
         myData = new HashMap<>();
         myWizards = new ArrayList<>();
     }
@@ -26,27 +27,25 @@ public class WizardData {
     public void addWizardData (WizardData wizData) {
         myWizards.add(wizData);
     }
-    
-    public Map<String, String> getData() {
+
+    public Map<String, String> getData () {
         return myData;
-    }   
-    
-    public List<WizardData> getWizards() {
+    }
+
+    public List<WizardData> getWizards () {
         return myWizards;
     }
 
     @Override
     public String toString () {
         StringBuilder sb = new StringBuilder();
-        for (String key: myData.keySet()) {
+        for (String key : myData.keySet()) {
             sb.append(key + ": " + myData.get(key) + "\n");
         }
-        for (WizardData wiz: myWizards) {
+        for (WizardData wiz : myWizards) {
             sb.append(wiz.toString());
         }
         return sb.toString();
     }
-    
-    
 
 }

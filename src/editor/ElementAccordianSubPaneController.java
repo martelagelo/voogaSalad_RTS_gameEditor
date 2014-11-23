@@ -1,7 +1,6 @@
 package editor;
 
 import java.util.HashMap;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -17,6 +16,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
+
 /**
  * 
  * @author Jonathan Tseng
@@ -31,7 +31,7 @@ public class ElementAccordianSubPaneController extends TitledPane {
     private ListView<String> myListView;
     private ObservableList<String> myElementsList;
     private HashMap<String, Node> myElementsMap;
-    
+
     public ElementAccordianSubPaneController (String gameElement) {
         myGameElement = gameElement;
         initAddElementButton();
@@ -46,29 +46,32 @@ public class ElementAccordianSubPaneController extends TitledPane {
         setText(gameElement);
         setContent(box);
     }
-    
-    private void initListView() {
+
+    private void initListView () {
         myElementsList = FXCollections.observableArrayList();
         myElementsMap = new HashMap<>();
         myListView = new ListView<>();
         myListView.setItems(myElementsList);
-        myListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {            
+        myListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call (ListView<String> arg0) {
                 return new GameElementListCell();
             }
         });
-        myListView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed (ObservableValue<? extends Number> value, Number oldValue, Number newValue) {
-                System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
-            }
-        });
+        myListView.getSelectionModel().selectedIndexProperty()
+                .addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed (ObservableValue<? extends Number> value,
+                                         Number oldValue,
+                                         Number newValue) {
+                        System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
+                    }
+                });
     }
-    
+
     private class GameElementListCell extends ListCell<String> {
         @Override
-        public void updateItem(String item, boolean empty) {
+        public void updateItem (String item, boolean empty) {
             super.updateItem(item, empty);
             setText(item);
             if (item != null) {
@@ -76,19 +79,19 @@ public class ElementAccordianSubPaneController extends TitledPane {
             }
         }
     }
-    
-    public void addElement(String element, Node image) {
+
+    public void addElement (String element, Node image) {
         myElementsList.add(element);
         myElementsMap.put(element, image);
     }
-    
-    private void initAddElementButton() {
+
+    private void initAddElementButton () {
         myAddElementButton = new Button();
         myAddElementButton.setText(CREATE_NEW_STRING + myGameElement);
-        myAddElementButton.setOnAction(event->addElement());
+        myAddElementButton.setOnAction(event -> addElement());
     }
-    
-    private void addElement() {
+
+    private void addElement () {
         System.out.println("clicked");
     }
 

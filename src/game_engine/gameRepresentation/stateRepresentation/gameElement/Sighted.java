@@ -1,8 +1,5 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
-
-
-
 /**
  * An interface required for object that have sight.
  *

@@ -3,9 +3,7 @@ package game_engine.visuals;
 import game_engine.visuals.UI.ClickManager;
 import game_engine.visuals.UI.KeyboardManager;
 import game_engine.visuals.UI.SelectionBox;
-
 import java.util.Observer;
-
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -57,9 +55,8 @@ public class ScrollableScene extends Scene {
         mySelectionBox = new SelectionBox();
         myBox = mySelectionBox.getBox();
         root.getChildren().addAll(myBackground, myBox);
-        initializeHandlers();        
+        initializeHandlers();
     }
-    
 
     /**
      * gets the background map that objects actually get added to
@@ -225,8 +222,8 @@ public class ScrollableScene extends Scene {
         myKeyboardManager.addObserver(o);
     }
 
-	public void addObjects(Canvas c) {
-		root.getChildren().add(c);
-	}
+    public void addObjects (Canvas c) {
+        root.getChildren().add(c);
+    }
 
 }

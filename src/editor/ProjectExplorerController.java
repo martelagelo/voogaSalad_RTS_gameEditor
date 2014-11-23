@@ -16,7 +16,7 @@ import view.GUIController;
 
 /**
  * 
- * Controller for the project explorer 
+ * Controller for the project explorer
  * 
  * @author Jonathan Tseng
  *
@@ -67,7 +67,7 @@ public class ProjectExplorerController implements GUIController {
 
     public void setOnLevelClicked (Consumer<String> levelClicked) {
         myLevelClickedConsumer = levelClicked;
-        myLevels.forEach((levelNode)->{
+        myLevels.forEach( (levelNode) -> {
             levelNode.setAction(myLevelClickedConsumer);
         });
     }

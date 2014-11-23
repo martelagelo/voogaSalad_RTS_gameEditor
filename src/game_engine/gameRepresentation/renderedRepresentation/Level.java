@@ -30,16 +30,16 @@ public class Level {
      * @param levelState
      */
     public Level (LevelState levelState) {
-        //TODO split this into multiple methods
+        // TODO split this into multiple methods
         myTerrain = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();
         myLevelState = levelState;
-        //Create and add the terrains
+        // Create and add the terrains
         for (DrawableGameElementState element : levelState.getTerrain()) {
             myTerrain.add(new DrawableGameElement(element));
         }
-        //Create and add the units to the map
+        // Create and add the units to the map
         for (SelectableGameElementState element : levelState.getUnits()) {
             myUnits.add(new SelectableGameElement(element));
         }

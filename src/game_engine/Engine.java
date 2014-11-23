@@ -1,5 +1,6 @@
 package game_engine;
 
+import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
@@ -8,10 +9,8 @@ import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
-
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
@@ -33,10 +32,12 @@ public class Engine extends Observable implements Observer {
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
+    private GameElementFactory myElementFactory;
 
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
+        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
         myMiniMap = new MiniMap();
     }
@@ -70,7 +71,6 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        // TODO Auto-generated method stub
         updateGameLoop(myMainModel.getCurrentLevel());
     }
 
@@ -79,7 +79,7 @@ public class Engine extends Observable implements Observer {
     }
 
     private void updateGameLoop (LevelState levelState) {
-        // TODO check equlity
+        // TODO: check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
             myGameLoop = new GameLoop(nextLevel, myVisualManager);

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class NumericalAttributeParameter extends AttributeParameter {
     /**
-     *  @see AttriubteParameter
+     * @see AttriubteParameter
      */
     public NumericalAttributeParameter (String attributeTag, GameElementManager elementManager,
                                         ObjectOfInterestIdentifier objectOfInterestIdentifier) {
@@ -23,6 +23,7 @@ public class NumericalAttributeParameter extends AttributeParameter {
 
     /**
      * Return the average value of the attribute of all the elements of interest
+     * 
      * @see AttributeParameter#getValue
      */
     @Override
@@ -36,8 +37,10 @@ public class NumericalAttributeParameter extends AttributeParameter {
         }
         return Double.toString(valueSum / elements.size());
     }
+
     /**
      * Set the value of each of the attributes to the given value
+     * 
      * @see AttributeParameter#setValue
      */
     @Override

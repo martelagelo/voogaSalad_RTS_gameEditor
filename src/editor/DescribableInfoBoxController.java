@@ -66,7 +66,7 @@ public class DescribableInfoBoxController implements GUIController {
         textInputControl.setEditable(false);
         textInputControl.setOnMouseClicked(e -> textInputControl.setEditable(true));
         textInputControl.focusedProperty().addListener( (e, oldVal, newVal) -> textInputControl
-                                                               .setEditable(newVal));
+                .setEditable(newVal));
     }
 
     @Override
@@ -77,7 +77,7 @@ public class DescribableInfoBoxController implements GUIController {
     @Override
     public void initialize () {
         initIconFileChoosing();
-        initLabelInputSwitching();        
+        initLabelInputSwitching();
     }
 
 }

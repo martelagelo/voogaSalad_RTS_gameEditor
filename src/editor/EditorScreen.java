@@ -73,6 +73,7 @@ public class EditorScreen extends GUIScreen {
 
     /**
      * loads and shows a popout wizard based on a filepath and a size for the popout
+     * 
      * @param filePath
      * @param dim
      */
