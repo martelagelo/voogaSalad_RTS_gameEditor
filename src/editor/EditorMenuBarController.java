@@ -1,13 +1,22 @@
 package editor;
 
+import java.util.function.Consumer;
+import editor.wizards.CampaignWizard;
+import editor.wizards.NumberAttributeWizard;
+import editor.wizards.WizardData;
+import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
+import view.GUILoadStyleUtility;
 
 
 /**
@@ -24,6 +33,8 @@ public class EditorMenuBarController extends GUIContainer {
     private final static String SAVE_KEY = "Save";
     
     private final static String LANGUAGE_KEY = "Languages";
+    
+    private static final String CAMPAIGN_WIZARD = "/editor/wizards/guipanes/CampaignWizard.fxml";
 
     @FXML
     private MenuBar menuBar;
@@ -84,7 +95,28 @@ public class EditorMenuBarController extends GUIContainer {
     
     private void initFileMenu() {
         newCampaignMenuItem.setOnAction(e->{
-            
+            CampaignWizard wiz =
+                    (CampaignWizard) GUILoadStyleUtility
+                            .generateGUIPane(CAMPAIGN_WIZARD);
+            Scene myScene = new Scene((Parent) wiz.getRoot(), 600, 300);
+            Stage s = new Stage();
+            s.setScene(myScene);
+            s.show();
+            Consumer<WizardData> bc = (data) -> {
+                try {
+                    System.out.println(data.getValueByKey(GameElementStateFactory.NAME));
+                    if (myMainModel == null) {
+                        System.out.println("null model");
+                    }
+                    myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));                    
+                }
+                catch (Exception e1) {
+                    e1.printStackTrace();
+                    wiz.setErrorMesssage(e1.getMessage());
+                }
+                s.close();
+            };
+            wiz.setSubmit(bc);
         });
         newLevelMenuItem.setOnAction(e->{});
         saveMenuItem.setOnAction(e->{
