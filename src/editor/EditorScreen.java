@@ -1,6 +1,7 @@
 package editor;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,10 @@ import view.GUIScreen;
 import view.WizardUtility;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
+import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
+import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.LevelNotFoundException;
 
 
 /**
@@ -101,12 +105,38 @@ public class EditorScreen extends GUIScreen {
 
     private void initProjectExplorer () {
         // TODO: on selection changed should update the info box
-        projectExplorerController.setOnSelectionChanged( (String s) -> {
-            System.out.println("selection changed: " + s);
+        projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
+            System.out.println(Arrays.toString(selection));
+            updateInfoBox(selection);
         });
         projectExplorerController.setOnLevelClicked( (String s) -> {
             launchTab(s);
         });
+    }
+
+    private void initInfoBox () {
+        gameInfoBoxController.setSubmitAction( (name, description) -> {
+            try {
+                myMainModel.updateDescribableState(projectExplorerController.getSelectedHierarchy(), name,
+                                                   description);
+            }
+            catch (CampaignNotFoundException | LevelNotFoundException e) {
+                System.out.println("Failed to update selected describable state");
+                e.printStackTrace();
+            }    
+        });
+    }
+
+    private void updateInfoBox (String[] selection) {
+        try {
+            DescribableState state = myMainModel.getDescribableState(selection);
+            gameInfoBoxController.setText(state.getName(), state.getDescription());
+            System.out.println("updating: " + state.getName() + ", " + state.getDescription());
+        }
+        catch (Exception e) {
+            System.out.println("shit update info box failed");
+            e.printStackTrace();
+        }
     }
 
     private void initTabs () {
@@ -156,6 +186,7 @@ public class EditorScreen extends GUIScreen {
         initTabs();
         initProjectExplorer();
         initAccordion();
+        initInfoBox();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
         save.setOnAction(e -> myMainModel.saveGame());
@@ -166,6 +197,7 @@ public class EditorScreen extends GUIScreen {
         updateAccordion();
         updateProjectExplorer();
         updateTabViewControllers();
+        updateInfoBox(projectExplorerController.getSelectedHierarchy());
     }
 
     // TODO: metadata stuff

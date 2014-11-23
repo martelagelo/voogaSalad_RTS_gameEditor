@@ -49,7 +49,7 @@ public class SaveLoadUtility implements ISaveLoad {
     public String save (JSONable object, String filePath) throws Exception {
         if (!mySavedGames.contains(filePath)) {
             mySavedGames.add(filePath);
-            setDefaults(topLevelDirectory(filePath));
+          //  setDefaults(topLevelDirectory(filePath));
         }
         File file = obtainFile(filePath + JSON_EXT);
         FileWriter writer = new FileWriter(file);
