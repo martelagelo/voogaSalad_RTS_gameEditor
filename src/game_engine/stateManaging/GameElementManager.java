@@ -60,15 +60,6 @@ public class GameElementManager implements Observer {
         for (SelectableGameElement e : myLevel.getUnits()) {
             e.select(false);
             System.out.println("Unit Unselected");
-            double[] bounds = e.getBounds();
-            // TODO: this doesn't work once the screen has scrolled
-            Polygon polygonBounds = new Polygon();
-            polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
-                                                           bounds[0] + bounds[2], bounds[1],
-                                                           bounds[0] + bounds[2],
-                                                           bounds[1] + bounds[3], bounds[0],
-                                                           bounds[1] + bounds[3] });
-
             if (contains(rectPoints, e.getLocation())){
                 e.select(true);
                 System.out.println("Selected Unit");

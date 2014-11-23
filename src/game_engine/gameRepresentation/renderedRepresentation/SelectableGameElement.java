@@ -4,16 +4,15 @@ import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-
 import java.util.List;
 import java.util.Map.Entry;
-
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+
 
 /**
  * A wrapper for game elements capable of being selected. Adds a "selected"
@@ -25,148 +24,179 @@ import javafx.scene.layout.VBox;
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-	private boolean isSelected;
-	// private SelectableGameElementState myState;
-	private Point2D heading;
-	// private boolean selected;
-	// TODO temporary, should be in the attributes
-	private double speed = 3;
+    private boolean isSelected;
+    // private SelectableGameElementState myState;
+    private Point2D heading;
+    // private boolean selected;
+    // TODO temporary, should be in the attributes
+    private double speed = 3;
+    private DIRECTION myDirection = DIRECTION.FWD;
 
-	/**
-	 * @see DrawableGameElementState
-	 */
-	public SelectableGameElement(DrawableGameElementState element) {
-		super(element);
-		this.isSelected = false;
-		// TODO Auto-generated constructor stub
-	}
+    private enum DIRECTION {
+        FWD, FWD_LEFT, LEFT, BK_LEFT, BK, BK_RIGHT, RIGHT, FWD_RIGHT
+    }
 
-	/**
-	 * @return the type of the element
-	 */
-	public String getType() {
-		return getState().getType();
-		// return myState.getType();
-	}
+    /**
+     * @see DrawableGameElementState
+     */
+    public SelectableGameElement (DrawableGameElementState element) {
+        super(element);
+        this.isSelected = false;
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * Select the element
-	 *
-	 * @param select
-	 *            a boolean indicating whether the object should be selected
-	 */
-	public void select(boolean select) {
-		isSelected = select;
-		updateSelectedIndicator();
-		// myAnimation.select(select);
-	}
+    /**
+     * @return the type of the element
+     */
+    public String getType () {
+        return getState().getType();
+        // return myState.getType();
+    }
 
-	/**
-	 * Update the object due to internal influences then update the object due
-	 * to collisions, visible objects, and the current objective of the object
-	 */
-	@Override
-	public void update() {
-		super.update();
-		updateSelfDueToCollisions();
-		updateSelfDueToVisions();
-		updateSelfDueToCurrentObjective();
-		move();
-	}
+    /**
+     * Select the element
+     *
+     * @param select
+     *        a boolean indicating whether the object should be selected
+     */
+    public void select (boolean select) {
+        isSelected = select;
+        updateSelectedIndicator();
+        // myAnimation.select(select);
+    }
 
-	private void move() {
-		if (heading == null)
-			heading = getLocation();
-		if (!heading.equals(getLocation())) {
-			Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-					heading.getY() - getLocation().getY());
-			if (delta.magnitude() > speed)
-				delta = delta.normalize().multiply(speed);
-			this.setLocation(getLocation().add(delta));
-		}
-	}
+    /**
+     * Update the object due to internal influences then update the object due
+     * to collisions, visible objects, and the current objective of the object
+     */
+    @Override
+    public void update () {
+        super.update();
+        updateSelfDueToCollisions();
+        updateSelfDueToVisions();
+        updateSelfDueToCurrentObjective();
+        move();
+    }
 
-	private Point2D getLoc() {
-		return new Point2D(getState().getNumericalAttribute(
-				DrawableGameElementState.X_POS_STRING).doubleValue(),
-				getState().getNumericalAttribute(
-						DrawableGameElementState.Y_POS_STRING).doubleValue());
-	}
+    private void move () {
+        if (heading == null)
+            heading = getLocation();
+        
+        setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
 
-	private void setLoc(Point2D location) {
-		getState().setNumericalAttribute(DrawableGameElementState.X_POS_STRING,
-				location.getX());
-		getState().setNumericalAttribute(DrawableGameElementState.Y_POS_STRING,
-				location.getY());
+        if (!heading.equals(getLocation())) {
+            Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
+                                        heading.getY() - getLocation().getY());
+            if (delta.magnitude() > speed)
+                delta = delta.normalize().multiply(speed);
+            this.setLocation(getLocation().add(delta));
+        }
+    }
 
-	}
+    private DIRECTION getDirection (Point2D loc, Point2D destination) {
+        double angle =
+                Math.atan2(-(destination.getY() - loc.getY()), destination.getX() - loc.getX());
+        double pi = Math.PI;
+        if ((-pi / 4.) < angle && angle <= (pi / 4.))
+            return DIRECTION.RIGHT;
+        else if ((pi / 8) < angle && angle <= (3 * pi / 8))
+            return DIRECTION.BK_RIGHT;
+        else if (3 * pi / 8 < angle && angle <= 5 * pi / 8)
+            return DIRECTION.BK;
+        else if (5 * pi / 8 < angle && angle < 7 * pi / 8)
+            return DIRECTION.BK_LEFT;
+        else if (7 * pi / 8 <= Math.abs(angle))
+            return DIRECTION.LEFT;
+        else if (-7 * pi / 8 < angle && angle <= -5 * pi / 8)
+            return DIRECTION.FWD_LEFT;
+        else if (-5 * pi / 8 < angle && angle <= -3 * pi / 8)
+            return DIRECTION.FWD;
+        else return DIRECTION.FWD_RIGHT;
+    }
 
-	private void updateSelfDueToCurrentObjective() {
-		getApplicableConditionActionPairs("ObjectiveCondition");
-	}
+    private void setAnimationDirection (Point2D loc, Point2D destination, boolean isMoving) {
+        String animationString;
+        if (isMoving) {
+            myDirection = getDirection(loc, destination);
+            animationString =
+                    ("walk_"+ myDirection.toString()).toLowerCase();
+        }
+        else{
+            animationString = ("stand_"+myDirection.toString()).toLowerCase();
+        }
+        this.getState().setAnimation(animationString);
+    }
 
-	public void updateSelfDueToSelection() {
-		getApplicableConditionActionPairs("SelfCondition");
-	}
+    private void updateSelfDueToCurrentObjective () {
+        getApplicableConditionActionPairs("ObjectiveCondition");
+    }
 
-	private void updateSelfDueToVisions() {
-		evaluateConditionActionPairsOnInteractingElementsSubset(
-				"VisionCondition", "VisibleElements");
-	}
+    public void updateSelfDueToSelection () {
+        getApplicableConditionActionPairs("SelfCondition");
+    }
 
-	private void updateSelfDueToCollisions() {
-		evaluateConditionActionPairsOnInteractingElementsSubset(
-				"CollisionCondition", "CollidingElements");
-	}
+    private void updateSelfDueToVisions () {
+        evaluateConditionActionPairsOnInteractingElementsSubset(
+                                                                "VisionCondition",
+                                                                "VisibleElements");
+    }
 
-	private void updateSelectedIndicator() {
-		VBox myDisplayVBox = super.getDisplayVBox();
-		ImageView iv = (ImageView) myDisplayVBox.getChildren().get(0);
-		if (isSelected) {
-			iv.setOpacity(1.0);
-		} else {
-			iv.setOpacity(0.0);
-		}
-	}
+    private void updateSelfDueToCollisions () {
+        evaluateConditionActionPairsOnInteractingElementsSubset(
+                                                                "CollisionCondition",
+                                                                "CollidingElements");
+    }
 
-	// TODO FIX THIS SHIT
-	private void evaluateConditionActionPairsOnInteractingElementsSubset(
-			String conditionActionPairIdentifier, String elementIdentifier) {
+    private void updateSelectedIndicator () {
+        VBox myDisplayVBox = super.getDisplayVBox();
+        ImageView iv = (ImageView) myDisplayVBox.getChildren().get(0);
+        if (isSelected) {
+            iv.setOpacity(1.0);
+        }
+        else {
+            iv.setOpacity(0.0);
+        }
+    }
 
-		// List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-		// getApplicableConditionActionPairs(conditionActionPairIdentifier);
-		// if (myState.getInteractingElements().containsKey(elementIdentifier))
-		// {
-		// for (DrawableGameElementState element :
-		// myState.getInteractingElements()
-		// .get(elementIdentifier)) {
-		// List<GameElementState> immediatelyInteractingElements =
-		// new ArrayList<GameElementState>();
-		// for (Entry<Evaluatable, Action> conditionActionPair :
-		// applicableConditionActionPairs) {
-		// if (conditionActionPair.getKey().evaluate(this, element)) {
-		// conditionActionPair.getValue().doAction(immediatelyInteractingElements);
-		// }
-		// }
-		// }
-		// }
-	}
+    // TODO FIX THIS SHIT
+    private void evaluateConditionActionPairsOnInteractingElementsSubset (
+                                                                          String conditionActionPairIdentifier,
+                                                                          String elementIdentifier) {
 
-	// TODO FIX THIS SHIT
-	private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs(
-			String conditionActionPairIdentifier) {
-		// return this.myConditionActionPairs.entrySet().stream()
+        // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+        // getApplicableConditionActionPairs(conditionActionPairIdentifier);
+        // if (myState.getInteractingElements().containsKey(elementIdentifier))
+        // {
+        // for (DrawableGameElementState element :
+        // myState.getInteractingElements()
+        // .get(elementIdentifier)) {
+        // List<GameElementState> immediatelyInteractingElements =
+        // new ArrayList<GameElementState>();
+        // for (Entry<Evaluatable, Action> conditionActionPair :
+        // applicableConditionActionPairs) {
+        // if (conditionActionPair.getKey().evaluate(this, element)) {
+        // conditionActionPair.getValue().doAction(immediatelyInteractingElements);
+        // }
+        // }
+        // }
+        // }
+    }
 
-		// .collect(Collectors.toList());
-		return null;
-	}
+    // TODO FIX THIS SHIT
+    private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (
+                                                                                String conditionActionPairIdentifier) {
+        // return this.myConditionActionPairs.entrySet().stream()
 
-	public boolean isSelected() {
-		return this.isSelected;
-	}
+        // .collect(Collectors.toList());
+        return null;
+    }
 
-	public void setHeading(Point2D click) {
-		this.heading = click;
-	}
+    public boolean isSelected () {
+        return this.isSelected;
+    }
+
+    public void setHeading (Point2D click) {
+        this.heading = click;
+    }
 
 }
