@@ -1,8 +1,6 @@
 package game_requests;
 
-import java.time.ZonedDateTime;
 import java.util.Map;
-
 
 /**
  * A request that can be sent between receivers using a forwarder

@@ -49,7 +49,7 @@ public class SplashScreen extends GUIScreen {
     }
 
     @Override
-    public void initialize () {
+    public void init () {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
         File folder = new File(GAMES_DIRECTORY);
@@ -60,12 +60,12 @@ public class SplashScreen extends GUIScreen {
                 .map(f -> f.getName())
                 .collect(Collectors.toList());
         gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
-        
+
         newGameButton.setOnAction(e -> {
             myMainModel.newGame();
             switchScreen(ViewScreen.EDITOR);
         });
-        
+
         // TODO we need to link this up with save load in MainView and MainModel
         launchEditorButton.setOnAction(e -> {
             if (gameDropDown.getSelectionModel().getSelectedItem() != null) {

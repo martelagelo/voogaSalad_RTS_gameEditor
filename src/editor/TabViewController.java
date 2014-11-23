@@ -32,7 +32,7 @@ public class TabViewController extends GUIContainer {
         // TODO Get Accordian Pane MetaData
         // call to levelElementAccordianController to set up the data
     }
-    
+
     @Override
     public void update () {
         // Get Accordian Pane MetaData
@@ -40,7 +40,7 @@ public class TabViewController extends GUIContainer {
     }
 
     @Override
-    public void initialize () {
+    public void init () {
         attachChildContainers(levelElementAccordianController);
         initAccordianPanes();
     }
@@ -49,5 +49,5 @@ public class TabViewController extends GUIContainer {
     public Node getRoot () {
         return tabPane;
     }
-    
+
 }

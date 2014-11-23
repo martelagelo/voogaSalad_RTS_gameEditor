@@ -107,10 +107,9 @@ public class MainModel extends Observable {
      * @param campaignName
      * @throws CampaignExistsException
      */
-    public void createCampaign (String campaignName) throws CampaignExistsException,
-                                                    CampaignNotFoundException {
-        myGameState.addCampaign(new CampaignState(campaignName));
-        myCurrentCampaignState = myGameState.getCampaign(campaignName);
+    public void createCampaign (String campaignName) throws CampaignExistsException {
+        myCurrentCampaignState = new CampaignState(campaignName);
+        myGameState.addCampaign(myCurrentCampaignState);
         setChanged();
         notifyObservers();
         clearChanged();

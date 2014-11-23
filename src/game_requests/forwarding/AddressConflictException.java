@@ -2,7 +2,6 @@ package game_requests.forwarding;
 
 import game_requests.receiving.IReceiver;
 
-
 /**
  * An exception capturing when an address conflicts with a pre-existing address
  */
@@ -16,14 +15,12 @@ public class AddressConflictException extends Exception {
      * Create a new address conflict exception
      * 
      * @param conflictingAddress
-     *        The address that conflicts with a pre-existing address
+     *            The address that conflicts with a pre-existing address
      * @param conflictingReceiver
-     *        The receiver that already possesses that address
+     *            The receiver that already possesses that address
      */
-    public AddressConflictException (String conflictingAddress,
-                                     IReceiver conflictingReceiver) {
-        super(conflictingAddress + " is already in use by "
-              + conflictingReceiver);
+    public AddressConflictException (String conflictingAddress, IReceiver conflictingReceiver) {
+        super(conflictingAddress + " is already in use by " + conflictingReceiver);
         myConflictingAddress = conflictingAddress;
         myConflictingReceiver = conflictingReceiver;
     }

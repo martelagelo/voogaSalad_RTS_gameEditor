@@ -23,6 +23,8 @@ public class GameElementStateFactory {
     public static final String TRIGGER = "Trigger";
     public static final String CONDITION = "Condition";
     public static final String ACTION = "Action";
+    public static final String CAMPAIGN = "Campaign";
+    public static final String LEVEL = "Level";
 
     public static GameElementState createGameElementState (WizardData data) {
         GameElementState state = new GameElementState();

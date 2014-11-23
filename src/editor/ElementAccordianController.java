@@ -13,14 +13,14 @@ public class ElementAccordianController extends GUIContainer {
 
     @FXML
     private Accordion elementAccordian;
-    
+
     @Override
     public Node getRoot () {
         return null;
     }
 
     @Override
-    public void initialize () {
+    public void init () {
         String filePath = "/editor/guipanes/GameElementDropDown.fxml";
         ElementDropDownControl dropDownController = (ElementDropDownControl) GUILoadStyleUtility
                 .generateGUIPane(filePath);
@@ -33,7 +33,7 @@ public class ElementAccordianController extends GUIContainer {
 
     @Override
     public void update () {
-        
+
     }
 
 }

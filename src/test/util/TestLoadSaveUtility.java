@@ -18,21 +18,29 @@ public class TestLoadSaveUtility {
 
     @Test
     public void testLoadSaveFunction () throws Exception {
-        myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
+       try {
+           myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
+       
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
                         + SaveLoadUtility.FILE_SEPARATOR + "campaign");
         TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
-                        + SaveLoadUtility.FILE_SEPARATOR + "campaign.json");
+                        + SaveLoadUtility.FILE_SEPARATOR + "campaign2.json");
         myLoadSaveUtility.loadImage("src" + SaveLoadUtility.FILE_SEPARATOR + "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
                 + "exploBig.png");
-        String savedImage = myLoadSaveUtility.saveImage(
-                new Image(getClass().getResourceAsStream("/resources/img/exploBig.png")),
+        myLoadSaveUtility.saveImage(
+                ("src/resources/img/exploBig.png"),
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
                         + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
-        myLoadSaveUtility.loadImage(savedImage);
+       Image image =  myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
+                        + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
+       System.out.println(image.getHeight());
         TestCampaign loadedCampaign = campaign;
         System.out.println(loadedCampaign.myDescription);
+       }
+       catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
     }
 }
