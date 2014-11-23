@@ -21,7 +21,7 @@ import javafx.util.Duration;
  * The main game loop. Sets the timeline and game loop in motion and calls the update method of all
  * the elements in the game
  *
- * @author Makru Dengu, Steve
+ * @author Michael D., Steve
  *
  */
 public class GameLoop {

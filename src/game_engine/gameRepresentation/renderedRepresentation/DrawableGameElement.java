@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
  * as well as an animation player. Essentially wraps a savable game element
  * state with a drawable wrapper to avoid JavaFX serialization problems.
  * 
- * @author Zach, Jonathan, Nishad, Rahul, John L.
+ * @author Zach, Jonathan, Nishad, Rahul, John L., Michael D.
  *
  */
 public class DrawableGameElement extends GameElement implements Displayable {

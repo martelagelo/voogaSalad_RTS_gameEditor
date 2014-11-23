@@ -2,6 +2,7 @@ package game_engine.visuals;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 
 
@@ -48,6 +49,10 @@ public class ScrollableBackground extends Pane
      */
     public void addObjects (Group g) {
         this.getChildren().add(g);
+    }
+    
+    public void addObjects (Canvas c) {
+    	this.getChildren().add(c);
     }
 
     /**
