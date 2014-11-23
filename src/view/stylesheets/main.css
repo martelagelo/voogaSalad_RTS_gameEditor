@@ -37,10 +37,12 @@
 
 .text-area{
   -fx-text-fill: white;
-  -fx-font-size: 3;
+  -fx-font-size: 2.3;
   -fx-font-family: "Courier New";
   -fx-font-weight: bold;
   -fx-line-spacing: 0;
+  -fx-pref-columns: 60; 
+  -fx-pref-rows: 1000;
 }
 
 .tab:selected .tab-label { 
