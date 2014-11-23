@@ -37,62 +37,42 @@ public class ScrollableScene extends Scene {
     private SelectionBox mySelectionBox;
     private KeyboardManager myKeyboardManager;
     private Rectangle myBox;
-    private double myScreenHeight;
-    private double myScreenWidth;
     private double pressedX, pressedY;
     private Group root;
 
     /**
-     * <<<<<<< HEAD
-     * Create a scrollable scene
-     * 
-     * @param root the root group for the scene
-     * @param width the width of the scene
-     * @param height the height of the scene
-     *        =======
-     *        Creates a new ScrollableScene for the map.
+     * Creates a new ScrollableScene for the map.
      * 
      * @param root the group of elements to add to the Scene initially. If
      *        no objects have been created yet to add, just add an empty new Group()
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
-     *        >>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
         this.root = root;
-        this.myScreenHeight = height;
-        this.myScreenWidth = width;
         myClickManager = new ClickManager();
         myKeyboardManager = new KeyboardManager();
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         myBox = mySelectionBox.getBox();
         root.getChildren().addAll(myBackground, myBox);
-        initializeHandlers();
+        initializeHandlers();        
     }
+    
 
     /**
-     * <<<<<<< HEAD
+     * gets the background map that objects actually get added to
      * 
      * @return the background of the scrollable scene
-     *         =======
-     *         gets the background map that objects actually get added to
-     * 
-     * @return
-     *         >>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableBackground getBackground () {
         return myBackground;
     }
 
     /**
-     * <<<<<<< HEAD
-     * Add all the necessary click and scroll handlers to the scene
-     * =======
      * initializes the handlers that respond to JavaFX events necessary for scrolling and
      * registering clicks/ drags
-     * >>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     private void initializeHandlers () {
         this.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -121,14 +101,14 @@ public class ScrollableScene extends Scene {
                     myBackground.setYScrollSpeed(-SLOW_SPEED);
                     if (mouseY < FAST_SCROLL_BOUNDARY) myBackground.setYScrollSpeed(-FAST_SPEED);
                 }
-                else if (mouseX > myScreenWidth - SLOW_SCROLL_BOUNDARY) {
+                else if (mouseX > getWidth() - SLOW_SCROLL_BOUNDARY) {
                     myBackground.setXScrollSpeed(SLOW_SPEED);
-                    if (mouseX > myScreenWidth - FAST_SCROLL_BOUNDARY)
+                    if (mouseX > getWidth() - FAST_SCROLL_BOUNDARY)
                         myBackground.setXScrollSpeed(FAST_SPEED);
                 }
-                else if (mouseY > myScreenHeight - SLOW_SCROLL_BOUNDARY) {
+                else if (mouseY > getHeight() - SLOW_SCROLL_BOUNDARY) {
                     myBackground.setYScrollSpeed(SLOW_SPEED);
-                    if (mouseY > myScreenHeight - FAST_SCROLL_BOUNDARY)
+                    if (mouseY > getHeight() - FAST_SCROLL_BOUNDARY)
                         myBackground.setYScrollSpeed(FAST_SPEED);
                 }
                 else {
@@ -164,10 +144,9 @@ public class ScrollableScene extends Scene {
             @Override
             public void handle (MouseEvent event) {
                 if (event.getButton().equals(MouseButton.PRIMARY)) {
-                    myBox.setVisible(false);
+                    mySelectionBox.setVisible(false);
                     // do the math to determine the box's location relative to the map, rather than
-                    // on
-                    // the screen
+                    // on the screen
                     double xTopLeftMap =
                             -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
                     double yTopLeftMap =
@@ -192,17 +171,16 @@ public class ScrollableScene extends Scene {
                     // stops the drag at the edge of the scene
                     if (newX < 0) newX = 0;
                     if (newY < 0) newY = 0;
-                    if (newX > myScreenWidth) newX = myScreenWidth;
-                    if (newY > myScreenHeight) newY = myScreenHeight;
+                    if (newX > getWidth()) newX = getWidth();
+                    if (newY > getHeight()) newY = getHeight();
 
                     double difX = newX - pressedX;
                     double difY = newY - pressedY;
 
-                    myBox.setWidth(Math.abs(difX));
-                    myBox.setHeight(Math.abs(difY));
+                    mySelectionBox.setSize(Math.abs(difX), Math.abs(difY));
 
-                    if (difX <= 0) myBox.setX(newX);
-                    if (difY <= 0) myBox.setY(newY);
+                    if (difX <= 0) mySelectionBox.setX(newX);
+                    if (difY <= 0) mySelectionBox.setY(newY);
 
                     event.consume();
                 }
@@ -214,7 +192,7 @@ public class ScrollableScene extends Scene {
      * updates the background to scroll and draw selection boxes
      */
     public void update () {
-        myBackground.update();
+        myBackground.update(getWidth(), getHeight());
     }
 
     /**

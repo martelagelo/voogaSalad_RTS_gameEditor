@@ -20,10 +20,12 @@ public class SelectionBox extends Observable {
 
     public SelectionBox () {
         myRectangle = new Rectangle();
+        myRectangle.setStroke(Color.RED);
+        myRectangle.setStrokeWidth(2);
+        myRectangle.setFill(Color.TRANSPARENT);
     }
 
     public void released (double topLeftX, double topLeftY, double bottomRightX, double bottomRightY) {
-        // send this information to the
         points = new double[] { topLeftX, topLeftY, bottomRightX, bottomRightY };
         setChanged();
         notifyObservers();
@@ -42,18 +44,25 @@ public class SelectionBox extends Observable {
 
     public void resetBox () {
         myRectangle.setVisible(true);
-        myRectangle.setWidth(0);
-        myRectangle.setHeight(0);
-        myRectangle.setStroke(Color.RED);
-        myRectangle.setStrokeWidth(2);
-        myRectangle.setFill(Color.TRANSPARENT);
-        myRectangle.setX(0);
-        myRectangle.setY(0);
+        setSize(0,0);
+        setLocation(0,0);
     }
-
-    public void setLocation (double pressedX, double pressedY) {
-        myRectangle.setX(pressedX);
-        myRectangle.setY(pressedY);
+    
+    public void setSize(double width, double height){
+        myRectangle.setWidth(width);
+        myRectangle.setHeight(height);
+    }
+    
+    public void setX(double x){
+        myRectangle.setX(x);
+    }
+    public void setY(double y){
+        myRectangle.setY(y);
+    }
+    
+    public void setLocation (double x, double y) {
+        setX(x);
+        setY(y);
     }
 
     public void setVisible (boolean b) {

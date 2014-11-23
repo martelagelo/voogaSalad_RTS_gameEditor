@@ -27,7 +27,9 @@ import javafx.util.Duration;
 public class GameLoop {
     public static final Double framesPerSecond = 60.0;  
     private Level myCurrentLevel;
-    private ScrollableBackground myBackground;
+//    private ScrollableBackground myBackground;
+    private VisualManager myVisualManager;
+    
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
 
@@ -45,7 +47,8 @@ public class GameLoop {
      * @param visualManager a visual manager wrapped around the level
      */
     public GameLoop (Level level, VisualManager visualManager) {
-        myBackground = visualManager.getBackground();
+//        myBackground = visualManager.getBackground();
+        myVisualManager = visualManager;
         myCurrentLevel = level;
         // myComputerList.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
@@ -64,11 +67,11 @@ public class GameLoop {
 
 
     /**
-     * Update the states of all prominant elements and aspects of the game
+     * Update the states of all prominent elements and aspects of the game
      */
     private void update () {
         // Updates the background of the application
-        myBackground.update();
+        myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
         List<DrawableGameElement> allElements =
                 new ArrayList<DrawableGameElement>();
