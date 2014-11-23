@@ -1,0 +1,26 @@
+.grid {
+    -fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+#splash {
+-fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+#editorRoot {
+-fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+#myTreeView {
+fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+.tree-cell {
+  fx-background-color: #000000;
+    -fx-background: #000000;
+}
+
+}

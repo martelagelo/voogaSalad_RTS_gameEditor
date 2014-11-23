@@ -25,9 +25,9 @@
 	</center>
 	<right>
 		<VBox>
-			<Button fx:id="newGameElement" text="New Game Element" />
-			<Button fx:id="newTerrain" text="New Terrain" />
-			<Button fx:id="save" text="Save" />
+			<Button defaultButton="true" fx:id="newGameElement" text="New Game Element" />
+			<Button defaultButton="true" fx:id="newTerrain" text="New Terrain" />
+			<Button defaultButton="true" fx:id="save" text="Save" />
 		</VBox>
 	</right>
 </BorderPane>
