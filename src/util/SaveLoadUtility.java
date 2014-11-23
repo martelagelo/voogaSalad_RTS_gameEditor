@@ -40,6 +40,8 @@ public class SaveLoadUtility implements ISaveLoad {
         File file = obtainFile(filePath + ".json");
         FileWriter writer = new FileWriter(file);
         String json = object.toJSON();
+        //TODO remove print
+        System.out.println(json);
         writer.write(json);
         writer.close();
         return file.getPath();

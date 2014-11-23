@@ -22,7 +22,7 @@ import util.SaveLoadUtility;
 /**
  * Main class for the model of the game
  * 
- * @author Jonathan Tseng
+ * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
  *
  */
 public class MainModel extends Observable {
@@ -59,7 +59,7 @@ public class MainModel extends Observable {
                 myGameState = mySLUtil.loadResource(GameState.class, getSaveLocation(game));
             }
         } catch (Exception e) {
-            //TODO Get rid of stack trace printing
+            // TODO Get rid of stack trace printing
             e.printStackTrace();
         }
         setChanged();
@@ -68,7 +68,7 @@ public class MainModel extends Observable {
     }
 
     public void saveGame () throws RuntimeException {
-        try { 
+        try {
             mySLUtil.save(myGameState, getSaveLocation(myGameState.getName()));
         } catch (IOException e) {
             // TODO: eliminate stack trace printing
@@ -78,8 +78,7 @@ public class MainModel extends Observable {
     }
 
     private String getSaveLocation (String name) {
-        return "MyGames" + File.separator + name + File.separator
-                + name;
+        return "MyGames" + File.separator + name + File.separator + name;
     }
 
     public GameState getCurrentGame () {
