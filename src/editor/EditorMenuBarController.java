@@ -2,6 +2,7 @@ package editor;
 
 import java.util.function.Consumer;
 import editor.wizards.CampaignWizard;
+import editor.wizards.LevelWizard;
 import editor.wizards.NumberAttributeWizard;
 import editor.wizards.WizardData;
 import gamemodel.GameElementStateFactory;
@@ -35,6 +36,7 @@ public class EditorMenuBarController extends GUIContainer {
     private final static String LANGUAGE_KEY = "Languages";
     
     private static final String CAMPAIGN_WIZARD = "/editor/wizards/guipanes/CampaignWizard.fxml";
+    private static final String LEVEL_WIZARD = "/editor/wizards/guipanes/LevelWizard.fxml";
 
     @FXML
     private MenuBar menuBar;
@@ -118,7 +120,25 @@ public class EditorMenuBarController extends GUIContainer {
             };
             wiz.setSubmit(bc);
         });
-        newLevelMenuItem.setOnAction(e->{});
+        newLevelMenuItem.setOnAction(e->{
+            LevelWizard wiz =
+                    (LevelWizard) GUILoadStyleUtility
+                            .generateGUIPane(LEVEL_WIZARD);
+            Scene myScene = new Scene((Parent) wiz.getRoot(), 600, 300);
+            Stage s = new Stage();
+            s.setScene(myScene);
+            s.show();
+            Consumer<WizardData> bc = (data) -> {
+                try {
+                    System.out.println(data);                                        
+                }
+                catch (Exception e1) {
+                    e1.printStackTrace();                    
+                }
+                s.close();
+            };
+            wiz.setSubmit(bc);
+        });
         saveMenuItem.setOnAction(e->{
             //TODO SAVE
         });
