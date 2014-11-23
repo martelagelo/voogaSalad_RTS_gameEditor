@@ -62,14 +62,13 @@ public class GameElementManager implements Observer {
             double[] bounds = e.getBounds();
             // TODO: this doesn't work once the screen has scrolled
             Polygon polygonBounds = new Polygon();
-            e.getLocation();
             polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
                                                            bounds[0] + bounds[2], bounds[1],
                                                            bounds[0] + bounds[2],
                                                            bounds[1] + bounds[3], bounds[0],
                                                            bounds[1] + bounds[3] });
 
-            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2]-rectPoints[0], rectPoints[3]-rectPoints[1])){
+            if (contains(rectPoints, e.getLocation())){
                 e.select(true);
                 System.out.println("Selected Unit");
             }
@@ -82,6 +81,12 @@ public class GameElementManager implements Observer {
         double topLeftY = rectPoints[1];
         double bottomRightX = rectPoints[2];
         double bottomRightY = rectPoints[3];
+        
+        if(topLeftX<=unitLocationCenter.getX() && bottomRightX>=unitLocationCenter.getX()){
+            if(topLeftY<=unitLocationCenter.getY()&&bottomRightY>=unitLocationCenter.getY()){
+                return true;
+            }
+        }
         return false;
         
     }

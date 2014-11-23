@@ -1,8 +1,10 @@
 package game_engine.visuals;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 
 
 /**
@@ -15,8 +17,6 @@ public class ScrollableBackground extends Pane
 {
     private double myXScrollSpeed, myYScrollSpeed;
     private double myXBoundary, myYBoundary;
-
-    private double myWidth, myHeight;
 
     /**
      * Create the scrollable background
@@ -31,10 +31,9 @@ public class ScrollableBackground extends Pane
                                  double xBoundary,
                                  double yBoundary)
     {
-        this.myWidth = screenWidth;
-        this.myHeight = screenHeight;
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
+        
         this.setMinSize(xBoundary, yBoundary);
 
         setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
@@ -51,26 +50,26 @@ public class ScrollableBackground extends Pane
     }
 
     /**
-     * Update the view ofthe background based on the current scroll speed
+     * Update the view of the background based on the current scroll speed
      */
-    public void update () {
+    public void update (double screenWidth, double screenHeight) {
         if ((getTranslateX() >= 0 && myXScrollSpeed < 0) ||
-            (-getTranslateX() >= (myXBoundary - myWidth) && myXScrollSpeed > 0))
+            (-getTranslateX() >= (myXBoundary - screenWidth) && myXScrollSpeed > 0))
             setXScrollSpeed(0);
         if ((getTranslateY() >= 0 && myYScrollSpeed < 0) ||
-            (-getTranslateY() >= (myYBoundary - myHeight) && myYScrollSpeed > 0))
+            (-getTranslateY() >= (myYBoundary - screenHeight) && myYScrollSpeed > 0))
             setYScrollSpeed(0);
         setTranslateX(getTranslateX() - myXScrollSpeed);
         setTranslateY(getTranslateY() - myYScrollSpeed);
-        retractOutOfBoundsScroll();
+        retractOutOfBoundsScroll(screenWidth, screenHeight);
     }
 
     /**
      * Undo scrolling if we're going out of bounds
      */
-    private void retractOutOfBoundsScroll () {
-        if (-getTranslateX() >= myXBoundary - myWidth) setTranslateX(-(myXBoundary - myWidth));
-        if (-getTranslateY() >= myYBoundary - myHeight) setTranslateY(-(myYBoundary - myHeight));
+    private void retractOutOfBoundsScroll (double screenWidth, double screenHeight) {
+        if (-getTranslateX() >= myXBoundary - screenWidth) setTranslateX(-(myXBoundary - screenWidth));
+        if (-getTranslateY() >= myYBoundary - screenHeight) setTranslateY(-(myYBoundary - screenHeight));
         if (getTranslateX() >= 0) setTranslateX(0);
         if (getTranslateY() >= 0) setTranslateY(0);
     }
