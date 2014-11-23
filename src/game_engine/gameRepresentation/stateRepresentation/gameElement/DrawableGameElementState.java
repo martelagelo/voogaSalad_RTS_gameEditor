@@ -25,6 +25,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     private double[] myBounds;
 
     public DrawableGameElementState (Number xPosition, Number yPosition) {
+        super();
         this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
         this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
         myAnimations = new HashMap<>();
@@ -61,5 +62,12 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public double[] getBounds () {
         return myBounds;
     }
+    
+    
+    public void setBounds(double[] bounds) {
+        myBounds = bounds;
+    }
+    
+    
 
 }

@@ -12,12 +12,11 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadUtility;
+
 
 /**
  * Main class for the model of the game
@@ -54,12 +53,14 @@ public class MainModel extends Observable {
             if (game.equals("New Game")) {
                 myGameState = new GameState(game);
                 System.out.println("yay");
-            } else {
+            }
+            else {
                 // TODO: insert Save Load code here and instantiate myGameState
                 myGameState = mySLUtil.loadResource(GameState.class, getSaveLocation(game));
             }
-        } catch (Exception e) {
-            //TODO Get rid of stack trace printing
+        }
+        catch (Exception e) {
+            // TODO Get rid of stack trace printing
             e.printStackTrace();
         }
         setChanged();
@@ -68,9 +69,10 @@ public class MainModel extends Observable {
     }
 
     public void saveGame () throws RuntimeException {
-        try { 
+        try {
             mySLUtil.save(myGameState, getSaveLocation(myGameState.getName()));
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             // TODO: eliminate stack trace printing
             e.printStackTrace();
             // throw new RuntimeException(e);
@@ -79,7 +81,7 @@ public class MainModel extends Observable {
 
     private String getSaveLocation (String name) {
         return "MyGames" + File.separator + name + File.separator
-                + name;
+               + name;
     }
 
     public GameState getCurrentGame () {
@@ -87,7 +89,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-            throws DescribableStateException {
+                                                                       throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -138,7 +140,8 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-            CampaignNotFoundException, LevelNotFoundException {
+                                                                   CampaignNotFoundException,
+                                                                   LevelNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentCampaignState.addLevel(new LevelState(levelName, myCurrentCampaignState));
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
@@ -168,13 +171,24 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElement (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data);
-        System.out.println(gameElement);
-        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-        setChanged();
-        notifyObservers();
-        clearChanged();
+        // TODO: figure out the actual save loction for this
+        String saveLocation = "testSpritesheet";
+        try {
+            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
+            mySLUtil.saveImage(data.getValueByKey(GameElementStateFactory.IMAGE),
+                               saveLocation + System.getProperty("file.separator") +
+                                       data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+            DrawableGameElementState gameElement = GameElementStateFactory
+                    .createDrawableGameElementState(data, saveLocation);
+            System.out.println(gameElement);
+            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+            setChanged();
+            notifyObservers();
+            clearChanged();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
