@@ -21,5 +21,4 @@ public interface Evaluatable <T> {
     default T evaluate() {
 		return evaluate(new NullElementPair());
 	}
-
 }

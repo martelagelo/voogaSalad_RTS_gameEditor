@@ -2,15 +2,16 @@ package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.conditions.TypeFinder;
 import game_engine.gameRepresentation.conditions.parameters.Parameter;
 import game_engine.gameRepresentation.conditions.parameters.ParameterFactory;
 import game_engine.stateManaging.GameElementManager;
 
 /**
  * An abstract class for evaluators that acts on parameters to provide for
- * functionality such as < > <= >=. All implementations of evaluators must
- * implement the evaluate method for their appropriate data type, allowing for a
- * large variety of functions to be implemented.
+ * functionality such as <, >, <=, >=, +=, getNearest, etc. All implementations
+ * of evaluators must implement the evaluate method for their appropriate data
+ * type, allowing for a large variety of functions to be implemented.
  *
  * @author Zach
  * @param <A>
@@ -21,9 +22,9 @@ import game_engine.stateManaging.GameElementManager;
  *            the type returned by the evaluatable
  */
 public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
-	String myEvaluatorRepresentation;
-	private Parameter<A> myParameter1;
-	private Parameter<B> myParameter2;
+	private String myEvaluatorRepresentation;
+	private Evaluatable<A> myParameter1;
+	private Evaluatable<B> myParameter2;
 
 	/**
 	 * Create the evaluator with the string representation of the evaluator.
@@ -41,11 +42,10 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 	 *            a string representation of the parameter on the right side of
 	 *            the evaluator
 	 */
-	public Evaluator(String evaluatorRepresentation,
-			GameElementManager elementManager, String parameter1,
-			String parameter2) {
+	public Evaluator(String evaluatorRepresentation, Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
 		myEvaluatorRepresentation = evaluatorRepresentation;
-		new ParameterFactory(elementManager);
+		myParameter1 = parameter1;
+		myParameter2 = parameter2;
 
 	}
 
@@ -58,7 +58,13 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 	 *            the object on the right side of the evaluator
 	 * @return the result of the evaluation on the two objects
 	 */
-	protected T evaluate(Object item1, Object item2) {
+	public T evaluate(Object item1, Object item2) {
+		System.out.println("Calling parent evaluate with objects");
+		return null;
+	}
+
+	public T evaluate(Double item1, Double item2) {
+		System.out.println("Calling double parent value");
 		return null;
 	}
 
@@ -71,9 +77,19 @@ public abstract class Evaluator<A, B, T> implements Evaluatable<T> {
 	 */
 	@Override
 	public T evaluate(ElementPair elements) {
-		A parameter1Value = myParameter1.getValue(elements);
-		B parameter2Value = myParameter2.getValue(elements);
-		return evaluate(parameter1Value, parameter2Value);
+		A parameter1Value = myParameter1.evaluate(elements);
+		B parameter2Value = myParameter2.evaluate(elements);
+		System.out.println(parameter1Value.getClass());
+		return evaluate(parameter1Value,
+				parameter2Value);
+	}
+	public T evaluate(ElementPair elements,Evaluatable<A> myParameter1, Evaluatable<B> myParameter2) {
+		A parameter1Value = myParameter1.evaluate(elements);
+		B parameter2Value = myParameter2.evaluate(elements);
+		System.out.println("Got parameters");
+		System.out.println(parameter1Value.getClass());
+		return evaluate(parameter1Value,
+				parameter2Value);
 	}
 
 	@Override

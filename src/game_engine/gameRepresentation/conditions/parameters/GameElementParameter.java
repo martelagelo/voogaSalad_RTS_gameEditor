@@ -5,7 +5,14 @@ import game_engine.gameRepresentation.conditions.parameters.objectIdentifiers.Ob
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 
-public class GameElementParameter implements Parameter<GameElementState> {
+/**
+ * A parameter that takes in an object of interest identifier and returns the
+ * object that is being referenced based on the currently supplied elementPair.
+ * 
+ * @author Zach
+ *
+ */
+public class GameElementParameter extends Parameter<GameElementState> {
 
 	private GameElementManager myManager;
 	private ObjectOfInterestIdentifier myObjectIdentifier;
@@ -14,20 +21,22 @@ public class GameElementParameter implements Parameter<GameElementState> {
 	public GameElementParameter(
 			ObjectOfInterestIdentifier objectOfInterestIdentifier,
 			String elementTag) {
+		super(GameElementState.class);
 		myObjectIdentifier = objectOfInterestIdentifier;
 		myElementTag = elementTag;
 
 	}
 
 	@Override
-	public GameElementState getValue(ElementPair elements) {
+	public GameElementState evaluate(ElementPair elements) {
 		return myObjectIdentifier.getElementOfInterest(myManager, elements,
 				myElementTag).get(0);
 	}
 
 	@Override
 	public boolean setValue(ElementPair elements, GameElementState value) {
-		//A parameter does not have the ability to set a referenced element's identifier
+		// A parameter does not have the ability to set a referenced element's
+		// identifier
 		return false;
 	}
 

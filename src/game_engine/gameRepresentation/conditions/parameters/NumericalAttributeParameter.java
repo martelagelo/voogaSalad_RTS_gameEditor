@@ -19,7 +19,8 @@ public class NumericalAttributeParameter extends AttributeParameter<Number> {
 	public NumericalAttributeParameter(String attributeTag,
 			GameElementManager elementManager,
 			ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-		super(attributeTag, elementManager, objectOfInterestIdentifier);
+		super(Number.class, attributeTag, elementManager,
+				objectOfInterestIdentifier);
 	}
 
 	/**

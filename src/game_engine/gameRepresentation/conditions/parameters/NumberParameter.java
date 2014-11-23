@@ -2,36 +2,35 @@ package game_engine.gameRepresentation.conditions.parameters;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 
-
 /**
  * A basic numeric parameter. i.e. a double
  *
  * @author Zach
  *
  */
-public class NumberParameter implements Parameter<Number> {
+public class NumberParameter extends Parameter<Double> {
 
-    private Number myValue;
+	private Double myValue;
 
-    /**
-     * Create a number parameter feeding in a single value
-     *
-     * @param value
-     */
-    public NumberParameter (double value) {
-        myValue = value;
-    }
+	/**
+	 * Create a number parameter feeding in a single value
+	 *
+	 * @param value
+	 */
+	public NumberParameter(Double value) {
+		super(null);
+		myValue = value;
+	}
 
-    @Override
-    public Number getValue (ElementPair elements) {
-        return myValue;
-    }
+	@Override
+	public Double evaluate(ElementPair elements) {
+		return myValue;
+	}
 
-    @Override
-    public boolean setValue (ElementPair elements,
-                             Number value) {
-        myValue = value;
-        return true;
-    }
+	@Override
+	public boolean setValue(ElementPair elements, Double value) {
+		myValue = value;
+		return true;
+	}
 
 }
