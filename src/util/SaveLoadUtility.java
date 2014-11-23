@@ -23,9 +23,13 @@ import com.google.gson.Gson;
  *
  */
 public class SaveLoadUtility implements ISaveLoad {
-    private static final String FILE_NOT_FOUND = "File not found";
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
+
+    public SaveLoadUtility () {
+
+    }
+
 
     public <T> T loadResource (Class className, String filePath) throws Exception {
         Gson gson = new Gson();
