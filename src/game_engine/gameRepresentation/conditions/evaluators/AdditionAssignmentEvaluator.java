@@ -13,16 +13,19 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  * @param <B>
  *            the second number
  */
-public class AdditionEvaluator<A, B> extends Evaluator<A, B, Boolean> {
+public class AdditionAssignmentEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
-	public AdditionEvaluator(String evaluatorRepresentation,
-			Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
-		super(Boolean.class, evaluatorRepresentation, parameter1, parameter2);
+	public AdditionAssignmentEvaluator(Evaluatable<A> parameter1,
+			Evaluatable<B> parameter2) {
+		super(Boolean.class, "+=", parameter1, parameter2);
 	}
 
 	@Override
 	protected Boolean evaluate(Double num1, Double num2) {
-		return getParameter1().setValue(getParameter1().getType().cast(num1.doubleValue() + num2.doubleValue()));
+		return getParameter1().setValue(
+				getElementPair(),
+				getParameter1().getType().cast(
+						num1.doubleValue() + num2.doubleValue()));
 	}
 
 }

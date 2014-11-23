@@ -24,7 +24,7 @@ public interface ObjectOfInterestIdentifier {
      * @param objectTag the optional tag of the object type for global references
      * @return the element of interest
      */
-    public List<GameElementState> getElementOfInterest (GameElementManager elementManager,
+	public List<GameElementState> getElementOfInterest (GameElementManager elementManager,
                                                         ElementPair elementPair, String elementTag);
 
 }

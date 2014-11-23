@@ -22,6 +22,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	private String myEvaluatorRepresentation;
 	private Evaluatable<A> myParameter1;
 	private Evaluatable<B> myParameter2;
+	private ElementPair myElementPair;
 
 	/**
 	 * Create the evaluator with the string representation of the evaluator.
@@ -62,8 +63,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * @return the result of the evaluation on the two objects
 	 */
 	protected T evaluate(Object item1, Object item2) {
-		System.out.println(item1.getClass());
-		System.out.println("Calling parent evaluate with objects");
 		return null;
 	}
 
@@ -99,6 +98,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	public T getValue(ElementPair elements) {
 		A parameter1Value = myParameter1.getValue(elements);
 		B parameter2Value = myParameter2.getValue(elements);
+		myElementPair = elements;
 		return delegateEvaluator(parameter1Value, parameter2Value);
 	}
 
@@ -143,6 +143,13 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 */
 	protected Evaluatable<B> getParameter2() {
 		return myParameter2;
+	}
+
+	/**
+	 * @return the current element pair
+	 */
+	protected ElementPair getElementPair() {
+		return myElementPair;
 	}
 
 	@Override

@@ -10,8 +10,7 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
  */
 public class EqualsEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
-	public EqualsEvaluator(String evaluatorRepresentation,
-			Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
+	public EqualsEvaluator(Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
 		super(Boolean.class, "=", parameter1, parameter2);
 	}
 
