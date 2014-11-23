@@ -66,7 +66,7 @@ public class MainModel extends Observable {
     public void saveGame () throws RuntimeException {
         try {
             mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
-        } catch (IOException e) {
+        } catch (Exception e) {
             // TODO: eliminate stack trace printing
             e.printStackTrace();
             // throw new RuntimeException(e);
@@ -74,7 +74,7 @@ public class MainModel extends Observable {
     }
 
     private String getGameSaveLocation (String name) {
-        return "MyGames" + File.separator + name + File.separator + name;
+        return "myGames" + File.separator + name + File.separator + name;
     }
 
     public GameState getCurrentGame () {
