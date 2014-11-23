@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D.
  *
  */
 public class SelectableGameElement extends DrawableGameElement {

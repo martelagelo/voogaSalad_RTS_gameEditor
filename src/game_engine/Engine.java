@@ -4,11 +4,14 @@ import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
+import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
+
 import java.util.Observable;
 import java.util.Observer;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
@@ -29,11 +32,13 @@ public class Engine extends Observable implements Observer {
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
+    private MiniMap myMiniMap;
 
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
         myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
+        myMiniMap = new MiniMap();
     }
 
     public Group getVisualRepresentation () {
@@ -83,6 +88,7 @@ public class Engine extends Observable implements Observer {
             myVisualManager.addBoxObserver(myElementManager);
             myVisualManager.addClickObserver(myElementManager);
             myVisualManager.addKeyboardObserver(myElementManager);
+            myVisualManager.addObjects(myMiniMap.getMiniMap());
         }
     }
 
