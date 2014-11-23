@@ -113,12 +113,11 @@ public class EditorMenuBarController extends GUIContainer {
                         System.out.println("null model");
                     }
                     myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
+                    s.close();
                 }
                 catch (Exception e1) {
-                    e1.printStackTrace();
-                    wiz.setErrorMesssage(e1.getMessage());
-                }
-                s.close();
+                    wiz.setErrorMesssage("Campaign Already Exists!");
+                }                
             };
             wiz.setSubmit(bc);
         });
@@ -132,12 +131,12 @@ public class EditorMenuBarController extends GUIContainer {
             s.show();
             Consumer<WizardData> bc = (data) -> {
                 try {
-                    System.out.println(data);
+                    myMainModel.createLevel(data.getValueByKey(GameElementStateFactory.NAME), data.getValueByKey(GameElementStateFactory.CAMPAIGN));
+                    s.close();
                 }
                 catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-                s.close();
+                    wiz.setErrorMesssage(e1.getMessage());                   
+                }                
             };
             wiz.setSubmit(bc);
         });
