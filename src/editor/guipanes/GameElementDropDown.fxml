@@ -10,7 +10,7 @@
 	<content>
 		<VBox>
 			<padding>
-				<Insets top="0" bottom="0" right="0" left="0"/>
+				<Insets top="0" bottom="0" right="0" left="0" />
 			</padding>
 			<children>
 				<Button fx:id="newElementButton" VBox.vgrow="NEVER">

@@ -22,7 +22,7 @@ import util.SaveLoadUtility;
 /**
  * Main class for the model of the game
  * 
- * @author Jonathan Tseng
+ * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
  *
  */
 public class MainModel extends Observable {
@@ -51,13 +51,10 @@ public class MainModel extends Observable {
     public void loadGame (String game) throws Exception {
 
         try {
-            if (game.equals("New Game")) {
-                myGameState = new GameState(game);
-            }
-            else {
-                // TODO: insert Save Load code here and instantiate myGameState
-                myGameState = mySLUtil.loadResource(GameState.class, getSaveLocation(game));
-            }
+            // TODO: insert Save Load code here and instantiate myGameState
+            myGameState = mySLUtil.loadResource(GameState.class, getGameSaveLocation(game));
+            // TODO remove print lines
+            System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         }
         catch (Exception e) {
             // TODO Get rid of stack trace printing
@@ -97,7 +94,7 @@ public class MainModel extends Observable {
 
     public void saveGame () throws RuntimeException {
         try {
-            mySLUtil.save(myGameState, getSaveLocation(myGameState.getName()));
+            mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
         }
         catch (IOException e) {
             // TODO: eliminate stack trace printing
@@ -106,8 +103,8 @@ public class MainModel extends Observable {
         }
     }
 
-    private String getSaveLocation (String name) {
-        return "MyGames" + File.separator + name + File.separator + name;
+    private String getGameSaveLocation (String name) {
+        return "myGames" + File.separator + name + File.separator + name;
     }
 
     public GameState getCurrentGame () {
@@ -196,13 +193,24 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElement (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data);
-        System.out.println(gameElement);
-        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-        setChanged();
-        notifyObservers();
-        clearChanged();
+        // TODO: figure out the actual save loction for this
+        String saveLocation = "testSpritesheet";
+        try {
+            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
+            mySLUtil.saveImage(data.getValueByKey(GameElementStateFactory.IMAGE),
+                               saveLocation + System.getProperty("file.separator") +
+                                       data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+            DrawableGameElementState gameElement = GameElementStateFactory
+                    .createDrawableGameElementState(data, saveLocation);
+            System.out.println(gameElement);
+            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+            setChanged();
+            notifyObservers();
+            clearChanged();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

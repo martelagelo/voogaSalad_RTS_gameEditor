@@ -86,7 +86,8 @@ public class DescribableInfoBoxController implements GUIController {
         // initIconFileChoosing();
         initLabelInputSwitching();
         try {
-            submitButton.textProperty().bind(MultiLanguageUtility.getInstance().getStringProperty(SUBMIT_KEY));
+            submitButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                                                     .getStringProperty(SUBMIT_KEY));
         }
         catch (LanguagePropertyNotFoundException e1) {
             e1.printStackTrace();
