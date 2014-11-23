@@ -21,7 +21,6 @@ public class AnimationPlayer implements Updatable, Displayable {
 	private AnimationSequence myCurrentAnimation;
 	private int myNumCols;
 	private ImageView myDisplay;
-	private ImageView mySelectArrow;
 	private Rectangle2D myImageBounds;
 
 	/**
@@ -39,9 +38,6 @@ public class AnimationPlayer implements Updatable, Displayable {
 		myDisplay = new ImageView(spriteSheet);
 		myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(), tileSize.getHeight()));
 		myImageBounds = getImageBounds(spriteSheet);
-		Image image = new Image("resources/img/Red_Arrow_Down.png");
-		mySelectArrow = new ImageView(image);
-
 	}
 
 	/**
@@ -112,14 +108,9 @@ public class AnimationPlayer implements Updatable, Displayable {
 				myTileSize.getHeight());
 	}
 
+	//TODO:Remove
 	public void select (boolean select) {
-		if (select) {
-			this.myDisplay.setStyle("-fx-border-color: green;");
-			//this.myDisplay.setImage(new Image("resources/img/Red_Arrow_Down.png"));
-		}
-		else {
-
-		}
+		this.myDisplay.setStyle("-fx-border-color: green");
 	}
 
 	public Dimension getDimension () {

@@ -7,8 +7,11 @@ import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.Spritesheet;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
 /**
@@ -23,6 +26,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
 
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
+    protected Group myDisplay;
 
     /**
      * Create a drawable game element from the given state
@@ -36,6 +40,8 @@ public class DrawableGameElement extends GameElement implements Displayable {
         myAnimation =
                 new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
                                     spritesheet.numCols);
+        myDisplay = new Group();
+        initializeDisplay();
     }
 
     /**
@@ -66,16 +72,10 @@ public class DrawableGameElement extends GameElement implements Displayable {
         return myState;
     }
     
+    //TODO: Fix. Move logic into group
     @Override
     public Node getNode () {
-        Node n = myAnimation.getNode();
-        n.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
-                .doubleValue());
-        n.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
-                .doubleValue());
-        n.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
-        n.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
-        return n;
+        return myDisplay;
     }
     /**
      * Get the bound array of the object
@@ -85,11 +85,11 @@ public class DrawableGameElement extends GameElement implements Displayable {
         return myState.getBounds();
     }
 
+    //TODO: Fix. Move logic into group
     public void setLocation (Point2D location) {
-        Node n = myAnimation.getNode();
-        n.setLayoutX(location.getX());
+        myDisplay.setLayoutX(location.getX());
         myState.setNumericalAttribute(DrawableGameElementState.X_POS_STRING, location.getX());
-        n.setLayoutY(location.getY());
+        myDisplay.setLayoutY(location.getY());
         myState.setNumericalAttribute(DrawableGameElementState.Y_POS_STRING, location.getY());
     }
 
@@ -97,5 +97,18 @@ public class DrawableGameElement extends GameElement implements Displayable {
         Point2D p =
                 new Point2D(myAnimation.getNode().getLayoutX(), myAnimation.getNode().getLayoutY());
         return p;
+    }
+    
+    /**
+     * Initializes the display for each game element
+     */
+    private void initializeDisplay() {
+    	 myDisplay.getChildren().add(myAnimation.getNode());
+         myDisplay.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
+                 .doubleValue());
+         myDisplay.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
+                 .doubleValue());
+         myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
+         myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
     }
 }
