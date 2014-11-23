@@ -2,6 +2,7 @@ package gamemodel;
 
 import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
+import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
@@ -11,6 +12,7 @@ import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
+import gamemodel.exceptions.LevelNotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
@@ -51,7 +53,6 @@ public class MainModel extends Observable {
         try {
             if (game.equals("New Game")) {
                 myGameState = new GameState(game);
-                System.out.println("yay");
             }
             else {
                 // TODO: insert Save Load code here and instantiate myGameState
@@ -65,6 +66,33 @@ public class MainModel extends Observable {
         setChanged();
         notifyObservers();
         clearChanged();
+    }
+
+    public void updateDescribableState (String[] selection, String name, String description)
+                                                                                            throws CampaignNotFoundException,
+                                                                                            LevelNotFoundException {
+        DescribableState state = getDescribableState(selection);
+        state.updateName(name);
+        state.updateDescription(description);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+    }
+
+    public DescribableState getDescribableState (String[] selection)
+                                                                    throws CampaignNotFoundException,
+                                                                    LevelNotFoundException {
+        if (selection[2].isEmpty()) {
+            if (selection[1].isEmpty()) {
+                return myGameState;
+            }
+            else {
+                return myGameState.getCampaign(selection[1]);
+            }
+        }
+        else {
+            return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
+        }
     }
 
     public void saveGame () throws RuntimeException {
