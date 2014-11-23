@@ -1,11 +1,11 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+
 import java.util.List;
 import java.util.Map.Entry;
+
 import javafx.geometry.Point2D;
 
 
@@ -132,7 +132,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     // TODO FIX THIS SHIT
-    private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
+    private List<Entry<Evaluatable<Boolean>, Evaluatable<?>>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
         // return this.myConditionActionPairs.entrySet().stream()
 
         // .collect(Collectors.toList());

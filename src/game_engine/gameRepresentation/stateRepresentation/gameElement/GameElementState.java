@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
-import game_engine.gameRepresentation.actions.Action;
-import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class GameElementState {
     private static final String NAME_ATTRIBUTE_STRING = "Name";
     private static final String TYPE_ATTRIBUTE_STRING = "Type";
 
-    protected Map<Evaluatable, Action> myConditionActionPairings;
+    protected Map<Evaluatable<Boolean>, Evaluatable<?>> myConditionActionPairings;
     protected Set<Attribute<Number>> myNumericalAttributes;
     protected Set<Attribute<String>> myTextualAttributes;
 

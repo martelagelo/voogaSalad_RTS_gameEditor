@@ -2,9 +2,11 @@ package test.conditions;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import game_engine.gameRepresentation.conditions.ConditionParser;
+import game_engine.gameRepresentation.evaluatables.ConditionParser;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import org.junit.Before;
 import org.junit.Test;
 
