@@ -15,30 +15,27 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-
-
 /**
- * A wrapper for game elements capable of being selected. Adds a "selected" visual appearance to the
- * appearance defined by the DrawableGameElement and handles animations for actions resulting from
- * being selected.
+ * A wrapper for game elements capable of being selected. Adds a "selected"
+ * visual appearance to the appearance defined by the DrawableGameElement and
+ * handles animations for actions resulting from being selected.
  *
  * @author Jonathan , Steve, Nishad, Rahul, John
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-	
 	private boolean isSelected;
-	//    private SelectableGameElementState myState;
+	// private SelectableGameElementState myState;
 	private Point2D heading;
-	//private boolean selected;
+	// private boolean selected;
 	// TODO temporary, should be in the attributes
 	private double speed = 3;
 
 	/**
 	 * @see DrawableGameElementState
 	 */
-	public SelectableGameElement (DrawableGameElementState element) {
+	public SelectableGameElement(DrawableGameElementState element) {
 		super(element);
 		this.isSelected = false;
 		// TODO Auto-generated constructor stub
@@ -47,7 +44,7 @@ public class SelectableGameElement extends DrawableGameElement {
 	/**
 	 * @return the type of the element
 	 */
-	public String getType () {
+	public String getType() {
 		return getState().getType();
 		// return myState.getType();
 	}
@@ -55,20 +52,21 @@ public class SelectableGameElement extends DrawableGameElement {
 	/**
 	 * Select the element
 	 *
-	 * @param select a boolean indicating whether the object should be selected
+	 * @param select
+	 *            a boolean indicating whether the object should be selected
 	 */
-	public void select (boolean select) {
+	public void select(boolean select) {
 		isSelected = select;
 		updateSelectedIndicator();
-		//myAnimation.select(select);
+		// myAnimation.select(select);
 	}
 
 	/**
-	 * Update the object due to internal influences then update the object due to collisions,
-	 * visible objects, and the current objective of the object
+	 * Update the object due to internal influences then update the object due
+	 * to collisions, visible objects, and the current objective of the object
 	 */
 	@Override
-	public void update () {
+	public void update() {
 		super.update();
 		updateSelfDueToCollisions();
 		updateSelfDueToVisions();
@@ -76,71 +74,76 @@ public class SelectableGameElement extends DrawableGameElement {
 		move();
 	}
 
-	private void move () {
-		if (heading == null) heading = getLocation();
+	private void move() {
+		if (heading == null)
+			heading = getLocation();
 		if (!heading.equals(getLocation())) {
-			Point2D delta =
-					new Point2D(heading.getX() - getLocation().getX(), heading.getY() -
-							getLocation().getY());
-			if (delta.magnitude() > speed) delta = delta.normalize().multiply(speed);
+			Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
+					heading.getY() - getLocation().getY());
+			if (delta.magnitude() > speed)
+				delta = delta.normalize().multiply(speed);
 			this.setLocation(getLocation().add(delta));
 		}
 	}
 
-	private Point2D getLoc () {
-		return new Point2D(getState().getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
-				.doubleValue(), getState()
-				.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
-				.doubleValue());
+	private Point2D getLoc() {
+		return new Point2D(getState().getNumericalAttribute(
+				DrawableGameElementState.X_POS_STRING).doubleValue(),
+				getState().getNumericalAttribute(
+						DrawableGameElementState.Y_POS_STRING).doubleValue());
 	}
 
-	private void setLoc (Point2D location) {
-		getState().setNumericalAttribute(DrawableGameElementState.X_POS_STRING, location.getX());
-		getState().setNumericalAttribute(DrawableGameElementState.Y_POS_STRING, location.getY());
+	private void setLoc(Point2D location) {
+		getState().setNumericalAttribute(DrawableGameElementState.X_POS_STRING,
+				location.getX());
+		getState().setNumericalAttribute(DrawableGameElementState.Y_POS_STRING,
+				location.getY());
 
 	}
 
-	private void updateSelfDueToCurrentObjective () {
+	private void updateSelfDueToCurrentObjective() {
 		getApplicableConditionActionPairs("ObjectiveCondition");
 	}
 
-	public void updateSelfDueToSelection () {
+	public void updateSelfDueToSelection() {
 		getApplicableConditionActionPairs("SelfCondition");
 	}
 
-	private void updateSelfDueToVisions () {
-		evaluateConditionActionPairsOnInteractingElementsSubset("VisionCondition",
-				"VisibleElements");
+	private void updateSelfDueToVisions() {
+		evaluateConditionActionPairsOnInteractingElementsSubset(
+				"VisionCondition", "VisibleElements");
 	}
 
-	private void updateSelfDueToCollisions () {
-		evaluateConditionActionPairsOnInteractingElementsSubset("CollisionCondition",
-				"CollidingElements");
+	private void updateSelfDueToCollisions() {
+		evaluateConditionActionPairsOnInteractingElementsSubset(
+				"CollisionCondition", "CollidingElements");
 	}
 
 	private void updateSelectedIndicator() {
 		VBox myDisplayVBox = super.getDisplayVBox();
 		ImageView iv = (ImageView) myDisplayVBox.getChildren().get(0);
-		if(isSelected) {
+		if (isSelected) {
 			iv.setOpacity(1.0);
-		} 
-		else {
+		} else {
 			iv.setOpacity(0.0);
 		}
 	}
 
 	// TODO FIX THIS SHIT
-	private void evaluateConditionActionPairsOnInteractingElementsSubset (String conditionActionPairIdentifier,
-			String elementIdentifier) {
+	private void evaluateConditionActionPairsOnInteractingElementsSubset(
+			String conditionActionPairIdentifier, String elementIdentifier) {
 
 		// List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
 		// getApplicableConditionActionPairs(conditionActionPairIdentifier);
-		// if (myState.getInteractingElements().containsKey(elementIdentifier)) {
-		// for (DrawableGameElementState element : myState.getInteractingElements()
+		// if (myState.getInteractingElements().containsKey(elementIdentifier))
+		// {
+		// for (DrawableGameElementState element :
+		// myState.getInteractingElements()
 		// .get(elementIdentifier)) {
 		// List<GameElementState> immediatelyInteractingElements =
 		// new ArrayList<GameElementState>();
-		// for (Entry<Evaluatable, Action> conditionActionPair : applicableConditionActionPairs) {
+		// for (Entry<Evaluatable, Action> conditionActionPair :
+		// applicableConditionActionPairs) {
 		// if (conditionActionPair.getKey().evaluate(this, element)) {
 		// conditionActionPair.getValue().doAction(immediatelyInteractingElements);
 		// }
@@ -150,18 +153,19 @@ public class SelectableGameElement extends DrawableGameElement {
 	}
 
 	// TODO FIX THIS SHIT
-	private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
+	private List<Entry<Evaluatable, Action>> getApplicableConditionActionPairs(
+			String conditionActionPairIdentifier) {
 		// return this.myConditionActionPairs.entrySet().stream()
 
 		// .collect(Collectors.toList());
 		return null;
 	}
 
-	public boolean isSelected () {
+	public boolean isSelected() {
 		return this.isSelected;
 	}
 
-	public void setHeading (Point2D click) {
+	public void setHeading(Point2D click) {
 		this.heading = click;
 	}
 
