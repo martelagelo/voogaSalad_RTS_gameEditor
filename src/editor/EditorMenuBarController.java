@@ -1,5 +1,6 @@
 package editor;
 
+import java.awt.Dimension;
 import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,8 +14,9 @@ import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
 import view.GUILoadStyleUtility;
-import editor.wizards.CampaignWizard;
+import view.WizardUtility;
 import editor.wizards.LevelWizard;
+import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import gamemodel.GameElementStateFactory;
 
@@ -98,51 +100,43 @@ public class EditorMenuBarController extends GUIContainer {
     }
 
     private void initFileMenu () {
-        newCampaignMenuItem.setOnAction(e -> {
-            CampaignWizard wiz =
-                    (CampaignWizard) GUILoadStyleUtility
-                            .generateGUIPane(CAMPAIGN_WIZARD);
-            Scene myScene = new Scene((Parent) wiz.getRoot(), 600, 300);
-            Stage s = new Stage();
-            s.setScene(myScene);
-            s.show();
-            Consumer<WizardData> bc = (data) -> {
-                try {
-                    System.out.println(data.getValueByKey(GameElementStateFactory.NAME));
-                    if (myMainModel == null) {
-                        System.out.println("null model");
-                    }
-                    myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
-                    s.close();
-                }
-                catch (Exception e1) {
-                    wiz.setErrorMesssage("Campaign Already Exists!");
-                }                
-            };
-            wiz.setSubmit(bc);
-        });
-        newLevelMenuItem.setOnAction(e -> {
-            LevelWizard wiz =
-                    (LevelWizard) GUILoadStyleUtility
-                            .generateGUIPane(LEVEL_WIZARD);
-            Scene myScene = new Scene((Parent) wiz.getRoot(), 600, 300);
-            Stage s = new Stage();
-            s.setScene(myScene);
-            s.show();
-            Consumer<WizardData> bc = (data) -> {
-                try {
-                    myMainModel.createLevel(data.getValueByKey(GameElementStateFactory.NAME), data.getValueByKey(GameElementStateFactory.CAMPAIGN));
-                    s.close();
-                }
-                catch (Exception e1) {
-                    wiz.setErrorMesssage(e1.getMessage());                   
-                }                
-            };
-            wiz.setSubmit(bc);
-        });
+        newCampaignMenuItem.setOnAction(e -> onNewCampaignClick());
+        newLevelMenuItem.setOnAction(e -> onNewLevelClick());
         saveMenuItem.setOnAction(e -> {
             // TODO SAVE
-            });
+        });
+    }
+
+    private void onNewLevelClick () {
+        Wizard wiz = WizardUtility.loadWizard(LEVEL_WIZARD, new Dimension(300, 300));
+        Consumer<WizardData> bc = (data) -> {
+            try {
+                myMainModel.createLevel(data.getValueByKey(GameElementStateFactory.NAME), data.getValueByKey(GameElementStateFactory.CAMPAIGN));
+                wiz.getStage().close();
+            }
+            catch (Exception e1) {
+                wiz.setErrorMesssage(e1.getMessage());                   
+            }                
+        };
+        wiz.setSubmit(bc);
+    }
+
+    private void onNewCampaignClick () {
+        Wizard wiz = WizardUtility.loadWizard(CAMPAIGN_WIZARD, new Dimension(300, 300));
+        Consumer<WizardData> bc = (data) -> {
+            try {
+                System.out.println(data.getValueByKey(GameElementStateFactory.NAME));
+                if (myMainModel == null) {
+                    System.out.println("null model");
+                }
+                myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
+                wiz.getStage().close();
+            }
+            catch (Exception e1) {
+                wiz.setErrorMesssage("Campaign Already Exists!");
+            }                
+        };
+        wiz.setSubmit(bc);
     }
 
     @Override

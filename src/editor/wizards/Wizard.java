@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import view.GUIController;
 
 
@@ -27,6 +28,7 @@ public abstract class Wizard implements GUIController {
     
     private Consumer<WizardData> mySaveConsumer;
     private WizardData userInput;
+    private Stage myStage;
 
     /**
      * Returns the root of the wizard's scene
@@ -86,6 +88,14 @@ public abstract class Wizard implements GUIController {
     
     public void setErrorMesssage(String error) {
         errorMessage.setText(error);
+    }
+    
+    public void setStage(Stage s) {
+        myStage = s;
+    }
+    
+    public Stage getStage() {
+        return myStage;
     }
 
 }
