@@ -1,11 +1,6 @@
 package editor;
 
 import java.util.function.Consumer;
-import editor.wizards.CampaignWizard;
-import editor.wizards.LevelWizard;
-import editor.wizards.NumberAttributeWizard;
-import editor.wizards.WizardData;
-import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,6 +13,10 @@ import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
 import view.GUILoadStyleUtility;
+import editor.wizards.CampaignWizard;
+import editor.wizards.LevelWizard;
+import editor.wizards.WizardData;
+import gamemodel.GameElementStateFactory;
 
 
 /**
@@ -32,9 +31,9 @@ public class EditorMenuBarController extends GUIContainer {
     private final static String NEW_CAMPAIGN_KEY = "NewCampaign";
     private final static String NEW_LEVEL_KEY = "NewLevel";
     private final static String SAVE_KEY = "Save";
-    
+
     private final static String LANGUAGE_KEY = "Languages";
-    
+
     private static final String CAMPAIGN_WIZARD = "/editor/wizards/guipanes/CampaignWizard.fxml";
     private static final String LEVEL_WIZARD = "/editor/wizards/guipanes/LevelWizard.fxml";
 
@@ -58,7 +57,10 @@ public class EditorMenuBarController extends GUIContainer {
     }
 
     @Override
-    public void initialize () {
+    public void init () {
+        if (myMainModel == null) {
+            System.out.println("null model");
+        }
         attachTextProperties();
         initLanguageMenu();
         initFileMenu();
@@ -77,8 +79,8 @@ public class EditorMenuBarController extends GUIContainer {
             // TODO
         }
     }
-    
-    private void initLanguageMenu() {
+
+    private void initLanguageMenu () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         util.getSupportedLanguages().get().forEach( (language) -> {
             System.out.println(language);
@@ -94,9 +96,9 @@ public class EditorMenuBarController extends GUIContainer {
             languageMenu.getItems().add(languageMenuItem);
         });
     }
-    
-    private void initFileMenu() {
-        newCampaignMenuItem.setOnAction(e->{
+
+    private void initFileMenu () {
+        newCampaignMenuItem.setOnAction(e -> {
             CampaignWizard wiz =
                     (CampaignWizard) GUILoadStyleUtility
                             .generateGUIPane(CAMPAIGN_WIZARD);
@@ -110,7 +112,7 @@ public class EditorMenuBarController extends GUIContainer {
                     if (myMainModel == null) {
                         System.out.println("null model");
                     }
-                    myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));                    
+                    myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
                 }
                 catch (Exception e1) {
                     e1.printStackTrace();
@@ -120,7 +122,7 @@ public class EditorMenuBarController extends GUIContainer {
             };
             wiz.setSubmit(bc);
         });
-        newLevelMenuItem.setOnAction(e->{
+        newLevelMenuItem.setOnAction(e -> {
             LevelWizard wiz =
                     (LevelWizard) GUILoadStyleUtility
                             .generateGUIPane(LEVEL_WIZARD);
@@ -130,18 +132,18 @@ public class EditorMenuBarController extends GUIContainer {
             s.show();
             Consumer<WizardData> bc = (data) -> {
                 try {
-                    System.out.println(data);                                        
+                    System.out.println(data);
                 }
                 catch (Exception e1) {
-                    e1.printStackTrace();                    
+                    e1.printStackTrace();
                 }
                 s.close();
             };
             wiz.setSubmit(bc);
         });
-        saveMenuItem.setOnAction(e->{
-            //TODO SAVE
-        });
+        saveMenuItem.setOnAction(e -> {
+            // TODO SAVE
+            });
     }
 
     @Override

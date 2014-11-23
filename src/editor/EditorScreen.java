@@ -75,6 +75,7 @@ public class EditorScreen extends GUIScreen {
 
     /**
      * loads and shows a popout wizard based on a filepath and a size for the popout
+     * 
      * @param filePath
      * @param dim
      */
@@ -148,8 +149,9 @@ public class EditorScreen extends GUIScreen {
     }
 
     @Override
-    public void initialize () {
-        editorMenuBarController.setModel(myMainModel);
+    public void init () {
+        System.out.println(editorMenuBarController == null);
+        attachChildContainers(editorMenuBarController);
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();

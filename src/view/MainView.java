@@ -20,10 +20,11 @@ import javafx.stage.Stage;
  */
 public class MainView implements Observer {
 
-    private static final String[] myLanguages = new String[] {
-                                                              "resources.languages.English.properties",
-                                                              "resources.languages.Chinese.properties"
-    };
+    private static final String[] myLanguages =
+            new String[] {
+                          "resources.languages.English.properties",
+                          "resources.languages.Chinese.properties"
+            };
 
     private static final Dimension SCENE_DIMENSIONS = new Dimension(1024, 768);
     private Stage myStage;
@@ -48,20 +49,20 @@ public class MainView implements Observer {
 
     public void launchScreen (ViewScreen screen) {
         launchScreen(screen.getFilePath());
-        
+
         // Shitty test code
-//      try {
-//          myMainModel.loadGame("Shitty Game");
-//          myMainModel.createCampaign("Shitty campaign 1");
-//          myMainModel.createCampaign("Shitty campaign 2");
-//          myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
-//          myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
-//          myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
-//      }
-//      catch (Exception e) {
-//          e.printStackTrace();
-//      }
-        
+        // try {
+        // myMainModel.loadGame("Shitty Game");
+        // myMainModel.createCampaign("Shitty campaign 1");
+        // myMainModel.createCampaign("Shitty campaign 2");
+        // myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
+        // myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
+        // myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
+        // }
+        // catch (Exception e) {
+        // e.printStackTrace();
+        // }
+
     }
 
     /**
