@@ -38,7 +38,7 @@ public abstract class Parameter<T> extends Evaluatable<T> {
 	 * @return the value of the evaluator
 	 */
 	@Override
-	public abstract T evaluate(ElementPair elements);
+	public abstract T getValue(ElementPair elements);
 
 	/**
 	 * Sets the value of the given parameter. Note: modifies the actual
@@ -51,6 +51,7 @@ public abstract class Parameter<T> extends Evaluatable<T> {
 	 * @return true if value setting was successful. False if value could not be
 	 *         found
 	 */
+	@Override
 	public abstract boolean setValue(ElementPair elements, T value);
 
 }

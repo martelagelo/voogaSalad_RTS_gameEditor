@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.ElementPair;
 import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 /**
  * An abstract class for evaluators that acts on parameters to provide for
@@ -51,7 +52,8 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	}
 
 	/**
-	 * Evaluate on two objects. By default returns null.
+	 * Evaluate on two objects. By default returns null as all child evaluate
+	 * methods implements necessary class overrides.
 	 *
 	 * @param item1
 	 *            the object on the left side of the evaluator
@@ -59,13 +61,30 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 *            the object on the right side of the evaluator
 	 * @return the result of the evaluation on the two objects
 	 */
-	public T evaluate(Object item1, Object item2) {
+	protected T evaluate(Object item1, Object item2) {
+		System.out.println(item1.getClass());
 		System.out.println("Calling parent evaluate with objects");
 		return null;
 	}
 
-	public T evaluate(Double item1, Double item2) {
-		System.out.println("Calling double parent value");
+	/**
+	 * Evaluate on two doubles
+	 */
+	protected T evaluate(Double item1, Double item2) {
+		return null;
+	}
+
+	/**
+	 * Evaluate on two booleans
+	 */
+	protected T evaluate(Boolean item1, Boolean item2) {
+		return null;
+	}
+
+	/**
+	 * Evaluate on two elements
+	 */
+	protected T evaluate(GameElementState item1, GameElementState item2) {
 		return null;
 	}
 
@@ -77,11 +96,53 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 *            examined by it
 	 */
 	@Override
-	public T evaluate(ElementPair elements) {
-		A parameter1Value = myParameter1.evaluate(elements);
-		B parameter2Value = myParameter2.evaluate(elements);
-		System.out.println(parameter1Value.getClass());
+	public T getValue(ElementPair elements) {
+		A parameter1Value = myParameter1.getValue(elements);
+		B parameter2Value = myParameter2.getValue(elements);
+		return delegateEvaluator(parameter1Value, parameter2Value);
+	}
+
+	/**
+	 * A method that delegates the public evaluate method to private evaluate
+	 * methods with given casting. This method is messy but is the only way to
+	 * work around generic erasure and compile-time typing by java.
+	 * 
+	 * @param parameter1Value
+	 *            the value of the first parameter
+	 * @param parameter2Value
+	 *            the value of the second parameter
+	 * @return the result of evaluating on the two parameters
+	 */
+	public T delegateEvaluator(A parameter1Value, B parameter2Value) {
+		Class<A> type1 = myParameter1.getType();
+		Class<B> type2 = myParameter2.getType();
+		if (type1.equals(Double.class) && type2.equals(Double.class)) {
+			return evaluate((Double) parameter1Value, (Double) parameter2Value);
+		}
+		if (type1.equals(GameElementState.class)
+				&& type2.equals(GameElementState.class)) {
+			return evaluate((GameElementState) parameter1Value,
+					(GameElementState) parameter2Value);
+		}
+		if (type1.equals(Boolean.class) && type2.equals(Boolean.class)) {
+			return evaluate((Boolean) parameter1Value,
+					(Boolean) parameter2Value);
+		}
 		return evaluate(parameter1Value, parameter2Value);
+	}
+
+	/**
+	 * @return the first parameter
+	 */
+	protected Evaluatable<A> getParameter1() {
+		return myParameter1;
+	}
+
+	/**
+	 * @return the second parameter
+	 */
+	protected Evaluatable<B> getParameter2() {
+		return myParameter2;
 	}
 
 	@Override

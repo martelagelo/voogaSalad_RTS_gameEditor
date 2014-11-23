@@ -28,7 +28,7 @@ public class GameElementParameter extends Parameter<GameElementState> {
 	}
 
 	@Override
-	public GameElementState evaluate(ElementPair elements) {
+	public GameElementState getValue(ElementPair elements) {
 		return myObjectIdentifier.getElementOfInterest(myManager, elements,
 				myElementTag).get(0);
 	}

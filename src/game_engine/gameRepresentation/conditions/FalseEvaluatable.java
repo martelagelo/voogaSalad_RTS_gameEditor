@@ -16,7 +16,7 @@ public class FalseEvaluatable extends Evaluatable<Boolean> {
 	}
 
 	@Override
-	public Boolean evaluate(ElementPair elements) {
+	public Boolean getValue(ElementPair elements) {
 		return false;
 	}
 

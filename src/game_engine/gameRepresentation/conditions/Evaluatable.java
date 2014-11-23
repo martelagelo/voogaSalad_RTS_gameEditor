@@ -3,7 +3,9 @@ package game_engine.gameRepresentation.conditions;
 /**
  * An object that can evaluate a condition on an element to return a value.
  * Evaluators are generics to allow for the implementation of complex logic with
- * evaluatables.
+ * evaluatables. Evaluatables have the option to both get and set values
+ * although the value setting is not by default implemented by children of
+ * evaluatable.
  *
  * @author Zach
  *
@@ -27,13 +29,31 @@ public abstract class Evaluatable<T> {
 	 * return a boolean representing the condition's return value.
 	 *
 	 */
-	public abstract T evaluate(ElementPair elements);
+	public abstract T getValue(ElementPair elements);
 
 	/**
 	 * Use the null pattern to evaluate a condition if no elements are given
 	 */
-	public T evaluate() {
-		return evaluate(new NullElementPair());
+	public T getValue() {
+		return getValue(new NullElementPair());
+	}
+
+	/**
+	 * Sets the evaluatable's value to a given value
+	 * 
+	 * @param value
+	 *            the value to set the evaluatable's stored computation value to
+	 * @return a boolean indicating whether setting was successful
+	 */
+	public boolean setValue(ElementPair elements, T value) {
+		return false;
+	}
+
+	/**
+	 * Use the null pattern to set a value if no element pair is applicable
+	 */
+	public boolean setValue(T value) {
+		return setValue(new NullElementPair(), value);
 	}
 
 	/**

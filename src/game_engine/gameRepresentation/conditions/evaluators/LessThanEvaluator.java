@@ -1,7 +1,6 @@
 package game_engine.gameRepresentation.conditions.evaluators;
 
 import game_engine.gameRepresentation.conditions.Evaluatable;
-import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.NumberEvaluator;
 
 /**
  * A less than evaluator
@@ -9,8 +8,7 @@ import game_engine.gameRepresentation.conditions.evaluators.evaluatorTypes.Numbe
  * @author Zach
  *
  */
-public class LessThanEvaluator<A, B> extends Evaluator<A, B, Boolean> implements
-		NumberEvaluator<Boolean> {
+public class LessThanEvaluator<A, B> extends Evaluator<A, B, Boolean>{
 
 	public LessThanEvaluator(Evaluatable<A> parameter1,
 			Evaluatable<B> parameter2) {
@@ -18,8 +16,7 @@ public class LessThanEvaluator<A, B> extends Evaluator<A, B, Boolean> implements
 	}
 
 	@Override
-	public Boolean evaluate(Double num1, Double num2) {
-		System.out.println("Calling child method");
+	protected Boolean evaluate(Double num1, Double num2) {
 		return num1.doubleValue() < num2.doubleValue();
 	}
 

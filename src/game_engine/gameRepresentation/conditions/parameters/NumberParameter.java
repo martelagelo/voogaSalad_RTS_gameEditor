@@ -18,12 +18,12 @@ public class NumberParameter extends Parameter<Double> {
 	 * @param value
 	 */
 	public NumberParameter(Double value) {
-		super(null);
+		super(Double.class);
 		myValue = value;
 	}
 
 	@Override
-	public Double evaluate(ElementPair elements) {
+	public Double getValue(ElementPair elements) {
 		return myValue;
 	}
 

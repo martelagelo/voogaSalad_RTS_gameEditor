@@ -89,7 +89,7 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
 	}
 
 	@Override
-	public T evaluate(ElementPair elements) {
+	public T getValue(ElementPair elements) {
 		return getValue(
 				getElementsOfInterest(myManager, elements, myElementTag),
 				myAttributeTag);
