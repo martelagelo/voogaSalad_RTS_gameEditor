@@ -39,7 +39,6 @@ public class Engine extends Observable implements Observer {
         myMainModel = mainModel;
         myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
         myMiniMap = new MiniMap();
-        myVisualManager.getBackground().addObjects(myMiniMap.getDisplay());
     }
 
     public Group getVisualRepresentation () {
@@ -89,6 +88,7 @@ public class Engine extends Observable implements Observer {
             myVisualManager.addBoxObserver(myElementManager);
             myVisualManager.addClickObserver(myElementManager);
             myVisualManager.addKeyboardObserver(myElementManager);
+            myVisualManager.addObjects(myMiniMap.getMiniMap());
         }
     }
 

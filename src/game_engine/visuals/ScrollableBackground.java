@@ -50,10 +50,6 @@ public class ScrollableBackground extends Pane
     public void addObjects (Group g) {
         this.getChildren().add(g);
     }
-    
-    public void addObjects (Canvas c) {
-    	this.getChildren().add(c);
-    }
 
     /**
      * Update the view ofthe background based on the current scroll speed
