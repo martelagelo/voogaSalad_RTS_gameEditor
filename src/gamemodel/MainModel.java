@@ -35,6 +35,11 @@ public class MainModel extends Observable {
         mySLUtil = new SaveLoadUtility();
     }
 
+    public void newGame () {
+        //TODO CLEAN THIS UP
+        myGameState = new GameState("New Game");
+    }
+    
     /**
      * Sets the game of the Model.
      * 

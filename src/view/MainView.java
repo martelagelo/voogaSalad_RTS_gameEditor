@@ -48,25 +48,20 @@ public class MainView implements Observer {
 
     public void launchScreen (ViewScreen screen) {
         launchScreen(screen.getFilePath());
-    }
-
-    public void launchScreen (ViewScreen screen, String game) {
-        myMainModel.loadGame(game);
-
+        
         // Shitty test code
-//        try {
-//            myMainModel.loadGame("Shitty Game");
-//            myMainModel.createCampaign("Shitty campaign 1");
-//            myMainModel.createCampaign("Shitty campaign 2");
-//            myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
-//            myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
-//            myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-        launchScreen(screen);
+//      try {
+//          myMainModel.loadGame("Shitty Game");
+//          myMainModel.createCampaign("Shitty campaign 1");
+//          myMainModel.createCampaign("Shitty campaign 2");
+//          myMainModel.createLevel("Shitty level 1", "Shitty campaign 1");
+//          myMainModel.createLevel("Shitty level 2", "Shitty campaign 1");
+//          myMainModel.createLevel("Shitty level 3", "Shitty campaign 1");
+//      }
+//      catch (Exception e) {
+//          e.printStackTrace();
+//      }
+        
     }
 
     /**

@@ -6,10 +6,13 @@
 <MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="menuBar" fx:controller="editor.EditorMenuBarController">
 	<menus>
-		<Menu text="File">
+		<Menu fx:id="fileMenu">
 			<items>
-				<MenuItem id="myNewLevelMenuItem" text="New Level" />
+				<MenuItem fx:id="newCampaignMenuItem" />
+				<MenuItem fx:id="newLevelMenuItem" />
+				<MenuItem fx:id="saveMenuItem" />
 			</items>
 		</Menu>
+		<Menu fx:id="languageMenu" />
 	</menus>
 </MenuBar>
