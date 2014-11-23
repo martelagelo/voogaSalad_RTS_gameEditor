@@ -11,7 +11,6 @@ import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
-import gamemodel.exceptions.LevelNotFoundException;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,13 +50,10 @@ public class MainModel extends Observable {
     public void loadGame (String game) throws Exception {
 
         try {
-            if (game.equals("New Game")) {
-                myGameState = new GameState(game);
-                System.out.println("yay");
-            } else {
-                // TODO: insert Save Load code here and instantiate myGameState
-                myGameState = mySLUtil.loadResource(GameState.class, getSaveLocation(game));
-            }
+            // TODO: insert Save Load code here and instantiate myGameState
+            myGameState = mySLUtil.loadResource(GameState.class, getGameSaveLocation(game));
+            // TODO remove print lines
+            System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         } catch (Exception e) {
             // TODO Get rid of stack trace printing
             e.printStackTrace();
@@ -69,7 +65,7 @@ public class MainModel extends Observable {
 
     public void saveGame () throws RuntimeException {
         try {
-            mySLUtil.save(myGameState, getSaveLocation(myGameState.getName()));
+            mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
         } catch (IOException e) {
             // TODO: eliminate stack trace printing
             e.printStackTrace();
@@ -77,7 +73,7 @@ public class MainModel extends Observable {
         }
     }
 
-    private String getSaveLocation (String name) {
+    private String getGameSaveLocation (String name) {
         return "MyGames" + File.separator + name + File.separator + name;
     }
 
@@ -122,7 +118,7 @@ public class MainModel extends Observable {
      * @throws CampaignExistsException
      */
     public void createCampaign (String campaignName) throws CampaignExistsException {
-        myCurrentCampaignState = new CampaignState(campaignName);
+        myCurrentCampaignState = new CampaignState(campaignName.trim());
         myGameState.addCampaign(myCurrentCampaignState);
         setChanged();
         notifyObservers();
@@ -137,10 +133,10 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-            CampaignNotFoundException, LevelNotFoundException {
-        myCurrentCampaignState = myGameState.getCampaign(campaignName);
-        myCurrentCampaignState.addLevel(new LevelState(levelName, myCurrentCampaignState));
-        myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
+            CampaignNotFoundException {
+        myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
+        myCurrentLevelState = new LevelState(levelName.trim());
+        myCurrentCampaignState.addLevel(myCurrentLevelState);
         setChanged();
         notifyObservers();
         clearChanged();

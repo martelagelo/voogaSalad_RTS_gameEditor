@@ -7,9 +7,6 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="editor.TabViewController">
-	<left>
-		<fx:include source="EditorElementAccordian.fxml" fx:id="levelElementAccordian" />
-	</left>
 	<right>
 		<ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
 	</right>

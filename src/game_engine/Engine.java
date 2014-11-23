@@ -45,7 +45,7 @@ public class Engine extends Observable implements Observer {
     public void selectLevel (String campaignName, String levelName) throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
-        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
@@ -54,7 +54,7 @@ public class Engine extends Observable implements Observer {
     }
 
     public void play () {
-        updateGameLoop(myMainModel.getCurrentLevel());
+        updateGameLoop(myMainModel.getCurrentLevel(), myMainModel.getCurrentCampaign().getName());
         myGameLoop.play();
     }
 
@@ -65,18 +65,18 @@ public class Engine extends Observable implements Observer {
     @Override
     public void update (Observable observable, Object arg) {
         // TODO Auto-generated method stub
-        updateGameLoop(myMainModel.getCurrentLevel());
+        updateGameLoop(myMainModel.getCurrentLevel(), myMainModel.getCurrentCampaign().getName());
     }
 
     public Scene getScene () {
         return myVisualManager.getScene();
     }
 
-    private void updateGameLoop (LevelState levelState) {
+    private void updateGameLoop (LevelState levelState, String currentCampaign) {
         // TODO check equlity
-        if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
+        if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
-            myGameLoop = new GameLoop(nextLevel, myVisualManager);
+            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);

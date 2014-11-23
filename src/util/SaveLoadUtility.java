@@ -23,6 +23,7 @@ import com.google.gson.Gson;
  *
  */
 public class SaveLoadUtility implements ISaveLoad {
+    private static final String JSON_EXT = ".json";
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
 
@@ -32,16 +33,14 @@ public class SaveLoadUtility implements ISaveLoad {
 
     public <T> T loadResource (Class className, String filePath) throws Exception {
         Gson gson = new Gson();
-        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
+        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath + JSON_EXT)), className);
         return jsonRepresentation;
     }
 
     public String save (JSONable object, String filePath) throws IOException {
-        File file = obtainFile(filePath + ".json");
+        File file = obtainFile(filePath + JSON_EXT);
         FileWriter writer = new FileWriter(file);
         String json = object.toJSON();
-        //TODO remove print
-        System.out.println(json);
         writer.write(json);
         writer.close();
         return file.getPath();
