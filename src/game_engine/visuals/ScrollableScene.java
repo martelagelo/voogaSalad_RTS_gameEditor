@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
  * Basically the map. JavaFX Scene node that contains the eventHandlers necessary
  * to scroll the map and register clicks.
  * 
- * @author John
+ * @author John, Michael D. 
  *
  */
 public class ScrollableScene extends Scene {
@@ -132,9 +132,8 @@ public class ScrollableScene extends Scene {
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
     }
-    
-    public void addToScene(Group g){
+
+    public void addToScene (Group g) {
         root.getChildren().add(g);
     }
-
 }

@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
+
 /**
  * Utility class that handles the loading/saving of files.
  * 
@@ -24,7 +25,7 @@ public class LoadSaveUtility implements ILoadSave {
     private static final String BAD_FILE_PATH = "Bad File Path";
     public static String FILE_SEPARATOR = File.separator;
     public String myDefaultLocation = "resources" + LoadSaveUtility.FILE_SEPARATOR + "img"
-            + LoadSaveUtility.FILE_SEPARATOR;
+                                      + LoadSaveUtility.FILE_SEPARATOR;
 
     public <T> T loadResource (Class className, String filePath) {
         Gson gson = new Gson();
@@ -32,7 +33,8 @@ public class LoadSaveUtility implements ILoadSave {
         T jsonRepresentation = null;
         try {
             jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
-        } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+        }
+        catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
             // TODO Need to communicate exception to calling class
         }
 
@@ -58,10 +60,8 @@ public class LoadSaveUtility implements ILoadSave {
 
     public String saveImage (Image image, String filePath) throws IOException {
         // TODO
-        String[] contents = filePath.split("\\"+ File.separator);
-        if (contents.length < 1) {
-            throw new IOException(BAD_FILE_PATH);
-        }
+        String[] contents = filePath.split("\\" + File.separator);
+        if (contents.length < 1) { throw new IOException(BAD_FILE_PATH); }
         String fileName = contents[contents.length - 1];
         File output = obtainFile(myDefaultLocation + fileName);
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);

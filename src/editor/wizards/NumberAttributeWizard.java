@@ -19,7 +19,7 @@ public class NumberAttributeWizard extends Wizard {
     @Override
     public boolean checkCanSave () {
         System.out.println(numberValue.getText());
-        
+
         return !key.getText().isEmpty() && !numberValue.getText().isEmpty() &&
                Pattern.matches("-?[0-9]+\\.?[0-9]*", numberValue.getText());
     }

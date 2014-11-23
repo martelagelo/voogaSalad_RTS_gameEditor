@@ -12,8 +12,8 @@ public abstract class GUIScreen extends GUIContainer {
     public void attachSceneHandler (MainView mainView) {
         myMainView = mainView;
     }
-    
-    protected void switchScreen(ViewScreen screen, String game) {
+
+    protected void switchScreen (ViewScreen screen, String game) {
         myMainView.launchScreen(screen, game);
     }
 

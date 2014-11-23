@@ -1,8 +1,8 @@
 package util;
 
 import java.io.IOException;
-
 import javafx.scene.image.Image;
+
 
 /**
  * 
@@ -15,9 +15,9 @@ public interface ILoadSave {
      * Load a resource from a given file and return Java object representation
      * 
      * @param className
-     *            Java class object that is being loaded
+     *        Java class object that is being loaded
      * @param filePath
-     *            that resource to be loaded from
+     *        that resource to be loaded from
      * @return Java class object
      */
     public <T> T loadResource (Class className, String filePath);
@@ -26,11 +26,11 @@ public interface ILoadSave {
      * Save a JSONable object to a library file
      * 
      * @param object
-     *            that can be converted to JSON format
+     *        that can be converted to JSON format
      * @param filePath
-     *            to which object should be saved
+     *        to which object should be saved
      * @throws IOException
-     *             in case of trouble reading
+     *         in case of trouble reading
      */
     public void save (JSONable object, String filePath) throws IOException;
 
@@ -39,7 +39,7 @@ public interface ILoadSave {
      * 
      * @param image
      * @param filePath
-     *            at which image is located
+     *        at which image is located
      * @return filePath where the image is saved to
      * @throws IOException
      */
@@ -50,7 +50,7 @@ public interface ILoadSave {
      * Load an image at given file path
      * 
      * @param filePath
-     *            of image
+     *        of image
      * @return Image object loaded if exists
      * @throws IOException
      */

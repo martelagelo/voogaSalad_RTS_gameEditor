@@ -20,16 +20,16 @@ public class ColorMaskExtractor {
     public BufferedImage spritesheetColorRemoved;
     private BufferedImage originalImage;
 
-    public ColorMaskExtractor(BufferedImage image){
+    public ColorMaskExtractor (BufferedImage image) {
         originalImage = image;
     }
-    
-    public static void main(String[] args) throws IOException{
+
+    public static void main (String[] args) throws IOException {
         File f = new File("src/resources/img/graphics/units/hussar/0032.bmp");
         BufferedImage image = ImageIO.read(f);
         printColorValues(image);
     }
-    
+
     public static void printColorValues (BufferedImage img) {
         List<Color> acceptableBlueColors = new ArrayList<Color>();
         acceptableBlueColors.add(new Color(74, 121, 208));
@@ -40,7 +40,7 @@ public class ColorMaskExtractor {
         acceptableBlueColors.add(new Color(110, 166, 235));
         acceptableBlueColors.add(new Color(0, 21, 130));
         acceptableBlueColors.add(new Color(0, 0, 82));
-        
+
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
                 int clr = img.getRGB(x, y);
@@ -50,7 +50,7 @@ public class ColorMaskExtractor {
                 if (red == 255 && green == 0 && blue == 255) {
                     System.out.print("             \t");
                 }
-                else if (acceptableBlueColors.contains(new Color(img.getRGB(x, y)))){
+                else if (acceptableBlueColors.contains(new Color(img.getRGB(x, y)))) {
                     System.out.print(String.format("%13s\t", "BLUEBLUEBLUE"));
                 }
                 else {
@@ -84,7 +84,7 @@ public class ColorMaskExtractor {
         ImageProducer ip = new FilteredImageSource(originalImage.getSource(), colorFilter);
         colorMask = SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
                 .createImage(ip));
-        
+
         ImageFilter spritesheetFilter = new RGBImageFilter() {
             public final int filterRGB (int x, int y, int rgb) {
                 if (acceptableBlueColors.contains(new Color(originalImage.getRGB(x, y)))) {
@@ -95,8 +95,9 @@ public class ColorMaskExtractor {
         };
 
         ImageProducer ip2 = new FilteredImageSource(originalImage.getSource(), spritesheetFilter);
-        spritesheetColorRemoved = SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
-                .createImage(ip2));
-        
+        spritesheetColorRemoved =
+                SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
+                        .createImage(ip2));
+
     }
 }

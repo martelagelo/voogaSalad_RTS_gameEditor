@@ -28,9 +28,9 @@ import javafx.util.Duration;
  *
  */
 public class GameLoop {
-    public static final Double framesPerSecond = 60.0;  
+    public static final Double framesPerSecond = 60.0;
     private Level myCurrentLevel;
-//    private ScrollableBackground myBackground;
+    // private ScrollableBackground myBackground;
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
     
@@ -65,11 +65,10 @@ public class GameLoop {
      * Start the game loop
      */
     public void startGameLoop () {
-        
+
         KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
         startTimeline(frame);
     }
-
 
     /**
      * Update the states of all prominent elements and aspects of the game

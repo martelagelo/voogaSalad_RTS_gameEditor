@@ -1,5 +1,6 @@
 package game_engine;
 
+import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.UI.InputManager;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -34,12 +35,15 @@ public class Engine extends Observable implements Observer {
     private VisualManager myVisualManager;
     private InputManager myInputManager;
     private MiniMap myMiniMap;
+    private GameElementFactory myElementFactory;
 
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
+        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
-        myVisualManager = new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
+        myVisualManager =
+                new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
         myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
     }
 
@@ -71,14 +75,13 @@ public class Engine extends Observable implements Observer {
     public void pause () {
         myGameLoop.pause();
     }
-    
-    public MiniMap getMiniMap(){
-    	return myMiniMap;
+
+    public MiniMap getMiniMap () {
+        return myMiniMap;
     }
 
     @Override
     public void update (Observable observable, Object arg) {
-        // TODO Auto-generated method stub
         updateGameLoop(myMainModel.getCurrentLevel());
     }
 
@@ -87,7 +90,7 @@ public class Engine extends Observable implements Observer {
     }
 
     private void updateGameLoop (LevelState levelState) {
-        // TODO check equlity
+        // TODO: check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
             myMiniMap.setUnits(nextLevel.getUnits());

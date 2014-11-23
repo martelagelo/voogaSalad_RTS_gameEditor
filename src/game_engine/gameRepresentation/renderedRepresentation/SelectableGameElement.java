@@ -4,8 +4,11 @@ import game_engine.gameRepresentation.actions.Action;
 import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Queue;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -26,7 +29,7 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private boolean isSelected;
     // private SelectableGameElementState myState;
-    private Point2D heading;
+    // private Point2D heading;
     // private boolean selected;
     // TODO temporary, should be in the attributes
     private double speed = 3;
@@ -36,12 +39,19 @@ public class SelectableGameElement extends DrawableGameElement {
         FWD, FWD_LEFT, LEFT, BK_LEFT, BK, BK_RIGHT, RIGHT, FWD_RIGHT
     }
 
+    private Queue<Point2D> headings;
+
     /**
      * @see DrawableGameElementState
      */
-    public SelectableGameElement (DrawableGameElementState element) {
-        super(element);
+    // public SelectableGameElement (DrawableGameElementState element) {
+    // super(element);
+    // this.isSelected = false;
+    public SelectableGameElement (DrawableGameElementState element,
+                                  Map<Evaluatable, Action> conditionActionPairs) {
+        super(element, conditionActionPairs);
         this.isSelected = false;
+        headings = new LinkedList<Point2D>();
         // TODO Auto-generated constructor stub
     }
 
@@ -56,8 +66,7 @@ public class SelectableGameElement extends DrawableGameElement {
     /**
      * Select the element
      *
-     * @param select
-     *        a boolean indicating whether the object should be selected
+     * @param select a boolean indicating whether the object should be selected
      */
     public void select (boolean select) {
         isSelected = select;
@@ -78,20 +87,20 @@ public class SelectableGameElement extends DrawableGameElement {
         move();
     }
 
-    private void move () {
-        if (heading == null)
-            heading = getLocation();
-        
-        setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
-
-        if (!heading.equals(getLocation())) {
-            Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-                                        heading.getY() - getLocation().getY());
-            if (delta.magnitude() > speed)
-                delta = delta.normalize().multiply(speed);
-            this.setLocation(getLocation().add(delta));
-        }
-    }
+//    private void move () {
+//        if (heading == null)
+//            heading = getLocation();
+//
+//        setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
+//
+//        if (!heading.equals(getLocation())) {
+//            Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
+//                                        heading.getY() - getLocation().getY());
+//            if (delta.magnitude() > speed)
+//                delta = delta.normalize().multiply(speed);
+//            this.setLocation(getLocation().add(delta));
+//        }
+//    }
 
     private DIRECTION getDirection (Point2D loc, Point2D destination) {
         double angle =
@@ -116,15 +125,38 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void setAnimationDirection (Point2D loc, Point2D destination, boolean isMoving) {
         String animationString;
-        if (isMoving) {
+        if (isMoving && !(destination == null)) {
             myDirection = getDirection(loc, destination);
             animationString =
-                    ("walk_"+ myDirection.toString()).toLowerCase();
+                    ("walk_" + myDirection.toString()).toLowerCase();
         }
-        else{
-            animationString = ("stand_"+myDirection.toString()).toLowerCase();
+        else {
+            animationString = ("stand_" + myDirection.toString()).toLowerCase();
         }
         this.getState().setAnimation(animationString);
+    }
+
+    private void move () {
+        if (headings.size() == 0) {
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
+            this.setLocation(getLocation());
+        }
+        else {
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
+            if (!headings.peek().equals(getLocation())) {
+                Point2D currentHeading = headings.peek();
+                Point2D delta = new Point2D(currentHeading.getX()
+                                            - getLocation().getX(), currentHeading.getY()
+                                                                    - getLocation().getY());
+                if (delta.magnitude() > speed)
+                    delta = delta.normalize().multiply(speed);
+                this.setLocation(getLocation().add(delta));
+            }
+            else {
+                headings.poll();
+                this.setLocation(getLocation());
+            }
+        }
     }
 
     private void updateSelfDueToCurrentObjective () {
@@ -196,7 +228,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void setHeading (Point2D click) {
-        this.heading = click;
+        this.headings.add(click);
     }
 
 }
