@@ -77,7 +77,6 @@ public class EditorMenuBarController extends GUIContainer {
     private void initLanguageMenu () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         util.getSupportedLanguages().get().forEach( (language) -> {
-            System.out.println(language);
             MenuItem languageMenuItem = new MenuItem(language);
             languageMenuItem.setOnAction(e -> {
                 try {

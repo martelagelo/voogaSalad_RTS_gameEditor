@@ -178,7 +178,7 @@ public class EditorScreen extends GUIScreen {
         updateTabViewControllers();
     }
 
-    //TODO: metadata stuff
+    // TODO: metadata stuff
     private void updateAccordion () {
 
     }
@@ -186,13 +186,16 @@ public class EditorScreen extends GUIScreen {
     private void updateProjectExplorer () {
         GameState game = myMainModel.getCurrentGame();
         Map<String, List<String>> campaignLevelMap = new HashMap<>();
+        List<String> campaigns = game.getCampaigns().stream().map( (campaign) -> {
+            return campaign.getName();
+        }).collect(Collectors.toList());
         game.getCampaigns().forEach( (campaignState) -> {
             campaignLevelMap.put(campaignState.getName(), campaignState
                     .getLevels().stream().map( (level) -> {
                         return level.getName();
                     }).collect(Collectors.toList()));
         });
-        projectExplorerController.update(game.getName(), campaignLevelMap);
+        projectExplorerController.update(game.getName(), campaigns, campaignLevelMap);
     }
 
     private void updateTabViewControllers () {
