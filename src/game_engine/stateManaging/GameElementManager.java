@@ -58,6 +58,7 @@ public class GameElementManager implements Observer {
     private void selectPlayerUnits (double[] rectPoints) {
         for (SelectableGameElement e : myLevel.getUnits()) {
             e.select(false);
+            System.out.println("Unit Unselected");
             double[] bounds = e.getBounds();
             // TODO: this doesn't work once the screen has scrolled
             Polygon polygonBounds = new Polygon();
