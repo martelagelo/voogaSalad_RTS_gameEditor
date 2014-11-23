@@ -4,6 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import editor.EditorMenuBarController?>
+<?import javafx.scene.layout.HBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="editorRoot" fx:controller="editor.EditorScreen">
@@ -11,23 +12,28 @@
 		<fx:include fx:id="editorMenuBar" source="EditorMenuBar.fxml" />
 	</top>
 	<left>
-		<VBox BorderPane.alignment="CENTER">
+		<HBox>
 			<children>
-				<fx:include source="ProjectExplorerView.fxml" fx:id="projectExplorer"
-					VBox.vgrow="ALWAYS" />
-				<fx:include source="DescribableInfoBox.fxml" fx:id="gameInfoBox"
-					VBox.vgrow="NEVER" />
+				<VBox BorderPane.alignment="CENTER">
+					<children>
+						<fx:include source="ProjectExplorerView.fxml" fx:id="projectExplorer"
+							VBox.vgrow="ALWAYS" />
+						<fx:include source="DescribableInfoBox.fxml" fx:id="gameInfoBox"
+							VBox.vgrow="NEVER" />
+					</children>
+				</VBox>
+				<fx:include source="EditorElementAccordian.fxml" fx:id="levelElementAccordian" />
 			</children>
-		</VBox>
+		</HBox>
 	</left>
 	<center>
 		<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" />
 	</center>
 	<right>
 		<VBox>
-			<Button fx:id="newGameElement" text="New Game Element" />
-			<Button fx:id="newTerrain" text="New Terrain" />
-			<Button fx:id="save" text="Save" />
+			<Button defaultButton="true" fx:id="newGameElement" text="New Game Element" />
+			<Button defaultButton="true" fx:id="newTerrain" text="New Terrain" />
+			<Button defaultButton="true" fx:id="save" text="Save" />
 		</VBox>
 	</right>
 </BorderPane>

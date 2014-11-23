@@ -7,10 +7,11 @@ import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 
-import util.multilanguage.MultiLanguageUtility;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -40,10 +41,14 @@ public class MainView implements Observer {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         util.initLanguages(myLanguages);
         myStage = stage;
+        myScene = new Scene(new Pane(), SCENE_DIMENSIONS.getWidth(),
+                SCENE_DIMENSIONS.getHeight());
         myMainModel = model;
         launchScreen(ViewScreen.SPLASH);
         myLoadStyleUtility = GUILoadStyleUtility.getInstance();
         myLoadStyleUtility.setScene(myScene);
+        myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
+        myLoadStyleUtility.addStyle("./stylesheets/main.css");
     }
 
     public void start () {
@@ -61,9 +66,7 @@ public class MainView implements Observer {
      */
     private void launchScreen (String filePath) {
         myCurrentController = (GUIScreen) GUILoadStyleUtility.generateGUIPane(filePath);
-        myScene =
-                new Scene((Parent) myCurrentController.getRoot(), SCENE_DIMENSIONS.getWidth(),
-                          SCENE_DIMENSIONS.getHeight());
+        myScene.setRoot((Parent) myCurrentController.getRoot());
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
         myCurrentController.setModel(myMainModel);
