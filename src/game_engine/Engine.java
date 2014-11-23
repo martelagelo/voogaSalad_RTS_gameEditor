@@ -1,5 +1,6 @@
 package game_engine;
 
+import game_engine.UI.InputManager;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
@@ -8,10 +9,8 @@ import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
-
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
@@ -32,12 +31,14 @@ public class Engine extends Observable implements Observer {
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
+    private InputManager myInputManager;
     private MiniMap myMiniMap;
 
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
-        myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
+        myInputManager = new InputManager();
+        myVisualManager = new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
         myMiniMap = new MiniMap();
     }
 
@@ -55,8 +56,8 @@ public class Engine extends Observable implements Observer {
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
-        myVisualManager.addClickObserver(myElementManager);
-        myVisualManager.addKeyboardObserver(myElementManager);
+        myInputManager.addClickObserver(myElementManager);
+        myInputManager.addKeyboardObserver(myElementManager);
     }
 
     public void play () {
@@ -86,8 +87,8 @@ public class Engine extends Observable implements Observer {
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
-            myVisualManager.addClickObserver(myElementManager);
-            myVisualManager.addKeyboardObserver(myElementManager);
+            myInputManager.addClickObserver(myElementManager);
+            myInputManager.addKeyboardObserver(myElementManager);
             myVisualManager.addObjects(myMiniMap.getMiniMap());
         }
     }

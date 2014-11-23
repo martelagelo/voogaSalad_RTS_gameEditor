@@ -1,18 +1,19 @@
 package game_engine.stateManaging;
 
+import game_engine.UI.ClickManager;
+import game_engine.UI.KeyboardManager;
+import game_engine.UI.SelectionBox;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.Dimension;
-import game_engine.visuals.UI.ClickManager;
-import game_engine.visuals.UI.KeyboardManager;
-import game_engine.visuals.UI.SelectionBox;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
@@ -111,17 +112,9 @@ public class GameElementManager implements Observer {
             selectPlayerUnits(points);
         }
         else if (o instanceof ClickManager) {
-            Point2D click = ((ClickManager) o).getLoc();
-            // TODO implement sending orders to units based on click
-            // ((ClickManager) o).isPrimary(), ((ClickManager) o).isSecondary()
-            boolean isSecondary;
-            if (isSecondary = ((ClickManager) o).isSecondary()) {
-                sendClickToSelectedUnits(click, !isSecondary);
-            }
-            System.out.println("Click: " +
-                               (((ClickManager) o).isPrimary() ? "primary" : "secondary") +
-                               ", loc: " + click.getX() + ", " + click.getY());
-
+            ClickManager clickManager = (ClickManager) o;
+            Point2D click = clickManager.getMapLoc();
+            sendClickToSelectedUnits(click, clickManager.getLastClick().getButton().equals(MouseButton.PRIMARY));
         }
         else if (o instanceof KeyboardManager) {
             System.out.println("Typed: " + ((KeyboardManager) o).getLastCharacter());

@@ -1,5 +1,6 @@
 package game_engine.visuals;
 
+import game_engine.UI.InputManager;
 import java.util.Observer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -23,8 +24,8 @@ public class VisualManager {
      * @param screenWidth the width of the screen to create
      * @param screenHeight the height of the screen to create
      */
-    public VisualManager (Group gameObjectVisuals, double screenWidth, double screenHeight) {
-        scene = new ScrollableScene(gameObjectVisuals, screenWidth, screenHeight);
+    public VisualManager (Group gameObjectVisuals, InputManager inputManager, double screenWidth, double screenHeight) {
+        scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
         background = scene.getBackground();
     }
 
@@ -60,22 +61,6 @@ public class VisualManager {
      */
     public void addBoxObserver (Observer o) {
         scene.addBoxObserver(o);
-    }
-
-    /**
-     * Adds a new observer to any clicks made on this map by this visual manager instance
-     * @param o
-     */
-    public void addClickObserver (Observer o) {
-        scene.addClickObserver(o);
-    }
-    
-    /**
-     * Adds a new observer to any key presses made on this map by this visual manager instance
-     * @param o
-     */
-    public void addKeyboardObserver(Observer o){
-        scene.addKeyboardObserver(o);
     }
 
     /**
