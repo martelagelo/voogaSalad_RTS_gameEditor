@@ -2,14 +2,16 @@ package game_engine.visuals;
 
 import game_engine.UI.InputManager;
 import java.util.Observer;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 
 /**
  * The class containing the visual IO and UI pieces for the player. Manages retrieving and
  * allowing observers to react to IO for clicking and key presses, as well as scrolling the map
  * 
- * @author John
+ * @author John, Michael D.
  *
  */
 public class VisualManager {
@@ -69,6 +71,10 @@ public class VisualManager {
      */
     public void addObjects (Group g) {
         background.addObjects(g);
+    }
+    
+    public void addMiniMap (Canvas c) {
+        scene.addToScene(new Group(c));
     }
 
     /**

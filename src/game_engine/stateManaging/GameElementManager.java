@@ -2,12 +2,12 @@ package game_engine.stateManaging;
 
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
-import game_engine.UI.SelectionBox;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.Dimension;
+import game_engine.visuals.SelectionBox;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;

@@ -19,7 +19,7 @@ import javafx.scene.Scene;
  * The concrete boundary of the Engine - this class exposes the public API of the Engine to the rest
  * of the project.
  *
- * @author Steve, Jonathan, Nishad, Rahul
+ * @author Steve, Jonathan, Nishad, Rahul, Michael D.
  *
  */
 public class Engine extends Observable implements Observer {
@@ -39,7 +39,7 @@ public class Engine extends Observable implements Observer {
         myMainModel = mainModel;
         myInputManager = new InputManager();
         myVisualManager = new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
-        myMiniMap = new MiniMap();
+        myMiniMap = new MiniMap(myVisualManager.getScene());
     }
 
     public Group getVisualRepresentation () {
@@ -52,12 +52,14 @@ public class Engine extends Observable implements Observer {
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
-        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myMiniMap.setUnits(newLevel.getUnits());
+        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
         myInputManager.addClickObserver(myElementManager);
         myInputManager.addKeyboardObserver(myElementManager);
+        myVisualManager.addMiniMap(myMiniMap.getDisplay());
     }
 
     public void play () {
@@ -67,6 +69,10 @@ public class Engine extends Observable implements Observer {
 
     public void pause () {
         myGameLoop.pause();
+    }
+    
+    public MiniMap getMiniMap(){
+    	return myMiniMap;
     }
 
     @Override
@@ -83,13 +89,14 @@ public class Engine extends Observable implements Observer {
         // TODO check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
-            myGameLoop = new GameLoop(nextLevel, myVisualManager);
+            myMiniMap.setUnits(nextLevel.getUnits());
+            myGameLoop = new GameLoop(nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
             myInputManager.addClickObserver(myElementManager);
             myInputManager.addKeyboardObserver(myElementManager);
-            myVisualManager.addObjects(myMiniMap.getMiniMap());
+            myVisualManager.addMiniMap(myMiniMap.getDisplay());
         }
     }
 

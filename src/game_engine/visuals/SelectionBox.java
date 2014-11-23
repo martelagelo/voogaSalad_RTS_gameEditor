@@ -1,5 +1,7 @@
-package game_engine.UI;
+package game_engine.visuals;
 
+import game_engine.UI.ClickManager;
+import game_engine.UI.MouseDragManager;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.input.MouseButton;

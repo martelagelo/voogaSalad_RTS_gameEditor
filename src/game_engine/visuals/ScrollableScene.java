@@ -1,7 +1,6 @@
 package game_engine.visuals;
 
 import game_engine.UI.InputManager;
-import game_engine.UI.SelectionBox;
 import java.util.Observer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -27,6 +26,7 @@ public class ScrollableScene extends Scene {
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
     private InputManager myInputManager;
+    private Group root;
 
     /**
      * Creates a new ScrollableScene for the map.
@@ -39,6 +39,7 @@ public class ScrollableScene extends Scene {
     public ScrollableScene (Group root, InputManager inputManager, double width, double height) {
         super(root, width, height);
         myInputManager = inputManager;
+        this.root = root;
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         myInputManager.addClickObserver(mySelectionBox);
@@ -130,6 +131,10 @@ public class ScrollableScene extends Scene {
      */
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
+    }
+    
+    public void addToScene(Group g){
+        root.getChildren().add(g);
     }
 
 }
