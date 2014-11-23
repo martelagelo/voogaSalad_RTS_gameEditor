@@ -132,16 +132,8 @@ public class ScrollableScene extends Scene {
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
     }
-    
-    public void addToScene(Group g){
+
+    public void addToScene (Group g) {
         root.getChildren().add(g);
     }
-
-<<<<<<< HEAD
-    public void addObjects (Canvas c) {
-        root.getChildren().add(c);
-    }
-
-=======
->>>>>>> c85bcd8cb098bfcec96f3956de1af2150f5c0326
 }
