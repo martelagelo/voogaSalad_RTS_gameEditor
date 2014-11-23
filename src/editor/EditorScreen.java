@@ -11,6 +11,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -60,6 +61,10 @@ public class EditorScreen extends GUIScreen {
     private Button newTerrain;
     @FXML
     private Button save;
+    @FXML
+    private Accordion levelElementAccordian;
+    @FXML
+    private ElementAccordianController levelElementAccordianController;
 
     private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
@@ -86,6 +91,12 @@ public class EditorScreen extends GUIScreen {
     @Override
     public Node getRoot () {
         return editorRoot;
+    }
+
+    // TODO: Clean up this function
+    private void initAccordion () {
+        // TODO Get Accordian Pane MetaData
+        // call to levelElementAccordianController to set up the data
     }
 
     private void initProjectExplorer () {
@@ -140,11 +151,11 @@ public class EditorScreen extends GUIScreen {
 
     @Override
     public void init () {
-        System.out.println(editorMenuBarController == null);
-        attachChildContainers(editorMenuBarController);
+        attachChildContainers(editorMenuBarController, levelElementAccordianController);
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
+        initAccordion();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
         save.setOnAction(e -> myMainModel.saveGame());
@@ -152,20 +163,29 @@ public class EditorScreen extends GUIScreen {
 
     @Override
     public void update () {
+        updateAccordion();
         updateProjectExplorer();
         updateTabViewControllers();
+    }
+
+    // TODO: metadata stuff
+    private void updateAccordion () {
+
     }
 
     private void updateProjectExplorer () {
         GameState game = myMainModel.getCurrentGame();
         Map<String, List<String>> campaignLevelMap = new HashMap<>();
+        List<String> campaigns = game.getCampaigns().stream().map( (campaign) -> {
+            return campaign.getName();
+        }).collect(Collectors.toList());
         game.getCampaigns().forEach( (campaignState) -> {
             campaignLevelMap.put(campaignState.getName(), campaignState
                     .getLevels().stream().map( (level) -> {
                         return level.getName();
                     }).collect(Collectors.toList()));
         });
-        projectExplorerController.update(game.getName(), campaignLevelMap);
+        projectExplorerController.update(game.getName(), campaigns, campaignLevelMap);
     }
 
     private void updateTabViewControllers () {

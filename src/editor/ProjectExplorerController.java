@@ -33,15 +33,15 @@ public class ProjectExplorerController implements GUIController {
     private Consumer<String> myLevelClickedConsumer = (String s) -> {
     };
 
-    public void update (String game, Map<String, List<String>> campaignLevelMap) {
+    public void update (String game, List<String> campaignOrder, Map<String, List<String>> campaignLevelMap) {
         TreeItem<String> selectedItem = myTreeView.getSelectionModel().selectedItemProperty().get();
         int selectedIndex = myTreeView.getSelectionModel().selectedIndexProperty().get();
         myGameNode.setValue(game);
         myCampaigns.clear();
         myLevels.clear();
-        campaignLevelMap.forEach( (campaign, levels) -> {
+        campaignOrder.forEach( (campaign) -> {
             ProjectExplorerTreeItem<String> campaignNode = new ProjectExplorerTreeItem<>(campaign);
-            campaignNode.getChildren().addAll(levels.stream().map( (level) -> {
+            campaignNode.getChildren().addAll(campaignLevelMap.get(campaign).stream().map( (level) -> {
                 ProjectExplorerTreeItem<String> levelNode = new ProjectExplorerTreeItem<>(level);
                 levelNode.setAction(myLevelClickedConsumer);
                 myLevels.add(levelNode);

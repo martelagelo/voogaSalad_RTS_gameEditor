@@ -9,7 +9,6 @@ import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -21,6 +20,7 @@ public class GameLoop {
 
 	public static final Double framesPerSecond = 60.0;
 
+	private String myCampaignName;
 	private Level myCurrentLevel;
 	private ScrollableBackground myBackground;
 	private List<Computer> myComputerList = new ArrayList<Computer>();
@@ -33,8 +33,9 @@ public class GameLoop {
 		}
 	};
 
-	public GameLoop (Level level, VisualManager visualManager) {
+	public GameLoop (String campaignName, Level level, VisualManager visualManager) {
 		myBackground = visualManager.getBackground();
+		myCampaignName = campaignName;
 		myCurrentLevel = level;
 		// myComputerList.add(new CollisionComputer());
 		// myComputerList.add(new VisionComputer());
@@ -65,7 +66,6 @@ public class GameLoop {
 				c.compute(selectableElement, allElements);
 			}
 		}
-		//
 		for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
 			selectableElement.update();
 		}
@@ -90,8 +90,8 @@ public class GameLoop {
 		timeline.stop();
 	}
 
-    public boolean isCurrentLevel (LevelState level) {
-        return level.sameLevel(myCurrentLevel.getLevelState());
+    public boolean isCurrentLevel (LevelState level, String campaignName) {
+        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName.equals(campaignName));
     }
 
 }
