@@ -19,8 +19,9 @@ public interface ISaveLoad {
      * @param filePath
      *            that resource to be loaded from
      * @return Java class object
+     * @throws Exception
      */
-    public <T> T loadResource (Class className, String filePath);
+    public <T> T loadResource (Class className, String filePath) throws Exception;
 
     /**
      * Save a JSONable object to a library file
@@ -29,9 +30,9 @@ public interface ISaveLoad {
      *            that can be converted to JSON format
      * @param filePath
      *            to which object should be saved
-     * @return filePath to which the json file is saved
+     * @return filePath to which the Json file is saved
      * @throws IOException
-     *             in case of trouble reading
+     * 
      */
     public String save (JSONable object, String filePath) throws IOException;
 
@@ -39,18 +40,18 @@ public interface ISaveLoad {
      * Save an image from a particular file path
      * 
      * @param image
+     *            object that needs to be saved
      * @param filePath
-     *            at which image is located
+     *            location to which image is saved
      * @return filePath where the image is saved to
      * @throws IOException
      */
     public String saveImage (Image image, String filePath) throws IOException;
 
     /**
-     * Load an image at given file path
      * 
-     * @param String
-     *            encoding of file path
+     * @param filePath
+     *            encoding of the file path
      * @return Image object at that file path
      * @throws IOException
      */

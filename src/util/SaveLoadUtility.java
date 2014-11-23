@@ -6,10 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+
 import javax.imageio.ImageIO;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
@@ -26,28 +29,14 @@ public class SaveLoadUtility implements ISaveLoad {
     public static String myDefaultLocation = "resources" + FILE_SEPARATOR;
     public static String myDefaultGameLocation = "myGames" + FILE_SEPARATOR;
 
-    public <T> T loadResource (Class className, String filePath) {
+    public <T> T loadResource (Class className, String filePath) throws Exception {
         Gson gson = new Gson();
-
-        T jsonRepresentation = null;
-        try {
-            jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
-        } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
-            // TODO Need to communicate exception to calling class
-        }
-
+        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
         return jsonRepresentation;
     }
 
     public String save (JSONable object, String filePath) throws IOException {
-
-        // TODO: remove duplication here and line 67...
-        String[] contents = filePath.split("\\" + FILE_SEPARATOR);
-        if (contents.length < 1) {
-            throw new IOException(BAD_FILE_PATH);
-        }
-        String fileName = contents[contents.length - 1];
-        File file = obtainFile(myDefaultGameLocation + filePath + FILE_SEPARATOR + fileName + ".json");
+        File file = obtainFile(filePath + ".json");
         FileWriter writer = new FileWriter(file);
         String json = object.toJSON();
         writer.write(json);
@@ -67,15 +56,20 @@ public class SaveLoadUtility implements ISaveLoad {
 
     public String saveImage (Image image, String filePath) throws IOException {
         // TODO remove duplication here and line 43
-        String[] contents = filePath.split("\\" + FILE_SEPARATOR);
-        if (contents.length < 1) {
-            throw new IOException(BAD_FILE_PATH);
-        }
-        String fileName = contents[contents.length - 1];
+        String fileName = findFileName(filePath);
         File output = obtainFile(myDefaultLocation + filePath + FILE_SEPARATOR +  fileName);
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", output);
         return output.getPath();
 
+    }
+
+    private String findFileName (String filePath) throws IOException {
+        // Determining the name of the file from the file path requires regex splitting on the file separator.
+        String[] contents = filePath.split("\\" + FILE_SEPARATOR);
+        if (contents.length < 1) {
+            throw new IOException(BAD_FILE_PATH);
+        }
+        return contents[contents.length-1];
     }
 
     public Image loadImage (String filePath) throws IOException {

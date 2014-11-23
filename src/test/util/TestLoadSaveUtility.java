@@ -1,7 +1,5 @@
 package test.util;
 
-import java.io.IOException;
-
 import javafx.scene.image.Image;
 
 import org.junit.Test;
@@ -9,8 +7,8 @@ import org.junit.Test;
 import util.SaveLoadUtility;
 
 /**
- * Test class to verify LoadSave Utility's method calls loading/saving images as well as 
- * loading/saving GSON<->JSON.  
+ * Test class to verify LoadSave Utility's method calls loading/saving images as
+ * well as loading/saving GSON<->JSON.
  * 
  * @author Rahul
  *
@@ -19,10 +17,10 @@ public class TestLoadSaveUtility {
     private SaveLoadUtility myLoadSaveUtility = new SaveLoadUtility();
 
     @Test
-    public void testLoadFunction () throws IOException {
+    public void testLoadSaveFunction () throws Exception {
         myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
-                        + SaveLoadUtility.FILE_SEPARATOR + "campaign.json");
+                        + SaveLoadUtility.FILE_SEPARATOR + "campaign");
         TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
                         + SaveLoadUtility.FILE_SEPARATOR + "campaign.json");
