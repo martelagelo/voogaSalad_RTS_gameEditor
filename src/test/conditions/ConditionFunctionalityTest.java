@@ -15,7 +15,6 @@ import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributePa
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 
 import org.junit.Before;
@@ -110,6 +109,12 @@ public class ConditionFunctionalityTest {
 		((DrawableGameElementState) element2.getGameElementState())
 				.setBounds(nonIntersectingBounds);
 		assertFalse((Boolean) (evaluator.getValue(new ElementPair(element1,
+				element2))));
+		element1.getGameElementState().setNumericalAttribute(
+				DrawableGameElementState.X_POS_STRING, 100);
+		element1.getGameElementState().setNumericalAttribute(
+				DrawableGameElementState.Y_POS_STRING, 100);
+		assertTrue((Boolean) (evaluator.getValue(new ElementPair(element1,
 				element2))));
 
 	}

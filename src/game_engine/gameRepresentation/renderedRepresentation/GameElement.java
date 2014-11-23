@@ -2,7 +2,6 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 // import game_engine.gameRepresentation.conditions.Condition;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 import java.util.Map;
