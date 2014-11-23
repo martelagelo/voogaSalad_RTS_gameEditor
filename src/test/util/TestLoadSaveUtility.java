@@ -1,14 +1,20 @@
 package test.util;
 
+import java.io.IOException;
 import javafx.scene.image.Image;
-
 import org.junit.Test;
-
 import util.SaveLoadUtility;
+import util.LoadSaveUtility;
+
 
 /**
+<<<<<<< HEAD
  * Test class to verify LoadSave Utility's method calls loading/saving images as
  * well as loading/saving GSON<->JSON.
+=======
+ * Test class to verify LoadSave Utility's method calls loading/saving images as well as
+ * loading/saving GSON<->JSON.
+>>>>>>> shittymaster
  * 
  * @author Rahul
  *
@@ -36,6 +42,7 @@ public class TestLoadSaveUtility {
        Image image =  myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR + "img"
                         + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
        System.out.println(image.getHeight());
+
         TestCampaign loadedCampaign = campaign;
         System.out.println(loadedCampaign.myDescription);
        }

@@ -15,7 +15,7 @@ public abstract class DescribableStateExistsException extends
     private static final String MESSAGE_FORMAT = "%s: %s already exists.";
 
     protected DescribableStateExistsException (String describableStateType,
-                                                      String describableStateName) {
+                                               String describableStateName) {
         super(describableStateType, describableStateName, MESSAGE_FORMAT);
     }
 

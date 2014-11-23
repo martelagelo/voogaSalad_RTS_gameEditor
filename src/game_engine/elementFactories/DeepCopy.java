@@ -33,7 +33,7 @@ public class DeepCopy {
             ObjectInputStream inputStream =
                     new ObjectInputStream(new ByteArrayInputStream(
                                                                    byteArrayOutputStream
-                                                                   .toByteArray()));
+                                                                           .toByteArray()));
             newObject = inputStream.readObject();
         }
         catch (IOException ioE) {

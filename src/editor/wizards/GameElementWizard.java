@@ -16,7 +16,8 @@ import view.WizardUtility;
  */
 public class GameElementWizard extends Wizard {
 
-    private static final String NUM_ATTR_WIZARD = "/editor/wizards/guipanes/NumberAttributeWizard.fxml";
+    private static final String NUM_ATTR_WIZARD =
+            "/editor/wizards/guipanes/NumberAttributeWizard.fxml";
     private static final String STRING_ATTR_WIZARD =
             "/editor/wizards/guipanes/StringAttributeWizard.fxml";
     private static final String TRIGGER_WIZARD = "/editor/wizards/guipanes/TriggerWizard.fxml";

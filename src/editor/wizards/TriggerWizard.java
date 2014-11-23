@@ -15,8 +15,8 @@ public class TriggerWizard extends Wizard {
     @FXML
     private TextField condition;
     @FXML
-    private TextField action;       
-    
+    private TextField action;
+
     @Override
     public boolean checkCanSave () {
         return !condition.getText().isEmpty() && !action.getText().isEmpty();

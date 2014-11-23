@@ -38,13 +38,15 @@ public class GUILoadStyleUtility {
     }
 
     /**
-     * sets the scene 
+     * sets the scene
+     * 
      * @param scene
      */
     public void setScene(Scene scene) {
         myScene = scene;
+
     }
-    
+
     /**
      * static method to load an FXML file
      * returns the GUIController associated with the FXML file
@@ -66,15 +68,16 @@ public class GUILoadStyleUtility {
     }
 
     /**
-     * sets the style of the scene using 
+     * sets the style of the scene using
+     * 
      * @param cssFiles
      */
     public void setStyle (String ... cssFiles) {
         myScene.getStylesheets().clear();
         addStyle(cssFiles);
     }
-    
-    public void addStyle(String ... cssFiles) {
+
+    public void addStyle (String ... cssFiles) {
         try {
             for (String cssFile : cssFiles) {
                 myScene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());

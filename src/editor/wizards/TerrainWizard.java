@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+
 /**
  * 
  * @author Joshua, Nishad
@@ -32,7 +33,7 @@ public class TerrainWizard extends GameElementWizard {
      */
     private void loadImage () {
         FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage()); 
+        File file = fileChooser.showOpenDialog(new Stage());
         addToData("Image", "" + file);
         BufferedImage bufferedImage;
         try {
@@ -49,7 +50,7 @@ public class TerrainWizard extends GameElementWizard {
         super.initialize();
         image.setOnAction(i -> loadImage());
     }
-    
+
     @Override
     public boolean checkCanSave () {
         return super.checkCanSave() && image != null;

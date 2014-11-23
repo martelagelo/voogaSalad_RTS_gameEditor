@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
+
 /**
  * 
  * @author Nishad Agrawal
@@ -35,6 +36,10 @@ public class WizardData {
         myWizards.add(wizData);
     }
 
+    public Map<String, String> getData () {
+        return myData;
+    }
+
     public List<WizardData> getWizards () {
         return myWizards;
     }
@@ -55,6 +60,7 @@ public class WizardData {
     @Override
     public String toString () {
         StringBuilder sb = new StringBuilder(myName + "\n");
+//        StringBuilder sb = new StringBuilder(); TODO: check this
         for (String key : myData.keySet()) {
             sb.append(key + ": " + myData.get(key) + "\n");
         }
