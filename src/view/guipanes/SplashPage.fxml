@@ -36,6 +36,7 @@
 		<RowConstraints vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
+		<TextArea fx:id="title"></TextArea>
 		<Button defaultButton="true" fx:id="launchEditorButton" GridPane.columnIndex="1"
 			GridPane.rowIndex="6" />
 		<Button  defaultButton="true" fx:id="launchRunnerButton" GridPane.columnIndex="3"

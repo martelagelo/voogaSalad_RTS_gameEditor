@@ -1,16 +1,26 @@
 package view;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 
@@ -43,6 +53,8 @@ public class SplashScreen extends GUIScreen {
     private ComboBox<String> gameDropDown;
     @FXML
     private Button newGameButton;
+    @FXML
+    private TextArea title;
 
     @Override
     public Node getRoot () {
@@ -61,7 +73,7 @@ public class SplashScreen extends GUIScreen {
                 .map(f -> f.getName())
                 .collect(Collectors.toList());
         gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
-
+        drawTitle();
         newGameButton.setOnAction(e -> {
             myMainModel.newGame();
             switchScreen(ViewScreen.EDITOR);
@@ -92,6 +104,24 @@ public class SplashScreen extends GUIScreen {
                 switchScreen(ViewScreen.EDITOR);
             });
         attachStringProperties();
+    }
+    
+    private void drawTitle () {
+    	File fuck = new File("duvall.txt");
+    	System.out.println(fuck.exists());
+    	EventHandler<ActionEvent> action;
+			action = new EventHandler<ActionEvent>(){
+				//InputStream iS = this.getClass().getClassLoader().getResourceAsStream("../duvall.txt");
+				//File f = new File("../duvall.txt");
+				public void handle(ActionEvent t) {
+
+				}
+			};
+			KeyFrame keyFrame = new KeyFrame(new Duration(100), action);
+			Timeline gameLoop = new Timeline(keyFrame);
+			gameLoop.setCycleCount(Animation.INDEFINITE);
+			gameLoop.play();
+    	
     }
 
     private void attachStringProperties () {
