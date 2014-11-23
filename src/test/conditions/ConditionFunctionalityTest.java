@@ -28,12 +28,13 @@ import org.junit.Test;
  *
  */
 public class ConditionFunctionalityTest {
-	private DrawableGameElement element1;
-	private DrawableGameElement element2;
-	private NumericAttributeParameter numAttrParam;
-	private NumberParameter numberParam;
-	private GameElementParameter elementParam1;
-	private GameElementParameter elementParam2;
+	private DrawableGameElement myElement1;
+	private DrawableGameElement myElement2;
+	private NumericAttributeParameter myNumAttrParam;
+	private NumberParameter myNumberParam;
+	private GameElementParameter myElementParam1;
+	private GameElementParameter myElementParam2;
+	private ElementPair myElementPair;
 
 	/**
 	 * Create some test game elements for us to work with in the test
@@ -44,19 +45,20 @@ public class ConditionFunctionalityTest {
 		state1.setNumericalAttribute("Health", 50d);
 		double[] bounds1 = { 0, 0, 0, 10, 10, 10, 10, 0 };
 		state1.setBounds(bounds1);
-		element1 = new DrawableGameElement(state1);
+		myElement1 = new DrawableGameElement(state1);
 		DrawableGameElementState state2 = new DrawableGameElementState(0, 0);
 		state2.setNumericalAttribute("Health", 20d);
 		double[] bounds2 = { 0, 0, 0, 1, 1, 1, 1, 0 };
 		state2.setBounds(bounds2);
-		element2 = new DrawableGameElement(state2);
-		numAttrParam = new NumericAttributeParameter("Health", null,
+		myElement2 = new DrawableGameElement(state2);
+		myNumAttrParam = new NumericAttributeParameter("Health", null,
 				new ActorObjectIdentifier());
-		numberParam = new NumberParameter(10d);
-		elementParam1 = new GameElementParameter(new ActorObjectIdentifier(),
+		myNumberParam = new NumberParameter(10d);
+		myElementParam1 = new GameElementParameter(new ActorObjectIdentifier(),
 				null);
-		elementParam2 = new GameElementParameter(new ActeeObjectIdentifier(),
+		myElementParam2 = new GameElementParameter(new ActeeObjectIdentifier(),
 				null);
+		myElementPair = new ElementPair(myElement1, myElement2);
 	}
 
 	/**
@@ -80,42 +82,43 @@ public class ConditionFunctionalityTest {
 	@Test
 	public void testAttributeIncrimenting() {
 		Evaluator<?, ?, ?> evaluator = new AdditionAssignmentEvaluator<>(
-				numAttrParam, numberParam);
-		assertEquals(50d,
-				element1.getGameElementState().getNumericalAttribute("Health"));
-		evaluator.getValue(new ElementPair(element1, element2));
-		assertEquals(60d,
-				element1.getGameElementState().getNumericalAttribute("Health"));
+				myNumAttrParam, myNumberParam);
+		assertEquals(50d, myElement1.getGameElementState()
+				.getNumericalAttribute("Health"));
+		evaluator.getValue(myElementPair);
+		assertEquals(60d, myElement1.getGameElementState()
+				.getNumericalAttribute("Health"));
 
 	}
 
 	@Test
 	public void testValueAssignment() {
 		Evaluator<?, ?, ?> evaluator = new EqualsAssignmentEvaluator<>(
-				numAttrParam, numberParam);
-		evaluator.getValue(new ElementPair(element1, element2));
-		assertEquals(numberParam.getValue(), element1.getGameElementState()
+				myNumAttrParam, myNumberParam);
+		evaluator.getValue(myElementPair);
+		assertEquals(myNumberParam.getValue(), myElement1.getGameElementState()
 				.getNumericalAttribute("Health"));
 	}
 
 	@Test
 	public void testCollisions() {
-		Evaluator<?, ?, ?> evaluator = new CollisionEvaluator<>(elementParam1,
-				elementParam2);
-		assertTrue((Boolean) (evaluator.getValue(new ElementPair(element1,
-				element2))));
+		Evaluator<?, ?, ?> evaluator = new CollisionEvaluator<>(
+				myElementParam1, myElementParam2);
+		// First make sure the pre-set collision boxes collide
+		assertTrue((Boolean) (evaluator.getValue(myElementPair)));
+		// Now make sure if we give far away bounds, they don't intersect
 		double[] nonIntersectingBounds = { 100, 100, 200, 100, 200, 200, 100,
 				200 };
-		((DrawableGameElementState) element2.getGameElementState())
+		((DrawableGameElementState) myElement2.getGameElementState())
 				.setBounds(nonIntersectingBounds);
-		assertFalse((Boolean) (evaluator.getValue(new ElementPair(element1,
-				element2))));
-		element1.getGameElementState().setNumericalAttribute(
+		assertFalse((Boolean) (evaluator.getValue(myElementPair)));
+		// Now move the game element to the other bounds location and make sure
+		// they intersect
+		myElement1.getGameElementState().setNumericalAttribute(
 				DrawableGameElementState.X_POS_STRING, 100);
-		element1.getGameElementState().setNumericalAttribute(
+		myElement1.getGameElementState().setNumericalAttribute(
 				DrawableGameElementState.Y_POS_STRING, 100);
-		assertTrue((Boolean) (evaluator.getValue(new ElementPair(element1,
-				element2))));
+		assertTrue((Boolean) (evaluator.getValue(myElementPair)));
 
 	}
 }
