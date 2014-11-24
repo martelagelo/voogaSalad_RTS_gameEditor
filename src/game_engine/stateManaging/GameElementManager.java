@@ -65,11 +65,8 @@ public class GameElementManager implements Observer {
     private void selectPlayerUnits (double[] rectPoints) {
         for (SelectableGameElement e : myLevel.getUnits()) {
             e.select(false);
-            System.out.println("Unit Unselected");
             if (contains(rectPoints, e.getLocation())) {
-
                 e.select(true);
-                System.out.println("Selected Unit");
             }
         }
     }

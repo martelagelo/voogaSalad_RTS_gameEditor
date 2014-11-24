@@ -1,7 +1,7 @@
 package game_engine;
 
-import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.UI.InputManager;
+import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
@@ -11,14 +11,11 @@ import game_engine.visuals.ScrollableScene;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.scene.Group;
-import javafx.scene.Scene;
 
 
 /**
@@ -45,9 +42,12 @@ public class Engine extends Observable implements Observer {
         myMainModel = mainModel;
 //        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
+        // TODO: this is not going to work when the pane needs to be added as a component for the editor
+//        myVisualManager =
+//                new VisualManager(new Group(), myInputManager, screenSize.getWidth(), screenSize.getHeight());
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, screenSize.getWidth(), screenSize.getHeight());
-        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
+                new VisualManager(new Group(), myInputManager, 600, 600);
+        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScrollingScene());
     }
 
     public Group getVisualRepresentation () {
@@ -92,15 +92,14 @@ public class Engine extends Observable implements Observer {
 //        updateGameLoop(myMainModel.getCurrentLevel());
     }
 
-    public Scene getScene () {
-        return myVisualManager.getScene();
+    public ScrollableScene getScene () {
+        return myVisualManager.getScrollingScene();
     }
 
     private void updateGameLoop (LevelState levelState, String currentCampaign) {
         // TODO check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
-            System.out.println(nextLevel.getUnits().size());
             myMiniMap.setUnits(nextLevel.getUnits());
             myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);

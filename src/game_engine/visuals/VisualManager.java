@@ -31,7 +31,7 @@ public class VisualManager {
                           double screenWidth,
                           double screenHeight) {
         scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
-        background = scene.getBackground();
+        background = scene.getScrollingBackground();
     }
 
     /**
@@ -39,7 +39,7 @@ public class VisualManager {
      * 
      * @return the Scene object that represents the map
      */
-    public Scene getScene () {
+    public ScrollableScene getScrollingScene () {
         return scene;
     }
 

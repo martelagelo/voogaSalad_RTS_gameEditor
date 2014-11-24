@@ -52,7 +52,7 @@ public class ScrollableBackground extends Pane implements Observer
     /**
      * Update the view of the background based on the current scroll speed
      */
-    public void update (double screenWidth, double screenHeight) {
+    public void update (double screenWidth, double screenHeight) {  
         if ((getTranslateX() >= 0 && myXScrollSpeed < 0) ||
             (-getTranslateX() >= (myXBoundary - screenWidth) && myXScrollSpeed > 0))
             setXScrollSpeed(0);

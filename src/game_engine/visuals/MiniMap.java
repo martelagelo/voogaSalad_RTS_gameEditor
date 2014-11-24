@@ -72,8 +72,8 @@ public class MiniMap {
     }
 
     private void moveSceneBox () {
-        double XPos = -1 * myScene.getBackground().getTranslateX();
-        double YPos = -1 * myScene.getBackground().getTranslateY();
+        double XPos = -1 * myScene.getScrollingBackground().getTranslateX();
+        double YPos = -1 * myScene.getScrollingBackground().getTranslateY();
         myGraphicsContext.setLineWidth(2);
         myGraphicsContext.setStroke(Color.BLUE);
         myGraphicsContext.strokeRoundRect(XPos / X_SCALE, YPos / X_SCALE,
