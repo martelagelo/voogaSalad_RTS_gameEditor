@@ -49,7 +49,7 @@ public class GameElementManager implements Observer {
     public List<GameElementState> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
-                .map(o -> o.getGameElementState())
+                .map(o -> o.getState())
                 .collect(Collectors.toList());
     }
 

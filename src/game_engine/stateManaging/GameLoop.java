@@ -6,11 +6,10 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.evaluatables.evaluators.AndEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
-import game_engine.gameRepresentation.evaluatables.evaluators.MultiplicationEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.IfThenEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
-import game_engine.gameRepresentation.evaluatables.parameters.RandomParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
@@ -19,7 +18,6 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +32,7 @@ import javafx.util.Duration;
 /**
  * The main loop for running the game, checking for collisions, and updating game entities
  * 
- * @author Michael Ching Chong Deng, John, Steve, Zach
+ * @author Michael D., John, Steve, Zach
  *
  */
 public class GameLoop {
@@ -48,7 +46,7 @@ public class GameLoop {
 
     private List<Computer> myComputers = new ArrayList<>();
     private Timeline timeline;
-    
+
     private List<Line> unitPaths;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
@@ -98,13 +96,13 @@ public class GameLoop {
                 new SubtractionAssignmentEvaluator<>(yPosition, yVelocity);
         Evaluator<?, ?, ?> reverseMotionEvaluator =
                 new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
+        Evaluator<?, ?, ?> collisionAndStopCAPair =
+                new IfThenEvaluator<>(collisionEvaluator, reverseMotionEvaluator);
 
         myCurrentLevel
                 .getUnits()
                 .stream()
-                .forEach(element -> element
-                        .getConditionActionPairs()
-                        .put(collisionEvaluator, reverseMotionEvaluator));
+                .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
 
     }
 
@@ -119,7 +117,7 @@ public class GameLoop {
     }
 
     private void update () {
-    	clearLinesFromRoot();
+        clearLinesFromRoot();
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
@@ -127,7 +125,7 @@ public class GameLoop {
                 new ArrayList<DrawableGameElementState>();
         // TODO add stream that collects into objects
         allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
-            return (DrawableGameElementState) element.getGameElementState();
+            return (DrawableGameElementState) element.getState();
         }).collect(Collectors.toList()));
         // allElements.addAll(myCurrentLevel.getTerrain());
         // TODO fix this logic
@@ -142,17 +140,17 @@ public class GameLoop {
         myMiniMap.updateMiniMap();
         addPathsToRoot();
     }
-    
-    private void addPathsToRoot() {
-    	for (SelectableGameElement SGE: myCurrentLevel.getUnits()) {
-    		unitPaths.addAll(SGE.getLines());
-    	}
-    	this.myVisualManager.getBackground().getChildren().addAll(unitPaths);
-	}
-    
-    private void clearLinesFromRoot() {
-    	this.myVisualManager.getBackground().getChildren().removeAll(unitPaths);
-    	unitPaths.clear();
+
+    private void addPathsToRoot () {
+        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
+            unitPaths.addAll(SGE.getLines());
+        }
+        this.myVisualManager.getBackground().getChildren().addAll(unitPaths);
+    }
+
+    private void clearLinesFromRoot () {
+        this.myVisualManager.getBackground().getChildren().removeAll(unitPaths);
+        unitPaths.clear();
     }
 
     private void startTimeline (KeyFrame frame) {

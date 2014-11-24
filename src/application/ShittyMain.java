@@ -58,7 +58,7 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState2 = createArcher(bounds, 400, 100, 1, 0);
         SelectableGameElementState archerState3 = createArcher(bounds, 100, 200, 1, 0);
         SelectableGameElementState archerState4 = createArcher(bounds, 400, 200, 2, 0);
-        SelectableGameElementState archerState5 = createArcher(bounds, 600, 200, 2, 1);
+        SelectableGameElementState archerState5 = createArcher(bounds, 800, 800, 2, 1);
 
 
         

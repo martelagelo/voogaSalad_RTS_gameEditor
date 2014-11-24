@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 // import
 // game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Sighted;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;

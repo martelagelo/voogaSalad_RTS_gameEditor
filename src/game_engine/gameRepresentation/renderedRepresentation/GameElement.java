@@ -1,24 +1,35 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-// import game_engine.gameRepresentation.conditions.Condition;
+import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.NullElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
-
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 
 /**
- * A basic game element. Contains a state and a map of conditions to actions. Also contains an
- * update method to update the element due to internal state.
+ * A basic game element. Contains a state and a map strings to conditions and actions. Also contains
+ * an
+ * update method to update the element due to its internal state.
  *
- * @author Jonathan, Nishad, Rahul, Steve
+ * @author Jonathan, Nishad, Rahul, Steve, Zach
  *
  */
-public class GameElement{
-
-    private Map<Evaluatable<Boolean>, Evaluatable<?>> myConditionActionPairs;
-    private GameElementState myGameElementState;
-
+public class GameElement {
+    public final static String ACTION_TYPE_LOCATION = "resources.properties.ActionTypes";
+    /**
+     * The action lists map is a map of action strings to lists of possible actions. For example,
+     * The String "Collision" might map to a list of actions that should be run whenever an element
+     * is dealing with a collision with another element whereas "Action1" might map to a list of
+     * actions that should be executed when an element's action button is clicked.
+     */
+    private Map<String, List<Evaluatable<?>>> myActionLists;
+    private GameElementState myState;
+    private ResourceBundle actionTypes;
 
     /**
      * Create a game element with the given state
@@ -26,34 +37,147 @@ public class GameElement{
      * @param gameElementState the state of the game element
      */
     public GameElement (GameElementState gameElementState,
-                        Map<Evaluatable<Boolean>, Evaluatable<?>> conditionActionPairs) {
-        myGameElementState = gameElementState;
-        myConditionActionPairs = conditionActionPairs;
+                        Map<String, List<Evaluatable<?>>> conditionActionPairs) {
+        myState = gameElementState;
+        myActionLists = conditionActionPairs;
+        actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
+        createActionLists();
     }
 
     /**
-     * @return the game element's state
+     * Ensure that lists are instantiated for all the possible action types of an element to protect
+     * against uninstantiated action entities at runtime.
      */
-    public GameElementState getGameElementState () {
-        return myGameElementState;
+    private void createActionLists () {
+        for (String key : actionTypes.keySet())
+        {
+            if (!myActionLists.containsKey(key)) {
+                myActionLists.put(key, new ArrayList<>());
+            }
+        }
+
     }
 
     /**
-     * Update the internal state of the game element based on its environment
+     * Get an iterator of the actions with a given tag
+     * 
+     * @param actionType the tag for the type of action
+     * @return an iterator containing all the actions of the desired type
+     */
+    public Iterator<Evaluatable<?>> getActionsOfType (String actionType) {
+        List<Evaluatable<?>> actionsOfInterest;
+        if (!myActionLists.containsKey(actionType)) {
+            actionsOfInterest = new ArrayList<Evaluatable<?>>();
+        }
+        else {
+            actionsOfInterest = myActionLists.get(actionType);
+        }
+        return actionsOfInterest.iterator();
+
+    }
+
+    /**
+     * Add an action of the given type to the array of actions
+     * 
+     * @param actionType the type of the action to be added
+     * @param action the action to be added
+     */
+    public void addAction (String actionType, Evaluatable<?> action) {
+        if (!myActionLists.containsKey(actionType)) {
+            myActionLists.put(actionType, new ArrayList<>());
+        }
+        myActionLists.get(actionType).add(action);
+    }
+
+    /**
+     * Remove an action with the given string from the array of actions
+     * 
+     * @param actionType the type action to be removed
+     * @param actionString the string representation of the action to be removed
+     */
+    public void removeAction (String actionType, String actionString) {
+        getActionsOfType(actionType).forEachRemaining(action -> {
+            if (action.toString()
+                    .equals(actionString)) {
+                myActionLists.get(actionType)
+                        .remove(action);
+            }
+        });
+    }
+
+    /**
+     * Update the element based on its internal state
      */
     public void update () {
         updateSelfDueToInternalFactors();
     }
 
     /**
-     * Update the game element based on internally stored parameters and conditions and actions
+     * Update the game element due to actions that execute on its internal factors e.g. move the
+     * element based on its internal velocity parameters.
      */
     private void updateSelfDueToInternalFactors () {
-        // TODO Auto-generated method stub
+        executeAllActions(actionTypes.getString("internal"));
     }
 
-    //TODO isn't this giving up an important collection??
-    public Map<Evaluatable<Boolean>, Evaluatable<?>> getConditionActionPairs () {
-        return myConditionActionPairs;
+    /**
+     * Execute all the actions in a given key's list. Given an element pair
+     *
+     * @param actionKey the key of the action set for which to execute all of the actions
+     * @param ElementPair an element pair of the current object and any objects it might be
+     *        interested in e.g. the current unit and a unit nearby it
+     */
+    protected void executeAllActions (String actionKey, ElementPair elementPair) {
+        getActionsOfType(actionKey).forEachRemaining(action -> action.getValue(elementPair));
+    }
+
+    /**
+     * Execute all the actions in a given key's list given that there are no applicable elements for
+     * the action set.
+     *
+     * @param actionKey the key of the action set for which to execute all of the actions
+     */
+    protected void executeAllActions (String actionKey) {
+        executeAllActions(actionKey, new NullElementPair());
+    }
+
+    /**
+     * Get a numeric attribute contained by the game element
+     *
+     * @param attributTag the tag of the attribute of interest
+     * @return the atribute's value or 0 if the attribute was not declared
+     */
+    public Number getNumericAttribute (String attributeTag) {
+        return myState.getNumericalAttribute(attributeTag);
+    }
+
+    /**
+     * Set a numeric attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the value of the attribute
+     */
+    public void setNumericAttribute (String attributeTag, Number attributeValue) {
+        myState.setNumericalAttribute(attributeTag, attributeValue);
+    }
+
+    /**
+     * Get a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @return the value of the attribute or "" if it does not exist
+     */
+    public String getTextualAttribute (String attributeTag) {
+        return myState.getTextualAttribute(attributeTag);
+    }
+
+    /**
+     * Set the value of a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the attribute's value
+     */
+    public void setTextualAttribute (String attributeTag, String attributeValue) {
+        myState.setTextualAttribute(attributeTag, attributeValue);
     }
 }

@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.stateRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement.traits;
 
 /**
  * An interface required for object that have sight.

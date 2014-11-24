@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;

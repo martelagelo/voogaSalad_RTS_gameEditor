@@ -6,6 +6,7 @@ import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.Spritesheet;
+import java.util.List;
 import java.util.Map;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
@@ -41,7 +42,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
      *        the state of the drawable element
      */
     public DrawableGameElement (DrawableGameElementState element,
-                                Map<Evaluatable<Boolean>, Evaluatable<?>> conditionActionPairs) {
+                                Map<String, List<Evaluatable<?>>> conditionActionPairs) {
         super(element, conditionActionPairs);
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();

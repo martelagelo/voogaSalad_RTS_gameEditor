@@ -1,4 +1,4 @@
-package game_engine.visuals;
+package game_engine.gameRepresentation.stateRepresentation.gameElement.traits;
 
 /**
  * An object capable of being updated and returning a status
