@@ -40,7 +40,7 @@ public class Engine extends Observable implements Observer {
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
-        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
+//        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
         myVisualManager =
                 new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
