@@ -9,34 +9,33 @@
 <?import javafx.scene.textfield.*?>
 <?import javafx.scene.image.*?>
  
-<StackPane fx:id="stackPane" xmlns:fx="http://javafx.com/fxml">
-	<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
-    minHeight="100" maxHeight="750"> 
-    	<top>
-    		<ImageView>    
-   				<image>
-      				<Image url="/resources/img/graphics/interface/topBar.png" />
-      			</image>
-      		</ImageView>
-    	</top> 
-    	<bottom>
-    		<HBox>
-      			<ImageView>    
-   					<image>
-      					<Image url="/resources/img/graphics/interface/interactionPane.png" />
-      				</image>
-      			</ImageView>
-      			<ImageView>    
-   					<image>
-      					<Image url="/resources/img/graphics/interface/informationPane.png" />
-      				</image>
-      			</ImageView>
-      			<ImageView>    
-   					<image>
-      					<Image url="/resources/img/graphics/interface/miniMapPane.png" />
-      				</image>
-      			</ImageView>
-      		</HBox>
-        </bottom>
-	</BorderPane>
-</StackPane>
+ 
+<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
+   minHeight="750" maxHeight="750"> 
+   	<top>
+   		<ImageView>    
+  				<image>
+     				<Image url="/resources/img/graphics/interface/topBar.png" />
+     			</image>
+   		</ImageView>
+   	</top> 
+   	<bottom>
+   		<HBox>
+   			<ImageView>    
+				<image>
+   					<Image url="/resources/img/graphics/interface/interactionPane.png" />
+   				</image>
+   			</ImageView>
+   			<ImageView>    
+				<image>
+   					<Image url="/resources/img/graphics/interface/informationPane.png" />
+   				</image>
+   			</ImageView>
+   			<ImageView>    
+				<image>
+   					<Image url="/resources/img/graphics/interface/miniMapPane.png" />
+   				</image>
+   			</ImageView>
+   		</HBox>
+	</bottom>
+</BorderPane>

@@ -1,6 +1,5 @@
 package game_engine.visuals;
 
-import game_engine.Engine;
 import game_engine.UI.InputManager;
 
 import java.io.IOException;
@@ -10,14 +9,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 
 /**
@@ -53,9 +50,10 @@ public class ScrollableScene extends Scene {
         super(root, width, height);
         myInputManager = inputManager;
         this.root = root;
-        StackPane sp = null;
+        StackPane stackPane = new StackPane();
+        BorderPane guiBP = null;
 		try {
-			sp = (StackPane)FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
+			guiBP = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,13 +62,16 @@ public class ScrollableScene extends Scene {
         mySelectionBox = new SelectionBox();
         myInputManager.addClickObserver(mySelectionBox);
         myInputManager.addMouseDragObserver(mySelectionBox);
-       
-        sp.getChildren().addAll(myBackground, mySelectionBox.getBox());
-        BorderPane bp = (BorderPane) sp.lookup("#overlay");
-        sp.getChildren().remove(bp);
-        sp.getChildren().add(bp);
-        sp.setAlignment(bp, Pos.TOP_LEFT);
-        root.getChildren().add(sp);
+        Rectangle clipRectangle = new Rectangle();
+        clipRectangle.setWidth(600);
+        clipRectangle.setHeight(600);
+        myBackground.setClip(clipRectangle);
+
+        guiBP.setCenter(myBackground);
+        //BorderPane.setAlignment(myBackground, Pos.CENTER);
+        //stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
+        //stackPane.setAlignment(guiBP, Pos.TOP_LEFT);
+        root.getChildren().add(guiBP);
         initializeHandlers();
     }
 
