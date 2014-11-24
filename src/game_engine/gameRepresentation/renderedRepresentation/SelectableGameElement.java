@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D.
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
@@ -36,6 +36,9 @@ public class SelectableGameElement extends DrawableGameElement {
         FWD, FWD_LEFT, LEFT, BK_LEFT, BK, BK_RIGHT, RIGHT, FWD_RIGHT
     }
 
+    public final static String X_VEL = "xVelocity";
+    public final static String Y_VEL = "yVelocity";
+
     private Queue<Point2D> headings;
 
     /**
@@ -49,6 +52,9 @@ public class SelectableGameElement extends DrawableGameElement {
         super(element, conditionActionPairs);
         this.isSelected = false;
         headings = new LinkedList<Point2D>();
+
+        this.getGameElementState().setNumericalAttribute(X_VEL, 0);
+        this.getGameElementState().setNumericalAttribute(Y_VEL, 0);
         // TODO Auto-generated constructor stub
     }
 
@@ -78,26 +84,27 @@ public class SelectableGameElement extends DrawableGameElement {
     @Override
     public void update () {
         super.update();
+        move();
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
-        move();
+       
     }
 
-//    private void move () {
-//        if (heading == null)
-//            heading = getLocation();
-//
-//        setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
-//
-//        if (!heading.equals(getLocation())) {
-//            Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-//                                        heading.getY() - getLocation().getY());
-//            if (delta.magnitude() > speed)
-//                delta = delta.normalize().multiply(speed);
-//            this.setLocation(getLocation().add(delta));
-//        }
-//    }
+    // private void move () {
+    // if (heading == null)
+    // heading = getLocation();
+    //
+    // setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
+    //
+    // if (!heading.equals(getLocation())) {
+    // Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
+    // heading.getY() - getLocation().getY());
+    // if (delta.magnitude() > speed)
+    // delta = delta.normalize().multiply(speed);
+    // this.setLocation(getLocation().add(delta));
+    // }
+    // }
 
     private DIRECTION getDirection (Point2D loc, Point2D destination) {
         double angle =
@@ -135,11 +142,11 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void move () {
         if (headings.size() == 0) {
-            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
-            this.setLocation(getLocation());
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size() == 0));
+            this.updateImageLocation();
         }
         else {
-            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size() == 0));
             if (!headings.peek().equals(getLocation())) {
                 Point2D currentHeading = headings.peek();
                 Point2D delta = new Point2D(currentHeading.getX()
@@ -147,21 +154,25 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                     - getLocation().getY());
                 if (delta.magnitude() > speed)
                     delta = delta.normalize().multiply(speed);
-                this.setLocation(getLocation().add(delta));
+                this.getGameElementState().setNumericalAttribute(X_VEL, delta.getX());
+                this.getGameElementState().setNumericalAttribute(Y_VEL, delta.getY());
+                this.getGameElementState().setNumericalAttribute(SelectableGameElementState.X_POS_STRING,this.getGameElementState().getNumericalAttribute(SelectableGameElementState.X_POS_STRING).doubleValue()+delta.getX());
+                this.getGameElementState().setNumericalAttribute(SelectableGameElementState.Y_POS_STRING,this.getGameElementState().getNumericalAttribute(SelectableGameElementState.Y_POS_STRING).doubleValue()+delta.getY());
+                this.updateImageLocation();
             }
             else {
                 headings.poll();
-                this.setLocation(getLocation());
+                this.updateImageLocation();
             }
         }
     }
 
     private void updateSelfDueToCurrentObjective () {
-       // getApplicableConditionActionPairs("ObjectiveCondition");
+        // getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
     public void updateSelfDueToSelection () {
-       // getApplicableConditionActionPairs("SelfCondition");
+        // getApplicableConditionActionPairs("SelfCondition");
     }
 
     private void updateSelfDueToVisions () {
@@ -171,14 +182,27 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCollisions () {
-        //System.out.println("Updating due to colliding objects");
-        //TODO fix string literal
-        Set<DrawableGameElementState> elementsOfInterest = ((SelectableGameElementState)(this.getGameElementState())).getInteractingElements().get("CollidingElements");
-        for(Evaluatable<Boolean> condition:getConditionActionPairs().keySet()){
-            for(DrawableGameElementState element: elementsOfInterest){
-                ElementPair elements = new ElementPair(this,element);
+        // System.out.println("Updating due to colliding objects");
+        // TODO fix string literal
+        Set<DrawableGameElementState> elementsOfInterest =
+                ((SelectableGameElementState) (this.getGameElementState()))
+                        .getInteractingElements().get("CollidingElements");
+        for (Evaluatable<Boolean> condition : getConditionActionPairs().keySet()) {
+            for (DrawableGameElementState element : elementsOfInterest) {
+                ElementPair elements = new ElementPair(this.getGameElementState(), element);
+                if (condition.getValue(elements)) {
+                    System.out
+                            .println("Original X:" +
+                                     this.getGameElementState()
+                                             .getNumericalAttribute(DrawableGameElementState.X_POS_STRING));
+                    getConditionActionPairs().get(condition).getValue(elements);
+                    System.out
+                            .println("New X:" +
+                                     this.getGameElementState()
+                                             .getNumericalAttribute(DrawableGameElementState.X_POS_STRING));
+                }
             }
-                
+
         }
         System.out.println(elementsOfInterest.size());
     }
@@ -199,8 +223,8 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                           String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
 
-         //List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-         //getApplicableConditionActionPairs(conditionActionPairIdentifier);
+        // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+        // getApplicableConditionActionPairs(conditionActionPairIdentifier);
         // if (myState.getInteractingElements().containsKey(elementIdentifier))
         // {
         // for (DrawableGameElementState element :
@@ -217,7 +241,7 @@ public class SelectableGameElement extends DrawableGameElement {
         // }
         // }
     }
-    
+
     public boolean isSelected () {
         return this.isSelected;
     }

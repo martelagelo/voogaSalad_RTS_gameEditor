@@ -21,18 +21,18 @@ public class CollisionEvaluator<A, B> extends Evaluator<A, B, Boolean> {
     }
 
     @Override
-    public Boolean evaluate (GameElement element1, GameElement element2) {
-        if (element1.getGameElementState() instanceof Boundable
-            && element2.getGameElementState() instanceof Boundable) {
-            double[] element1Bounds = ((Boundable) element1
-                    .getGameElementState()).getBounds();
+    public Boolean evaluate (GameElementState element1, GameElementState element2) {
+        if (element1 instanceof Boundable
+            && element2 instanceof Boundable) {
+            double[] element1Bounds = ((Boundable) element1)
+                    .getBounds();
             double[] element2Bounds = ((Boundable) element2
-                    .getGameElementState()).getBounds();
+                    ).getBounds();
             boolean collides = new Polygon(findGlobalBounds(element1Bounds,
-                                                            element1.getGameElementState()))
-                                .intersects(new Polygon(findGlobalBounds(element2Bounds,
-                                                                         element2.getGameElementState()))
-                                        .getBoundsInLocal());
+                                                            element1))
+                    .intersects(new Polygon(findGlobalBounds(element2Bounds,
+                                                             element2))
+                            .getBoundsInLocal());
             return collides;
         }
         return false;

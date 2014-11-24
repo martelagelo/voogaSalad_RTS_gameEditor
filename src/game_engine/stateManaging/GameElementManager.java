@@ -18,6 +18,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
 
+
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
@@ -26,29 +27,30 @@ import javafx.geometry.Point2D;
  */
 public class GameElementManager implements Observer {
 
-	private Level myLevel;
+    private Level myLevel;
 
-	public GameElementManager(Level level) {
-		myLevel = level;
-	}
+    public GameElementManager (Level level) {
+        myLevel = level;
+    }
 
-	/**
-	 * Get all the game elements of a given type
-	 *
-	 * @param typeName
-	 *            the name of the type of the game elements
-	 * @return all the game elements with the given type
-	 */
-	public List<GameElement> findAllElementsOfType(String typeName) {
-		return myLevel.getUnits().stream()
-				.filter(o -> o.getType().equals(typeName))
-				.collect(Collectors.toList());
-	}
+    /**
+     * Get all the game elements of a given type
+     *
+     * @param typeName
+     *        the name of the type of the game elements
+     * @return all the game elements with the given type
+     */
+    public List<GameElementState> findAllElementsOfType (String typeName) {
+        return myLevel.getUnits().stream()
+                .filter(o -> o.getType().equals(typeName))
+                .map(o -> o.getGameElementState())
+                .collect(Collectors.toList());
+    }
 
-	public void addElementToLevel(String typeName) {
-		// TODO: add factories
-	}
-	
+    public void addElementToLevel (String typeName) {
+        // TODO: add factories
+    }
+
     /**
      * Select all the elements in a given rectangle
      *

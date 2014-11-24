@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  *
  */
 public class CollisionComputer extends
-        Computer<DrawableGameElement, DrawableGameElement> {
+        Computer<DrawableGameElementState, DrawableGameElementState> {
     private Evaluator<?, ?, ?> collisionEvaluator;
 
     /**
@@ -41,9 +41,11 @@ public class CollisionComputer extends
      */
     @Override
     protected boolean checkComputingCondition (
-                                               DrawableGameElement primaryObject,
-                                               DrawableGameElement otherObject) {
-        ElementPair elementPair = new ElementPair(primaryObject, otherObject);
+                                               DrawableGameElementState primaryObject,
+                                               DrawableGameElementState otherObject) {
+        ElementPair elementPair =
+                new ElementPair(primaryObject,
+                                otherObject);
         return (Boolean) collisionEvaluator.getValue(elementPair);
     }
 
@@ -54,14 +56,14 @@ public class CollisionComputer extends
      */
     @Override
     protected void givePrimaryObjectElements (
-                                              DrawableGameElement primaryObject,
-                                              List<DrawableGameElement> listToAdd) {
-        if(listToAdd.size()>0){
+                                              DrawableGameElementState primaryObject,
+                                              List<DrawableGameElementState> listToAdd) {
+        if (listToAdd.size() > 0) {
             System.out.println("Collision!");
         }
-        ((SelectableGameElementState) primaryObject.getGameElementState())
+        ((SelectableGameElementState) primaryObject)
                 .addCollidingElements(listToAdd.stream()
-                        .map(element -> (DrawableGameElementState) element.getGameElementState())
+                        .map(element -> (DrawableGameElementState) element)
                         .collect(Collectors.toList()));
     }
 
