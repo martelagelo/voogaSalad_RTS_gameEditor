@@ -68,6 +68,7 @@ public class ShittyMain extends Application {
                                                 "resources/img/graphics/units/eagleWarrior.png",
                                                 new Dimension(294, 98), 14));
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
+        archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.setAnimation("stand_fwd");
         
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));

@@ -20,6 +20,7 @@ public class DrawableGameElementState extends GameElementState implements
     public static final String Y_POS_STRING = "yPosition";
 
     private Spritesheet mySpritesheet;
+    private Spritesheet myColorSheet;
     private Map<String, AnimationSequence> myAnimations;
     private AnimationSequence myCurrentAnimation;
     private double[] myBounds;
