@@ -43,9 +43,6 @@ public class ShittyMain extends Application {
     }
 
     private MainModel hardCodeAGame () throws Exception {
-<<<<<<< HEAD
-        SelectableGameElementState archerState = new SelectableGameElementState(300, 2);
-=======
         
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
         double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
@@ -64,7 +61,7 @@ public class ShittyMain extends Application {
 
         
         TerrainGrid grid =
-                new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
+                new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         MainModel model = new MainModel();
@@ -87,7 +84,6 @@ public class ShittyMain extends Application {
 
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID, int randomMovement) {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
->>>>>>> shittymaster
         archerState
                 .setSpritesheet(new Spritesheet(
                                                 "resources/img/graphics/units/eagleWarrior.png",
@@ -119,16 +115,8 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
         archerState.setAnimation("walk_left");
 
-<<<<<<< HEAD
-        TerrainGrid grid =
-                new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
-        List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
-=======
         archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, randomMovement);
         archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, teamID);
->>>>>>> shittymaster
-
-
         return archerState;
     }
 

@@ -3,7 +3,6 @@ package game_engine.visuals;
 import game_engine.UI.InputManager;
 import java.util.Observer;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 
 
@@ -31,8 +30,8 @@ public class VisualManager {
                           InputManager inputManager,
                           double screenWidth,
                           double screenHeight) {
-        scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
-        background = scene.getBackground();
+        scene = new ScrollablePane(gameObjectVisuals, inputManager, screenWidth, screenHeight);
+        background = scene.getScrollingBackground();
         root = gameObjectVisuals;
     }
 
