@@ -13,7 +13,7 @@ public class ElementAccordianController extends GUIContainer {
 
     @FXML
     private Accordion elementAccordian;
-    
+
     @Override
     public Node getRoot () {
         return null;
@@ -33,7 +33,7 @@ public class ElementAccordianController extends GUIContainer {
 
     @Override
     public void update () {
-        
+
     }
 
 }

@@ -27,10 +27,10 @@ public class GameElement {
      *
      * @param gameElementState the state of the game element
      */
-    public GameElement (GameElementState gameElementState) {
+    public GameElement (GameElementState gameElementState,
+                        Map<Evaluatable, Action> conditionActionPairs) {
         myGameElementState = gameElementState;
-        // myConditionActionPairs = new HashMap<>();
-        // TODO: Parse the condition action pairs in state (string->string) into (condition->action)
+        myConditionActionPairs = conditionActionPairs;
     }
 
     /**

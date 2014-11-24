@@ -47,19 +47,21 @@ public class SpriteSheetCreationUtility {
         // extrapolatedStateMirrorFlags,
         // new Color(0xFFFF00FF));
 
-        //processor.doThing();
+        // processor.doThing();
 
     }
 
     private void doThing () throws IOException {
-        List<BufferedImage> grassTiles = loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
+        List<BufferedImage> grassTiles =
+                loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
         List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
-        for(BufferedImage image: grassTiles) {
+        for (BufferedImage image : grassTiles) {
             betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
         }
         int i = 1;
-        for(BufferedImage image: betterTiles) {
-            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i + ".png"));
+        for (BufferedImage image : betterTiles) {
+            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i +
+                                                 ".png"));
             i++;
         }
     }

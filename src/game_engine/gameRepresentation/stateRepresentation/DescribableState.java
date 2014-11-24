@@ -32,9 +32,9 @@ public abstract class DescribableState {
     public String getDescription () {
         return myDescription;
     }
-    
+
     @Override
-    public String toString() {
+    public String toString () {
         return getName();
     }
 
@@ -63,7 +63,5 @@ public abstract class DescribableState {
         else if (!myName.equals(other.myName)) return false;
         return true;
     }
-    
-    
 
 }

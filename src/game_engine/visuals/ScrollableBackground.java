@@ -33,7 +33,7 @@ public class ScrollableBackground extends Pane implements Observer
     {
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
-        
+
         this.setMinSize(xBoundary, yBoundary);
 
         setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
@@ -68,8 +68,10 @@ public class ScrollableBackground extends Pane implements Observer
      * Undo scrolling if we're going out of bounds
      */
     private void retractOutOfBoundsScroll (double screenWidth, double screenHeight) {
-        if (-getTranslateX() >= myXBoundary - screenWidth) setTranslateX(-(myXBoundary - screenWidth));
-        if (-getTranslateY() >= myYBoundary - screenHeight) setTranslateY(-(myYBoundary - screenHeight));
+        if (-getTranslateX() >= myXBoundary - screenWidth)
+            setTranslateX(-(myXBoundary - screenWidth));
+        if (-getTranslateY() >= myYBoundary - screenHeight)
+            setTranslateY(-(myYBoundary - screenHeight));
         if (getTranslateX() >= 0) setTranslateX(0);
         if (getTranslateY() >= 0) setTranslateY(0);
     }

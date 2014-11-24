@@ -15,8 +15,8 @@ public abstract class DescribableStateException extends Exception {
     private String myDescribableName;
 
     protected DescribableStateException (String describableStateType,
-                                                String describableStateName,
-                                                String messageFormat) {
+                                         String describableStateName,
+                                         String messageFormat) {
         super(String.format(messageFormat, describableStateType, describableStateName));
         myDescribableType = describableStateType;
         myDescribableName = describableStateName;

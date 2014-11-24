@@ -3,6 +3,7 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     @Override
@@ -11,7 +12,8 @@ public class Main extends Application {
             Vooga salad = new Vooga(primaryStage);
             salad.toss();
             // gotta have some freshly tossed salad
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
