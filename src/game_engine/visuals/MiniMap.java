@@ -31,7 +31,7 @@ public class MiniMap {
 	private Scene myScene;
 	private Canvas myDisplay;
 	private GraphicsContext myGraphicsContext;
-	private List<Point2D> gameElementPoints;
+	//private List<Point2D> gameElementPoints;
 	private List<SelectableGameElement> gameUnits;
 
 	/**
@@ -43,7 +43,7 @@ public class MiniMap {
 		myGraphicsContext = myDisplay.getGraphicsContext2D();
 		initializeDisplay();
 		initializeGraphicsContext();
-		gameElementPoints = new ArrayList<Point2D>();
+		//gameElementPoints = new ArrayList<Point2D>();
 	}
 
 	/**
@@ -57,16 +57,16 @@ public class MiniMap {
 	
 	public void setUnits(List<SelectableGameElement> units) {
 		gameUnits = units;
-		populateGamePointsList();
-		moveUnits();
+		//populateGamePointsList();
+		//moveUnits();
 	}
 	
 
-	private void moveUnits() {
+	public void moveUnits() {
+		initializeGraphicsContext();
 		myGraphicsContext.setFill(Color.BLACK);
-		for(Point2D unit: gameElementPoints) {
-			System.out.println(gameElementPoints.size());
-			myGraphicsContext.fillOval(unit.getX() / X_SCALE, unit.getY() / Y_SCALE, 3, 3);
+		for(SelectableGameElement SGE: gameUnits) {
+			myGraphicsContext.fillOval(SGE.getLocation().getX() / X_SCALE, SGE.getLocation().getY() / Y_SCALE, 3, 3);
 		}
 	}
 
@@ -89,11 +89,11 @@ public class MiniMap {
 		//drawShapes(myGraphicsContext);
 	}
 	
-	private void populateGamePointsList() {
-		for(SelectableGameElement SGE: gameUnits) {
-			gameElementPoints.add(SGE.getLocation());
-		}
-	}
+//	private void populateGamePointsList() {
+//		for(SelectableGameElement SGE: gameUnits) {
+//			gameElementPoints.add(SGE.getLocation());
+//		}
+//	}
 
 	private void drawShapes(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);

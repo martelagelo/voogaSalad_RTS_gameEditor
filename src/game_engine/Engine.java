@@ -52,7 +52,7 @@ public class Engine extends Observable implements Observer {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
         myMiniMap.setUnits(newLevel.getUnits());
-        myGameLoop = new GameLoop(newLevel, myVisualManager);
+        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
@@ -68,6 +68,10 @@ public class Engine extends Observable implements Observer {
 
     public void pause () {
         myGameLoop.pause();
+    }
+    
+    public MiniMap getMiniMap(){
+    	return myMiniMap;
     }
 
     @Override
@@ -85,7 +89,7 @@ public class Engine extends Observable implements Observer {
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
             myMiniMap.setUnits(nextLevel.getUnits());
-            myGameLoop = new GameLoop(nextLevel, myVisualManager);
+            myGameLoop = new GameLoop(nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);
