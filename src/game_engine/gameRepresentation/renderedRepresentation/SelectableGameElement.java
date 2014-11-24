@@ -2,22 +2,23 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.visuals.ScrollableScene;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Random;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-
 
 /**
  * A wrapper for game elements capable of being selected. Adds a "selected"
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D.
+ * @author Jonathan , Steve, Nishad, Rahul, John L, Michael D.
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
@@ -26,8 +27,10 @@ public class SelectableGameElement extends DrawableGameElement {
     // private SelectableGameElementState myState;
     // private Point2D heading;
     // private boolean selected;
+    
     // TODO temporary, should be in the attributes
-    private double speed = 3;
+    private double speed = 3;    
+    
     private DIRECTION myDirection = DIRECTION.FWD;
 
     private enum DIRECTION {
@@ -47,8 +50,9 @@ public class SelectableGameElement extends DrawableGameElement {
         super(element, conditionActionPairs);
         this.isSelected = false;
         headings = new LinkedList<Point2D>();
-        // TODO Auto-generated constructor stub
+        // TODO: remove once attributes are loaded from files
     }
+    
 
     /**
      * @return the type of the element
@@ -81,21 +85,6 @@ public class SelectableGameElement extends DrawableGameElement {
         updateSelfDueToCurrentObjective();
         move();
     }
-
-//    private void move () {
-//        if (heading == null)
-//            heading = getLocation();
-//
-//        setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
-//
-//        if (!heading.equals(getLocation())) {
-//            Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-//                                        heading.getY() - getLocation().getY());
-//            if (delta.magnitude() > speed)
-//                delta = delta.normalize().multiply(speed);
-//            this.setLocation(getLocation().add(delta));
-//        }
-//    }
 
     private DIRECTION getDirection (Point2D loc, Point2D destination) {
         double angle =
@@ -132,6 +121,13 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void move () {
+        boolean canMove = getState().getNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING).intValue()==1;
+        if(!canMove) return;
+        boolean randomMove = getState().getNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING).intValue()==1;
+        Random r = new Random();
+        if(randomMove){
+            if(headings.size()<3) headings.add(new Point2D(r.nextDouble()*ScrollableScene.FIELD_WIDTH, r.nextDouble()*ScrollableScene.FIELD_HEIGHT));
+        }
         if (headings.size() == 0) {
             setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
             this.setLocation(getLocation());

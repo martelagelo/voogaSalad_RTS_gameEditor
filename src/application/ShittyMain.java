@@ -31,11 +31,21 @@ public class ShittyMain extends Application {
     }
 
     private MainModel hardCodeAGame () throws Exception {
+        
+        SelectableGameElementState archeryRange = new SelectableGameElementState(400, 400);
+        archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange/1.png", new Dimension(312, 260), 1));
+        
+        archeryRange.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
+
+        
         SelectableGameElementState archerState = new SelectableGameElementState(300, 100);
         archerState
                 .setSpritesheet(new Spritesheet(
                                                 "resources/img/graphics/units/eagleWarrior.png",
                                                 new Dimension(294, 98), 14));
+        archerState.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
+        archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 2);
+
         /**
          * TODO: we need to initialize these programmatically. Also, the animation should somehow
          * be applied to a type of unit, rather than to each unit individually.
@@ -62,6 +72,8 @@ public class ShittyMain extends Application {
 
         archerState.setAnimation("walk_left");
         
+        archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, 1);
+        
         SelectableGameElementState archerState2 = new SelectableGameElementState(400, 100);
         archerState2
                 .setSpritesheet(new Spritesheet(
@@ -70,6 +82,10 @@ public class ShittyMain extends Application {
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.setAnimation("stand_fwd");
+        
+        archerState2.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
+        archerState2.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
+
         
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
@@ -105,6 +121,7 @@ public class ShittyMain extends Application {
         }
         levelState.addUnit(archerState);
         levelState.addUnit(archerState2);
+        levelState.addUnit(archeryRange);
         return model;
     }
 

@@ -41,6 +41,7 @@ public class AnimationPlayer implements Updatable, Displayable {
         myDisplay = new ImageView(spriteSheet);
         myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(),
                                               tileSize.getHeight()));
+        myCurrentAnimation = new NullAnimationSequence();
         myImageBounds = getImageBounds(spriteSheet);
     }
 
@@ -64,6 +65,9 @@ public class AnimationPlayer implements Updatable, Displayable {
      */
     public void setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;
+        if(animation==null){
+            System.out.println();
+        }
     }
 
     /**
@@ -90,6 +94,7 @@ public class AnimationPlayer implements Updatable, Displayable {
         // If the current animation is finished, start the next one
         if (myCurrentAnimation.update()) {
             myCurrentAnimation = myCurrentAnimation.getNextAnimation();
+
         }
         // Get a viewport and make sure it fits
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
