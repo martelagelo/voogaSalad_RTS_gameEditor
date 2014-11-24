@@ -98,9 +98,8 @@ public class ProjectExplorerController implements GUIController {
      */
     public String[] getSelectedHierarchy () {
         TreeItem<String> selected = myTreeView.getSelectionModel().getSelectedItem();
-        if (selected == null) System.out.println("shit");
-        if (selected.getParent() == null) {
-            return new String[] { selected.getValue(), "", "" };
+        if (selected == null || selected.getParent() == null) {
+            return new String[] { myGameNode.getValue(), "", "" };
         }
         else if (selected.getParent().getParent() == null) {
             return new String[] { selected.getParent().getValue(), selected.getValue(), "" };

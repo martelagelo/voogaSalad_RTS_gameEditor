@@ -86,5 +86,13 @@ public class GameElementStateFactory {
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
         return null;
     }
+    
+    public static GameElementState createGoal(WizardData data) {
+        GameElementState goal = new GameElementState();        
+        for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
+            goal.addConditionActionPair(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
+        }
+        return goal;
+    }
 
 }

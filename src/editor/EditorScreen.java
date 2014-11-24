@@ -73,12 +73,7 @@ public class EditorScreen extends GUIScreen {
     public Node getRoot () {
         return editorRoot;
     }
-
-    // TODO: Clean up this function
-    private void initAccordion () {
-        System.out.println(myMainModel == null);
-    }
-
+    
     private void initProjectExplorer () {
         // TODO: on selection changed should update the info box
         projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
@@ -162,12 +157,12 @@ public class EditorScreen extends GUIScreen {
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
-        initAccordion();
         initInfoBox();
     }
 
     @Override
     public void update () {
+        System.out.println("asdf");
         updateAccordion();
         updateProjectExplorer();
         updateTabViewControllers();
@@ -175,10 +170,7 @@ public class EditorScreen extends GUIScreen {
     }
 
     // TODO: metadata stuff
-    private void updateAccordion () {
-        System.out.println(myMainModel == null);
-        System.out.println(myMainModel.getGameUniverse() == null);
-        System.out.println(myMainModel.getGameUniverse().getDrawableGameElementStates() == null);
+    private void updateAccordion () {        
         List<ImageElementPair> states =
                 myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
                         .map( (element) -> {
@@ -228,7 +220,8 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void updateTabViewControllers () {
-
+        if (myCurrentTab == null) return;
+        myTabViewControllers.get(myCurrentTab.getId()).update();
     }
 
 }

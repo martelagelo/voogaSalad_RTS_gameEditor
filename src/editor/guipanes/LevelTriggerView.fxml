@@ -13,5 +13,5 @@
 			<Double fx:constant="MAX_VALUE" />
 		</maxWidth>
 	</Button>
-	<ListView fx:id="levelTriggers" />
+	<ListView fx:id="levelTriggers" VBox.vgrow="ALWAYS"/>
 </VBox>

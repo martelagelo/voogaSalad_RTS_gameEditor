@@ -22,9 +22,11 @@ public class GameElementState implements JSONable {
     private static final String NAME_ATTRIBUTE_STRING = "Name";
     private static final String TYPE_ATTRIBUTE_STRING = "Type";
 
-    protected Map<String, String> myConditionActionPairings;
-    protected Set<Attribute<Number>> myNumericalAttributes;
-    protected Set<Attribute<String>> myTextualAttributes;
+    // This is a passive data structure with no game logic hence
+    // it makes sense to have these be public
+    public Map<String, String> myConditionActionPairings;
+    public Set<Attribute<Number>> myNumericalAttributes;
+    public Set<Attribute<String>> myTextualAttributes;
 
     public GameElementState () {
         myNumericalAttributes = new HashSet<>();

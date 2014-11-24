@@ -228,6 +228,15 @@ public class MainModel extends Observable {
         notifyObservers();
         clearChanged();
     }
+    
+    public void addGoal(WizardData data) {
+        GameElementState goal = GameElementStateFactory.createGoal(data);
+        myCurrentLevelState.addGoal(goal);
+        System.out.println(goal);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+    }
 
     /**
      * returns the current campaign
