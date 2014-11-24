@@ -1,23 +1,17 @@
 package application;
 
-import java.util.List;
 import game_engine.Engine;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.inputManagers.InputEvent;
-import game_engine.inputManagers.InputHandler;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.ScrollableScene;
 import game_engine.visuals.Spritesheet;
 import game_engine.visuals.TerrainGrid;
 import gamemodel.MainModel;
+import java.util.List;
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
@@ -44,6 +38,14 @@ public class ShittyMain extends Application {
                                                 new Dimension(294, 98), 14));
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState.setAnimation("stand_fwd");
+        
+        SelectableGameElementState archerState2 = new SelectableGameElementState(400, 100);
+        archerState2
+                .setSpritesheet(new Spritesheet(
+                                                "resources/img/graphics/units/eagleWarrior.png",
+                                                new Dimension(294, 98), 14));
+        archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
+        archerState2.setAnimation("stand_fwd");
 
         TerrainGrid grid =
                 new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
@@ -59,6 +61,7 @@ public class ShittyMain extends Application {
             levelState.addTerrain(s);
         }
         levelState.addUnit(archerState);
+        levelState.addUnit(archerState2);
         return model;
     }
 
@@ -66,17 +69,17 @@ public class ShittyMain extends Application {
         launch(args);
     }
 
-    public void shittyRun (Group g) {
-        System.out.println("Shitty running");
-        Image poop = new Image("resources/img/poop.png");
-        g.getChildren().add(new ImageView(poop));
-
-        new InputHandler(g);
-        new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
-            group.getChildren().get(0)
-                    .setRotate(group.getChildren().get(0).getRotate() + 20);
-            System.out.println("Clicked");
-        });
-    }
+//    public void shittyRun (Group g) {
+//        System.out.println("Shitty running");
+//        Image poop = new Image("resources/img/poop.png");
+//        g.getChildren().add(new ImageView(poop));
+//
+//        new InputHandler(g);
+//        new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
+//            group.getChildren().get(0)
+//                    .setRotate(group.getChildren().get(0).getRotate() + 20);
+//            System.out.println("Clicked");
+//        });
+//    }
 
 }
