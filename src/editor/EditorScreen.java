@@ -83,15 +83,6 @@ public class EditorScreen extends GUIScreen {
         wiz.setSubmit(c);
     }
 
-    private void openTerrainWizard () {
-        Wizard wiz = WizardUtility.loadWizard(TERRAIN_WIZARD, new Dimension(600, 300));
-        Consumer<WizardData> c = (data) -> {
-            System.out.println(data);
-            wiz.getStage().close();
-        };
-        wiz.setSubmit(c);
-    }
-
     @Override
     public Node getRoot () {
         return editorRoot;
@@ -187,9 +178,8 @@ public class EditorScreen extends GUIScreen {
         initProjectExplorer();
         initAccordion();
         initInfoBox();
-        newGameElement.setOnAction(e -> openGameElementWizard());
-        newTerrain.setOnAction(e -> openTerrainWizard());
-        save.setOnAction(e -> myMainModel.saveGame());
+//        newGameElement.setOnAction(e -> openGameElementWizard());
+//        save.setOnAction(e -> myMainModel.saveGame());
     }
 
     @Override
