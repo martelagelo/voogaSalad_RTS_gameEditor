@@ -21,7 +21,7 @@ public class DefaultResource {
         FileUtils.copyDirectory(libraryDirectory, destinationDirectory);
     }
 
-    void setDefaults (String destination, SaveLoadUtility SLUtility) throws Exception {
+    void setDefaults (String destination) throws Exception {
         class Copy implements Runnable {
             String myDestination;
 

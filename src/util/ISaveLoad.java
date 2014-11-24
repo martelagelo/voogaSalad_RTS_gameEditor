@@ -5,6 +5,9 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 
 /**
+ * Interface originally implemented by SaveLoadUtility, but no longer is because
+ * it is easier to load and save objects from different classes without having
+ * to instantiate a SaveLoadUtility class each time.
  * 
  * @author Rahul
  *

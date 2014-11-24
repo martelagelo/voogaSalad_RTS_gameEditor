@@ -22,8 +22,8 @@
 				</children>
 			</VBox>
 			<HBox>
-				<fx:include source="EditorElementAccordian.fxml" fx:id="levelElementAccordian" />
-				<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" />
+				<fx:include source="EditorElementAccordion.fxml" fx:id="levelElementAccordion" />
+				<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
 			</HBox>
 		</SplitPane>
 	</center>

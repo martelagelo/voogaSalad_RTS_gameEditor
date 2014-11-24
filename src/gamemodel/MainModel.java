@@ -13,15 +13,13 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadUtility;
 
 /**
- * Main class for the model of  the game
+ * Main class for the model of the game
  * 
  * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
  *
@@ -91,8 +89,9 @@ public class MainModel extends Observable {
 
     public void saveGame () throws RuntimeException {
         try {
-            // TODO: Save location 
-            String location = mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
+            // TODO: Save location
+            String location = mySLUtil
+                    .save(myGameState, getGameSaveLocation(myGameState.getName()));
 
         } catch (Exception e) {
 
@@ -194,22 +193,23 @@ public class MainModel extends Observable {
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save loction for this
         String saveLocation = "testSpritesheet";
-        try {
-            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
-            mySLUtil.saveImage(
-                    data.getValueByKey(GameElementStateFactory.IMAGE),
-                    saveLocation + System.getProperty("file.separator")
-                            + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
-            DrawableGameElementState gameElement = GameElementStateFactory
-                    .createDrawableGameElementState(data, saveLocation);
-            System.out.println(gameElement);
-            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-            setChanged();
-            notifyObservers();
-            clearChanged();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
+        // mySLUtil.saveImage(
+        // data.getValueByKey(GameElementStateFactory.IMAGE),
+        // saveLocation + System.getProperty("file.separator")
+        // + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+        DrawableGameElementState gameElement = GameElementStateFactory
+                .createDrawableGameElementState(data, saveLocation);
+        System.out.println(gameElement);
+        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+        // }
+        // catch (IOException e) {
+        // e.printStackTrace();
+        // }
     }
 
     /**
