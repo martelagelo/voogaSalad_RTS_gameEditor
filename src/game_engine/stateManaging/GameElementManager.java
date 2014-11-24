@@ -56,65 +56,75 @@ public class GameElementManager implements Observer {
 	public void addElementToLevel(String typeName) {
 		// TODO: add factories
 	}
-	
-    /**
-     * Select all the elements in a given rectangle
-     *
-     * @param rectPoints the points in the rectangle surrounding the player's units
-     */
-    private void selectPlayerUnits (double[] rectPoints) {
-        for (SelectableGameElement e : myLevel.getUnits()) {
-            e.select(false);
-            System.out.println("Unit Unselected");
-            if (contains(rectPoints, e.getLocation())) {
 
-                e.select(true);
-                System.out.println("Selected Unit");
-            }
-        }
-    }
+	/**
+	 * Select all the elements in a given rectangle
+	 *
+	 * @param rectPoints
+	 *            the points in the rectangle surrounding the player's units
+	 */
+	private void selectPlayerUnits(double[] rectPoints, boolean isShiftDown) {
+		for (SelectableGameElement e : myLevel.getUnits()) {
+			if (!isShiftDown)
+				e.select(false);
+			System.out.println("Unit Unselected");
+			if (contains(rectPoints, e.getLocation())) {
 
-    private boolean contains (double[] rectPoints, Point2D unitLocationCenter) {
+				e.select(true);
+				System.out.println("Selected Unit");
+			}
+		}
+	}
 
-        double topLeftX = rectPoints[0];
-        double topLeftY = rectPoints[1];
-        double bottomRightX = rectPoints[2];
-        double bottomRightY = rectPoints[3];
+	private boolean contains(double[] rectPoints, Point2D unitLocationCenter) {
 
-        if (topLeftX <= unitLocationCenter.getX() && bottomRightX >= unitLocationCenter.getX()) {
-            if (topLeftY <= unitLocationCenter.getY() && bottomRightY >= unitLocationCenter.getY()) { return true; }
-        }
-        return false;
+		double topLeftX = rectPoints[0];
+		double topLeftY = rectPoints[1];
+		double bottomRightX = rectPoints[2];
+		double bottomRightY = rectPoints[3];
 
-    }
+		if (topLeftX <= unitLocationCenter.getX()
+				&& bottomRightX >= unitLocationCenter.getX()) {
+			if (topLeftY <= unitLocationCenter.getY()
+					&& bottomRightY >= unitLocationCenter.getY()) {
+				return true;
+			}
+		}
+		return false;
 
-    private void sendClickToSelectedUnits(Point2D click,
-			boolean isPrimary, boolean shiftHeld) {
+	}
+
+	private void sendClickToSelectedUnits(Point2D click, boolean isPrimary,
+			boolean shiftHeld) {
 		for (SelectableGameElement e : myLevel.getUnits().stream()
 				.filter(e -> e.isSelected()).collect(Collectors.toList())) {
 			if (!isPrimary) {
-				if(!shiftHeld) e.clearHeadings();
+				if (!shiftHeld)
+					e.clearHeadings();
 				e.setHeading(click);
 			}
 		}
 	}
 
-    /**
-     * Update the rectangle on the image and check for clicks
-     */
-    // TODO move this functionality to a more appropriate class
+	/**
+	 * Update the rectangle on the image and check for clicks
+	 */
+	// TODO move this functionality to a more appropriate class
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof SelectionBox) {
-			double[] points = ((SelectionBox) o).getPoints();
-			selectPlayerUnits(points);
+			SelectionBox SB = (SelectionBox) o;
+			double[] points = SB.getPoints();
+			// ClickManager clickManager = (ClickManager) o;
+			selectPlayerUnits(points, SB.getLastClick().isShiftDown());
 		} else if (o instanceof ClickManager) {
 			ClickManager clickManager = (ClickManager) o;
 			myHeadingList.add(clickManager.getMapLoc());
-			
+
 			sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
-					.getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick().isShiftDown());
-		
+					.getLastClick().getButton().equals(MouseButton.PRIMARY),
+					clickManager.getLastClick().isShiftDown());
+
 		} else if (o instanceof KeyboardManager) {
 			System.out.println("Typed: "
 					+ ((KeyboardManager) o).getLastCharacter());
