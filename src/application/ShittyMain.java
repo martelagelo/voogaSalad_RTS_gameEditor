@@ -40,6 +40,7 @@ public class ShittyMain extends Application {
          * TODO: we need to initialize these programmatically. Also, the animation should somehow
          * be applied to a type of unit, rather than to each unit individually.
          */
+        double[] bounds = {0,0,40,0,40,40,0,40};
         // setting standing animations
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
@@ -49,7 +50,7 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79, true, 0.2));
         archerState.addAnimation(new AnimationSequence("stand_right", 85, 93, true, 0.2));
         archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107, true, 0.2));
-        
+        archerState.setBounds(bounds);
         // setting walking animations
         archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139, true, 0.4));
@@ -59,7 +60,6 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
-
         archerState.setAnimation("walk_left");
         
         SelectableGameElementState archerState2 = new SelectableGameElementState(400, 100);
@@ -69,7 +69,7 @@ public class ShittyMain extends Application {
                                                 new Dimension(294, 98), 14));
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.setAnimation("stand_fwd");
-        
+        archerState2.setBounds(bounds);
         archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
         archerState2.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
         archerState2.addAnimation(new AnimationSequence("stand_left", 29, 37, true, 0.2));

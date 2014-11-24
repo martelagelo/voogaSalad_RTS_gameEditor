@@ -1,12 +1,14 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
+import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Set;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -155,11 +157,11 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        getApplicableConditionActionPairs("ObjectiveCondition");
+       // getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
     public void updateSelfDueToSelection () {
-        getApplicableConditionActionPairs("SelfCondition");
+       // getApplicableConditionActionPairs("SelfCondition");
     }
 
     private void updateSelfDueToVisions () {
@@ -169,9 +171,16 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCollisions () {
-        evaluateConditionActionPairsOnInteractingElementsSubset(
-                                                                "CollisionCondition",
-                                                                "CollidingElements");
+        //System.out.println("Updating due to colliding objects");
+        //TODO fix string literal
+        Set<DrawableGameElementState> elementsOfInterest = ((SelectableGameElementState)(this.getGameElementState())).getInteractingElements().get("CollidingElements");
+        for(Evaluatable<Boolean> condition:getConditionActionPairs().keySet()){
+            for(DrawableGameElementState element: elementsOfInterest){
+                ElementPair elements = new ElementPair(this,element);
+            }
+                
+        }
+        System.out.println(elementsOfInterest.size());
     }
 
     private void updateSelectedIndicator () {
@@ -190,8 +199,8 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                           String conditionActionPairIdentifier,
                                                                           String elementIdentifier) {
 
-        // List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
-        // getApplicableConditionActionPairs(conditionActionPairIdentifier);
+         //List<Entry<Evaluatable, Action>> applicableConditionActionPairs =
+         //getApplicableConditionActionPairs(conditionActionPairIdentifier);
         // if (myState.getInteractingElements().containsKey(elementIdentifier))
         // {
         // for (DrawableGameElementState element :
@@ -208,15 +217,7 @@ public class SelectableGameElement extends DrawableGameElement {
         // }
         // }
     }
-
-    // TODO FIX THIS SHIT
-    private List<Entry<Evaluatable<Boolean>, Evaluatable<?>>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-
-        // return this.myConditionActionPairs.entrySet().stream()
-
-        // .collect(Collectors.toList());
-        return null;
-    }
+    
     public boolean isSelected () {
         return this.isSelected;
     }
