@@ -11,5 +11,21 @@
 	<classpathentry kind="lib" path="lib/junit-4.11-sources.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/json-20141113.jar" sourcepath="lib/json-20141113-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_TheException/lib/json-20141113-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/json-schema-validator-2.2.6.jar" sourcepath="lib/json-schema-validator-2.2.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_TheException/lib/json-schema-validator-2.2.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/json-schema-validator-2.2.6-lib.jar"/>
+	<classpathentry kind="lib" path="lib/distilled_slogo-1.0.0.jar" sourcepath="lib/distilled_slogo-1.0.0-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_TheException/lib/distilled_slogo-1.0.0-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
