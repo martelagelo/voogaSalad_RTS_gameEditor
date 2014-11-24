@@ -1,10 +1,70 @@
 {
-  "myCampaigns": [],
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [
+            {
+              "myConditionActionPairings": {},
+              "myNumericalAttributes": [],
+              "myTextualAttributes": []
+            }
+          ],
+          "myName": "blah",
+          "myDescription": ""
+        }
+      ],
+      "myName": "campaign name",
+      "myDescription": ""
+    },
+    {
+      "myLevels": [],
+      "myName": "campaign name2",
+      "myDescription": ""
+    }
+  ],
   "myGameUniverse": {
     "myNumericalAttributes": [],
     "myStringAttributes": [],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "mySpritesheet": {
+          "imageTag": "testSpritesheet/name.png",
+          "frameDimensions": {
+            "myWidth": 543,
+            "myHeight": 27
+          },
+          "numCols": 1
+        },
+        "myAnimations": {},
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myConditionActionPairings": {},
+        "myNumericalAttributes": [
+          {
+            "myData": 0.0,
+            "myName": "xPosition"
+          },
+          {
+            "myData": 0.0,
+            "myName": "yPosition"
+          }
+        ],
+        "myTextualAttributes": [
+          {
+            "myData": "name",
+            "myName": "Name"
+          }
+        ]
+      }
+    ],
     "mySelectableGameElementStates": []
   },
   "myName": "New Game",
