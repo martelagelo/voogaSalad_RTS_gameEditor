@@ -11,8 +11,7 @@
 <?import javafx.scene.image.*?>
  
  
-<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
-   minHeight="750" maxHeight="750"> 
+<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml" minHeight="750" maxHeight="750"> 
    	<top>
    		<ImageView>    
   			<image>
@@ -22,19 +21,14 @@
    	</top> 
    	<bottom>
    		<HBox>
-   			<StackPane xmlns:fx="http://javafx.com/fxml">
+   			<StackPane>
         		<ImageView>    
 					<image>
    						<Image url="/resources/img/graphics/interface/interactionPane.png" />
    					</image>
    				</ImageView>
-         		<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-         			<ImageView GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="5">    
-						<image>
-   							<Image url="/resources/img/graphics/buttons/patrol.bmp" />
-   						</image>
-   					</ImageView>
-					
+         		<GridPane alignment="center" hgap="10" vgap="10">
+         			
          		</GridPane>
 			</StackPane>	
    			<ImageView>    
