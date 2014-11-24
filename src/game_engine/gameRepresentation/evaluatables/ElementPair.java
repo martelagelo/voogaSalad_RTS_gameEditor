@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.evaluatables;
 
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 
 /**
@@ -11,19 +11,19 @@ import game_engine.gameRepresentation.renderedRepresentation.GameElement;
  *
  */
 public class ElementPair {
-    private GameElement myActor;
-    private GameElement myActee;
+    private GameElementState myActor;
+    private GameElementState myActee;
 
-    public ElementPair (GameElement actor, GameElement actee) {
+    public ElementPair (GameElementState actor, GameElementState actee) {
         myActor = actor;
         myActee = actee;
     }
 
-    public GameElement getActor () {
+    public GameElementState getActor () {
         return myActor;
     }
 
-    public GameElement getActee () {
+    public GameElementState getActee () {
         return myActee;
     }
 

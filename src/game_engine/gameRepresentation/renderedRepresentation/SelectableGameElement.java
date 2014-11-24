@@ -1,17 +1,18 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
+import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.visuals.ScrollableScene;
 
 import java.util.ArrayList;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Random;
-
+import java.util.Set;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -22,7 +23,7 @@ import javafx.scene.shape.Line;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John L, Michael D.
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
@@ -41,6 +42,9 @@ public class SelectableGameElement extends DrawableGameElement {
         FWD, FWD_LEFT, LEFT, BK_LEFT, BK, BK_RIGHT, RIGHT, FWD_RIGHT
     }
 
+    public final static String X_VEL = "xVelocity";
+    public final static String Y_VEL = "yVelocity";
+
     private Queue<Point2D> headings;
     
 
@@ -55,7 +59,10 @@ public class SelectableGameElement extends DrawableGameElement {
         super(element, conditionActionPairs);
         this.isSelected = false;
         headings = new LinkedList<Point2D>();
-        // TODO: remove once attributes are loaded from files
+
+        this.getGameElementState().setNumericalAttribute(X_VEL, 0);
+        this.getGameElementState().setNumericalAttribute(Y_VEL, 0);
+        // TODO Auto-generated constructor stub
     }
     
 
@@ -104,11 +111,27 @@ public class SelectableGameElement extends DrawableGameElement {
     @Override
     public void update () {
         super.update();
+        move();
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
-        move();
+       
     }
+
+    // private void move () {
+    // if (heading == null)
+    // heading = getLocation();
+    //
+    // setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
+    //
+    // if (!heading.equals(getLocation())) {
+    // Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
+    // heading.getY() - getLocation().getY());
+    // if (delta.magnitude() > speed)
+    // delta = delta.normalize().multiply(speed);
+    // this.setLocation(getLocation().add(delta));
+    // }
+    // }
 
     private DIRECTION getDirection (Point2D loc, Point2D destination) {
         double angle =
@@ -153,11 +176,11 @@ public class SelectableGameElement extends DrawableGameElement {
             if(headings.size()<3) headings.add(new Point2D(r.nextDouble()*ScrollableScene.FIELD_WIDTH, r.nextDouble()*ScrollableScene.FIELD_HEIGHT));
         }
         if (headings.size() == 0) {
-            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
-            this.setLocation(getLocation());
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size() == 0));
+            this.updateImageLocation();
         }
         else {
-            setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
+            setAnimationDirection(getLocation(), headings.peek(), !(headings.size() == 0));
             if (!headings.peek().equals(getLocation())) {
                 Point2D currentHeading = headings.peek();
                 Point2D delta = new Point2D(currentHeading.getX()
@@ -165,21 +188,25 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                     - getLocation().getY());
                 if (delta.magnitude() > speed)
                     delta = delta.normalize().multiply(speed);
-                this.setLocation(getLocation().add(delta));
+                this.getGameElementState().setNumericalAttribute(X_VEL, delta.getX());
+                this.getGameElementState().setNumericalAttribute(Y_VEL, delta.getY());
+                this.getGameElementState().setNumericalAttribute(SelectableGameElementState.X_POS_STRING,this.getGameElementState().getNumericalAttribute(SelectableGameElementState.X_POS_STRING).doubleValue()+delta.getX());
+                this.getGameElementState().setNumericalAttribute(SelectableGameElementState.Y_POS_STRING,this.getGameElementState().getNumericalAttribute(SelectableGameElementState.Y_POS_STRING).doubleValue()+delta.getY());
+                this.updateImageLocation();
             }
             else {
                 headings.poll();
-                this.setLocation(getLocation());
+                this.updateImageLocation();
             }
         }
     }
 
     private void updateSelfDueToCurrentObjective () {
-        getApplicableConditionActionPairs("ObjectiveCondition");
+        // getApplicableConditionActionPairs("ObjectiveCondition");
     }
 
     public void updateSelfDueToSelection () {
-        getApplicableConditionActionPairs("SelfCondition");
+        // getApplicableConditionActionPairs("SelfCondition");
     }
 
     private void updateSelfDueToVisions () {
@@ -189,9 +216,21 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCollisions () {
-        evaluateConditionActionPairsOnInteractingElementsSubset(
-                                                                "CollisionCondition",
-                                                                "CollidingElements");
+        // System.out.println("Updating due to colliding objects");
+        // TODO fix string literal
+        Set<DrawableGameElementState> elementsOfInterest =
+                ((SelectableGameElementState) (this.getGameElementState()))
+                        .getInteractingElements().get("CollidingElements");
+        for (Evaluatable<Boolean> condition : getConditionActionPairs().keySet()) {
+            for (DrawableGameElementState element : elementsOfInterest) {
+                ElementPair elements = new ElementPair(this.getGameElementState(), element);
+                if (condition.getValue(elements)) {
+                    getConditionActionPairs().get(condition).getValue(elements);
+                    return;
+                }
+            }
+
+        }
     }
 
     private void updateSelectedIndicator () {
@@ -229,14 +268,6 @@ public class SelectableGameElement extends DrawableGameElement {
         // }
     }
 
-    // TODO FIX THIS SHIT
-    private List<Entry<Evaluatable<Boolean>, Evaluatable<?>>> getApplicableConditionActionPairs (String conditionActionPairIdentifier) {
-
-        // return this.myConditionActionPairs.entrySet().stream()
-
-        // .collect(Collectors.toList());
-        return null;
-    }
     public boolean isSelected () {
         return this.isSelected;
     }

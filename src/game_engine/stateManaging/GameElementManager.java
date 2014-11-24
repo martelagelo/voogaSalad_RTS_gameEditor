@@ -24,6 +24,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
 
+
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
@@ -48,7 +49,8 @@ public class GameElementManager implements Observer {
     public List<GameElementState> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
-                .map(o -> o.getState()).collect(Collectors.toList());
+                .map(o -> o.getGameElementState())
+                .collect(Collectors.toList());
     }
 
     public void addElementToLevel (String typeName) {
@@ -138,7 +140,7 @@ public class GameElementManager implements Observer {
         else if (o instanceof ClickManager) {
             ClickManager clickManager = (ClickManager) o;
             if (clickManager.getLastClick().getButton() == MouseButton.PRIMARY) {
-                System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
+//                System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
                 selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
                         .isShiftDown());
             }
@@ -149,8 +151,8 @@ public class GameElementManager implements Observer {
 
         }
         else if (o instanceof KeyboardManager) {
-            System.out.println("Typed: "
-                               + ((KeyboardManager) o).getLastCharacter());
+//            System.out.println("Typed: "
+//                               + ((KeyboardManager) o).getLastCharacter());
         }
     }
 }

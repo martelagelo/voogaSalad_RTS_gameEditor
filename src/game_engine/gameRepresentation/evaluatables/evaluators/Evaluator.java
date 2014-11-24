@@ -3,6 +3,7 @@ package game_engine.gameRepresentation.evaluatables.evaluators;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 
 /**
  * An abstract class for evaluators that acts on parameters to provide for
@@ -83,7 +84,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	/**
 	 * Evaluate on two elements
 	 */
-	protected T evaluate(GameElement item1, GameElement item2) {
+	protected T evaluate(GameElementState item1, GameElementState item2) {
 		return null;
 	}
 
@@ -114,14 +115,15 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * @return the result of evaluating on the two parameters
 	 */
 	public T delegateEvaluator(A parameter1Value, B parameter2Value) {
+	   
 		Class<A> type1 = myParameter1.getType();
 		Class<B> type2 = myParameter2.getType();
 		if (type1.equals(Number.class) && type2.equals(Number.class)) {
 			return evaluate((Number) parameter1Value, (Number) parameter2Value);
 		}
-		if (type1.equals(GameElement.class) && type2.equals(GameElement.class)) {
-			return evaluate((GameElement) parameter1Value,
-					(GameElement) parameter2Value);
+		if (type1.equals(GameElementState.class) && type2.equals(GameElementState.class)) {
+			return evaluate((GameElementState) parameter1Value,
+					(GameElementState) parameter2Value);
 		}
 		if (type1.equals(Boolean.class) && type2.equals(Boolean.class)) {
 			return evaluate((Boolean) parameter1Value,

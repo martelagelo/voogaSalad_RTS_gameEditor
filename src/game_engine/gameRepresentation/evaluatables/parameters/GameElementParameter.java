@@ -3,6 +3,7 @@ package game_engine.gameRepresentation.evaluatables.parameters;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 
 /**
@@ -12,7 +13,7 @@ import game_engine.stateManaging.GameElementManager;
  * @author Zach
  *
  */
-public class GameElementParameter extends Parameter<GameElement> {
+public class GameElementParameter extends Parameter<GameElementState> {
 
 	private GameElementManager myManager;
 	private ObjectOfInterestIdentifier myObjectIdentifier;
@@ -31,7 +32,7 @@ public class GameElementParameter extends Parameter<GameElement> {
 	public GameElementParameter(
 			ObjectOfInterestIdentifier objectOfInterestIdentifier,
 			String elementTag) {
-		super(GameElement.class);
+		super(GameElementState.class);
 		myObjectIdentifier = objectOfInterestIdentifier;
 		myElementTag = elementTag;
 
@@ -43,13 +44,13 @@ public class GameElementParameter extends Parameter<GameElement> {
 	}
 
 	@Override
-	public GameElement getValue(ElementPair elements) {
+	public GameElementState getValue(ElementPair elements) {
 		return myObjectIdentifier.getElementOfInterest(myManager, elements,
 				myElementTag).get(0);
 	}
 
 	@Override
-	public boolean setValue(ElementPair elements, GameElement value) {
+	public boolean setValue(ElementPair elements, GameElementState value) {
 		// A parameter does not have the ability to set a referenced element's
 		// identifier
 		return false;

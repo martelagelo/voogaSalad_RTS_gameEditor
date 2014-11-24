@@ -65,9 +65,6 @@ public class AnimationPlayer implements Updatable, Displayable {
      */
     public void setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;
-        if(animation==null){
-            System.out.println();
-        }
     }
 
     /**

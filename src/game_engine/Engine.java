@@ -97,7 +97,6 @@ public class Engine extends Observable implements Observer {
         // TODO check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
-            System.out.println(nextLevel.getUnits().size());
             myMiniMap.setUnits(nextLevel.getUnits());
             myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);

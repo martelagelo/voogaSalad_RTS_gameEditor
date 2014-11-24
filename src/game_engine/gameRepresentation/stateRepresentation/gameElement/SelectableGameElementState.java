@@ -4,8 +4,10 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 // game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -19,11 +21,14 @@ import java.util.Map;
 public class SelectableGameElementState extends DrawableGameElementState implements Sighted {
     protected Map<String, Map<String, String>> myAllAbilityRepresentations;
     private Map<String, String> myCurrentAbilityRepresentation;
-    protected Map<String, List<DrawableGameElementState>> myInteractingElements;
+    protected Map<String, Set<DrawableGameElementState>> myInteractingElements;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition);
         myInteractingElements = new HashMap<>();
+        // Initialize the colliding elements to prevent null pointer exceptions
+        myInteractingElements.put("CollidingElements", new HashSet<>());
+        // TODO do the same thing for all other elements
     }
 
     /**
@@ -56,8 +61,11 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
      * @param element the element to be added
      */
     public void addInteractingElement (String elementType, DrawableGameElementState element) {
-        ArrayList<DrawableGameElementState> elements = new ArrayList<DrawableGameElementState>();
-        elements.addAll(myInteractingElements.get(elementType));
+        Set<DrawableGameElementState> elements = new HashSet<DrawableGameElementState>();
+        Set<DrawableGameElementState> oldElements = myInteractingElements.get(elementType);
+        if (oldElements != null) {
+            elements.addAll(myInteractingElements.get(elementType));
+        }
         elements.add(element);
         myInteractingElements.put(elementType, elements);
     }
@@ -79,7 +87,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     /**
      * @return the elements that the game element is currently interacting with
      */
-    public Map<String, List<DrawableGameElementState>> getInteractingElements () {
+    public Map<String, Set<DrawableGameElementState>> getInteractingElements () {
         return myInteractingElements;
     }
 

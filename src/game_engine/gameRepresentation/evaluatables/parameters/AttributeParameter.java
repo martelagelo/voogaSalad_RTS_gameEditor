@@ -3,8 +3,8 @@ package game_engine.gameRepresentation.evaluatables.parameters;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
-
 import java.util.List;
 
 /**
@@ -81,7 +81,7 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
 	 * @return
 	 */
 	// TODO fix hierarchy to make this take in fewer parameters
-	private List<GameElement> getElementsOfInterest(
+	private List<GameElementState> getElementsOfInterest(
 			GameElementManager elementManager, ElementPair elementPair,
 			String elementTag) {
 		return myObjectIdentifier.getElementOfInterest(elementManager,
@@ -105,7 +105,7 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
 	 *            parameter
 	 * @return the value of the parameter that is being requested
 	 */
-	protected abstract T getValue(List<GameElement> elements,
+	protected abstract T getValue(List<GameElementState> elements,
 			String attributeTag);
 
 	@Override
@@ -125,6 +125,6 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
 	 * @param attributeValue
 	 *            the new value of the attribute
 	 */
-	protected abstract boolean setValue(List<GameElement> elements,
+	protected abstract boolean setValue(List<GameElementState> elements,
 			String attributeTag, T attributeValue);
 }
