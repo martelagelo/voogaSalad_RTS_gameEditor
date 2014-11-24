@@ -92,7 +92,6 @@ public class SaveLoadUtility {
      * @throws IOException
      */
     public static String saveImage (String source, String destination) throws IOException {
-        source = preProcess(source);
         destination = preProcess(destination);
         File sourceFile = obtainFile(source);
         File destFile = obtainFile(destination);

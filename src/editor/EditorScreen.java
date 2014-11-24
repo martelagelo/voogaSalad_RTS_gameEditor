@@ -4,11 +4,13 @@ import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.LevelNotFoundException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,6 +23,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import util.SaveLoadUtility;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
 
@@ -180,10 +183,10 @@ public class EditorScreen extends GUIScreen {
                 myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
                         .map( (element) -> {
                             try {
-                                return new ImageElementPair(null, element.getName());
-                                // return new
-                                // ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
-                                // element.getName());
+                                //return new ImageElementPair(null, element.getName());
+                                 return new
+                                 ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
+                                 element.getName());
                             }
                             catch (Exception e) {
                                 System.out.println(e.toString());

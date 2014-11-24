@@ -193,23 +193,25 @@ public class MainModel extends Observable {
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save loction for this
         String saveLocation = "testSpritesheet";
-        // try {
+        try {
         System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
-        // mySLUtil.saveImage(
-        // data.getValueByKey(GameElementStateFactory.IMAGE),
-        // saveLocation + System.getProperty("file.separator")
-        // + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+        
+        String actualSaveLocation =  mySLUtil.saveImage(
+         data.getValueByKey(GameElementStateFactory.IMAGE),
+         saveLocation + System.getProperty("file.separator")
+         + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
         DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data, saveLocation);
+                .createDrawableGameElementState(data, actualSaveLocation);
+        
         System.out.println(gameElement);
         myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
         setChanged();
         notifyObservers();
         clearChanged();
-        // }
-        // catch (IOException e) {
-        // e.printStackTrace();
-        // }
+         }
+         catch (IOException e) {
+         e.printStackTrace();
+        }
     }
 
     /**
