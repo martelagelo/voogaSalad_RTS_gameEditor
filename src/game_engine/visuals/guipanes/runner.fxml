@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.textfield.*?>
 <?import javafx.scene.image.*?>
@@ -14,9 +15,9 @@
    minHeight="750" maxHeight="750"> 
    	<top>
    		<ImageView>    
-  				<image>
-     				<Image url="/resources/img/graphics/interface/topBar.png" />
-     			</image>
+  			<image>
+     			<Image url="/resources/img/graphics/interface/topBar.png" />
+     		</image>
    		</ImageView>
    	</top> 
    	<bottom>
