@@ -17,6 +17,7 @@ import javafx.scene.canvas.Canvas;
 public class VisualManager {
     private ScrollableScene scene;
     private ScrollableBackground background;
+    private Group root;
 
     /**
      * Creates a new VisualManager. One visual manager should be created for every Scene (map)
@@ -32,6 +33,7 @@ public class VisualManager {
                           double screenHeight) {
         scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
         background = scene.getBackground();
+        root = gameObjectVisuals;
     }
 
     /**
@@ -41,6 +43,10 @@ public class VisualManager {
      */
     public Scene getScene () {
         return scene;
+    }
+    
+    public Group getRoot() {
+    	return root;
     }
 
     /**

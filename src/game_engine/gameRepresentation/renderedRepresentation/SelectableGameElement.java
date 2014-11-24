@@ -3,15 +3,19 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.visuals.ScrollableScene;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Random;
+
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 
 /**
  * A wrapper for game elements capable of being selected. Adds a "selected"
@@ -38,6 +42,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private Queue<Point2D> headings;
+    
 
     /**
      * @see DrawableGameElementState
@@ -71,6 +76,25 @@ public class SelectableGameElement extends DrawableGameElement {
         isSelected = select;
         updateSelectedIndicator();
         // myAnimation.select(select);
+    }
+    
+    public List<Line> getLines() {
+    	if (headings.size() != 0 && isSelected) {
+    	Queue<Point2D> copyOfHeadings = new LinkedList<Point2D>();
+    	List<Line> lineList = new ArrayList<Line>();
+    	while(headings.size() >= 2) {
+    		Point2D point1 = headings.poll();
+    		Point2D point2 = headings.peek();
+    		Line line = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
+    		lineList.add(line);
+    		copyOfHeadings.add(point1);
+    	}
+    	copyOfHeadings.add(headings.poll());
+    	headings = copyOfHeadings;
+    	return lineList;
+    	} else {
+    		return new ArrayList<Line>();
+    	}
     }
 
     /**

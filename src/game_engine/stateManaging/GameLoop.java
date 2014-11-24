@@ -8,12 +8,15 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.visuals.MiniMap;
 import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 
@@ -28,6 +31,8 @@ public class GameLoop {
 
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
+    
+    private List<Line> unitPaths;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -42,6 +47,7 @@ public class GameLoop {
         myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
+        unitPaths = new ArrayList<Line>();
         // myComputerList.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
@@ -59,6 +65,7 @@ public class GameLoop {
     }
 
     private void update () {
+    	clearLinesFromRoot();
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
@@ -75,6 +82,19 @@ public class GameLoop {
             selectableElement.update();
         }
         myMiniMap.updateMiniMap();
+        addPathsToRoot();
+    }
+    
+    private void addPathsToRoot() {
+    	for (SelectableGameElement SGE: myCurrentLevel.getUnits()) {
+    		unitPaths.addAll(SGE.getLines());
+    	}
+    	this.myVisualManager.getBackground().getChildren().addAll(unitPaths);
+	}
+    
+    private void clearLinesFromRoot() {
+    	this.myVisualManager.getBackground().getChildren().removeAll(unitPaths);
+    	unitPaths.clear();
     }
 
     private void startTimeline (KeyFrame frame) {
