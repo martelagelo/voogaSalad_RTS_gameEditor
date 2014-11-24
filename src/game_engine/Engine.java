@@ -11,8 +11,12 @@ import game_engine.visuals.ScrollableScene;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
@@ -26,8 +30,7 @@ import javafx.scene.Scene;
  */
 public class Engine extends Observable implements Observer {
 
-    public static final Integer SCREEN_WIDTH = 600;
-    public static final Integer SCREEN_HEIGHT = 600;
+	public static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private MainModel myMainModel;
     private GameLoop myGameLoop;
@@ -43,7 +46,7 @@ public class Engine extends Observable implements Observer {
 //        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
+                new VisualManager(new Group(), myInputManager, screenSize.getWidth(), screenSize.getHeight());
         myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
     }
 

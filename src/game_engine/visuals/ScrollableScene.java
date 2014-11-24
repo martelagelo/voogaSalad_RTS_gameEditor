@@ -1,11 +1,19 @@
 package game_engine.visuals;
 
+import game_engine.Engine;
 import game_engine.UI.InputManager;
+
 import java.util.Observer;
+
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 
 /**
@@ -44,7 +52,19 @@ public class ScrollableScene extends Scene {
         mySelectionBox = new SelectionBox();
         myInputManager.addClickObserver(mySelectionBox);
         myInputManager.addMouseDragObserver(mySelectionBox);
-        root.getChildren().addAll(myBackground, mySelectionBox.getBox());
+        StackPane sp = new StackPane();
+        Image img = new Image("/resources/img/graphics/interface.png");
+        ImageView v = new ImageView(img);
+        v.setFitWidth(Engine.screenSize.getWidth());
+        v.setFitHeight(Engine.screenSize.getHeight());
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
+       // sp.getChildren().add(myBackground);
+        //sp.getChildren().add(mySelectionBox.getBox());
+        sp.getChildren().addAll(myBackground, mySelectionBox.getBox(), v);
+        sp.setAlignment(v, Pos.TOP_LEFT);
+        //sp.getChildren().add(v);
+        root.getChildren().add(sp);
+        //root.getChildren().addAll(myBackground, mySelectionBox.getBox());
         initializeHandlers();
     }
 

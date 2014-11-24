@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.textfield.*?>
  
-<StackPane fx:controller="javafxml.Sample" xmlns:fx="http://javafx.com/fxml"
+<StackPane xmlns:fx="http://javafx.com/fxml"
     prefHeight="200" prefWidth="400" >
          
         <Button text="Bottom Button" />
