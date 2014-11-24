@@ -72,8 +72,6 @@ public class VisualManager {
     }
 
     /**
-     * =======
-     * >>>>>>> c85bcd8cb098bfcec96f3956de1af2150f5c0326
      * Adds new objects to the map
      * 
      * @param g
