@@ -38,26 +38,16 @@ public interface ISaveLoad {
     public String save (JSONable object, String sourcePath) throws Exception;
 
     /**
-     * Save an image from a particular file path
-     * 
-     * @param image
-     *            object that needs to be saved
-     * @param location
-     *            location to which image is saved
-     * @return filePath where the image is saved to
-     * @throws IOException
-     */
-
-    /**
-     * Save an image from a particular file path
      * 
      * @param sourcePath
      *            source location for the image
      * @param destinationPath
      *            destination location for the image
+     * @return location that image is saved to (may be different to allow for
+     *         cross-platform compatibility)
      * @throws IOException
      */
-    public void saveImage (String sourcePath, String destinationPath) throws IOException;
+    public String saveImage (String sourcePath, String destinationPath) throws IOException;
 
     /**
      * 

@@ -38,7 +38,7 @@ public class MainModel extends Observable {
 
     public void newGame () {
         // TODO CLEAN THIS UP
-        myGameState = new GameState("NewGame");
+        myGameState = new GameState("New Game");
     }
 
     /**
@@ -88,7 +88,8 @@ public class MainModel extends Observable {
 
     public void saveGame () throws RuntimeException {
         try {
-            mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
+            // TODO: Save location 
+            String location = mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
 
         } catch (Exception e) {
 
