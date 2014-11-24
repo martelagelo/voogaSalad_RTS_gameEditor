@@ -3,17 +3,21 @@ package game_engine.visuals;
 import game_engine.Engine;
 import game_engine.UI.InputManager;
 
+import java.io.IOException;
 import java.util.Observer;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 
 /**
@@ -43,28 +47,30 @@ public class ScrollableScene extends Scene {
      *        no objects have been created yet to add, just add an empty new Group()
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
+     * @throws IOException 
      */
     public ScrollableScene (Group root, InputManager inputManager, double width, double height) {
         super(root, width, height);
         myInputManager = inputManager;
         this.root = root;
+        StackPane sp = null;
+		try {
+			sp = (StackPane)FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         myInputManager.addClickObserver(mySelectionBox);
         myInputManager.addMouseDragObserver(mySelectionBox);
-        StackPane sp = new StackPane();
-        Image img = new Image("/resources/img/graphics/interface.png");
-        ImageView v = new ImageView(img);
-        v.setFitWidth(Engine.screenSize.getWidth());
-        v.setFitHeight(Engine.screenSize.getHeight());
-        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
-       // sp.getChildren().add(myBackground);
-        //sp.getChildren().add(mySelectionBox.getBox());
-        sp.getChildren().addAll(myBackground, mySelectionBox.getBox(), v);
-        sp.setAlignment(v, Pos.TOP_LEFT);
-        //sp.getChildren().add(v);
+       
+        sp.getChildren().addAll(myBackground, mySelectionBox.getBox());
+        BorderPane bp = (BorderPane) sp.lookup("#overlay");
+        sp.getChildren().remove(bp);
+        sp.getChildren().add(bp);
+        sp.setAlignment(bp, Pos.TOP_LEFT);
         root.getChildren().add(sp);
-        //root.getChildren().addAll(myBackground, mySelectionBox.getBox());
         initializeHandlers();
     }
 
