@@ -1,0 +1,12 @@
+{
+  "myCampaigns": [],
+  "myGameUniverse": {
+    "myNumericalAttributes": [],
+    "myStringAttributes": [],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": []
+  },
+  "myName": "New Game",
+  "myDescription": ""
+}
