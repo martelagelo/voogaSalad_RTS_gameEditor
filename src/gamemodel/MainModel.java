@@ -36,9 +36,9 @@ public class MainModel extends Observable {
         mySLUtil = new SaveLoadUtility();
     }
 
-    public void newGame () {
+    public void newGame (String newGameName) {
         // TODO CLEAN THIS UP
-        myGameState = new GameState("NewGame");
+        myGameState = new GameState(newGameName);
     }
 
     /**
