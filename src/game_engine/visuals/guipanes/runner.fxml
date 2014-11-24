@@ -21,12 +21,7 @@
 	</top>
 	<bottom>
 		<HBox>
-				<!-- <ImageView>
-					<image>
-						<Image url="/resources/img/graphics/interface/interactionPane.png" />
-					</image>
-				</ImageView> -->
-				<GridPane fx:id="buttonTray" alignment="center" hgap="0" vgap="0">
+				<GridPane fx:id="buttonTray" alignment="center" hgap="0" vgap="0" minWidth="341">
 					<Button GridPane.rowIndex="0" GridPane.columnIndex="0">
                 		<graphic>
                     		<ImageView>
@@ -162,8 +157,6 @@
 							</ImageView>
                 		</graphic>
            			</Button>
-           			
-				
 				</GridPane>
 			<ImageView>
 				<image>

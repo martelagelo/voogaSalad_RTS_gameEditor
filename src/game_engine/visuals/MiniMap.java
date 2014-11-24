@@ -1,15 +1,11 @@
 package game_engine.visuals;
 
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
-import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
+import application.ShittyMain;
 
 
 /**
@@ -91,8 +87,8 @@ public class MiniMap {
     }
 
     private void initializeDisplay () {
-        myDisplay.setLayoutX(0);
-        myDisplay.setLayoutY(0);
+        myDisplay.setLayoutX(1000);
+        myDisplay.setLayoutY(0.6*ShittyMain.shittyWidth);
         myDisplay.setWidth(MINIMAP_WIDTH);
         myDisplay.setHeight(MINIMAP_HEIGHT);
         myDisplay.setOpacity(0.6);

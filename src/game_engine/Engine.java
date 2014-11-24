@@ -1,4 +1,4 @@
-package application;
+package game_engine;
 
 import game_engine.UI.InputManager;
 import game_engine.gameRepresentation.factories.GameElementFactory;
@@ -15,6 +15,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
+import application.ShittyMain;
 import javafx.scene.Group;
 
 
@@ -40,7 +41,7 @@ public class Engine extends Observable implements Observer {
         myMainModel = mainModel;
         myInputManager = new InputManager();
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, ShittyMain.screenSize.getWidth(), ShittyMain.screenSize.getHeight());
+                new VisualManager(new Group(), myInputManager, ShittyMain.shittyWidth, 0.9*ShittyMain.screenSize.getHeight());
         myMiniMap = new MiniMap((ScrollablePane) myVisualManager.getScrollingScene());
     }
 

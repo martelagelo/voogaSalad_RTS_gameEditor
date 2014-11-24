@@ -1,5 +1,6 @@
 package application;
 
+import game_engine.Engine;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 public class ShittyMain extends Application {
     
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public static final int shittyWidth = 1279;
     
     @Override
     public void start (Stage primaryStage) {
@@ -29,7 +31,7 @@ public class ShittyMain extends Application {
             Group g = new Group();
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
-            Scene s = new Scene(g, screenSize.getWidth(), screenSize.getHeight());
+            Scene s = new Scene(g, shittyWidth, 0.9*screenSize.getHeight());
             s.getStylesheets().add(this.getClass().getClassLoader().getResource("game_engine/visuals/stylesheets/engine.style.css").toExternalForm());
             System.out.println(s.getStylesheets());
             primaryStage.setScene(s);

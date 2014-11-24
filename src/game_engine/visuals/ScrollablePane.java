@@ -24,8 +24,8 @@ public class ScrollablePane extends Pane {
     public static final double FAST_SCROLL_BOUNDARY = 75;
     public static final double FAST_SPEED = 15;
     public static final double SLOW_SPEED = 7;
-    public static final double FIELD_WIDTH = 4000;
-    public static final double FIELD_HEIGHT = 4000;
+    public static final double FIELD_WIDTH = 2000;
+    public static final double FIELD_HEIGHT = 2000;
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
