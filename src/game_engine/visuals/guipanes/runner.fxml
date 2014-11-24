@@ -27,11 +27,15 @@
 					</image>
 				</ImageView> -->
 				<GridPane alignment="center" hgap="10" vgap="10">
-				<ImageView>
-					<image>
-						<Image url="/resources/img/graphics/buttons/commands/patrol.jpg" /> 
-					</image>
-				</ImageView>
+				<Button GridPane.rowIndex="0" GridPane.columnIndex="0">
+                	<graphic>
+                    	<ImageView>
+							<image>
+								<Image url="/resources/img/graphics/buttons/commands/patrol.jpg" /> 
+							</image>
+						</ImageView>
+                	</graphic>
+           		</Button>
 				
 				</GridPane>
 			<ImageView>
