@@ -86,7 +86,7 @@ public class SplashScreen extends GUIScreen {
 
     private void setUpButtons () {
         newGameButton.setOnAction(e -> {
-            myMainModel.newGame();
+            myMainModel.newGame("New Game");
             switchScreen(ViewScreen.EDITOR);
         });
         // TODO we need to link this up with save load in MainView and MainModel

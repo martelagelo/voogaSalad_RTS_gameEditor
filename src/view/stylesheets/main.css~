@@ -34,6 +34,7 @@
 
 .text-area .scroll-pane .content {
     -fx-background-color: #45433e;
+    -fx-text-fill: #6BB8F6;
 }
 
 .text-area {

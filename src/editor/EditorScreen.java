@@ -1,13 +1,16 @@
 package editor;
 
-import java.awt.Dimension;
-import java.util.Arrays;
+import game_engine.gameRepresentation.stateRepresentation.DescribableState;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
+import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.LevelNotFoundException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,17 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import util.SaveLoadUtility;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
-import view.WizardUtility;
-import editor.wizards.Wizard;
-import editor.wizards.WizardData;
-import game_engine.gameRepresentation.stateRepresentation.DescribableState;
-import game_engine.gameRepresentation.stateRepresentation.GameState;
-import gamemodel.exceptions.CampaignNotFoundException;
-import gamemodel.exceptions.LevelNotFoundException;
 
 
 /**
@@ -41,8 +39,6 @@ import gamemodel.exceptions.LevelNotFoundException;
 
 public class EditorScreen extends GUIScreen {
 
-    private static final String TERRAIN_WIZARD = "/editor/wizards/guipanes/TerrainWizard.fxml";
-    private static final String GAME_ELEMENT_WIZARD = "/editor/wizards/guipanes/DrawableGameElementWizard.fxml";
     @FXML
     private TabPane tabPane;
     @FXML
@@ -66,47 +62,21 @@ public class EditorScreen extends GUIScreen {
     @FXML
     private Button save;
     @FXML
-    private Accordion levelElementAccordian;
+    private Accordion levelElementAccordion;
     @FXML
-    private ElementAccordianController levelElementAccordianController;
+    private ElementAccordionController levelElementAccordionController;
 
     private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
-
-    private void openGameElementWizard () {
-        Wizard wiz = WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
-        Consumer<WizardData> c = (data) -> {
-//            System.out.println(data);
-            myMainModel.createDrawableGameElement(data);
-            wiz.getStage().close();
-        };
-        wiz.setSubmit(c);
-    }
-
-    private void openTerrainWizard () {
-        Wizard wiz = WizardUtility.loadWizard(TERRAIN_WIZARD, new Dimension(600, 300));
-        Consumer<WizardData> c = (data) -> {
-            System.out.println(data);
-            wiz.getStage().close();
-        };
-        wiz.setSubmit(c);
-    }
 
     @Override
     public Node getRoot () {
         return editorRoot;
     }
-
-    // TODO: Clean up this function
-    private void initAccordion () {
-        // TODO Get Accordian Pane MetaData
-        // call to levelElementAccordianController to set up the data
-    }
-
+    
     private void initProjectExplorer () {
         // TODO: on selection changed should update the info box
         projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
-            System.out.println(Arrays.toString(selection));
             updateInfoBox(selection);
         });
         projectExplorerController.setOnLevelClicked( (String s) -> {
@@ -115,26 +85,28 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void initInfoBox () {
-        gameInfoBoxController.setSubmitAction( (name, description) -> {
-            try {
-                myMainModel.updateDescribableState(projectExplorerController.getSelectedHierarchy(), name,
-                                                   description);
-            }
-            catch (CampaignNotFoundException | LevelNotFoundException e) {
-                System.out.println("Failed to update selected describable state");
-                e.printStackTrace();
-            }    
-        });
+        gameInfoBoxController
+                .setSubmitAction( (name, description) -> {
+                    try {
+                        myMainModel.updateDescribableState(projectExplorerController
+                                .getSelectedHierarchy(), name,
+                                                           description);
+                    }
+                    catch (CampaignNotFoundException | LevelNotFoundException e) {
+                        System.out.println("Failed to update selected describable state");
+                        e.printStackTrace();
+                    }
+                });
     }
 
     private void updateInfoBox (String[] selection) {
         try {
             DescribableState state = myMainModel.getDescribableState(selection);
             gameInfoBoxController.setText(state.getName(), state.getDescription());
-            System.out.println("updating: " + state.getName() + ", " + state.getDescription());
+            // System.out.println("updating: " + state.getName() + ", " + state.getDescription());
         }
         catch (Exception e) {
-            System.out.println("shit update info box failed");
+            // System.out.println("shit update info box failed");
             e.printStackTrace();
         }
     }
@@ -181,19 +153,16 @@ public class EditorScreen extends GUIScreen {
 
     @Override
     public void init () {
-        attachChildContainers(editorMenuBarController, levelElementAccordianController);
+        attachChildContainers(editorMenuBarController, levelElementAccordionController);
         myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
-        initAccordion();
         initInfoBox();
-        newGameElement.setOnAction(e -> openGameElementWizard());
-        newTerrain.setOnAction(e -> openTerrainWizard());
-        save.setOnAction(e -> myMainModel.saveGame());
     }
 
     @Override
     public void update () {
+        System.out.println("asdf");
         updateAccordion();
         updateProjectExplorer();
         updateTabViewControllers();
@@ -201,8 +170,38 @@ public class EditorScreen extends GUIScreen {
     }
 
     // TODO: metadata stuff
-    private void updateAccordion () {
+    private void updateAccordion () {        
+        List<ImageElementPair> states =
+                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
+                        .map( (element) -> {
+                            try {
+                                return new ImageElementPair(null, element.getName());
+//                                 return new
+//                                 ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
+//                                 element.getName());
+                            }
+                            catch (Exception e) {
+                                System.out.println(e.toString());
+                                return new ImageElementPair(null, "failure");
+                            }
+                        }).collect(Collectors.toList());
+        levelElementAccordionController.updateItems(states);
+    }
 
+    /**
+     * data structure for holding accordion tile view data
+     * 
+     * @author Jonathan Tseng, Nishad Agrawal
+     *
+     */
+    public class ImageElementPair {
+        Image myImage;
+        String myElementName;
+
+        public ImageElementPair (Image image, String elementName) {
+            myImage = image;
+            myElementName = elementName;
+        }
     }
 
     private void updateProjectExplorer () {
@@ -221,7 +220,8 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void updateTabViewControllers () {
-
+        if (myCurrentTab == null) return;
+        myTabViewControllers.get(myCurrentTab.getId()).update();
     }
 
 }

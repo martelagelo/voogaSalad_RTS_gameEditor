@@ -26,7 +26,7 @@ public class TriggerWizard extends Wizard {
     public void updateData () {
         setDataName(GameElementStateFactory.TRIGGER);
         addToData(GameElementStateFactory.CONDITION, condition.getText());
-        addToData(GameElementStateFactory.ACTION, condition.getText());
+        addToData(GameElementStateFactory.ACTION, action.getText());
     }
 
 }

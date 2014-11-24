@@ -94,7 +94,7 @@ public class EditorMenuBarController extends GUIContainer {
         newCampaignMenuItem.setOnAction(e -> onNewCampaignClick());
         newLevelMenuItem.setOnAction(e -> onNewLevelClick());
         saveMenuItem.setOnAction(e -> {
-            // TODO SAVE
+            myMainModel.saveGame();
         });
     }
 

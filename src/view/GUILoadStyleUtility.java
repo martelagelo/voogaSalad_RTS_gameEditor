@@ -4,7 +4,6 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-
 /**
  * A class for the generation and styling of GUIPanes based on FXML files
  * 
@@ -42,14 +41,14 @@ public class GUILoadStyleUtility {
      * 
      * @param scene
      */
-    public void setScene(Scene scene) {
+    public void setScene (Scene scene) {
         myScene = scene;
 
     }
 
     /**
-     * static method to load an FXML file
-     * returns the GUIController associated with the FXML file
+     * static method to load an FXML file returns the GUIController associated
+     * with the FXML file
      * 
      * @param filePath
      * @return
@@ -61,8 +60,7 @@ public class GUILoadStyleUtility {
             loader.load();
             GUIController controller = (GUIController) loader.getController();
             return controller;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -72,18 +70,17 @@ public class GUILoadStyleUtility {
      * 
      * @param cssFiles
      */
-    public void setStyle (String ... cssFiles) {
+    public void setStyle (String... cssFiles) {
         myScene.getStylesheets().clear();
         addStyle(cssFiles);
     }
 
-    public void addStyle (String ... cssFiles) {
+    public void addStyle (String... cssFiles) {
         try {
             for (String cssFile : cssFiles) {
                 myScene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("css file not found (or some other error)");
             e.printStackTrace();
         }

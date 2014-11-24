@@ -1,8 +1,7 @@
 package util;
 
 import com.google.gson.Gson;
-
-
+import com.google.gson.GsonBuilder;
 /**
  * Utility interface to convert class objects into JSON representations
  * 
@@ -11,8 +10,8 @@ import com.google.gson.Gson;
  *
  */
 public interface JSONable {
-    public default String toJSON () {
-        Gson gson = new Gson();
+    public default String toJSON() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(this);
     }
 }

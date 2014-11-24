@@ -5,6 +5,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,7 +52,7 @@ public class GameUniverse {
     }
 
     public Set<DrawableGameElementState> getDrawableGameElementStates () {
-        return (Set<DrawableGameElementState>) DeepCopy.deepCopy(myDrawableGameElementStates);
+        return Collections.unmodifiableSet(myDrawableGameElementStates);
     }
 
     public Set<SelectableGameElementState> getSelectableGameElementStates () {

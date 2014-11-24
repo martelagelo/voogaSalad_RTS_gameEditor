@@ -2,6 +2,7 @@ package resources.processing;
 
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -20,7 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.imageio.ImageIO;
+
 import util.JSONable;
 import util.SaveLoadUtility;
 
@@ -125,7 +128,7 @@ public class SpriteSheetCreationUtility {
                 saveUtil.save((JSONable) spritesheetObject, filePathForSpritesheet + ".json");
             }
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

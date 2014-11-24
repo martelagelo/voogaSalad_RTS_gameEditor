@@ -25,13 +25,13 @@ public class TestLoadSaveUtility {
                 + "campaign");
         TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
-                        + SaveLoadUtility.FILE_SEPARATOR + "campaign");
+                        + SaveLoadUtility.FILE_SEPARATOR + "campaign.json");
         myLoadSaveUtility.loadImage("src" + SaveLoadUtility.FILE_SEPARATOR + "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
                 + "exploBig.png");
         myLoadSaveUtility.saveImage(("src/resources/img/exploBig.png"), "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
-                + "exploBigCopy.png");
+                + "explo Big Copy.png");
         Image image = myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR
                 + "img" + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
         System.out.println(image.getHeight());

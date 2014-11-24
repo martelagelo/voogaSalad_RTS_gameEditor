@@ -31,7 +31,7 @@
 	</rowConstraints>
 	<children>
 		<Label GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="title"
-			GridPane.columnSpan="3"/>
+			GridPane.columnSpan="3" id="duvall"/>
 		<Button defaultButton="true" fx:id="launchEditorButton"
 			GridPane.columnIndex="1" GridPane.rowIndex="1">
 			<maxWidth>

@@ -41,6 +41,7 @@ public abstract class GUIContainer implements Observer, GUIController {
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
         myChildContainers.forEach( (child) -> {
             child.setModel(myMainModel);
+            System.out.println("lalala");
         });
     }
 
@@ -51,7 +52,7 @@ public abstract class GUIContainer implements Observer, GUIController {
     @Override
     public final void update (Observable o, Object arg) {
         update();
-        myChildContainers.forEach( (child) -> child.update(o, arg));
+        // myChildContainers.forEach( (child) -> child.update(o, arg));
     }
 
     public abstract void update ();
