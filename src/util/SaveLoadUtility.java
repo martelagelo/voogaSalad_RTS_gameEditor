@@ -10,14 +10,13 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FileUtils;
 
 import com.google.gson.Gson;
 
@@ -41,17 +40,17 @@ public class SaveLoadUtility implements ISaveLoad {
 
     public <T> T loadResource (Class className, String filePath) throws Exception {
         Gson gson = new Gson();
-        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath + JSON_EXT)),
-                className);
+        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
         return jsonRepresentation;
     }
 
     public String save (JSONable object, String filePath) throws Exception {
+        filePath = preProcess(filePath);
         if (!mySavedGames.contains(filePath)) {
             mySavedGames.add(filePath);
-          //  setDefaults(topLevelDirectory(filePath));
+            // setDefaults(topLevelDirectory(filePath));
         }
-        File file = obtainFile(filePath + JSON_EXT);
+        File file = obtainFile(filePath);
         FileWriter writer = new FileWriter(file);
         String json = object.toJSON();
         writer.write(json);
@@ -85,11 +84,19 @@ public class SaveLoadUtility implements ISaveLoad {
         return file;
     }
 
-    public void saveImage (String source, String destination) throws IOException {
+    public String saveImage (String source, String destination) throws IOException {
+        source = preProcess(source);
+        destination = preProcess(destination);
         File sourceFile = obtainFile(source);
         File destFile = obtainFile(destination);
         Files.copy(sourceFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        return destination;
 
+    }
+
+    private String preProcess (String source) {
+        source = source.replaceAll(" ", "_");
+        return source;
     }
 
     public Image loadImage (String filePath) throws Exception {
