@@ -28,22 +28,20 @@ public class MiniMap {
     private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
     private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
     
-	private Scene myScene;
+	private ScrollableScene myScene;
 	private Canvas myDisplay;
 	private GraphicsContext myGraphicsContext;
-	//private List<Point2D> gameElementPoints;
 	private List<SelectableGameElement> gameUnits;
 
 	/**
 	 * Constructor for the MiniMap
 	 */
-	public MiniMap(Scene SS) {
+	public MiniMap(ScrollableScene SS) {
 		myScene = SS;
 		myDisplay = new Canvas();
 		myGraphicsContext = myDisplay.getGraphicsContext2D();
 		initializeDisplay();
 		initializeGraphicsContext();
-		//gameElementPoints = new ArrayList<Point2D>();
 	}
 
 	/**
@@ -55,15 +53,33 @@ public class MiniMap {
 		return myDisplay;
 	}
 	
+	/**
+	 * Sets the list of units of the current level
+	 * 
+	 * @param units The list of units
+	 */
 	public void setUnits(List<SelectableGameElement> units) {
 		gameUnits = units;
-		//populateGamePointsList();
-		//moveUnits();
 	}
 	
-
-	public void moveUnits() {
+	/**
+	 * Updates the drawings and points on the minimap
+	 */
+	public void updateMiniMap() {
 		initializeGraphicsContext();
+		moveSceneBox();
+		moveUnits();
+	}
+	
+	private void moveSceneBox() {
+		double XPos = -1 * myScene.getBackground().getTranslateX();
+		double YPos = -1 * myScene.getBackground().getTranslateY();
+		myGraphicsContext.setLineWidth(2);
+		myGraphicsContext.setStroke(Color.BLUE);
+		myGraphicsContext.strokeRoundRect(XPos / X_SCALE,  YPos / X_SCALE,  myScene.getWidth() / X_SCALE, myScene.getHeight() / Y_SCALE, 10, 10);
+	}
+	
+	private void moveUnits() {
 		myGraphicsContext.setFill(Color.BLACK);
 		for(SelectableGameElement SGE: gameUnits) {
 			myGraphicsContext.fillOval(SGE.getLocation().getX() / X_SCALE, SGE.getLocation().getY() / Y_SCALE, 3, 3);
@@ -75,7 +91,7 @@ public class MiniMap {
 		myDisplay.setLayoutY(0);
 		myDisplay.setWidth(MINIMAP_WIDTH);
 		myDisplay.setHeight(MINIMAP_HEIGHT);
-		myDisplay.setOpacity(0.5);
+		myDisplay.setOpacity(0.6);
 	}
 
 	private void initializeGraphicsContext() {
@@ -84,16 +100,7 @@ public class MiniMap {
 		myGraphicsContext.setLineWidth(5);
 		myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
 		myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
-		//myGraphicsContext
-		//myGraphicsContext
-		//drawShapes(myGraphicsContext);
 	}
-	
-//	private void populateGamePointsList() {
-//		for(SelectableGameElement SGE: gameUnits) {
-//			gameElementPoints.add(SGE.getLocation());
-//		}
-//	}
 
 	private void drawShapes(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);

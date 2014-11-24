@@ -5,6 +5,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.MiniMap;
+import game_engine.visuals.ScrollableScene;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
@@ -38,7 +39,7 @@ public class Engine extends Observable implements Observer {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
         myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
-        myMiniMap = new MiniMap(myVisualManager.getScene());
+        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
     }
 
     public Group getVisualRepresentation () {

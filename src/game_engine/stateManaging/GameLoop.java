@@ -91,7 +91,7 @@ public class GameLoop {
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             selectableElement.update();
         }
-        myMiniMap.moveUnits();
+        myMiniMap.updateMiniMap();
     }
 
     /**
