@@ -30,6 +30,8 @@ public class ShittyMain extends Application {
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
             Scene s = new Scene(g, screenSize.getWidth(), screenSize.getHeight());
+            s.getStylesheets().add(this.getClass().getClassLoader().getResource("game_engine/visuals/stylesheets/engine.style.css").toExternalForm());
+            System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
