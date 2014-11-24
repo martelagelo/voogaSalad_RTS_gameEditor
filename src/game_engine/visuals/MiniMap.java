@@ -1,15 +1,10 @@
 package game_engine.visuals;
 
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
-import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 
 
 /**
@@ -27,7 +22,7 @@ public class MiniMap {
     private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
     private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
 
-    private ScrollableScene myScene;
+    private ScrollablePane myScene;
     private Canvas myDisplay;
     private GraphicsContext myGraphicsContext;
     private List<SelectableGameElement> gameUnits;
@@ -35,7 +30,7 @@ public class MiniMap {
     /**
      * Constructor for the MiniMap
      */
-    public MiniMap (ScrollableScene SS) {
+    public MiniMap (ScrollablePane SS) {
         myScene = SS;
         myDisplay = new Canvas();
         myGraphicsContext = myDisplay.getGraphicsContext2D();
@@ -72,8 +67,8 @@ public class MiniMap {
     }
 
     private void moveSceneBox () {
-        double XPos = -1 * myScene.getBackground().getTranslateX();
-        double YPos = -1 * myScene.getBackground().getTranslateY();
+        double XPos = -1 * myScene.getScrollingBackground().getTranslateX();
+        double YPos = -1 * myScene.getScrollingBackground().getTranslateY();
         myGraphicsContext.setLineWidth(2);
         myGraphicsContext.setStroke(Color.BLUE);
         myGraphicsContext.strokeRoundRect(XPos / X_SCALE, YPos / X_SCALE,
@@ -91,8 +86,8 @@ public class MiniMap {
     }
 
     private void initializeDisplay () {
-        myDisplay.setLayoutX(0);
-        myDisplay.setLayoutY(0);
+        myDisplay.setLayoutX(1000);
+        myDisplay.setLayoutY(32);
         myDisplay.setWidth(MINIMAP_WIDTH);
         myDisplay.setHeight(MINIMAP_HEIGHT);
         myDisplay.setOpacity(0.6);

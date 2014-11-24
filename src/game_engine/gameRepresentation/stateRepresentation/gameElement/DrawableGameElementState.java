@@ -1,26 +1,33 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.visuals.AnimationSequence;
+import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * This GameElement is drawable but not necessarily selectable - examples include terrain. These
- * elements must have a bounding box.
+ * This GameElement is drawable but not necessarily selectable - examples
+ * include terrain. These elements must have a bounding box.
  * 
  * @author Steve, Jonathan, Rahul
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements Boundable {
+public class DrawableGameElementState extends GameElementState implements
+        Boundable {
     public static final String X_POS_STRING = "xPosition";
     public static final String Y_POS_STRING = "yPosition";
+    public static final String CAN_MOVE_STRING = "canMove";
+    public static final String RANDOM_MOVEMENT_STRING = "randomMove";
+    public static final String TEAM_ID = "teamID";
+    public static final int PLAYER_TEAM_ID = 1;
 
     private Spritesheet mySpritesheet;
+    private Spritesheet myColorSheet;
     private Map<String, AnimationSequence> myAnimations;
-    private AnimationSequence myCurrentAnimation;
+    private AnimationSequence myCurrentAnimation = new NullAnimationSequence();
     private double[] myBounds;
 
     /**
@@ -30,15 +37,20 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      * @param yPosition
      */
     public DrawableGameElementState (Number xPosition, Number yPosition) {
+        super();
         myAnimations = new HashMap<>();
-        // These positions are stored in a numerical attribute map to allow for easy retrieval of
+        // These positions are stored in a numerical attribute map to allow for
+        // easy retrieval of
         // attributes by conditions and actions
-        this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
-        this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING,
+                                                             xPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING,
+                                                             yPosition));
     }
 
     /**
-     * Add an animation to the DrawableGameElementState's list of possible animations
+     * Add an animation to the DrawableGameElementState's list of possible
+     * animations
      * 
      * @param animation
      */
@@ -74,6 +86,13 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     @Override
     public double[] getBounds () {
         return myBounds;
+    }
+
+    /**
+     * Set the bounds
+     */
+    public void setBounds (double[] bounds) {
+        myBounds = bounds;
     }
 
 }

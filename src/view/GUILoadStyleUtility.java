@@ -42,7 +42,8 @@ public class GUILoadStyleUtility {
      * 
      * @param scene
      */
-    public void setScene (Scene scene) {
+    public void setScene(Scene scene) {
+        myScene = scene;
 
     }
 

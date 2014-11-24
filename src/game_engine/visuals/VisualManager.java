@@ -3,7 +3,6 @@ package game_engine.visuals;
 import game_engine.UI.InputManager;
 import java.util.Observer;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 
 
@@ -15,8 +14,9 @@ import javafx.scene.canvas.Canvas;
  *
  */
 public class VisualManager {
-    private ScrollableScene scene;
+    private ScrollablePane scene;
     private ScrollableBackground background;
+    private Group root;
 
     /**
      * Creates a new VisualManager. One visual manager should be created for every Scene (map)
@@ -30,8 +30,9 @@ public class VisualManager {
                           InputManager inputManager,
                           double screenWidth,
                           double screenHeight) {
-        scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
-        background = scene.getBackground();
+        scene = new ScrollablePane(gameObjectVisuals, inputManager, screenWidth, screenHeight);
+        background = scene.getScrollingBackground();
+        root = gameObjectVisuals;
     }
 
     /**
@@ -39,8 +40,12 @@ public class VisualManager {
      * 
      * @return the Scene object that represents the map
      */
-    public Scene getScene () {
+    public ScrollablePane getScrollingScene () {
         return scene;
+    }
+    
+    public Group getRoot() {
+    	return root;
     }
 
     /**
@@ -72,27 +77,6 @@ public class VisualManager {
     }
 
     /**
-     * <<<<<<< HEAD
-     * Adds a new observer to any clicks made on this map by this visual manager instance
-     * 
-     * @param o
-     */
-    public void addClickObserver (Observer o) {
-        scene.addClickObserver(o);
-    }
-
-    /**
-     * Adds a new observer to any key presses made on this map by this visual manager instance
-     * 
-     * @param o
-     */
-    public void addKeyboardObserver (Observer o) {
-        scene.addKeyboardObserver(o);
-    }
-
-    /**
-     * =======
-     * >>>>>>> c85bcd8cb098bfcec96f3956de1af2150f5c0326
      * Adds new objects to the map
      * 
      * @param g

@@ -1,20 +1,22 @@
 package game_engine;
 
-import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.UI.InputManager;
+import game_engine.gameRepresentation.factories.GameElementFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.MiniMap;
-import game_engine.visuals.ScrollableScene;
+import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
+import application.ShittyMain;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 
 
 /**
@@ -25,9 +27,6 @@ import javafx.scene.Scene;
  *
  */
 public class Engine extends Observable implements Observer {
-
-    public static final Integer SCREEN_WIDTH = 600;
-    public static final Integer SCREEN_HEIGHT = 600;
 
     private MainModel myMainModel;
     private GameLoop myGameLoop;
@@ -40,11 +39,10 @@ public class Engine extends Observable implements Observer {
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
-        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, SCREEN_WIDTH, SCREEN_HEIGHT);
-        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScene());
+                new VisualManager(new Group(), myInputManager, ShittyMain.shittyWidth, 0.9*ShittyMain.screenSize.getHeight());
+        myMiniMap = new MiniMap((ScrollablePane) myVisualManager.getScrollingScene());
     }
 
     public Group getVisualRepresentation () {
@@ -57,8 +55,10 @@ public class Engine extends Observable implements Observer {
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
+//        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
         myMiniMap.setUnits(newLevel.getUnits());
-        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
+        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
+//        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
@@ -68,7 +68,7 @@ public class Engine extends Observable implements Observer {
     }
 
     public void play () {
-        updateGameLoop(myMainModel.getCurrentLevel());
+        updateGameLoop(myMainModel.getCurrentLevel(), myMainModel.getCurrentCampaign().getName());
         myGameLoop.play();
     }
 
@@ -82,19 +82,21 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        updateGameLoop(myMainModel.getCurrentLevel());
+        // TODO Auto-generated method stub
+        updateGameLoop(myMainModel.getCurrentLevel(), myMainModel.getCurrentCampaign().getName());
+//        updateGameLoop(myMainModel.getCurrentLevel());
     }
 
-    public Scene getScene () {
-        return myVisualManager.getScene();
+    public ScrollablePane getScene () {
+        return myVisualManager.getScrollingScene();
     }
 
-    private void updateGameLoop (LevelState levelState) {
-        // TODO: check equlity
-        if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
+    private void updateGameLoop (LevelState levelState, String currentCampaign) {
+        // TODO check equlity
+        if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
             myMiniMap.setUnits(nextLevel.getUnits());
-            myGameLoop = new GameLoop(nextLevel, myVisualManager, myMiniMap);
+            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);

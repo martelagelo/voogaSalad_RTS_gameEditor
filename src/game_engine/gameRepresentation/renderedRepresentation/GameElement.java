@@ -1,9 +1,9 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-import game_engine.gameRepresentation.actions.Action;
 // import game_engine.gameRepresentation.conditions.Condition;
-import game_engine.gameRepresentation.conditions.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+
 import java.util.Map;
 
 
@@ -14,13 +14,11 @@ import java.util.Map;
  * @author Jonathan, Nishad, Rahul, Steve
  *
  */
-public class GameElement {
+public class GameElement{
 
-    // TODO: FIX THIS SHIT, not sure if right ???
-    // protected Map<Condition, Action> myConditionActionPairs;
-
-    private Map<Evaluatable, Action> myConditionActionPairs;
+    private Map<Evaluatable<Boolean>, Evaluatable<?>> myConditionActionPairs;
     private GameElementState myGameElementState;
+
 
     /**
      * Create a game element with the given state
@@ -28,7 +26,7 @@ public class GameElement {
      * @param gameElementState the state of the game element
      */
     public GameElement (GameElementState gameElementState,
-                        Map<Evaluatable, Action> conditionActionPairs) {
+                        Map<Evaluatable<Boolean>, Evaluatable<?>> conditionActionPairs) {
         myGameElementState = gameElementState;
         myConditionActionPairs = conditionActionPairs;
     }
@@ -54,7 +52,8 @@ public class GameElement {
         // TODO Auto-generated method stub
     }
 
-    public Map<Evaluatable, Action> getConditionActionPairs () {
+    //TODO isn't this giving up an important collection??
+    public Map<Evaluatable<Boolean>, Evaluatable<?>> getConditionActionPairs () {
         return myConditionActionPairs;
     }
 }

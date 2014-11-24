@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import util.JSONable;
-import util.LoadSaveUtility;
+import util.SaveLoadUtility;
 
 
 /**
@@ -52,16 +52,18 @@ public class SpriteSheetCreationUtility {
     }
 
     private void doThing () throws IOException {
-        List<BufferedImage> colorMask =
-                loadFilesInDirectory(new File("src/resources/img/graphics/units/"));
-        ColorMaskExtractor extractor = new ColorMaskExtractor(colorMask.get(1));
-        extractor.mutateColorMask(122);
-        BufferedImage mutatedMask = extractor.mutatedMask;
-        ImageIO.write(mutatedMask, "PNG",
-                      new File(
-                               "src/resources/img/graphics/units/archerColorMaskGreen"
-                                       +
-                                       ".png"));
+        List<BufferedImage> buttons =
+                loadFilesInDirectory(new File("src/resources/img/graphics/buildings/archeryRange/"));
+        List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
+        for (BufferedImage image : buttons) {
+            betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
+        }
+        int i = 1;
+        for (BufferedImage image : betterTiles) {
+            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/buildings/" + i +
+                                                 ".png"));
+            i++;
+        }
     }
 
     /**
@@ -73,12 +75,13 @@ public class SpriteSheetCreationUtility {
      * @param uniqueSpriteIndicies - incidies of states in input
      * @param extrapolatedStateIndicies - order of states in output
      * @param extrapolatedStateMirrorFlags - which states to mirror horizontally in output
+     * @throws Exception
      */
     public void createSpriteSheet (String baseInputDirectoryPath,
                                    int[] uniqueStateIndicies,
                                    int[] extrapolatedStateIndicies,
                                    boolean[] extrapolatedStateMirrorFlags,
-                                   Color maskColor) {
+                                   Color maskColor) throws Exception {
         try {
             File baseDirectory = new File(baseInputDirectoryPath);
             if (!baseDirectory.isDirectory()) { return; }
@@ -118,7 +121,7 @@ public class SpriteSheetCreationUtility {
                         new Spritesheet(unitName, new Dimension(frameWidth, frameHeight),
                                         numTotalColumns);
 
-                LoadSaveUtility saveUtil = new LoadSaveUtility();
+                SaveLoadUtility saveUtil = new SaveLoadUtility();
                 saveUtil.save((JSONable) spritesheetObject, filePathForSpritesheet + ".json");
             }
         }

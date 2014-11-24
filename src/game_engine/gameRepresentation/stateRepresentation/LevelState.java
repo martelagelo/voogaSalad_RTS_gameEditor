@@ -20,11 +20,9 @@ public class LevelState extends DescribableState {
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
-    private CampaignState myCampaignState;
 
-    public LevelState (String name, CampaignState campaign) {
+    public LevelState (String name) {
         super(name);
-        myCampaignState = campaign;
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();
@@ -52,15 +50,6 @@ public class LevelState extends DescribableState {
 
     public void addGoal (GameElementState goal) {
         myGoals.add(goal);
-    }
-
-    public CampaignState getCampaignState () {
-        return myCampaignState;
-    }
-
-    public boolean sameLevel (LevelState otherLevel) {
-        return getName().equals(otherLevel.getName()) &&
-               myCampaignState.getName().equals(otherLevel.getCampaignState().getName());
     }
 
 }

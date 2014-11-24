@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import gamemodel.GameElementStateFactory;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -17,16 +18,15 @@ public class NumberAttributeWizard extends Wizard {
     private TextField numberValue;
 
     @Override
-    public boolean checkCanSave () {
-        System.out.println(numberValue.getText());
-
+    public boolean checkCanSave () {        
         return !key.getText().isEmpty() && !numberValue.getText().isEmpty() &&
                Pattern.matches("-?[0-9]+\\.?[0-9]*", numberValue.getText());
     }
 
     @Override
     public void updateData () {
-        addToData("NumAttribute", key.getText());
-        addToData("Value", numberValue.getText());
+        setDataName(GameElementStateFactory.NUMBER_ATTRIBUTE);
+        addToData(GameElementStateFactory.ATTRIBUTE, key.getText());
+        addToData(GameElementStateFactory.VALUE, numberValue.getText());
     }
 }

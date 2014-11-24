@@ -13,7 +13,7 @@ public class ReceiverNotFoundException extends Exception {
      * Create a new receiver not found exception
      * 
      * @param address
-     *        The address that could not be resolved
+     *            The address that could not be resolved
      */
     public ReceiverNotFoundException (String address) {
         super(address + " could not be found");

@@ -1,11 +1,17 @@
 package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable;
+import game_engine.gameRepresentation.evaluatables.ElementPair;
+import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
+import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.List;
-import javafx.scene.shape.Polygon;
+import java.util.stream.Collectors;
 
 
 /**
@@ -15,7 +21,19 @@ import javafx.scene.shape.Polygon;
  *
  */
 public class CollisionComputer extends
-        Computer<SelectableGameElementState, DrawableGameElementState> {
+        Computer<DrawableGameElementState, DrawableGameElementState> {
+    private Evaluator<?, ?, ?> collisionEvaluator;
+
+    /**
+     * Initialize the Collision computer to use an evaluatable to check if objects are colliding
+     */
+    public CollisionComputer () {
+        collisionEvaluator =
+                new CollisionEvaluator<>(
+                                         new GameElementParameter(new ActorObjectIdentifier(), null),
+                                         new GameElementParameter(new ActeeObjectIdentifier(), null));
+    }
+
     /**
      * Returns true if there is a collision between the two bounded objects
      *
@@ -23,16 +41,12 @@ public class CollisionComputer extends
      */
     @Override
     protected boolean checkComputingCondition (
-                                               SelectableGameElementState primaryObject,
+                                               DrawableGameElementState primaryObject,
                                                DrawableGameElementState otherObject) {
-        if (primaryObject instanceof Boundable
-            && otherObject instanceof Boundable) {
-            Boundable boundableObject = primaryObject;
-            Boundable otherBoundableObject = otherObject;
-            return new Polygon(boundableObject.getBounds())
-                    .intersects(new Polygon(otherBoundableObject.getBounds()).getBoundsInLocal());
-        }
-        else return false;
+        ElementPair elementPair =
+                new ElementPair(primaryObject,
+                                otherObject);
+        return (Boolean) collisionEvaluator.getValue(elementPair);
     }
 
     /**
@@ -42,9 +56,14 @@ public class CollisionComputer extends
      */
     @Override
     protected void givePrimaryObjectElements (
-                                              SelectableGameElementState primaryObject,
+                                              DrawableGameElementState primaryObject,
                                               List<DrawableGameElementState> listToAdd) {
-        primaryObject.addCollidingElements(listToAdd);
+        if (listToAdd.size() > 0) {
+        }
+        ((SelectableGameElementState) primaryObject)
+                .addCollidingElements(listToAdd.stream()
+                        .map(element -> (DrawableGameElementState) element)
+                        .collect(Collectors.toList()));
     }
 
 }

@@ -1,41 +1,55 @@
 package game_engine.stateManaging;
 
 import game_engine.computers.Computer;
-import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.computers.boundsComputers.CollisionComputer;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.evaluators.AndEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.MultiplicationEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
+import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.RandomParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.visuals.MiniMap;
-import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.animation.Animation;
+import java.util.stream.Collectors;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 
 /**
- * The main game loop. Sets the timeline and game loop in motion and calls the update method of all
- * the elements in the game
- *
- * @author Michael D., Steve
+ * The main loop for running the game, checking for collisions, and updating game entities
+ * 
+ * @author Michael Ching Chong Deng, John, Steve, Zach
  *
  */
 public class GameLoop {
+
     public static final Double framesPerSecond = 60.0;
+
+    private String myCampaignName;
     private Level myCurrentLevel;
-    // private ScrollableBackground myBackground;
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
-    
-    private List<Computer> myComputerList = new ArrayList<Computer>();
+
+    private List<Computer> myComputers = new ArrayList<>();
     private Timeline timeline;
+    
+    private List<Line> unitPaths;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -44,96 +58,125 @@ public class GameLoop {
         }
     };
 
-    /**
-     * Create the game loop given a level to reference and a visual manager to manage object visuals
-     *
-     * @param level the level that the gameLoop will be running
-     * @param visualManager a visual manager wrapped around the level
-     */
-    public GameLoop (Level level, VisualManager visualManager, MiniMap miniMap) {
-//        myBackground = visualManager.getBackground();
+    public GameLoop (String campaignName, Level level, VisualManager visualManager, MiniMap miniMap) {
+        // myBackground = visualManager.getBackground();
         myVisualManager = visualManager;
+        myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
+        unitPaths = new ArrayList<Line>();
         // myComputerList.add(new CollisionComputer());
+        myComputers.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         startGameLoop();
+        // TODO find a place for this method
+        addColisionEvents();
     }
 
-    /**
-     * Start the game loop
-     */
-    public void startGameLoop () {
+    private void addColisionEvents () {
+        Evaluatable<?> objectParameter1 =
+                new GameElementParameter(new ActeeObjectIdentifier(), null);
+        Evaluatable<?> objectParameter2 =
+                new GameElementParameter(new ActorObjectIdentifier(), null);
+        Evaluator<?, ?, Boolean> collisionEvaluator =
+                new CollisionEvaluator<>(objectParameter1, objectParameter2);
+        Evaluatable<?> xPosition =
+                new NumericAttributeParameter(DrawableGameElementState.X_POS_STRING,
+                                              null,
+                                              new ActorObjectIdentifier());
+        Evaluatable<?> yPosition =
+                new NumericAttributeParameter(DrawableGameElementState.Y_POS_STRING, null,
+                                              new ActorObjectIdentifier());
+        Evaluatable<?> xVelocity = new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> yVelocity = new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluator<?, ?, ?> xAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(xPosition, xVelocity);
+        Evaluator<?, ?, ?> yAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(yPosition, yVelocity);
+        Evaluator<?, ?, ?> reverseMotionEvaluator =
+                new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
 
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        myCurrentLevel
+                .getUnits()
+                .stream()
+                .forEach(element -> element
+                        .getConditionActionPairs()
+                        .put(collisionEvaluator, reverseMotionEvaluator));
+
+    }
+
+    public void startGameLoop () {
+        KeyFrame frame = start(framesPerSecond);
         startTimeline(frame);
     }
 
-    /**
-     * Update the states of all prominent elements and aspects of the game
-     */
+    private KeyFrame start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        return frame;
+    }
+
     private void update () {
+    	clearLinesFromRoot();
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
-        List<DrawableGameElement> allElements =
-                new ArrayList<DrawableGameElement>();
-        allElements.addAll(myCurrentLevel.getUnits());
-        allElements.addAll(myCurrentLevel.getTerrain());
+        List<DrawableGameElementState> allElements =
+                new ArrayList<DrawableGameElementState>();
+        // TODO add stream that collects into objects
+        allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
+            return (DrawableGameElementState) element.getGameElementState();
+        }).collect(Collectors.toList()));
+        // allElements.addAll(myCurrentLevel.getTerrain());
+        // TODO fix this logic
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
-                c.compute(selectableElement, allElements);
+            for (Computer<DrawableGameElementState, DrawableGameElementState> computer : myComputers) {
+                computer.compute(selectableElement.getState(), allElements);
             }
         }
-        //
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             selectableElement.update();
         }
         myMiniMap.updateMiniMap();
+        addPathsToRoot();
+    }
+    
+    private void addPathsToRoot() {
+    	for (SelectableGameElement SGE: myCurrentLevel.getUnits()) {
+    		unitPaths.addAll(SGE.getLines());
+    	}
+    	this.myVisualManager.getBackground().getChildren().addAll(unitPaths);
+	}
+    
+    private void clearLinesFromRoot() {
+    	this.myVisualManager.getBackground().getChildren().removeAll(unitPaths);
+    	unitPaths.clear();
     }
 
-    /**
-     * Start the timeline
-     *
-     * @param frame the keyframe for the timeline
-     */
     private void startTimeline (KeyFrame frame) {
-        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
     }
 
-    /**
-     * Play the game
-     */
     public void play () {
         timeline.play();
     }
 
-    /**
-     * Pause the game
-     */
     public void pause () {
         timeline.pause();
     }
 
-    /**
-     * Stop the game
-     */
     public void stop () {
         timeline.stop();
     }
 
-    /**
-     * Indicate if this level is the current levels
-     *
-     * @param level the levelState of the level in question
-     * @return a boolean indicating if the level is the current level
-     */
-    public boolean isCurrentLevel (LevelState level) {
-        return level.sameLevel(myCurrentLevel.getLevelState());
+    public boolean isCurrentLevel (LevelState level, String campaignName) {
+        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName
+                .equals(campaignName));
     }
 
 }
