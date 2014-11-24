@@ -10,10 +10,9 @@
 <?import javafx.scene.image.*?>
  
  
-<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
-   minHeight="750" maxHeight="750"> 
+<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"> 
    	<top>
-   	<ImageView minWidth="100">    
+   	<ImageView fitWidth="1500">    
   				<image>
      				<Image url="/resources/img/graphics/interface/topBar.png" />
      			</image>
@@ -21,18 +20,18 @@
 
    	</top> 
    	<bottom>
-   		<HBox>
-   			<ImageView>    
+   		<HBox minWidth="1300">
+   			<ImageView fitWidth="440">    
 				<image>
    					<Image url="/resources/img/graphics/interface/interactionPane.png" />
    				</image>
    			</ImageView>
-   			<ImageView>    
+   			<ImageView fitWidth="440">    
 				<image>
    					<Image url="/resources/img/graphics/interface/informationPane.png" />
    				</image>
    			</ImageView>
-   			<ImageView>    
+   			<ImageView fitWidth="440">    
 				<image>
    					<Image url="/resources/img/graphics/interface/miniMapPane.png" />
    				</image>
