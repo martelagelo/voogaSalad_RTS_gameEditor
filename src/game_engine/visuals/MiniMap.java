@@ -5,7 +5,6 @@ import java.util.List;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import application.ShittyMain;
 
 
 /**
@@ -88,7 +87,7 @@ public class MiniMap {
 
     private void initializeDisplay () {
         myDisplay.setLayoutX(1000);
-        myDisplay.setLayoutY(0.6*ShittyMain.shittyWidth);
+        myDisplay.setLayoutY(32);
         myDisplay.setWidth(MINIMAP_WIDTH);
         myDisplay.setHeight(MINIMAP_HEIGHT);
         myDisplay.setOpacity(0.6);

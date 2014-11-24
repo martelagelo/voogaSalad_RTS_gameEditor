@@ -53,14 +53,14 @@ public class SpriteSheetCreationUtility {
 
     private void doThing () throws IOException {
         List<BufferedImage> buttons =
-                loadFilesInDirectory(new File("src/resources/img/graphics/interface/"));
+                loadFilesInDirectory(new File("src/resources/img/graphics/buildings/archeryRange/"));
         List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
         for (BufferedImage image : buttons) {
             betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
         }
         int i = 1;
         for (BufferedImage image : betterTiles) {
-            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/interface/" + i +
+            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/buildings/" + i +
                                                  ".png"));
             i++;
         }
@@ -316,7 +316,7 @@ public class SpriteSheetCreationUtility {
         return max;
     }
 
-    static final String[] EXTENSIONS = new String[] { "png" }; // acceptable image file extensions
+    static final String[] EXTENSIONS = new String[] { "bmp" }; // acceptable image file extensions
 
     /**
      * Filters for acceptable images.
