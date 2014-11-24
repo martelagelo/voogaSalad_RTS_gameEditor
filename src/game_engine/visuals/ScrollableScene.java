@@ -1,10 +1,8 @@
 package game_engine.visuals;
 
 import game_engine.UI.InputManager;
-
 import java.io.IOException;
 import java.util.Observer;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -13,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
 
@@ -68,9 +65,9 @@ public class ScrollableScene extends Scene {
         myBackground.setClip(clipRectangle);
 
         guiBP.setCenter(myBackground);
-        //BorderPane.setAlignment(myBackground, Pos.CENTER);
-        //stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
-        //stackPane.setAlignment(guiBP, Pos.TOP_LEFT);
+        BorderPane.setAlignment(myBackground, Pos.CENTER);
+        stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
+        stackPane.setAlignment(guiBP, Pos.TOP_LEFT);
         root.getChildren().add(guiBP);
         initializeHandlers();
     }
