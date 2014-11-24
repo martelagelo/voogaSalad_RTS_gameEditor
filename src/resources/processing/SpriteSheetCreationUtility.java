@@ -47,20 +47,20 @@ public class SpriteSheetCreationUtility {
         // extrapolatedStateMirrorFlags,
         // new Color(0xFFFF00FF));
 
-        // processor.doThing();
+        processor.doThing();
 
     }
 
     private void doThing () throws IOException {
-        List<BufferedImage> grassTiles =
-                loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
+        List<BufferedImage> buttons =
+                loadFilesInDirectory(new File("src/resources/img/graphics/buttons/commands/redo/"));
         List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
-        for (BufferedImage image : grassTiles) {
+        for (BufferedImage image : buttons) {
             betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
         }
         int i = 1;
         for (BufferedImage image : betterTiles) {
-            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i +
+            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/buttons/commands/" + i +
                                                  ".png"));
             i++;
         }
@@ -75,12 +75,13 @@ public class SpriteSheetCreationUtility {
      * @param uniqueSpriteIndicies - incidies of states in input
      * @param extrapolatedStateIndicies - order of states in output
      * @param extrapolatedStateMirrorFlags - which states to mirror horizontally in output
+     * @throws Exception
      */
     public void createSpriteSheet (String baseInputDirectoryPath,
                                    int[] uniqueStateIndicies,
                                    int[] extrapolatedStateIndicies,
                                    boolean[] extrapolatedStateMirrorFlags,
-                                   Color maskColor) {
+                                   Color maskColor) throws Exception {
         try {
             File baseDirectory = new File(baseInputDirectoryPath);
             if (!baseDirectory.isDirectory()) { return; }
