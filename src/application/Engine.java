@@ -1,4 +1,4 @@
-package game_engine;
+package application;
 
 import game_engine.UI.InputManager;
 import game_engine.gameRepresentation.factories.GameElementFactory;
@@ -7,7 +7,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
 import game_engine.stateManaging.GameLoop;
 import game_engine.visuals.MiniMap;
-import game_engine.visuals.ScrollableScene;
+import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
@@ -27,8 +27,6 @@ import javafx.scene.Group;
  */
 public class Engine extends Observable implements Observer {
 
-	public static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private GameElementManager myElementManager;
@@ -40,14 +38,10 @@ public class Engine extends Observable implements Observer {
     public Engine (MainModel mainModel) {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
-//        myElementFactory = new GameElementFactory(mainModel.getGameUniverse());
         myInputManager = new InputManager();
-        // TODO: this is not going to work when the pane needs to be added as a component for the editor
-//        myVisualManager =
-//                new VisualManager(new Group(), myInputManager, screenSize.getWidth(), screenSize.getHeight());
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, 600, 600);
-        myMiniMap = new MiniMap((ScrollableScene) myVisualManager.getScrollingScene());
+                new VisualManager(new Group(), myInputManager, ShittyMain.screenSize.getWidth(), ShittyMain.screenSize.getHeight());
+        myMiniMap = new MiniMap((ScrollablePane) myVisualManager.getScrollingScene());
     }
 
     public Group getVisualRepresentation () {
@@ -92,7 +86,7 @@ public class Engine extends Observable implements Observer {
 //        updateGameLoop(myMainModel.getCurrentLevel());
     }
 
-    public ScrollableScene getScene () {
+    public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }
 

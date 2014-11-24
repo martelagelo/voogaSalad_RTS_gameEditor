@@ -15,7 +15,7 @@ import javafx.scene.canvas.Canvas;
  *
  */
 public class VisualManager {
-    private ScrollableScene scene;
+    private ScrollablePane scene;
     private ScrollableBackground background;
 
     /**
@@ -30,7 +30,7 @@ public class VisualManager {
                           InputManager inputManager,
                           double screenWidth,
                           double screenHeight) {
-        scene = new ScrollableScene(gameObjectVisuals, inputManager, screenWidth, screenHeight);
+        scene = new ScrollablePane(gameObjectVisuals, inputManager, screenWidth, screenHeight);
         background = scene.getScrollingBackground();
     }
 
@@ -39,7 +39,7 @@ public class VisualManager {
      * 
      * @return the Scene object that represents the map
      */
-    public ScrollableScene getScrollingScene () {
+    public ScrollablePane getScrollingScene () {
         return scene;
     }
 

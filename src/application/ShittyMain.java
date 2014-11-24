@@ -1,15 +1,15 @@
 package application;
 
-import game_engine.Engine;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
-import game_engine.visuals.ScrollableScene;
+import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.Spritesheet;
 import game_engine.visuals.TerrainGrid;
 import gamemodel.MainModel;
+import java.awt.Toolkit;
 import java.util.List;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -19,14 +19,17 @@ import javafx.stage.Stage;
 
 
 public class ShittyMain extends Application {
+    
+    public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    
     @Override
     public void start (Stage primaryStage) {
         try {
             Engine engine = new Engine(hardCodeAGame());
             Group g = new Group();
-            ScrollableScene pane = engine.getScene();
+            ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
-            Scene s = new Scene(g, 600, 600);
+            Scene s = new Scene(g, screenSize.getWidth(), screenSize.getHeight());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
@@ -97,7 +100,7 @@ public class ShittyMain extends Application {
         archerState2.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
 
         TerrainGrid grid =
-                new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
+                new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         MainModel model = new MainModel();

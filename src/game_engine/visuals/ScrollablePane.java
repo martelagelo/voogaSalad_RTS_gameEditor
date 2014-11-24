@@ -7,30 +7,25 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 
 
 /**
  * Basically the map. JavaFX Scene node that contains the eventHandlers necessary
  * to scroll the map and register clicks.
  * 
- * @author John, Michael D. 
+ * @author John, Michael D.
  *
  */
-public class ScrollableScene extends Pane {
+public class ScrollablePane extends Pane {
     public static final double SLOW_SCROLL_BOUNDARY = 120;
     public static final double FAST_SCROLL_BOUNDARY = 75;
     public static final double FAST_SPEED = 15;
     public static final double SLOW_SPEED = 7;
-    public static final double FIELD_WIDTH = 2000;
-    public static final double FIELD_HEIGHT = 2000;
+    public static final double FIELD_WIDTH = 4000;
+    public static final double FIELD_HEIGHT = 4000;
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
@@ -44,10 +39,10 @@ public class ScrollableScene extends Pane {
      *        no objects have been created yet to add, just add an empty new Group()
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
-     * @throws IOException 
+     * @throws IOException
      */
-    public ScrollableScene (Group root, InputManager inputManager, double width, double height) {
-//        super(root, width, height);
+    public ScrollablePane (Group root, InputManager inputManager, double width, double height) {
+        // super(root, width, height);
         this.setWidth(width);
         this.setHeight(height);
         this.setMinWidth(width);
@@ -58,39 +53,30 @@ public class ScrollableScene extends Pane {
         this.root = root;
         Pane stackPane = new Pane();
         BorderPane guiBP = null;
-		try {
-			guiBP = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("game_engine/visuals/guipanes/runner.fxml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            guiBP =
+                    (BorderPane) FXMLLoader.load(getClass().getClassLoader()
+                            .getResource("game_engine/visuals/guipanes/runner.fxml"));
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         this.getChildren().add(root);
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         myInputManager.addClickObserver(mySelectionBox);
         myInputManager.addMouseDragObserver(mySelectionBox);
-//        Rectangle clipRectangle = new Rectangle();
-//        clipRectangle.setWidth(600);
-//        clipRectangle.setHeight(600);
-//        myBackground.setClip(clipRectangle);
+        // Rectangle clipRectangle = new Rectangle();
+        // clipRectangle.setWidth(600);
+        // clipRectangle.setHeight(600);
+        // myBackground.setClip(clipRectangle);
 
         guiBP.setCenter(myBackground);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
-//        stackPane.setAlignment(guiBP, Pos.TOP_LEFT);
         root.getChildren().add(stackPane);
-       
-//        sp.getChildren().add(myBackground);
-//        sp.getChildren().add(mySelectionBox.getBox());
-//        mySelectionBox.getBox().toBack();
-//        BorderPane bp = (BorderPane) sp.lookup("#overlay");
-//        sp.getChildren().remove(bp);
-//        sp.getChildren().add(bp);
-////        bp.getChildren().add(mySelectionBox.getBox());
-//        sp.setAlignment(bp, Pos.TOP_LEFT);
-//        root.getChildren().add(sp);
         initializeHandlers();
-
     }
 
     /**
@@ -112,17 +98,18 @@ public class ScrollableScene extends Pane {
         setOnMousePressed(e -> mousePressed(e));
         setOnMouseReleased(e -> myInputManager.inputOccurred(e, -myBackground.getTranslateX(),
                                                              -myBackground.getTranslateY(), false));
-//        setOnMouseDragged(e -> myInputManager.inputOccurred(e, -myBackground.getTranslateX(),
-//                                                            -myBackground.getTranslateY(), true));
-        setOnMouseDragged(new EventHandler<MouseEvent>(){
+        // setOnMouseDragged(e -> myInputManager.inputOccurred(e, -myBackground.getTranslateX(),
+        // -myBackground.getTranslateY(), true));
+        setOnMouseDragged(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle (MouseEvent event) {
                 myInputManager.inputOccurred(event, -myBackground.getTranslateX(),
-                                                -myBackground.getTranslateY(), true);   
-                System.out.println("BOX: "+mySelectionBox.getBox().getX()+", "+mySelectionBox.getBox().getY());
+                                             -myBackground.getTranslateY(), true);
+                System.out.println("BOX: " + mySelectionBox.getBox().getX() + ", " +
+                                   mySelectionBox.getBox().getY());
             }
-            
+
         });
 
         setOnMouseMoved(new EventHandler<MouseEvent>() {

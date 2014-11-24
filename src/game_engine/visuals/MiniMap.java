@@ -27,7 +27,7 @@ public class MiniMap {
     private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
     private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
 
-    private ScrollableScene myScene;
+    private ScrollablePane myScene;
     private Canvas myDisplay;
     private GraphicsContext myGraphicsContext;
     private List<SelectableGameElement> gameUnits;
@@ -35,7 +35,7 @@ public class MiniMap {
     /**
      * Constructor for the MiniMap
      */
-    public MiniMap (ScrollableScene SS) {
+    public MiniMap (ScrollablePane SS) {
         myScene = SS;
         myDisplay = new Canvas();
         myGraphicsContext = myDisplay.getGraphicsContext2D();
