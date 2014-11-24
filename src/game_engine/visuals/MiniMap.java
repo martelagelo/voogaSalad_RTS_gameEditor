@@ -1,10 +1,13 @@
 package game_engine.visuals;
 
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -18,16 +21,24 @@ import javafx.scene.shape.ArcType;
  */
 public class MiniMap {
 
-	private final static Integer MINIMAP_WIDTH = 250;
-	private final static Integer MINIMAP_HEIGHT = 250;
+	private static final double MINIMAP_WIDTH = 250;
+	private static final double MINIMAP_HEIGHT = 250;
+	public static final double FIELD_WIDTH = 2000;
+    public static final double FIELD_HEIGHT = 2000;
+    private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
+    private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
+    
+	private Scene myScene;
 	private Canvas myDisplay;
 	private GraphicsContext myGraphicsContext;
 	private List<Point2D> gameElementPoints;
+	private List<SelectableGameElement> gameUnits;
 
 	/**
 	 * Constructor for the MiniMap
 	 */
-	public MiniMap() {
+	public MiniMap(Scene SS) {
+		myScene = SS;
 		myDisplay = new Canvas();
 		myGraphicsContext = myDisplay.getGraphicsContext2D();
 		initializeDisplay();
@@ -43,9 +54,20 @@ public class MiniMap {
 	public Canvas getDisplay() {
 		return myDisplay;
 	}
+	
+	public void setUnits(List<SelectableGameElement> units) {
+		gameUnits = units;
+		populateGamePointsList();
+		moveUnits();
+	}
+	
 
 	private void moveUnits() {
-
+		myGraphicsContext.setFill(Color.BLACK);
+		for(Point2D unit: gameElementPoints) {
+			System.out.println(gameElementPoints.size());
+			myGraphicsContext.fillOval(unit.getX() / X_SCALE, unit.getY() / Y_SCALE, 3, 3);
+		}
 	}
 
 	private void initializeDisplay() {
@@ -65,6 +87,12 @@ public class MiniMap {
 		//myGraphicsContext
 		//myGraphicsContext
 		//drawShapes(myGraphicsContext);
+	}
+	
+	private void populateGamePointsList() {
+		for(SelectableGameElement SGE: gameUnits) {
+			gameElementPoints.add(SGE.getLocation());
+		}
 	}
 
 	private void drawShapes(GraphicsContext gc) {

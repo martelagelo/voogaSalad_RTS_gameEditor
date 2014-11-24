@@ -225,8 +225,15 @@ public class ScrollableScene extends Scene {
         myKeyboardManager.addObserver(o);
     }
 
+    /**
+     * Adds the canvas of the minimap to the scene
+     * 
+     * @param c: The minimap
+     */
 	public void addObjects(Canvas c) {
 		root.getChildren().add(c);
 	}
+	
+	
 
 }

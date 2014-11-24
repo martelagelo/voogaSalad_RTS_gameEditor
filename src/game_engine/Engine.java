@@ -38,7 +38,7 @@ public class Engine extends Observable implements Observer {
         // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
         myVisualManager = new VisualManager(new Group(), SCREEN_WIDTH, SCREEN_HEIGHT);
-        myMiniMap = new MiniMap();
+        myMiniMap = new MiniMap(myVisualManager.getScene());
     }
 
     public Group getVisualRepresentation () {
@@ -51,12 +51,14 @@ public class Engine extends Observable implements Observer {
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
+        myMiniMap.setUnits(newLevel.getUnits());
         myGameLoop = new GameLoop(newLevel, myVisualManager);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
         myVisualManager.addBoxObserver(myElementManager);
         myVisualManager.addClickObserver(myElementManager);
         myVisualManager.addKeyboardObserver(myElementManager);
+        myVisualManager.addMiniMap(myMiniMap.getDisplay());
     }
 
     public void play () {
@@ -82,6 +84,7 @@ public class Engine extends Observable implements Observer {
         // TODO check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState)) {
             Level nextLevel = new Level(levelState);
+            myMiniMap.setUnits(nextLevel.getUnits());
             myGameLoop = new GameLoop(nextLevel, myVisualManager);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
