@@ -2,11 +2,13 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.visuals.ScrollableScene;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Random;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -121,7 +123,11 @@ public class SelectableGameElement extends DrawableGameElement {
     private void move () {
         boolean canMove = getState().getNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING).intValue()==1;
         if(!canMove) return;
-        
+        boolean randomMove = getState().getNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING).intValue()==1;
+        Random r = new Random();
+        if(randomMove){
+            if(headings.size()<3) headings.add(new Point2D(r.nextDouble()*ScrollableScene.FIELD_WIDTH, r.nextDouble()*ScrollableScene.FIELD_HEIGHT));
+        }
         if (headings.size() == 0) {
             setAnimationDirection(getLocation(), headings.peek(), !(headings.size()==0));
             this.setLocation(getLocation());

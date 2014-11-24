@@ -5,6 +5,7 @@ import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.Dimension;
@@ -62,6 +63,9 @@ public class GameElementManager implements Observer {
      */
     private void selectUnitsBox (double[] rectPoints, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
+            if(!e.getState().getNumericalAttribute(DrawableGameElementState.TEAM_ID).equals(DrawableGameElementState.PLAYER_TEAM_ID)){
+                continue;
+            }
             if (!isShiftDown)
                 e.select(false);
             if (contains(rectPoints, e.getLocation())) {
@@ -72,6 +76,9 @@ public class GameElementManager implements Observer {
 
     private void selectUnitsClick (Point2D clickLoc, boolean isShiftDown) {
         for( SelectableGameElement e : myLevel.getUnits()){
+            if(!e.getState().getNumericalAttribute(DrawableGameElementState.TEAM_ID).equals(DrawableGameElementState.PLAYER_TEAM_ID)){
+                continue;
+            }
             if (!isShiftDown)
                 e.select(false);
             double[] bounds = e.getBounds();
