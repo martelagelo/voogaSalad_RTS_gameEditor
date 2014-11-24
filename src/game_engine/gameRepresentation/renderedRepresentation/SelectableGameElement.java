@@ -185,5 +185,9 @@ public class SelectableGameElement extends DrawableGameElement {
     public void setHeading(Point2D click) {
 		this.headings.add(click);
 	}
+    
+    public void clearHeadings(){
+    	this.headings.clear();
+    }
 
 }
