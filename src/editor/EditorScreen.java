@@ -175,10 +175,10 @@ public class EditorScreen extends GUIScreen {
                 myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
                         .map( (element) -> {
                             try {
-                                //return new ImageElementPair(null, element.getName());
-                                 return new
-                                 ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
-                                 element.getName());
+                                return new ImageElementPair(null, element.getName());
+//                                 return new
+//                                 ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
+//                                 element.getName());
                             }
                             catch (Exception e) {
                                 System.out.println(e.toString());
