@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 public class ColorMaskExtractor {
 
     public BufferedImage colorMask;
+    public BufferedImage mutatedMask;
     public BufferedImage spritesheetColorRemoved;
     private BufferedImage originalImage;
 
@@ -25,7 +26,7 @@ public class ColorMaskExtractor {
     }
 
     public static void main (String[] args) throws IOException {
-        File f = new File("src/resources/img/graphics/units/hussar/0032.bmp");
+        File f = new File("src/resources/img/graphics/units/archerColorMaskGreen.png");
         BufferedImage image = ImageIO.read(f);
         printColorValues(image);
     }
@@ -47,15 +48,15 @@ public class ColorMaskExtractor {
                 int red = (clr & 0x00ff0000) >> 16;
                 int green = (clr & 0x0000ff00) >> 8;
                 int blue = clr & 0x000000ff;
-                if (red == 255 && green == 0 && blue == 255) {
-                    System.out.print("             \t");
-                }
-                else if (acceptableBlueColors.contains(new Color(img.getRGB(x, y)))) {
-                    System.out.print(String.format("%13s\t", "BLUEBLUEBLUE"));
-                }
-                else {
-                    System.out.print(String.format("(%03d,%03d,%03d)\t", red, green, blue));
-                }
+                // if (red == 255 && green == 0 && blue == 255) {
+                // System.out.print("             \t");
+                // }
+                // else if (acceptableBlueColors.contains(new Color(img.getRGB(x, y)))) {
+                // System.out.print(String.format("%13s\t", "BLUEBLUEBLUE"));
+                // }
+                // else {
+                System.out.print(String.format("(%03d,%03d,%03d)\t", red, green, blue));
+                // }
             }
             System.out.println();
         }
@@ -99,5 +100,41 @@ public class ColorMaskExtractor {
                 SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
                         .createImage(ip2));
 
+    }
+
+    public void mutateColorMask (int desiredHue) {
+        System.out.println("something");
+        ImageFilter mutatingFilter = new RGBImageFilter() {
+            public final int filterRGB (int x, int y, int rgb) {
+                Color original = new Color(rgb,true);
+                float[] hsbRepresentation =
+                        original.RGBtoHSB(original.getRed(), original.getGreen(),
+                                          original.getBlue(), null);
+                hsbRepresentation[0] = desiredHue;
+                Color newColor =
+                        Color.getHSBColor(hsbRepresentation[0], hsbRepresentation[1],
+                                          hsbRepresentation[2]);
+                return newColor.getRGB();
+            }
+        };
+
+        ImageProducer ip = new FilteredImageSource(colorMask.getSource(), mutatingFilter);
+        BufferedImage tempImg =
+                SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
+                        .createImage(ip));
+
+        ImageFilter transparencyFilter = new RGBImageFilter() {
+            public final int filterRGB (int x, int y, int rgb) {
+                if (rgb == 0xFF000000) {
+                return rgb & 0xFFFFFF;
+                }
+                return rgb;
+            }
+        };
+
+        ImageProducer ipSecond =
+                new FilteredImageSource(tempImg.getSource(), transparencyFilter);
+        mutatedMask = SpriteSheetCreationUtility.toBufferedImage(Toolkit.getDefaultToolkit()
+                .createImage(ipSecond));
     }
 }
