@@ -8,7 +8,14 @@
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="editor.TabViewController">
 	<right>
-		<ScrollPane fx:id="levelTriggersView" VBox.vgrow="ALWAYS" />
+		<VBox fx:id="levelTriggersView" VBox.vgrow="ALWAYS">
+			<Button fx:id="newLevelTrigger" defaultButton="true" text="New Trigger">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</Button>
+			<ListView fx:id="levelTriggers" />
+		</VBox>
 	</right>
 	<!-- temporary placeholder, will put game runner here (fetched from engine) -->
 	<center>
