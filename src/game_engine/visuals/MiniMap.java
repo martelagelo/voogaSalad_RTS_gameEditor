@@ -24,10 +24,10 @@ public class MiniMap {
 	private static final double MINIMAP_WIDTH = 250;
 	private static final double MINIMAP_HEIGHT = 250;
 	public static final double FIELD_WIDTH = 2000;
-    public static final double FIELD_HEIGHT = 2000;
-    private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
-    private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
-    
+	public static final double FIELD_HEIGHT = 2000;
+	private static final double X_SCALE = FIELD_WIDTH / MINIMAP_WIDTH;
+	private static final double Y_SCALE = FIELD_HEIGHT / MINIMAP_HEIGHT;
+
 	private ScrollableScene myScene;
 	private Canvas myDisplay;
 	private GraphicsContext myGraphicsContext;
@@ -52,16 +52,17 @@ public class MiniMap {
 	public Canvas getDisplay() {
 		return myDisplay;
 	}
-	
+
 	/**
 	 * Sets the list of units of the current level
 	 * 
-	 * @param units The list of units
+	 * @param units
+	 *            The list of units
 	 */
 	public void setUnits(List<SelectableGameElement> units) {
 		gameUnits = units;
 	}
-	
+
 	/**
 	 * Updates the drawings and points on the minimap
 	 */
@@ -70,19 +71,22 @@ public class MiniMap {
 		moveSceneBox();
 		moveUnits();
 	}
-	
+
 	private void moveSceneBox() {
 		double XPos = -1 * myScene.getBackground().getTranslateX();
 		double YPos = -1 * myScene.getBackground().getTranslateY();
 		myGraphicsContext.setLineWidth(2);
 		myGraphicsContext.setStroke(Color.BLUE);
-		myGraphicsContext.strokeRoundRect(XPos / X_SCALE,  YPos / X_SCALE,  myScene.getWidth() / X_SCALE, myScene.getHeight() / Y_SCALE, 10, 10);
+		myGraphicsContext.strokeRoundRect(XPos / X_SCALE, YPos / X_SCALE,
+				myScene.getWidth() / X_SCALE, myScene.getHeight() / Y_SCALE,
+				10, 10);
 	}
-	
+
 	private void moveUnits() {
 		myGraphicsContext.setFill(Color.BLACK);
-		for(SelectableGameElement SGE: gameUnits) {
-			myGraphicsContext.fillOval(SGE.getLocation().getX() / X_SCALE, SGE.getLocation().getY() / Y_SCALE, 3, 3);
+		for (SelectableGameElement SGE : gameUnits) {
+			myGraphicsContext.fillOval(SGE.getLocation().getX() / X_SCALE, SGE
+					.getLocation().getY() / Y_SCALE, 3, 3);
 		}
 	}
 
@@ -98,25 +102,27 @@ public class MiniMap {
 		myGraphicsContext.setFill(Color.WHITE);
 		myGraphicsContext.setStroke(Color.BLACK);
 		myGraphicsContext.setLineWidth(5);
-		myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
-		myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
+		myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT,
+				40, 40);
+		myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT,
+				40, 40);
 	}
 
 	private void drawShapes(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(5);
-		//gc.strokeLine(40, 10, 10, 40);
-		//gc.fillOval(10, 60, 30, 30);
-		//gc.strokeOval(60, 60, 30, 30);
+		// gc.strokeLine(40, 10, 10, 40);
+		// gc.fillOval(10, 60, 30, 30);
+		// gc.strokeOval(60, 60, 30, 30);
 		gc.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
 		gc.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, 40, 40);
-		//gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
-		//gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.CHORD);
-		//gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.ROUND);
-		//gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.OPEN);
-		//gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.CHORD);
-		//gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.ROUND);
+		// gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
+		// gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.CHORD);
+		// gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.ROUND);
+		// gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.OPEN);
+		// gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.CHORD);
+		// gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.ROUND);
 		gc.fillPolygon(new double[] { 10, 40, 10, 40 }, new double[] { 210,
 				210, 240, 240 }, 4);
 		gc.strokePolygon(new double[] { 60, 90, 60, 90 }, new double[] { 210,
