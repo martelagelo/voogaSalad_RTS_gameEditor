@@ -19,7 +19,6 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 /**
  * Utility class that handles the loading/saving of files.
@@ -28,6 +27,7 @@ import com.google.gson.GsonBuilder;
  *
  */
 public class SaveLoadUtility implements ISaveLoad {
+    private DefaultResource myDefaultResource;
     private static final String MALFORMED_FILE_PATH = "Malformed file path";
     private static final String JSON_EXT = ".json";
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
@@ -36,8 +36,9 @@ public class SaveLoadUtility implements ISaveLoad {
     private List<String> mySavedGames;
 
     public SaveLoadUtility () {
-        myGson = new Gson();        
+        myGson = new Gson();
         mySavedGames = new ArrayList<>();
+        myDefaultResource = new DefaultResource();
 
     }
 
@@ -50,7 +51,7 @@ public class SaveLoadUtility implements ISaveLoad {
         filePath = preProcess(filePath);
         if (!mySavedGames.contains(filePath)) {
             mySavedGames.add(filePath);
-            // setDefaults(topLevelDirectory(filePath));
+            myDefaultResource.setDefaults((topLevelDirectory(filePath)), this);
         }
         File file = obtainFile(filePath);
         FileWriter writer = new FileWriter(file);
@@ -119,5 +120,10 @@ public class SaveLoadUtility implements ISaveLoad {
     private boolean fileExists (String filePath) {
         File file = new File(filePath);
         return file != null;
+    }
+
+    public void issueNotify (Exception e) {
+        
+        
     }
 }
