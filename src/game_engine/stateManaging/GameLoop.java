@@ -1,15 +1,27 @@
 package game_engine.stateManaging;
 
 import game_engine.computers.Computer;
-import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.computers.boundsComputers.CollisionComputer;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.evaluators.AndEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.MultiplicationEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
+import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.NumberParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.visuals.MiniMap;
-import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -17,6 +29,12 @@ import javafx.event.EventHandler;
 import javafx.util.Duration;
 
 
+/**
+ * The main loop for running the game, checking for collisions, and updating game entities
+ * 
+ * @author Michael Ching Chong Deng, John, Steve, Zach
+ *
+ */
 public class GameLoop {
 
     public static final Double framesPerSecond = 60.0;
@@ -26,7 +44,7 @@ public class GameLoop {
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
 
-    private List<Computer> myComputerList = new ArrayList<Computer>();
+    private List<Computer> myComputers = new ArrayList<>();
     private Timeline timeline;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
@@ -42,10 +60,51 @@ public class GameLoop {
         myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
-        // myComputerList.add(new CollisionComputer());
+        myComputers.add(new CollisionComputer());
         // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         startGameLoop();
+        // TODO find a place for this method
+        addColisionEvents();
+    }
+
+    private void addColisionEvents () {
+        Evaluatable<?> objectParameter1 =
+                new GameElementParameter(new ActeeObjectIdentifier(), null);
+        Evaluatable<?> objectParameter2 =
+                new GameElementParameter(new ActorObjectIdentifier(), null);
+        Evaluator<?, ?, Boolean> collisionEvaluator =
+                new CollisionEvaluator<>(objectParameter1, objectParameter2);
+        Evaluatable<?> xPosition =
+                new NumericAttributeParameter(DrawableGameElementState.X_POS_STRING,
+                                              null,
+                                              new ActorObjectIdentifier());
+        Evaluatable<?> yPosition =
+                new NumericAttributeParameter(DrawableGameElementState.Y_POS_STRING, null,
+                                              new ActorObjectIdentifier());
+        Evaluatable<?> xVelocity = new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> yVelocity = new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> multiplicationNumber = new NumberParameter(1.2d);
+        Evaluator<?, ?, ?> scaledXVelocity =
+                new MultiplicationEvaluator<>(xVelocity, xVelocity);
+        Evaluator<?, ?, ?> scaledYVelocity =
+                new MultiplicationEvaluator<>(yVelocity, multiplicationNumber);
+        Evaluator<?, ?, ?> xAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(xPosition, scaledXVelocity);
+        Evaluator<?, ?, ?> yAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(yPosition, scaledYVelocity);
+        Evaluator<?, ?, ?> reverseMotionEvaluator =
+                new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
+
+        myCurrentLevel
+                .getUnits()
+                .stream()
+                .forEach(element -> element
+                        .getConditionActionPairs()
+                        .put(collisionEvaluator, reverseMotionEvaluator));
+
     }
 
     public void startGameLoop () {
@@ -62,13 +121,17 @@ public class GameLoop {
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
-        List<DrawableGameElement> allElements =
-                new ArrayList<DrawableGameElement>();
-        allElements.addAll(myCurrentLevel.getUnits());
-        allElements.addAll(myCurrentLevel.getTerrain());
+        List<DrawableGameElementState> allElements =
+                new ArrayList<DrawableGameElementState>();
+        // TODO add stream that collects into objects
+        allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
+            return (DrawableGameElementState) element.getGameElementState();
+        }).collect(Collectors.toList()));
+        // allElements.addAll(myCurrentLevel.getTerrain());
+        // TODO fix this logic
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<SelectableGameElement, DrawableGameElement> c : myComputerList) {
-                c.compute(selectableElement, allElements);
+            for (Computer<DrawableGameElementState, DrawableGameElementState> computer : myComputers) {
+                computer.compute(selectableElement.getState(), allElements);
             }
         }
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {

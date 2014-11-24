@@ -15,6 +15,7 @@ public class AndEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
 	@Override
 	protected Boolean evaluate(Boolean param1, Boolean param2) {
+	    System.out.println("Doing it");
 		return param1 && param2;
 	}
 

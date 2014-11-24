@@ -128,16 +128,13 @@ public class DrawableGameElement extends GameElement implements Displayable {
     }
 
     // TODO: Fix. Move logic into group
-    public void setLocation (Point2D location) {
-        myDisplay.setLayoutX(location.getX());
-        myState.setNumericalAttribute(DrawableGameElementState.X_POS_STRING,
-                                      location.getX());
-        myDisplay.setLayoutY(location.getY());
-        myState.setNumericalAttribute(DrawableGameElementState.Y_POS_STRING,
-                                      location.getY());
+    public void updateImageLocation () {
+        myDisplay.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING).doubleValue());
     }
 
     public Point2D getLocation () {
+        //TODO move positions and fix
         Point2D p = new Point2D(getNode().getLayoutX(), getNode().getLayoutY());
         return p;
     }

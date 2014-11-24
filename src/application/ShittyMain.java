@@ -33,78 +33,21 @@ public class ShittyMain extends Application {
     private MainModel hardCodeAGame () throws Exception {
         
         SelectableGameElementState archeryRange = new SelectableGameElementState(400, 400);
+        double[] archeryBounds = {-75,-75,-75,175,175,175,175,-75};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange/1.png", new Dimension(312, 260), 1));
-        
+        archeryRange.setBounds(archeryBounds);
         archeryRange.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
 
+        double[] bounds = {0,0,40,0,40,40,0,40};
         
-        SelectableGameElementState archerState = new SelectableGameElementState(300, 100);
-        archerState
-                .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/eagleWarrior.png",
-                                                new Dimension(294, 98), 14));
-        archerState.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
-        archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 2);
+        SelectableGameElementState archerState = createArcher(bounds, 300, 100, 1, 0);
+        SelectableGameElementState archerState2 = createArcher(bounds, 400, 100, 1, 0);
+        SelectableGameElementState archerState3 = createArcher(bounds, 300, 200, 1, 0);
+        SelectableGameElementState archerState4 = createArcher(bounds, 400, 200, 2, 0);
+        SelectableGameElementState archerState5 = createArcher(bounds, 600, 200, 2, 1);
 
-        /**
-         * TODO: we need to initialize these programmatically. Also, the animation should somehow
-         * be applied to a type of unit, rather than to each unit individually.
-         */
-        // setting standing animations
-        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_left", 29, 37, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk_left", 43, 51, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk", 57, 65, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_right", 85, 93, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107, true, 0.2));
-        
-        // setting walking animations
-        archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_left", 140, 153, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk_left", 154, 167, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk", 168, 181, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
-
-        archerState.setAnimation("walk_left");
-        
-        archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, 1);
-        
-        SelectableGameElementState archerState2 = new SelectableGameElementState(400, 100);
-        archerState2
-                .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/eagleWarrior.png",
-                                                new Dimension(294, 98), 14));
-        archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
-        archerState2.setAnimation("stand_fwd");
-        
-        archerState2.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
-        archerState2.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
 
         
-        archerState2.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_left", 29, 37, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_bk_left", 43, 51, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_bk", 57, 65, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_bk_right", 71, 79, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_right", 85, 93, true, 0.2));
-        archerState2.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107, true, 0.2));
-        
-        // setting walking animations
-        archerState2.addAnimation(new AnimationSequence("walk_fwd", 112, 125, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_left", 140, 153, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_bk_left", 154, 167, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_bk", 168, 181, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
-        archerState2.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
-
         TerrainGrid grid =
                 new TerrainGrid(ScrollableScene.FIELD_WIDTH, ScrollableScene.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
@@ -120,8 +63,50 @@ public class ShittyMain extends Application {
         }
         levelState.addUnit(archerState);
         levelState.addUnit(archerState2);
+        levelState.addUnit(archerState3);
+        levelState.addUnit(archerState4);
+        levelState.addUnit(archerState5);
         levelState.addUnit(archeryRange);
         return model;
+    }
+
+    private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID, int randomMovement) {
+        SelectableGameElementState archerState = new SelectableGameElementState(x, y);
+        archerState
+                .setSpritesheet(new Spritesheet(
+                                                "resources/img/graphics/units/eagleWarrior.png",
+                                                new Dimension(294, 98), 14));
+        archerState.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
+
+        /**
+         * TODO: we need to initialize these programmatically. Also, the animation should somehow
+         * be applied to a type of unit, rather than to each unit individually.
+         */
+        // setting standing animations
+        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_left", 29, 37, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_bk_left", 43, 51, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_bk", 57, 65, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_right", 85, 93, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107, true, 0.2));
+        archerState.setBounds(bounds);
+        // setting walking animations
+        archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_left", 140, 153, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_bk_left", 154, 167, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_bk", 168, 181, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
+        archerState.setAnimation("walk_left");
+        
+        archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, randomMovement);
+        archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, teamID);
+
+        return archerState;
     }
 
     public static void main (String[] args) {

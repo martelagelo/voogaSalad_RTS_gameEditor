@@ -24,6 +24,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
 
+
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
@@ -48,7 +49,8 @@ public class GameElementManager implements Observer {
     public List<GameElementState> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
-                .map(o -> o.getState()).collect(Collectors.toList());
+                .map(o -> o.getGameElementState())
+                .collect(Collectors.toList());
     }
 
     public void addElementToLevel (String typeName) {
