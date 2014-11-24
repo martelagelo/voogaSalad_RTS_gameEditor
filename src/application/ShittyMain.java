@@ -31,7 +31,7 @@ public class ShittyMain extends Application {
             Group g = new Group();
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
-            Scene s = new Scene(g, shittyWidth, 0.9*screenSize.getHeight());
+            Scene s = new Scene(g, screenSize.getWidth(), screenSize.getHeight());
             s.getStylesheets().add(this.getClass().getClassLoader().getResource("game_engine/visuals/stylesheets/engine.style.css").toExternalForm());
             System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
@@ -117,6 +117,9 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
         archerState.setAnimation("walk_left");
 
+        TerrainGrid grid =
+                new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
+        List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
         archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, randomMovement);
         archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, teamID);
         return archerState;
