@@ -5,8 +5,10 @@ import game_engine.gameRepresentation.conditions.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Queue;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -27,7 +29,8 @@ public class SelectableGameElement extends DrawableGameElement {
 
 	private boolean isSelected;
 	// private SelectableGameElementState myState;
-	private Point2D heading;
+	private Queue<Point2D> headings;
+	// private Point2D heading;
 	// private boolean selected;
 	// TODO temporary, should be in the attributes
 	private double speed = 3;
@@ -38,6 +41,7 @@ public class SelectableGameElement extends DrawableGameElement {
 	public SelectableGameElement(DrawableGameElementState element) {
 		super(element);
 		this.isSelected = false;
+		headings = new LinkedList<Point2D>();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -75,14 +79,21 @@ public class SelectableGameElement extends DrawableGameElement {
 	}
 
 	private void move() {
-		if (heading == null)
-			heading = getLocation();
-		if (!heading.equals(getLocation())) {
-			Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-					heading.getY() - getLocation().getY());
-			if (delta.magnitude() > speed)
-				delta = delta.normalize().multiply(speed);
-			this.setLocation(getLocation().add(delta));
+		if (headings.size() == 0) {
+			this.setLocation(getLocation());
+		} else {
+			if (!headings.peek().equals(getLocation())) {
+				Point2D currentHeading = headings.peek();
+				Point2D delta = new Point2D(currentHeading.getX()
+						- getLocation().getX(), currentHeading.getY()
+						- getLocation().getY());
+				if (delta.magnitude() > speed)
+					delta = delta.normalize().multiply(speed);
+				this.setLocation(getLocation().add(delta));
+			} else {
+				headings.poll();
+				this.setLocation(getLocation());
+			}
 		}
 	}
 
@@ -166,7 +177,7 @@ public class SelectableGameElement extends DrawableGameElement {
 	}
 
 	public void setHeading(Point2D click) {
-		this.heading = click;
+		this.headings.add(click);
 	}
 
 }
