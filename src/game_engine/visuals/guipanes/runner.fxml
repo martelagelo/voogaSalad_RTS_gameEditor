@@ -13,11 +13,12 @@
 <BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
    minHeight="750" maxHeight="750"> 
    	<top>
-   		<ImageView>    
+   	<ImageView minWidth="100">    
   				<image>
      				<Image url="/resources/img/graphics/interface/topBar.png" />
      			</image>
    		</ImageView>
+
    	</top> 
    	<bottom>
    		<HBox>
