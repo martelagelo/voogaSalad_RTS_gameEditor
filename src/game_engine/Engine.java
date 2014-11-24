@@ -59,7 +59,7 @@ public class Engine extends Observable implements Observer {
         Level newLevel = new Level(myMainModel.getCurrentLevel());
 //        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
         myMiniMap.setUnits(newLevel.getUnits());
-        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
+        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
 //        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
@@ -97,7 +97,9 @@ public class Engine extends Observable implements Observer {
         // TODO check equlity
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
-            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager);
+            System.out.println(nextLevel.getUnits().size());
+            myMiniMap.setUnits(nextLevel.getUnits());
+            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);

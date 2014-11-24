@@ -57,9 +57,15 @@ public class DrawableGameElement extends GameElement implements Displayable {
         
         myDisplay = new Group();
         myDisplayVBox = new VBox(1);
+        //TODO undo for testing only
+        try{
         mySelectedImage = new Image(SELECT_ARROW_URL);
         mySelectedImageView = new ImageView(mySelectedImage);
         initializeDisplay();
+        }
+        catch (Exception e){
+            //do nothing
+        }
 
     }
 
