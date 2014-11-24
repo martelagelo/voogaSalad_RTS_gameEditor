@@ -9,8 +9,8 @@ import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.MultiplicationEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
-import game_engine.gameRepresentation.evaluatables.parameters.NumberParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.RandomParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
@@ -86,15 +86,10 @@ public class GameLoop {
                                                                  new ActorObjectIdentifier());
         Evaluatable<?> yVelocity = new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
                                                                  new ActorObjectIdentifier());
-        Evaluatable<?> multiplicationNumber = new NumberParameter(1.2d);
-        Evaluator<?, ?, ?> scaledXVelocity =
-                new MultiplicationEvaluator<>(xVelocity, xVelocity);
-        Evaluator<?, ?, ?> scaledYVelocity =
-                new MultiplicationEvaluator<>(yVelocity, multiplicationNumber);
         Evaluator<?, ?, ?> xAddEvaluator =
-                new SubtractionAssignmentEvaluator<>(xPosition, scaledXVelocity);
+                new SubtractionAssignmentEvaluator<>(xPosition, xVelocity);
         Evaluator<?, ?, ?> yAddEvaluator =
-                new SubtractionAssignmentEvaluator<>(yPosition, scaledYVelocity);
+                new SubtractionAssignmentEvaluator<>(yPosition, yVelocity);
         Evaluator<?, ?, ?> reverseMotionEvaluator =
                 new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
 

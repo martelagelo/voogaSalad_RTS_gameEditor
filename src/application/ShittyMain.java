@@ -33,7 +33,7 @@ public class ShittyMain extends Application {
     private MainModel hardCodeAGame () throws Exception {
         
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
-        double[] archeryBounds = {-75,-75,-75,175,175,175,175,-75};
+        double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange/1.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);
         archeryRange.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
