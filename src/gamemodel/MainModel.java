@@ -13,15 +13,14 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadUtility;
 
+
 /**
- * Main class for the model of  the game
+ * Main class for the model of the game
  * 
  * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
  *
@@ -57,7 +56,8 @@ public class MainModel extends Observable {
             myGameState = mySLUtil.loadResource(GameState.class, getGameSaveLocation(game));
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // TODO Get rid of stack trace printing
             e.printStackTrace();
         }
@@ -67,7 +67,8 @@ public class MainModel extends Observable {
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
-            throws CampaignNotFoundException, LevelNotFoundException {
+                                                                                            throws CampaignNotFoundException,
+                                                                                            LevelNotFoundException {
         DescribableState state = getDescribableState(selection);
         state.updateName(name);
         state.updateDescription(description);
@@ -77,24 +78,29 @@ public class MainModel extends Observable {
     }
 
     public DescribableState getDescribableState (String[] selection)
-            throws CampaignNotFoundException, LevelNotFoundException {
+                                                                    throws CampaignNotFoundException,
+                                                                    LevelNotFoundException {
         if (selection[2].isEmpty()) {
             if (selection[1].isEmpty()) {
                 return myGameState;
-            } else {
+            }
+            else {
                 return myGameState.getCampaign(selection[1]);
             }
-        } else {
+        }
+        else {
             return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
         }
     }
 
     public void saveGame () throws RuntimeException {
         try {
-            // TODO: Save location 
-            String location = mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
+            // TODO: Save location
+            String location =
+                    mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
 
             // TODO: eliminate stack trace printing
             e.printStackTrace();
@@ -111,7 +117,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-            throws DescribableStateException {
+                                                                       throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -162,7 +168,7 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-            CampaignNotFoundException {
+                                                                   CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
         myCurrentLevelState = new LevelState(levelName.trim());
         myCurrentCampaignState.addLevel(myCurrentLevelState);
@@ -194,12 +200,12 @@ public class MainModel extends Observable {
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save loction for this
         String saveLocation = "testSpritesheet";
-        try {
+        //try {
             System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
-            mySLUtil.saveImage(
-                    data.getValueByKey(GameElementStateFactory.IMAGE),
-                    saveLocation + System.getProperty("file.separator")
-                            + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+//            mySLUtil.saveImage(
+//                               data.getValueByKey(GameElementStateFactory.IMAGE),
+//                               saveLocation + System.getProperty("file.separator")
+//                                       + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, saveLocation);
             System.out.println(gameElement);
@@ -207,9 +213,10 @@ public class MainModel extends Observable {
             setChanged();
             notifyObservers();
             clearChanged();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //}
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**

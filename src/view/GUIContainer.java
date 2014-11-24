@@ -38,6 +38,7 @@ public abstract class GUIContainer implements Observer, GUIController {
     }
 
     protected void attachChildContainers (GUIContainer ... children) {
+        if (myChildContainers == null) System.out.println("fuck");
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
         myChildContainers.forEach( (child) -> {
             child.setModel(myMainModel);
