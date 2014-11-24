@@ -1,69 +1,10 @@
 {
-  "myCampaigns": [
-    {
-      "myLevels": [
-        {
-          "myTerrains": [],
-          "myUnits": [],
-          "myGoals": [],
-          "myName": "level name",
-          "myDescription": ""
-        }
-      ],
-      "myName": "campaign name",
-      "myDescription": ""
-    }
-  ],
+  "myCampaigns": [],
   "myGameUniverse": {
     "myNumericalAttributes": [],
     "myStringAttributes": [],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [
-      {
-        "mySpritesheet": {
-          "imageTag": "testSpritesheet",
-          "frameDimensions": {
-            "myWidth": 499,
-            "myHeight": 26
-          },
-          "numCols": 11
-        },
-        "myAnimations": {},
-        "myBounds": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "myConditionActionPairings": {
-          "trigger1": "action1"
-        },
-        "myNumericalAttributes": [
-          {
-            "myData": 0.0,
-            "myName": "xPosition"
-          },
-          {
-            "myData": 2.0,
-            "myName": "flowers"
-          },
-          {
-            "myData": 0.0,
-            "myName": "yPosition"
-          }
-        ],
-        "myTextualAttributes": [
-          {
-            "myData": "Archer",
-            "myName": "Name"
-          },
-          {
-            "myData": "Durham",
-            "myName": "home"
-          }
-        ]
-      }
-    ],
+    "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": []
   },
   "myName": "New Game",
