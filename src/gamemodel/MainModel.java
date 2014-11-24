@@ -13,19 +13,22 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
+
 import util.SaveLoadUtility;
 
 /**
- * Main class for the model of the game
+ * Main class for the model of  the game
  * 
  * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
  *
  */
 public class MainModel extends Observable {
 
+    private static final String JSON_EXT = ".json";
     private GameState myGameState;
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
@@ -100,7 +103,7 @@ public class MainModel extends Observable {
     }
 
     private String getGameSaveLocation (String name) {
-        return "myGames" + File.separator + name + File.separator + name;
+        return "myGames" + File.separator + name + File.separator + name + JSON_EXT;
     }
 
     public GameState getCurrentGame () {

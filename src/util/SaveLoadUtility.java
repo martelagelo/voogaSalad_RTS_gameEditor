@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Utility class that handles the loading/saving of files.
@@ -31,16 +32,17 @@ public class SaveLoadUtility implements ISaveLoad {
     private static final String JSON_EXT = ".json";
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
+    private Gson myGson;
     private List<String> mySavedGames;
 
     public SaveLoadUtility () {
+        myGson = new Gson();        
         mySavedGames = new ArrayList<>();
 
     }
 
     public <T> T loadResource (Class className, String filePath) throws Exception {
-        Gson gson = new Gson();
-        T jsonRepresentation = (T) gson.fromJson(new FileReader(new File(filePath)), className);
+        T jsonRepresentation = (T) myGson.fromJson(new FileReader(new File(filePath)), className);
         return jsonRepresentation;
     }
 
