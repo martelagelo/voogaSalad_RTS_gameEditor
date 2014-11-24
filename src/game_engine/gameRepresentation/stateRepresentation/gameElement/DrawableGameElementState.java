@@ -1,6 +1,7 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
 import game_engine.visuals.AnimationSequence;
+import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +19,15 @@ public class DrawableGameElementState extends GameElementState implements
         Boundable {
     public static final String X_POS_STRING = "xPosition";
     public static final String Y_POS_STRING = "yPosition";
+    public static final String CAN_MOVE_STRING = "canMove";
+    public static final String RANDOM_MOVEMENT_STRING = "randomMove";
+    public static final String TEAM_ID = "teamID";
+    public static final int PLAYER_TEAM_ID = 1;
 
     private Spritesheet mySpritesheet;
+    private Spritesheet myColorSheet;
     private Map<String, AnimationSequence> myAnimations;
-    private AnimationSequence myCurrentAnimation;
+    private AnimationSequence myCurrentAnimation = new NullAnimationSequence();
     private double[] myBounds;
 
     /**

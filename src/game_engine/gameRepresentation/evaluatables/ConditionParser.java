@@ -1,5 +1,7 @@
 package game_engine.gameRepresentation.evaluatables;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +9,19 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import org.json.JSONException;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import distilled_slogo.util.GrammarRuleLoader;
+import distilled_slogo.util.InvalidRulesException;
+import distilled_slogo.parsing.IParser;
+import distilled_slogo.parsing.InvalidGrammarRuleException;
+import distilled_slogo.parsing.MalformedSyntaxException;
+import distilled_slogo.parsing.Parser;
+import distilled_slogo.parsing.ISyntaxNode;
+import distilled_slogo.tokenization.IToken;
+import distilled_slogo.tokenization.InvalidTokenRulesException;
+import distilled_slogo.util.TokenRuleLoader;
+import distilled_slogo.tokenization.Tokenizer;
 
 
 /**
@@ -39,8 +54,31 @@ public class ConditionParser {
     public Evaluatable parseCondition (String conditionString) {
         System.out.println(Pattern.matches(".*(" + myBundle.getString("operators") + ").*",
                                            conditionString));
+        TokenRuleLoader tokenLoader = null;
+        Tokenizer tokenizer = null;
+        List<IToken> tokens = null;
+        try {
+            tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
+            tokenizer = new Tokenizer(tokenLoader.getRules());
+            tokens = tokenizer.tokenize(new StringReader(conditionString));
+        }
+        catch (IOException | InvalidTokenRulesException | ProcessingException e) {
+            e.printStackTrace();
+        }
+        GrammarRuleLoader grammarLoader = null;
+        IParser<String> parser = null;
+        ISyntaxNode<String> tree = null;
+        try {
+            grammarLoader = new GrammarRuleLoader("./resources/parsing_rules.json");
+            parser = new Parser<String>(grammarLoader.getRules());
+            tree = parser.parse(tokens);
+        }
+        catch (IOException | InvalidRulesException | MalformedSyntaxException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(tree);
         return null;
-
     }
 
     /**
