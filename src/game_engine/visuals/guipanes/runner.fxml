@@ -5,37 +5,117 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.textfield.*?>
 <?import javafx.scene.image.*?>
- 
- 
-<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"> 
-   	<top>
-   	<ImageView fitWidth="1500">    
-  				<image>
-     				<Image url="/resources/img/graphics/interface/topBar.png" />
-     			</image>
-   		</ImageView>
 
-   	</top> 
-   	<bottom>
-   		<HBox minWidth="1300">
-   			<ImageView fitWidth="440">    
+
+<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml">
+	<top>
+		<ImageView fitWidth="1500">
+			<image>
+				<Image url="/resources/img/graphics/interface/topBar.png" />
+			</image>
+		</ImageView>
+	</top>
+	<bottom>
+		<HBox>
+			<StackPane>
+				<ImageView>
+					<image>
+						<Image url="/resources/img/graphics/interface/interactionPane.png" />
+					</image>
+				</ImageView>
+				<GridPane alignment="center" hgap="10" vgap="10">
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="1"
+						GridPane.columnSpan="5" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/patrol.bmp" />
+					</image>
+					</ImageView>
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/guard.bmp" />
+					</image>
+					</ImageView>
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/follow.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="2" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/die.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="3" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/garrison.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="4" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/attack.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/defend.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/standGround.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="2" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/noAttack.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="3" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/stop.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="4" GridPane.rowIndex="1" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/dense.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="2" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/box.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="1" GridPane.rowIndex="2" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/sparse.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="3" GridPane.rowIndex="2" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/bimodal.bmp" />
+					</image>
+					<ImageView />
+					<ImageView GridPane.columnIndex="4" GridPane.rowIndex="2" />
+					<image>
+						<Image url="/resources/img/graphics/buttons/skein.bmp" />
+					</image>
+					<ImageView />
+				</GridPane>
+			</StackPane>
+			<ImageView>
 				<image>
-   					<Image url="/resources/img/graphics/interface/interactionPane.png" />
-   				</image>
-   			</ImageView>
-   			<ImageView fitWidth="440">    
+					<Image url="/resources/img/graphics/interface/informationPane.png" />
+				</image>
+			</ImageView>
+			<ImageView fitWidth="440">
 				<image>
-   					<Image url="/resources/img/graphics/interface/informationPane.png" />
-   				</image>
-   			</ImageView>
-   			<ImageView fitWidth="440">    
-				<image>
-   					<Image url="/resources/img/graphics/interface/miniMapPane.png" />
-   				</image>
-   			</ImageView>
-   		</HBox>
+					<Image url="/resources/img/graphics/interface/miniMapPane.png" />
+				</image>
+			</ImageView>
+		</HBox>
 	</bottom>
 </BorderPane>
