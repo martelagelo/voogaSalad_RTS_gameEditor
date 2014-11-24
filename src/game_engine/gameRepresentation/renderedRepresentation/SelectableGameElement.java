@@ -6,16 +6,20 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
 import game_engine.visuals.ScrollableScene;
 
 import java.util.ArrayList;
+
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
+
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
@@ -93,6 +97,8 @@ public class SelectableGameElement extends DrawableGameElement {
     		Point2D point1 = headings.poll();
     		Point2D point2 = headings.peek();
     		Line line = new Line(point1.getX(), point1.getY(), point2.getX(), point2.getY());
+    		line.setStroke(Color.YELLOW);
+    		line.getStrokeDashArray().addAll(25d, 10d);
     		lineList.add(line);
     		copyOfHeadings.add(point1);
     	}
