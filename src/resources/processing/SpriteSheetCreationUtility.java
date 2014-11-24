@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import util.JSONable;
-import util.LoadSaveUtility;
+import util.SaveLoadUtility;
 
 
 /**
@@ -120,7 +120,7 @@ public class SpriteSheetCreationUtility {
                         new Spritesheet(unitName, new Dimension(frameWidth, frameHeight),
                                         numTotalColumns);
 
-                LoadSaveUtility saveUtil = new LoadSaveUtility();
+                SaveLoadUtility saveUtil = new SaveLoadUtility();
                 saveUtil.save((JSONable) spritesheetObject, filePathForSpritesheet + ".json");
             }
         }

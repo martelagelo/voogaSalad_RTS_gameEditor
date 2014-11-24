@@ -72,25 +72,6 @@ public class VisualManager {
     }
 
     /**
-     * <<<<<<< HEAD
-     * Adds a new observer to any clicks made on this map by this visual manager instance
-     * 
-     * @param o
-     */
-    public void addClickObserver (Observer o) {
-        scene.addClickObserver(o);
-    }
-
-    /**
-     * Adds a new observer to any key presses made on this map by this visual manager instance
-     * 
-     * @param o
-     */
-    public void addKeyboardObserver (Observer o) {
-        scene.addKeyboardObserver(o);
-    }
-
-    /**
      * =======
      * >>>>>>> c85bcd8cb098bfcec96f3956de1af2150f5c0326
      * Adds new objects to the map

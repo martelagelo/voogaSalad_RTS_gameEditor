@@ -8,11 +8,8 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.visuals.MiniMap;
 import game_engine.visuals.ScrollableBackground;
 import game_engine.visuals.VisualManager;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -20,20 +17,15 @@ import javafx.event.EventHandler;
 import javafx.util.Duration;
 
 
-/**
- * The main game loop. Sets the timeline and game loop in motion and calls the update method of all
- * the elements in the game
- *
- * @author Michael D., Steve
- *
- */
 public class GameLoop {
+
     public static final Double framesPerSecond = 60.0;
+
+    private String myCampaignName;
     private Level myCurrentLevel;
-    // private ScrollableBackground myBackground;
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
-    
+
     private List<Computer> myComputerList = new ArrayList<Computer>();
     private Timeline timeline;
 
@@ -44,15 +36,10 @@ public class GameLoop {
         }
     };
 
-    /**
-     * Create the game loop given a level to reference and a visual manager to manage object visuals
-     *
-     * @param level the level that the gameLoop will be running
-     * @param visualManager a visual manager wrapped around the level
-     */
-    public GameLoop (Level level, VisualManager visualManager, MiniMap miniMap) {
-//        myBackground = visualManager.getBackground();
+    public GameLoop (String campaignName, Level level, VisualManager visualManager, MiniMap miniMap) {
+        // myBackground = visualManager.getBackground();
         myVisualManager = visualManager;
+        myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
         // myComputerList.add(new CollisionComputer());
@@ -61,18 +48,16 @@ public class GameLoop {
         startGameLoop();
     }
 
-    /**
-     * Start the game loop
-     */
     public void startGameLoop () {
-
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        KeyFrame frame = start(framesPerSecond);
         startTimeline(frame);
     }
 
-    /**
-     * Update the states of all prominent elements and aspects of the game
-     */
+    private KeyFrame start (Double framesPerSecond) {
+        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
+        return frame;
+    }
+
     private void update () {
         // Updates the background of the application
         myVisualManager.update();
@@ -86,54 +71,34 @@ public class GameLoop {
                 c.compute(selectableElement, allElements);
             }
         }
-        //
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
             selectableElement.update();
         }
         myMiniMap.updateMiniMap();
     }
 
-    /**
-     * Start the timeline
-     *
-     * @param frame the keyframe for the timeline
-     */
     private void startTimeline (KeyFrame frame) {
-        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
     }
 
-    /**
-     * Play the game
-     */
     public void play () {
         timeline.play();
     }
 
-    /**
-     * Pause the game
-     */
     public void pause () {
         timeline.pause();
     }
 
-    /**
-     * Stop the game
-     */
     public void stop () {
         timeline.stop();
     }
 
-    /**
-     * Indicate if this level is the current levels
-     *
-     * @param level the levelState of the level in question
-     * @return a boolean indicating if the level is the current level
-     */
-    public boolean isCurrentLevel (LevelState level) {
-        return level.sameLevel(myCurrentLevel.getLevelState());
+    public boolean isCurrentLevel (LevelState level, String campaignName) {
+        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName
+                .equals(campaignName));
     }
 
 }

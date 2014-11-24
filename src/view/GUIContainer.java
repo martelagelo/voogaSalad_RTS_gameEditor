@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.fxml.FXML;
 
 
 /**
@@ -20,25 +21,36 @@ public abstract class GUIContainer implements Observer, GUIController {
     protected MainModel myMainModel;
     private List<GUIContainer> myChildContainers;
 
-    public void setModel (MainModel model) {
-        myMainModel = model;
+    @Override
+    @FXML
+    public final void initialize () {
+        myChildContainers = new ArrayList<>();
+        init();
     }
 
-    protected void attachChildContainers (GUIContainer ... child) {
-        checkAndCreateChildContainers();
-        myChildContainers.addAll(new ArrayList<>(Arrays.asList(child)));
+    protected abstract void init ();
+
+    public void setModel (MainModel model) {
+        myMainModel = model;
+        myChildContainers.forEach( (child) -> {
+            child.setModel(myMainModel);
+        });
+    }
+
+    protected void attachChildContainers (GUIContainer ... children) {
+        myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
+        myChildContainers.forEach( (child) -> {
+            child.setModel(myMainModel);
+        });
     }
 
     protected void clearChildContainers () {
-        checkAndCreateChildContainers();
         myChildContainers.clear();
     }
 
     @Override
     public final void update (Observable o, Object arg) {
         update();
-        checkAndCreateChildContainers();
-        System.out.println("why");
         myChildContainers.forEach( (child) -> child.update(o, arg));
     }
 
