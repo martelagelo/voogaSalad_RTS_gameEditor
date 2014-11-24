@@ -3,12 +3,13 @@ package game_engine.stateManaging;
 import game_engine.computers.Computer;
 import game_engine.computers.boundsComputers.CollisionComputer;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.evaluatables.evaluators.AdditionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.AndEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.MultiplicationEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
+import game_engine.gameRepresentation.evaluatables.parameters.NumberParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
@@ -81,12 +82,19 @@ public class GameLoop {
         Evaluatable<?> yPosition =
                 new NumericAttributeParameter(DrawableGameElementState.Y_POS_STRING, null,
                                               new ActorObjectIdentifier());
-        Evaluatable<?> xVelocity =  new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
-                                                                  new ActorObjectIdentifier());
-        Evaluatable<?> yVelocity =  new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
-                                                                  new ActorObjectIdentifier());
-        Evaluator<?, ?, ?> xAddEvaluator = new SubtractionAssignmentEvaluator<>(xPosition, xVelocity);
-        Evaluator<?, ?, ?> yAddEvaluator = new SubtractionAssignmentEvaluator<>(yPosition, yVelocity);
+        Evaluatable<?> xVelocity = new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> yVelocity = new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
+                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> multiplicationNumber = new NumberParameter(1.2d);
+        Evaluator<?, ?, ?> scaledXVelocity =
+                new MultiplicationEvaluator<>(xVelocity, xVelocity);
+        Evaluator<?, ?, ?> scaledYVelocity =
+                new MultiplicationEvaluator<>(yVelocity, multiplicationNumber);
+        Evaluator<?, ?, ?> xAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(xPosition, scaledXVelocity);
+        Evaluator<?, ?, ?> yAddEvaluator =
+                new SubtractionAssignmentEvaluator<>(yPosition, scaledYVelocity);
         Evaluator<?, ?, ?> reverseMotionEvaluator =
                 new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
 
