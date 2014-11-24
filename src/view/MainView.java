@@ -52,6 +52,7 @@ public class MainView implements Observer {
     }
 
     public void start () {
+        myStage.setMaximized(true);
         myStage.show();
     }
 

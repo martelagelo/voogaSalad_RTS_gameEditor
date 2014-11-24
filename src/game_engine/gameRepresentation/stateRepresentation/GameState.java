@@ -23,6 +23,7 @@ public class GameState extends DescribableState {
     public GameState (String name) {
         super(name);
         myCampaigns = new ArrayList<>();
+        myGameUniverse = new GameUniverse();
     }
 
     /**

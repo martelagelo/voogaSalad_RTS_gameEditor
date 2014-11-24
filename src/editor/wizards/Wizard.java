@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.GUIController;
@@ -17,7 +18,7 @@ import view.GUIController;
 public abstract class Wizard implements GUIController {
 
     @FXML
-    protected Node root;
+    protected SplitPane root;
     @FXML
     protected Button save;
 
