@@ -16,7 +16,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-
+import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,12 +45,12 @@ public class ConditionFunctionalityTest {
 		state1.setNumericalAttribute("Health", 50d);
 		double[] bounds1 = { 0, 0, 0, 10, 10, 10, 10, 0 };
 		state1.setBounds(bounds1);
-		myElement1 = new DrawableGameElement(state1);
+		myElement1 = new DrawableGameElement(state1,new HashMap<>());
 		DrawableGameElementState state2 = new DrawableGameElementState(0, 0);
 		state2.setNumericalAttribute("Health", 20d);
 		double[] bounds2 = { 0, 0, 0, 1, 1, 1, 1, 0 };
 		state2.setBounds(bounds2);
-		myElement2 = new DrawableGameElement(state2);
+		myElement2 = new DrawableGameElement(state2,new HashMap<>());
 		myNumAttrParam = new NumericAttributeParameter("Health", null,
 				new ActorObjectIdentifier());
 		myNumberParam = new NumberParameter(10d);

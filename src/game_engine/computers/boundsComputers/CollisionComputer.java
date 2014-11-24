@@ -15,7 +15,7 @@ import javafx.scene.shape.Polygon;
  *
  */
 public class CollisionComputer extends
-Computer<SelectableGameElementState, DrawableGameElementState> {
+        Computer<SelectableGameElementState, DrawableGameElementState> {
     /**
      * Returns true if there is a collision between the two bounded objects
      *
@@ -26,11 +26,11 @@ Computer<SelectableGameElementState, DrawableGameElementState> {
                                                SelectableGameElementState primaryObject,
                                                DrawableGameElementState otherObject) {
         if (primaryObject instanceof Boundable
-                && otherObject instanceof Boundable) {
+            && otherObject instanceof Boundable) {
             Boundable boundableObject = primaryObject;
             Boundable otherBoundableObject = otherObject;
             return new Polygon(boundableObject.getBounds())
-            .intersects(new Polygon(otherBoundableObject.getBounds()).getBoundsInLocal());
+                    .intersects(new Polygon(otherBoundableObject.getBounds()).getBoundsInLocal());
         }
         else return false;
     }

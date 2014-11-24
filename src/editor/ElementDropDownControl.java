@@ -15,6 +15,7 @@ import javafx.scene.control.TitledPane;
 import javafx.util.Callback;
 import view.GUIController;
 
+
 /**
  * 
  * @author Nishad Agrawal
@@ -48,7 +49,7 @@ public class ElementDropDownControl implements GUIController {
         elementDropDown.setText(myGameElement);
         myButtonText.setValue(CREATE_NEW_STRING + myGameElement);
     }
-    
+
     private void initListView () {
         myElementsList = FXCollections.observableArrayList();
         myElementsMap = new HashMap<>();
@@ -63,7 +64,7 @@ public class ElementDropDownControl implements GUIController {
                 .addListener(new ChangeListener<Number>() {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                            Number newValue) {
+                                         Number newValue) {
                         System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
                     }
                 });
@@ -98,7 +99,7 @@ public class ElementDropDownControl implements GUIController {
     public void initialize () {
         myButtonText = new SimpleStringProperty();
         initListView();
-        initNewElementButton();        
+        initNewElementButton();
     }
-    
+
 }

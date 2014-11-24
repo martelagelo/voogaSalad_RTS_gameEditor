@@ -31,7 +31,7 @@ import distilled_slogo.tokenization.Tokenizer;
  * @author Zach
  *
  */
-//TODO implement. This is a very rough class that needs a lot of work
+// TODO implement. This is a very rough class that needs a lot of work
 public class ConditionParser {
     // TODO make work
     public final static String REGEX_LOCATION = "resources.properties.CommentRegex";

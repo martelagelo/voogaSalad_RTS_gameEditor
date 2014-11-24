@@ -1,9 +1,7 @@
 package editor;
 
-import editor.wizards.Wizard;
-import editor.wizards.WizardData;
-import game_engine.gameRepresentation.stateRepresentation.GameState;
-import game_engine.visuals.Dimension;
+import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +12,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
@@ -22,9 +19,15 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
+import view.WizardUtility;
+import editor.wizards.Wizard;
+import editor.wizards.WizardData;
+import game_engine.gameRepresentation.stateRepresentation.DescribableState;
+import game_engine.gameRepresentation.stateRepresentation.GameState;
+import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.LevelNotFoundException;
 
 
 /**
@@ -38,6 +41,8 @@ import view.GUIScreen;
 
 public class EditorScreen extends GUIScreen {
 
+    private static final String TERRAIN_WIZARD = "/editor/wizards/guipanes/TerrainWizard.fxml";
+    private static final String GAME_ELEMENT_WIZARD = "/editor/wizards/guipanes/DrawableGameElementWizard.fxml";
     @FXML
     private TabPane tabPane;
     @FXML
@@ -69,31 +74,20 @@ public class EditorScreen extends GUIScreen {
     private Tab myCurrentTab;
 
     private void openGameElementWizard () {
-        Dimension dim = new Dimension(600, 300);
-        loadWizard("/editor/wizards/guipanes/GameElementWizard.fxml", dim);
+        Wizard wiz = WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
+        Consumer<WizardData> c = (data) -> {
+//            System.out.println(data);
+            myMainModel.createDrawableGameElement(data);
+            wiz.getStage().close();
+        };
+        wiz.setSubmit(c);
     }
 
     private void openTerrainWizard () {
-        Dimension dim = new Dimension(600, 300);
-        loadWizard("/editor/wizards/guipanes/TerrainWizard.fxml", dim);
-    }
-
-    /**
-     * loads and shows a popout wizard based on a filepath and a size for the popout
-     * 
-     * @param filePath
-     * @param dim
-     */
-    private void loadWizard (String filePath, Dimension dim) {
-        Wizard wiz = (Wizard) GUILoadStyleUtility.generateGUIPane(filePath);
-        Stage s = new Stage();
-        Scene myScene = new Scene((Parent) wiz.getRoot(), dim.getWidth(), dim.getHeight());
-        s.setScene(myScene);
-        s.show();
+        Wizard wiz = WizardUtility.loadWizard(TERRAIN_WIZARD, new Dimension(600, 300));
         Consumer<WizardData> c = (data) -> {
             System.out.println(data);
-            myMainModel.createGameElement(data);
-            s.close();
+            wiz.getStage().close();
         };
         wiz.setSubmit(c);
     }
@@ -111,12 +105,38 @@ public class EditorScreen extends GUIScreen {
 
     private void initProjectExplorer () {
         // TODO: on selection changed should update the info box
-        projectExplorerController.setOnSelectionChanged( (String s) -> {
-            System.out.println("selection changed: " + s);
+        projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
+            System.out.println(Arrays.toString(selection));
+            updateInfoBox(selection);
         });
         projectExplorerController.setOnLevelClicked( (String s) -> {
             launchTab(s);
         });
+    }
+
+    private void initInfoBox () {
+        gameInfoBoxController.setSubmitAction( (name, description) -> {
+            try {
+                myMainModel.updateDescribableState(projectExplorerController.getSelectedHierarchy(), name,
+                                                   description);
+            }
+            catch (CampaignNotFoundException | LevelNotFoundException e) {
+                System.out.println("Failed to update selected describable state");
+                e.printStackTrace();
+            }    
+        });
+    }
+
+    private void updateInfoBox (String[] selection) {
+        try {
+            DescribableState state = myMainModel.getDescribableState(selection);
+            gameInfoBoxController.setText(state.getName(), state.getDescription());
+            System.out.println("updating: " + state.getName() + ", " + state.getDescription());
+        }
+        catch (Exception e) {
+            System.out.println("shit update info box failed");
+            e.printStackTrace();
+        }
     }
 
     private void initTabs () {
@@ -166,6 +186,7 @@ public class EditorScreen extends GUIScreen {
         initTabs();
         initProjectExplorer();
         initAccordion();
+        initInfoBox();
         newGameElement.setOnAction(e -> openGameElementWizard());
         newTerrain.setOnAction(e -> openTerrainWizard());
         save.setOnAction(e -> myMainModel.saveGame());
@@ -176,6 +197,7 @@ public class EditorScreen extends GUIScreen {
         updateAccordion();
         updateProjectExplorer();
         updateTabViewControllers();
+        updateInfoBox(projectExplorerController.getSelectedHierarchy());
     }
 
     // TODO: metadata stuff

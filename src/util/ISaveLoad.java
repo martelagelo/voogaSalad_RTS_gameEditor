@@ -31,11 +31,11 @@ public interface ISaveLoad {
      *            that can be converted to JSON format
      * @param sourcePath
      *            location to which object should be saved
-     * @return filePath to which the Json file is saved
-     * @throws IOException
+     * @return filePath to which the JSON file is saved
+     * @throws Exception
      * 
      */
-    public String save (JSONable object, String sourcePath) throws IOException;
+    public String save (JSONable object, String sourcePath) throws Exception;
 
     /**
      * Save an image from a particular file path

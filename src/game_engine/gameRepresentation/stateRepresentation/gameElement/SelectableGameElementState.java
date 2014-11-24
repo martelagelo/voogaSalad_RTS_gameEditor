@@ -68,12 +68,14 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
         return null;
         // return visualRepresentation.getVisionBounds();
     }
-    /** 
+
+    /**
      * @return the useable abilities of the selectable game element
      */
     public Map<String, String> getCurrentInteractionInformation () {
         return myCurrentAbilityRepresentation;
     }
+
     /**
      * @return the elements that the game element is currently interacting with
      */

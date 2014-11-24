@@ -2,6 +2,7 @@ package gamemodel;
 
 import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
+import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
@@ -11,11 +12,10 @@ import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
-
+import gamemodel.exceptions.LevelNotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadUtility;
 
 /**
@@ -36,9 +36,9 @@ public class MainModel extends Observable {
         mySLUtil = new SaveLoadUtility();
     }
 
-    public void newGame () {
+    public void newGame (String newGameName) {
         // TODO CLEAN THIS UP
-        myGameState = new GameState("New Game");
+        myGameState = new GameState(newGameName);
     }
 
     /**
@@ -63,10 +63,35 @@ public class MainModel extends Observable {
         clearChanged();
     }
 
+    public void updateDescribableState (String[] selection, String name, String description)
+            throws CampaignNotFoundException, LevelNotFoundException {
+        DescribableState state = getDescribableState(selection);
+        state.updateName(name);
+        state.updateDescription(description);
+        setChanged();
+        notifyObservers();
+        clearChanged();
+    }
+
+    public DescribableState getDescribableState (String[] selection)
+            throws CampaignNotFoundException, LevelNotFoundException {
+        if (selection[2].isEmpty()) {
+            if (selection[1].isEmpty()) {
+                return myGameState;
+            } else {
+                return myGameState.getCampaign(selection[1]);
+            }
+        } else {
+            return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
+        }
+    }
+
     public void saveGame () throws RuntimeException {
         try {
             mySLUtil.save(myGameState, getGameSaveLocation(myGameState.getName()));
-        } catch (IOException e) {
+
+        } catch (Exception e) {
+
             // TODO: eliminate stack trace printing
             e.printStackTrace();
             // throw new RuntimeException(e);
@@ -74,7 +99,7 @@ public class MainModel extends Observable {
     }
 
     private String getGameSaveLocation (String name) {
-        return "MyGames" + File.separator + name + File.separator + name;
+        return "myGames" + File.separator + name + File.separator + name;
     }
 
     public GameState getCurrentGame () {
@@ -163,13 +188,24 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElement (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data);
-        System.out.println(gameElement);
-        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-        setChanged();
-        notifyObservers();
-        clearChanged();
+        // TODO: figure out the actual save loction for this
+        String saveLocation = "testSpritesheet";
+        try {
+            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
+            mySLUtil.saveImage(
+                    data.getValueByKey(GameElementStateFactory.IMAGE),
+                    saveLocation + System.getProperty("file.separator")
+                            + data.getValueByKey(GameElementStateFactory.NAME) + ".png");
+            DrawableGameElementState gameElement = GameElementStateFactory
+                    .createDrawableGameElementState(data, saveLocation);
+            System.out.println(gameElement);
+            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+            setChanged();
+            notifyObservers();
+            clearChanged();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -34,9 +34,9 @@ public abstract class DescribableState implements JSONable{
     public String getDescription () {
         return myDescription;
     }
-    
+
     @Override
-    public String toString() {
+    public String toString () {
         return getName();
     }
 
@@ -65,7 +65,5 @@ public abstract class DescribableState implements JSONable{
         else if (!myName.equals(other.myName)) return false;
         return true;
     }
-    
-    
 
 }

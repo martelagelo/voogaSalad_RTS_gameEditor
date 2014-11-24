@@ -16,12 +16,16 @@
 					<Button fx:id="trigger" text="new trigger" />
 					<Button fx:id="stringAttribute" text="new string attribute" />
 					<Button fx:id="numberAttribute" text="new number attribute" />
-					<Button fx:id="image" text="image" />
 					<Button fx:id="save" text="save" />
 					<Text fx:id="errorMessage" />
+
 				</VBox>
+			</children>
+		</AnchorPane>
+		<AnchorPane>
+			<children>
+				<ImageView fx:id="spritesheet" />
 			</children>
 		</AnchorPane>
 	</items>
 </SplitPane>
-

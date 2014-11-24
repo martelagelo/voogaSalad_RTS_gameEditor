@@ -3,16 +3,24 @@ package view;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
-
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+
 
 
 /**
@@ -30,9 +38,10 @@ public class SplashScreen extends GUIScreen {
     private static final String NEW_GAME_KEY = "NewGame";
     private static final String CHOOSE_GAME_KEY = "ChooseGame";
 
-    // TODO Probably get rid of this
-    private static final String GAMES_DIRECTORY = "./myGames/";
+    private static final String DUVALL_PATH = "resources/duvall.txt";
+    private static final Integer LOAD_DURATION = 50;
 
+    // TODO Probably get rid of this
     @FXML
     private GridPane splash;
     @FXML
@@ -40,9 +49,17 @@ public class SplashScreen extends GUIScreen {
     @FXML
     private Button launchRunnerButton;
     @FXML
+    private ComboBox<String> myGames;
+    private static final String LAUNCH_EDITOR = "Launch Editor";
+    private static final String LAUNCH_RUNNER = "Launch Runner";
+    private static final String GAMES_DIRECTORY = "./myGames/";
+
+    @FXML
     private ComboBox<String> gameDropDown;
     @FXML
     private Button newGameButton;
+    @FXML
+    private Label title;
 
     @Override
     public Node getRoot () {
@@ -53,6 +70,7 @@ public class SplashScreen extends GUIScreen {
     public void init () {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
+
         File folder = new File(GAMES_DIRECTORY);
         List<File> files = Arrays.asList(folder.listFiles());
         List<String> gameNames = files
@@ -62,29 +80,34 @@ public class SplashScreen extends GUIScreen {
                 .collect(Collectors.toList());
         gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
 
+        setUpButtons();
+        drawTitle();
+    }
+
+    private void setUpButtons () {
         newGameButton.setOnAction(e -> {
             myMainModel.newGame();
             switchScreen(ViewScreen.EDITOR);
         });
-
         // TODO we need to link this up with save load in MainView and MainModel
         launchEditorButton.setOnAction(e -> {
             if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
                 try {
                     myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
-                } catch (Exception e1) {
+                }
+                catch (Exception e1) {
                     // TODO: handle exception and display to view
                     // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                switchScreen(ViewScreen.EDITOR);
+                e1.printStackTrace();
             }
+            switchScreen(ViewScreen.EDITOR);
+        }
                 else {
                     // TODO: ERROR POPUP ON SPLASH SCREEN, nishad... animation controller thingy
-                System.out.println("ERROR: NO GAME SELECTED");
-            }
+                    System.out.println("ERROR: NO GAME SELECTED");
+                }
 
-        });
+            });
 
         // TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
         launchRunnerButton.setOnAction(e -> {
@@ -92,6 +115,26 @@ public class SplashScreen extends GUIScreen {
                 switchScreen(ViewScreen.EDITOR);
             });
         attachStringProperties();
+    }
+
+    private void drawTitle () {
+        EventHandler<ActionEvent> action;
+        action = new EventHandler<ActionEvent>() {
+            Scanner scanner = new Scanner(this.getClass().getClassLoader()
+                    .getResourceAsStream(DUVALL_PATH));
+            StringBuilder contents = new StringBuilder("");
+
+            public void handle (ActionEvent t) {
+                if (scanner.hasNextLine()) {
+                    contents.append(scanner.nextLine() + "\n");
+                    title.setText(contents.toString());
+                }
+            }
+        };
+        KeyFrame keyFrame = new KeyFrame(new Duration(LOAD_DURATION), action);
+        Timeline timeLoop = new Timeline(keyFrame);
+        timeLoop.setCycleCount(Animation.INDEFINITE);
+        timeLoop.play();
     }
 
     private void attachStringProperties () {
@@ -105,6 +148,7 @@ public class SplashScreen extends GUIScreen {
         catch (LanguageException e) {
             // TODO error handling
         }
+
     }
 
     @Override

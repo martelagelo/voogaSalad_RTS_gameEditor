@@ -57,10 +57,8 @@ public class ConditionParsingTest {
         assertEquals(input, result);
     }
 
-   
-
     @Test
     public void testConditionParsing () throws Exception {
-        //getMethod("parseCondition").invoke(myParser, "this||other");
+        // getMethod("parseCondition").invoke(myParser, "this||other");
     }
 }

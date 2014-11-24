@@ -27,5 +27,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_TheException/lib/distilled_slogo-1.0.0-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
