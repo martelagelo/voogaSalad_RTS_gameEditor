@@ -12,16 +12,11 @@
               "myTextualAttributes": []
             }
           ],
-          "myName": "blah",
+          "myName": "level name",
           "myDescription": ""
         }
       ],
       "myName": "campaign name",
-      "myDescription": ""
-    },
-    {
-      "myLevels": [],
-      "myName": "campaign name2",
       "myDescription": ""
     }
   ],
@@ -32,12 +27,12 @@
     "myDrawableGameElementStates": [
       {
         "mySpritesheet": {
-          "imageTag": "testSpritesheet/name.png",
+          "imageTag": "testSpritesheet\\Archer.png",
           "frameDimensions": {
-            "myWidth": 543,
-            "myHeight": 27
+            "myWidth": 142,
+            "myHeight": 36
           },
-          "numCols": 1
+          "numCols": 10
         },
         "myAnimations": {},
         "myBounds": [
@@ -46,7 +41,9 @@
           0.0,
           0.0
         ],
-        "myConditionActionPairings": {},
+        "myConditionActionPairings": {
+          "die": "fight"
+        },
         "myNumericalAttributes": [
           {
             "myData": 0.0,
@@ -55,11 +52,19 @@
           {
             "myData": 0.0,
             "myName": "yPosition"
+          },
+          {
+            "myData": 100.0,
+            "myName": "hp"
           }
         ],
         "myTextualAttributes": [
           {
-            "myData": "name",
+            "myData": "bob",
+            "myName": "myname"
+          },
+          {
+            "myData": "Archer",
             "myName": "Name"
           }
         ]
