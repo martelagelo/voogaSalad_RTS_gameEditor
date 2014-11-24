@@ -27,7 +27,7 @@ public class AnimationPlayer implements Updatable, Displayable {
      * Initialize the player
      *
      * @param spriteSheet
-     *        the image containing the spriteshee
+     *        the image containing the spritesheet
      * @param tileSize
      *        a point2D containing the width(x) and height(y) of each frame
      *        in the spritesheet
@@ -65,9 +65,6 @@ public class AnimationPlayer implements Updatable, Displayable {
      */
     public void setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;
-        if(animation==null){
-            System.out.println();
-        }
     }
 
     /**
@@ -118,11 +115,6 @@ public class AnimationPlayer implements Updatable, Displayable {
                                                                   * myTileSize.getHeight(),
                                myTileSize.getWidth(),
                                myTileSize.getHeight());
-    }
-
-    // TODO:Remove
-    public void select (boolean select) {
-        this.myDisplay.setStyle("-fx-border-color: green");
     }
 
     public Dimension getDimension () {

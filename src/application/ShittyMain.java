@@ -32,7 +32,7 @@ public class ShittyMain extends Application {
 
     private MainModel hardCodeAGame () throws Exception {
         
-        SelectableGameElementState archeryRange = new SelectableGameElementState(400, 400);
+        SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
         double[] archeryBounds = {-75,-75,-75,175,175,175,175,-75};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange/1.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);
@@ -40,9 +40,9 @@ public class ShittyMain extends Application {
 
         double[] bounds = {0,0,40,0,40,40,0,40};
         
-        SelectableGameElementState archerState = createArcher(bounds, 300, 100, 1, 0);
+        SelectableGameElementState archerState = createArcher(bounds, 100, 100, 1, 0);
         SelectableGameElementState archerState2 = createArcher(bounds, 400, 100, 1, 0);
-        SelectableGameElementState archerState3 = createArcher(bounds, 300, 200, 1, 0);
+        SelectableGameElementState archerState3 = createArcher(bounds, 100, 200, 1, 0);
         SelectableGameElementState archerState4 = createArcher(bounds, 400, 200, 2, 0);
         SelectableGameElementState archerState5 = createArcher(bounds, 600, 200, 2, 1);
 
@@ -102,9 +102,10 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
         archerState.setAnimation("walk_left");
-        
+
         archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, randomMovement);
         archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, teamID);
+
 
         return archerState;
     }

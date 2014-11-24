@@ -20,9 +20,6 @@ public class SubtractionAssignmentEvaluator<A, B> extends Evaluator<A, B, Boolea
 
     @Override
     protected Boolean evaluate (Number num1, Number num2) {
-        System.out.println("Evaluating this");
-        System.out.println(num1.doubleValue());
-        System.out.println(num2.doubleValue());
         return setParameter1Value(num1.doubleValue() - num2.doubleValue());
     }
 

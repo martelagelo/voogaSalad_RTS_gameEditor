@@ -140,7 +140,7 @@ public class GameElementManager implements Observer {
         else if (o instanceof ClickManager) {
             ClickManager clickManager = (ClickManager) o;
             if (clickManager.getLastClick().getButton() == MouseButton.PRIMARY) {
-                System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
+//                System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
                 selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
                         .isShiftDown());
             }
@@ -151,8 +151,8 @@ public class GameElementManager implements Observer {
 
         }
         else if (o instanceof KeyboardManager) {
-            System.out.println("Typed: "
-                               + ((KeyboardManager) o).getLastCharacter());
+//            System.out.println("Typed: "
+//                               + ((KeyboardManager) o).getLastCharacter());
         }
     }
 }

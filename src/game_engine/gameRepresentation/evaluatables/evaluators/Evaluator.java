@@ -64,7 +64,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * @return the result of the evaluation on the two objects
 	 */
 	protected T evaluate(Object item1, Object item2) {
-	    System.out.println("generic objects");
 		return null;
 	}
 
@@ -72,7 +71,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * Evaluate on two doubles
 	 */
 	protected T evaluate(Number item1, Number item2) {
-	    System.out.println("Parent number");
 		return null;
 	}
 
@@ -80,7 +78,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * Evaluate on two booleans
 	 */
 	protected T evaluate(Boolean item1, Boolean item2) {
-	    System.out.println("bool");
 		return null;
 	}
 
@@ -88,7 +85,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	 * Evaluate on two elements
 	 */
 	protected T evaluate(GameElementState item1, GameElementState item2) {
-	    System.out.println("parent game element");
 		return null;
 	}
 
@@ -122,8 +118,6 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
 	   
 		Class<A> type1 = myParameter1.getType();
 		Class<B> type2 = myParameter2.getType();
-		System.out.println(type1);
-		System.out.println(type2);
 		if (type1.equals(Number.class) && type2.equals(Number.class)) {
 			return evaluate((Number) parameter1Value, (Number) parameter2Value);
 		}

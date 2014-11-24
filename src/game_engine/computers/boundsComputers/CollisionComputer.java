@@ -59,7 +59,6 @@ public class CollisionComputer extends
                                               DrawableGameElementState primaryObject,
                                               List<DrawableGameElementState> listToAdd) {
         if (listToAdd.size() > 0) {
-            System.out.println("Collision!");
         }
         ((SelectableGameElementState) primaryObject)
                 .addCollidingElements(listToAdd.stream()

@@ -25,6 +25,7 @@ public class DrawableGameElementState extends GameElementState implements
     public static final int PLAYER_TEAM_ID = 1;
 
     private Spritesheet mySpritesheet;
+    private Spritesheet myColorSheet;
     private Map<String, AnimationSequence> myAnimations;
     private AnimationSequence myCurrentAnimation = new NullAnimationSequence();
     private double[] myBounds;

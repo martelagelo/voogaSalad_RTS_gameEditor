@@ -206,21 +206,12 @@ public class SelectableGameElement extends DrawableGameElement {
             for (DrawableGameElementState element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this.getGameElementState(), element);
                 if (condition.getValue(elements)) {
-                    System.out
-                            .println("Original X:" +
-                                     this.getGameElementState()
-                                             .getNumericalAttribute(DrawableGameElementState.X_POS_STRING));
                     getConditionActionPairs().get(condition).getValue(elements);
-                    System.out
-                            .println("New X:" +
-                                     this.getGameElementState()
-                                             .getNumericalAttribute(DrawableGameElementState.X_POS_STRING));
                     return;
                 }
             }
 
         }
-        System.out.println(elementsOfInterest.size());
     }
 
     private void updateSelectedIndicator () {
