@@ -13,15 +13,18 @@ import org.apache.commons.io.FileUtils;
  */
 public class DefaultResource {
 
-    public static final String LIBRARY_DIRECTORY = "src/resources/img";
+    public static final String LIBRARY_DIRECTORY = "src/resources/img/graphics/buttons";
+    Thread myThread;
 
     private void copyResources (String filePath) throws Exception {
         File libraryDirectory = new File(LIBRARY_DIRECTORY);
         File destinationDirectory = new File(filePath);
         FileUtils.copyDirectory(libraryDirectory, destinationDirectory);
+        
     }
 
     void setDefaults (String destination) throws Exception {
+        
         class Copy implements Runnable {
             String myDestination;
 
@@ -32,13 +35,14 @@ public class DefaultResource {
             public void run () {
                 try {
                     copyResources(destination);
+                    
                 } catch (Exception e) {
                 }
             }
 
         }
-        Thread t = new Thread(new Copy(destination));
-        t.start();
-
+        
+        myThread = new Thread(new Copy(destination));
+        myThread.start();
     }
 }
