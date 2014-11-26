@@ -6,12 +6,15 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
+import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.Spritesheet;
 import game_engine.visuals.TerrainGrid;
 import gamemodel.MainModel;
+
 import java.awt.Toolkit;
 import java.util.List;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -47,6 +50,7 @@ public class ShittyMain extends Application {
     private MainModel hardCodeAGame () throws Exception {
         
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
+        archeryRange.addAnimation(new NullAnimationSequence());
         double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);

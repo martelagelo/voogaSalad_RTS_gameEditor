@@ -3,9 +3,9 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
+
 import java.util.HashMap;
 import java.util.Map;
-
 
 /**
  * This GameElement is drawable but not necessarily selectable - examples
@@ -15,8 +15,7 @@ import java.util.Map;
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements
-        Boundable {
+public class DrawableGameElementState extends GameElementState implements Boundable {
     public static final String X_POS_STRING = "xPosition";
     public static final String Y_POS_STRING = "yPosition";
     public static final String CAN_MOVE_STRING = "canMove";
@@ -27,8 +26,12 @@ public class DrawableGameElementState extends GameElementState implements
     private Spritesheet mySpritesheet;
     private Spritesheet myColorSheet;
     private Map<String, AnimationSequence> myAnimations;
-    private AnimationSequence myCurrentAnimation = new NullAnimationSequence();
+    private AnimationSequence myCurrentAnimation;/*
+                                                  * = new
+                                                  * NullAnimationSequence();
+                                                  */
     private double[] myBounds;
+    private boolean myIsAnimationSequenceInitalized = true;
 
     /**
      * Create a drawable game element at a given x and y position.
@@ -42,10 +45,8 @@ public class DrawableGameElementState extends GameElementState implements
         // These positions are stored in a numerical attribute map to allow for
         // easy retrieval of
         // attributes by conditions and actions
-        this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING,
-                                                             xPosition));
-        this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING,
-                                                             yPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
     }
 
     /**
@@ -55,6 +56,14 @@ public class DrawableGameElementState extends GameElementState implements
      * @param animation
      */
     public void addAnimation (AnimationSequence animation) {
+
+        // This is hack since initializing myCurrentAnimationSequence doesn't
+        // work in the constructor due to reflectivetypeadapter gson error if
+        if (myIsAnimationSequenceInitalized) {
+            myCurrentAnimation = new NullAnimationSequence();
+            myIsAnimationSequenceInitalized = false;
+        }
+
         myAnimations.put(animation.toString(), animation);
     }
 
