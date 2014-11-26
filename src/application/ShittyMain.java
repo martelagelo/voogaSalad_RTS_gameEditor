@@ -4,6 +4,7 @@ import game_engine.Engine;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.NullAnimationSequence;
@@ -21,12 +22,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-
 public class ShittyMain extends Application {
-    
+
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static final int shittyWidth = 1279;
-    
+
     @Override
     public void start (Stage primaryStage) {
         try {
@@ -34,8 +34,11 @@ public class ShittyMain extends Application {
             Group g = new Group();
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
-            Scene s = new Scene(g, shittyWidth, 0.9*screenSize.getHeight());
-            s.getStylesheets().add(this.getClass().getClassLoader().getResource("game_engine/visuals/stylesheets/engine.style.css").toExternalForm());
+            Scene s = new Scene(g, shittyWidth, 0.9 * screenSize.getHeight());
+            s.getStylesheets()
+                    .add(this.getClass().getClassLoader()
+                            .getResource("game_engine/visuals/stylesheets/engine.style.css")
+                            .toExternalForm());
             System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
@@ -48,24 +51,22 @@ public class ShittyMain extends Application {
     }
 
     private MainModel hardCodeAGame () throws Exception {
-        
+
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
         archeryRange.addAnimation(new NullAnimationSequence());
         double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);
-        archeryRange.setNumericalAttribute(DrawableGameElementState.TEAM_ID, 1);
+        archeryRange.setNumericalAttribute(StateTags.TEAM_ID, 1);
 
-        double[] bounds = {0,0,40,0,40,40,0,40};
-        
+        double[] bounds = { 0, 0, 40, 0, 40, 40, 0, 40 };
+
         SelectableGameElementState archerState = createArcher(bounds, 100, 100, 1, 0);
         SelectableGameElementState archerState2 = createArcher(bounds, 400, 100, 1, 0);
         SelectableGameElementState archerState3 = createArcher(bounds, 100, 200, 1, 0);
         SelectableGameElementState archerState4 = createArcher(bounds, 400, 200, 2, 0);
-        SelectableGameElementState archerState5 = createArcher(bounds, 600, 200, 2, 1);
+        SelectableGameElementState archerState5 = createArcher(bounds, 800, 800, 2, 1);
 
-
-        
         TerrainGrid grid =
                 new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
@@ -88,13 +89,17 @@ public class ShittyMain extends Application {
         return model;
     }
 
-    private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID, int randomMovement) {
+    private SelectableGameElementState createArcher (double[] bounds,
+                                                     double x,
+                                                     double y,
+                                                     int teamID,
+                                                     int randomMovement) {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
         archerState
                 .setSpritesheet(new Spritesheet(
                                                 "resources/img/graphics/units/eagleWarrior.png",
                                                 new Dimension(294, 98), 14));
-        archerState.setNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING, 1);
+        archerState.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
 
         /**
          * TODO: we need to initialize these programmatically. Also, the animation should somehow
@@ -121,8 +126,9 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
         archerState.setAnimation("walk_left");
 
-        archerState.setNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING, randomMovement);
-        archerState.setNumericalAttribute(DrawableGameElementState.TEAM_ID, teamID);
+        archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING,
+                                          randomMovement);
+        archerState.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         return archerState;
     }
 
@@ -130,17 +136,17 @@ public class ShittyMain extends Application {
         launch(args);
     }
 
-//    public void shittyRun (Group g) {
-//        System.out.println("Shitty running");
-//        Image poop = new Image("resources/img/poop.png");
-//        g.getChildren().add(new ImageView(poop));
-//
-//        new InputHandler(g);
-//        new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
-//            group.getChildren().get(0)
-//                    .setRotate(group.getChildren().get(0).getRotate() + 20);
-//            System.out.println("Clicked");
-//        });
-//    }
+    // public void shittyRun (Group g) {
+    // System.out.println("Shitty running");
+    // Image poop = new Image("resources/img/poop.png");
+    // g.getChildren().add(new ImageView(poop));
+    //
+    // new InputHandler(g);
+    // new InputEvent<MouseEvent, Group>(MouseEvent.MOUSE_CLICKED, g, group -> {
+    // group.getChildren().get(0)
+    // .setRotate(group.getChildren().get(0).getRotate() + 20);
+    // System.out.println("Clicked");
+    // });
+    // }
 
 }

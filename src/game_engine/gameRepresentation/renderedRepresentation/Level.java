@@ -39,11 +39,13 @@ public class Level {
         myLevelState = levelState;
         // Create and add the terrains
         for (DrawableGameElementState element : levelState.getTerrain()) {
-            myTerrain.add(new DrawableGameElement(element, new HashMap<Evaluatable<Boolean>, Evaluatable<?>>()));
+            myTerrain.add(new DrawableGameElement(element,
+                                                  new HashMap<String, List<Evaluatable<?>>>()));
         }
         // Create and add the units to the map
         for (SelectableGameElementState element : levelState.getUnits()) {
-            myUnits.add(new SelectableGameElement(element, new HashMap<Evaluatable<Boolean>, Evaluatable<?>>()));
+            myUnits.add(new SelectableGameElement(element,
+                                                  new HashMap<String, List<Evaluatable<?>>>()));
         }
         // TODO Use factory to create game elements from game element states and add to this list
         // goals.addAll(level.getGoals());

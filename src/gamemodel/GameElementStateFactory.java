@@ -51,7 +51,7 @@ public class GameElementStateFactory {
                     Double.parseDouble(wiz.getValueByKey(VALUE)));
         }
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
-            state.addConditionActionPair(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
+            state.addAction(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
         }
         return state;
     }
@@ -90,7 +90,7 @@ public class GameElementStateFactory {
     public static GameElementState createGoal(WizardData data) {
         GameElementState goal = new GameElementState();        
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
-            goal.addConditionActionPair(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
+            goal.addAction(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
         }
         return goal;
     }

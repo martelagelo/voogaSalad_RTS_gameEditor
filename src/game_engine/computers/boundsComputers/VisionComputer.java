@@ -1,10 +1,10 @@
 package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Sighted;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Sighted;
 import java.util.List;
 import javafx.scene.shape.Polygon;
 

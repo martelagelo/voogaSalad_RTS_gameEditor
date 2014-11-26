@@ -1,4 +1,4 @@
-package game_engine.gameRepresentation.stateRepresentation.gameElement;
+package game_engine.gameRepresentation.stateRepresentation.gameElement.traits;
 
 /**
  * An indicator that an object is bounded that requires the implementation of a

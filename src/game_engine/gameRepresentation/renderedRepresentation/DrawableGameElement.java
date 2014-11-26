@@ -2,10 +2,12 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.Spritesheet;
+import java.util.List;
 import java.util.Map;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
@@ -41,30 +43,31 @@ public class DrawableGameElement extends GameElement implements Displayable {
      *        the state of the drawable element
      */
     public DrawableGameElement (DrawableGameElementState element,
-                                Map<Evaluatable<Boolean>, Evaluatable<?>> conditionActionPairs) {
+                                Map<String, List<Evaluatable<?>>> conditionActionPairs) {
         super(element, conditionActionPairs);
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();
-        //TODO uncomment. For testing only
-        try{
-        myAnimation =
-                new AnimationPlayer(new Image(spritesheet.imageTag), spritesheet.frameDimensions,
-                                    spritesheet.numCols);
+        // TODO uncomment. For testing only
+        try {
+            myAnimation =
+                    new AnimationPlayer(new Image(spritesheet.imageTag),
+                                        spritesheet.frameDimensions,
+                                        spritesheet.numCols);
         }
-        catch (Exception e){
-        	//DO nothing
+        catch (Exception e) {
+            // DO nothing
         }
-        
+
         myDisplay = new Group();
         myDisplayVBox = new VBox(1);
-        //TODO undo for testing only
-        try{
-        mySelectedImage = new Image(SELECT_ARROW_URL);
-        mySelectedImageView = new ImageView(mySelectedImage);
-        initializeDisplay();
+        // TODO undo for testing only
+        try {
+            mySelectedImage = new Image(SELECT_ARROW_URL);
+            mySelectedImageView = new ImageView(mySelectedImage);
+            initializeDisplay();
         }
-        catch (Exception e){
-            //do nothing
+        catch (Exception e) {
+            // do nothing
         }
 
     }
@@ -129,12 +132,12 @@ public class DrawableGameElement extends GameElement implements Displayable {
 
     // TODO: Fix. Move logic into group
     public void updateImageLocation () {
-        myDisplay.setLayoutX(myState.getNumericalAttribute(DrawableGameElementState.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(DrawableGameElementState.Y_POS_STRING).doubleValue());
+        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
     }
 
     public Point2D getLocation () {
-        //TODO move positions and fix
+        // TODO move positions and fix
         Point2D p = new Point2D(getNode().getLayoutX(), getNode().getLayoutY());
         return p;
     }
@@ -149,10 +152,10 @@ public class DrawableGameElement extends GameElement implements Displayable {
         mySelectedImageView.setOpacity(0.0);
         myDisplayVBox.getChildren().add(myAnimation.getNode());
         myDisplay.setLayoutX(myState.getNumericalAttribute(
-                                                           DrawableGameElementState.X_POS_STRING)
+                                                           StateTags.X_POS_STRING)
                 .doubleValue());
         myDisplay.setLayoutY(myState.getNumericalAttribute(
-                                                           DrawableGameElementState.Y_POS_STRING)
+                                                           StateTags.Y_POS_STRING)
                 .doubleValue());
         myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
         myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);

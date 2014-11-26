@@ -1,5 +1,6 @@
 package game_engine.visuals;
 
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;

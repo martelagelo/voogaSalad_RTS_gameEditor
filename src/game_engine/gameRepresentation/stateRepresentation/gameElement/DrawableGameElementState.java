@@ -1,11 +1,12 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
-
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * This GameElement is drawable but not necessarily selectable - examples
@@ -15,13 +16,8 @@ import java.util.Map;
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements Boundable {
-    public static final String X_POS_STRING = "xPosition";
-    public static final String Y_POS_STRING = "yPosition";
-    public static final String CAN_MOVE_STRING = "canMove";
-    public static final String RANDOM_MOVEMENT_STRING = "randomMove";
-    public static final String TEAM_ID = "teamID";
-    public static final int PLAYER_TEAM_ID = 1;
+public class DrawableGameElementState extends GameElementState implements
+        Boundable {
 
     private Spritesheet mySpritesheet;
     private Spritesheet myColorSheet;
@@ -45,8 +41,11 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         // These positions are stored in a numerical attribute map to allow for
         // easy retrieval of
         // attributes by conditions and actions
-        this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
-        this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
+
+        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.X_POS_STRING,
+                                                             xPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.Y_POS_STRING,
+                                                             yPosition));
     }
 
     /**
@@ -82,8 +81,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public void setSpritesheet (Spritesheet spritesheet) {
         mySpritesheet = spritesheet;
         myBounds = new double[4]; // x, y, width, height
-        myBounds[0] = getNumericalAttribute(X_POS_STRING).doubleValue();
-        myBounds[1] = getNumericalAttribute(Y_POS_STRING).doubleValue();
+        myBounds[0] = getNumericalAttribute(StateTags.X_POS_STRING).doubleValue();
+        myBounds[1] = getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue();
         myBounds[2] = mySpritesheet.frameDimensions.getWidth();
         myBounds[3] = mySpritesheet.frameDimensions.getHeight();
     }
