@@ -17,6 +17,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
@@ -120,9 +121,9 @@ public class ConditionFunctionalityTest {
 		// Now move the game element to the other bounds location and make sure
 		// they intersect
 		myElement1.getState().setNumericalAttribute(
-				DrawableGameElementState.X_POS_STRING, 100);
+				StateTags.X_POS_STRING, 100);
 		myElement1.getState().setNumericalAttribute(
-				DrawableGameElementState.Y_POS_STRING, 100);
+				StateTags.Y_POS_STRING, 100);
 		assertTrue((Boolean) (evaluator.getValue(myElementPair)));
 
 	}

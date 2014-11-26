@@ -4,6 +4,7 @@ import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.ScrollablePane;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -180,11 +181,11 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void move () {
         boolean canMove =
-                getState().getNumericalAttribute(DrawableGameElementState.CAN_MOVE_STRING)
+                getState().getNumericalAttribute(StateTags.CAN_MOVE_STRING)
                         .intValue() == 1;
         if (!canMove) { return; }
         boolean randomMove =
-                getState().getNumericalAttribute(DrawableGameElementState.RANDOM_MOVEMENT_STRING)
+                getState().getNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING)
                         .intValue() == 1;
         Random r = new Random();
         if (randomMove) {
@@ -210,15 +211,15 @@ public class SelectableGameElement extends DrawableGameElement {
                 getState().setNumericalAttribute(X_VEL, delta.getX());
                 getState().setNumericalAttribute(Y_VEL, delta.getY());
                 getState()
-                        .setNumericalAttribute(DrawableGameElementState.X_POS_STRING,
+                        .setNumericalAttribute(StateTags.X_POS_STRING,
                                                getState()
-                                                       .getNumericalAttribute(DrawableGameElementState.X_POS_STRING)
+                                                       .getNumericalAttribute(StateTags.X_POS_STRING)
                                                        .doubleValue() +
                                                        delta.getX());
                 getState()
-                        .setNumericalAttribute(DrawableGameElementState.Y_POS_STRING,
+                        .setNumericalAttribute(StateTags.Y_POS_STRING,
                                                getState()
-                                                       .getNumericalAttribute(DrawableGameElementState.Y_POS_STRING)
+                                                       .getNumericalAttribute(StateTags.Y_POS_STRING)
                                                        .doubleValue() +
                                                        delta.getY());
                 updateImageLocation();

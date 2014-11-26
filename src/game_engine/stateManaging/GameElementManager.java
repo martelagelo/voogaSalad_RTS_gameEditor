@@ -1,28 +1,19 @@
 package game_engine.stateManaging;
 
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.renderedRepresentation.Level;
-import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.gameRepresentation.renderedRepresentation.Level;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.Dimension;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Queue;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import javafx.scene.input.MouseButton;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Polygon;
-
+import javafx.scene.input.MouseButton;
 
 
 /**
@@ -65,7 +56,7 @@ public class GameElementManager implements Observer {
      */
     private void selectUnitsBox (double[] rectPoints, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            if(!e.getState().getNumericalAttribute(DrawableGameElementState.TEAM_ID).equals(DrawableGameElementState.PLAYER_TEAM_ID)){
+            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)
@@ -77,8 +68,8 @@ public class GameElementManager implements Observer {
     }
 
     private void selectUnitsClick (Point2D clickLoc, boolean isShiftDown) {
-        for( SelectableGameElement e : myLevel.getUnits()){
-            if(!e.getState().getNumericalAttribute(DrawableGameElementState.TEAM_ID).equals(DrawableGameElementState.PLAYER_TEAM_ID)){
+        for (SelectableGameElement e : myLevel.getUnits()) {
+            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)
@@ -96,7 +87,7 @@ public class GameElementManager implements Observer {
             }
         }
     }
-    
+
     private boolean contains (double[] rectPoints, Point2D unitLocationCenter) {
 
         double topLeftX = rectPoints[0];
@@ -140,7 +131,7 @@ public class GameElementManager implements Observer {
         else if (o instanceof ClickManager) {
             ClickManager clickManager = (ClickManager) o;
             if (clickManager.getLastClick().getButton() == MouseButton.PRIMARY) {
-//                System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
+                // System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
                 selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
                         .isShiftDown());
             }
@@ -151,8 +142,8 @@ public class GameElementManager implements Observer {
 
         }
         else if (o instanceof KeyboardManager) {
-//            System.out.println("Typed: "
-//                               + ((KeyboardManager) o).getLastCharacter());
+            // System.out.println("Typed: "
+            // + ((KeyboardManager) o).getLastCharacter());
         }
     }
 }

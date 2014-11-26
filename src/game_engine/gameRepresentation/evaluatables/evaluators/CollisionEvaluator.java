@@ -1,9 +1,8 @@
 package game_engine.gameRepresentation.evaluatables.evaluators;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import javafx.scene.shape.Polygon;
 
@@ -47,11 +46,11 @@ public class CollisionEvaluator<A, B> extends Evaluator<A, B, Boolean> {
         for (int i = 0; i < newBounds.length; i += 2) {
             newBounds[i] +=
                     state.getNumericalAttribute(
-                                                DrawableGameElementState.X_POS_STRING)
+                                                StateTags.X_POS_STRING)
                             .doubleValue();
             newBounds[i + 1] +=
                     state.getNumericalAttribute(
-                                                DrawableGameElementState.Y_POS_STRING)
+                                                StateTags.Y_POS_STRING)
                             .doubleValue();
         }
         return newBounds;

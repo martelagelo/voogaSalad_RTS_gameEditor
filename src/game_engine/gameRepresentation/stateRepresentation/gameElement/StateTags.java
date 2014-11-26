@@ -12,5 +12,11 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 public class StateTags {
     public static final String NAME_ATTRIBUTE_STRING = "Name";
     public static final String TYPE_ATTRIBUTE_STRING = "Type";
+    public static final String X_POS_STRING = "xPosition";
+    public static final String Y_POS_STRING = "yPosition";
+    public static final String CAN_MOVE_STRING = "canMove";
+    public static final String RANDOM_MOVEMENT_STRING = "randomMove";
+    public static final String TEAM_ID = "teamID";
+    
 
 }

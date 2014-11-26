@@ -12,26 +12,26 @@ import gamemodel.GameUniverse;
 public class GameElementFactory {
 
     private GameUniverse myUniverse;
-
-    public GameElementFactory (GameUniverse universe) {
-        myUniverse = universe;
-    }
-
-    public GameElement createGameElement (GameElementState state) {
-        GameElement element = new GameElement();
-
-        return element;
-    }
-
-    public GameElement createDrawableGameElement (DrawableGameElementState state) {
-        DrawableGameElement element = new DrawableGameElement();
-
-        return element;
-    }
-
-    public GameElement createSelectableGameElement (SelectableGameElementState state) {
-        SelectableGameElement element = new SelectableGameElement();
-
-        return element;
-    }
+//
+//    public GameElementFactory (GameUniverse universe) {
+//        myUniverse = universe;
+//    }
+//
+//    public GameElement createGameElement (GameElementState state) {
+//        GameElement element = new GameElement();
+//
+//        return element;
+//    }
+//
+//    public GameElement createDrawableGameElement (DrawableGameElementState state) {
+//        DrawableGameElement element = new DrawableGameElement();
+//
+//        return element;
+//    }
+//
+//    public GameElement createSelectableGameElement (SelectableGameElementState state) {
+//        SelectableGameElement element = new SelectableGameElement();
+//
+//        return element;
+//    }
 }

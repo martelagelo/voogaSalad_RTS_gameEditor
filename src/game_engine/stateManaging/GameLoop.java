@@ -16,6 +16,7 @@ import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
@@ -80,11 +81,11 @@ public class GameLoop {
         Evaluator<?, ?, Boolean> collisionEvaluator =
                 new CollisionEvaluator<>(objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter(DrawableGameElementState.X_POS_STRING,
+                new NumericAttributeParameter(StateTags.X_POS_STRING,
                                               null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
-                new NumericAttributeParameter(DrawableGameElementState.Y_POS_STRING, null,
+                new NumericAttributeParameter(StateTags.Y_POS_STRING, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> xVelocity = new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
                                                                  new ActorObjectIdentifier());
