@@ -22,29 +22,28 @@ public class PathingComputer<T> {
     private GameElementManager myManager;
     private PriorityQueue<Path<T>> myPaths;
     private HashMap<Path<T>, Double> minimumDistances;
-    private Double lastCost;
 
     public PathingComputer (GameElementManager manager) {
         myManager = manager;
     }
 
-    public List<Path> findPath (double xStart, double yStart, double xEnd, double yEnd) {
+    public List<Path<T>> findPath (double xStart, double yStart, double xEnd, double yEnd) {
         return findPath(new Location(xStart, yStart), new Location(xEnd, yEnd));
     }
 
-    public List<Path> findPath (Location start, Location end) {
+    public List<Path<T>> findPath (Location start, Location end) {
         return null;
     }
 
-    private <T> double calculateCostToLocation (T from, T to) {
+    private double calculateCostToLocation (T from, T to) {
         return 0.0;
     }
 
-    private <T> double calculateCostToGoalHeuristic (T from, T to) {
+    private double calculateCostToGoalHeuristic (T from, T to) {
         return 0.0;
     }
 
-    protected <T> Double calculateCost (Path<T> p, T from, T to) {
+    protected Double calculateCost (Path<T> p, T from, T to) {
         double costToPreviousLocation =
                 ((p.myPrevious != null) ? p.myPrevious.costToLocation : 0.0);
         double costToLocation = calculateCostToLocation(from, to) + costToPreviousLocation;
