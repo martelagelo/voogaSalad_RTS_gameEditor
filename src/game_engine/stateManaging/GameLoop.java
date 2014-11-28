@@ -12,6 +12,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.GameElementParamet
 import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -122,17 +123,17 @@ public class GameLoop {
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
-        List<DrawableGameElementState> allElements =
-                new ArrayList<DrawableGameElementState>();
+        List<DrawableGameElement> allElements =
+                new ArrayList<DrawableGameElement>();
         // TODO add stream that collects into objects
         allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
-            return (DrawableGameElementState) element.getState();
+            return (DrawableGameElement) element;
         }).collect(Collectors.toList()));
         // allElements.addAll(myCurrentLevel.getTerrain());
         // TODO fix this logic
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<DrawableGameElementState, DrawableGameElementState> computer : myComputers) {
-                computer.compute(selectableElement.getState(), allElements);
+            for (Computer<DrawableGameElement, DrawableGameElement> computer : myComputers) {
+                computer.compute(selectableElement, allElements);
             }
         }
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {

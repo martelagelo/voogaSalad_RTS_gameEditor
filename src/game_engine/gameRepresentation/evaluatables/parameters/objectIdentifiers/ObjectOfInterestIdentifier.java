@@ -1,7 +1,7 @@
 package game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers;
 
 import game_engine.gameRepresentation.evaluatables.ElementPair;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.stateManaging.GameElementManager;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public interface ObjectOfInterestIdentifier {
 	 *            the optional tag of the object type for global references
 	 * @return the element of interest
 	 */
-	public List<GameElementState> getElementOfInterest(
+	public List<GameElement> getElementOfInterest(
 			GameElementManager elementManager, ElementPair elementPair,
 			String elementTag);
 

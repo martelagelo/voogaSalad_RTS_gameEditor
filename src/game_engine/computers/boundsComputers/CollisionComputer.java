@@ -8,8 +8,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.GameElementParamet
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
  *
  */
 public class CollisionComputer extends
-        Computer<DrawableGameElementState, DrawableGameElementState> {
+        Computer<DrawableGameElement, DrawableGameElement> {
     private Evaluator<?, ?, ?> collisionEvaluator;
 
     /**
@@ -41,8 +40,8 @@ public class CollisionComputer extends
      */
     @Override
     protected boolean checkComputingCondition (
-                                               DrawableGameElementState primaryObject,
-                                               DrawableGameElementState otherObject) {
+                                               DrawableGameElement primaryObject,
+                                               DrawableGameElement otherObject) {
         ElementPair elementPair =
                 new ElementPair(primaryObject,
                                 otherObject);
@@ -56,13 +55,13 @@ public class CollisionComputer extends
      */
     @Override
     protected void givePrimaryObjectElements (
-                                              DrawableGameElementState primaryObject,
-                                              List<DrawableGameElementState> listToAdd) {
+                                              DrawableGameElement primaryObject,
+                                              List<DrawableGameElement> listToAdd) {
         if (listToAdd.size() > 0) {
         }
-        ((SelectableGameElementState) primaryObject)
+        ((SelectableGameElement) primaryObject)
                 .addCollidingElements(listToAdd.stream()
-                        .map(element -> (DrawableGameElementState) element)
+                        .map(element -> (DrawableGameElement) element)
                         .collect(Collectors.toList()));
     }
 

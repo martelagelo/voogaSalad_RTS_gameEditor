@@ -60,7 +60,7 @@ public class ConditionFunctionalityTest {
 				null);
 		myElementParam2 = new GameElementParameter(new ActeeObjectIdentifier(),
 				null);
-		myElementPair = new ElementPair(myElement1.getState(), myElement2.getState());
+		myElementPair = new ElementPair(myElement1, myElement2);
 	}
 
 	/**
@@ -85,15 +85,15 @@ public class ConditionFunctionalityTest {
 	public void testAttributeIncrimenting() {
 		Evaluator<?, ?, ?> evaluator = new AdditionAssignmentEvaluator<>(
 				myNumAttrParam, myNumberParam);
-		assertEquals(50d, myElement1.getState()
-				.getNumericalAttribute("Health"));
+		assertEquals(50d, myElement1
+				.getNumericAttribute("Health"));
 		evaluator.getValue(myElementPair);
-		assertEquals(60d, myElement1.getState()
-				.getNumericalAttribute("Health"));
+		assertEquals(60d, myElement1
+				.getNumericAttribute("Health"));
 		Evaluator<?,?,?> evaluator2 = new SubtractionAssignmentEvaluator<>(myNumAttrParam,myNumAttrParam);
 		evaluator2.getValue(myElementPair);
-		assertEquals(0d, myElement1.getState()
-                             .getNumericalAttribute("Health"));
+		assertEquals(0d, myElement1
+                             .getNumericAttribute("Health"));
 
 	}
 
@@ -102,8 +102,8 @@ public class ConditionFunctionalityTest {
 		Evaluator<?, ?, ?> evaluator = new EqualsAssignmentEvaluator<>(
 				myNumAttrParam, myNumberParam);
 		evaluator.getValue(myElementPair);
-		assertEquals(myNumberParam.getValue(), myElement1.getState()
-				.getNumericalAttribute("Health"));
+		assertEquals(myNumberParam.getValue(), myElement1
+				.getNumericAttribute("Health"));
 	}
 
 	@Test
@@ -112,19 +112,13 @@ public class ConditionFunctionalityTest {
 				myElementParam1, myElementParam2);
 		// First make sure the pre-set collision boxes collide
 		assertTrue((Boolean) (evaluator.getValue(myElementPair)));
-		// Now make sure if we give far away bounds, they don't intersect
-		double[] nonIntersectingBounds = { 100, 100, 200, 100, 200, 200, 100,
-				200 };
-		((DrawableGameElementState) myElement2.getState())
-				.setBounds(nonIntersectingBounds);
-		assertFalse((Boolean) (evaluator.getValue(myElementPair)));
-		// Now move the game element to the other bounds location and make sure
-		// they intersect
-		myElement1.getState().setNumericalAttribute(
+		// Now move the game element to the a far away location and make sure
+		// they don't intersect
+		myElement1.setNumericAttribute(
 				StateTags.X_POS_STRING, 100);
-		myElement1.getState().setNumericalAttribute(
+		myElement1.setNumericAttribute(
 				StateTags.Y_POS_STRING, 100);
-		assertTrue((Boolean) (evaluator.getValue(myElementPair)));
+		assertFalse((Boolean) (evaluator.getValue(myElementPair)));
 
 	}
 }

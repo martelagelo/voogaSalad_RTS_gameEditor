@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
  *
  */
 public class DrawableGameElement extends GameElement implements Displayable {
-
+    // TODO this must be removed...
     final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
@@ -43,23 +43,19 @@ public class DrawableGameElement extends GameElement implements Displayable {
      * 
      * @param element
      *        the state of the drawable element
+     * @param actions the actions map for the game element (Created by a factory to be passed into
+     *        the element)
      */
     public DrawableGameElement (DrawableGameElementState element,
-                                Map<String, List<Evaluatable<?>>> conditionActionPairs) {
-        super(element, conditionActionPairs);
+                                Map<String, List<Evaluatable<?>>> actions) {
+        super(element, actions);
         myCurrentAnimation = new NullAnimationSequence();
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();
-        // TODO uncomment. For testing only
-        try {
-            myAnimation =
-                    new AnimationPlayer(new Image(spritesheet.imageTag),
-                                        spritesheet.frameDimensions,
-                                        spritesheet.numCols);
-        }
-        catch (Exception e) {
-            // DO nothing
-        }
+        myAnimation =
+        new AnimationPlayer(new Image(spritesheet.imageTag),
+                                    spritesheet.frameDimensions,
+                                    spritesheet.numCols);
 
         myDisplay = new Group();
         myDisplayVBox = new VBox(1);
@@ -74,17 +70,6 @@ public class DrawableGameElement extends GameElement implements Displayable {
         }
 
     }
-    /**
-     * @return the animation that is currently being displayed by the state
-     */
-    public AnimationSequence getAnimation () {
-        return myCurrentAnimation;
-    }
-
-    // TODO remove these methods
-    public void setAnimation (String animationName) {
-        myCurrentAnimation = myState.getAnimation(animationName);
-    }
 
     /**
      * Update the drawable game element and its visual appearance.
@@ -98,6 +83,14 @@ public class DrawableGameElement extends GameElement implements Displayable {
         myAnimation.setAnimation(myCurrentAnimation);
         myAnimation.update();
     }
+    
+    /**
+     * Update the element's image location based on its x and y position
+     */
+    protected void updateImageLocation () {
+        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
+    }
 
     /**
      * Set the element's animation to a given sequence
@@ -110,10 +103,17 @@ public class DrawableGameElement extends GameElement implements Displayable {
     }
 
     /**
-     * @return the current state of the element
+     * @return the animation that is currently being displayed by the element
      */
-    public DrawableGameElementState getState () {
-        return myState;
+    public AnimationSequence getAnimation () {
+        return myCurrentAnimation;
+    }
+    /**
+     * Set the animation currently being played by the drawable game element to the animation with the given name
+     * @param animationName the name of the animation to set the current animation to
+     */
+    public void setAnimation (String animationName) {
+        myCurrentAnimation = myState.getAnimation(animationName);
     }
 
     /**
@@ -144,11 +144,10 @@ public class DrawableGameElement extends GameElement implements Displayable {
         return myState.getBounds();
     }
 
+    
+    //TODO from here down, remove this crap
     // TODO: Fix. Move logic into group
-    public void updateImageLocation () {
-        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
-    }
+    
 
     public Point2D getLocation () {
         // TODO move positions and fix

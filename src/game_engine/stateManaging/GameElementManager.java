@@ -2,10 +2,9 @@ package game_engine.stateManaging;
 
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
 import java.util.List;
@@ -19,7 +18,7 @@ import javafx.scene.input.MouseButton;
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
- * @author John, Steve, Michael D.
+ * @author John, Steve, Michael D., Zach
  *
  */
 public class GameElementManager implements Observer {
@@ -37,10 +36,10 @@ public class GameElementManager implements Observer {
      *        the name of the type of the game elements
      * @return all the game elements with the given type
      */
-    public List<GameElementState> findAllElementsOfType (String typeName) {
+    public List<GameElement> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
                 .filter(o -> o.getType().equals(typeName))
-                .map(o -> o.getState())
+                .map(o -> o)
                 .collect(Collectors.toList());
     }
 
@@ -56,7 +55,7 @@ public class GameElementManager implements Observer {
      */
     private void selectUnitsBox (double[] rectPoints, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
+            if (!e.getNumericAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)
@@ -69,7 +68,7 @@ public class GameElementManager implements Observer {
 
     private void selectUnitsClick (Point2D clickLoc, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
+            if (!e.getNumericAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)

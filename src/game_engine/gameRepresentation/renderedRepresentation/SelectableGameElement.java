@@ -3,10 +3,11 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.ScrollablePane;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class SelectableGameElement extends DrawableGameElement {
     // private SelectableGameElementState myState;
     // private Point2D heading;
     // private boolean selected;
-
+    protected Map<String, Set<DrawableGameElement>> myInteractingElements;
     // TODO temporary, should be in the attributes
     private double speed = 3;
 
@@ -58,20 +59,59 @@ public class SelectableGameElement extends DrawableGameElement {
     public SelectableGameElement (DrawableGameElementState element,
                                   Map<String, List<Evaluatable<?>>> conditionActionPairs) {
         super(element, conditionActionPairs);
+        myInteractingElements = new HashMap<>();
+        // Initialize the colliding elements to prevent null pointer exceptions
+        myInteractingElements.put("CollidingElements", new HashSet<>());
+        // TODO do the same thing for all other elements
         isSelected = false;
         headings = new LinkedList<Point2D>();
 
-        getState().setNumericalAttribute(X_VEL, 0);
-        getState().setNumericalAttribute(Y_VEL, 0);
+        setNumericAttribute(X_VEL, 0);
+        setNumericAttribute(Y_VEL, 0);
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @return the type of the element
-     */
     public String getType () {
-        return getState().getType();
-        // return myState.getType();
+        return getTextualAttribute(StateTags.TYPE_STRING);
+    }
+
+    /**
+     * Add an element that the game element is currently interacting with
+     * 
+     * @param elementType the type of element i.e. visible, colliding, etc
+     * @param element the element to be added
+     */
+    public void addInteractingElement (String elementType, DrawableGameElement element) {
+        Set<DrawableGameElement> elements = new HashSet<>();
+        Set<DrawableGameElement> oldElements = myInteractingElements.get(elementType);
+        if (oldElements != null) {
+            elements.addAll(myInteractingElements.get(elementType));
+        }
+        elements.add(element);
+        myInteractingElements.put(elementType, elements);
+    }
+
+    /**
+     * Add elements visible by the game element to be evaluated when the element updates due to
+     * visible objects
+     * 
+     * @param visibleElements the elements that are currently visible by the object
+     */
+    public void addVisibleElements (List<DrawableGameElement> visibleElements) {
+        for (DrawableGameElement element : visibleElements) {
+            addInteractingElement("VisibleElements", element);
+        }
+    }
+
+    /**
+     * Add elements that the selectable game element can collide with.
+     * 
+     * @param collidingElements the elements that will be evaluated on collision check
+     */
+    public void addCollidingElements (List<DrawableGameElement> collidingElements) {
+        for (DrawableGameElement element : collidingElements) {
+            addInteractingElement("CollidingElements", element);
+        }
     }
 
     /**
@@ -181,11 +221,11 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void move () {
         boolean canMove =
-                getState().getNumericalAttribute(StateTags.CAN_MOVE_STRING)
+                getNumericAttribute(StateTags.CAN_MOVE_STRING)
                         .intValue() == 1;
         if (!canMove) { return; }
         boolean randomMove =
-                getState().getNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING)
+                getNumericAttribute(StateTags.RANDOM_MOVEMENT_STRING)
                         .intValue() == 1;
         Random r = new Random();
         if (randomMove) {
@@ -208,20 +248,17 @@ public class SelectableGameElement extends DrawableGameElement {
                 if (delta.magnitude() > speed) {
                     delta = delta.normalize().multiply(speed);
                 }
-                getState().setNumericalAttribute(X_VEL, delta.getX());
-                getState().setNumericalAttribute(Y_VEL, delta.getY());
-                getState()
-                        .setNumericalAttribute(StateTags.X_POS_STRING,
-                                               getState()
-                                                       .getNumericalAttribute(StateTags.X_POS_STRING)
-                                                       .doubleValue() +
-                                                       delta.getX());
-                getState()
-                        .setNumericalAttribute(StateTags.Y_POS_STRING,
-                                               getState()
-                                                       .getNumericalAttribute(StateTags.Y_POS_STRING)
-                                                       .doubleValue() +
-                                                       delta.getY());
+                setNumericAttribute(X_VEL, delta.getX());
+                setNumericAttribute(Y_VEL, delta.getY());
+                setNumericAttribute(StateTags.X_POS_STRING,
+                                    getNumericAttribute(StateTags.X_POS_STRING)
+                                            .doubleValue() +
+                                            delta.getX());
+                setNumericAttribute(StateTags.Y_POS_STRING,
+
+                                    getNumericAttribute(StateTags.Y_POS_STRING)
+                                            .doubleValue() +
+                                            delta.getY());
                 updateImageLocation();
             }
             else {
@@ -248,12 +285,11 @@ public class SelectableGameElement extends DrawableGameElement {
     private void updateSelfDueToCollisions () {
         // System.out.println("Updating due to colliding objects");
         // TODO fix string literal
-        Set<DrawableGameElementState> elementsOfInterest =
-                ((SelectableGameElementState) (getState()))
-                        .getInteractingElements().get("CollidingElements");
+        Set<DrawableGameElement> elementsOfInterest =
+                myInteractingElements.get("CollidingElements");
         getActionsOfType("collision").forEachRemaining(action -> {
-            for (DrawableGameElementState element : elementsOfInterest) {
-                ElementPair elements = new ElementPair(getState(), element);
+            for (DrawableGameElement element : elementsOfInterest) {
+                ElementPair elements = new ElementPair(this, element);
                 if ((Boolean) action.getValue(elements)) {
                                                        return;
                                                        }
