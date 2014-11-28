@@ -236,7 +236,6 @@ public class MainModel extends Observable {
     }
 
     public void addGoal (WizardData data) {
-        System.out.println(data);
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
         System.out.println(goal);

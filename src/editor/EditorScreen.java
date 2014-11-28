@@ -127,6 +127,7 @@ public class EditorScreen extends GUIScreen {
             createNewTab(level);
         }
         //TODO: how do you switch the current level when you switch tabs??
+        // THIS REALLY NEEDS TO BE FIXED!
         try {
             myMainModel.setCurrentLevel("campaign name", level);
         }

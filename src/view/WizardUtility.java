@@ -10,8 +10,12 @@ import editor.wizards.Wizard;
 public class WizardUtility {
 
     public static Wizard loadWizard (String filePath, Dimension d) {
-        Wizard wiz = (Wizard) GUILoadStyleUtility.generateGUIPane(filePath);
+        GUILoadStyleUtility myLoadStyleUtility = GUILoadStyleUtility.getInstance();
+        Wizard wiz = (Wizard) GUILoadStyleUtility.generateGUIPane(filePath);       
         Scene myScene = new Scene((Parent) wiz.getRoot(), d.getWidth(), d.getHeight());
+        myLoadStyleUtility.setScene(myScene);
+        myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
+        myLoadStyleUtility.addStyle("./stylesheets/main.css");        
         Stage s = new Stage();
         s.setScene(myScene);
         s.show();   

@@ -3,9 +3,7 @@ package editor;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +36,7 @@ public class TabViewController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
-            Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(600, 300));
+            Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
                 myMainModel.addGoal(data);
                 wiz.getStage().close();
@@ -56,29 +54,30 @@ public class TabViewController extends GUIContainer {
     /**
      * This is the code required to filter the goals by type within the level goals view
      */
-    private void updateLevelTriggersView() {
+    private void updateLevelTriggersView () {
         List<GameElementState> goals = myMainModel.getCurrentLevel().getGoals();
         List<TriggerPair> triggers = new ArrayList<>();
-        for (GameElementState ges: goals) {
-            for (String actionType: ges.getActions().keySet()) {
-                for (String action: ges.getActions().get(actionType))  {
-                    triggers.add(new TriggerPair(actionType, action));
-                }
-            }
-        }
+        goals.forEach( (ges) -> {
+            ges.getActions().forEach( (actionType, actions) -> {
+                actions.forEach( (act) -> {
+                    triggers.add(new TriggerPair(actionType, act));
+                });
+            });
+        });
+
         levelTriggerController.updateTriggerList(triggers);
     }
-    
+
     public class TriggerPair {
         public String myActionType;
         public String myAction;
-        
-        public TriggerPair(String actionType, String action) {
+
+        public TriggerPair (String actionType, String action) {
             myActionType = actionType;
             myAction = action;
         }
     }
-    
+
     @Override
     public void init () {
         System.out.println(levelTriggerController == null);
