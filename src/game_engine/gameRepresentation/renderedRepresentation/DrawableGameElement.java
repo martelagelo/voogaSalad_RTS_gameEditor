@@ -6,6 +6,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
+import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
     protected VBox myDisplayVBox;
     private Image mySelectedImage;
     private ImageView mySelectedImageView;
+    private AnimationSequence myCurrentAnimation;
 
     /**
      * Create a drawable game element from the given state
@@ -45,6 +47,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
     public DrawableGameElement (DrawableGameElementState element,
                                 Map<String, List<Evaluatable<?>>> conditionActionPairs) {
         super(element, conditionActionPairs);
+        myCurrentAnimation = new NullAnimationSequence();
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();
         // TODO uncomment. For testing only
@@ -71,6 +74,17 @@ public class DrawableGameElement extends GameElement implements Displayable {
         }
 
     }
+    /**
+     * @return the animation that is currently being displayed by the state
+     */
+    public AnimationSequence getAnimation () {
+        return myCurrentAnimation;
+    }
+
+    // TODO remove these methods
+    public void setAnimation (String animationName) {
+        myCurrentAnimation = myState.getAnimation(animationName);
+    }
 
     /**
      * Update the drawable game element and its visual appearance.
@@ -81,7 +95,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
         // state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable.
-        myAnimation.setAnimation(myState.getAnimation());
+        myAnimation.setAnimation(myCurrentAnimation);
         myAnimation.update();
     }
 

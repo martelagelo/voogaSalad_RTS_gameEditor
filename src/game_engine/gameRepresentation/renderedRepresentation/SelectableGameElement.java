@@ -176,7 +176,7 @@ public class SelectableGameElement extends DrawableGameElement {
         else {
             animationString = ("stand_" + myDirection.toString()).toLowerCase();
         }
-        getState().setAnimation(animationString);
+        setAnimation(animationString);
     }
 
     private void move () {

@@ -100,7 +100,7 @@ public class ShittyMain extends Application {
                                                 new Dimension(294, 98), 14));
         archerState.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
 
-        /**
+        /*
          * TODO: we need to initialize these programmatically. Also, the animation should somehow
          * be applied to a type of unit, rather than to each unit individually.
          */
@@ -123,7 +123,7 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
-        archerState.setAnimation("walk_left");
+        //archerState.setAnimation("walk_left");
 
         archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING,
                                           randomMovement);
