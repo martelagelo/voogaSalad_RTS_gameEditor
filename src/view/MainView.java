@@ -46,7 +46,7 @@ public class MainView implements Observer {
         myMainModel = model;
         launchScreen(ViewScreen.SPLASH);
         myLoadStyleUtility = GUILoadStyleUtility.getInstance();
-        myLoadStyleUtility.setScene(myScene);
+        myLoadStyleUtility.addScene(myScene);
         myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
         myLoadStyleUtility.addStyle("./stylesheets/main.css");
     }

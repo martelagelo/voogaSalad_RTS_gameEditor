@@ -41,7 +41,6 @@ public abstract class GUIContainer implements Observer, GUIController {
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
         myChildContainers.forEach( (child) -> {
             child.setModel(myMainModel);
-            System.out.println("lalala");
         });
     }
 
