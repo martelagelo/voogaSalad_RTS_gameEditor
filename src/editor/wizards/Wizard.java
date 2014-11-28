@@ -63,7 +63,7 @@ public abstract class Wizard implements GUIController {
         mySaveConsumer = c;        
     }
     
-    protected void addToData(String key, String value) {
+    protected void addToData(WizardDataType key, String value) {
         userInput.addDataPair(key, value);
     }
     
@@ -71,8 +71,8 @@ public abstract class Wizard implements GUIController {
         userInput.addWizardData(wizData);
     }
     
-    protected void setDataName(String name) {
-        userInput.setName(name);
+    protected void setDataType(WizardDataType type) {
+        userInput.setType(type);
     }
     
     public abstract boolean checkCanSave();

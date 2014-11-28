@@ -190,17 +190,17 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.DRAWABLE_GAME_ELEMENT);
-        addToData(GameElementStateFactory.NAME, name.getText());
-        addToData(GameElementStateFactory.IMAGE, imagePath);
-        addToData(GameElementStateFactory.WIDTH, "" + imageView.getImage().getWidth());
-        addToData(GameElementStateFactory.HEIGHT, "" + imageView.getImage().getHeight());
-        addToData(GameElementStateFactory.FRAME_X, "" + (int) frameWidth.getValue());
-        addToData(GameElementStateFactory.FRAME_Y, "" + (int) frameHeight.getValue());
-        addToData(GameElementStateFactory.ROWS, numRows.getText());
-        addToData(GameElementStateFactory.START_FRAME, startFrame.getText());
-        addToData(GameElementStateFactory.STOP_FRAME, stopFrame.getText());
-        addToData(GameElementStateFactory.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));        
+        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+        addToData(WizardDataType.NAME, name.getText());
+        addToData(WizardDataType.IMAGE, imagePath);
+        addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
+        addToData(WizardDataType.HEIGHT, "" + imageView.getImage().getHeight());
+        addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
+        addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
+        addToData(WizardDataType.ROWS, numRows.getText());
+        addToData(WizardDataType.START_FRAME, startFrame.getText());
+        addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
+        addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));        
     }
 
 }

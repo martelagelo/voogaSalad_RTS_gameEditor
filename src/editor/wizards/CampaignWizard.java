@@ -1,6 +1,5 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -21,7 +20,7 @@ public class CampaignWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.CAMPAIGN);
-        addToData(GameElementStateFactory.NAME, name.getText());
+        setDataType(WizardDataType.CAMPAIGN);
+        addToData(WizardDataType.NAME, name.getText());
     }
 }

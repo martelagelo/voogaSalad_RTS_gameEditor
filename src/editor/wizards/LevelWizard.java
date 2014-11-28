@@ -1,6 +1,5 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -23,8 +22,8 @@ public class LevelWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.LEVEL);
-        addToData(GameElementStateFactory.CAMPAIGN, campaignName.getText());
-        addToData(GameElementStateFactory.NAME, levelName.getText());
+        setDataType(WizardDataType.LEVEL);
+        addToData(WizardDataType.CAMPAIGN, campaignName.getText());
+        addToData(WizardDataType.NAME, levelName.getText());
     }
 }

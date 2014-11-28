@@ -13,6 +13,7 @@ import view.GUIContainer;
 import view.WizardUtility;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
+import editor.wizards.WizardDataType;
 import gamemodel.GameElementStateFactory;
 
 
@@ -102,7 +103,7 @@ public class EditorMenuBarController extends GUIContainer {
         Wizard wiz = WizardUtility.loadWizard(LEVEL_WIZARD, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             try {
-                myMainModel.createLevel(data.getValueByKey(GameElementStateFactory.NAME), data.getValueByKey(GameElementStateFactory.CAMPAIGN));
+                myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME), data.getValueByKey(WizardDataType.CAMPAIGN));
                 wiz.getStage().close();
             }
             catch (Exception e1) {
@@ -116,7 +117,7 @@ public class EditorMenuBarController extends GUIContainer {
         Wizard wiz = WizardUtility.loadWizard(CAMPAIGN_WIZARD, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             try {
-                myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
+                myMainModel.createCampaign(data.getValueByKey(WizardDataType.NAME));
                 wiz.getStage().close();
             }
             catch (Exception e1) {

@@ -1,6 +1,5 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -23,8 +22,8 @@ public class StringAttributeWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.STRING_ATTRIBUTE);
-        addToData(GameElementStateFactory.ATTRIBUTE, key.getText());
-        addToData(GameElementStateFactory.VALUE, stringValue.getText());
+        setDataType(WizardDataType.STRING_ATTRIBUTE);
+        addToData(WizardDataType.ATTRIBUTE, key.getText());
+        addToData(WizardDataType.VALUE, stringValue.getText());
     }
 }
