@@ -43,6 +43,7 @@ public class GUILoadStyleUtility {
      */
     public void setScene (Scene scene) {
         myScene = scene;
+
     }
 
     /**

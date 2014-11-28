@@ -3,8 +3,10 @@ package game_engine.gameRepresentation.stateRepresentation;
 import util.JSONable;
 
 /**
+ * A state object that has a name and description. Essentially used to create states with associated
+ * name and description metadata.
  * 
- * @author Jonathan Tseng, Nishad Agrawal, Rahul
+ * @author Jonathan, Nishad, Rahul
  *
  */
 public abstract class DescribableState implements JSONable{
@@ -32,9 +34,9 @@ public abstract class DescribableState implements JSONable{
     public String getDescription () {
         return myDescription;
     }
-    
+
     @Override
-    public String toString() {
+    public String toString () {
         return getName();
     }
 
@@ -63,7 +65,5 @@ public abstract class DescribableState implements JSONable{
         else if (!myName.equals(other.myName)) return false;
         return true;
     }
-    
-    
 
 }

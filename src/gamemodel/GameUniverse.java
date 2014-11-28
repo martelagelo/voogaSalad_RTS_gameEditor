@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
 /**
  * Class that represents all possible elements that could make up a game. This
  * is a passive data structure/wrapper class** with no behavior.
@@ -89,18 +90,19 @@ public class GameUniverse {
         return (matches.size() != 0) ? matches.get(0) : null;
     }
 
-    public void addNumericalAttribute(Attribute<Number> number) {
+    public void addNumericalAttribute (Attribute<Number> number) {
         myNumericalAttributes.add(number);
     }
-    
-    public void addStringAttribute(Attribute<String> string) {
+
+    public void addStringAttribute (Attribute<String> string) {
         myStringAttributes.add(string);
     }
+
     public Set<Attribute<Number>> getNumericalAttributes () {
         return myNumericalAttributes;
     }
-    
-    public Set<Attribute<String>> getStringAttributes() {
+
+    public Set<Attribute<String>> getStringAttributes () {
         return myStringAttributes;
     }
 }

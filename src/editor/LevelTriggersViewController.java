@@ -69,7 +69,7 @@ public class LevelTriggersViewController implements GUIController {
 
     public void updateTriggerList (List<TriggerPair> triggers) {
         myTriggerList.clear();
-        triggers.forEach((trigger) -> myTriggerList.add(trigger.myCondition + "\n" + trigger.myAction));
+        triggers.forEach((trigger) -> myTriggerList.add(trigger.myActionType + "\n" + trigger.myAction));
     }
     
     private class TriggerListCell extends ListCell<String> {

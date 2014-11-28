@@ -1,6 +1,5 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;

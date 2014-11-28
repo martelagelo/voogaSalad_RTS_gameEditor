@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+
 /**
  * 
  * @author Joshua, Nishad
@@ -45,7 +46,7 @@ public class TerrainWizard extends DrawableGameElementWizard {
         super.initialize();
         image.setOnAction(i -> loadImage());
     }
-    
+
     @Override
     public boolean checkCanSave () {
         return super.checkCanSave() && image != null;

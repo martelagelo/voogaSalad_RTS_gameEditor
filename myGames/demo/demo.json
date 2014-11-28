@@ -1,0 +1,26 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [],
+          "myName": "level name",
+          "myDescription": ""
+        }
+      ],
+      "myName": "campaign name",
+      "myDescription": ""
+    }
+  ],
+  "myGameUniverse": {
+    "myNumericalAttributes": [],
+    "myStringAttributes": [],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": []
+  },
+  "myName": "demo",
+  "myDescription": ""
+}

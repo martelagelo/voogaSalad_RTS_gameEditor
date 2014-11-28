@@ -19,6 +19,7 @@ import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIController;
 
+
 /**
  * 
  * @author Nishad Agrawal
@@ -57,7 +58,7 @@ public class ElementDropDownController implements GUIController {
             System.out.println(e.toString());
         }
     }
-    
+
     private void initListView () {
         myElementsList = FXCollections.observableArrayList();
         myElementsMap = new HashMap<>();
@@ -72,7 +73,7 @@ public class ElementDropDownController implements GUIController {
                 .addListener(new ChangeListener<Number>() {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                            Number newValue) {
+                                         Number newValue) {
                         System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
                     }
                 });
@@ -105,7 +106,7 @@ public class ElementDropDownController implements GUIController {
     @Override
     public void initialize () {
         initListView();
-        initNewElementButton();        
+        initNewElementButton();
     }
-    
+
 }

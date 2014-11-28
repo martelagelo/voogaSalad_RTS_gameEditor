@@ -3,14 +3,13 @@ package editor;
 import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -126,6 +125,13 @@ public class EditorScreen extends GUIScreen {
         }
         else {
             createNewTab(level);
+        }
+        //TODO: how do you switch the current level when you switch tabs??
+        try {
+            myMainModel.setCurrentLevel("campaign name", level);
+        }
+        catch (DescribableStateException e) {
+            e.printStackTrace();
         }
         tabPane.getSelectionModel().select(myCurrentTab);
     }

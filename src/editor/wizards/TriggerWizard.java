@@ -12,19 +12,19 @@ import javafx.scene.control.TextField;
 public class TriggerWizard extends Wizard {
 
     @FXML
-    private TextField condition;
+    private TextField actionType;
     @FXML
-    private TextField action;       
-    
+    private TextField action;
+
     @Override
     public boolean checkCanSave () {
-        return !condition.getText().isEmpty() && !action.getText().isEmpty();
+        return !actionType.getText().isEmpty() && !action.getText().isEmpty();
     }
 
     @Override
     public void updateData () {
         setDataType(WizardDataType.TRIGGER);
-        addToData(WizardDataType.CONDITION, condition.getText());
+        addToData(WizardDataType.ACTIONTYPE, actionType.getText());
         addToData(WizardDataType.ACTION, action.getText());
     }
 

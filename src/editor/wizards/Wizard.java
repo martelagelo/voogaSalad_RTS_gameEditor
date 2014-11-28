@@ -21,12 +21,12 @@ public abstract class Wizard implements GUIController {
     protected SplitPane root;
     @FXML
     protected Button save;
-    
+
     @FXML
     protected Text errorMessage;
-    
-    private static final String ERROR = "CANNOT SAVE!"; 
-    
+
+    private static final String ERROR = "CANNOT SAVE!";
+
     private Consumer<WizardData> mySaveConsumer;
     private WizardData userInput;
     private Stage myStage;
@@ -42,16 +42,17 @@ public abstract class Wizard implements GUIController {
     }
 
     @Override
-    public void initialize () {        
+    public void initialize () {
         userInput = new WizardData();
-        mySaveConsumer = (userInput) -> {}; 
+        mySaveConsumer = (userInput) -> {
+        };
         save.setOnAction(e -> save());
     }
     
     private void save() {       
         if (checkCanSave()) {
             updateData();
-            
+
             mySaveConsumer.accept(userInput);
         }
         else {
@@ -60,7 +61,7 @@ public abstract class Wizard implements GUIController {
     }
 
     public void setSubmit (Consumer<WizardData> c) {
-        mySaveConsumer = c;        
+        mySaveConsumer = c;
     }
     
     protected void addToData(WizardDataType key, String value) {
@@ -80,10 +81,11 @@ public abstract class Wizard implements GUIController {
     public abstract void updateData();
     
     private void displayWarning() {
+
         errorMessage.setText(ERROR);
     }
-    
-    public WizardData getWizardData() {
+
+    public WizardData getWizardData () {
         return userInput;
     }
     

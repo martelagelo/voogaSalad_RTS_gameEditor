@@ -1,7 +1,9 @@
 package editor;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
@@ -48,25 +50,31 @@ public class TabViewController extends GUIContainer {
 
     @Override
     public void update () {
-        System.out.println("here");
         updateLevelTriggersView();
     }
 
+    /**
+     * This is the code required to filter the goals by type within the level goals view
+     */
     private void updateLevelTriggersView() {
         List<GameElementState> goals = myMainModel.getCurrentLevel().getGoals();
-        List<TriggerPair> triggers = goals.stream().map((element) -> {
-            //TODO: fix this to actually get the goals
-            return new TriggerPair("cond", "action");
-        }).collect(Collectors.toList());
+        List<TriggerPair> triggers = new ArrayList<>();
+        for (GameElementState ges: goals) {
+            for (String actionType: ges.getActions().keySet()) {
+                for (String action: ges.getActions().get(actionType))  {
+                    triggers.add(new TriggerPair(actionType, action));
+                }
+            }
+        }
         levelTriggerController.updateTriggerList(triggers);
     }
     
     public class TriggerPair {
-        public String myCondition;
+        public String myActionType;
         public String myAction;
         
-        public TriggerPair(String condition, String action) {
-            myCondition = condition;
+        public TriggerPair(String actionType, String action) {
+            myActionType = actionType;
             myAction = action;
         }
     }

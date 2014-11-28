@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
+
 /**
  * 
  * @author Nishad Agrawal
@@ -33,6 +34,10 @@ public class WizardData {
 
     public void addWizardData (WizardData wizData) {
         myWizards.add(wizData);
+    }
+
+    public Map<WizardDataType, String> getData () {
+        return myData;
     }
 
     public List<WizardData> getWizards () {

@@ -12,7 +12,7 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<TextField fx:id="condition" />
+					<TextField fx:id="actionType" />
 					<TextField fx:id="action" />
 					<Button fx:id="save" text="save" />
 					<Text fx:id="errorMessage" />

@@ -10,7 +10,7 @@ public enum WizardDataType {
     ATTRIBUTE,
     VALUE,
     TRIGGER,
-    CONDITION,
+    ACTIONTYPE,
     ACTION,
     CAMPAIGN,
     LEVEL,

@@ -83,6 +83,7 @@ public class DescribableInfoBoxController implements GUIController {
 
     @Override
     public void initialize () {
+
         // initIconFileChoosing();
         initLabelInputSwitching();
         try {
