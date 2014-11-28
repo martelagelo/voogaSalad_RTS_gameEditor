@@ -2,7 +2,6 @@ package game_engine.gameRepresentation.evaluatables.evaluators;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import javafx.scene.shape.Polygon;

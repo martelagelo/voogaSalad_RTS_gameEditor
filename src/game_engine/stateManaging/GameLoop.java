@@ -16,13 +16,13 @@ import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.MiniMap;
 import game_engine.visuals.VisualManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -33,7 +33,7 @@ import javafx.util.Duration;
 
 /**
  * The main loop for running the game, checking for collisions, and updating game entities
- * 
+ *
  * @author Michael D., John, Steve, Zach
  *
  */
@@ -102,9 +102,9 @@ public class GameLoop {
                 new IfThenEvaluator<>(collisionEvaluator, reverseMotionEvaluator);
 
         myCurrentLevel
-                .getUnits()
-                .stream()
-                .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
+        .getUnits()
+        .stream()
+        .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
 
     }
 
@@ -127,7 +127,7 @@ public class GameLoop {
                 new ArrayList<DrawableGameElement>();
         // TODO add stream that collects into objects
         allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
-            return (DrawableGameElement) element;
+            return element;
         }).collect(Collectors.toList()));
         // allElements.addAll(myCurrentLevel.getTerrain());
         // TODO fix this logic
@@ -147,16 +147,16 @@ public class GameLoop {
         for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
             unitPaths.addAll(SGE.getLines());
         }
-        this.myVisualManager.getBackground().getChildren().addAll(unitPaths);
+        myVisualManager.getBackground().getChildren().addAll(unitPaths);
     }
 
     private void clearLinesFromRoot () {
-        this.myVisualManager.getBackground().getChildren().removeAll(unitPaths);
+        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
         unitPaths.clear();
     }
 
     private void startTimeline (KeyFrame frame) {
-        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
