@@ -74,8 +74,9 @@ public class ShittyMain extends Application {
         model.newGame("TestGame");
         model.createCampaign("TestCampaign");
         model.createLevel("TestLevel", "TestCampaign");
+        model.setCurrentLevel("TestCampaign", "TestLevel");
         LevelState levelState = model.getCurrentLevel();
-
+        
         for (DrawableGameElementState s : grassTerrain) {
             levelState.addTerrain(s);
         }
