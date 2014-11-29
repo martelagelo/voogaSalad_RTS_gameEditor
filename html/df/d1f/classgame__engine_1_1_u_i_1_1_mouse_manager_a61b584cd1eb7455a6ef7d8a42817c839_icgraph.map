@@ -1,0 +1,4 @@
+<map id="game_engine.UI.MouseManager.getMapLoc" name="game_engine.UI.MouseManager.getMapLoc">
+<area shape="rect" id="node2" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#ae79c9b0043661436e66328a1c1dc1f2a" title="game_engine.visuals.Selection\lBox.update" alt="" coords="307,5,525,46"/>
+<area shape="rect" id="node3" href="$dd/de3/classgame__engine_1_1state_managing_1_1_game_element_manager.html#aa5343ba444c194f0a7427a68b69bb50b" title="game_engine.stateManaging.\lGameElementManager.update" alt="" coords="307,70,525,111"/>
+</map>

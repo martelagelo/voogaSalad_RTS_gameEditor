@@ -1,0 +1,5 @@
+<map id="view.SplashScreen.initialize" name="view.SplashScreen.initialize">
+<area shape="rect" id="node2" href="$d0/df3/classview_1_1_g_u_i_screen.html#ad0cee19a695601f8f3534b2f61880cd8" title="view.GUIScreen.switchScreen" alt="" coords="248,5,456,32"/>
+<area shape="rect" id="node3" href="$d1/d75/classview_1_1_main_view.html#aa7bef8e36cefa579d2123e2eeba859e7" title="view.MainView.launchScreen" alt="" coords="505,5,706,32"/>
+<area shape="rect" id="node4" href="$d3/de6/enumview_1_1_view_screen.html#a54b22a66be15917327d5baa8e230a5e0" title="view.ViewScreen.getFilePath" alt="" coords="755,5,954,32"/>
+</map>

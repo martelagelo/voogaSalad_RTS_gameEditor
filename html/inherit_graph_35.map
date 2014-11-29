@@ -1,0 +1,23 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$d5/d26/classgame__engine_1_1game_representation_1_1evaluatables_1_1parameters_1_1exceptions_1_1_bad_parameter_format_exception.html" title="game_engine.gameRepresentation.evaluatables.parameters.exceptions.\lBadParameterFormatException" alt="" coords="139,5,626,46"/>
+<area shape="rect" id="node3" href="$d7/dac/classgame__requests_1_1forwarding_1_1_address_conflict_exception.html" title="game_requests.forwarding.\lAddressConflictException" alt="" coords="285,70,481,111"/>
+<area shape="rect" id="node4" href="$d3/dbf/classgame__requests_1_1forwarding_1_1_delivery_exception.html" title="game_requests.forwarding.\lDeliveryException" alt="" coords="285,135,481,177"/>
+<area shape="rect" id="node5" href="$d8/d13/classgame__requests_1_1forwarding_1_1_invalid_address_exception.html" title="game_requests.forwarding.\lInvalidAddressException" alt="" coords="285,201,481,242"/>
+<area shape="rect" id="node6" href="$d4/d6c/classgame__requests_1_1forwarding_1_1_receiver_not_found_exception.html" title="game_requests.forwarding.\lReceiverNotFoundException" alt="" coords="283,266,482,307"/>
+<area shape="rect" id="node7" href="$d3/da5/classgame__requests_1_1receiving_1_1_unknown_sender_exception.html" title="game_requests.receiving.\lUnknownSenderException" alt="" coords="289,331,477,373"/>
+<area shape="rect" id="node8" href="$d7/dce/classgamemodel_1_1exceptions_1_1_describable_state_exception.html" title="gamemodel.exceptions.Describable\lStateException" alt="" coords="257,397,508,438"/>
+<area shape="rect" id="node15" href="$d1/dcc/classutil_1_1multilanguage_1_1_language_exception.html" title="util.multilanguage.Language\lException" alt="" coords="281,462,484,503"/>
+<area shape="rect" id="node18" href="$d5/dc2/classvooga_1_1request_1_1forwarder_1_1_address_conflict_exception.html" title="vooga.request.forwarder.\lAddressConflictException" alt="" coords="291,527,474,569"/>
+<area shape="rect" id="node19" href="$df/d8d/classvooga_1_1request_1_1forwarder_1_1_delivery_exception.html" title="vooga.request.forwarder.\lDeliveryException" alt="" coords="292,593,473,634"/>
+<area shape="rect" id="node20" href="$db/df8/classvooga_1_1request_1_1forwarder_1_1_invalid_address_exception.html" title="vooga.request.forwarder.\lInvalidAddressException" alt="" coords="292,658,473,699"/>
+<area shape="rect" id="node21" href="$d3/db2/classvooga_1_1request_1_1forwarder_1_1_receiver_not_found_exception.html" title="vooga.request.forwarder.\lReceiverNotFoundException" alt="" coords="283,723,482,765"/>
+<area shape="rect" id="node22" href="$dc/d70/classvooga_1_1request_1_1receiver_1_1_unknown_sender_exception.html" title="vooga.request.receiver.Unknown\lSenderException" alt="" coords="267,789,498,830"/>
+<area shape="rect" id="node9" href="$de/d88/classgamemodel_1_1exceptions_1_1_describable_state_exists_exception.html" title="gamemodel.exceptions.Describable\lStateExistsException" alt="" coords="675,331,925,373"/>
+<area shape="rect" id="node12" href="$d1/dfd/classgamemodel_1_1exceptions_1_1_describable_state_not_found_exception.html" title="gamemodel.exceptions.Describable\lStateNotFoundException" alt="" coords="675,397,925,438"/>
+<area shape="rect" id="node10" href="$d5/d12/classgamemodel_1_1exceptions_1_1_campaign_exists_exception.html" title="gamemodel.exceptions.Campaign\lExistsException" alt="" coords="974,266,1215,307"/>
+<area shape="rect" id="node11" href="$d0/dc6/classgamemodel_1_1exceptions_1_1_level_exists_exception.html" title="gamemodel.exceptions.Level\lExistsException" alt="" coords="990,331,1199,373"/>
+<area shape="rect" id="node13" href="$dd/d09/classgamemodel_1_1exceptions_1_1_campaign_not_found_exception.html" title="gamemodel.exceptions.Campaign\lNotFoundException" alt="" coords="974,397,1215,438"/>
+<area shape="rect" id="node14" href="$df/d98/classgamemodel_1_1exceptions_1_1_level_not_found_exception.html" title="gamemodel.exceptions.Level\lNotFoundException" alt="" coords="990,462,1199,503"/>
+<area shape="rect" id="node16" href="$d8/d15/classutil_1_1multilanguage_1_1_language_not_found_exception.html" title="util.multilanguage.Language\lNotFoundException" alt="" coords="699,462,901,503"/>
+<area shape="rect" id="node17" href="$d4/d8b/classutil_1_1multilanguage_1_1_language_property_not_found_exception.html" title="util.multilanguage.Language\lPropertyNotFoundException" alt="" coords="699,527,901,569"/>
+</map>

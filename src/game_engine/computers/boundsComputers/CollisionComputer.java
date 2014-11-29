@@ -62,7 +62,7 @@ public class CollisionComputer extends
         if (listToAdd.size() > 0) {
         }
         ((SelectableGameElement) primaryObject)
-                .addCollidingElements(listToAdd.stream()
+                .addInteractingElements("colliding", listToAdd.stream()
                         .map(element -> (DrawableGameElement) element)
                         .collect(Collectors.toList()));
     }

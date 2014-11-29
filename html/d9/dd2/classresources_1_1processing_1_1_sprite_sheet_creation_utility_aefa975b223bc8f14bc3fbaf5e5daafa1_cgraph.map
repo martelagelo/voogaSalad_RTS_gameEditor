@@ -1,0 +1,5 @@
+<map id="resources.processing.SpriteSheetCreationUtility.doThing" name="resources.processing.SpriteSheetCreationUtility.doThing">
+<area shape="rect" id="node2" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a7944b8ceeed609bbff127bec6a4b2f8f" title="resources.processing.Sprite\lSheetCreationUtility.colorToTransparency" alt="" coords="256,5,536,46"/>
+<area shape="rect" id="node4" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#af00d36c8b68ca95a9167b0f1590b76e3" title="resources.processing.Sprite\lSheetCreationUtility.loadFilesIn\lDirectory" alt="" coords="287,69,505,125"/>
+<area shape="rect" id="node3" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#ac7065c30f43eb99d193b97c6fa419b68" title="resources.processing.Sprite\lSheetCreationUtility.toBufferedImage" alt="" coords="584,5,843,46"/>
+</map>

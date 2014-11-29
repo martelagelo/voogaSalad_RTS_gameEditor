@@ -48,7 +48,7 @@ public class GameElementState implements JSONable {
     public GameElementState () {
         myNumericalAttributes = new HashSet<>();
         myTextualAttributes = new HashSet<>();
-        myActions = new HashMap<>();
+        myActions = new HashMap<String, List<String>>();
     }
 
     /**
@@ -149,5 +149,13 @@ public class GameElementState implements JSONable {
             myActions.put(actionType, new ArrayList<>());
         }
         myActions.get(actionType).add(actionString);
+    }
+    
+    /**
+     * Grabs all actions for use in evaluatable factory.
+     * @return
+     */
+    public Map<String, List<String>> getActions(){
+        return myActions;
     }
 }

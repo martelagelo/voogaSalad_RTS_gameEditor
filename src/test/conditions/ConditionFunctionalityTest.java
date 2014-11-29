@@ -3,8 +3,10 @@ package test.conditions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import game_engine.elementFactories.GameElementFactory;
 import game_engine.gameRepresentation.evaluatables.Action;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
+import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
 import game_engine.gameRepresentation.evaluatables.evaluators.AddEvaluatableEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.AdditionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
@@ -25,7 +27,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
-import java.util.HashMap;
+import gamemodel.GameUniverse;
 import java.util.Iterator;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +37,7 @@ import org.junit.Test;
  * A class used to test the construction and functionality of conditions and
  * actions
  * 
- * @author Zach
+ * @author Zach, Steve
  *
  */
 public class ConditionFunctionalityTest {
@@ -52,6 +54,8 @@ public class ConditionFunctionalityTest {
      */
     @Before
     public void initialize () {
+        // TODO: add universe
+        GameElementFactory myFactory = new GameElementFactory(new GameUniverse(), new EvaluatableFactory());
         // Make a spritesheet to prevent error throwing
         Spritesheet spritesheet =
                 new Spritesheet("resources/img/Red_Arrow_Down.png", new Dimension(50, 50), 1);
@@ -61,13 +65,13 @@ public class ConditionFunctionalityTest {
         state1.setNumericalAttribute("Health", 50d);
         double[] bounds1 = { 0, 0, 0, 10, 10, 10, 10, 0 };
         state1.setBounds(bounds1);
-        myElement1 = new DrawableGameElement(state1, new HashMap<>());
+        myElement1 = myFactory.createDrawableGameElement(state1);
         DrawableGameElementState state2 = new DrawableGameElementState(0, 0);
         state2.setNumericalAttribute("Health", 20d);
         double[] bounds2 = { 0, 0, 0, 1, 1, 1, 1, 0 };
         state2.setSpritesheet(spritesheet);
         state2.setBounds(bounds2);
-        myElement2 = new DrawableGameElement(state2, new HashMap<>());
+        myElement2 = myFactory.createDrawableGameElement(state2);
         myNumAttrParam = new NumericAttributeParameter("", "Health", null,
                                                        new ActorObjectIdentifier());
         myNumberParam = new NumberParameter("", 10d);
@@ -102,15 +106,15 @@ public class ConditionFunctionalityTest {
                 new AdditionAssignmentEvaluator<>("",
                                                   myNumAttrParam, myNumberParam);
         assertEquals(50d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
         evaluator.evaluate(myElementPair);
         assertEquals(60d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
         Evaluator<?, ?, ?> evaluator2 =
                 new SubtractionAssignmentEvaluator<>("", myNumAttrParam, myNumAttrParam);
         evaluator2.evaluate(myElementPair);
         assertEquals(0d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
 
     }
 
@@ -121,7 +125,7 @@ public class ConditionFunctionalityTest {
                                                 myNumAttrParam, myNumberParam);
         evaluator.evaluate(myElementPair);
         assertEquals(myNumberParam.evaluate(), myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
     }
 
     @Test
@@ -132,9 +136,9 @@ public class ConditionFunctionalityTest {
         assertTrue((Boolean) (evaluator.evaluate(myElementPair)));
         // Now move the game element to the a far away location and make sure
         // they don't intersect
-        myElement1.setNumericAttribute(
+        myElement1.setNumericalAttribute(
                                        StateTags.X_POS_STRING, 100);
-        myElement1.setNumericAttribute(
+        myElement1.setNumericalAttribute(
                                        StateTags.Y_POS_STRING, 100);
         assertFalse((Boolean) (evaluator.evaluate(myElementPair)));
 

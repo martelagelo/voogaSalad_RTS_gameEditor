@@ -1,0 +1,30 @@
+{
+    "evaluators": {
+        "ADD_ACTION": "AddEvaluatableEvaluator",
+        "+=": "AdditionAssignmentEvaluator",
+        "&&": "AndEvaluator",
+        "collidesWith": "CollisionEvaluator",
+        "=": "EqualsAssignmentEvaluator",
+        "==": "EqualsEvaluator",
+        ">=": "GreaterThanEqualEvaluator",
+        ">": "GreaterThanEvaluator",
+        "IFTHEN": "IfThenEvaluator",
+        "<=": "LessThanEqualEvaluator",
+        "<": "LessThanEvaluator",
+        "*": "MultiplicationEvaluator",
+        "!=": "NotEqualsEvaluator",
+        "||": "OrEvaluator",
+        "REMOVE_EVALUATOR": "RemoveEvaluatableEvaluator",
+        "setAnimation": "SetAnimationEvaluator",
+        "-=": "SubtractionAssignmentEvaluator"
+    },
+    "parameters": {
+        "string": "StringAttributeParameter",
+        "number": "NumericAttributeParameter",
+        "self": "GameElementParameter"
+    },
+    "identifiers": {
+        "this": "ActorObjectIdentifier",
+        "other": "ActeeObjectIdentifier"
+    }
+}
