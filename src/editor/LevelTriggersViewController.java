@@ -41,7 +41,7 @@ public class LevelTriggersViewController implements GUIController {
     }
     
     public void setOnSelectedAction (Consumer<Consumer<WizardData>> consumer) {
-        levelTriggers.setOnAction(e -> consumer.accept(null));
+//        levelTriggers.setOnAction(e -> consumer.accept(null));
     }
 
     @Override
