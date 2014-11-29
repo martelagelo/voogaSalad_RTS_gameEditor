@@ -16,10 +16,10 @@ public class StringAttributeParameter extends AttributeParameter<String> {
     /**
      * @see AttributeParameter
      */
-    public StringAttributeParameter (String attributeTag,
+    public StringAttributeParameter (String id, String attributeTag,
                                      GameElementManager manager,
                                      ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(String.class, attributeTag, manager, objectOfInterestIdentifier);
+        super(String.class, id, attributeTag, manager, objectOfInterestIdentifier);
     }
 
     /**

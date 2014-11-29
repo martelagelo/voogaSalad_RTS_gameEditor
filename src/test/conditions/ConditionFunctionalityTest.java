@@ -9,7 +9,9 @@ import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator
 import game_engine.gameRepresentation.evaluatables.evaluators.EqualsAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.LessThanEvaluator;
+import game_engine.gameRepresentation.evaluatables.evaluators.RemoveEvaluatableEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
+import game_engine.gameRepresentation.evaluatables.parameters.EvaluatableIDParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumberParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
@@ -21,6 +23,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -62,12 +65,12 @@ public class ConditionFunctionalityTest {
         state2.setSpritesheet(spritesheet);
         state2.setBounds(bounds2);
         myElement2 = new DrawableGameElement(state2, new HashMap<>());
-        myNumAttrParam = new NumericAttributeParameter("Health", null,
+        myNumAttrParam = new NumericAttributeParameter("", "Health", null,
                                                        new ActorObjectIdentifier());
-        myNumberParam = new NumberParameter(10d);
-        myElementParam1 = new GameElementParameter(new ActorObjectIdentifier(),
+        myNumberParam = new NumberParameter("", 10d);
+        myElementParam1 = new GameElementParameter("", new ActorObjectIdentifier(),
                                                    null);
-        myElementParam2 = new GameElementParameter(new ActeeObjectIdentifier(),
+        myElementParam2 = new GameElementParameter("", new ActeeObjectIdentifier(),
                                                    null);
         myElementPair = new ElementPair(myElement1, myElement2);
     }
@@ -78,9 +81,9 @@ public class ConditionFunctionalityTest {
      */
     @Test
     public void testGenericTypeIdentification () {
-        NumberParameter testParam = new NumberParameter(Double.valueOf(49));
-        NumberParameter testParam2 = new NumberParameter(Double.valueOf(50));
-        Evaluator<?, ?, ?> evaluator = new LessThanEvaluator<>(testParam,
+        NumberParameter testParam = new NumberParameter("", Double.valueOf(49));
+        NumberParameter testParam2 = new NumberParameter("", Double.valueOf(50));
+        Evaluator<?, ?, ?> evaluator = new LessThanEvaluator<>("", testParam,
                                                                testParam2);
         assertTrue((Boolean) evaluator.getValue());
         testParam.setValue(52d);
@@ -93,7 +96,7 @@ public class ConditionFunctionalityTest {
     @Test
     public void testAttributeIncrimenting () {
         Evaluator<?, ?, ?> evaluator =
-                new AdditionAssignmentEvaluator<>(
+                new AdditionAssignmentEvaluator<>("",
                                                   myNumAttrParam, myNumberParam);
         assertEquals(50d, myElement1
                 .getNumericAttribute("Health"));
@@ -101,7 +104,7 @@ public class ConditionFunctionalityTest {
         assertEquals(60d, myElement1
                 .getNumericAttribute("Health"));
         Evaluator<?, ?, ?> evaluator2 =
-                new SubtractionAssignmentEvaluator<>(myNumAttrParam, myNumAttrParam);
+                new SubtractionAssignmentEvaluator<>("", myNumAttrParam, myNumAttrParam);
         evaluator2.getValue(myElementPair);
         assertEquals(0d, myElement1
                 .getNumericAttribute("Health"));
@@ -111,7 +114,7 @@ public class ConditionFunctionalityTest {
     @Test
     public void testValueAssignment () {
         Evaluator<?, ?, ?> evaluator =
-                new EqualsAssignmentEvaluator<>(
+                new EqualsAssignmentEvaluator<>("",
                                                 myNumAttrParam, myNumberParam);
         evaluator.getValue(myElementPair);
         assertEquals(myNumberParam.getValue(), myElement1
@@ -120,7 +123,7 @@ public class ConditionFunctionalityTest {
 
     @Test
     public void testCollisions () {
-        Evaluator<?, ?, ?> evaluator = new CollisionEvaluator<>(
+        Evaluator<?, ?, ?> evaluator = new CollisionEvaluator<>("",
                                                                 myElementParam1, myElementParam2);
         // First make sure the pre-set collision boxes collide
         assertTrue((Boolean) (evaluator.getValue(myElementPair)));
@@ -132,5 +135,44 @@ public class ConditionFunctionalityTest {
                                        StateTags.Y_POS_STRING, 100);
         assertFalse((Boolean) (evaluator.getValue(myElementPair)));
 
+    }
+
+    /**
+     * Test the addition of an action to an element then a removal of said element
+     */
+    @Test
+    public void testRemoveAction () {
+        // Add and remove an element
+        NumberParameter testParam = new NumberParameter("asdasdf", Double.valueOf(49));
+        NumberParameter testParam2 = new NumberParameter("asdasdf", Double.valueOf(50));
+        Evaluator<?, ?, ?> evaluator = new LessThanEvaluator<>("asdasdf", testParam,
+                                                               testParam2);
+        myElement1.addAction("test", evaluator);
+        assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
+        EvaluatableIDParameter param = new EvaluatableIDParameter("asdasdf");
+        Evaluator<?, ?, ?> removeAction =
+                new RemoveEvaluatableEvaluator<>("otherRandomString", myElementParam1, param);
+        removeAction.getValue(myElementPair);
+        assertEquals(0, countIteratorElements(myElement1.getActionsOfType("test")));
+        // Add an element and try to remove an element that doesn't exist
+        myElement1.addAction("test", evaluator);
+        EvaluatableIDParameter param2 = new EvaluatableIDParameter("hello");
+        Evaluator<?, ?, ?> removeAction2 =
+                new RemoveEvaluatableEvaluator<>("", myElementParam1, param2);
+        removeAction2.getValue(myElementPair);
+        assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
+
+    }
+
+    /**
+     * Count the number of elements in a given iterator
+     */
+    private int countIteratorElements (Iterator<?> iterator) {
+        int count = 0;
+        while (iterator.hasNext()) {
+            count++;
+            iterator.next();
+        }
+        return count;
     }
 }

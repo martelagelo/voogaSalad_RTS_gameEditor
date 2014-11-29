@@ -33,6 +33,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * @param type
      *        the return type of the evaluator. Used to bypass Java generic
      *        type erasure
+     * @param id an id used by all leaves of an evaluatable tree to reference the tree as a whole
      * @param evaluatorRepresentation
      *        the representation of the evaluator e.g. "<=", "==","+="
      * @param elementManager
@@ -44,9 +45,9 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      *        a string representation of the parameter on the right side of
      *        the evaluator
      */
-    public Evaluator (Class<T> type, String evaluatorRepresentation,
+    public Evaluator (Class<T> type, String id, String evaluatorRepresentation,
                       Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
-        super(type);
+        super(type, id);
         myEvaluatorRepresentation = evaluatorRepresentation;
         myParameter1 = parameter1;
         myParameter2 = parameter2;
@@ -89,6 +90,13 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
     }
 
     /**
+     * Evaluate on one game element and one string
+     */
+    protected T evaluate (GameElement item1, String item2) {
+        return null;
+    }
+
+    /**
      * Evaluate the evaluator on the element pair
      *
      * @param elements
@@ -106,7 +114,10 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
     /**
      * A method that delegates the public evaluate method to private evaluate
      * methods with given casting. This method is messy but is the only way to
-     * work around generic erasure and compile-time typing by java.
+     * work around generic erasure and compile-time typing by java. This method, although messy,
+     * allows for a powerful design pattern to work for the rest of the code and was included in
+     * order to take a hit in terms of ugly code to allow other code to allow other code to be
+     * cleaner.
      * 
      * @param parameter1Value
      *        the value of the first parameter
@@ -121,9 +132,11 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
         if (type1.equals(Number.class) && type2.equals(Number.class)) { return evaluate((Number) parameter1Value,
                                                                                         (Number) parameter2Value); }
         if (type1.equals(GameElement.class) && type2.equals(GameElement.class)) { return evaluate((GameElement) parameter1Value,
-                                                                                                            (GameElement) parameter2Value); }
+                                                                                                  (GameElement) parameter2Value); }
         if (type1.equals(Boolean.class) && type2.equals(Boolean.class)) { return evaluate((Boolean) parameter1Value,
                                                                                           (Boolean) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(String.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                             (String) parameter2Value); }
         return evaluate(parameter1Value, parameter2Value);
     }
 

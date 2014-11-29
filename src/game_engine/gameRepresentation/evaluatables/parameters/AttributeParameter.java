@@ -30,10 +30,10 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
      * @param objectOfInterestIdentifier
      *        an identifier that will return an object of interest
      */
-    public AttributeParameter (Class<T> type, String attributeTag,
+    public AttributeParameter (Class<T> type, String id, String attributeTag,
                                GameElementManager manager,
                                ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(type);
+        super(type, id);
         myAttributeTag = attributeTag;
         myManager = manager;
         myObjectIdentifier = objectOfInterestIdentifier;
@@ -50,10 +50,11 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
      * @param elementTag
      */
     public AttributeParameter (Class<T> type, String attributeTag,
+                               String id,
                                GameElementManager manager,
                                ObjectOfInterestIdentifier objectOfInterestIdentifier,
                                String elementTag) {
-        this(type, attributeTag, manager, objectOfInterestIdentifier);
+        this(type, id, attributeTag, manager, objectOfInterestIdentifier);
         myElementTag = elementTag;
     }
 

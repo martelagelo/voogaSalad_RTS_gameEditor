@@ -17,8 +17,8 @@ public class StringParameter extends Parameter<String> {
 	 *
 	 * @param value
 	 */
-	public StringParameter(String string) {
-		super(String.class);
+	public StringParameter(String id,String string) {
+		super(String.class,id);
 		myString = string;
 	}
 

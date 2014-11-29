@@ -14,9 +14,9 @@ import javafx.scene.shape.Polygon;
  */
 public class CollisionEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
-    public CollisionEvaluator (Evaluatable<A> parameter1,
+    public CollisionEvaluator (String id, Evaluatable<A> parameter1,
                                Evaluatable<B> parameter2) {
-        super(Boolean.class, "collidesWith", parameter1, parameter2);
+        super(Boolean.class, id, "collidesWith", parameter1, parameter2);
     }
 
     @Override

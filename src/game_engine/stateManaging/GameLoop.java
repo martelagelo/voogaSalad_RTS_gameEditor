@@ -76,35 +76,37 @@ public class GameLoop {
 
     private void addColisionEvents () {
         Evaluatable<?> objectParameter1 =
-                new GameElementParameter(new ActeeObjectIdentifier(), null);
+                new GameElementParameter("", new ActeeObjectIdentifier(), null);
         Evaluatable<?> objectParameter2 =
-                new GameElementParameter(new ActorObjectIdentifier(), null);
+                new GameElementParameter("", new ActorObjectIdentifier(), null);
         Evaluator<?, ?, Boolean> collisionEvaluator =
-                new CollisionEvaluator<>(objectParameter1, objectParameter2);
+                new CollisionEvaluator<>("", objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter(StateTags.X_POS_STRING,
+                new NumericAttributeParameter("", StateTags.X_POS_STRING,
                                               null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
-                new NumericAttributeParameter(StateTags.Y_POS_STRING, null,
+                new NumericAttributeParameter("", StateTags.Y_POS_STRING, null,
                                               new ActorObjectIdentifier());
-        Evaluatable<?> xVelocity = new NumericAttributeParameter(SelectableGameElement.X_VEL, null,
-                                                                 new ActorObjectIdentifier());
-        Evaluatable<?> yVelocity = new NumericAttributeParameter(SelectableGameElement.Y_VEL, null,
-                                                                 new ActorObjectIdentifier());
+        Evaluatable<?> xVelocity =
+                new NumericAttributeParameter("", SelectableGameElement.X_VEL, null,
+                                              new ActorObjectIdentifier());
+        Evaluatable<?> yVelocity =
+                new NumericAttributeParameter("", SelectableGameElement.Y_VEL, null,
+                                              new ActorObjectIdentifier());
         Evaluator<?, ?, ?> xAddEvaluator =
-                new SubtractionAssignmentEvaluator<>(xPosition, xVelocity);
+                new SubtractionAssignmentEvaluator<>("", xPosition, xVelocity);
         Evaluator<?, ?, ?> yAddEvaluator =
-                new SubtractionAssignmentEvaluator<>(yPosition, yVelocity);
+                new SubtractionAssignmentEvaluator<>("", yPosition, yVelocity);
         Evaluator<?, ?, ?> reverseMotionEvaluator =
-                new AndEvaluator<>(xAddEvaluator, yAddEvaluator);
+                new AndEvaluator<>("", xAddEvaluator, yAddEvaluator);
         Evaluator<?, ?, ?> collisionAndStopCAPair =
-                new IfThenEvaluator<>(collisionEvaluator, reverseMotionEvaluator);
+                new IfThenEvaluator<>("", collisionEvaluator, reverseMotionEvaluator);
 
         myCurrentLevel
-        .getUnits()
-        .stream()
-        .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
+                .getUnits()
+                .stream()
+                .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
 
     }
 

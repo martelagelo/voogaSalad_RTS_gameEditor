@@ -28,9 +28,11 @@ public class CollisionComputer extends
      */
     public CollisionComputer () {
         collisionEvaluator =
-                new CollisionEvaluator<>(
-                                         new GameElementParameter(new ActorObjectIdentifier(), null),
-                                         new GameElementParameter(new ActeeObjectIdentifier(), null));
+                new CollisionEvaluator<>("",
+                                         new GameElementParameter("", new ActorObjectIdentifier(),
+                                                                  null),
+                                         new GameElementParameter("", new ActeeObjectIdentifier(),
+                                                                  null));
     }
 
     /**

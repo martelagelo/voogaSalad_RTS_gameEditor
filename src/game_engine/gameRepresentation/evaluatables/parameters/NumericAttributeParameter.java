@@ -16,10 +16,10 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
     /**
      * @see AttriubteParameter
      */
-    public NumericAttributeParameter (String attributeTag,
+    public NumericAttributeParameter (String id, String attributeTag,
                                       GameElementManager elementManager,
                                       ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(Number.class, attributeTag, elementManager,
+        super(Number.class, id, attributeTag, elementManager,
               objectOfInterestIdentifier);
     }
 

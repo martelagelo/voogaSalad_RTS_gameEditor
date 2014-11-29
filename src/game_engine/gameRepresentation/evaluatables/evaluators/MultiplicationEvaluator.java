@@ -12,10 +12,10 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class MultiplicationEvaluator<A, B> extends Evaluator<A, B, Number> {
 
-    public MultiplicationEvaluator (
+    public MultiplicationEvaluator (String id,
                                     Evaluatable<A> parameter1,
                                     Evaluatable<B> parameter2) {
-        super(Number.class, "*", parameter1, parameter2);
+        super(Number.class, id, "*", parameter1, parameter2);
     }
 
     @Override
