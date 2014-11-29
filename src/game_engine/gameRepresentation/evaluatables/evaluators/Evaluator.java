@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.evaluatables.evaluators;
 
+import game_engine.gameRepresentation.evaluatables.Action;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -97,6 +98,13 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
     }
 
     /**
+     * Evaluate on one game element and one Action
+     */
+    protected T evaluate (GameElement item1, Action item2) {
+        return null;
+    }
+
+    /**
      * Evaluate the evaluator on the element pair
      *
      * @param elements
@@ -137,6 +145,8 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
                                                                                           (Boolean) parameter2Value); }
         if (type1.equals(GameElement.class) && type2.equals(String.class)) { return evaluate((GameElement) parameter1Value,
                                                                                              (String) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(Action.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                             (Action) parameter2Value); }
         return evaluate(parameter1Value, parameter2Value);
     }
 

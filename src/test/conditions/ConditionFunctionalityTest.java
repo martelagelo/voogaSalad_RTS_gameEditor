@@ -3,7 +3,9 @@ package test.conditions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import game_engine.gameRepresentation.evaluatables.Action;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
+import game_engine.gameRepresentation.evaluatables.evaluators.AddEvaluatableEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.AdditionAssignmentEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.CollisionEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.EqualsAssignmentEvaluator;
@@ -11,6 +13,7 @@ import game_engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.LessThanEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.RemoveEvaluatableEvaluator;
 import game_engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignmentEvaluator;
+import game_engine.gameRepresentation.evaluatables.parameters.ActionParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.EvaluatableIDParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
 import game_engine.gameRepresentation.evaluatables.parameters.NumberParameter;
@@ -161,6 +164,31 @@ public class ConditionFunctionalityTest {
                 new RemoveEvaluatableEvaluator<>("", myElementParam1, param2);
         removeAction2.getValue(myElementPair);
         assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
+
+    }
+
+    /**
+     * Test the addition of an action to an object then the removal of that action
+     */
+    @Test
+    public void testAddAction () {
+        // Make sure our test element has no attributes
+        assertEquals(0, countIteratorElements(myElement1.getActionsOfType("test")));
+        // Create an evaluator that on execution adds an evaluator to remove itself.
+        // Evaluatorception??
+        EvaluatableIDParameter param = new EvaluatableIDParameter("tag");
+        Evaluator<?, ?, ?> removeAction =
+                new RemoveEvaluatableEvaluator<>("tag", myElementParam1, param);
+        ActionParameter actionParam = new ActionParameter("tag", new Action("test", removeAction));
+        Evaluator<?, ?, ?> addAction =
+                new AddEvaluatableEvaluator<>("tag", myElementParam1, actionParam);
+        // Evaluate the add action evaluatable and ensure the action is added
+        addAction.getValue(myElementPair);
+        assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
+        // Execute the added action (which itself is a remove action and ensure it properly removes
+        // the action
+        myElement1.getActionsOfType("test").next().getValue(myElementPair);
+        assertEquals(0,countIteratorElements(myElement1.getActionsOfType("test")));
 
     }
 
