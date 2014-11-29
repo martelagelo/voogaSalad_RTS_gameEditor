@@ -1,10 +1,10 @@
 package game_engine.computers.boundsComputers;
 
 import game_engine.computers.Computer;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Sighted;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
+import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Sighted;
 import java.util.List;
 import javafx.scene.shape.Polygon;
 
@@ -16,7 +16,7 @@ import javafx.scene.shape.Polygon;
  *
  */
 public class VisionComputer extends
-        Computer<SelectableGameElementState, DrawableGameElementState> {
+        Computer<SelectableGameElement, DrawableGameElement> {
     /**
      * Return true if the other object is contained within the primary object's
      * vision bounds
@@ -25,8 +25,8 @@ public class VisionComputer extends
      */
     @Override
     protected boolean checkComputingCondition (
-                                               SelectableGameElementState primaryObject,
-                                               DrawableGameElementState otherObject) {
+                                               SelectableGameElement primaryObject,
+                                               DrawableGameElement otherObject) {
         if (primaryObject instanceof Sighted
             && otherObject instanceof Boundable) {
             Sighted sightedObject = (Sighted) primaryObject;
@@ -46,9 +46,9 @@ public class VisionComputer extends
      */
     @Override
     protected void givePrimaryObjectElements (
-                                              SelectableGameElementState primaryObject,
-                                              List<DrawableGameElementState> listToAdd) {
-        primaryObject.addVisibleElements(listToAdd);
+                                              SelectableGameElement primaryObject,
+                                              List<DrawableGameElement> listToAdd) {
+        primaryObject.addInteractingElements("visible", listToAdd);
     }
 
 }

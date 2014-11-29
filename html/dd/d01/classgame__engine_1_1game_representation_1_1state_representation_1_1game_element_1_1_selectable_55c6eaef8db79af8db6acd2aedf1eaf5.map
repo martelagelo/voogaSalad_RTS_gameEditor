@@ -1,0 +1,7 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState" name="game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState">
+<area shape="rect" id="node2" href="$db/d72/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_drawable_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.DrawableGame\lElementState" alt="" coords="549,29,864,85"/>
+<area shape="rect" id="node3" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElementState" alt="" coords="158,5,501,46"/>
+<area shape="rect" id="node4" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="5,12,109,39"/>
+<area shape="rect" id="node5" href="$d3/dfc/interfacegame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1traits_1_1_boundable.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.traits.Boundable" alt="" coords="169,70,490,111"/>
+<area shape="rect" id="node6" href="$d8/dcf/interfacegame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1traits_1_1_sighted.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.traits.Sighted" alt="" coords="555,109,858,150"/>
+</map>

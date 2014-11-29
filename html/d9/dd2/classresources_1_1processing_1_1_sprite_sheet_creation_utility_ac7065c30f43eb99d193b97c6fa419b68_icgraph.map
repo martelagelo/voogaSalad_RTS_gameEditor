@@ -1,0 +1,8 @@
+<map id="resources.processing.SpriteSheetCreationUtility.toBufferedImage" name="resources.processing.SpriteSheetCreationUtility.toBufferedImage">
+<area shape="rect" id="node2" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a7944b8ceeed609bbff127bec6a4b2f8f" title="resources.processing.Sprite\lSheetCreationUtility.colorToTransparency" alt="" coords="312,18,592,59"/>
+<area shape="rect" id="node6" href="$d0/dd5/classresources_1_1processing_1_1_color_mask_extractor.html#a5b6d1f06d79aee630006f287b62f31a0" title="resources.processing.Color\lMaskExtractor.extractColorMask" alt="" coords="641,83,868,125"/>
+<area shape="rect" id="node7" href="$d0/dd5/classresources_1_1processing_1_1_color_mask_extractor.html#a7c2b1d0b3e83a8eabaf2ccd6a0fb4e70" title="resources.processing.Color\lMaskExtractor.mutateColorMask" alt="" coords="337,142,567,183"/>
+<area shape="rect" id="node3" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a5b78b61cf11f82c1c5a39b111efa7948" title="resources.processing.Sprite\lSheetCreationUtility.createState\lSpritesheets" alt="" coords="641,4,869,60"/>
+<area shape="rect" id="node4" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#ae6cfdcbbcc6c6eb2f12aefded0c6337f" title="resources.processing.Sprite\lSheetCreationUtility.createSpriteSheet" alt="" coords="917,83,1187,125"/>
+<area shape="rect" id="node5" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a061298d3fd66edebf2f8d1fb9770df3c" title="resources.processing.Sprite\lSheetCreationUtility.main" alt="" coords="1235,83,1435,125"/>
+</map>

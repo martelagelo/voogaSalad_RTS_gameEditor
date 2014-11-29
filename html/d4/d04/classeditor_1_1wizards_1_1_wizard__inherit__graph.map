@@ -1,0 +1,11 @@
+<map id="editor.wizards.Wizard" name="editor.wizards.Wizard">
+<area shape="rect" id="node3" href="$dd/db0/classeditor_1_1wizards_1_1_campaign_wizard.html" title="editor.wizards.CampaignWizard" alt="" coords="395,5,615,32"/>
+<area shape="rect" id="node4" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html" title="editor.wizards.DrawableGame\lElementWizard" alt="" coords="400,57,611,98"/>
+<area shape="rect" id="node6" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html" title="editor.wizards.GameElement\lWizard" alt="" coords="403,122,608,163"/>
+<area shape="rect" id="node7" href="$da/d28/classeditor_1_1wizards_1_1_level_wizard.html" title="editor.wizards.LevelWizard" alt="" coords="411,188,599,215"/>
+<area shape="rect" id="node8" href="$d0/dfb/classeditor_1_1wizards_1_1_number_attribute_wizard.html" title="editor.wizards.NumberAttribute\lWizard" alt="" coords="395,239,616,281"/>
+<area shape="rect" id="node9" href="$d8/d72/classeditor_1_1wizards_1_1_string_attribute_wizard.html" title="editor.wizards.StringAttribute\lWizard" alt="" coords="402,305,609,346"/>
+<area shape="rect" id="node10" href="$d2/d83/classeditor_1_1wizards_1_1_trigger_wizard.html" title="editor.wizards.TriggerWizard" alt="" coords="407,371,604,397"/>
+<area shape="rect" id="node2" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html" title="view.GUIController" alt="" coords="6,188,143,215"/>
+<area shape="rect" id="node5" href="$de/deb/classeditor_1_1wizards_1_1_terrain_wizard.html" title="editor.wizards.TerrainWizard" alt="" coords="664,64,861,91"/>
+</map>

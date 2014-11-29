@@ -1,0 +1,7 @@
+<map id="view.ViewScreen.getFilePath" name="view.ViewScreen.getFilePath">
+<area shape="rect" id="node2" href="$d1/d75/classview_1_1_main_view.html#aa7bef8e36cefa579d2123e2eeba859e7" title="view.MainView.launchScreen" alt="" coords="254,31,455,57"/>
+<area shape="rect" id="node3" href="$d1/d75/classview_1_1_main_view.html#a2b8a45380eae155860ea6833e7f7f54d" title="view.MainView.MainView" alt="" coords="521,5,695,32"/>
+<area shape="rect" id="node4" href="$d0/df3/classview_1_1_g_u_i_screen.html#ac9e9d56d3180584268aa5820c860fce5" title="view.GUIScreen.switchScreen" alt="" coords="504,56,712,83"/>
+<area shape="rect" id="node5" href="$dd/d02/classview_1_1_splash_screen.html#a4ab544f7771d377db789832819fdad38" title="view.SplashScreen.setUpButtons" alt="" coords="760,56,992,83"/>
+<area shape="rect" id="node6" href="$dd/d02/classview_1_1_splash_screen.html#ae17a6b61826bb7b6cc90f510260860ab" title="view.SplashScreen.init" alt="" coords="1040,56,1203,83"/>
+</map>

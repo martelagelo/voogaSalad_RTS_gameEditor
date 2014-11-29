@@ -1,0 +1,18 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.GameState.getCampaign" name="game_engine.gameRepresentation.stateRepresentation.GameState.getCampaign">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a8f7ba6a09d6f83d64c441f15a445ac90" title="gamemodel.MainModel.create\lLevel" alt="" coords="369,70,585,111"/>
+<area shape="rect" id="node8" href="$da/d8d/classgamemodel_1_1_main_model.html#a03ee385be5a20c1b4d78297d1d530ca4" title="gamemodel.MainModel.getDescribable\lState" alt="" coords="342,151,613,193"/>
+<area shape="rect" id="node16" href="$da/d8d/classgamemodel_1_1_main_model.html#ad0c8f208e75957efd1ded5caa6fdbaff" title="gamemodel.MainModel.setCurrent\lLevel" alt="" coords="356,249,599,290"/>
+<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="683,70,877,111"/>
+<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a2d9698f478e5ca6464fa390bf1eb3a05" title="editor.EditorMenuBarController.on\lNewLevelClick" alt="" coords="661,5,899,46"/>
+<area shape="rect" id="node4" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="969,77,1165,104"/>
+<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="947,5,1187,46"/>
+<area shape="rect" id="node7" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="1235,12,1475,39"/>
+<area shape="rect" id="node9" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9280fc6d569014016e800182e893f540" title="editor.EditorScreen.update\lInfoBox" alt="" coords="683,201,877,242"/>
+<area shape="rect" id="node14" href="$da/d8d/classgamemodel_1_1_main_model.html#a9b40fc83b22f84a534387757117483d9" title="gamemodel.MainModel.update\lDescribableState" alt="" coords="670,135,890,177"/>
+<area shape="rect" id="node10" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6e24378bdf2713de4dbc530d63d5782e" title="editor.EditorScreen.init\lProjectExplorer" alt="" coords="983,201,1150,242"/>
+<area shape="rect" id="node12" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="970,267,1163,293"/>
+<area shape="rect" id="node11" href="$dc/d5c/classeditor_1_1_editor_screen.html#a85668e9b3fd80cec58fa6b207854e588" title="editor.EditorScreen.init" alt="" coords="1271,176,1438,203"/>
+<area shape="rect" id="node13" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1258,259,1451,301"/>
+<area shape="rect" id="node15" href="$dc/d5c/classeditor_1_1_editor_screen.html#aa416e3307314f0a75c95d2ad2e08a4ae" title="editor.EditorScreen.init\lInfoBox" alt="" coords="983,135,1150,177"/>
+<area shape="rect" id="node17" href="$d1/d3a/classgame__engine_1_1_engine.html#a33096e19a0dd6c4541ade6bdfcf092c4" title="game_engine.Engine.select\lLevel" alt="" coords="681,266,879,307"/>
+</map>

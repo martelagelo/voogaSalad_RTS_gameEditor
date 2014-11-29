@@ -17,13 +17,13 @@ public class StringParameter extends Parameter<String> {
 	 *
 	 * @param value
 	 */
-	public StringParameter(String string) {
-		super(String.class);
+	public StringParameter(String id,String string) {
+		super(String.class,id);
 		myString = string;
 	}
 
 	@Override
-	public String getValue(ElementPair elements) {
+	public String evaluate(ElementPair elements) {
 		return myString;
 	}
 

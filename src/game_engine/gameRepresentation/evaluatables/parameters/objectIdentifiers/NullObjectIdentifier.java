@@ -2,7 +2,6 @@ package game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers
 
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +17,10 @@ import java.util.List;
 public class NullObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
-    public List<GameElementState> getElementOfInterest (GameElementManager elementManager,
-                                                        ElementPair elementPair,
-                                                        String elementTag) {
-        return new ArrayList<GameElementState>();
+    public List<GameElement> getElementOfInterest (GameElementManager elementManager,
+                                                   ElementPair elementPair,
+                                                   String elementTag) {
+        return new ArrayList<>();
     }
 
 }

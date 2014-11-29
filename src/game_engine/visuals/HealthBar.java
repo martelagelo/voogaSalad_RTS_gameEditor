@@ -9,16 +9,16 @@ import javafx.scene.shape.Rectangle;
  *
  */
 public class HealthBar {
-
-	private AnimationPlayer myAnimation;
-	private Rectangle m;
-	private Rectangle
-	
-	public HealthBar() {
-		
-	}
-	
-	public Rectangle getHealthBar() {
-		return myHealthBar;
-	}
+//
+//	private AnimationPlayer myAnimation;
+//	private Rectangle m;
+//	private Rectangle
+//	
+//	public HealthBar() {
+//		
+//	}
+//	
+//	public Rectangle getHealthBar() {
+//		return myHealthBar;
+//	}
 }

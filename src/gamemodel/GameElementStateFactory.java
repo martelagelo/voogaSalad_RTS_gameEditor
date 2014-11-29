@@ -1,7 +1,5 @@
 package gamemodel;
 
-import java.util.HashMap;
-import java.util.Map;
 import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
@@ -9,6 +7,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
+
 
 /**
  * Factory that creates a SavableGameElementState based on the info args
@@ -48,10 +47,10 @@ public class GameElementStateFactory {
         }
         for (WizardData wiz : data.getWizardDataByType(NUMBER_ATTRIBUTE)) {
             state.setNumericalAttribute(wiz.getValueByKey(ATTRIBUTE),
-                    Double.parseDouble(wiz.getValueByKey(VALUE)));
+                                        Double.parseDouble(wiz.getValueByKey(VALUE)));
         }
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
-            state.addConditionActionPair(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
+            state.addAction(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
         }
         return state;
     }
@@ -61,22 +60,25 @@ public class GameElementStateFactory {
     }
 
     public static DrawableGameElementState createDrawableGameElementState (WizardData data,
-            String imagePath) {
-        DrawableGameElementState state = (DrawableGameElementState) addEssentials(
-                new DrawableGameElementState(0.0, 0.0), data);
-        Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(FRAME_X)),
-                Integer.parseInt(data.getValueByKey(FRAME_Y)));
-        Spritesheet mySpritesheet = new Spritesheet(imagePath, dim, Integer.parseInt(data
-                .getValueByKey(ROWS)));
+                                                                           String imagePath) {
+        DrawableGameElementState state =
+                (DrawableGameElementState) addEssentials(new DrawableGameElementState(0.0, 0.0),
+                                                         data);
+        Dimension dim =
+                new Dimension(Integer.parseInt(data.getValueByKey(FRAME_X)), Integer.parseInt(data
+                        .getValueByKey(FRAME_Y)));
+        Spritesheet mySpritesheet =
+                new Spritesheet(imagePath, dim, Integer.parseInt(data.getValueByKey(ROWS)));
         state.setSpritesheet(mySpritesheet);
 
         // TODO: actually get animation name from the user
         AnimationSequence myAnimation = new AnimationSequence("animation", Integer.parseInt(data
-                .getValueByKey(START_FRAME)), Integer.parseInt(data.getValueByKey(STOP_FRAME)),
-                Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
+                .getValueByKey(START_FRAME)), Integer.parseInt(data.getValueByKey(STOP_FRAME)));
+                //Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
         // state.addAnimation(myAnimation);
 
-        // TODO: actually get bounds from the user
+        // TODO: actually get bounds from the user - we are using the double[] implementation
+        // necessary to make Polygons, so we need groups of two doubles per point on the polygon
         double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
         state.setBounds(myBounds);
 
@@ -86,11 +88,11 @@ public class GameElementStateFactory {
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
         return null;
     }
-    
-    public static GameElementState createGoal(WizardData data) {
-        GameElementState goal = new GameElementState();        
+
+    public static GameElementState createGoal (WizardData data) {
+        GameElementState goal = new GameElementState();
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
-            goal.addConditionActionPair(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
+            goal.addAction(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
         }
         return goal;
     }

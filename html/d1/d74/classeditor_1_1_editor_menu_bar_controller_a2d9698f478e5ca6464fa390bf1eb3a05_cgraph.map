@@ -1,0 +1,12 @@
+<map id="editor.EditorMenuBarController.onNewLevelClick" name="editor.EditorMenuBarController.onNewLevelClick">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a8f7ba6a09d6f83d64c441f15a445ac90" title="gamemodel.MainModel.create\lLevel" alt="" coords="291,70,507,111"/>
+<area shape="rect" id="node5" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#a900163c75d7ec227b98fe35c9afa7505" title="editor.wizards.Wizard.get\lStage" alt="" coords="309,135,489,177"/>
+<area shape="rect" id="node6" href="$dc/d5a/classview_1_1_wizard_utility.html#a7df411758a1fe47f34f7372db53355bf" title="view.WizardUtility.loadWizard" alt="" coords="298,201,499,228"/>
+<area shape="rect" id="node10" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#afd40040d6d3c179ccc69b688fe8910a1" title="editor.wizards.Wizard.set\lErrorMesssage" alt="" coords="309,253,488,294"/>
+<area shape="rect" id="node11" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#a000a0be1e53ca727dc03770e6269db9c" title="editor.wizards.Wizard.set\lSubmit" alt="" coords="309,318,488,359"/>
+<area shape="rect" id="node3" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a6df7851d201fb6229f31f1c90d9794a0" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getCampaign" alt="" coords="555,5,842,46"/>
+<area shape="rect" id="node4" href="$dd/dec/classgame__engine_1_1game_representation_1_1state_representation_1_1_campaign_state.html#a2018b4d3974341f2d77eb6f055e3ef34" title="game_engine.gameRepresentation.state\lRepresentation.CampaignState.addLevel" alt="" coords="557,70,840,111"/>
+<area shape="rect" id="node7" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="581,135,816,177"/>
+<area shape="rect" id="node8" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#a72e3a81c25878fea0201a98307c78622" title="editor.wizards.Wizard.getRoot" alt="" coords="595,201,803,228"/>
+<area shape="rect" id="node9" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#ae8a3ae83055f5b39fbafec5ea3a379eb" title="editor.wizards.Wizard.set\lStage" alt="" coords="609,253,788,294"/>
+</map>

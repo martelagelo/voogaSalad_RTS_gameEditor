@@ -1,0 +1,9 @@
+<map id="util.SaveLoadUtility.saveImage" name="util.SaveLoadUtility.saveImage">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#ab48b88224f859ea7929254b479cce14d" title="gamemodel.MainModel.create\lDrawableGameElement" alt="" coords="235,5,451,46"/>
+<area shape="rect" id="node8" href="$d0/d77/classtest_1_1util_1_1_test_load_save_utility.html#a563b6accea25a4a5868cbff906216e55" title="test.util.TestLoadSaveUtility.test\lLoadSaveFunction" alt="" coords="230,70,455,111"/>
+<area shape="rect" id="node3" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#ad10a71c849382067fbb1f4140841ab0d" title="editor.ElementAccordionController.open\lGameElementWizard" alt="" coords="504,5,779,46"/>
+<area shape="rect" id="node4" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#a57a1b43f70896bbf2e27373594ba8810" title="editor.ElementAccordionController.update\lItems" alt="" coords="827,5,1115,46"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a575ccd70c0dcc7565df86cc590de47ba" title="editor.EditorScreen.update\lAccordion" alt="" coords="1163,5,1357,46"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="1406,12,1599,39"/>
+<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1649,5,1842,46"/>
+</map>

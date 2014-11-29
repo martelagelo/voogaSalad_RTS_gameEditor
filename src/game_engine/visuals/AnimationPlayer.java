@@ -1,5 +1,6 @@
 package game_engine.visuals;
 
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -39,8 +40,7 @@ public class AnimationPlayer implements Updatable, Displayable {
         myTileSize = tileSize;
         myNumCols = numCols;
         myDisplay = new ImageView(spriteSheet);
-        myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(),
-                                              tileSize.getHeight()));
+        myDisplay.setViewport(new Rectangle2D(0, 0, tileSize.getWidth(), tileSize.getHeight()));
         myCurrentAnimation = new NullAnimationSequence();
         myImageBounds = getImageBounds(spriteSheet);
     }
@@ -94,9 +94,9 @@ public class AnimationPlayer implements Updatable, Displayable {
 
         }
         // Get a viewport and make sure it fits
+        
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
-        if (!myImageBounds.contains(viewport))
-            return false;
+        if (!myImageBounds.contains(viewport)) return false;
         // Set the display viewport to the new viewport
         myDisplay.setViewport(viewport);
         return true;
@@ -111,10 +111,9 @@ public class AnimationPlayer implements Updatable, Displayable {
                                                  // vertical traversal of
         // frames to match our spritesheets
         int rowNumber = frameNumber % myNumCols;
-        return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber
-                                                                  * myTileSize.getHeight(),
-                               myTileSize.getWidth(),
-                               myTileSize.getHeight());
+        return new Rectangle2D(colNumber * myTileSize.getWidth(), rowNumber *
+                                                                  myTileSize.getHeight(),
+                               myTileSize.getWidth(), myTileSize.getHeight());
     }
 
     public Dimension getDimension () {

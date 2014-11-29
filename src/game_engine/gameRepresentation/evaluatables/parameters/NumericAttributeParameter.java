@@ -2,7 +2,6 @@ package game_engine.gameRepresentation.evaluatables.parameters;
 
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.stateManaging.GameElementManager;
 import java.util.List;
 
@@ -17,10 +16,10 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
     /**
      * @see AttriubteParameter
      */
-    public NumericAttributeParameter (String attributeTag,
+    public NumericAttributeParameter (String id, String attributeTag,
                                       GameElementManager elementManager,
                                       ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(Number.class, attributeTag, elementManager,
+        super(Number.class, id, attributeTag, elementManager,
               objectOfInterestIdentifier);
     }
 
@@ -30,11 +29,11 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
      * @see AttributeParameter#getValue
      */
     @Override
-    public Number getValue (List<GameElementState> elements, String attributeTag) {
+    public Number getValue (List<GameElement> elements, String attributeTag) {
         if (elements.size() == 0)
             return 0d;
         double valueSum = 0.0;
-        for (GameElementState element : elements) {
+        for (GameElement element : elements) {
             valueSum += element.getNumericalAttribute(attributeTag).doubleValue();
         }
         return valueSum / elements.size();
@@ -46,12 +45,12 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
      * @see AttributeParameter#setValue
      */
     @Override
-    public boolean setValue (List<GameElementState> elements, String attributeTag,
+    public boolean setValue (List<GameElement> elements, String attributeTag,
                              Number value) {
         elements.stream().forEach(
                                   element -> element
                                           .setNumericalAttribute(
-                                                                 attributeTag, value));
+                                                               attributeTag, value));
         return true;
     }
 

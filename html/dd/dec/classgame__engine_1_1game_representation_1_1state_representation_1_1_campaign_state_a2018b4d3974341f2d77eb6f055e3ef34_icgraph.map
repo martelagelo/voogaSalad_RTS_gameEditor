@@ -1,0 +1,8 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.CampaignState.addLevel" name="game_engine.gameRepresentation.stateRepresentation.CampaignState.addLevel">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a8f7ba6a09d6f83d64c441f15a445ac90" title="gamemodel.MainModel.create\lLevel" alt="" coords="336,38,552,79"/>
+<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="621,5,816,46"/>
+<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a2d9698f478e5ca6464fa390bf1eb3a05" title="editor.EditorMenuBarController.on\lNewLevelClick" alt="" coords="600,70,837,111"/>
+<area shape="rect" id="node4" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="907,12,1103,39"/>
+<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="885,70,1125,111"/>
+<area shape="rect" id="node7" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="1173,77,1413,104"/>
+</map>

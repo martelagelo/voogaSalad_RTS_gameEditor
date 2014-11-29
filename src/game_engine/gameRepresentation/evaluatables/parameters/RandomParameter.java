@@ -21,14 +21,14 @@ public class RandomParameter extends Parameter<Number> {
      * @param lowerBound the lower number for the randomly generated number
      * @param upperBound the upper number for the randomly generated number
      */
-    public RandomParameter (double lowerBound, double upperBound) {
-        super(Number.class);
+    public RandomParameter (String id,double lowerBound, double upperBound) {
+        super(Number.class,id);
         myLowerBound = lowerBound;
         myUpperBound = upperBound;
     }
 
     @Override
-    public Number getValue (ElementPair elements) {
+    public Number evaluate (ElementPair elements) {
         return Math.random() * Math.abs(myUpperBound - myLowerBound) + myLowerBound;
     }
 

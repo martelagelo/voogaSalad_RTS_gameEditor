@@ -1,0 +1,5 @@
+<map id="gamemodel.exceptions.DescribableStateNotFoundException" name="gamemodel.exceptions.DescribableStateNotFoundException">
+<area shape="rect" id="node4" href="$dd/d09/classgamemodel_1_1exceptions_1_1_campaign_not_found_exception.html" title="gamemodel.exceptions.Campaign\lNotFoundException" alt="" coords="737,5,978,46"/>
+<area shape="rect" id="node5" href="$df/d98/classgamemodel_1_1exceptions_1_1_level_not_found_exception.html" title="gamemodel.exceptions.Level\lNotFoundException" alt="" coords="753,70,962,111"/>
+<area shape="rect" id="node2" href="$d7/dce/classgamemodel_1_1exceptions_1_1_describable_state_exception.html" title="gamemodel.exceptions.Describable\lStateException" alt="" coords="139,38,389,79"/>
+</map>
