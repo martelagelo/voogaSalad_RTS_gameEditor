@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.Button?>
+
+<GridPane fx:id="splash" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SplashScreen">
+	<columnConstraints>
+		<ColumnConstraints hgrow="SOMETIMES" />
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+		<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+		<ColumnConstraints hgrow="SOMETIMES" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints vgrow="SOMETIMES" />
+		<RowConstraints vgrow="SOMETIMES" />
+		<RowConstraints vgrow="SOMETIMES" />
+		<RowConstraints vgrow="SOMETIMES" />
+	</rowConstraints>
+	<children>
+		<Label GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="title"
+			GridPane.columnSpan="3" id="duvall"/>
+		<Button defaultButton="true" fx:id="launchEditorButton"
+			GridPane.columnIndex="1" GridPane.rowIndex="1">
+			<maxWidth>
+				<Double fx:constant="MAX_VALUE" />
+			</maxWidth>
+		</Button>
+		<Button defaultButton="true" fx:id="launchRunnerButton"
+			GridPane.columnIndex="3" GridPane.rowIndex="1">
+			<maxWidth>
+				<Double fx:constant="MAX_VALUE" />
+			</maxWidth>
+		</Button>
+		<VBox GridPane.columnIndex="2" GridPane.rowIndex="2" alignment="CENTER" fillWidth="true">
+			<Button defaultButton="true" fx:id="newGameButton">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</Button>
+			<ComboBox fx:id="gameDropDown"/>
+		</VBox>
+	</children>
+</GridPane>
