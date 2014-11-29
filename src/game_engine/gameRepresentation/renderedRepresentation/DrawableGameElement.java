@@ -11,6 +11,7 @@ import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -48,8 +49,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      *        the element)
      */
     public DrawableGameElement (DrawableGameElementState state,
-                                Map<String, List<Evaluatable<?>>> actions) {
-        super(state, actions);
+                                Map<String, List<Evaluatable<?>>> actions,
+                                ResourceBundle actionTypes) {
+        super(state, actions, actionTypes);
         myCurrentAnimation = new NullAnimationSequence();
         drawableState = state;
         Spritesheet spritesheet = state.getSpritesheet();

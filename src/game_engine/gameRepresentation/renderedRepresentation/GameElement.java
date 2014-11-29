@@ -21,7 +21,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  */
 public class GameElement {
-    public final static String ACTION_TYPE_LOCATION = "resources.properties.ActionTypes";
     /**
      * The action lists map is a map of action strings to lists of possible actions. For example,
      * The String "Collision" might map to a list of actions that should be run whenever an element
@@ -38,10 +37,11 @@ public class GameElement {
      * @param gameElementState the state of the game element
      */
     public GameElement (GameElementState gameElementState,
-                        Map<String, List<Evaluatable<?>>> conditionActionPairs) {
+                        Map<String, List<Evaluatable<?>>> conditionActionPairs,
+                        ResourceBundle actionTypesBundle) {
         myState = gameElementState;
         myActionLists = conditionActionPairs;
-        actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
+        actionTypes = actionTypesBundle;
         createActionLists();
     }
 
