@@ -3,9 +3,11 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
+import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +28,8 @@ import javafx.scene.layout.VBox;
  * @author Zach, Jonathan, Nishad, Rahul, John L., Michael D.
  *
  */
-public class DrawableGameElement extends GameElement implements Displayable {
-
+public class DrawableGameElement extends GameElement implements Displayable, Boundable {
+    // TODO this must be removed...
     final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
     private DrawableGameElementState myState;
     protected AnimationPlayer myAnimation;
@@ -35,29 +37,33 @@ public class DrawableGameElement extends GameElement implements Displayable {
     protected VBox myDisplayVBox;
     private Image mySelectedImage;
     private ImageView mySelectedImageView;
+    private AnimationSequence myCurrentAnimation;
 
     /**
      * Create a drawable game element from the given state
      * 
      * @param element
      *        the state of the drawable element
+     * @param actions the actions map for the game element (Created by a factory to be passed into
+     *        the element)
      */
     public DrawableGameElement (DrawableGameElementState element,
-                                Map<String, List<Evaluatable<?>>> conditionActionPairs) {
-        super(element, conditionActionPairs);
+                                Map<String, List<Evaluatable<?>>> actions) {
+        super(element, actions);
+        myCurrentAnimation = new NullAnimationSequence();
         myState = element;
         Spritesheet spritesheet = element.getSpritesheet();
-        // TODO uncomment. For testing only
         try {
+            // TODO remove this. testing only
             myAnimation =
+
                     new AnimationPlayer(new Image(spritesheet.imageTag),
                                         spritesheet.frameDimensions,
                                         spritesheet.numCols);
         }
         catch (Exception e) {
-            // DO nothing
+            // System.out.println("No spritesheet set for game element. Testing?");
         }
-
         myDisplay = new Group();
         myDisplayVBox = new VBox(1);
         // TODO undo for testing only
@@ -81,8 +87,16 @@ public class DrawableGameElement extends GameElement implements Displayable {
         // state.update();
         // Use polling because java.util.observable requires inheritance
         // and javafx.beans.observable isn't serializable.
-        myAnimation.setAnimation(myState.getAnimation());
+        myAnimation.setAnimation(myCurrentAnimation);
         myAnimation.update();
+    }
+
+    /**
+     * Update the element's image location based on its x and y position
+     */
+    protected void updateImageLocation () {
+        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
     }
 
     /**
@@ -96,10 +110,20 @@ public class DrawableGameElement extends GameElement implements Displayable {
     }
 
     /**
-     * @return the current state of the element
+     * @return the animation that is currently being displayed by the element
      */
-    public DrawableGameElementState getState () {
-        return myState;
+    public AnimationSequence getAnimation () {
+        return myCurrentAnimation;
+    }
+
+    /**
+     * Set the animation currently being played by the drawable game element to the animation with
+     * the given name
+     * 
+     * @param animationName the name of the animation to set the current animation to
+     */
+    public void setAnimation (String animationName) {
+        myCurrentAnimation = myState.getAnimation(animationName);
     }
 
     /**
@@ -130,11 +154,8 @@ public class DrawableGameElement extends GameElement implements Displayable {
         return myState.getBounds();
     }
 
+    // TODO from here down, remove this crap
     // TODO: Fix. Move logic into group
-    public void updateImageLocation () {
-        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
-    }
 
     public Point2D getLocation () {
         // TODO move positions and fix

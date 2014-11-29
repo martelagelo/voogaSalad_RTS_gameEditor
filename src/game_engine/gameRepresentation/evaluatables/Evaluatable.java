@@ -11,57 +11,70 @@ package game_engine.gameRepresentation.evaluatables;
  *
  */
 public abstract class Evaluatable<T> {
-	private Class<T> myType;
+    private Class<T> myType;
+    private String myID;
 
-	/**
-	 * Create an evaluatable
-	 * 
-	 * @param type
-	 *            the type of the class T of the evaluatable. Used as a
-	 *            workaround for the poor implementation of generics by Java
-	 */
-	public Evaluatable(Class<T> type) {
-		myType = type;
-	}
+    /**
+     * Create an evaluatable
+     * 
+     * @param type
+     *        the type of the class T of the evaluatable. Used as a
+     *        workaround for the poor implementation of generics by Java
+     * @param id an id that will be shared amongst all elements of an evaluatable tree. it allows
+     *        leaves of the tree to reference higher up nodes.
+     */
+    public Evaluatable (Class<T> type, String id) {
+        myType = type;
+        myID = id;
+    }
 
-	/**
-	 * Take in a pair of elements, evaluate a condition on the elements, and
-	 * return a boolean representing the condition's return value.
-	 *
-	 */
-	public abstract T getValue(ElementPair elements);
+    /**
+     * Take in a pair of elements, evaluate a condition on the elements, and
+     * return a boolean representing the condition's return value.
+     *
+     */
+    public abstract T getValue (ElementPair elements);
 
-	/**
-	 * Use the null pattern to evaluate a condition if no elements are given
-	 */
-	public T getValue() {
-		return getValue(new NullElementPair());
-	}
+    /**
+     * Use the null pattern to evaluate a condition if no elements are given
+     */
+    public T getValue () {
+        return getValue(new NullElementPair());
+    }
 
-	/**
-	 * Sets the evaluatable's value to a given value
-	 * 
-	 * @param value
-	 *            the value to set the evaluatable's stored computation value to
-	 * @return a boolean indicating whether setting was successful
-	 */
-	public boolean setValue(ElementPair elements, T value) {
-		return false;
-	}
+    /**
+     * Sets the evaluatable's value to a given value
+     * 
+     * @param value
+     *        the value to set the evaluatable's stored computation value to
+     * @return a boolean indicating whether setting was successful
+     */
+    public boolean setValue (ElementPair elements, T value) {
+        return false;
+    }
 
-	/**
-	 * Use the null pattern to set a value if no element pair is applicable
-	 */
-	public boolean setValue(T value) {
-		return setValue(new NullElementPair(), value);
-	}
+    /**
+     * Use the null pattern to set a value if no element pair is applicable
+     */
+    public boolean setValue (T value) {
+        return setValue(new NullElementPair(), value);
+    }
 
-	/**
-	 * Get the type of the object as a way of bypassing Java type erasure
-	 * 
-	 * @return the generic's type
-	 */
-	public Class<T> getType() {
-		return myType;
-	}
+    /**
+     * Get the type of the object as a way of bypassing Java type erasure
+     * 
+     * @return the generic's type
+     */
+    public Class<T> getType () {
+        return myType;
+    }
+
+    /**
+     * Get the current ID of the evlauatable
+     * 
+     * @retrun the evaluatable's ID string
+     */
+    public String getID () {
+        return myID;
+    }
 }

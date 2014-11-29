@@ -15,9 +15,9 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class IfThenEvaluator<A, B> extends Evaluator<A, B, Boolean> {
 
-    public IfThenEvaluator (Evaluatable<A> parameter1,
+    public IfThenEvaluator (String id, Evaluatable<A> parameter1,
                             Evaluatable<B> parameter2) {
-        super(Boolean.class, "IFTHEN", parameter1, parameter2);
+        super(Boolean.class, id, "IFTHEN", parameter1, parameter2);
     }
 
     /**

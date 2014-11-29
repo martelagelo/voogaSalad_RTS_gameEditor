@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
@@ -52,7 +53,7 @@ public class GameElement {
         for (String key : actionTypes.keySet())
         {
             if (!myActionLists.containsKey(key)) {
-                myActionLists.put(key, new ArrayList<>());
+                myActionLists.put(key, new CopyOnWriteArrayList<>());
             }
         }
 
@@ -84,25 +85,27 @@ public class GameElement {
      */
     public void addAction (String actionType, Evaluatable<?> action) {
         if (!myActionLists.containsKey(actionType)) {
-            myActionLists.put(actionType, new ArrayList<>());
+            myActionLists.put(actionType, new CopyOnWriteArrayList<>());
         }
         myActionLists.get(actionType).add(action);
     }
 
     /**
-     * Remove an action with the given string from the array of actions
+     * Remove the given action the array of actions
      * 
-     * @param actionType the type action to be removed
-     * @param actionString the string representation of the action to be removed
+     * @param actionID the identifier string for the action tree @see Evaluatable
      */
-    public void removeAction (String actionType, String actionString) {
-        getActionsOfType(actionType).forEachRemaining(action -> {
-            if (action.toString()
-                    .equals(actionString)) {
-                myActionLists.get(actionType)
-                        .remove(action);
-            }
-        });
+    public void removeAction (String actionID) {
+        for (String actionType : myActionLists.keySet()) {
+            getActionsOfType(actionType).forEachRemaining(action -> {
+                if (action.getID()
+                        .equals(actionID)) {
+                    System.out.println("Action shouldbe removed");
+                    myActionLists.get(actionType)
+                            .remove(action);
+                }
+            });
+        }
     }
 
     /**

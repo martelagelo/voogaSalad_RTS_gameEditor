@@ -150,5 +150,4 @@ public class GameElementState implements JSONable {
         }
         myActions.get(actionType).add(actionString);
     }
-
 }
