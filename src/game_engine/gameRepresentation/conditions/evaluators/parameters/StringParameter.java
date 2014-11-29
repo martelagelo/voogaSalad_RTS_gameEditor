@@ -14,7 +14,7 @@ public class StringParameter implements Parameter {
     private String myString;
 
     /**
-     * Create a number parameter feeding in a single value
+     * Create a string parameter giving the string that the parameter references
      *
      * @param value
      */

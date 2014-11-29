@@ -9,42 +9,53 @@ import javafx.scene.Group;
 
 
 /**
+ * The representation of a basic level in the game. Contains a state of the level, a display group,
+ * lists of terrains and units, and a list of goals for the level. Essentially acts as a displayable
+ * wrapper around the serializable levelState object.
  * 
- * @author Jonathan Tseng, Nishad, Rahul
+ * @author Jonathan, Nishad, Rahul
  *
  */
 public class Level {
 
     private LevelState myLevelState;
-    private Group myGroup;
-    private List<DrawableGameElement> terrain;
-    private List<SelectableGameElement> units;
-    private List<GameElement> goals;
+    private Group myDisplayGroup;
+    private List<DrawableGameElement> myTerrain;
+    private List<SelectableGameElement> myUnits;
+    private List<GameElement> myGoals;
 
-    public Level (LevelState level) {
-        terrain = new ArrayList<>();
-        units = new ArrayList<>();
-        goals = new ArrayList<>();
-        myLevelState = level;
-        for (DrawableGameElementState element : level.getTerrain()) {
-            terrain.add(new DrawableGameElement(element));
+    /**
+     * Take in a level state and create the visual representation of the level from it.
+     * 
+     * @param levelState
+     */
+    public Level (LevelState levelState) {
+        //TODO split this into multiple methods
+        myTerrain = new ArrayList<>();
+        myUnits = new ArrayList<>();
+        myGoals = new ArrayList<>();
+        myLevelState = levelState;
+        //Create and add the terrains
+        for (DrawableGameElementState element : levelState.getTerrain()) {
+            myTerrain.add(new DrawableGameElement(element));
         }
-        for (SelectableGameElementState element : level.getUnits()) {
-            units.add(new SelectableGameElement(element));
+        //Create and add the units to the map
+        for (SelectableGameElementState element : levelState.getUnits()) {
+            myUnits.add(new SelectableGameElement(element));
         }
         // TODO Use factory to create game elements from game element states and add to this list
-        //goals.addAll(level.getGoals());
+        // goals.addAll(level.getGoals());
 
         List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
-        allElements.addAll(terrain);
-        allElements.addAll(units);
-        myGroup = new Group();
+        allElements.addAll(myTerrain);
+        allElements.addAll(myUnits);
+        myDisplayGroup = new Group();
         for (DrawableGameElement element : allElements) {
-            myGroup.getChildren().add(element.getNode());
+            myDisplayGroup.getChildren().add(element.getNode());
         }
     }
-    
-    public LevelState getLevelState() {
+
+    public LevelState getLevelState () {
         return myLevelState;
     }
 
@@ -57,19 +68,19 @@ public class Level {
     }
 
     public List<DrawableGameElement> getTerrain () {
-        return terrain;
+        return myTerrain;
     }
 
     public List<SelectableGameElement> getUnits () {
-        return units;
+        return myUnits;
     }
 
-    public List<GameElement> getGoal () {
-        return goals;
+    public List<GameElement> getGoals () {
+        return myGoals;
     }
 
     public Group getGroup () {
-        return myGroup;
+        return myDisplayGroup;
     }
 
 }

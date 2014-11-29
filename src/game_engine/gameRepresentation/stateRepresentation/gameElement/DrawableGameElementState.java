@@ -1,6 +1,5 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
-import game_engine.computers.boundsComputer.Boundable;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.HashMap;
@@ -21,27 +20,40 @@ public class DrawableGameElementState extends GameElementState implements Bounda
 
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
-    private AnimationSequence myAnimation;
+    private AnimationSequence myCurrentAnimation;
     private double[] myBounds;
 
+    /**
+     * Create a drawable game element at a given x and y position.
+     * 
+     * @param xPosition
+     * @param yPosition
+     */
     public DrawableGameElementState (Number xPosition, Number yPosition) {
         super();
+        myAnimations = new HashMap<>();
+        // These positions are stored in a numerical attribute map to allow for easy retrieval of
+        // attributes by conditions and actions
         this.myNumericalAttributes.add(new Attribute<Number>(X_POS_STRING, xPosition));
         this.myNumericalAttributes.add(new Attribute<Number>(Y_POS_STRING, yPosition));
-        myAnimations = new HashMap<>();
     }
-
+    /**
+     * Add an animation to the DrawableGameElementState's list of possible animations
+     * @param animation
+     */
     public void addAnimation (AnimationSequence animation) {
         myAnimations.put(animation.toString(), animation);
     }
-
+    /**
+     * @return the animation that is currently being displayed by the state
+     */
     public AnimationSequence getAnimation () {
-        return myAnimation;
+        return myCurrentAnimation;
     }
 
     // TODO remove these methods
     public void setAnimation (String animationName) {
-        myAnimation = myAnimations.get(animationName);
+        myCurrentAnimation = myAnimations.get(animationName);
     }
 
     public void setSpritesheet (Spritesheet spritesheet) {
@@ -51,7 +63,6 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         myBounds[1] = getNumericalAttribute(Y_POS_STRING).doubleValue();
         myBounds[2] = mySpritesheet.frameDimensions.getWidth();
         myBounds[3] = mySpritesheet.frameDimensions.getHeight();
-//        System.out.println(mySpritesheet.frameDimensions);
     }
 
     public Spritesheet getSpritesheet () {

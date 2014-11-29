@@ -13,7 +13,9 @@ import java.util.List;
  *
  */
 public class StringAttributeParameter extends AttributeParameter {
-
+    /**
+     * @see AttributeParameter
+     */
     public StringAttributeParameter (String attributeTag, GameElementManager manager,
                                      ObjectOfInterestIdentifier objectOfInterestIdentifier) {
         super(attributeTag, manager, objectOfInterestIdentifier);
@@ -21,6 +23,8 @@ public class StringAttributeParameter extends AttributeParameter {
 
     /**
      * Return the first string with the tag from the list of elements of interest
+     * 
+     * @see AttributeParameter#getValue
      */
     @Override
     public String getValue (List<GameElementState> elements,

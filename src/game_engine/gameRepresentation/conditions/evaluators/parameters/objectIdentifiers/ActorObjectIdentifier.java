@@ -5,12 +5,15 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
 import game_engine.stateManaging.GameElementManager;
 import java.util.ArrayList;
 import java.util.List;
+
+
 /**
- * An identifier that returns the object evaluating the condition
+ * An identifier that returns the object evaluating the condition on other objects
+ *
  * @author Zach
  *
  */
-public class ActorObjectIdentifier implements ObjectOfInterestIdentifier{
+public class ActorObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
     public List<GameElementState> getElementOfInterest (GameElementManager elementManager,

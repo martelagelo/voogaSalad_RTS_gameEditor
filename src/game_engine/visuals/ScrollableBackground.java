@@ -1,9 +1,16 @@
 package game_engine.visuals;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 
+/**
+ * A scrollablebackground pane for the game
+ * 
+ * @author John
+ *
+ */
 public class ScrollableBackground extends Pane
 {
     private double myXScrollSpeed, myYScrollSpeed;
@@ -11,6 +18,14 @@ public class ScrollableBackground extends Pane
 
     private double myWidth, myHeight;
 
+    /**
+     * Create the scrollable background
+     * 
+     * @param screenWidth
+     * @param screenHeight
+     * @param xBoundary the maximum X value that can be scrolled to
+     * @param yBoundary the maximum Y value that can be scrolled to
+     */
     public ScrollableBackground (double screenWidth,
                                  double screenHeight,
                                  double xBoundary,
@@ -26,10 +41,18 @@ public class ScrollableBackground extends Pane
 
     }
 
+    /**
+     * Add objects to be displayed in the scrollablebackground
+     * 
+     * @param g a group of the objects to add
+     */
     public void addObjects (Group g) {
         this.getChildren().add(g);
     }
 
+    /**
+     * Update the view ofthe background based on the current scroll speed
+     */
     public void update () {
         if ((getTranslateX() >= 0 && myXScrollSpeed < 0) ||
             (-getTranslateX() >= (myXBoundary - myWidth) && myXScrollSpeed > 0))
@@ -42,6 +65,9 @@ public class ScrollableBackground extends Pane
         retractOutOfBoundsScroll();
     }
 
+    /**
+     * Undo scrolling if we're going out of bounds
+     */
     private void retractOutOfBoundsScroll () {
         if (-getTranslateX() >= myXBoundary - myWidth) setTranslateX(-(myXBoundary - myWidth));
         if (-getTranslateY() >= myYBoundary - myHeight) setTranslateY(-(myYBoundary - myHeight));

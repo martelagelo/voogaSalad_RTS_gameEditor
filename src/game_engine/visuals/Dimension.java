@@ -3,7 +3,7 @@ package game_engine.visuals;
 /**
  *
  * Very simple class that holds dimensions for an object. This was created to avoid using the
- * unserializable Point2D from JavaFX
+ * unserializable Point2D from JavaFX. A data wrapping class that contains no logic of its own.
  *
  * @author Steve, Zach
  *
@@ -24,9 +24,9 @@ public class Dimension {
     public int getHeight () {
         return myHeight;
     }
-    
-    public Dimension addToFormNewDimension(Dimension dimension){
-        return new Dimension(myWidth+dimension.myWidth,myHeight+dimension.myHeight);
+
+    public Dimension addToFormNewDimension (Dimension dimension) {
+        return new Dimension(myWidth + dimension.myWidth, myHeight + dimension.myHeight);
     }
 
     @Override
@@ -41,9 +41,9 @@ public class Dimension {
         }
         return false;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString () {
         return "(" + myWidth + ", " + myHeight + ")";
     }
 }
