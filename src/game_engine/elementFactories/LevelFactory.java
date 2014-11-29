@@ -69,8 +69,8 @@ public class LevelFactory {
                                          List<SelectableGameElement> units,
                                          MapGrid newGrid) {
         units.stream().filter(u -> u.getNumericalAttribute("MovementSpeed").doubleValue() == 0)
-                .forEach(u -> newGrid.registerObstacle(u.getBounds()));
-        terrain.stream().forEach(t -> newGrid.registerObstacle(t.getBounds()));
+                .forEach(u -> newGrid.registerObstaclePlacement(u.getBounds()));
+        terrain.stream().forEach(t -> newGrid.registerObstaclePlacement(t.getBounds()));
     }
 
     private Group generateBackGroundGroup (List<DrawableGameElement> terrain,
