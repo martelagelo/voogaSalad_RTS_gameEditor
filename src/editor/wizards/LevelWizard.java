@@ -12,9 +12,9 @@ import javafx.scene.control.TextField;
  *
  */
 public class LevelWizard extends Wizard {
-	
-	private final String NEW_LEVEL_DEFAULT_KEY="NewLevelDefault";
-	private final String NEW_CAMPAIGN_DEFAULT_KEY="NewCampaignDefault";
+
+    private final String NEW_LEVEL_DEFAULT_KEY = "NewLevelDefault";
+    private final String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
     @FXML
     private TextField campaignName;
     @FXML
@@ -31,17 +31,17 @@ public class LevelWizard extends Wizard {
         addToData(WizardDataType.CAMPAIGN, campaignName.getText());
         addToData(WizardDataType.NAME, levelName.getText());
     }
-    
+
     @Override
-    protected void attachTextProperties (){
-    	MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-		try{
-			levelName.textProperty().bind(util.getStringProperty(NEW_LEVEL_DEFAULT_KEY));
-			campaignName.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
-			super.attachTextProperties();
-		}
-		catch(LanguageException e){
-			//TODO Do something with this exception
-		}
+    protected void attachTextProperties () {
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        try {
+            levelName.textProperty().bind(util.getStringProperty(NEW_LEVEL_DEFAULT_KEY));
+            campaignName.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
+            super.attachTextProperties();
+        }
+        catch (LanguageException e) {
+            // TODO Do something with this exception
+        }
     }
 }

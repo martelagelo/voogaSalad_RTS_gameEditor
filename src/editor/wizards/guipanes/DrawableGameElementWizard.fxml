@@ -16,7 +16,7 @@
 					<TextField fx:id="name" />
 					<Button fx:id="trigger" />
 					<Button fx:id="stringAttribute" />
-					<Button fx:id="numberAttribute" />					
+					<Button fx:id="numberAttribute" />
 					<Button fx:id="image" />
 					<HBox>
 						<Slider fx:id="frameWidth" />
@@ -25,18 +25,18 @@
 					<HBox>
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
-					</HBox>					
+					</HBox>
 					<TextField fx:id="numRows" />
-					<TextField fx:id="startFrame"  />
+					<TextField fx:id="startFrame" />
 					<TextField fx:id="stopFrame" />
-					<CheckBox fx:id="animationRepeat" />	
-					<Button fx:id="save" text="save" />				
+					<CheckBox fx:id="animationRepeat" />
+					<Button fx:id="save" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>
 		</AnchorPane>
 		<ScrollPane fx:id="imageScroll">
 			<Group fx:id="spritesheet" />
-		</ScrollPane>				
+		</ScrollPane>
 	</items>
 </SplitPane>

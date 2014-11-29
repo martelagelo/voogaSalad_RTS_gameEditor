@@ -1,7 +1,6 @@
 package editor.wizards;
 
 import java.util.function.Consumer;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -15,23 +14,23 @@ import view.GUIController;
 
 /**
  * 
- * @author Joshua, Nishad, Joshua
+ * @author Joshua, Nishad
  *
  */
 public abstract class Wizard implements GUIController {
 
-	private final static String SAVE_KEY = "Save";
-	
+    private final static String SAVE_KEY = "Save";
+
     @FXML
     protected SplitPane root;
     @FXML
     protected Button save;
-    
+
     @FXML
     protected Text errorMessage;
-    
-    private static final String ERROR = "CANNOT SAVE!"; 
-    
+
+    private static final String ERROR = "CANNOT SAVE!";
+
     private Consumer<WizardData> mySaveConsumer;
     private WizardData userInput;
     private Stage myStage;
@@ -47,17 +46,18 @@ public abstract class Wizard implements GUIController {
     }
 
     @Override
-    public void initialize () {        
+    public void initialize () {
         userInput = new WizardData();
-        mySaveConsumer = (userInput) -> {}; 
+        mySaveConsumer = (userInput) -> {
+        };
         save.setOnAction(e -> save());
         attachTextProperties();
     }
-    
-    private void save() {       
+
+    private void save () {
         if (checkCanSave()) {
             updateData();
-            
+
             mySaveConsumer.accept(userInput);
         }
         else {
@@ -66,57 +66,57 @@ public abstract class Wizard implements GUIController {
     }
 
     public void setSubmit (Consumer<WizardData> c) {
-        mySaveConsumer = c;        
+        mySaveConsumer = c;
     }
-    
-    protected void addToData(WizardDataType key, String value) {
+
+    protected void addToData (WizardDataType key, String value) {
         userInput.addDataPair(key, value);
     }
-    
-    protected void addWizardData(WizardData wizData) {
+
+    protected void addWizardData (WizardData wizData) {
         userInput.addWizardData(wizData);
     }
-    
-    protected void setDataType(WizardDataType type) {
+
+    protected void setDataType (WizardDataType type) {
         userInput.setType(type);
     }
-    
-    public abstract boolean checkCanSave();
-    
-    public abstract void updateData();
-    
-    private void displayWarning() {
+
+    public abstract boolean checkCanSave ();
+
+    public abstract void updateData ();
+
+    private void displayWarning () {
         errorMessage.setText(ERROR);
     }
-    
-    public WizardData getWizardData() {
+
+    public WizardData getWizardData () {
         return userInput;
     }
-    
-    public void setErrorMesssage(String error) {
+
+    public void setErrorMesssage (String error) {
         errorMessage.setText(error);
     }
-    
-    public void setStage(Stage s) {
+
+    public void setStage (Stage s) {
         myStage = s;
     }
-    
-    public Stage getStage() {
+
+    public Stage getStage () {
         return myStage;
     }
-   
+
     /**
-     * Binds the multilanguage util to the text in the 
+     * Binds the multilanguage util to the text in the
      * wizard
      */
     protected void attachTextProperties () {
-    	MultiLanguageUtility util = MultiLanguageUtility.getInstance();
-		try{
-			save.textProperty().bind(util.getStringProperty(SAVE_KEY));
-		}
-		catch(LanguageException e){
-			//TODO Do something with this exception
-		}
-	}
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        try {
+            save.textProperty().bind(util.getStringProperty(SAVE_KEY));
+        }
+        catch (LanguageException e) {
+            // TODO Do something with this exception
+        }
+    }
 
 }

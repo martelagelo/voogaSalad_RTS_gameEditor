@@ -36,6 +36,7 @@ public class SplashScreen extends GUIScreen {
     private static final String LAUNCH_RUNNER_KEY = "LaunchRunner";
     private static final String NEW_GAME_KEY = "NewGame";
     private static final String CHOOSE_GAME_KEY = "ChooseGame";
+    private static final String DEFAULT_NEW_GAME_KEY = "NewGameDefault";
 
     private static final String DUVALL_PATH = "resources/duvall.txt";
     // TODO make longer to scroll, 1 for now for the sake of testing
@@ -81,7 +82,17 @@ public class SplashScreen extends GUIScreen {
 
     private void setUpButtons () {
         newGameButton.setOnAction(e -> {
-            myMainModel.newGame();
+            String gameName;
+            try {
+                gameName = MultiLanguageUtility.getInstance().getStringProperty(DEFAULT_NEW_GAME_KEY).getValue();
+            }
+            catch (Exception e1) {
+                // Should never happen
+                gameName = "<New Game>";
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            myMainModel.newGame(gameName);
             switchScreen(ViewScreen.EDITOR);
         });
         // TODO we need to link this up with save load in MainView and MainModel

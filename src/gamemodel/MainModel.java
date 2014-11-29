@@ -14,10 +14,8 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.io.IOException;
 import java.util.Observable;
-
 import util.SaveLoadManager;
 
 /**
@@ -38,9 +36,9 @@ public class MainModel extends Observable {
         mySaveLoadManager = new SaveLoadManager();
     }
 
-    public void newGame () {
+    public void newGame (String gameName) {
         // TODO CLEAN THIS UP
-        myGameState = new GameState("New Game");
+        myGameState = new GameState(gameName);
     }
 
     /**
