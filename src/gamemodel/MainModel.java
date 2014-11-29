@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.Observable;
 import util.SaveLoadUtility;
 
-
 /**
  * Main class for the model of the game
  * 
@@ -34,10 +33,9 @@ public class MainModel extends Observable {
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
 
-    public void newGame (String newGameName) {
+    public void newGame () {
         // TODO CLEAN THIS UP
-        myGameState = new GameState(newGameName);
-
+        myGameState = new GameState("New Game");
     }
 
     /**
@@ -53,8 +51,7 @@ public class MainModel extends Observable {
             myGameState = SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(game));
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // TODO Get rid of stack trace printing
             e.printStackTrace();
         }
@@ -64,8 +61,7 @@ public class MainModel extends Observable {
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
-                                                                                            throws CampaignNotFoundException,
-                                                                                            LevelNotFoundException {
+            throws CampaignNotFoundException, LevelNotFoundException {
         DescribableState state = getDescribableState(selection);
         state.updateName(name);
         state.updateDescription(description);
@@ -75,17 +71,14 @@ public class MainModel extends Observable {
     }
 
     public DescribableState getDescribableState (String[] selection)
-                                                                    throws CampaignNotFoundException,
-                                                                    LevelNotFoundException {
+            throws CampaignNotFoundException, LevelNotFoundException {
         if (selection[2].isEmpty()) {
             if (selection[1].isEmpty()) {
                 return myGameState;
-            }
-            else {
+            } else {
                 return myGameState.getCampaign(selection[1]);
             }
-        }
-        else {
+        } else {
             return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
         }
     }
@@ -96,8 +89,7 @@ public class MainModel extends Observable {
             String location = SaveLoadUtility
                     .save(myGameState, getGameSaveLocation(myGameState.getName()));
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             // TODO: eliminate stack trace printing
             e.printStackTrace();
@@ -114,7 +106,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-                                                                       throws DescribableStateException {
+            throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
     }
@@ -165,9 +157,10 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-                                                                   CampaignNotFoundException {
+            CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
-        myCurrentCampaignState.addLevel(new LevelState(levelName.trim()));
+        myCurrentLevelState = new LevelState(levelName.trim());
+        myCurrentCampaignState.addLevel(myCurrentLevelState);
         setChanged();
         notifyObservers();
         clearChanged();
@@ -234,8 +227,8 @@ public class MainModel extends Observable {
         notifyObservers();
         clearChanged();
     }
-
-    public void addGoal (WizardData data) {
+    
+    public void addGoal(WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
         System.out.println(goal);

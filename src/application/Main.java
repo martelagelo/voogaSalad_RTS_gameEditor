@@ -7,16 +7,15 @@ import view.dialog.DialogChoice;
 
 
 
+
 public class Main extends Application {
 
     @Override
     public void start (Stage primaryStage) {
         try {
             Vooga salad = new Vooga(primaryStage);
-            salad.toss();
-            // gotta have some freshly tossed salad
-            DialogBoxUtility.createDialogBox("message", new DialogChoice("OK", e -> System.out
-                                                                         .println("clicked")));
+            // gotta have some freshly dressed salad
+            salad.dress();
         }
         catch (Exception e) {
             e.printStackTrace();

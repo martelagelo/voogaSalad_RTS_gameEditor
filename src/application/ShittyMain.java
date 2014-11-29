@@ -71,7 +71,7 @@ public class ShittyMain extends Application {
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         MainModel model = new MainModel();
-        model.newGame("TestGame");
+        model.newGame();
         model.createCampaign("TestCampaign");
         model.createLevel("TestLevel", "TestCampaign");
         model.setCurrentLevel("TestCampaign", "TestLevel");

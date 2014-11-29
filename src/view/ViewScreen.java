@@ -10,8 +10,8 @@ public enum ViewScreen {
 
     SPLASH("/view/guipanes/SplashPage.fxml"),
     EDITOR("/editor/guipanes/EditorRoot.fxml"),
-    RUNNER("");
-
+    RUNNER("/view/gamerunner/RunnerScreenView.fxml");
+    
     private String myFilePath;
 
     private ViewScreen (String filePath) {

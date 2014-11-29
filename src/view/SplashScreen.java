@@ -39,7 +39,8 @@ public class SplashScreen extends GUIScreen {
     private static final String CHOOSE_GAME_KEY = "ChooseGame";
 
     private static final String DUVALL_PATH = "resources/duvall.txt";
-    private static final Integer LOAD_DURATION = 50;
+    // TODO make longer to scroll, 1 for now for the sake of testing
+    private static final Integer LOAD_DURATION = 1;
 
     // TODO Probably get rid of this
     @FXML
@@ -86,7 +87,7 @@ public class SplashScreen extends GUIScreen {
 
     private void setUpButtons () {
         newGameButton.setOnAction(e -> {
-            myMainModel.newGame("New Game");
+            myMainModel.newGame();
             switchScreen(ViewScreen.EDITOR);
         });
         // TODO we need to link this up with save load in MainView and MainModel
@@ -112,7 +113,7 @@ public class SplashScreen extends GUIScreen {
         // TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
         launchRunnerButton.setOnAction(e -> {
             // TODO Load a game
-                switchScreen(ViewScreen.EDITOR);
+                switchScreen(ViewScreen.RUNNER);
             });
         attachStringProperties();
     }

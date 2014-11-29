@@ -159,7 +159,7 @@ public class ScrollablePane extends Pane {
      * updates the background to scroll and draw selection boxes
      */
     public void update () {
-        myBackground.update(this.getWidth(), this.getHeight());
+        myBackground.update();
     }
 
     /**
