@@ -21,6 +21,12 @@ import editor.wizards.WizardData;
 
 
 /**
+ * This class represents the pane held within a TabPane representing all of the Triggers/Goals
+ * associated with a level. It holds a button to add a new Trigger/Goal along with a clickable list
+ * of the existing Goals. Both of these elements will spawn a TriggerWizard upon double-click. The
+ * publically accessible methods of this class include setting the onButtonClick and the
+ * onSelectedClick within the list view. Furthermore, one has the ability to update the list of
+ * triggers with a list of TriggerPair elements.
  * 
  * @author Jonathan Tseng
  * @author Nishad Agrawal
@@ -34,13 +40,21 @@ public class LevelTriggersViewController implements GUIController {
     private Button newLevelTrigger;
     @FXML
     private ListView<String> levelTriggers;
-    
+
     private ObservableList<String> myTriggerList;
 
+    /**
+     * 
+     * @param consumer The consumer to execute when the new button is clicked
+     */
     public void setButtonAction (Consumer<Consumer<WizardData>> consumer) {
         newLevelTrigger.setOnAction(e -> consumer.accept(null));
     }
-    
+
+    /**
+     * 
+     * @param consumer The consumer to execute when an item in the list is selected
+     */
     public void setSelectedAction (BiConsumer<Integer, String> consumer) {
         levelTriggers.setOnMouseClicked(e -> itemClicked(e, consumer));
     }
@@ -68,26 +82,44 @@ public class LevelTriggersViewController implements GUIController {
                 .addListener(new ChangeListener<Number>() {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                                         Number newValue) {                        
+                                         Number newValue) {
                     }
                 });
     }
 
+    /**
+     * This method sends the currently selected text and position within the list of the selected
+     * item into the consumer when an element in the list of triggers has been double clicked.
+     * 
+     * @param mouseEvent
+     * @param consumer
+     */
     private void itemClicked (MouseEvent mouseEvent, BiConsumer<Integer, String> consumer) {
         if (mouseEvent.getClickCount() == 2) {
             String action = levelTriggers.getSelectionModel()
-                            .getSelectedItem();
+                    .getSelectedItem();
             System.out.println(action);
             System.out.println(levelTriggers.getSelectionModel().getSelectedIndex());
-            
-            consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(), action);            
+
+            consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(), action);
         }
     }
+
+    /**
+     * 
+     * @param triggers The list of values to pass into the ListView
+     */
     public void updateTriggerList (List<TriggerPair> triggers) {
         myTriggerList.clear();
-        triggers.forEach((trigger) -> myTriggerList.add(trigger.myActionType + "\n" + trigger.myAction));
+        triggers.forEach( (trigger) -> myTriggerList.add(trigger.myActionType + "\n" +
+                                                         trigger.myAction));
     }
-    
+
+    /**
+     * 
+     * An internal class to populate the cells within our ListView.
+     *
+     */
     private class TriggerListCell extends ListCell<String> {
         @Override
         public void updateItem (String item, boolean empty) {

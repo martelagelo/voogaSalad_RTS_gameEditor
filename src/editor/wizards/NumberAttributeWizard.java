@@ -6,8 +6,11 @@ import javafx.scene.control.TextField;
 
 
 /**
+ * This represents the Wizard used to accept a numerical value with an attribute name. It checks
+ * whether the inputted value is numeric, and then stores this value as a string, to conform with
+ * the WizardData data structure.
  * 
- * @author joshua
+ * @author Joshua, Nishad
  *
  */
 public class NumberAttributeWizard extends Wizard {
@@ -17,7 +20,7 @@ public class NumberAttributeWizard extends Wizard {
     private TextField numberValue;
 
     @Override
-    public boolean checkCanSave () {        
+    public boolean checkCanSave () {
         return !key.getText().isEmpty() && !numberValue.getText().isEmpty() &&
                Pattern.matches("-?[0-9]+\\.?[0-9]*", numberValue.getText());
     }

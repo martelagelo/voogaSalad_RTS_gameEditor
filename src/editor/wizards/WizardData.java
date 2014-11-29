@@ -7,8 +7,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-
 /**
+ * This class is the data structure which backs all Wizards. The data structure holds a type
+ * specified by an enum along with a map of enums to Strings to specify the data at the lowest
+ * level. Furthermore, one can nest WizardData objects within one another to represent Wizards being
+ * nested within one another.
  * 
  * @author Nishad Agrawal
  *
@@ -48,10 +51,10 @@ public class WizardData {
         return myType;
     }
 
-    public String getValueByKey(WizardDataType key) {
+    public String getValueByKey (WizardDataType key) {
         return myData.get(key);
     }
-    
+
     public List<WizardData> getWizardDataByType (WizardDataType type) {
         return myWizards.stream().filter(e -> e.getType().equals(type))
                 .collect(Collectors.toList());

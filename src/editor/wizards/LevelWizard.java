@@ -5,6 +5,12 @@ import javafx.scene.control.TextField;
 
 
 /**
+ * This is the concrete implementation of a Wizard used to create a new LevelState within our
+ * GameState. It is spawned within the file menu and holds two textfields for campaignName and
+ * campaignLevel. It is important to note that the Wizard does not hold the responsibility for
+ * checking whether or not the campaign actually exists because it has no knowledge of the
+ * GameState. Therefore, it will send this to the class which launches the wizard which should hold
+ * the checking knowledge.
  * 
  * @author Nishad
  *
