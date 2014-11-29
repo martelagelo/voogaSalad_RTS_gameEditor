@@ -3,8 +3,8 @@ package game_engine.visuals;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 
 /**
- * A basic animation. Keeps track of progress, the frame bounds, and the animation that will be
- * played after it
+ * A basic animation. Keeps track of progress, the frame bounds, and the
+ * animation that will be played after it
  *
  * @author Zachary Bears
  *
@@ -22,29 +22,27 @@ public class AnimationSequence implements Updatable {
     /**
      * Initialize the animation
      *
-     * @param name the animation's name
-     * @param startFrame the start frame of the animation
-     * @param stopFrame the stop frame of the animation
+     * @param name
+     *            the animation's name
+     * @param startFrame
+     *            the start frame of the animation
+     * @param stopFrame
+     *            the stop frame of the animation
      */
     public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats) {
-        myStartFrame = startFrame;
-        myCurrentFrame = startFrame;
-        myStopFrame = stopFrame;
-        myName = name;
-        mySlownessMultiplier = 1;
-        myNextAnimation = repeats ? this : new NullAnimationSequence();
+        this(name, startFrame, stopFrame, new NullAnimationSequence());
+
     }
 
     /**
      * Initialize the animation and insert a multiplier for slowness
      *
-     * @param slownessMultiplier a multiplier for the speed of the animation. Must be less than 1.
+     * @param slownessMultiplier
+     *            a multiplier for the speed of the animation. Must be less than
+     *            1.
      */
-    public AnimationSequence (String name,
-                              int startFrame,
-                              int stopFrame,
-                              boolean repeats,
-                              double slownessMultiplier) {
+    public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats,
+            double slownessMultiplier) {
         this(name, startFrame, stopFrame, repeats);
         if (slownessMultiplier < 1) {
             mySlownessMultiplier = slownessMultiplier;
@@ -56,11 +54,13 @@ public class AnimationSequence implements Updatable {
      *
      * @param nextAnimation
      */
-    public AnimationSequence (String name,
-                              int startFrame,
-                              int stopFrame,
-                              AnimationSequence nextAnimation) {
-        this(name, startFrame, stopFrame, false);
+    public AnimationSequence (String name, int startFrame, int stopFrame,
+            AnimationSequence nextAnimation) {
+        myStartFrame = startFrame;
+        myCurrentFrame = startFrame;
+        myStopFrame = stopFrame;
+        myName = name;
+        mySlownessMultiplier = 1;
         myNextAnimation = nextAnimation;
     }
 
@@ -82,12 +82,14 @@ public class AnimationSequence implements Updatable {
     }
 
     /**
-     * Get the next animation, resetting it to ensure it starts from the beginning
+     * Get the next animation, resetting it to ensure it starts from the
+     * beginning
      *
      * @return
      */
     public AnimationSequence getNextAnimation () {
-        return myNextAnimation.reset();
+        return (myNextAnimation == null)  ? this.reset() : myNextAnimation.reset(); 
+        
     }
 
     /**
@@ -97,8 +99,7 @@ public class AnimationSequence implements Updatable {
     public boolean update () {
         if (myFrameCounter < 1 / mySlownessMultiplier) {
             myFrameCounter++;
-        }
-        else {
+        } else {
             myFrameCounter = 0;
             if (myCurrentFrame < myStopFrame) {
                 myCurrentFrame++;

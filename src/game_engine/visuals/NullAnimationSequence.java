@@ -9,7 +9,7 @@ package game_engine.visuals;
 public class NullAnimationSequence extends AnimationSequence {
 
     public NullAnimationSequence () {
-        super("", 0, 0, true);
+        super("", 0, 0, null);
 
     }
 

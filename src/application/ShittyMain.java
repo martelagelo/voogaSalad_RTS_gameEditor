@@ -54,6 +54,7 @@ public class ShittyMain extends Application {
 
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
         archeryRange.addAnimation(new NullAnimationSequence());
+        System.out.println(archeryRange.toJSON());
         double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
         archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);
@@ -125,7 +126,7 @@ public class ShittyMain extends Application {
         archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
         archerState.setAnimation("walk_left");
-
+        System.out.println(archerState.toJSON());
         archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING,
                                           randomMovement);
         archerState.setNumericalAttribute(StateTags.TEAM_ID, teamID);
