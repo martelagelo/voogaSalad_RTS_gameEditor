@@ -20,7 +20,7 @@ public class ActionParameter extends Parameter<Action> {
     }
 
     @Override
-    public Action getValue (ElementPair elements) {
+    public Action evaluate (ElementPair elements) {
         return myAction;
     }
 

@@ -28,7 +28,7 @@ public class RandomParameter extends Parameter<Number> {
     }
 
     @Override
-    public Number getValue (ElementPair elements) {
+    public Number evaluate (ElementPair elements) {
         return Math.random() * Math.abs(myUpperBound - myLowerBound) + myLowerBound;
     }
 

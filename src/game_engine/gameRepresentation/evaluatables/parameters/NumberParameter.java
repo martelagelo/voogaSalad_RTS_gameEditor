@@ -24,7 +24,7 @@ public class NumberParameter extends Parameter<Number> {
     }
 
     @Override
-    public Number getValue (ElementPair elements) {
+    public Number evaluate (ElementPair elements) {
         return myValue;
     }
 

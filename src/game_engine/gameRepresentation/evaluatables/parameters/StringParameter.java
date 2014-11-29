@@ -23,7 +23,7 @@ public class StringParameter extends Parameter<String> {
 	}
 
 	@Override
-	public String getValue(ElementPair elements) {
+	public String evaluate(ElementPair elements) {
 		return myString;
 	}
 

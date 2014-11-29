@@ -131,7 +131,7 @@ public class GameElement {
      *        interested in e.g. the current unit and a unit nearby it
      */
     protected void executeAllActions (String actionKey, ElementPair elementPair) {
-        getActionsOfType(actionKey).forEachRemaining(action -> action.getValue(elementPair));
+        getActionsOfType(actionKey).forEachRemaining(action -> action.evaluate(elementPair));
     }
 
     /**

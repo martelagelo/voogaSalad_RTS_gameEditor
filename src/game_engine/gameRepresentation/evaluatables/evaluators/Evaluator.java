@@ -112,9 +112,9 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      *        examined by it
      */
     @Override
-    public T getValue (ElementPair elements) {
-        A parameter1Value = myParameter1.getValue(elements);
-        B parameter2Value = myParameter2.getValue(elements);
+    public T evaluate (ElementPair elements) {
+        A parameter1Value = myParameter1.evaluate(elements);
+        B parameter2Value = myParameter2.evaluate(elements);
         myElementPair = elements;
         return delegateEvaluator(parameter1Value, parameter2Value);
     }
