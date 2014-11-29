@@ -1,7 +1,9 @@
 package editor;
 
+import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelNotFoundException;
@@ -23,6 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
+import view.dialog.DialogBoxUtility;
 
 
 /**
@@ -63,7 +66,6 @@ public class EditorScreen extends GUIScreen {
     @FXML
     private ElementAccordionController levelElementAccordionController;
 
-    private HashMap<String, TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
 
     @Override
@@ -72,12 +74,12 @@ public class EditorScreen extends GUIScreen {
     }
 
     private void initProjectExplorer () {
-        // TODO: on selection changed should update the info box
         projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
             updateInfoBox(selection);
         });
-        projectExplorerController.setOnLevelClicked( (String s) -> {
-            launchTab(s);
+        projectExplorerController.setOnLevelClicked( (String level) -> {
+            String campaign = projectExplorerController.getSelectedHierarchy()[1];
+            launchTab(campaign, level);
         });
     }
 
@@ -90,8 +92,7 @@ public class EditorScreen extends GUIScreen {
                                                            description);
                     }
                     catch (CampaignNotFoundException | LevelNotFoundException e) {
-                        System.out.println("Failed to update selected describable state");
-                        e.printStackTrace();
+                        DialogBoxUtility.createMessageDialog(String.format("Failed to update selected describable state due to: %s", e.toString()));
                     }
                 });
     }
@@ -100,11 +101,9 @@ public class EditorScreen extends GUIScreen {
         try {
             DescribableState state = myMainModel.getDescribableState(selection);
             gameInfoBoxController.setText(state.getName(), state.getDescription());
-            // System.out.println("updating: " + state.getName() + ", " + state.getDescription());
         }
         catch (Exception e) {
-            // System.out.println("shit update info box failed");
-            e.printStackTrace();
+            DialogBoxUtility.createMessageDialog(String.format("Failed to update InfoBox based on project selection due to: %s", e.toString()));
         }
     }
 
@@ -115,51 +114,56 @@ public class EditorScreen extends GUIScreen {
                 .addListener( (observable, oldTab, newTab) -> tabChanged(observable, oldTab, newTab));
     }
 
-    private void launchTab (String level) {
+    private void launchTab (String campaign, String level) {
         Optional<Tab> option =
-                tabPane.getTabs().stream().filter( (tab) -> tab.getId().equals(level)).findFirst();
-        if (option.isPresent()) {
-            myCurrentTab = option.get();
-        }
-        else {
-            createNewTab(level);
-        }
-        //TODO: how do you switch the current level when you switch tabs??
-        // THIS REALLY NEEDS TO BE FIXED!
-        try {
-            myMainModel.setCurrentLevel("campaign name", level);
-        }
-        catch (DescribableStateException e) {
-            e.printStackTrace();
-        }
-        tabPane.getSelectionModel().select(myCurrentTab);
+                tabPane.getTabs()
+                        .stream()
+                        .filter( (tab) -> ((CampaignLevelPair) tab.getUserData())
+                                .equals(new CampaignLevelPair(campaign, level)))
+                        .findFirst();
+        Tab tab = (option.isPresent()) ? option.get() : createNewTab(campaign, level);
+        tabPane.getSelectionModel().select(tab);
     }
 
-    private void createNewTab (String level) {
+    private Tab createNewTab (String campaign, String level) {
         Tab tab = new Tab();
-        tab.setText(level);
-        tab.setId(level);
+        //tab.setText(String.format("%s: %s", campaign, level));
 
         String filePath = "/editor/guipanes/EditorTabView.fxml";
         TabViewController tabController =
                 (TabViewController) GUILoadStyleUtility.generateGUIPane(filePath);
-        clearChildContainers();
         attachChildContainers(tabController);
-
-        myCurrentTab = tab;
+        try {
+            tabController.setLevel(campaign, level);
+        }
+        catch (LevelNotFoundException | CampaignNotFoundException e) {
+            // Should not happen
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
+        tab.setUserData(new CampaignLevelPair(campaign, level));
         tab.setContent((BorderPane) tabController.getRoot());
         tabPane.getTabs().add(tab);
-        myTabViewControllers.put(level, tabController);
+        return tab;
     }
 
     private void tabChanged (ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
         myCurrentTab = newTab;
+        if (myCurrentTab != null) {
+            try {
+                CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
+                myMainModel.setCurrentLevel(id.myCampaign.getName(),
+                                            id.myLevel.getName());
+            }
+            catch (DescribableStateException e) {
+                // Should never happen
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        }
     }
 
     @Override
     public void init () {
         attachChildContainers(editorMenuBarController, levelElementAccordionController);
-        myTabViewControllers = new HashMap<>();
         initTabs();
         initProjectExplorer();
         initInfoBox();
@@ -169,9 +173,17 @@ public class EditorScreen extends GUIScreen {
     @Override
     public void update () {
         updateProjectExplorer();
+        updateTabTexts();
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
     }
 
+    private void updateTabTexts() {
+        tabPane.getTabs().forEach((tab)->{
+            CampaignLevelPair id = (CampaignLevelPair) tab.getUserData();
+            tab.setText(String.format("%s: %s", id.myCampaign.getName(), id.myLevel.getName()));
+        });
+    }
+    
     private void updateProjectExplorer () {
         GameState game = myMainModel.getCurrentGame();
         Map<String, List<String>> campaignLevelMap = new HashMap<>();
@@ -185,6 +197,47 @@ public class EditorScreen extends GUIScreen {
                     }).collect(Collectors.toList()));
         });
         projectExplorerController.update(game.getName(), campaigns, campaignLevelMap);
+    }
+
+    /**
+     * private datastructure to differentiate between different tabs
+     * 
+     * @author Jonathan Tseng
+     *
+     */
+    private class CampaignLevelPair {
+        public CampaignState myCampaign;
+        public LevelState myLevel;
+
+        public CampaignLevelPair (String campaign, String level) {
+            try {
+                myCampaign = myMainModel.getCampaign(campaign);
+                myLevel = myMainModel.getLevel(campaign, level);
+            }
+            catch (CampaignNotFoundException | LevelNotFoundException e) {
+                // Should never happen
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        }
+
+        @Override
+        public int hashCode () {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((myCampaign == null) ? 0 : myCampaign.getName().hashCode());
+            result = prime * result + ((myLevel == null) ? 0 : myLevel.getName().hashCode());
+            return result;
+        }
+
+        @Override
+        public boolean equals (Object obj) {
+            if (this == obj) return true;
+            if (obj == null) return false;
+            if (getClass() != obj.getClass()) return false;
+            CampaignLevelPair other = (CampaignLevelPair) obj;
+            return myCampaign.getName() == other.myCampaign.getName() &&
+                   myLevel.getName() == other.myLevel.getName();
+        }
     }
 
 }

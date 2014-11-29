@@ -4,7 +4,10 @@ import editor.wizards.TriggerWizard;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import editor.wizards.WizardDataType;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import gamemodel.exceptions.CampaignNotFoundException;
+import gamemodel.exceptions.LevelNotFoundException;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +44,9 @@ public class TabViewController extends GUIContainer {
 
     private static final String TRIGGER_WIZARD = "/editor/wizards/guipanes/TriggerWizard.fxml";
     
-    private List<GameElementState> levelGoals;
-
+    private List<GameElementState> myLevelGoals;
+    private LevelState myLevel;
+    
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
             Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
@@ -55,6 +59,10 @@ public class TabViewController extends GUIContainer {
         return consumer;
     }
 
+    public void setLevel(String campaign, String level) throws LevelNotFoundException, CampaignNotFoundException {
+        myLevel = myMainModel.getLevel(campaign, level);
+    }
+    
     @Override
     public void update () {
         updateLevelTriggersView();
@@ -64,10 +72,10 @@ public class TabViewController extends GUIContainer {
      * This is the code required to filter the goals by type within the level goals view
      */
     private void updateLevelTriggersView () {
-        levelGoals = myMainModel.getCurrentLevel().getGoals();
+        myLevelGoals = myLevel.getGoals();
         
         List<TriggerPair> triggers = new ArrayList<>();
-        levelGoals.forEach( (ges) -> {
+        myLevelGoals.forEach( (ges) -> {
             ges.getActions().forEach( (actionType, actions) -> {
                 actions.forEach( (act) -> {
                     triggers.add(new TriggerPair(actionType, act));
@@ -86,12 +94,6 @@ public class TabViewController extends GUIContainer {
             myAction = action;
         }
     }
-
-    @Override
-    public void setModel(gamemodel.MainModel model) {
-        super.setModel(model);
-        updateLevelTriggersView();
-    }
     
     @Override
     public void init () {
@@ -107,7 +109,7 @@ public class TabViewController extends GUIContainer {
             String[] oldStrings = oldValues.split("\n");
             wiz.launchForEdit(oldStrings[0], oldStrings[1]);
             Consumer<WizardData> bc = (data) -> {
-                Map<String, List<String>> actions = levelGoals.get(position).getActions();
+                Map<String, List<String>> actions = myLevelGoals.get(position).getActions();
                 actions.clear();
                 List<String> actionValue = new ArrayList<>();
                 actionValue.add(data.getValueByKey(WizardDataType.ACTION));

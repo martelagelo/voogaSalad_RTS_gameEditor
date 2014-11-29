@@ -92,7 +92,6 @@ public class ElementAccordionController extends GUIContainer {
 
     @Override
     public void update () {
-        System.out.println("updating accordion");
         List<ImageElementPair> states =
                 myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
                         .map( (element) -> {

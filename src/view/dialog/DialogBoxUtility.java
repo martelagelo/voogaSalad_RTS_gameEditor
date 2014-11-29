@@ -8,10 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
 import view.GUILoadStyleUtility;
 
 public class DialogBoxUtility {
     
+    private static final String OKAY_KEY = "Okay";
     private static final Dimension SIZE = new Dimension(400, 200);
     
     public static DialogBoxController createDialogBox(String message, DialogChoice ... choices) {
@@ -29,6 +32,18 @@ public class DialogBoxUtility {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         return controller;
+    }
+    
+    public static DialogBoxController createMessageDialog(String message) {
+        String okay;
+        try {
+            okay = MultiLanguageUtility.getInstance().getStringProperty(OKAY_KEY).getValue();
+        }
+        catch (LanguagePropertyNotFoundException e1) {
+            System.out.println(e1);
+            okay = "OK";
+        }
+        return createDialogBox(message, new DialogChoice(okay, e->{}));
     }
     
 }

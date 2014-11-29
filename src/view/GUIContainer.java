@@ -56,10 +56,4 @@ public abstract class GUIContainer implements Observer, GUIController {
 
     public abstract void update ();
 
-    private void checkAndCreateChildContainers () {
-        if (myChildContainers == null) {
-            myChildContainers = new ArrayList<>();
-        }
-    }
-
 }
