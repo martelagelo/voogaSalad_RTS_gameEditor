@@ -37,8 +37,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         // easy retrieval of
         // attributes by conditions and actions
 
-        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.X_POS_STRING, xPosition));
-        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.Y_POS_STRING, yPosition));
+        myAttributes.setNumericalAttribute(StateTags.X_POS_STRING, xPosition);
+        myAttributes.setNumericalAttribute(StateTags.Y_POS_STRING, yPosition);
     }
 
     /**

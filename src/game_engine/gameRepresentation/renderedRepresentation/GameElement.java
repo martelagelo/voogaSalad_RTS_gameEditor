@@ -4,6 +4,7 @@ import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.evaluatables.NullElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -109,6 +110,47 @@ public class GameElement {
             });
         }
     }
+    
+    /**
+     * Get a numeric attribute contained by the game element
+     *
+     * @param attributTag the tag of the attribute of interest
+     * @return the atribute's value or 0 if the attribute was not declared
+     */
+    public Number getNumericalAttribute (String attributeTag) {
+        return myState.myAttributes.getNumericalAttribute(attributeTag);
+    }
+
+    /**
+     * Set a numeric attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the value of the attribute
+     */
+    public void setNumericalAttribute (String attributeTag, Number attributeValue) {
+        myState.myAttributes.setNumericalAttribute(attributeTag, attributeValue);
+    }
+
+    /**
+     * Get a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @return the value of the attribute or "" if it does not exist
+     */
+    public String getTextualAttribute (String attributeTag) {
+        return myState.myAttributes.getTextualAttribute(attributeTag);
+    }
+
+    /**
+     * Set the value of a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the attribute's value
+     */
+    public void setTextualAttribute (String attributeTag, String attributeValue) {
+        myState.myAttributes.setTextualAttribute(attributeTag, attributeValue);
+    }
+
 
     /**
      * Update the element based on its internal state
@@ -145,49 +187,9 @@ public class GameElement {
     protected void executeAllActions (String actionKey) {
         executeAllActions(actionKey, new NullElementPair());
     }
-
-    /**
-     * Get a numeric attribute contained by the game element
-     *
-     * @param attributTag the tag of the attribute of interest
-     * @return the atribute's value or 0 if the attribute was not declared
-     */
-    public Number getNumericalAttribute (String attributeTag) {
-        return myState.getNumericalAttribute(attributeTag);
-    }
-
-    /**
-     * Set a numeric attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @param attributeValue the value of the attribute
-     */
-    public void setNumericalAttribute (String attributeTag, Number attributeValue) {
-        myState.setNumericalAttribute(attributeTag, attributeValue);
-    }
-
-    /**
-     * Get a textual attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @return the value of the attribute or "" if it does not exist
-     */
-    public String getTextualAttribute (String attributeTag) {
-        return myState.getTextualAttribute(attributeTag);
-    }
-
-    /**
-     * Set the value of a textual attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @param attributeValue the attribute's value
-     */
-    public void setTextualAttribute (String attributeTag, String attributeValue) {
-        myState.setTextualAttribute(attributeTag, attributeValue);
-    }
     
     public void setPosition (double x, double y) {
-        setNumericalAttribute("XPosition", x);
-        setNumericalAttribute("YPosition", y);
+        myState.myAttributes.setNumericalAttribute(StateTags.X_POS_STRING, x);
+        myState.myAttributes.setNumericalAttribute(StateTags.Y_POS_STRING, y);
     }
 }

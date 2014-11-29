@@ -170,8 +170,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         myDisplayVBox.getChildren().add(mySelectedImageView);
         mySelectedImageView.setOpacity(0.0);
         myDisplayVBox.getChildren().add(myAnimation.getNode());
-        myDisplay.setLayoutX(getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
+        myDisplay.setLayoutX(myState.myAttributes.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(myState.myAttributes.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
         myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
         myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
     }
