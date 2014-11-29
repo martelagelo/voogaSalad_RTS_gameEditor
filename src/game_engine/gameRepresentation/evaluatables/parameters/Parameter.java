@@ -40,7 +40,7 @@ public abstract class Parameter<T> extends Evaluatable<T> {
      * @return the value of the evaluator
      */
     @Override
-    public abstract T getValue (ElementPair elements);
+    public abstract T evaluate (ElementPair elements);
 
     /**
      * Sets the value of the given parameter. Note: modifies the actual

@@ -30,11 +30,11 @@ public class IfThenEvaluator<A, B> extends Evaluator<A, B, Boolean> {
      * @return a boolean indicating if the second parameter was executed
      */
     @Override
-    public Boolean getValue (ElementPair elements) {
+    public Boolean evaluate (ElementPair elements) {
         if (Boolean.class.equals(getParameter1().getType()) &&
-            (Boolean) getParameter1().getValue(elements))
+            (Boolean) getParameter1().evaluate(elements))
         {
-            getParameter2().getValue(elements);
+            getParameter2().evaluate(elements);
             return true;
         }
         return false;

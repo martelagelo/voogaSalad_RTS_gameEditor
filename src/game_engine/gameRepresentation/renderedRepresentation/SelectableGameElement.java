@@ -272,7 +272,7 @@ public class SelectableGameElement extends DrawableGameElement {
         getActionsOfType("collision").forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
-                if ((Boolean) action.getValue(elements)) {
+                if ((Boolean) action.evaluate(elements)) {
                                                        return;
                                                        }
                                                    }

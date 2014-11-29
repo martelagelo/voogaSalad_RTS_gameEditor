@@ -33,13 +33,13 @@ public abstract class Evaluatable<T> {
      * return a boolean representing the condition's return value.
      *
      */
-    public abstract T getValue (ElementPair elements);
+    public abstract T evaluate (ElementPair elements);
 
     /**
      * Use the null pattern to evaluate a condition if no elements are given
      */
-    public T getValue () {
-        return getValue(new NullElementPair());
+    public T evaluate () {
+        return evaluate(new NullElementPair());
     }
 
     /**

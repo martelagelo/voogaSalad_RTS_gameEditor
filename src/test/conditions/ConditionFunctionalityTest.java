@@ -88,9 +88,9 @@ public class ConditionFunctionalityTest {
         NumberParameter testParam2 = new NumberParameter("", Double.valueOf(50));
         Evaluator<?, ?, ?> evaluator = new LessThanEvaluator<>("", testParam,
                                                                testParam2);
-        assertTrue((Boolean) evaluator.getValue());
+        assertTrue((Boolean) evaluator.evaluate());
         testParam.setValue(52d);
-        assertFalse((Boolean) evaluator.getValue());
+        assertFalse((Boolean) evaluator.evaluate());
     }
 
     /**
@@ -103,12 +103,12 @@ public class ConditionFunctionalityTest {
                                                   myNumAttrParam, myNumberParam);
         assertEquals(50d, myElement1
                 .getNumericalAttribute("Health"));
-        evaluator.getValue(myElementPair);
+        evaluator.evaluate(myElementPair);
         assertEquals(60d, myElement1
                 .getNumericalAttribute("Health"));
         Evaluator<?, ?, ?> evaluator2 =
                 new SubtractionAssignmentEvaluator<>("", myNumAttrParam, myNumAttrParam);
-        evaluator2.getValue(myElementPair);
+        evaluator2.evaluate(myElementPair);
         assertEquals(0d, myElement1
                 .getNumericalAttribute("Health"));
 
@@ -119,8 +119,8 @@ public class ConditionFunctionalityTest {
         Evaluator<?, ?, ?> evaluator =
                 new EqualsAssignmentEvaluator<>("",
                                                 myNumAttrParam, myNumberParam);
-        evaluator.getValue(myElementPair);
-        assertEquals(myNumberParam.getValue(), myElement1
+        evaluator.evaluate(myElementPair);
+        assertEquals(myNumberParam.evaluate(), myElement1
                 .getNumericalAttribute("Health"));
     }
 
@@ -129,14 +129,14 @@ public class ConditionFunctionalityTest {
         Evaluator<?, ?, ?> evaluator = new CollisionEvaluator<>("",
                                                                 myElementParam1, myElementParam2);
         // First make sure the pre-set collision boxes collide
-        assertTrue((Boolean) (evaluator.getValue(myElementPair)));
+        assertTrue((Boolean) (evaluator.evaluate(myElementPair)));
         // Now move the game element to the a far away location and make sure
         // they don't intersect
         myElement1.setNumericalAttribute(
                                        StateTags.X_POS_STRING, 100);
         myElement1.setNumericalAttribute(
                                        StateTags.Y_POS_STRING, 100);
-        assertFalse((Boolean) (evaluator.getValue(myElementPair)));
+        assertFalse((Boolean) (evaluator.evaluate(myElementPair)));
 
     }
 
@@ -155,14 +155,14 @@ public class ConditionFunctionalityTest {
         EvaluatableIDParameter param = new EvaluatableIDParameter("asdasdf");
         Evaluator<?, ?, ?> removeAction =
                 new RemoveEvaluatableEvaluator<>("otherRandomString", myElementParam1, param);
-        removeAction.getValue(myElementPair);
+        removeAction.evaluate(myElementPair);
         assertEquals(0, countIteratorElements(myElement1.getActionsOfType("test")));
         // Add an element and try to remove an element that doesn't exist
         myElement1.addAction("test", evaluator);
         EvaluatableIDParameter param2 = new EvaluatableIDParameter("hello");
         Evaluator<?, ?, ?> removeAction2 =
                 new RemoveEvaluatableEvaluator<>("", myElementParam1, param2);
-        removeAction2.getValue(myElementPair);
+        removeAction2.evaluate(myElementPair);
         assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
 
     }
@@ -183,11 +183,11 @@ public class ConditionFunctionalityTest {
         Evaluator<?, ?, ?> addAction =
                 new AddEvaluatableEvaluator<>("tag", myElementParam1, actionParam);
         // Evaluate the add action evaluatable and ensure the action is added
-        addAction.getValue(myElementPair);
+        addAction.evaluate(myElementPair);
         assertEquals(1, countIteratorElements(myElement1.getActionsOfType("test")));
         // Execute the added action (which itself is a remove action and ensure it properly removes
         // the action
-        myElement1.getActionsOfType("test").next().getValue(myElementPair);
+        myElement1.getActionsOfType("test").next().evaluate(myElementPair);
         assertEquals(0,countIteratorElements(myElement1.getActionsOfType("test")));
 
     }

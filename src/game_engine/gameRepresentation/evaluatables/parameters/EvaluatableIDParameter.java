@@ -16,7 +16,7 @@ public class EvaluatableIDParameter extends Parameter<String> {
     }
 
     @Override
-    public String getValue (ElementPair elements) {
+    public String evaluate (ElementPair elements) {
         return getID();
     }
 

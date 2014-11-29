@@ -47,7 +47,7 @@ public class CollisionComputer extends
         ElementPair elementPair =
                 new ElementPair(primaryObject,
                                 otherObject);
-        return (Boolean) collisionEvaluator.getValue(elementPair);
+        return (Boolean) collisionEvaluator.evaluate(elementPair);
     }
 
     /**
