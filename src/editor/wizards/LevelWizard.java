@@ -42,8 +42,8 @@ public class LevelWizard extends Wizard {
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
-            levelName.textProperty().bind(util.getStringProperty(NEW_LEVEL_DEFAULT_KEY));
-            campaignName.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
+            levelName.promptTextProperty().bind(util.getStringProperty(NEW_LEVEL_DEFAULT_KEY));
+            campaignName.promptTextProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {

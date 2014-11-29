@@ -35,7 +35,8 @@ public class CampaignWizard extends Wizard {
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
-            name.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
+            name.promptTextProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
+            System.out.println(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY).getValue());
             super.attachTextProperties();
         }
         catch (LanguageException e) {
