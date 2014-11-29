@@ -1,6 +1,7 @@
 package editor;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -40,8 +41,8 @@ public class LevelTriggersViewController implements GUIController {
         newLevelTrigger.setOnAction(e -> consumer.accept(null));
     }
     
-    public void setOnSelectedAction (Consumer<Consumer<WizardData>> consumer) {
-//        levelTriggers.setOnAction(e -> consumer.accept(null));
+    public void setSelectedAction (BiConsumer<Integer, String> consumer) {
+        levelTriggers.setOnMouseClicked(e -> itemClicked(e, consumer));
     }
 
     @Override
@@ -52,7 +53,6 @@ public class LevelTriggersViewController implements GUIController {
     @Override
     public void initialize () {
         initListView();
-        levelTriggers.setOnMouseClicked(e -> itemClicked(e));
     }
 
     private void initListView () {
@@ -72,17 +72,15 @@ public class LevelTriggersViewController implements GUIController {
                     }
                 });
     }
-    
-    private void selectTrigger() {
-//        levelTriggers.setOnMouseClicked(value);
-                
-    }
 
-    private void itemClicked (MouseEvent mouseEvent) {
+    private void itemClicked (MouseEvent mouseEvent, BiConsumer<Integer, String> consumer) {
         if (mouseEvent.getClickCount() == 2) {
-            String[] action = levelTriggers.getSelectionModel()
-                            .getSelectedItem().split("\\n");
-            System.out.println(action[0] + action[1]);
+            String action = levelTriggers.getSelectionModel()
+                            .getSelectedItem();
+            System.out.println(action);
+            System.out.println(levelTriggers.getSelectionModel().getSelectedIndex());
+            
+            consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(), action);            
         }
     }
     public void updateTriggerList (List<TriggerPair> triggers) {

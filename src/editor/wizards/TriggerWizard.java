@@ -3,7 +3,6 @@ package editor.wizards;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -48,4 +47,8 @@ public class TriggerWizard extends Wizard {
         actionType.setItems(FXCollections.observableArrayList(actionTypes));
     }
 
+    public void launchForEdit(String actionTypeString, String actionString) {
+        actionType.getSelectionModel().select(actionTypeString);
+        action.setText(actionString);
+    }
 }
