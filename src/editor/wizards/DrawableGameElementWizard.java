@@ -3,6 +3,7 @@ package editor.wizards;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -14,6 +15,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -46,6 +49,9 @@ public class DrawableGameElementWizard extends Wizard {
     private static final String STRING_ATTR_WIZARD =
             "/editor/wizards/guipanes/StringAttributeWizard.fxml";
     private static final String TRIGGER_WIZARD = "/editor/wizards/guipanes/TriggerWizard.fxml";
+    
+    @FXML
+    private AnchorPane leftPane;
     @FXML
     private TextField name;
     @FXML
@@ -79,6 +85,11 @@ public class DrawableGameElementWizard extends Wizard {
     @FXML
     private VBox existingTriggers;
     @FXML
+    private VBox existingStringAttributes;
+    @FXML
+    private VBox existingNumberAttributes;
+    
+    @FXML
     private Text wizardDataText;
     
 
@@ -91,7 +102,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(TRIGGER_WIZARD);
+        launchNestedWizard(TRIGGER_WIZARD, existingTriggers);
     }
 
     /**
@@ -99,7 +110,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchStringAttributeEditor () {
-        launchNestedWizard(STRING_ATTR_WIZARD);
+        launchNestedWizard(STRING_ATTR_WIZARD, existingStringAttributes);
     }
 
     /**
@@ -107,30 +118,47 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchNumberAttributeEditor () {
-        launchNestedWizard(NUM_ATTR_WIZARD);
+        launchNestedWizard(NUM_ATTR_WIZARD, existingNumberAttributes);
     }
 
-    private void launchNestedWizard (String s) {
+    private void launchNestedWizard (String s, VBox existing) {        
         Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
-            Button b = new Button();
-            b.setText(data.getValueByKey(WizardDataType.ACTIONTYPE));
-            b.setOnAction(e -> launchEditWizard(s, data));
-            existingTriggers.getChildren().add(b);
+            
+            HBox newElement = new HBox();
+            Button edit = new Button();
+            edit.setText((new ArrayList<String>(data.getData().values())).get(0));
+            edit.setOnAction(e -> launchEditWizard(s, data, edit));
+            newElement.getChildren().add(edit);
+            
+            Button delete = new Button();
+            delete.setText("X");
+            delete.setOnAction(e -> {
+                removeWizardData(data);                
+                existing.getChildren().remove(newElement);
+                wizardDataText.setText(getWizardData().toString());
+            });
+            newElement.getChildren().add(delete);            
+            existing.getChildren().add(newElement);
+            
             wizardDataText.setText(getWizardData().toString());
             wiz.getStage().close();
         };
         wiz.setSubmit(bc);
     }
     
-    private void launchEditWizard (String s, WizardData oldData) {
+    private void launchEditWizard (String s, WizardData oldData, Button button) {
         Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
-        String[] oldValues = oldData.getData().values().toArray(new String[0]);
-        wiz.launchForEdit(oldValues);
+        wiz.launchForEdit(oldData);
         Consumer<WizardData> bc = (data) -> {
             removeWizardData(oldData);
             addWizardData(data);
+            oldData.clear();
+            for (WizardDataType type: data.getData().keySet()) {
+                oldData.addDataPair(type, data.getValueByKey(type));
+            }
+            button.setText((new ArrayList<String>(data.getData().values())).get(0));
             wizardDataText.setText(getWizardData().toString());
             wiz.getStage().close();
         };
@@ -266,7 +294,7 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     @Override
-    public void launchForEdit (String[] oldValues) {
+    public void launchForEdit (WizardData oldValues) {
         // TODO implement this!      
     }
 

@@ -48,8 +48,8 @@ public class TriggerWizard extends Wizard {
     }
 
     @Override
-    public void launchForEdit (String[] oldValues) {
-        actionType.getSelectionModel().select(oldValues[0]);
-        action.setText(oldValues[1]);
+    public void launchForEdit (WizardData oldValues) {
+        actionType.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.ACTIONTYPE));
+        action.setText(oldValues.getValueByKey(WizardDataType.ACTION));
     }
 }

@@ -12,7 +12,7 @@
 			<children>
 				<VBox>
 					<TextField fx:id="name" />
-					<Button fx:id="save" defaultButton="true"/>
+					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

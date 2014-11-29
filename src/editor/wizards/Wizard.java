@@ -135,7 +135,7 @@ public abstract class Wizard implements GUIController {
      */
     public abstract void updateData ();
     
-    public abstract void launchForEdit(String[] oldValues);
+    public abstract void launchForEdit(WizardData oldValues);
 
     /**
      * used internally to display the default error message if none has been provided.

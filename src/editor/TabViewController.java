@@ -1,6 +1,5 @@
 package editor;
 
-import editor.wizards.TriggerWizard;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import editor.wizards.WizardDataType;
@@ -105,8 +104,13 @@ public class TabViewController extends GUIContainer {
     private BiConsumer<Integer, String> modifyGoals () {
         BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
             updateLevelTriggersView();
-            TriggerWizard wiz = (TriggerWizard) WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
-            wiz.launchForEdit(oldValues.split("\n"));
+            Wizard wiz =  WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
+            // TODO: THIS SHOULD BE CLEANED UP TO MATCH OTHER WIZARDS
+            String[] oldStrings = oldValues.split("\n");
+            WizardData oldData = new WizardData();
+            oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
+            oldData.addDataPair(WizardDataType.ACTION, oldStrings[1]);
+            wiz.launchForEdit(oldData);
             Consumer<WizardData> bc = (data) -> {
                 Map<String, List<String>> actions = myLevelGoals.get(position).getActions();
                 actions.clear();
