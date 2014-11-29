@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import view.GUIContainer;
 import view.WizardUtility;
+import view.gamerunner.GameRunnerViewController;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
@@ -29,6 +30,8 @@ public class TabViewController extends GUIContainer {
     private LevelTriggersViewController levelTriggerController;
     @FXML
     private BorderPane gameRunnerPane;
+    @FXML
+    private GameRunnerViewController gameRunnerPaneController;
     @FXML
     private BorderPane tabPane;
 
