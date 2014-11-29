@@ -1,5 +1,6 @@
 package game_engine.visuals;
 
+import game_engine.gameRepresentation.stateRepresentation.AnimationTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 
 /**
@@ -14,7 +15,7 @@ public class AnimationSequence implements Updatable {
     private int myStartFrame;
     private int myStopFrame;
     private int myCurrentFrame;
-    private String myName;
+    private AnimationTags myName;
     private AnimationSequence myNextAnimation;
     private double mySlownessMultiplier;
     private int myFrameCounter;
@@ -29,7 +30,7 @@ public class AnimationSequence implements Updatable {
      * @param stopFrame
      *            the stop frame of the animation
      */
-    public AnimationSequence (String name, int startFrame, int stopFrame) {
+    public AnimationSequence (AnimationTags name, int startFrame, int stopFrame) {
         this(name, startFrame, stopFrame, new NullAnimationSequence());
         mySlownessMultiplier = 1; // TODO: wtf is this
 
@@ -42,7 +43,7 @@ public class AnimationSequence implements Updatable {
      *            a multiplier for the speed of the animation. Must be less than
      *            1.
      */
-    public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats,
+    public AnimationSequence (AnimationTags name, int startFrame, int stopFrame, boolean repeats,
             double slownessMultiplier) {
         this(name, startFrame, stopFrame);
         if (slownessMultiplier < 1) {
@@ -55,7 +56,7 @@ public class AnimationSequence implements Updatable {
      *
      * @param nextAnimation
      */
-    public AnimationSequence (String name, int startFrame, int stopFrame,
+    public AnimationSequence (AnimationTags name, int startFrame, int stopFrame,
             AnimationSequence nextAnimation) {
         myStartFrame = startFrame;
         myCurrentFrame = startFrame;
@@ -120,8 +121,9 @@ public class AnimationSequence implements Updatable {
         return myCurrentFrame;
     }
 
-    @Override
+    //TODO: fix because no longer takes in a String name but an AnimationTag
+  /*  @Override
     public String toString () {
         return myName;
-    }
+    }*/
 }

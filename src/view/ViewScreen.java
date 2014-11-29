@@ -8,9 +8,7 @@ package view;
  */
 public enum ViewScreen {
 
-    SPLASH("/view/guipanes/SplashPage.fxml"),
-    EDITOR("/editor/guipanes/EditorRoot.fxml"),
-    RUNNER("");
+    SPLASH("/view/guipanes/SplashPage.fxml"), EDITOR("/editor/guipanes/EditorRoot.fxml"), RUNNER("");
 
     private String myFilePath;
 
