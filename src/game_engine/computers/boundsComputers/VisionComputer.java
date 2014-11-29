@@ -48,7 +48,7 @@ public class VisionComputer extends
     protected void givePrimaryObjectElements (
                                               SelectableGameElement primaryObject,
                                               List<DrawableGameElement> listToAdd) {
-        primaryObject.addVisibleElements(listToAdd);
+        primaryObject.addInteractingElements("visible", listToAdd);
     }
 
 }

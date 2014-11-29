@@ -34,7 +34,7 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
             return 0d;
         double valueSum = 0.0;
         for (GameElement element : elements) {
-            valueSum += element.getNumericAttribute(attributeTag).doubleValue();
+            valueSum += element.getNumericalAttribute(attributeTag).doubleValue();
         }
         return valueSum / elements.size();
     }
@@ -49,7 +49,7 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
                              Number value) {
         elements.stream().forEach(
                                   element -> element
-                                          .setNumericAttribute(
+                                          .setNumericalAttribute(
                                                                attributeTag, value));
         return true;
     }

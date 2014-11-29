@@ -45,11 +45,11 @@ public class CollisionEvaluator<A, B> extends Evaluator<A, B, Boolean> {
         double[] newBounds = bounds.clone();
         for (int i = 0; i < newBounds.length; i += 2) {
             newBounds[i] +=
-                    element.getNumericAttribute(
+                    element.getNumericalAttribute(
                                                 StateTags.X_POS_STRING)
                             .doubleValue();
             newBounds[i + 1] +=
-                    element.getNumericAttribute(
+                    element.getNumericalAttribute(
                                                 StateTags.Y_POS_STRING)
                             .doubleValue();
         }

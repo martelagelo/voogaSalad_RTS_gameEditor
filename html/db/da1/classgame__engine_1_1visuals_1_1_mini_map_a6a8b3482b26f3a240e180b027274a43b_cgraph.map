@@ -1,0 +1,6 @@
+<map id="game_engine.visuals.MiniMap.updateMiniMap" name="game_engine.visuals.MiniMap.updateMiniMap">
+<area shape="rect" id="node2" href="$db/da1/classgame__engine_1_1visuals_1_1_mini_map.html#aafe5084da889414a17e74237c3f94b4a" title="game_engine.visuals.Mini\lMap.initializeGraphicsContext" alt="" coords="240,5,451,46"/>
+<area shape="rect" id="node3" href="$db/da1/classgame__engine_1_1visuals_1_1_mini_map.html#a6df2a7ad48b8f8c728f17f8b149c9f0a" title="game_engine.visuals.Mini\lMap.moveSceneBox" alt="" coords="253,70,438,111"/>
+<area shape="rect" id="node5" href="$db/da1/classgame__engine_1_1visuals_1_1_mini_map.html#a08e42c6a82cabf103b08fdce37f4ceae" title="game_engine.visuals.Mini\lMap.moveUnits" alt="" coords="253,135,438,177"/>
+<area shape="rect" id="node4" href="$d2/d97/classgame__engine_1_1visuals_1_1_scrollable_pane.html#a4dae867ab8793da131d2db2cfc450bc5" title="game_engine.visuals.Scrollable\lPane.getScrollingBackground" alt="" coords="499,70,722,111"/>
+</map>

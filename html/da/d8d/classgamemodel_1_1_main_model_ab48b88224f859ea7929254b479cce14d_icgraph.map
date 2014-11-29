@@ -1,0 +1,7 @@
+<map id="gamemodel.MainModel.createDrawableGameElement" name="gamemodel.MainModel.createDrawableGameElement">
+<area shape="rect" id="node2" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#ad10a71c849382067fbb1f4140841ab0d" title="editor.ElementAccordionController.open\lGameElementWizard" alt="" coords="269,5,544,46"/>
+<area shape="rect" id="node3" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#a57a1b43f70896bbf2e27373594ba8810" title="editor.ElementAccordionController.update\lItems" alt="" coords="592,5,880,46"/>
+<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a575ccd70c0dcc7565df86cc590de47ba" title="editor.EditorScreen.update\lAccordion" alt="" coords="929,5,1122,46"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="1171,12,1365,39"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1414,5,1607,46"/>
+</map>

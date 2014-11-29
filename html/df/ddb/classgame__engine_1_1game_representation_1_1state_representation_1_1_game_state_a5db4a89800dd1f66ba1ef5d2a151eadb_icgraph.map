@@ -1,0 +1,12 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.GameState.getGameUniverse" name="game_engine.gameRepresentation.stateRepresentation.GameState.getGameUniverse">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#ab48b88224f859ea7929254b479cce14d" title="gamemodel.MainModel.create\lDrawableGameElement" alt="" coords="380,5,596,46"/>
+<area shape="rect" id="node8" href="$da/d8d/classgamemodel_1_1_main_model.html#ab4aa75f69ec7ec4822f7b7d285ea7a55" title="gamemodel.MainModel.create\lGameElement" alt="" coords="380,70,596,111"/>
+<area shape="rect" id="node9" href="$da/d8d/classgamemodel_1_1_main_model.html#ab0baf80ab9787c3b7afaf931939a3ed3" title="gamemodel.MainModel.create\lSelectableGameElement" alt="" coords="380,135,596,177"/>
+<area shape="rect" id="node10" href="$da/d8d/classgamemodel_1_1_main_model.html#a53f66be5755c649b3422db0c4ed01c2e" title="gamemodel.MainModel.getGame\lUniverse" alt="" coords="371,201,605,242"/>
+<area shape="rect" id="node3" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#ad10a71c849382067fbb1f4140841ab0d" title="editor.ElementAccordionController.open\lGameElementWizard" alt="" coords="653,17,928,58"/>
+<area shape="rect" id="node4" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#a57a1b43f70896bbf2e27373594ba8810" title="editor.ElementAccordionController.update\lItems" alt="" coords="976,38,1264,79"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a575ccd70c0dcc7565df86cc590de47ba" title="editor.EditorScreen.update\lAccordion" alt="" coords="1313,73,1506,114"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="1555,80,1749,107"/>
+<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1798,73,1991,114"/>
+<area shape="rect" id="node11" href="$d1/d3a/classgame__engine_1_1_engine.html#abf010c93cd851fe082f559ac2ea49fdd" title="game_engine.Engine.Engine" alt="" coords="689,208,892,235"/>
+</map>

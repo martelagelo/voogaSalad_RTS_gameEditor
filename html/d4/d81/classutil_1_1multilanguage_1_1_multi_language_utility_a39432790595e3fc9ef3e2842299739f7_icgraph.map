@@ -1,0 +1,16 @@
+<map id="util.multilanguage.MultiLanguageUtility.MultiLanguageUtility" name="util.multilanguage.MultiLanguageUtility.MultiLanguageUtility">
+<area shape="rect" id="node2" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="270,194,469,235"/>
+<area shape="rect" id="node3" href="$d4/d51/classeditor_1_1_describable_info_box_controller.html#a26cc37c3134fd20a7ad2480854bd6744" title="editor.DescribableInfoBox\lController.initialize" alt="" coords="563,5,747,46"/>
+<area shape="rect" id="node4" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a8ba4a41d90bbfd978fd2dc3132db49d1" title="editor.EditorMenuBarController.attach\lTextProperties" alt="" coords="523,70,786,111"/>
+<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5acd8a713919e01a6189611fad93a37a" title="editor.EditorMenuBarController.init\lLanguageMenu" alt="" coords="535,135,775,177"/>
+<area shape="rect" id="node7" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html#a57a1b43f70896bbf2e27373594ba8810" title="editor.ElementAccordionController.update\lItems" alt="" coords="840,223,1128,265"/>
+<area shape="rect" id="node11" href="$d3/d1b/classeditor_1_1_element_drop_down_controller.html#a6d5e14dd57ae10a7adca07b7b44a6b3c" title="editor.ElementDropDownController.bind\lGameElement" alt="" coords="518,253,791,294"/>
+<area shape="rect" id="node12" href="$d1/d75/classview_1_1_main_view.html#a2b8a45380eae155860ea6833e7f7f54d" title="view.MainView.MainView" alt="" coords="568,319,741,345"/>
+<area shape="rect" id="node13" href="$dd/d02/classview_1_1_splash_screen.html#aa46e238053939feec4c0170fbd11f3a7" title="view.SplashScreen.attach\lStringProperties" alt="" coords="562,370,747,411"/>
+<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="864,111,1104,137"/>
+<area shape="rect" id="node8" href="$dc/d5c/classeditor_1_1_editor_screen.html#a575ccd70c0dcc7565df86cc590de47ba" title="editor.EditorScreen.update\lAccordion" alt="" coords="1177,223,1370,265"/>
+<area shape="rect" id="node9" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="1419,231,1613,257"/>
+<area shape="rect" id="node10" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1662,223,1855,265"/>
+<area shape="rect" id="node14" href="$dd/d02/classview_1_1_splash_screen.html#a4ab544f7771d377db789832819fdad38" title="view.SplashScreen.setUpButtons" alt="" coords="868,377,1100,404"/>
+<area shape="rect" id="node15" href="$dd/d02/classview_1_1_splash_screen.html#ae17a6b61826bb7b6cc90f510260860ab" title="view.SplashScreen.init" alt="" coords="1192,377,1355,404"/>
+</map>

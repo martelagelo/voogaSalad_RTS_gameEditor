@@ -11,6 +11,7 @@ import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -31,7 +32,7 @@ import javafx.scene.layout.VBox;
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
     // TODO this must be removed...
     final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
-    private DrawableGameElementState myState;
+    private DrawableGameElementState drawableState;
     protected AnimationPlayer myAnimation;
     protected Group myDisplay;
     protected VBox myDisplayVBox;
@@ -42,24 +43,24 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     /**
      * Create a drawable game element from the given state
      * 
-     * @param element
+     * @param state
      *        the state of the drawable element
      * @param actions the actions map for the game element (Created by a factory to be passed into
      *        the element)
      */
-    public DrawableGameElement (DrawableGameElementState element,
-                                Map<String, List<Evaluatable<?>>> actions) {
-        super(element, actions);
+    public DrawableGameElement (DrawableGameElementState state,
+                                Map<String, List<Evaluatable<?>>> actions,
+                                ResourceBundle actionTypes) {
+        super(state, actions, actionTypes);
         myCurrentAnimation = new NullAnimationSequence();
-        myState = element;
-        Spritesheet spritesheet = element.getSpritesheet();
+        drawableState = state;
+        Spritesheet spritesheet = state.getSpritesheet();
         try {
             // TODO remove this. testing only
             myAnimation =
 
                     new AnimationPlayer(new Image(spritesheet.imageTag),
-                                        spritesheet.frameDimensions,
-                                        spritesheet.numCols);
+                                        spritesheet.frameDimensions, spritesheet.numCols);
         }
         catch (Exception e) {
             // System.out.println("No spritesheet set for game element. Testing?");
@@ -84,9 +85,6 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     @Override
     public void update () {
         super.update();
-        // state.update();
-        // Use polling because java.util.observable requires inheritance
-        // and javafx.beans.observable isn't serializable.
         myAnimation.setAnimation(myCurrentAnimation);
         myAnimation.update();
     }
@@ -95,8 +93,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * Update the element's image location based on its x and y position
      */
     protected void updateImageLocation () {
-        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
+        myDisplay.setLayoutX(getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
     }
 
     /**
@@ -123,7 +121,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * @param animationName the name of the animation to set the current animation to
      */
     public void setAnimation (String animationName) {
-        myCurrentAnimation = myState.getAnimation(animationName);
+        myCurrentAnimation = drawableState.getAnimation(animationName);
     }
 
     /**
@@ -151,7 +149,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * @return the object's bounds
      */
     public double[] getBounds () {
-        return myState.getBounds();
+        return drawableState.getBounds();
     }
 
     // TODO from here down, remove this crap
@@ -172,12 +170,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         myDisplayVBox.getChildren().add(mySelectedImageView);
         mySelectedImageView.setOpacity(0.0);
         myDisplayVBox.getChildren().add(myAnimation.getNode());
-        myDisplay.setLayoutX(myState.getNumericalAttribute(
-                                                           StateTags.X_POS_STRING)
-                .doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(
-                                                           StateTags.Y_POS_STRING)
-                .doubleValue());
+        myDisplay.setLayoutX(getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
+        myDisplay.setLayoutY(getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
         myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
         myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
     }

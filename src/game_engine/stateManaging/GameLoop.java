@@ -59,15 +59,12 @@ public class GameLoop {
     };
 
     public GameLoop (String campaignName, Level level, VisualManager visualManager, MiniMap miniMap) {
-        // myBackground = visualManager.getBackground();
         myVisualManager = visualManager;
         myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
         unitPaths = new ArrayList<Line>();
-        // myComputerList.add(new CollisionComputer());
         myComputers.add(new CollisionComputer());
-        // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         startGameLoop();
         // TODO find a place for this method
@@ -121,7 +118,10 @@ public class GameLoop {
     }
 
     private void update () {
+    	//Clears all path lines from the GUI
         clearLinesFromRoot();
+        //Adds needed path lines to the GUI
+        addPathsToRoot();
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
@@ -142,7 +142,6 @@ public class GameLoop {
             selectableElement.update();
         }
         myMiniMap.updateMiniMap();
-        addPathsToRoot();
     }
 
     private void addPathsToRoot () {

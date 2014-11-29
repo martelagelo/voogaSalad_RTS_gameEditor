@@ -1,0 +1,7 @@
+<map id="editor.EditorScreen.launchTab" name="editor.EditorScreen.launchTab">
+<area shape="rect" id="node2" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9fec11d30bd430472af8e052596c4c89" title="editor.EditorScreen.create\lNewTab" alt="" coords="264,103,453,145"/>
+<area shape="rect" id="node3" href="$d1/d44/classview_1_1_g_u_i_container.html#a46de8a9006ce4983078d68538dc89b1b" title="view.GUIContainer.attach\lChildContainers" alt="" coords="528,5,709,46"/>
+<area shape="rect" id="node4" href="$d1/d44/classview_1_1_g_u_i_container.html#ac2239dbd9a7c8627c3051f0c9f34e032" title="view.GUIContainer.clearChild\lContainers" alt="" coords="517,70,720,111"/>
+<area shape="rect" id="node5" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="501,135,736,177"/>
+<area shape="rect" id="node6" href="$df/d32/classeditor_1_1_tab_view_controller.html#a8a22f54e7a4f4a326d7f33f9bf72024a" title="editor.TabViewController.getRoot" alt="" coords="505,201,732,228"/>
+</map>

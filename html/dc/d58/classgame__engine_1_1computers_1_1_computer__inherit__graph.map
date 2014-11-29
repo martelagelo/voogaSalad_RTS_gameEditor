@@ -1,0 +1,4 @@
+<map id="game_engine.computers.Computer&lt; T, E &gt;" name="game_engine.computers.Computer&lt; T, E &gt;">
+<area shape="rect" id="node2" href="$d1/df1/classgame__engine_1_1computers_1_1bounds_computers_1_1_collision_computer.html" title="game_engine::computers\l::boundsComputers::Collision\lComputer\&lt; DrawableGameElement,\l DrawableGameElement \&gt;" alt="" coords="361,5,617,75"/>
+<area shape="rect" id="node3" href="$d5/d07/classgame__engine_1_1computers_1_1bounds_computers_1_1_vision_computer.html" title="game_engine::computers\l::boundsComputers::VisionComputer\l\&lt; SelectableGameElement, DrawableGameElement \&gt;" alt="" coords="304,100,675,156"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="gamemodel.MainModel.createGameElement" name="gamemodel.MainModel.createGameElement">
+<area shape="rect" id="node2" href="$db/dca/classgamemodel_1_1_game_element_state_factory.html#a2794f6299729d045b579e9d617e7fdbf" title="gamemodel.GameElementState\lFactory.createElement" alt="" coords="313,5,543,46"/>
+<area shape="rect" id="node3" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a5db4a89800dd1f66ba1ef5d2a151eadb" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getGameUniverse" alt="" coords="270,70,586,111"/>
+</map>

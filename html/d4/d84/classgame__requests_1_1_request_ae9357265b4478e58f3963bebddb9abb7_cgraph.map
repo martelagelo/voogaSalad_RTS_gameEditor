@@ -1,0 +1,5 @@
+<map id="game_requests.Request.Request" name="game_requests.Request.Request">
+<area shape="rect" id="node2" href="$d4/d84/classgame__requests_1_1_request.html#ad34024eb18d5c4bda547beb0b29d01ab" title="game_requests.Request.message" alt="" coords="285,5,525,32"/>
+<area shape="rect" id="node3" href="$d4/d84/classgame__requests_1_1_request.html#a682d8c953ca4310c0cbd4374ba355101" title="game_requests.Request.receiver" alt="" coords="289,56,521,83"/>
+<area shape="rect" id="node4" href="$d4/d84/classgame__requests_1_1_request.html#af618a155f76b47dc8ec9c61574a019ae" title="game_requests.Request.sender" alt="" coords="293,107,518,133"/>
+</map>

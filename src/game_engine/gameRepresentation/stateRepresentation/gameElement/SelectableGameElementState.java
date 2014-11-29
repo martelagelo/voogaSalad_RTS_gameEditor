@@ -15,12 +15,13 @@ import java.util.Map;
  *
  */
 public class SelectableGameElementState extends DrawableGameElementState implements Sighted {
-    protected Map<String, Map<String, String>> myAllAbilityRepresentations;
+    
+    
+    private Map<String, Map<String, String>> myAllAbilityRepresentations;
     private Map<String, String> myCurrentAbilityRepresentation;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition);
-        
     }
 
 

@@ -1,0 +1,9 @@
+<map id="gamemodel.MainModel.getDescribableState" name="gamemodel.MainModel.getDescribableState">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a9b40fc83b22f84a534387757117483d9" title="gamemodel.MainModel.update\lDescribableState" alt="" coords="326,5,546,46"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9280fc6d569014016e800182e893f540" title="editor.EditorScreen.update\lInfoBox" alt="" coords="339,70,533,111"/>
+<area shape="rect" id="node3" href="$dc/d5c/classeditor_1_1_editor_screen.html#aa416e3307314f0a75c95d2ad2e08a4ae" title="editor.EditorScreen.init\lInfoBox" alt="" coords="609,5,775,46"/>
+<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a85668e9b3fd80cec58fa6b207854e588" title="editor.EditorScreen.init" alt="" coords="851,45,1018,72"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6e24378bdf2713de4dbc530d63d5782e" title="editor.EditorScreen.init\lProjectExplorer" alt="" coords="609,70,775,111"/>
+<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="595,136,789,163"/>
+<area shape="rect" id="node8" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="838,129,1031,170"/>
+</map>

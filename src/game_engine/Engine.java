@@ -1,7 +1,9 @@
 package game_engine;
 
 import game_engine.UI.InputManager;
-import game_engine.gameRepresentation.factories.GameElementFactory;
+import game_engine.elementFactories.GameElementFactory;
+import game_engine.elementFactories.LevelFactory;
+import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
@@ -11,12 +13,10 @@ import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
-import application.ShittyMain;
 import javafx.scene.Group;
+import application.ShittyMain;
 
 
 /**
@@ -35,13 +35,20 @@ public class Engine extends Observable implements Observer {
     private InputManager myInputManager;
     private MiniMap myMiniMap;
     private GameElementFactory myElementFactory;
+    private LevelFactory myLevelFactory;
 
     public Engine (MainModel mainModel) {
-        // TODO hard-coding the visual representation for now, should remove this dependency
         myMainModel = mainModel;
         myInputManager = new InputManager();
+        myElementFactory =
+                new GameElementFactory(myMainModel.getGameUniverse(), new EvaluatableFactory());
+        myLevelFactory = new LevelFactory(myElementFactory);
+
+        // TODO hard-coding the visual representation for now, should remove this dependency
         myVisualManager =
-                new VisualManager(new Group(), myInputManager, ShittyMain.shittyWidth, 0.9*ShittyMain.screenSize.getHeight());
+                new VisualManager(new Group(), myInputManager, ShittyMain.shittyWidth,
+                                  0.9 * ShittyMain.screenSize.getHeight());
+        // TODO: minimap should be inside of visual manager
         myMiniMap = new MiniMap((ScrollablePane) myVisualManager.getScrollingScene());
     }
 
@@ -54,13 +61,11 @@ public class Engine extends Observable implements Observer {
     public void selectLevel (String campaignName, String levelName)
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
-        Level newLevel = new Level(myMainModel.getCurrentLevel());
-//        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
+        Level newLevel = myLevelFactory.createLevel(myMainModel.getCurrentLevel());
         myMiniMap.setUnits(newLevel.getUnits());
         myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
-//        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
-        myElementManager = new GameElementManager(newLevel);
-        myVisualManager.addObjects(newLevel.getGroup());
+        myElementManager = new GameElementManager(newLevel, myElementFactory);
+        newLevel.getGroups().stream().forEach(g -> myVisualManager.addObjects(g));
         myVisualManager.addBoxObserver(myElementManager);
         myInputManager.addClickObserver(myElementManager);
         myInputManager.addKeyboardObserver(myElementManager);
@@ -84,7 +89,7 @@ public class Engine extends Observable implements Observer {
     public void update (Observable observable, Object arg) {
         // TODO Auto-generated method stub
         updateGameLoop(myMainModel.getCurrentLevel(), myMainModel.getCurrentCampaign().getName());
-//        updateGameLoop(myMainModel.getCurrentLevel());
+        // updateGameLoop(myMainModel.getCurrentLevel());
     }
 
     public ScrollablePane getScene () {
@@ -93,12 +98,14 @@ public class Engine extends Observable implements Observer {
 
     private void updateGameLoop (LevelState levelState, String currentCampaign) {
         // TODO check equlity
+        // TOOD: this code is copy-pasted from the selectLevel method ... unify and reduce code
+        // waste
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
-            Level nextLevel = new Level(levelState);
+            Level nextLevel = myLevelFactory.createLevel(myMainModel.getCurrentLevel());
             myMiniMap.setUnits(nextLevel.getUnits());
             myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
-            myElementManager = new GameElementManager(nextLevel);
-            myVisualManager.addObjects(nextLevel.getGroup());
+            myElementManager = new GameElementManager(nextLevel, myElementFactory);
+            nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObjects(g));
             myVisualManager.addBoxObserver(myElementManager);
             myInputManager.addClickObserver(myElementManager);
             myInputManager.addKeyboardObserver(myElementManager);

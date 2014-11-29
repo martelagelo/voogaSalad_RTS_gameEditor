@@ -1,0 +1,12 @@
+<map id="game_engine.visuals.ScrollableScene.ScrollableScene" name="game_engine.visuals.ScrollableScene.ScrollableScene">
+<area shape="rect" id="node2" href="$d4/de4/classgame__engine_1_1visuals_1_1_u_i_1_1_selection_box.html#a2dd009c157a6307788d6215414a5b9db" title="game_engine.visuals.UI.Selection\lBox.getBox" alt="" coords="278,135,514,177"/>
+<area shape="rect" id="node3" href="$de/d18/classgame__engine_1_1visuals_1_1_scrollable_scene.html#a4b9d92052fba7caaceb3f079905d006e" title="game_engine.visuals.Scrollable\lScene.initializeHandlers" alt="" coords="285,201,507,242"/>
+<area shape="rect" id="node4" href="$d0/d48/classgame__engine_1_1visuals_1_1_u_i_1_1_keyboard_manager.html#af28aed9b5cec067228c99c6e20625605" title="game_engine.visuals.UI.Keyboard\lManager.keyPressed" alt="" coords="563,5,799,46"/>
+<area shape="rect" id="node5" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a9db27907868527e610a6cf43a2ef4b2a" title="game_engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="570,70,793,111"/>
+<area shape="rect" id="node6" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a544e882d9281fbfdf28fa445601f59d7" title="game_engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="570,135,793,177"/>
+<area shape="rect" id="node7" href="$d4/de4/classgame__engine_1_1visuals_1_1_u_i_1_1_selection_box.html#acb63e0e36ccf44a5186028dda59f5545" title="game_engine.visuals.UI.Selection\lBox.resetBox" alt="" coords="563,201,799,242"/>
+<area shape="rect" id="node8" href="$d4/de4/classgame__engine_1_1visuals_1_1_u_i_1_1_selection_box.html#a14f372118d7ac95897f7dc787c69675b" title="game_engine.visuals.UI.Selection\lBox.setLocation" alt="" coords="563,266,799,307"/>
+<area shape="rect" id="node9" href="$de/d5d/classgame__engine_1_1visuals_1_1_u_i_1_1_click_manager.html#a8d76fdb96dcc88e0e5dc233a1605c17b" title="game_engine.visuals.UI.Click\lManager.clicked" alt="" coords="578,331,785,373"/>
+<area shape="rect" id="node11" href="$d4/de4/classgame__engine_1_1visuals_1_1_u_i_1_1_selection_box.html#a1a016ab57db42d0ac0b86d183ce7b65d" title="game_engine.visuals.UI.Selection\lBox.released" alt="" coords="563,397,799,438"/>
+<area shape="rect" id="node10" href="$de/d5d/classgame__engine_1_1visuals_1_1_u_i_1_1_click_manager.html#a8d47b7a7c7641317ff84c79b510e0900" title="game_engine.visuals.UI.Click\lManager.isPrimary" alt="" coords="849,331,1055,373"/>
+</map>

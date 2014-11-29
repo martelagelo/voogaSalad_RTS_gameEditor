@@ -16,8 +16,7 @@ import java.util.Map;
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements
-Boundable {
+public class DrawableGameElementState extends GameElementState implements Boundable {
 
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
@@ -33,13 +32,13 @@ Boundable {
         super();
         myBounds = new double[4]; // Initialize the bounds to an empty array
         myAnimations = new HashMap<>();
+
         // These positions are stored in a numerical attribute map to allow for
         // easy retrieval of
         // attributes by conditions and actions
-        myNumericalAttributes.add(new Attribute<Number>(StateTags.X_POS_STRING,
-                                                        xPosition));
-        myNumericalAttributes.add(new Attribute<Number>(StateTags.Y_POS_STRING,
-                                                        yPosition));
+
+        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.X_POS_STRING, xPosition));
+        this.myNumericalAttributes.add(new Attribute<Number>(StateTags.Y_POS_STRING, yPosition));
     }
 
     /**
