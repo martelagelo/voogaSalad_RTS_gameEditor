@@ -1,9 +1,11 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import game_engine.gameRepresentation.stateRepresentation.AnimatorState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.Spritesheet;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 
 public class DrawableGameElementState extends GameElementState implements Boundable {
-
+    private AnimatorState myAnimatorState;
     private Spritesheet mySpritesheet;
     private Map<String, AnimationSequence> myAnimations;
     private double[] myBounds;
@@ -30,6 +32,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      */
     public DrawableGameElementState (Number xPosition, Number yPosition) {
         super();
+        myAnimatorState = new AnimatorState();
         myBounds = new double[4]; // Initialize the bounds to an empty array
         myAnimations = new HashMap<>();
 
