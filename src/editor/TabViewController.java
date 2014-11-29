@@ -48,7 +48,6 @@ public class TabViewController extends GUIContainer {
 
     @Override
     public void update () {
-        System.out.println("here");
         updateLevelTriggersView();
     }
 

@@ -70,12 +70,12 @@ public class MainView implements Observer {
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
         myCurrentController.setModel(myMainModel);
-        myCurrentController.update();
+        update(myMainModel, null);
     }
 
     @Override
     public void update (Observable arg0, Object arg1) {
-        myCurrentController.update();
+        myCurrentController.update(arg0, arg1);
     }
 
 }

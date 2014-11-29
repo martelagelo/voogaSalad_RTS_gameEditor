@@ -11,6 +11,7 @@
 				<MenuItem fx:id="newCampaignMenuItem" />
 				<MenuItem fx:id="newLevelMenuItem" />
 				<MenuItem fx:id="saveMenuItem" />
+				<MenuItem fx:id="quitMenuItem" />
 			</items>
 		</Menu>
 		<Menu fx:id="languageMenu" />
