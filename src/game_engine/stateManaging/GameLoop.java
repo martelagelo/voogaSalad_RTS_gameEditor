@@ -121,7 +121,10 @@ public class GameLoop {
     }
 
     private void update () {
+    	//Clears all path lines from the GUI
         clearLinesFromRoot();
+        //Adds needed path lines to the GUI
+        addPathsToRoot();
         // Updates the background of the application
         myVisualManager.update();
         // Updates all of the conditions and actions of the game elements
@@ -142,7 +145,6 @@ public class GameLoop {
             selectableElement.update();
         }
         myMiniMap.updateMiniMap();
-        addPathsToRoot();
     }
 
     private void addPathsToRoot () {
