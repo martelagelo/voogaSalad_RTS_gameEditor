@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import view.GUIController;
@@ -38,6 +39,10 @@ public class LevelTriggersViewController implements GUIController {
     public void setButtonAction (Consumer<Consumer<WizardData>> consumer) {
         newLevelTrigger.setOnAction(e -> consumer.accept(null));
     }
+    
+    public void setOnSelectedAction (Consumer<Consumer<WizardData>> consumer) {
+        levelTriggers.setOnAction(e -> consumer.accept(null));
+    }
 
     @Override
     public Node getRoot () {
@@ -47,6 +52,7 @@ public class LevelTriggersViewController implements GUIController {
     @Override
     public void initialize () {
         initListView();
+        levelTriggers.setOnMouseClicked(e -> itemClicked(e));
     }
 
     private void initListView () {
@@ -66,7 +72,19 @@ public class LevelTriggersViewController implements GUIController {
                     }
                 });
     }
+    
+    private void selectTrigger() {
+//        levelTriggers.setOnMouseClicked(value);
+                
+    }
 
+    private void itemClicked (MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 2) {
+            String[] action = levelTriggers.getSelectionModel()
+                            .getSelectedItem().split("\\n");
+            System.out.println(action[0] + action[1]);
+        }
+    }
     public void updateTriggerList (List<TriggerPair> triggers) {
         myTriggerList.clear();
         triggers.forEach((trigger) -> myTriggerList.add(trigger.myActionType + "\n" + trigger.myAction));
