@@ -1,0 +1,8 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.GameState.addCampaign" name="game_engine.gameRepresentation.stateRepresentation.GameState.addCampaign">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a794a19c6a457d98cd69be7162dd75f76" title="gamemodel.MainModel.create\lCampaign" alt="" coords="344,38,560,79"/>
+<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="629,5,824,46"/>
+<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a3537dbc6abb354eba1673ec6ab94e7fa" title="editor.EditorMenuBarController.on\lNewCampaignClick" alt="" coords="608,70,845,111"/>
+<area shape="rect" id="node4" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="915,12,1111,39"/>
+<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="893,70,1133,111"/>
+<area shape="rect" id="node7" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="1181,77,1421,104"/>
+</map>

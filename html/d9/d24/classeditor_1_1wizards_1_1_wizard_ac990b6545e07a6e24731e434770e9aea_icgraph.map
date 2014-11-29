@@ -1,0 +1,10 @@
+<map id="editor.wizards.Wizard.setDataName" name="editor.wizards.Wizard.setDataName">
+<area shape="rect" id="node2" href="$dd/db0/classeditor_1_1wizards_1_1_campaign_wizard.html#a653ced7973f35bf87a30811c87a9f363" title="editor.wizards.CampaignWizard.updateData" alt="" coords="233,5,533,32"/>
+<area shape="rect" id="node3" href="$da/d28/classeditor_1_1wizards_1_1_level_wizard.html#a79abf1b2b369d0087fddd8925f85ec82" title="editor.wizards.LevelWizard.updateData" alt="" coords="249,56,517,83"/>
+<area shape="rect" id="node4" href="$d8/d72/classeditor_1_1wizards_1_1_string_attribute_wizard.html#a51276b763ed1009b4d9dceff898d0170" title="editor.wizards.StringAttribute\lWizard.updateData" alt="" coords="279,107,486,149"/>
+<area shape="rect" id="node5" href="$d2/d83/classeditor_1_1wizards_1_1_trigger_wizard.html#a18e4a0027ddc4d33864c132b587e136d" title="editor.wizards.TriggerWizard.updateData" alt="" coords="244,173,521,200"/>
+<area shape="rect" id="node6" href="$d0/dfb/classeditor_1_1wizards_1_1_number_attribute_wizard.html#ab045947aac782345d474024aaa284c03" title="editor.wizards.NumberAttribute\lWizard.updateData" alt="" coords="272,225,493,266"/>
+<area shape="rect" id="node7" href="$de/deb/classeditor_1_1wizards_1_1_terrain_wizard.html#a854f20fee94bf94aaa3dff6f38168751" title="editor.wizards.TerrainWizard.updateData" alt="" coords="244,291,521,317"/>
+<area shape="rect" id="node8" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#aa441e8083e828e473e991407e92fcef4" title="editor.wizards.GameElement\lWizard.updateData" alt="" coords="280,342,485,383"/>
+<area shape="rect" id="node9" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a305a2879747d73b4bf3e366105ddf0a8" title="editor.wizards.DrawableGame\lElementWizard.updateData" alt="" coords="277,407,488,449"/>
+</map>

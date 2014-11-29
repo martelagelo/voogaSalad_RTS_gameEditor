@@ -1,0 +1,10 @@
+<map id="gamemodel.MainModel.getCurrentLevel" name="gamemodel.MainModel.getCurrentLevel">
+<area shape="rect" id="node2" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="585,5,780,46"/>
+<area shape="rect" id="node4" href="$d1/d3a/classgame__engine_1_1_engine.html#a66b9572272f4556e51893ee93c719196" title="game_engine.Engine.play" alt="" coords="589,71,776,97"/>
+<area shape="rect" id="node5" href="$d1/d3a/classgame__engine_1_1_engine.html#a33096e19a0dd6c4541ade6bdfcf092c4" title="game_engine.Engine.select\lLevel" alt="" coords="311,114,510,155"/>
+<area shape="rect" id="node6" href="$d1/d3a/classgame__engine_1_1_engine.html#aae1f63d0e4f4a2a5c36e886c658b6656" title="game_engine.Engine.update" alt="" coords="580,216,785,243"/>
+<area shape="rect" id="node7" href="$d1/d3a/classgame__engine_1_1_engine.html#ae864f59e5ead7ef5b675a70ed813e75f" title="game_engine.Engine.update\lGameLoop" alt="" coords="308,179,513,221"/>
+<area shape="rect" id="node8" href="$df/d32/classeditor_1_1_tab_view_controller.html#a5cee15e1caf0e725907b149c6cb96303" title="editor.TabViewController.update\lLevelTriggersView" alt="" coords="299,297,522,338"/>
+<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="843,41,1039,68"/>
+<area shape="rect" id="node9" href="$df/d32/classeditor_1_1_tab_view_controller.html#a6a1f4cf511d80ee7d63868ca650e7d0c" title="editor.TabViewController.update" alt="" coords="571,304,794,331"/>
+</map>

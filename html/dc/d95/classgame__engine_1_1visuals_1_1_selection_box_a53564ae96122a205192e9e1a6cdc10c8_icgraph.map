@@ -1,0 +1,5 @@
+<map id="game_engine.visuals.SelectionBox.setSize" name="game_engine.visuals.SelectionBox.setSize">
+<area shape="rect" id="node2" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a57e83911264f7db94b6192643e3dabb6" title="game_engine.visuals.Selection\lBox.reactToDrag" alt="" coords="272,5,491,46"/>
+<area shape="rect" id="node4" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a397ecadd9bfab3560020536c327c777a" title="game_engine.visuals.Selection\lBox.resetBox" alt="" coords="272,70,491,111"/>
+<area shape="rect" id="node3" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#ae79c9b0043661436e66328a1c1dc1f2a" title="game_engine.visuals.Selection\lBox.update" alt="" coords="539,38,757,79"/>
+</map>

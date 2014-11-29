@@ -1,0 +1,6 @@
+<map id="game_engine.visuals.SelectionBox.setY" name="game_engine.visuals.SelectionBox.setY">
+<area shape="rect" id="node2" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a57e83911264f7db94b6192643e3dabb6" title="game_engine.visuals.Selection\lBox.reactToDrag" alt="" coords="539,5,757,46"/>
+<area shape="rect" id="node4" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a557b88fbb1e37b7f2a22b3e83aebed1c" title="game_engine.visuals.Selection\lBox.setLocation" alt="" coords="272,63,491,105"/>
+<area shape="rect" id="node3" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#ae79c9b0043661436e66328a1c1dc1f2a" title="game_engine.visuals.Selection\lBox.update" alt="" coords="805,63,1024,105"/>
+<area shape="rect" id="node5" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a397ecadd9bfab3560020536c327c777a" title="game_engine.visuals.Selection\lBox.resetBox" alt="" coords="539,122,757,163"/>
+</map>

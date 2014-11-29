@@ -1,0 +1,12 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.CampaignState.getLevel" name="game_engine.gameRepresentation.stateRepresentation.CampaignState.getLevel">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a03ee385be5a20c1b4d78297d1d530ca4" title="gamemodel.MainModel.getDescribable\lState" alt="" coords="337,70,607,111"/>
+<area shape="rect" id="node10" href="$da/d8d/classgamemodel_1_1_main_model.html#ad0c8f208e75957efd1ded5caa6fdbaff" title="gamemodel.MainModel.setCurrent\lLevel" alt="" coords="351,135,593,177"/>
+<area shape="rect" id="node3" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9280fc6d569014016e800182e893f540" title="editor.EditorScreen.update\lInfoBox" alt="" coords="670,70,863,111"/>
+<area shape="rect" id="node8" href="$da/d8d/classgamemodel_1_1_main_model.html#a9b40fc83b22f84a534387757117483d9" title="gamemodel.MainModel.update\lDescribableState" alt="" coords="657,5,877,46"/>
+<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6e24378bdf2713de4dbc530d63d5782e" title="editor.EditorScreen.init\lProjectExplorer" alt="" coords="939,70,1106,111"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="926,136,1119,163"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a85668e9b3fd80cec58fa6b207854e588" title="editor.EditorScreen.init" alt="" coords="1182,45,1349,72"/>
+<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="1169,129,1362,170"/>
+<area shape="rect" id="node9" href="$dc/d5c/classeditor_1_1_editor_screen.html#aa416e3307314f0a75c95d2ad2e08a4ae" title="editor.EditorScreen.init\lInfoBox" alt="" coords="939,5,1106,46"/>
+<area shape="rect" id="node11" href="$d1/d3a/classgame__engine_1_1_engine.html#a33096e19a0dd6c4541ade6bdfcf092c4" title="game_engine.Engine.select\lLevel" alt="" coords="667,135,866,177"/>
+</map>
