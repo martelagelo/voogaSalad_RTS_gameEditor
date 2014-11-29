@@ -100,21 +100,14 @@ public class ShittyMain extends Application {
          */
         // setting standing animations
         archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, new AnimationSequence(
-                "stand_fwd", 0, 9, null)));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23,
-                new AnimationSequence("stand_fwd_left", 15, 23, null)));
-        archerState.addAnimation(new AnimationSequence("stand_left", 29, 37, new AnimationSequence(
-                "stand_left", 29, 37, null)));
-        archerState.addAnimation(new AnimationSequence("stand_bk_left", 43, 51,
-                new AnimationSequence("stand_bk_left", 43, 51, null)));
-        archerState.addAnimation(new AnimationSequence("stand_bk", 57, 65, new AnimationSequence(
-                "stand_bk", 57, 65, null)));
-        archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79,
-                new AnimationSequence("stand_bk_right", 71, 79, null)));
-        archerState.addAnimation(new AnimationSequence("stand_right", 85, 93,
-                new AnimationSequence("stand_right", 85, 93, null)));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107,
-                new AnimationSequence("stand_fwd_right", 99, 107, null)));
+                "stand_fwd", 0, 9, new AnimationSequence("stand_fwd_left", 15, 23,
+                new AnimationSequence("stand_fwd_left", 15, 23, new AnimationSequence("stand_left", 29, 37, new AnimationSequence(
+                "stand_left", 29, 37, new AnimationSequence("stand_bk_left", 43, 51,
+                new AnimationSequence("stand_bk_left", 43, 51, new AnimationSequence("stand_bk", 57, 65, new AnimationSequence(
+                "stand_bk", 57, 65, new AnimationSequence("stand_bk_right", 71, 79,
+                new AnimationSequence("stand_bk_right", 71, 79, new AnimationSequence("stand_right", 85, 93,
+                new AnimationSequence("stand_fwd_right", 99, 107,
+                new AnimationSequence("stand_fwd_right", 99, 107, null))))))))))))))));
         archerState.setBounds(bounds);
         // setting walking animations
         archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, new AnimationSequence(
