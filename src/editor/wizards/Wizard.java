@@ -1,22 +1,27 @@
 package editor.wizards;
 
 import java.util.function.Consumer;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 import view.GUIController;
 
 
 /**
  * 
- * @author Joshua, Nishad
+ * @author Joshua, Nishad, Joshua
  *
  */
 public abstract class Wizard implements GUIController {
 
+	private final static String SAVE_KEY = "Save";
+	
     @FXML
     protected SplitPane root;
     @FXML
@@ -46,6 +51,7 @@ public abstract class Wizard implements GUIController {
         userInput = new WizardData();
         mySaveConsumer = (userInput) -> {}; 
         save.setOnAction(e -> save());
+        attachTextProperties();
     }
     
     private void save() {       
@@ -98,5 +104,19 @@ public abstract class Wizard implements GUIController {
     public Stage getStage() {
         return myStage;
     }
+   
+    /**
+     * Binds the multilanguage util to the text in the 
+     * wizard
+     */
+    protected void attachTextProperties () {
+    	MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+		try{
+			save.textProperty().bind(util.getStringProperty(SAVE_KEY));
+		}
+		catch(LanguageException e){
+			//TODO Do something with this exception
+		}
+	}
 
 }

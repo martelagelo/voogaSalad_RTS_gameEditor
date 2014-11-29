@@ -1,11 +1,13 @@
 package editor.wizards;
 
 import gamemodel.GameElementStateFactory;
+
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
+
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -17,16 +19,28 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 import view.WizardUtility;
 
 
 /**
  * 
- * @author Joshua, Nishad
+ * @author Joshua, Nishad, Joshua
  *
  */
 public class DrawableGameElementWizard extends Wizard {
 
+	private final static String NAME_KEY = "Name";
+	private final static String NEW_TRIGGER_KEY = "NewTrigger";
+	private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
+	private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
+	private final static String LOAD_IMAGE_KEY = "LoadImage";
+	private final static String NUM_ROWS_KEY = "NumRows";
+	private final static String START_FRAME_KEY = "StartFrame";
+	private final static String STOP_FRAME_KEY = "StopFrame";
+	private final static String SAVE_KEY = "Save";
+	
     private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
     private static final String NUM_ATTR_WIZARD =
             "/editor/wizards/guipanes/NumberAttributeWizard.fxml";
@@ -150,9 +164,34 @@ public class DrawableGameElementWizard extends Wizard {
         createSliderListeners();
         createTextFieldListeners();
         imagePath = "";
+        attachTextProperties();
     }
 
-    private void createTextFieldListeners () {
+    /**
+     * Attaches multilanguage utility to text
+     * in the wizard
+     * 
+     */
+    @Override
+    protected void attachTextProperties () {
+    	MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+		try{
+			name.textProperty().bind(util.getStringProperty(NAME_KEY));
+			trigger.textProperty().bind(util.getStringProperty(NEW_TRIGGER_KEY));
+			stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
+			numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
+			image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
+			numRows.textProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
+			startFrame.textProperty().bind(util.getStringProperty(START_FRAME_KEY));
+			stopFrame.textProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
+			super.attachTextProperties();
+		}
+		catch(LanguageException e){
+			//TODO Do something useful with this exception
+		}
+	}
+
+	private void createTextFieldListeners () {
         frameWidthText.textProperty().addListener(e -> {
             if (Pattern.matches(NUM_REGEX, frameWidthText.getText())) {
                 frameWidth.setValue(Double.parseDouble(frameWidthText.getText()));
