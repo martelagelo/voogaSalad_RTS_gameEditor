@@ -3,8 +3,8 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 // import
 // game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Sighted;
-import java.util.Map;
 
+import java.util.Map;
 
 /**
  * This is the most widely used GameElement. This type of GameElement has both a
@@ -15,15 +15,13 @@ import java.util.Map;
  *
  */
 public class SelectableGameElementState extends DrawableGameElementState implements Sighted {
-    
-    
+
     private Map<String, Map<String, String>> myAllAbilityRepresentations;
     private Map<String, String> myCurrentAbilityRepresentation;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
-        super(xPosition, yPosition);
+        super(xPosition, yPosition, null);
     }
-
 
     @Override
     public double[] getVisionBounds () {

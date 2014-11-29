@@ -44,8 +44,9 @@ public class VisualTester extends Application {
         Group group = new Group();
         Image image = new Image("resources/img/exploBig.png");
         AnimationPlayer player = new AnimationPlayer(image, new Dimension(40, 40), 7);
-        AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
-        player.setAnimation(animation);
+        //TODO fix animation sequence now takes an animationtag object instead of a string tag
+        //AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
+        //player.setAnimation(animation);
         Duration oneFrameAmt = Duration.millis(1000 / 60);
         final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
                                                new EventHandler<ActionEvent>() {

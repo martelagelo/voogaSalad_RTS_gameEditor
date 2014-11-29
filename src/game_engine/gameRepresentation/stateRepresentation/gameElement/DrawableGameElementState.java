@@ -1,9 +1,10 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import game_engine.gameRepresentation.stateRepresentation.AnimatorState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.NullAnimationSequence;
-import game_engine.visuals.Spritesheet;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,8 +18,7 @@ import java.util.Map;
  */
 
 public class DrawableGameElementState extends GameElementState implements Boundable {
-
-    private Spritesheet mySpritesheet;
+    private AnimatorState myAnimatorState;
     private Map<String, AnimationSequence> myAnimations;
     private double[] myBounds;
 
@@ -28,8 +28,9 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      * @param xPosition the x position of the element
      * @param yPosition the y position of the element
      */
-    public DrawableGameElementState (Number xPosition, Number yPosition) {
+    public DrawableGameElementState (Number xPosition, Number yPosition, AnimatorState animatorState) {
         super();
+        myAnimatorState = animatorState;
         myBounds = new double[4]; // Initialize the bounds to an empty array
         myAnimations = new HashMap<>();
 
@@ -54,30 +55,12 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     /**
      * Return the animation sequence with a given name
      *
-     * @param animationName the name of the amimation sequence
+     * @param animationName the name of the animation sequence
      * @return the animation of interest if it exists or null if it does not
      */
     public AnimationSequence getAnimation (String animationName) {
         if (myAnimations.containsKey(animationName)) { return myAnimations.get(animationName); }
         return new NullAnimationSequence();
-    }
-
-    /**
-     * Set the spritesheet of the game element to be the given spritesheet object
-     *
-     * @param spritesheet the spritesheet to set
-     */
-    public void setSpritesheet (Spritesheet spritesheet) {
-        mySpritesheet = spritesheet;
-    }
-
-    /**
-     * Get the current spritesheet held by the state
-     *
-     * @return the current spritesheet of the state
-     */
-    public Spritesheet getSpritesheet () {
-        return mySpritesheet;
     }
 
     @Override
