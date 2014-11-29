@@ -1,6 +1,8 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.renderedRepresentation.attributeModules.AttributeBarDisplayer;
+import game_engine.gameRepresentation.renderedRepresentation.attributeModules.AttributeDisplayer;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
@@ -39,6 +41,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     private ImageView mySelectedImageView;
     private AnimationSequence myCurrentAnimation;
 
+    // TODO remove this. for testing only
+    private AttributeDisplayer xPosBar;
+
     /**
      * Create a drawable game element from the given state
      * 
@@ -65,6 +70,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
             // System.out.println("No spritesheet set for game element. Testing?");
         }
         myDisplay = new Group();
+        xPosBar = new AttributeBarDisplayer(this, StateTags.X_POS_STRING, 0, 500);
+        myDisplay.getChildren().add(xPosBar.getNode());
         myDisplayVBox = new VBox(1);
         // TODO undo for testing only
         try {
@@ -89,6 +96,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         // and javafx.beans.observable isn't serializable.
         myAnimation.setAnimation(myCurrentAnimation);
         myAnimation.update();
+        xPosBar.update();
     }
 
     /**
