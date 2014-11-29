@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 /**
  * The concrete boundary of the Engine - this class exposes the public API of the Engine to the rest
  * of the project.
- * 
+ *
  * @author Steve, Jonathan, Nishad, Rahul
  *
  */
@@ -42,7 +42,8 @@ public class Engine extends Observable implements Observer {
         return myVisualManager.getVisualRepresentation();
     }
 
-    public void selectLevel (String campaignName, String levelName) throws DescribableStateException {
+    public void selectLevel (String campaignName, String levelName)
+                                                                   throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
         myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);

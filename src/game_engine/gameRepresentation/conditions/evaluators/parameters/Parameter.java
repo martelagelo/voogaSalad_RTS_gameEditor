@@ -4,8 +4,10 @@ import game_engine.gameRepresentation.conditions.ElementPair;
 
 
 /**
- * A parameter for an evaluator. Contains whatever internal logic is required for the retrieving of
- * the parameter and returns the parameter
+ * A parameter for an evaluator. Contains whatever internal logic is required for the retrieving and
+ * setting of the parameter. Essentially, it provides the idea of a referenced value in our
+ * Condition/Action framework. Parameters take in the currently important elements and return value
+ * of the important element's parameter.
  *
  * @author Zach
  *
@@ -21,7 +23,7 @@ public interface Parameter {
 
     /**
      * Sets the value of the given parameter. Note: modifies the actual attribute of the object
-     * being referenced.
+     * being referenced. This is intended.
      *
      * @param elements the element pair to act on
      * @param value the value to set

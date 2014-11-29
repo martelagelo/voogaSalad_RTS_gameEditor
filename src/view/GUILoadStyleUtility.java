@@ -1,8 +1,12 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+
 
 /**
  * A class for the generation and styling of GUIPanes based on FXML files
@@ -15,13 +19,15 @@ import javafx.scene.Scene;
 public class GUILoadStyleUtility {
 
     private static GUILoadStyleUtility myOnlyInstance;
-
-    private Scene myScene;
+    private List<String> myCSSFiles;
+    private List<Scene> myScenes;
 
     /**
      * private constructor for the utility
      */
     private GUILoadStyleUtility () {
+        myScenes = new ArrayList<>();
+        myCSSFiles = new ArrayList<>();
     }
 
     /**
@@ -41,8 +47,9 @@ public class GUILoadStyleUtility {
      * 
      * @param scene
      */
-    public void setScene (Scene scene) {
-        myScene = scene;
+    public void addScene (Scene ... scenes) {
+        myScenes.addAll(new ArrayList<>(Arrays.asList(scenes)));
+        attachStyles();
     }
 
     /**
@@ -59,7 +66,8 @@ public class GUILoadStyleUtility {
             loader.load();
             GUIController controller = (GUIController) loader.getController();
             return controller;
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -69,20 +77,30 @@ public class GUILoadStyleUtility {
      * 
      * @param cssFiles
      */
-    public void setStyle (String... cssFiles) {
-        myScene.getStylesheets().clear();
+    public void setStyle (String ... cssFiles) {
+        myCSSFiles.clear();
         addStyle(cssFiles);
     }
 
-    public void addStyle (String... cssFiles) {
-        try {
-            for (String cssFile : cssFiles) {
-                myScene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
+    public void addStyle (String ... cssFiles) {
+        for (String cssFile : cssFiles) {
+            try {
+                String css = getClass().getResource(cssFile).toExternalForm();
+                myCSSFiles.add(css);
             }
-        } catch (Exception e) {
-            System.out.println("css file not found (or some other error)");
-            e.printStackTrace();
+            catch (Exception e) {
+                System.out.println(String.format("Failed to load css: %s", cssFile));
+                continue;
+            }
         }
+        attachStyles();
+    }
+
+    private void attachStyles () {
+        myScenes.forEach( (scene) -> {
+            scene.getStylesheets().clear();
+            scene.getStylesheets().addAll(myCSSFiles);
+        });
     }
 
 }

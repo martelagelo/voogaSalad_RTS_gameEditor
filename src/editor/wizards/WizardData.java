@@ -13,21 +13,21 @@ import java.util.stream.Collectors;
  *
  */
 public class WizardData {
-    private String myName;
-    private Map<String, String> myData;
+    private WizardDataType myType;
+    private Map<WizardDataType, String> myData;
     private List<WizardData> myWizards;
 
     public WizardData () {
-        myName = "";
+        myType = WizardDataType.UNSPECIFIED;
         myData = new HashMap<>();
         myWizards = new ArrayList<>();
     }
 
-    public void setName (String name) {
-        myName = name;
+    public void setType (WizardDataType type) {
+        myType = type;
     }
 
-    public void addDataPair (String key, String value) {
+    public void addDataPair (WizardDataType key, String value) {
         myData.put(key, value);
     }
 
@@ -39,23 +39,23 @@ public class WizardData {
         return myWizards;
     }
 
-    public String getName () {
-        return myName;
+    public WizardDataType getType () {
+        return myType;
     }
 
-    public String getValueByKey(String key) {
+    public String getValueByKey(WizardDataType key) {
         return myData.get(key);
     }
     
-    public List<WizardData> getWizardDataByType (String type) {
-        return myWizards.stream().filter(e -> e.getName().equals(type))
+    public List<WizardData> getWizardDataByType (WizardDataType type) {
+        return myWizards.stream().filter(e -> e.getType().equals(type))
                 .collect(Collectors.toList());
     }
 
     @Override
     public String toString () {
-        StringBuilder sb = new StringBuilder(myName + "\n");
-        for (String key : myData.keySet()) {
+        StringBuilder sb = new StringBuilder(myType + "\n");
+        for (WizardDataType key : myData.keySet()) {
             sb.append(key + ": " + myData.get(key) + "\n");
         }
         for (WizardData wiz : myWizards) {

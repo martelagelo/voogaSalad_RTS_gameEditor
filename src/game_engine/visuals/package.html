@@ -1,0 +1,23 @@
+<HTML>
+<BODY>
+This package contains the elements necessary for managing the UI for the engine. It contains a class
+that extends JavaFX.Scene (ScrollableBackground), which can later be passed to the Player for display.
+The VisualManager contains all of the elements for managing the Scene and it's interactions. It also contains
+a class for automatically generating the terrain for the map, the TerrainGrid.
+
+This package also contains Observable handlers for when IO occurs. When the user clicks on the screen, the 
+ClickManager notifies everyone observing it. This translates the click's location from the location on the
+screen to the location on the map. In this way, the actions occurring on the map are removed from where events
+actually occurred on the screen, so that all interaction can work appropriately.
+
+The IO handled is clicks in the ClickManager, keyboard input in the KeyboardManager, and clicking and dragging in
+the SelectionBox.
+
+This package also contains the Animation hierarchy. Animations for DisplayableGameElements are stored in AnimationSequences,
+where each AnimationSequence corresponds to a fixed number of frames from one of the sprite sheets stored in the resources.
+An AnimationPlayer is created for each DisplayableGameElement, which contains the AnimationSequences and manages playing the 
+different animations.
+
+The Animations use the Null pattern in order to take care of having an undefined AnimationSequence.
+</BODY>
+</HTML>

@@ -1,6 +1,5 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -25,8 +24,8 @@ public class NumberAttributeWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.NUMBER_ATTRIBUTE);
-        addToData(GameElementStateFactory.ATTRIBUTE, key.getText());
-        addToData(GameElementStateFactory.VALUE, numberValue.getText());
+        setDataType(WizardDataType.NUMBER_ATTRIBUTE);
+        addToData(WizardDataType.ATTRIBUTE, key.getText());
+        addToData(WizardDataType.VALUE, numberValue.getText());
     }
 }

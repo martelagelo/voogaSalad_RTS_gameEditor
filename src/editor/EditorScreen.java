@@ -4,13 +4,11 @@ import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -20,10 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import util.SaveLoadUtility;
 import view.GUILoadStyleUtility;
 import view.GUIScreen;
 
@@ -73,7 +69,7 @@ public class EditorScreen extends GUIScreen {
     public Node getRoot () {
         return editorRoot;
     }
-    
+
     private void initProjectExplorer () {
         // TODO: on selection changed should update the info box
         projectExplorerController.setOnSelectionChanged( (String[] selection) -> {
@@ -158,50 +154,13 @@ public class EditorScreen extends GUIScreen {
         initTabs();
         initProjectExplorer();
         initInfoBox();
+        editorMenuBarController.attachScreen(this);
     }
 
     @Override
     public void update () {
-        System.out.println("asdf");
-        updateAccordion();
         updateProjectExplorer();
-        updateTabViewControllers();
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
-    }
-
-    // TODO: metadata stuff
-    private void updateAccordion () {        
-        List<ImageElementPair> states =
-                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
-                        .map( (element) -> {
-                            try {
-                                return new ImageElementPair(null, element.getName());
-//                                 return new
-//                                 ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
-//                                 element.getName());
-                            }
-                            catch (Exception e) {
-                                System.out.println(e.toString());
-                                return new ImageElementPair(null, "failure");
-                            }
-                        }).collect(Collectors.toList());
-        levelElementAccordionController.updateItems(states);
-    }
-
-    /**
-     * data structure for holding accordion tile view data
-     * 
-     * @author Jonathan Tseng, Nishad Agrawal
-     *
-     */
-    public class ImageElementPair {
-        Image myImage;
-        String myElementName;
-
-        public ImageElementPair (Image image, String elementName) {
-            myImage = image;
-            myElementName = elementName;
-        }
     }
 
     private void updateProjectExplorer () {
@@ -217,11 +176,6 @@ public class EditorScreen extends GUIScreen {
                     }).collect(Collectors.toList()));
         });
         projectExplorerController.update(game.getName(), campaigns, campaignLevelMap);
-    }
-
-    private void updateTabViewControllers () {
-        if (myCurrentTab == null) return;
-        myTabViewControllers.get(myCurrentTab.getId()).update();
     }
 
 }

@@ -11,9 +11,13 @@ import java.util.List;
  * @author Steve
  *
  */
-
+// TODO add more functionality to this class. This is currently a basic skeleton
 public abstract class Action {
-
+    /**
+     * Perform the action on a given list of elements
+     * 
+     * @param elementList the list of elements on which to perform the action
+     */
     public abstract void doAction (List<GameElementState> elementList);
 
 }

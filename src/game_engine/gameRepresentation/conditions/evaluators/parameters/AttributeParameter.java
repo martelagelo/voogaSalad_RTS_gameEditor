@@ -21,7 +21,7 @@ public abstract class AttributeParameter implements Parameter {
     private GameElementManager myManager;
 
     /**
-     * Make an attribute parameter with the given tag
+     * Make an attribute parameter targeting parameters with a given tag.
      *
      * @param attributeTag the tag of the attribute that will be targeted
      * @param manager the GameElementManager containing all the game elements
@@ -65,11 +65,13 @@ public abstract class AttributeParameter implements Parameter {
      * Get the elements of interest from the object of interest identifier contained within the
      * AttributeParameter
      *
-     * @param elementManager
-     * @param elementPair
-     * @param elementTag
+     * @param elementManager the object holding all the current game elements
+     * @param elementPair a pair of the game elements that the player is currently interested in
+     * @param elementTag the tag of an element that the player is interested. Optional. Only really
+     *        used for globals
      * @return
      */
+    // TODO make this take in fewer parameters
     private List<GameElementState> getElementsOfInterest (GameElementManager elementManager,
                                                           ElementPair elementPair,
                                                           String elementTag) {
@@ -82,9 +84,11 @@ public abstract class AttributeParameter implements Parameter {
     }
 
     /**
-     * Get the desired value given the current list of elements of interest
-     *
-     * @return
+     * Get the desired value given the current list of elements of interest.
+     * 
+     * @param elements the elements whose values need to be examined
+     * @param attributeTag the tag for the attribute that is being referenced by the parameter
+     * @return the value of the parameter that is being requested
      */
     protected abstract String getValue (List<GameElementState> elements, String attributeTag);
 
@@ -96,6 +100,9 @@ public abstract class AttributeParameter implements Parameter {
 
     /**
      * Set the referenced value given the current list of elements of interest
+     * @param elements the current list of elements of interest
+     * @param attributeTag the tag for the attribute to set
+     * @param attributeValue the new value of the attribute
      */
     protected abstract boolean setValue (List<GameElementState> elements,
                                          String attributeTag,

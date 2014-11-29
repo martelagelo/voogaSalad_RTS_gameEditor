@@ -13,7 +13,7 @@ public abstract class GUIScreen extends GUIContainer {
         myMainView = mainView;
     }
     
-    protected void switchScreen(ViewScreen screen) {
+    public void switchScreen(ViewScreen screen) {
         myMainView.launchScreen(screen);
     }
 

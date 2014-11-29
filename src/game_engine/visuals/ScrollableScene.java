@@ -8,12 +8,16 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
 
 /**
  * Basically the map. JavaFX Scene node that contains the eventHandlers necessary
  * to scroll the map and register clicks.
+ * 
  * @author John
  *
  */
@@ -35,11 +39,20 @@ public class ScrollableScene extends Scene {
     private double pressedX, pressedY;
 
     /**
+<<<<<<< HEAD
+     * Create a scrollable scene
+     * 
+     * @param root the root group for the scene
+     * @param width the width of the scene
+     * @param height the height of the scene
+=======
      * Creates a new ScrollableScene for the map.
+     * 
      * @param root the group of elements to add to the Scene initially. If
-     * no objects have been created yet to add, just add an empty new Group()
+     *        no objects have been created yet to add, just add an empty new Group()
      * @param width the width of the map (ideally larger than the screen width)
      * @param height the height of the map (ideally larger than the screen height)
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableScene (Group root, double width, double height) {
         super(root, width, height);
@@ -55,27 +68,36 @@ public class ScrollableScene extends Scene {
     }
 
     /**
+<<<<<<< HEAD
+     * @return the background of the scrollable scene
+=======
      * gets the background map that objects actually get added to
+     * 
      * @return
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     public ScrollableBackground getBackground () {
         return myBackground;
     }
 
     /**
+<<<<<<< HEAD
+     * Add all the necessary click and scroll handlers to the scene
+=======
      * initializes the handlers that respond to JavaFX events necessary for scrolling and
      * registering clicks/ drags
+>>>>>>> 0801fd70045877fb15b0936ba684c4c2ac0b0f9c
      */
     private void initializeHandlers () {
-        this.setOnKeyTyped(new EventHandler<KeyEvent>(){
+        this.setOnKeyTyped(new EventHandler<KeyEvent>() {
 
             @Override
             public void handle (KeyEvent event) {
                 myKeyboardManager.keyPressed(event);
             }
-            
+
         });
-        
+
         this.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
@@ -119,13 +141,28 @@ public class ScrollableScene extends Scene {
                 pressedX = event.getSceneX();
                 pressedY = event.getSceneY();
                 if (event.isPrimaryButtonDown()) {
+                    myBox.setVisible(true);
+                    myBox.setWidth(0);
+                    myBox.setHeight(0);
+                    myBox.setStroke(Color.RED);
+                    myBox.setStrokeWidth(2);
+                    myBox.setFill(Color.TRANSPARENT);
+
+                    myBox.setX(pressedX);
+                    myBox.setY(pressedY);
+
+                }
+                else {
+                    // TODO call the input event for right click
+
                     mySelectionBox.resetBox();
                     mySelectionBox.setLocation(pressedX, pressedY);
+
                 }
-                
+
                 double xLoc = -myBackground.getTranslateX() + pressedX;
                 double yLoc = -myBackground.getTranslateY() + pressedY;
-                
+
                 myClickManager.clicked(event, xLoc, yLoc);
             }
         });
@@ -133,17 +170,21 @@ public class ScrollableScene extends Scene {
         setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
-                myBox.setVisible(false);
-                // do the math to determine the box's location relative to the map, rather than on
-                // the screen
-                double xTopLeftMap =
-                        -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
-                double yTopLeftMap =
-                        -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
-                double xBottomRight = xTopLeftMap + myBox.getWidth();
-                double yBottomRight = yTopLeftMap + myBox.getHeight();
-                if(xTopLeftMap!=xBottomRight && yTopLeftMap!=yBottomRight)
-                    mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight, yBottomRight);
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    myBox.setVisible(false);
+                    // do the math to determine the box's location relative to the map, rather than
+                    // on
+                    // the screen
+                    double xTopLeftMap =
+                            -myBackground.getTranslateX() + myBox.xProperty().doubleValue();
+                    double yTopLeftMap =
+                            -myBackground.getTranslateY() + myBox.yProperty().doubleValue();
+                    double xBottomRight = xTopLeftMap + myBox.getWidth();
+                    double yBottomRight = yTopLeftMap + myBox.getHeight();
+                    if (xTopLeftMap != xBottomRight && yTopLeftMap != yBottomRight)
+                        mySelectionBox.released(xTopLeftMap, yTopLeftMap, xBottomRight,
+                                                yBottomRight);
+                }
             }
         });
 
@@ -185,26 +226,29 @@ public class ScrollableScene extends Scene {
 
     /**
      * adds an observer to the selection boxes drawn on this scene
+     * 
      * @param o the object that wants to be notified about the location
-     * on the map the box was drawn
+     *        on the map the box was drawn
      */
     public void addBoxObserver (Observer o) {
         mySelectionBox.addObserver(o);
     }
-    
+
     /**
      * adds an observer to the clicks on the scene
+     * 
      * @param o the object that wants to be notified about the location
-     * on the map that was clicked and which button was used
+     *        on the map that was clicked and which button was used
      */
-    public void addClickObserver(Observer o) {
+    public void addClickObserver (Observer o) {
         myClickManager.addObserver(o);
     }
-    
+
     /**
      * adds an observer to the keys pressed while focused on the scene
+     * 
      * @param o the object that wants to be notified about the key
-     * that was pressed
+     *        that was pressed
      */
     public void addKeyboardObserver (Observer o) {
         myKeyboardManager.addObserver(o);
