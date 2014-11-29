@@ -6,13 +6,19 @@ package game_engine.computers.pathingComputers;
  * @param <T>
  *
  */
-public class Location {
+public class Location implements Comparable<Location>{
     public double myX;
     public double myY;
+    public double movementSpeedScalingFactor = 1;
+    public double priority;
     
     public Location(double x, double y){
         myX = x;
         myY = y;
+    }
+    
+    public void setPriority(double priority){
+        this.priority = priority;
     }
     
     @Override
@@ -32,5 +38,10 @@ public class Location {
     @Override
     public String toString () {
         return "(" + myX + ", " + myY + ")";
+    }
+
+    @Override
+    public int compareTo (Location arg0) {
+        return (int) (this.priority - arg0.priority);
     }
 }

@@ -1,57 +1,128 @@
 package game_engine.computers.pathingComputers;
 
-import game_engine.stateManaging.GameElementManager;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
 
 /**
- * Implments the A* Search algorithm to figure out a path from a location to an objective.
+ * Implements the A* Search algorithm to figure out a path from a location to an objective.
  * 
  * @author Steve
- * @param <T>
  *
  */
-public class PathingComputer<T> {
+public class PathingComputer {
+    
+    private MapGrid grid;
 
-    public static final int TILE_WIDTH = 0;
-    public static final int TILE_HEIGHT = 0;
-    public static final int WAYPOINT_X_SEPARATION = 0;
-    public static final int WAYPOINT_Y_SEPARATION = 0;
-    private GameElementManager myManager;
-    private PriorityQueue<Path<T>> myPaths;
-    private HashMap<Path<T>, Double> minimumDistances;
-
-    public PathingComputer (GameElementManager manager) {
-        myManager = manager;
+    public PathingComputer (MapGrid grid) {
+        this.grid = grid;
     }
 
-    public List<Path<T>> findPath (double xStart, double yStart, double xEnd, double yEnd) {
-        return findPath(new Location(xStart, yStart), new Location(xEnd, yEnd));
+    public List<Location> findPath (double xStart, double yStart, double xEnd, double yEnd) {
+        return findPath(new Location(xStart,yStart), new Location(xEnd, yEnd));
     }
 
-    public List<Path<T>> findPath (Location start, Location end) {
-        return null;
+    private PriorityQueue<Location> frontierLocations;
+    private HashMap<Location, Location> previousLocations;
+    private HashMap<Location, Double> minimumCosts;
+    private Location origin;
+    private List<Location> goals;
+
+    /**
+     * Naive implementation of heuristic function (for now) assuming constant traversal time for
+     * every square, allowing for 8-directional movement and weighting diagonals appropriately.
+     * 
+     * @param location - starting location
+     * @param goal - ending location
+     * @return diagonal adjustment to Chebyshev distance
+     */
+    private double determineHeuristic (Location location) {
+        double bestHeuristic = Double.MAX_VALUE;
+        for(Location goal : goals){
+            double dX = Math.abs(location.myX - goal.myX);
+            double dY = Math.abs(location.myY - goal.myY);
+            double tempHeuristic = (dX + dY) + (Math.sqrt(2) - 2) * Math.min(dX, dY);
+            if(tempHeuristic<bestHeuristic){
+                bestHeuristic = tempHeuristic;
+            }
+        }
+        return bestHeuristic;
     }
 
-    private double calculateCostToLocation (T from, T to) {
-        return 0.0;
+    /**
+     * Naive implementation of distance function allowing for 8-directional movement and weighting
+     * diagonals appropriately.
+     * 
+     * @param from
+     * @param to
+     * @return
+     */
+    private double determinePathLength (Location from, Location to) {
+        double dX = Math.abs(from.myX - to.myX);
+        double dY = Math.abs(from.myY - to.myY);
+        return from.movementSpeedScalingFactor*((dX + dY) + (Math.sqrt(2) - 2) * Math.min(dX, dY));
     }
-
-    private double calculateCostToGoalHeuristic (T from, T to) {
-        return 0.0;
+    
+    public double determineCost (Location from, Location to){
+        double previousDistance = minimumCosts.getOrDefault(from, 0.0);
+        double currentDistance = determinePathLength(from, to);
+        
+        return previousDistance + currentDistance;
     }
+    
+    public List<Location> findPath (Location from, Location to){
+        origin = from;
+        goals = grid.getNeighborsForXYCoordinate(to);
+        
+        frontierLocations = new PriorityQueue<Location>();
+        previousLocations = new HashMap<Location,Location>();
+        minimumCosts = new HashMap<Location, Double>();
+        
+        frontierLocations.addAll(grid.getNeighborsForXYCoordinate(from));
+        while(!frontierLocations.isEmpty()){
+            Location currentLocation = frontierLocations.poll();
+            if(goals.contains(currentLocation)){
+                List<Location> path = reconstructPath(currentLocation);
+                path.add(to);
+                return path;
+            }
+            else {
 
-    protected Double calculateCost (Path<T> p, T from, T to) {
-        double costToPreviousLocation =
-                ((p.myPrevious != null) ? p.myPrevious.costToLocation : 0.0);
-        double costToLocation = calculateCostToLocation(from, to) + costToPreviousLocation;
-        double costToGoalHeuristic = calculateCostToGoalHeuristic(from, to);
-
-        p.costToLocation = costToLocation;
-        p.cost = costToLocation + costToGoalHeuristic;
-
-        return p.cost;
+                for(Location neighbor : grid.getNeighbors(currentLocation)){
+                    double newCost = determineCost(currentLocation, neighbor);
+                    if(!minimumCosts.containsKey(neighbor) || newCost < minimumCosts.get(neighbor)){
+                        minimumCosts.put(neighbor, newCost);
+                        neighbor.setPriority(newCost + determineHeuristic(neighbor));
+                        frontierLocations.remove(neighbor);
+                        frontierLocations.offer(neighbor);
+                        previousLocations.put(neighbor, currentLocation);
+                    }
+                }
+            }
+        }
+        return reconstructPath(origin);
+    }
+    
+    private List<Location> reconstructPath(Location destination){
+        List<Location> path = new LinkedList<Location>();
+        Location next = destination;
+        while(next != null){
+            path.add(next);
+            if(grid.getNeighborsForXYCoordinate(origin).contains(next)){
+                break;
+            }
+            next = previousLocations.get(next);
+        }
+        return path;
+    }
+    
+    public static void main (String[] args){
+        MapGrid theGrid = new MapGrid(1500,1500);
+        PathingComputer testing = new PathingComputer(theGrid);
+        String pattern = "\\),\\s\\(";
+        System.out.println(testing.findPath(10, 10, 1000, 1000).toString().replaceAll(pattern, ";").replaceAll("\\(", "").replaceAll("\\)", ""));
+        System.out.println(theGrid.getImpassableLocations().toString().replaceAll(pattern, ";").replaceAll("\\(", "").replaceAll("\\)", ""));
     }
 }
