@@ -52,8 +52,8 @@ public class LevelWizard extends Wizard {
     }
 
     @Override
-    public void launchForEdit (String[] oldValues) {
-        campaignName.setText(oldValues[0]);
-        levelName.setText(oldValues[1]);
+    public void launchForEdit (WizardData oldValues) {
+        campaignName.setText(oldValues.getValueByKey(WizardDataType.CAMPAIGN));
+        levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));
     }
 }

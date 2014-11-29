@@ -39,12 +39,12 @@ public class CampaignWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            // TODO Show this exception
+            setErrorMesssage(e.getMessage());
         }
     }
 
     @Override
-    public void launchForEdit (String[] oldValues) {
-        name.setText(oldValues[0]);
+    public void launchForEdit (WizardData oldValues) {
+        name.setText(oldValues.getValueByKey(WizardDataType.NAME));
     }
 }

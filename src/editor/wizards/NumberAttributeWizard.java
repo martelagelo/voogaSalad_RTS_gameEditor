@@ -33,8 +33,8 @@ public class NumberAttributeWizard extends Wizard {
     }
 
     @Override
-    public void launchForEdit (String[] oldValues) {
-        key.setText(oldValues[0]);
-        numberValue.setText(oldValues[1]);
+    public void launchForEdit (WizardData oldValues) {
+        key.setText(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));
+        numberValue.setText(oldValues.getValueByKey(WizardDataType.VALUE));
     }
 }
