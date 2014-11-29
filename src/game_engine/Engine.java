@@ -11,12 +11,10 @@ import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
-import application.ShittyMain;
 import javafx.scene.Group;
+import application.ShittyMain;
 
 
 /**
@@ -55,9 +53,9 @@ public class Engine extends Observable implements Observer {
                                                                    throws DescribableStateException {
         myMainModel.setCurrentLevel(campaignName, levelName);
         Level newLevel = new Level(myMainModel.getCurrentLevel());
-//        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
+        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager);
         myMiniMap.setUnits(newLevel.getUnits());
-        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
+//        myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
 //        myGameLoop = new GameLoop(newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel);
         myVisualManager.addObjects(newLevel.getGroup());
@@ -96,7 +94,7 @@ public class Engine extends Observable implements Observer {
         if (myGameLoop == null || !myGameLoop.isCurrentLevel(levelState, currentCampaign)) {
             Level nextLevel = new Level(levelState);
             myMiniMap.setUnits(nextLevel.getUnits());
-            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
+            myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager);
             myElementManager = new GameElementManager(nextLevel);
             myVisualManager.addObjects(nextLevel.getGroup());
             myVisualManager.addBoxObserver(myElementManager);

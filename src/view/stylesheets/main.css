@@ -5,7 +5,7 @@
     Description: Main theme
 */
 
-.grid, #splash, #editorRoot, #myTreeView, #menuBar  {
+.grid, #splash, #editorRoot, #myTreeView, #menuBar, #root  {
     -fx-background-color: #000000;
     -fx-background: #000000;
     -fx-color: #6BB8F6;
