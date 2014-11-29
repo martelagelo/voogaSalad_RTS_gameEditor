@@ -1,0 +1,7 @@
+<map id="editor.EditorScreen.updateProjectExplorer" name="editor.EditorScreen.updateProjectExplorer">
+<area shape="rect" id="node2" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a6f29506b70f4a31135a03b9b011af828" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getCampaigns" alt="" coords="249,5,543,46"/>
+<area shape="rect" id="node3" href="$da/d8d/classgamemodel_1_1_main_model.html#a4b668db5374774a4f3af7230e274df26" title="gamemodel.MainModel.getCurrentGame" alt="" coords="255,71,537,97"/>
+<area shape="rect" id="node4" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html#a9f8b1e677c899d1ab9af302a9f4854f3" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState.getName" alt="" coords="248,122,544,163"/>
+<area shape="rect" id="node5" href="$d8/d0e/classeditor_1_1_project_explorer_controller.html#aaeb41fd72e4664431285b2b28e9c39ed" title="editor.ProjectExplorerController.update" alt="" coords="262,188,530,215"/>
+<area shape="rect" id="node6" href="$d3/dd8/classeditor_1_1_project_explorer_tree_item.html#ac6e7629dec19bbe5e3b3957b944a8ba5" title="editor.ProjectExplorerTree\lItem.setAction" alt="" coords="592,181,776,222"/>
+</map>

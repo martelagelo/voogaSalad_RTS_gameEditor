@@ -1,0 +1,11 @@
+<map id="editor.ElementAccordianController" name="editor.ElementAccordianController">
+<area shape="rect" id="node2" href="$d1/d44/classview_1_1_g_u_i_container.html" title="view.GUIContainer" alt="" coords="2145,225,2282,252"/>
+<area shape="rect" id="node4" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html" title="view.GUIController" alt="" coords="1807,200,1945,227"/>
+<area shape="rect" id="node6" href="$da/d8d/classgamemodel_1_1_main_model.html" title="gamemodel.MainModel" alt="" coords="1791,301,1961,328"/>
+<area shape="rect" id="node8" href="$dd/dec/classgame__engine_1_1game_representation_1_1state_representation_1_1_campaign_state.html" title="game_engine.gameRepresentation.state\lRepresentation.CampaignState" alt="" coords="785,702,1068,743"/>
+<area shape="rect" id="node21" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html" title="game_engine.gameRepresentation.state\lRepresentation.LevelState" alt="" coords="1309,526,1592,567"/>
+<area shape="rect" id="node9" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState" alt="" coords="83,438,365,479"/>
+<area shape="rect" id="node11" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html" title="game_engine.gameRepresentation.state\lRepresentation.GameState" alt="" coords="1309,294,1592,335"/>
+<area shape="rect" id="node12" href="$d9/d7e/classgamemodel_1_1_game_universe.html" title="gamemodel.GameUniverse" alt="" coords="827,301,1026,328"/>
+<area shape="rect" id="node19" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElementState" alt="" coords="755,113,1098,154"/>
+</map>

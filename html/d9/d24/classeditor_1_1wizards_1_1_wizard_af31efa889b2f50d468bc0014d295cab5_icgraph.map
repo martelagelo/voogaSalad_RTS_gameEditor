@@ -1,0 +1,12 @@
+<map id="editor.wizards.Wizard.addWizardData" name="editor.wizards.Wizard.addWizardData">
+<area shape="rect" id="node2" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a9f86dd25fe1908a497cc076771e5bcec" title="editor.wizards.GameElement\lWizard.launchNestedWizard" alt="" coords="260,103,465,145"/>
+<area shape="rect" id="node7" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a849fae12a564cb486dcbf52e25e30333" title="editor.wizards.DrawableGame\lElementWizard.launchNestedWizard" alt="" coords="237,247,488,289"/>
+<area shape="rect" id="node3" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a36d16948cedf3264544e469103e9cb5b" title="editor.wizards.GameElement\lWizard.launchNumberAttributeEditor" alt="" coords="545,5,799,46"/>
+<area shape="rect" id="node5" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a4b1d74e8098e7e3c7365c5da226fd046" title="editor.wizards.GameElement\lWizard.launchStringAttributeEditor" alt="" coords="551,70,793,111"/>
+<area shape="rect" id="node6" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#ae40410b2e2c9ae8e176922013ead90d2" title="editor.wizards.GameElement\lWizard.launchTriggerEditor" alt="" coords="569,135,775,177"/>
+<area shape="rect" id="node4" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a30d75eef840bd76d5d98533b084a341c" title="editor.wizards.GameElement\lWizard.initialize" alt="" coords="859,70,1064,111"/>
+<area shape="rect" id="node8" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#ab5f0bfe1cf0d3a5f7c22dcb96414396f" title="editor.wizards.DrawableGame\lElementWizard.launchNumberAttribute\lEditor" alt="" coords="537,200,807,256"/>
+<area shape="rect" id="node10" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a2b8f941d2303d331160cab825f9843c8" title="editor.wizards.DrawableGame\lElementWizard.launchStringAttribute\lEditor" alt="" coords="543,280,801,336"/>
+<area shape="rect" id="node11" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a90f6d823fb35bc06074b361e109caebd" title="editor.wizards.DrawableGame\lElementWizard.launchTriggerEditor" alt="" coords="551,359,793,401"/>
+<area shape="rect" id="node9" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a7a37e4c518775da5c3d49fb7b1a7ff85" title="editor.wizards.DrawableGame\lElementWizard.initialize" alt="" coords="856,287,1067,329"/>
+</map>

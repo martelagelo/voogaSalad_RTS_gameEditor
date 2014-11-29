@@ -1,0 +1,5 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState.addAnimation" name="game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState.addAnimation">
+<area shape="rect" id="node2" href="$d1/dcc/classapplication_1_1_shitty_main.html#ab7655063be70764ab009ff94f203cea5" title="application.ShittyMain.create\lArcher" alt="" coords="369,5,575,46"/>
+<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="624,34,819,75"/>
+<area shape="rect" id="node4" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="867,41,1063,68"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="editor.EditorScreen.openTerrainWizard" name="editor.EditorScreen.openTerrainWizard">
+<area shape="rect" id="node2" href="$dc/d5c/classeditor_1_1_editor_screen.html#ad24b8ff66915c0d39c446d72fa12ff9a" title="editor.EditorScreen.load\lWizard" alt="" coords="235,129,410,170"/>
+<area shape="rect" id="node3" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="468,5,703,46"/>
+<area shape="rect" id="node4" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="459,70,712,111"/>
+<area shape="rect" id="node5" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#a72e3a81c25878fea0201a98307c78622" title="editor.wizards.Wizard.getRoot" alt="" coords="481,136,689,163"/>
+<area shape="rect" id="node6" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a30a627da15298901fc10675636958c8e" title="game_engine.visuals.Dimension.get\lWidth" alt="" coords="459,187,712,229"/>
+<area shape="rect" id="node7" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#a000a0be1e53ca727dc03770e6269db9c" title="editor.wizards.Wizard.set\lSubmit" alt="" coords="496,253,675,294"/>
+</map>

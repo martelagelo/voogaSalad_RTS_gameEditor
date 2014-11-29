@@ -1,0 +1,22 @@
+<map id="editor.EditorScreen" name="editor.EditorScreen">
+<area shape="rect" id="node2" href="$d0/df3/classview_1_1_g_u_i_screen.html" title="view.GUIScreen" alt="" coords="2673,1011,2793,1037"/>
+<area shape="rect" id="node30" href="$d1/d75/classview_1_1_main_view.html" title="view.MainView" alt="" coords="3131,1151,3242,1177"/>
+<area shape="rect" id="node3" href="$d1/d44/classview_1_1_g_u_i_container.html" title="view.GUIContainer" alt="" coords="2191,997,2329,1024"/>
+<area shape="rect" id="node35" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html" title="editor.ElementAccordionController" alt="" coords="2613,876,2853,903"/>
+<area shape="rect" id="node37" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html" title="editor.EditorMenuBarController" alt="" coords="2624,775,2843,801"/>
+<area shape="rect" id="node5" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html" title="view.GUIController" alt="" coords="1826,416,1963,443"/>
+<area shape="rect" id="node46" href="$d4/d51/classeditor_1_1_describable_info_box_controller.html" title="editor.DescribableInfoBox\lController" alt="" coords="2641,107,2825,149"/>
+<area shape="rect" id="node53" href="$d8/d0e/classeditor_1_1_project_explorer_controller.html" title="editor.ProjectExplorerController" alt="" coords="2623,509,2843,536"/>
+<area shape="rect" id="node7" href="$da/d8d/classgamemodel_1_1_main_model.html" title="gamemodel.MainModel" alt="" coords="1809,1237,1980,1264"/>
+<area shape="rect" id="node9" href="$dd/dec/classgame__engine_1_1game_representation_1_1state_representation_1_1_campaign_state.html" title="game_engine.gameRepresentation.state\lRepresentation.CampaignState" alt="" coords="1296,1198,1579,1239"/>
+<area shape="rect" id="node10" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState" alt="" coords="767,1186,1049,1227"/>
+<area shape="rect" id="node13" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html" title="game_engine.gameRepresentation.state\lRepresentation.GameState" alt="" coords="1296,1133,1579,1174"/>
+<area shape="rect" id="node26" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html" title="game_engine.gameRepresentation.state\lRepresentation.LevelState" alt="" coords="1296,1410,1579,1451"/>
+<area shape="rect" id="node11" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="163,1567,267,1593"/>
+<area shape="rect" id="node24" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElementState" alt="" coords="737,1689,1079,1730"/>
+<area shape="rect" id="node14" href="$d9/d7e/classgamemodel_1_1_game_universe.html" title="gamemodel.GameUniverse" alt="" coords="809,1004,1007,1031"/>
+<area shape="rect" id="node21" href="$d3/d14/classutil_1_1_save_load_utility.html" title="util.SaveLoadUtility" alt="" coords="1365,1264,1509,1291"/>
+<area shape="rect" id="node22" href="$df/d88/classutil_1_1_default_resource.html" title="util.DefaultResource" alt="" coords="833,1252,983,1279"/>
+<area shape="rect" id="node32" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html" title="view.GUILoadStyleUtility" alt="" coords="2646,1276,2821,1303"/>
+<area shape="rect" id="node56" href="$d3/dd8/classeditor_1_1_project_explorer_tree_item.html" title="editor.ProjectExplorerTree\lItem\&lt; String \&gt;" alt="" coords="2168,583,2352,625"/>
+</map>

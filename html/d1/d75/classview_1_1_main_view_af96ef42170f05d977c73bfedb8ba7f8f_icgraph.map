@@ -1,0 +1,5 @@
+<map id="view.MainView.start" name="view.MainView.start">
+<area shape="rect" id="node2" href="$d6/d64/classapplication_1_1_vooga.html#a1f6a84634cafcd1bc8a6fcce309a3a45" title="application.Vooga.initialize" alt="" coords="198,5,389,32"/>
+<area shape="rect" id="node3" href="$d6/d64/classapplication_1_1_vooga.html#af3ca682e92a8bd53d950b910d44809ce" title="application.Vooga.toss" alt="" coords="438,5,605,32"/>
+<area shape="rect" id="node4" href="$d9/d96/classapplication_1_1_main.html#a4e5ad4e3de8bbd8654120180a94e870d" title="application.Main.start" alt="" coords="654,5,813,32"/>
+</map>

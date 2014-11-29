@@ -1,0 +1,5 @@
+<map id="game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement.getLocation" name="game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement.getLocation">
+<area shape="rect" id="node2" href="$df/de2/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a7bddee9a8853899dc89b81b97162c61b" title="game_engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.getLines" alt="" coords="405,5,744,46"/>
+<area shape="rect" id="node3" href="$df/de2/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a83accf7dc9be7114569f6c916c6aed5a" title="game_engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.move" alt="" coords="414,70,735,111"/>
+<area shape="rect" id="node4" href="$df/de2/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a47272e0beb372831322a4074210eb7ea" title="game_engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.update" alt="" coords="792,70,1123,111"/>
+</map>
