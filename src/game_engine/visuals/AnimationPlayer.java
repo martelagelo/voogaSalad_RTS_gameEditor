@@ -94,6 +94,7 @@ public class AnimationPlayer implements Updatable, Displayable {
 
         }
         // Get a viewport and make sure it fits
+        
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
         if (!myImageBounds.contains(viewport)) return false;
         // Set the display viewport to the new viewport
