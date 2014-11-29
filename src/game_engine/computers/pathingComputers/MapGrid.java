@@ -1,8 +1,8 @@
 package game_engine.computers.pathingComputers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import javafx.scene.shape.Polygon;
 
 
 public class MapGrid {
@@ -10,34 +10,17 @@ public class MapGrid {
     public static final int TILE_HEIGHT = 48;
     private Location[][] locationGrid;
 
-    public MapGrid (double mapWidth, double mapLength) {
-        locationGrid =
-                new Location[(int) Math.ceil(mapWidth / TILE_WIDTH)][(int) Math.ceil(mapLength /
-                                                                                     TILE_HEIGHT)];
-        hardCodeAGrid();
+    public MapGrid (Number mapWidth, Number mapHeight) {
+        int numRows = (int) Math.ceil(mapWidth.doubleValue() / TILE_WIDTH);
+        int numColumns = (int) Math.ceil(mapHeight.doubleValue() / TILE_HEIGHT);
+        locationGrid = new Location[numRows][numColumns];
+        initializeGrid();
     }
 
-    private void hardCodeAGrid () {
+    private void initializeGrid () {
         for (int i = 0; i < locationGrid.length; i++) {
-            if (i < 8  && i > 3){
-                for (int j = 0; j < locationGrid[0].length; j++) {
-                    if ( j!=locationGrid[0].length-15){
-                        locationGrid[i][j] = new Location(i * TILE_WIDTH, j * TILE_HEIGHT);
-                    }
-                }
-            }
-            else if (i != 8) {
-                for (int j = 0; j < locationGrid[0].length; j++) {
-                    locationGrid[i][j] = new Location(i * TILE_WIDTH, j * TILE_HEIGHT);
-                }
-            }
-            else {
-                for (int j = 0; j < 4; j++) {
-                    locationGrid[i][j] = new Location(i * TILE_WIDTH, j * TILE_HEIGHT);
-                }
-                for (int j=locationGrid[0].length-1;j>locationGrid[0].length-15;j--){
-                    locationGrid[i][j] = new Location(i * TILE_WIDTH, j * TILE_HEIGHT);
-                }
+            for (int j = 0; j < locationGrid[0].length; j++) {
+                locationGrid[i][j] = new Location(i * TILE_WIDTH, j * TILE_HEIGHT);
             }
         }
     }
@@ -98,23 +81,29 @@ public class MapGrid {
         StringBuilder array = new StringBuilder();
         for (int i = 0; i < locationGrid.length; i++) {
             for (int j = 0; j < locationGrid[0].length; j++) {
-                String locationString = locationGrid[i][j] == null ? "XX" : "__"; 
+                String locationString = locationGrid[i][j] == null ? "XX" : "__";
                 array.append(String.format("%1$-3s", locationString));
             }
             array.append("\n");
         }
         return array.toString();
     }
-    
-    public List<Location> getImpassableLocations(){
+
+    public List<Location> getImpassableLocations () {
         List<Location> impasses = new ArrayList<Location>();
         for (int i = 0; i < locationGrid.length; i++) {
             for (int j = 0; j < locationGrid[0].length; j++) {
-                if(locationGrid[i][j] == null){
+                if (locationGrid[i][j] == null) {
                     impasses.add(new Location(i * TILE_WIDTH, j * TILE_HEIGHT));
                 }
             }
         }
         return impasses;
+    }
+
+    public void registerObstacle (double[] bounds) {
+        Polygon bound = new Polygon(bounds);
+        Location corner = new Location(bounds[0],bounds[1]);
+        
     }
 }
