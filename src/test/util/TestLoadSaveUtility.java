@@ -1,10 +1,11 @@
 package test.util;
 
+import java.io.IOException;
 import javafx.scene.image.Image;
-
 import org.junit.Test;
-
 import util.SaveLoadUtility;
+import util.LoadSaveUtility;
+
 
 /**
  * Test class to verify LoadSave Utility's method calls loading/saving images as

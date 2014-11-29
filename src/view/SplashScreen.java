@@ -22,6 +22,7 @@ import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 
 
+
 /**
  * 
  * @author Jonathan
@@ -43,14 +44,18 @@ public class SplashScreen extends GUIScreen {
     private static final Integer LOAD_DURATION = 1;
 
     // TODO Probably get rid of this
-    private static final String GAMES_DIRECTORY = "./myGames/";
-
     @FXML
     private GridPane splash;
     @FXML
     private Button launchEditorButton;
     @FXML
     private Button launchRunnerButton;
+    @FXML
+    private ComboBox<String> myGames;
+    private static final String LAUNCH_EDITOR = "Launch Editor";
+    private static final String LAUNCH_RUNNER = "Launch Runner";
+    private static final String GAMES_DIRECTORY = "./myGames/";
+
     @FXML
     private ComboBox<String> gameDropDown;
     @FXML
@@ -67,6 +72,7 @@ public class SplashScreen extends GUIScreen {
     public void init () {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
+
         File folder = new File(GAMES_DIRECTORY);
         List<File> files = Arrays.asList(folder.listFiles());
         List<String> gameNames = files
@@ -154,6 +160,7 @@ public class SplashScreen extends GUIScreen {
         catch (LanguageException e) {
             // TODO error handling
         }
+
     }
 
     @Override

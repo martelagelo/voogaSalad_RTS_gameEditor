@@ -13,10 +13,10 @@
 			<children>
 				<VBox>
 					<TextField fx:id="name" text="name" />
-					<Button fx:id="trigger" text="new trigger" />
-					<Button fx:id="stringAttribute" text="new string attribute" />
-					<Button fx:id="numberAttribute" text="new number attribute" />
-					<Button fx:id="save" text="save" />
+					<Button fx:id="trigger" defaultButton="true" text="new trigger" />
+					<Button fx:id="stringAttribute" defaultButton="true" text="new string attribute" />
+					<Button fx:id="numberAttribute" defaultButton="true" text="new number attribute" />
+					<Button fx:id="save" defaultButton="true" text="save" />
 					<Text fx:id="errorMessage" />
 
 				</VBox>

@@ -1,9 +1,11 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javafx.scene.Group;
 
@@ -30,18 +32,20 @@ public class Level {
      * @param levelState
      */
     public Level (LevelState levelState) {
-        //TODO split this into multiple methods
+        // TODO split this into multiple methods
         myTerrain = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();
         myLevelState = levelState;
-        //Create and add the terrains
+        // Create and add the terrains
         for (DrawableGameElementState element : levelState.getTerrain()) {
-            myTerrain.add(new DrawableGameElement(element));
+            myTerrain.add(new DrawableGameElement(element,
+                                                  new HashMap<String, List<Evaluatable<?>>>()));
         }
-        //Create and add the units to the map
+        // Create and add the units to the map
         for (SelectableGameElementState element : levelState.getUnits()) {
-            myUnits.add(new SelectableGameElement(element));
+            myUnits.add(new SelectableGameElement(element,
+                                                  new HashMap<String, List<Evaluatable<?>>>()));
         }
         // TODO Use factory to create game elements from game element states and add to this list
         // goals.addAll(level.getGoals());

@@ -1,28 +1,25 @@
 package game_engine.stateManaging;
 
+import game_engine.UI.ClickManager;
+import game_engine.UI.KeyboardManager;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.Dimension;
-import game_engine.visuals.UI.ClickManager;
-import game_engine.visuals.UI.KeyboardManager;
-import game_engine.visuals.UI.SelectionBox;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
+import game_engine.visuals.SelectionBox;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Polygon;
+import javafx.scene.input.MouseButton;
 
 
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
- * @author John, Steve
+ * @author John, Steve, Michael D.
  *
  */
 public class GameElementManager implements Observer {
@@ -36,7 +33,8 @@ public class GameElementManager implements Observer {
     /**
      * Get all the game elements of a given type
      *
-     * @param typeName the name of the type of the game elements
+     * @param typeName
+     *        the name of the type of the game elements
      * @return all the game elements with the given type
      */
     public List<GameElementState> findAllElementsOfType (String typeName) {
@@ -53,31 +51,66 @@ public class GameElementManager implements Observer {
     /**
      * Select all the elements in a given rectangle
      *
-     * @param rectPoints the points in the rectangle surrounding the player's units
+     * @param rectPoints
+     *        the points in the rectangle surrounding the player's units
      */
-    private void selectPlayerUnits (double[] rectPoints) {
+    private void selectUnitsBox (double[] rectPoints, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            e.select(false);
-            double[] bounds = e.getBounds();
-            // TODO: this doesn't work once the screen has scrolled
-            Polygon polygonBounds = new Polygon();
-            polygonBounds.getPoints().addAll(new Double[] { bounds[0], bounds[1],
-                                                           bounds[0] + bounds[2], bounds[1],
-                                                           bounds[0] + bounds[2],
-                                                           bounds[1] + bounds[3], bounds[0],
-                                                           bounds[1] + bounds[3] });
-
-            if (polygonBounds.intersects(rectPoints[0], rectPoints[1], rectPoints[2]-rectPoints[0], rectPoints[3]-rectPoints[1])){
+            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
+                continue;
+            }
+            if (!isShiftDown)
+                e.select(false);
+            if (contains(rectPoints, e.getLocation())) {
                 e.select(true);
-                System.out.println("Selected Unit");
             }
         }
     }
 
-    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary) {
-        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
-                .collect(Collectors.toList())) {
+    private void selectUnitsClick (Point2D clickLoc, boolean isShiftDown) {
+        for (SelectableGameElement e : myLevel.getUnits()) {
+            if (!e.getState().getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
+                continue;
+            }
+            if (!isShiftDown)
+                e.select(false);
+            double[] bounds = e.getBounds();
+            double[] cornerBounds =
+                    new double[] { e.getLocation().getX() - bounds[2] / 2,
+                                  e.getLocation().getY() - bounds[3] / 2,
+                                  e.getLocation().getX() + bounds[2] / 2,
+                                  e.getLocation().getY() + bounds[3] / 2 };
+
+            if (contains(cornerBounds, clickLoc)) {
+                e.select(true);
+                break;
+            }
+        }
+    }
+
+    private boolean contains (double[] rectPoints, Point2D unitLocationCenter) {
+
+        double topLeftX = rectPoints[0];
+        double topLeftY = rectPoints[1];
+        double bottomRightX = rectPoints[2];
+        double bottomRightY = rectPoints[3];
+
+        if (topLeftX <= unitLocationCenter.getX()
+            && bottomRightX >= unitLocationCenter.getX()) {
+            if (topLeftY <= unitLocationCenter.getY()
+                && bottomRightY >= unitLocationCenter.getY()) { return true; }
+        }
+        return false;
+
+    }
+
+    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary,
+                                           boolean shiftHeld) {
+        for (SelectableGameElement e : myLevel.getUnits().stream()
+                .filter(e -> e.isSelected()).collect(Collectors.toList())) {
             if (!isPrimary) {
+                if (!shiftHeld)
+                    e.clearHeadings();
                 e.setHeading(click);
             }
         }
@@ -90,24 +123,27 @@ public class GameElementManager implements Observer {
     @Override
     public void update (Observable o, Object arg) {
         if (o instanceof SelectionBox) {
-            double[] points = ((SelectionBox) o).getPoints();
-            selectPlayerUnits(points);
+            SelectionBox SB = (SelectionBox) o;
+            double[] points = SB.getPoints();
+            // ClickManager clickManager = (ClickManager) o;
+            selectUnitsBox(points, SB.getLastClick().isShiftDown());
         }
         else if (o instanceof ClickManager) {
-            Point2D click = ((ClickManager) o).getLoc();
-            // TODO implement sending orders to units based on click
-            // ((ClickManager) o).isPrimary(), ((ClickManager) o).isSecondary()
-            boolean isSecondary;
-            if (isSecondary = ((ClickManager) o).isSecondary()) {
-                sendClickToSelectedUnits(click, !isSecondary);
+            ClickManager clickManager = (ClickManager) o;
+            if (clickManager.getLastClick().getButton() == MouseButton.PRIMARY) {
+                // System.out.println("Click: "+clickManager.getMapLoc().getX()+", "+clickManager.getMapLoc().getY());
+                selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
+                        .isShiftDown());
             }
-            System.out.println("Click: " +
-                               (((ClickManager) o).isPrimary() ? "primary" : "secondary") +
-                               ", loc: " + click.getX() + ", " + click.getY());
+            sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
+
+                    .getLastClick().getButton().equals(MouseButton.PRIMARY),
+                                     clickManager.getLastClick().isShiftDown());
 
         }
         else if (o instanceof KeyboardManager) {
-            System.out.println("Typed: " + ((KeyboardManager) o).getLastCharacter());
+            // System.out.println("Typed: "
+            // + ((KeyboardManager) o).getLastCharacter());
         }
     }
 }

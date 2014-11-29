@@ -5,6 +5,8 @@ import javafx.scene.control.TextField;
 
 
 /**
+ * This represents the Wizard responsible for storing a string attribute along with its attribute
+ * name as a key. It only requires both fields to not be null.
  * 
  * @author Joshua, Nishad
  *

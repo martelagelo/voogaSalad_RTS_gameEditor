@@ -36,39 +36,42 @@ import util.SaveLoadUtility;
  */
 public class SpriteSheetCreationUtility {
 
-    public static void main (String[] args) throws IOException {
+    public static void main (String[] args) throws Exception {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-        // String baseDirectoryPath = "src/resources/img/graphics/units/";
-        // int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
-        // int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
-        // boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,
-        // false, false, true, true, true };
-        //
-        // processor.createSpriteSheet(baseDirectoryPath,
-        // uniqueStateIndicies,
-        // extrapolatedStateIndicies,
-        // extrapolatedStateMirrorFlags,
-        // new Color(0xFFFF00FF));
+        String baseDirectoryPath = "src/resources/img/graphics/units/";
+        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
+        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
+        boolean[] extrapolatedStateMirrorFlags = new boolean[] { false, false, false,
+                                                                false, false, true, true, true };
 
-        //processor.doThing();
+        processor.createSpriteSheet(baseDirectoryPath,
+                                    uniqueStateIndicies,
+                                    extrapolatedStateIndicies,
+                                    extrapolatedStateMirrorFlags,
+                                    new Color(0xFFFF00FF));
+
+//        processor.doThing();
 
     }
 
     private void doThing () throws IOException {
-        List<BufferedImage> grassTiles = loadFilesInDirectory(new File("src/resources/img/graphics/terrain/grass/"));
-        List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
-        for(BufferedImage image: grassTiles) {
-            betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
-        }
-        int i = 1;
-        for(BufferedImage image: betterTiles) {
-            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/terrain/grass/" + i + ".png"));
-            i++;
-        }
+        
+//        List<BufferedImage> buttons =
+//                loadFilesInDirectory(new File("src/resources/img/graphics/buildings/archeryRange/"));
+//        List<BufferedImage> betterTiles = new ArrayList<BufferedImage>();
+//        for (BufferedImage image : buttons) {
+//            betterTiles.add(colorToTransparency(image, new Color(0xFFFF00FF)));
+//        }
+//        int i = 1;
+//        for (BufferedImage image : betterTiles) {
+//            ImageIO.write(image, "PNG", new File("src/resources/img/graphics/buildings/" + i +
+//                                                 ".png"));
+//            i++;
+//        }
     }
 
     /**
-     * Creates a sprite sheet from a batch of bitmaps with pink (0xFFFF00FF) pixel masks.
+     * Creates a sprite sheet from a batch of bitmaps with pixel masks.
      * 
      * @param inputDirectoryPath - path to directory holding single sprite bitmaps
      * @param outputDirectoryPath - path to directory holding output file
@@ -76,12 +79,13 @@ public class SpriteSheetCreationUtility {
      * @param uniqueSpriteIndicies - incidies of states in input
      * @param extrapolatedStateIndicies - order of states in output
      * @param extrapolatedStateMirrorFlags - which states to mirror horizontally in output
+     * @throws Exception
      */
     public void createSpriteSheet (String baseInputDirectoryPath,
                                    int[] uniqueStateIndicies,
                                    int[] extrapolatedStateIndicies,
                                    boolean[] extrapolatedStateMirrorFlags,
-                                   Color maskColor) {
+                                   Color maskColor) throws Exception {
         try {
             File baseDirectory = new File(baseInputDirectoryPath);
             if (!baseDirectory.isDirectory()) { return; }
@@ -108,14 +112,17 @@ public class SpriteSheetCreationUtility {
                         tileSpritesheets(stateSpritesheets, frameWidth, frameHeight);
                 ColorMaskExtractor extractor = new ColorMaskExtractor(finalSpritesheet);
                 extractor.extractColorMask();
+                extractor.mutateColorMask(122);
                 BufferedImage finalSpritesheetColorRemoved = extractor.spritesheetColorRemoved;
                 BufferedImage colorMask = extractor.colorMask;
+                BufferedImage redColorMask = extractor.mutatedMask;
                 String filePathForSpritesheet =
                         baseDirectory.getAbsolutePath() + File.separator + unitName;
                 String filePathForColorMask = filePathForSpritesheet + "ColorMask";
                 ImageIO.write(finalSpritesheetColorRemoved, "PNG", new File(filePathForSpritesheet +
                                                                             ".png"));
                 ImageIO.write(colorMask, "PNG", new File(filePathForColorMask + ".png"));
+                ImageIO.write(redColorMask, "PNG", new File(filePathForColorMask + "Red.png"));
                 int numTotalColumns = stateSpritesheets.size() * 8;
                 Spritesheet spritesheetObject =
                         new Spritesheet(unitName, new Dimension(frameWidth, frameHeight),

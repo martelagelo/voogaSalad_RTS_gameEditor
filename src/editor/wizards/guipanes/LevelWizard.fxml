@@ -13,7 +13,7 @@
 				<VBox>
 					<TextField fx:id="campaignName" />
 					<TextField fx:id="levelName"  />
-					<Button fx:id="save" />
+					<Button fx:id="save" defaultButton = "true"/>
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

@@ -2,13 +2,13 @@ package test.util;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import util.JSONable;
-
 import com.google.gson.Gson;
 
+
 /**
- * Campaign test class composed of levels used to test GSON->JSON conversion. 
+ * Campaign test class composed of levels used to test GSON->JSON conversion.
+ * 
  * @author Rahul
  *
  */

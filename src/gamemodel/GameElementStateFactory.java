@@ -33,8 +33,8 @@ public class GameElementStateFactory {
         }
 
         for (WizardData wiz : data.getWizardDataByType(WizardDataType.TRIGGER)) {
-            state.addConditionActionPair(wiz.getValueByKey(WizardDataType.CONDITION),
-                                         wiz.getValueByKey(WizardDataType.ACTION));
+            state.addAction(wiz.getValueByKey(WizardDataType.ACTIONTYPE),
+                            wiz.getValueByKey(WizardDataType.ACTION));
         }
         return state;
     }
@@ -79,10 +79,8 @@ public class GameElementStateFactory {
 
     public static GameElementState createGoal (WizardData data) {
         GameElementState goal = new GameElementState();
-        for (WizardData wiz : data.getWizardDataByType(WizardDataType.TRIGGER)) {
-            goal.addConditionActionPair(wiz.getValueByKey(WizardDataType.CONDITION), 
-                                        wiz.getValueByKey(WizardDataType.ACTION));
-        }
+        goal.addAction(data.getValueByKey(WizardDataType.ACTIONTYPE),
+                       data.getValueByKey(WizardDataType.ACTION));
         return goal;
     }
 

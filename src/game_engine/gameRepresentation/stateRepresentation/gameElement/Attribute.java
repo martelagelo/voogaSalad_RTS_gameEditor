@@ -3,7 +3,7 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
 /**
  * This is the manner in which all basic attributes will be encoded in a GameElement. Essentially is
  * a data wrapper around an attribute with a given name and given data. Intentionally has very
- * little functionality.
+ * little functionality and is merely a data object.
  * 
  * @author Steve, Zach
  *

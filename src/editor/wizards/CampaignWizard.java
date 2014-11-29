@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 
 
 /**
+ * This is the concrete implementation of a Wizard used to create a new CampaignState within our
+ * GameState. It is spawned within the file menu and only holds a singular textfield with the name
+ * of the new campaign.
  * 
  * @author Joshua, Nishad
  *

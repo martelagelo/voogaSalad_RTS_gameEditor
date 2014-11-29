@@ -1,5 +1,7 @@
 package game_engine.visuals;
 
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
+
 /**
  * A basic animation. Keeps track of progress, the frame bounds, and the animation that will be
  * played after it

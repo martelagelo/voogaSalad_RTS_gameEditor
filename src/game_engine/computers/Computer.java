@@ -30,7 +30,7 @@ public abstract class Computer<T, E> {
      */
     public void compute (T primaryObject, List<E> objectsToCheck) {
         List<E> listToAdd = objectsToCheck.stream()
-                .filter(o -> checkComputingCondition(primaryObject, o))
+                .filter(o -> !primaryObject.equals(o)&&checkComputingCondition(primaryObject, o))
                 .collect(Collectors.toList());
         givePrimaryObjectElements(primaryObject, listToAdd);
     }

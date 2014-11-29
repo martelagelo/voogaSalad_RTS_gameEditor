@@ -15,7 +15,7 @@ public abstract class DescribableStateNotFoundException extends
     private static final String MESSAGE_FORMAT = "%s: %s could not be found.";
 
     protected DescribableStateNotFoundException (String describableStateType,
-                                                        String describableStateName) {
+                                                 String describableStateName) {
         super(describableStateType, describableStateName, MESSAGE_FORMAT);
     }
 

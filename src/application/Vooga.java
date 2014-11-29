@@ -35,7 +35,7 @@ public class Vooga {
     }
 
     /**
-     * starts the program 
+     * starts the program
      */
     private void initialize () {
         myMainView.start();
