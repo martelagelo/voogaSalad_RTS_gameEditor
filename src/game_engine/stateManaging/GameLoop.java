@@ -59,15 +59,12 @@ public class GameLoop {
     };
 
     public GameLoop (String campaignName, Level level, VisualManager visualManager, MiniMap miniMap) {
-        // myBackground = visualManager.getBackground();
         myVisualManager = visualManager;
         myCampaignName = campaignName;
         myCurrentLevel = level;
         myMiniMap = miniMap;
         unitPaths = new ArrayList<Line>();
-        // myComputerList.add(new CollisionComputer());
         myComputers.add(new CollisionComputer());
-        // myComputerList.add(new VisionComputer());
         timeline = new Timeline();
         startGameLoop();
         // TODO find a place for this method

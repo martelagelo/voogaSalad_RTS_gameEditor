@@ -31,7 +31,7 @@ public class AnimationSequence implements Updatable {
         myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
         myName = name;
-        mySlownessMultiplier = 1;
+        mySlownessMultiplier = 1; // TODO: wtf is this
         myNextAnimation = repeats ? this : new NullAnimationSequence();
     }
 
