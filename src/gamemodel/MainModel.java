@@ -14,10 +14,11 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-import java.io.File;
+
 import java.io.IOException;
 import java.util.Observable;
-import util.SaveLoadUtility;
+
+import util.SaveLoadManager;
 
 /**
  * Main class for the model of the game
@@ -27,11 +28,15 @@ import util.SaveLoadUtility;
  */
 public class MainModel extends Observable {
 
-    private static final String JSON_EXT = ".json";
     private GameState myGameState;
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
+    private SaveLoadManager mySaveLoadManager;
+
+    public MainModel () {
+        mySaveLoadManager = new SaveLoadManager();
+    }
 
     public void newGame () {
         // TODO CLEAN THIS UP
@@ -48,7 +53,7 @@ public class MainModel extends Observable {
 
         try {
             // TODO: insert Save Load code here and instantiate myGameState
-            myGameState = SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(game));
+            myGameState = mySaveLoadManager.loadGame(game);
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         } catch (Exception e) {
@@ -86,8 +91,7 @@ public class MainModel extends Observable {
     public void saveGame () throws RuntimeException {
         try {
             // TODO: Save location
-            String location = SaveLoadUtility
-                    .save(myGameState, getGameSaveLocation(myGameState.getName()));
+            String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
 
         } catch (Exception e) {
 
@@ -95,10 +99,6 @@ public class MainModel extends Observable {
             e.printStackTrace();
             // throw new RuntimeException(e);
         }
-    }
-
-    private String getGameSaveLocation (String name) {
-        return "myGames" + File.separator + name + File.separator + name + JSON_EXT;
     }
 
     public GameState getCurrentGame () {
@@ -188,17 +188,12 @@ public class MainModel extends Observable {
      */
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save location for this
-        String saveLocation = "testSpritesheet";
         try {
             System.out.println("we made it hereeee");
             System.out.println(data.getValueByKey(WizardDataType.IMAGE));
 
-            String actualSaveLocation =
-                    SaveLoadUtility.saveImage(
-                                              data.getValueByKey(WizardDataType.IMAGE),
-                                              saveLocation + System.getProperty("file.separator")
-                                                      + data.getValueByKey(WizardDataType.NAME) +
-                                                      ".png");
+            String actualSaveLocation = mySaveLoadManager.saveImage(data);
+
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, actualSaveLocation);
 
@@ -207,8 +202,8 @@ public class MainModel extends Observable {
             setChanged();
             notifyObservers();
             clearChanged();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
+            // TODO remove
             e.printStackTrace();
         }
     }
@@ -227,8 +222,8 @@ public class MainModel extends Observable {
         notifyObservers();
         clearChanged();
     }
-    
-    public void addGoal(WizardData data) {
+
+    public void addGoal (WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
         System.out.println(goal);

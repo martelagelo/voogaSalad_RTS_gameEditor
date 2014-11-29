@@ -26,7 +26,7 @@ import com.google.gson.Gson;
 public class SaveLoadUtility {
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
-    private static DefaultResource myDefaultResource = new DefaultResource();
+    private static DefaultResourcePopulation myDefaultResource = new DefaultResourcePopulation();
     private static Gson myGson = new Gson();
 
     /**
@@ -83,9 +83,9 @@ public class SaveLoadUtility {
 
     /**
      * 
-     * @param sourcePath
+     * @param source
      *            source location for the image
-     * @param destinationPath
+     * @param destination
      *            destination location for the image
      * @return location that image is saved to (may be different to allow for
      *         cross-platform compatibility)

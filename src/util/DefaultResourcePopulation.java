@@ -11,7 +11,7 @@ import org.apache.commons.io.FileUtils;
  * @author Rahul
  *
  */
-public class DefaultResource {
+public class DefaultResourcePopulation {
 
     public static final String LIBRARY_DIRECTORY = "src/resources/img/graphics/buttons";
     Thread myThread;
