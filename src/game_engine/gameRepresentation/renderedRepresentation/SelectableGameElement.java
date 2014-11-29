@@ -89,6 +89,10 @@ public class SelectableGameElement extends DrawableGameElement {
         if (headings.size() != 0 && isSelected) {
             Queue<Point2D> copyOfHeadings = new LinkedList<Point2D>();
             List<Line> lineList = new ArrayList<Line>();
+            Line firstLine = new Line(getLocation().getX(), getLocation().getY(), headings.peek().getX(), headings.peek().getY());
+            firstLine.getStrokeDashArray().addAll(25d, 10d);
+            firstLine.setStroke(Color.RED);
+            lineList.add(firstLine);
             while (headings.size() >= 2) {
                 Point2D point1 = headings.poll();
                 Point2D point2 = headings.peek();
