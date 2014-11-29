@@ -6,6 +6,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElemen
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,6 +30,8 @@ public class LevelState extends DescribableState {
 
     public LevelState (String name) {
         super(name);
+        myNumericalAttributes = new HashSet<>();
+        myTextualAttributes = new HashSet<>();
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();

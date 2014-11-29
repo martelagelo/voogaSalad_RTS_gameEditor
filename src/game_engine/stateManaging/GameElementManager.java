@@ -3,11 +3,17 @@ package game_engine.stateManaging;
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
 import game_engine.elementFactories.GameElementFactory;
+import game_engine.elementFactories.LevelFactory;
+import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
+import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
+import gamemodel.GameUniverse;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -40,14 +46,23 @@ public class GameElementManager implements Observer {
      * @return all the game elements with the given type
      */
     public List<GameElement> findAllElementsOfType (String typeName) {
-        return myLevel.getUnits().stream()
-                .filter(o -> o.getType().equals(typeName))
-                .map(o -> o)
+        return myLevel.getUnits().stream().filter(o -> o.getType().equals(typeName)).map(o -> o)
                 .collect(Collectors.toList());
     }
 
-    public void addElementToLevel (String typeName) {
-        // TODO: add factories
+    public void addGameElementToLevel (String typeName, double x, double y) {
+        GameElement newElement = myFactory.createGameElement(typeName, x, y);
+        myLevel.addElement(newElement);
+    }
+    
+    public void addDrawableGameElementToLevel (String typeName, double x, double y) {
+        DrawableGameElement newElement = myFactory.createDrawableGameElement(typeName, x, y);
+        myLevel.addElement(newElement);
+    }
+    
+    public void addSelectableGameElementToLevel (String typeName, double x, double y) {
+        SelectableGameElement newElement = myFactory.createSelectableGameElement(typeName, x, y);
+        myLevel.addElement(newElement);
     }
 
     /**
@@ -61,8 +76,7 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown)
-                e.select(false);
+            if (!isShiftDown) e.select(false);
             if (contains(rectPoints, e.getLocation())) {
                 e.select(true);
             }
@@ -74,8 +88,7 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown)
-                e.select(false);
+            if (!isShiftDown) e.select(false);
             double[] bounds = e.getBounds();
             double[] cornerBounds =
                     new double[] { e.getLocation().getX() - bounds[2] / 2,
@@ -97,22 +110,18 @@ public class GameElementManager implements Observer {
         double bottomRightX = rectPoints[2];
         double bottomRightY = rectPoints[3];
 
-        if (topLeftX <= unitLocationCenter.getX()
-            && bottomRightX >= unitLocationCenter.getX()) {
-            if (topLeftY <= unitLocationCenter.getY()
-                && bottomRightY >= unitLocationCenter.getY()) { return true; }
+        if (topLeftX <= unitLocationCenter.getX() && bottomRightX >= unitLocationCenter.getX()) {
+            if (topLeftY <= unitLocationCenter.getY() && bottomRightY >= unitLocationCenter.getY()) { return true; }
         }
         return false;
 
     }
 
-    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary,
-                                           boolean shiftHeld) {
-        for (SelectableGameElement e : myLevel.getUnits().stream()
-                .filter(e -> e.isSelected()).collect(Collectors.toList())) {
+    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary, boolean shiftHeld) {
+        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
+                .collect(Collectors.toList())) {
             if (!isPrimary) {
-                if (!shiftHeld)
-                    e.clearHeadings();
+                if (!shiftHeld) e.clearHeadings();
                 e.setHeading(click);
             }
         }
@@ -139,8 +148,8 @@ public class GameElementManager implements Observer {
             }
             sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
 
-                    .getLastClick().getButton().equals(MouseButton.PRIMARY),
-                                     clickManager.getLastClick().isShiftDown());
+            .getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick()
+                    .isShiftDown());
 
         }
         else if (o instanceof KeyboardManager) {
@@ -148,9 +157,20 @@ public class GameElementManager implements Observer {
             // + ((KeyboardManager) o).getLastCharacter());
         }
     }
-    
-    public void createSlectableGameElement(String elementTag, double x, double y){
-        SelectableGameElement newElement = myFactory.createSelectableGameElement(elementTag);
-        newElement.setPosition(x,y);
+
+    public static void main (String[] args) {
+        
+        GameUniverse u = new GameUniverse();
+        SelectableGameElementState sges = new SelectableGameElementState(0,0);
+        sges.setTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING, "archer");
+        u.addSelectableGameElementState(sges);
+        
+        GameElementFactory gef = new GameElementFactory(u, new EvaluatableFactory());
+        LevelState ls = new LevelState("testLevel");
+        LevelFactory lf = new LevelFactory(gef);
+        Level l = lf.createLevel(ls);
+        
+        GameElementManager gem = new GameElementManager(l, gef);
+        gem.addSelectableGameElementToLevel("archer", 0, 0);
     }
 }

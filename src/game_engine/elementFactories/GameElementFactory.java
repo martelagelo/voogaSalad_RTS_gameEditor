@@ -40,26 +40,43 @@ public class GameElementFactory {
         interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
+    public GameElement createGameElement (String elementType, double x, double y){
+        GameElementState state = myUniverse.getGameElementState(elementType);
+        GameElement newElement = createGameElement(state);
+        newElement.setPosition(x, y);
+        return newElement;
+    }
+    
     public GameElement createGameElement (GameElementState state) {
         GameElement element = new GameElement(state, generateActions(state), actionTypes);
         return element;
     }
 
+    public DrawableGameElement createDrawableGameElement (String elementType, double x, double y){
+        DrawableGameElementState state = myUniverse.getDrawableGameElementState(elementType);
+        DrawableGameElement newElement = createDrawableGameElement(state);
+        newElement.setPosition(x, y);
+        return newElement;
+    }
+    
     public DrawableGameElement createDrawableGameElement (DrawableGameElementState state) {
         DrawableGameElement element =
                 new DrawableGameElement(state, generateActions(state), actionTypes);
         return element;
     }
 
+    public SelectableGameElement createSelectableGameElement (String elementType, double x, double y){
+        SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
+        SelectableGameElement newElement = createSelectableGameElement(state);
+        newElement.setPosition(x, y);
+        return newElement;
+    }
+    
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
                 new SelectableGameElement(state, generateActions(state), actionTypes,
                                           interactingElementTypes);
         return element;
-    }
-
-    public SelectableGameElement createSelectableGameElement (String elementTag) {
-        return createSelectableGameElement(myUniverse.getSelectableElementState(elementTag));
     }
 
     private Map<String, List<Evaluatable<?>>> generateActions (GameElementState state) {

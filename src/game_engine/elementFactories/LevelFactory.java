@@ -9,6 +9,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.scene.Group;
@@ -68,15 +69,18 @@ public class LevelFactory {
     private void updateGridForObstacles (List<DrawableGameElement> terrain,
                                          List<SelectableGameElement> units,
                                          MapGrid newGrid) {
-        units.stream().filter(u -> u.getNumericalAttribute("MovementSpeed").doubleValue() == 0)
+        units.stream()
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0 &&
+                             u.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1)
                 .forEach(u -> newGrid.registerObstaclePlacement(u.getBounds()));
-        terrain.stream().forEach(t -> newGrid.registerObstaclePlacement(t.getBounds()));
+        terrain.stream().filter(t -> t.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1)
+                .forEach(t -> newGrid.registerObstaclePlacement(t.getBounds()));
     }
 
     private Group generateBackGroundGroup (List<DrawableGameElement> terrain,
                                            List<SelectableGameElement> units) {
         Group backgroundGroup = new Group();
-        units.stream().filter(u -> u.getNumericalAttribute("MovementSpeed").doubleValue() == 0)
+        units.stream().filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> backgroundGroup.getChildren().add(n));
         terrain.stream().map(t -> t.getNode()).collect(Collectors.toList())
@@ -86,7 +90,7 @@ public class LevelFactory {
 
     private Group generateUnitsGroup (List<SelectableGameElement> units) {
         Group unitsGroup = new Group();
-        units.stream().filter(u -> u.getNumericalAttribute("MovementSpeed").doubleValue() > 0)
+        units.stream().filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() > 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> unitsGroup.getChildren().add(n));
         return unitsGroup;

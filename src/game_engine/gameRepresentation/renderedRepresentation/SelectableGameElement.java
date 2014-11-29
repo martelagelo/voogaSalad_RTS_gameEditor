@@ -61,8 +61,9 @@ public class SelectableGameElement extends DrawableGameElement {
     public SelectableGameElement (DrawableGameElementState element,
                                   Map<String, List<Evaluatable<?>>> conditionActionPairs,
                                   ResourceBundle actionTypes,
-                                  ResourceBundle interactingElementTypes2) {
+                                  ResourceBundle interactingElementTypes) {
         super(element, conditionActionPairs, actionTypes);
+        myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
         // TODO: remove this shit
@@ -80,8 +81,9 @@ public class SelectableGameElement extends DrawableGameElement {
     private void initializeInteractingElementLists () {
         myInteractingElements = new HashMap<>();
         for (String key : myInteractingElementTypes.keySet()) {
-            if (!myInteractingElements.containsKey(key)) {
-                myInteractingElements.put(key, new HashSet<>());
+            String type = myInteractingElementTypes.getString(key);
+            if (!myInteractingElements.containsKey(type)) {
+                myInteractingElements.put(type, new HashSet<>());
             }
         }
 
@@ -309,10 +311,5 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public void clearHeadings () {
         headings.clear();
-    }
-
-    public void setPosition (double x, double y) {
-        setNumericalAttribute("XPosition", x);
-        setNumericalAttribute("YPosition", y);
     }
 }

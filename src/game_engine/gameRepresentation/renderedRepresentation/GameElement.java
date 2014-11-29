@@ -5,6 +5,7 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.evaluatables.NullElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -50,10 +51,13 @@ public class GameElement {
      * against uninstantiated action entities at runtime.
      */
     private void createActionLists () {
-        for (String key : actionTypes.keySet())
-        {
-            if (!myActionLists.containsKey(key)) {
-                myActionLists.put(key, new CopyOnWriteArrayList<>());
+        if (myActionLists == null) {
+            myActionLists = new HashMap<>();
+        }
+        for (String key : actionTypes.keySet()) {
+            String type = actionTypes.getString(key);
+            if (!myActionLists.containsKey(type)) {
+                myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
         }
 
@@ -98,11 +102,9 @@ public class GameElement {
     public void removeAction (String actionID) {
         for (String actionType : myActionLists.keySet()) {
             getActionsOfType(actionType).forEachRemaining(action -> {
-                if (action.getID()
-                        .equals(actionID)) {
+                if (action.getID().equals(actionID)) {
                     System.out.println("Action should be removed");
-                    myActionLists.get(actionType)
-                            .remove(action);
+                    myActionLists.get(actionType).remove(action);
                 }
             });
         }
@@ -182,5 +184,10 @@ public class GameElement {
      */
     public void setTextualAttribute (String attributeTag, String attributeValue) {
         myState.setTextualAttribute(attributeTag, attributeValue);
+    }
+    
+    public void setPosition (double x, double y) {
+        setNumericalAttribute("XPosition", x);
+        setNumericalAttribute("YPosition", y);
     }
 }

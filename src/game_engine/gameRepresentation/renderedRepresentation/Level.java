@@ -2,6 +2,7 @@ package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.computers.pathingComputers.MapGrid;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
@@ -57,8 +58,8 @@ public class Level {
     public String getDescription () {
         return myState.getDescription();
     }
-    
-    public MapGrid getGrid(){
+
+    public MapGrid getGrid () {
         return myGrid;
     }
 
@@ -79,6 +80,31 @@ public class Level {
         displayGroups.add(myTerrainAndBuildingsGroup);
         displayGroups.add(myUnitsGroup);
         return displayGroups;
+    }
+
+    public void addElement (GameElement newElement) {
+        myGoals.add(newElement);
+    }
+
+    public void addElement (DrawableGameElement newElement) {
+        myTerrain.add(newElement);
+        myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
+        if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+            myGrid.registerObstaclePlacement(newElement.getBounds());
+        }
+    }
+
+    public void addElement (SelectableGameElement newElement) {
+        myUnits.add(newElement);
+        if (newElement.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0) {
+            myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
+            if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+                myGrid.registerObstaclePlacement(newElement.getBounds());
+            }
+        }
+        else {
+            myUnitsGroup.getChildren().add(newElement.getNode());
+        }
     }
 
 }

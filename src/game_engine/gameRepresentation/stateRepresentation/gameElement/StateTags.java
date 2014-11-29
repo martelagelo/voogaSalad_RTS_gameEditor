@@ -18,6 +18,7 @@ public class StateTags {
     public static final String RANDOM_MOVEMENT_STRING = "randomMove";
     public static final String TEAM_ID = "teamID";
     public static final String TYPE_STRING = "type";
-    
+    public static final String MOVEMENT_SPEED = "movementSpeed";
+    public static final String BLOCKING = "blocking";
 
 }

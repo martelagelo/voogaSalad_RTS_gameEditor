@@ -48,7 +48,7 @@ public class GameElementState implements JSONable {
     public GameElementState () {
         myNumericalAttributes = new HashSet<>();
         myTextualAttributes = new HashSet<>();
-        myActions = new HashMap<>();
+        myActions = new HashMap<String, List<String>>();
     }
 
     /**

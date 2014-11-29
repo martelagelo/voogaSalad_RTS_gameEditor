@@ -22,7 +22,6 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition);
-        
     }
 
 

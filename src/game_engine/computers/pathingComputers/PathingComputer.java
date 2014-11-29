@@ -117,12 +117,4 @@ public class PathingComputer {
         }
         return path;
     }
-    
-    public static void main (String[] args){
-        MapGrid theGrid = new MapGrid(1500,1500);
-        PathingComputer testing = new PathingComputer(theGrid);
-        String pattern = "\\),\\s\\(";
-        System.out.println(testing.findPath(10, 10, 1000, 1000).toString().replaceAll(pattern, ";").replaceAll("\\(", "").replaceAll("\\)", ""));
-        System.out.println(theGrid.getImpassableLocations().toString().replaceAll(pattern, ";").replaceAll("\\(", "").replaceAll("\\)", ""));
-    }
 }
