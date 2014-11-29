@@ -3,17 +3,21 @@
     Created on : November 23rd, 2014
     Author     : Joshua Miller
     Description: Main theme
-*/
 
-.grid, #splash, #editorRoot, #myTreeView, #menuBar  {
+
+*/
+.grid, #splash, #editorRoot, #myTreeView, #menuBa  {
     -fx-background-color: #000000;
     -fx-background: #000000;
     -fx-color: #6BB8F6;
 }
 
+
+
 .menu-item {
     -fx-color: #6BB8F6;
 }
+
 
 .menu .label {
    -fx-text-fill: #6BB8F6;
@@ -34,7 +38,6 @@
 
 .text-area .scroll-pane .content {
     -fx-background-color: #45433e;
-    -fx-text-fill: #6BB8F6;
 }
 
 .text-area {
@@ -75,3 +78,29 @@
   fx-background-color: #000000;
     -fx-background: #000000;
 }
+
+#rightPane {
+-fx-background-color: white;
+
+}
+
+#imageScroll {
+-fx-background-color: white;
+
+}
+
+#spritesheet {
+-fx-background-color: white;
+
+}
+
+.image-view{
+-fx-background-color: white;
+}
+
+.image{
+-fx-background-color: white;
+}
+
+
+
