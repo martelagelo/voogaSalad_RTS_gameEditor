@@ -30,7 +30,7 @@ public class GameElement {
      */
     private Map<String, List<Evaluatable<?>>> myActionLists;
     private GameElementState myState;
-    private ResourceBundle actionTypes;
+    protected ResourceBundle actionTypes;
 
     /**
      * Create a game element with the given state
@@ -100,7 +100,7 @@ public class GameElement {
             getActionsOfType(actionType).forEachRemaining(action -> {
                 if (action.getID()
                         .equals(actionID)) {
-                    System.out.println("Action shouldbe removed");
+                    System.out.println("Action should be removed");
                     myActionLists.get(actionType)
                             .remove(action);
                 }
@@ -150,7 +150,7 @@ public class GameElement {
      * @param attributTag the tag of the attribute of interest
      * @return the atribute's value or 0 if the attribute was not declared
      */
-    public Number getNumericAttribute (String attributeTag) {
+    public Number getNumericalAttribute (String attributeTag) {
         return myState.getNumericalAttribute(attributeTag);
     }
 
@@ -160,7 +160,7 @@ public class GameElement {
      * @param attributeTag the tag of the attribute
      * @param attributeValue the value of the attribute
      */
-    public void setNumericAttribute (String attributeTag, Number attributeValue) {
+    public void setNumericalAttribute (String attributeTag, Number attributeValue) {
         myState.setNumericalAttribute(attributeTag, attributeValue);
     }
 

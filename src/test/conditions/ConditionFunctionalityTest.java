@@ -102,15 +102,15 @@ public class ConditionFunctionalityTest {
                 new AdditionAssignmentEvaluator<>("",
                                                   myNumAttrParam, myNumberParam);
         assertEquals(50d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
         evaluator.getValue(myElementPair);
         assertEquals(60d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
         Evaluator<?, ?, ?> evaluator2 =
                 new SubtractionAssignmentEvaluator<>("", myNumAttrParam, myNumAttrParam);
         evaluator2.getValue(myElementPair);
         assertEquals(0d, myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
 
     }
 
@@ -121,7 +121,7 @@ public class ConditionFunctionalityTest {
                                                 myNumAttrParam, myNumberParam);
         evaluator.getValue(myElementPair);
         assertEquals(myNumberParam.getValue(), myElement1
-                .getNumericAttribute("Health"));
+                .getNumericalAttribute("Health"));
     }
 
     @Test
@@ -132,9 +132,9 @@ public class ConditionFunctionalityTest {
         assertTrue((Boolean) (evaluator.getValue(myElementPair)));
         // Now move the game element to the a far away location and make sure
         // they don't intersect
-        myElement1.setNumericAttribute(
+        myElement1.setNumericalAttribute(
                                        StateTags.X_POS_STRING, 100);
-        myElement1.setNumericAttribute(
+        myElement1.setNumericalAttribute(
                                        StateTags.Y_POS_STRING, 100);
         assertFalse((Boolean) (evaluator.getValue(myElementPair)));
 

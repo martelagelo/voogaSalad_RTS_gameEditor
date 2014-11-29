@@ -150,4 +150,12 @@ public class GameElementState implements JSONable {
         }
         myActions.get(actionType).add(actionString);
     }
+    
+    /**
+     * Grabs all actions for use in evaluatable factory.
+     * @return
+     */
+    public Map<String, List<String>> getActions(){
+        return myActions;
+    }
 }

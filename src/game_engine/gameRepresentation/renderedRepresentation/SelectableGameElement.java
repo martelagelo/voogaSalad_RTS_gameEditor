@@ -3,6 +3,7 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.ScrollablePane;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
@@ -32,10 +34,11 @@ import javafx.scene.shape.Line;
 public class SelectableGameElement extends DrawableGameElement {
 
     private boolean isSelected;
-    // private SelectableGameElementState myState;
-    // private Point2D heading;
-    // private boolean selected;
-    protected Map<String, Set<DrawableGameElement>> myInteractingElements;
+    private SelectableGameElementState selectableState;
+    private Map<String, Set<DrawableGameElement>> myInteractingElements;
+    private ResourceBundle interactingElementTypes; 
+    
+    
     // TODO temporary, should be in the attributes
     private double speed = 3;
 
@@ -53,9 +56,6 @@ public class SelectableGameElement extends DrawableGameElement {
     /**
      * @see DrawableGameElementState
      */
-    // public SelectableGameElement (DrawableGameElementState element) {
-    // super(element);
-    // this.isSelected = false;
     public SelectableGameElement (DrawableGameElementState element,
                                   Map<String, List<Evaluatable<?>>> conditionActionPairs) {
         super(element, conditionActionPairs);
@@ -66,9 +66,8 @@ public class SelectableGameElement extends DrawableGameElement {
         isSelected = false;
         headings = new LinkedList<Point2D>();
 
-        setNumericAttribute(X_VEL, 0);
-        setNumericAttribute(Y_VEL, 0);
-        // TODO Auto-generated constructor stub
+        setNumericalAttribute(X_VEL, 0);
+        setNumericalAttribute(Y_VEL, 0);
     }
 
     public String getType () {
@@ -158,23 +157,7 @@ public class SelectableGameElement extends DrawableGameElement {
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
-
     }
-
-    // private void move () {
-    // if (heading == null)
-    // heading = getLocation();
-    //
-    // setAnimationDirection(getLocation(), heading, !heading.equals(getLocation()));
-    //
-    // if (!heading.equals(getLocation())) {
-    // Point2D delta = new Point2D(heading.getX() - getLocation().getX(),
-    // heading.getY() - getLocation().getY());
-    // if (delta.magnitude() > speed)
-    // delta = delta.normalize().multiply(speed);
-    // this.setLocation(getLocation().add(delta));
-    // }
-    // }
 
     private DIRECTION getDirection (Point2D loc, Point2D destination) {
         double angle =
@@ -221,11 +204,11 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void move () {
         boolean canMove =
-                getNumericAttribute(StateTags.CAN_MOVE_STRING)
+                getNumericalAttribute(StateTags.CAN_MOVE_STRING)
                         .intValue() == 1;
         if (!canMove) { return; }
         boolean randomMove =
-                getNumericAttribute(StateTags.RANDOM_MOVEMENT_STRING)
+                getNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING)
                         .intValue() == 1;
         Random r = new Random();
         if (randomMove) {
@@ -248,15 +231,14 @@ public class SelectableGameElement extends DrawableGameElement {
                 if (delta.magnitude() > speed) {
                     delta = delta.normalize().multiply(speed);
                 }
-                setNumericAttribute(X_VEL, delta.getX());
-                setNumericAttribute(Y_VEL, delta.getY());
-                setNumericAttribute(StateTags.X_POS_STRING,
-                                    getNumericAttribute(StateTags.X_POS_STRING)
+                setNumericalAttribute(X_VEL, delta.getX());
+                setNumericalAttribute(Y_VEL, delta.getY());
+                setNumericalAttribute(StateTags.X_POS_STRING,
+                                    getNumericalAttribute(StateTags.X_POS_STRING)
                                             .doubleValue() +
                                             delta.getX());
-                setNumericAttribute(StateTags.Y_POS_STRING,
-
-                                    getNumericAttribute(StateTags.Y_POS_STRING)
+                setNumericalAttribute(StateTags.Y_POS_STRING,
+                                    getNumericalAttribute(StateTags.Y_POS_STRING)
                                             .doubleValue() +
                                             delta.getY());
                 updateImageLocation();
@@ -343,6 +325,10 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public void clearHeadings () {
         headings.clear();
+    }
+
+    public void setPosition (double x, double y) {
+        myState
     }
 
 }

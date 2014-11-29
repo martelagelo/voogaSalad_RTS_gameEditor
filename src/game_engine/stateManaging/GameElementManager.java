@@ -2,6 +2,7 @@ package game_engine.stateManaging;
 
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.elementFactories.GameElementFactory;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
@@ -24,9 +25,11 @@ import javafx.scene.input.MouseButton;
 public class GameElementManager implements Observer {
 
     private Level myLevel;
+    private GameElementFactory myFactory;
 
-    public GameElementManager (Level level) {
+    public GameElementManager (Level level, GameElementFactory factory) {
         myLevel = level;
+        myFactory = factory;
     }
 
     /**
@@ -55,7 +58,7 @@ public class GameElementManager implements Observer {
      */
     private void selectUnitsBox (double[] rectPoints, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            if (!e.getNumericAttribute(StateTags.TEAM_ID).equals(1)) {
+            if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)
@@ -68,7 +71,7 @@ public class GameElementManager implements Observer {
 
     private void selectUnitsClick (Point2D clickLoc, boolean isShiftDown) {
         for (SelectableGameElement e : myLevel.getUnits()) {
-            if (!e.getNumericAttribute(StateTags.TEAM_ID).equals(1)) {
+            if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
             if (!isShiftDown)
@@ -144,5 +147,10 @@ public class GameElementManager implements Observer {
             // System.out.println("Typed: "
             // + ((KeyboardManager) o).getLastCharacter());
         }
+    }
+    
+    public void createSlectableGameElement(String elementTag, double x, double y){
+        SelectableGameElement newElement = myFactory.createSelectableGameElement(elementTag);
+        newElement.setPosition(x,y);
     }
 }

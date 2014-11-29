@@ -1,7 +1,7 @@
 package game_engine;
 
 import game_engine.UI.InputManager;
-import game_engine.gameRepresentation.factories.GameElementFactory;
+import game_engine.elementFactories.GameElementFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.stateManaging.GameElementManager;
