@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.json.JSONException;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import distilled_slogo.util.ExternalFileLoader;
 import distilled_slogo.util.GrammarRuleLoader;
 import distilled_slogo.util.InvalidRulesException;
 import distilled_slogo.parsing.IParser;
@@ -36,9 +37,12 @@ import distilled_slogo.tokenization.Tokenizer;
 public class ConditionParser {
     private ITokenizer myTokenizer;
     private IParser myParser;
-    public ConditionParser() throws IOException, InvalidRulesException {
+    public ConditionParser() throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
         TokenRuleLoader tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
         myTokenizer = new Tokenizer(tokenLoader.getRules());
+        GrammarRuleLoader<Evaluatable> grammarLoader = new GrammarRuleLoader<>("./resources/parsing_rules.json");
+        myParser = new Parser<>(grammarLoader.getRules(),
+                new EvaluatableFactory("./resources/evaluatables.json", new ExternalFileLoader()));
     }
     // TODO make work
 //    public final static String REGEX_LOCATION = "resources.properties.CommentRegex";
@@ -116,5 +120,8 @@ public class ConditionParser {
 
     public List<IToken> tokenize (String command) throws IOException {
         return myTokenizer.tokenize(new StringReader(command));
+    }
+    public ISyntaxNode parse (List<IToken> tokens) throws MalformedSyntaxException {
+        return myParser.parse(tokens);
     }
 }

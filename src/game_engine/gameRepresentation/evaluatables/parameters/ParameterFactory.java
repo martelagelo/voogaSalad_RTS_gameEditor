@@ -1,8 +1,10 @@
 package game_engine.gameRepresentation.evaluatables.parameters;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
+import distilled_slogo.parsing.ISyntaxNode;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.evaluatables.parameters.exceptions.BadParameterFormatException;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.*;
 import game_engine.stateManaging.GameElementManager;
@@ -21,6 +23,10 @@ public class ParameterFactory {
 
     private GameElementManager myManager;
 
+    //FIXME
+    public ParameterFactory (Map<String, Class> myParameters, Map<String, Class> myObjectIdentifiers){
+        myManager = null;
+    }
     public ParameterFactory (GameElementManager manager) {
         myManager = manager;
     }
@@ -90,6 +96,10 @@ public class ParameterFactory {
             }
         }
         return c;
+    }
+
+    public Parameter make (ISyntaxNode<Evaluatable> currentNode, List<Evaluatable> children) {
+        return null;
     }
 
 }
