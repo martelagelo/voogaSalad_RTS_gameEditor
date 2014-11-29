@@ -42,4 +42,9 @@ public class CampaignWizard extends Wizard {
             // TODO Show this exception
         }
     }
+
+    @Override
+    public void launchForEdit (String[] oldValues) {
+        name.setText(oldValues[0]);
+    }
 }

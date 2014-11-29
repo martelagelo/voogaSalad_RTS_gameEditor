@@ -14,7 +14,8 @@
 			<children>
 				<VBox>
 					<TextField fx:id="name" />
-					<Button fx:id="trigger" defaultButton="true"/>
+					<Button fx:id="trigger" defaultButton="true"/>		
+					<VBox fx:id="existingTriggers" />			
 					<Button fx:id="stringAttribute" defaultButton="true"/>
 					<Button fx:id="numberAttribute" defaultButton="true"/>
 					<Button fx:id="image" defaultButton="true"/>
@@ -32,6 +33,7 @@
 					<CheckBox fx:id="animationRepeat" />
 					<Button fx:id="save" defaultButton="true"/>
 					<Text fx:id="errorMessage" />
+					<Text fx:id="wizardDataText" />
 				</VBox>
 			</children>
 		</AnchorPane>

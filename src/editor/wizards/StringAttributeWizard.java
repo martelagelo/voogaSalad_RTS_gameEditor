@@ -28,4 +28,10 @@ public class StringAttributeWizard extends Wizard {
         addToData(WizardDataType.ATTRIBUTE, key.getText());
         addToData(WizardDataType.VALUE, stringValue.getText());
     }
+
+    @Override
+    public void launchForEdit (String[] oldValues) {
+        key.setText(oldValues[0]);
+        stringValue.setText(oldValues[1]);
+    }    
 }

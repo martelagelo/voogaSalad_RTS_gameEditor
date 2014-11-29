@@ -47,8 +47,9 @@ public class TriggerWizard extends Wizard {
         actionType.setItems(FXCollections.observableArrayList(actionTypes));
     }
 
-    public void launchForEdit(String actionTypeString, String actionString) {
-        actionType.getSelectionModel().select(actionTypeString);
-        action.setText(actionString);
+    @Override
+    public void launchForEdit (String[] oldValues) {
+        actionType.getSelectionModel().select(oldValues[0]);
+        action.setText(oldValues[1]);
     }
 }

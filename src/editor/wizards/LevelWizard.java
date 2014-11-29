@@ -50,4 +50,10 @@ public class LevelWizard extends Wizard {
             // TODO Do something with this exception
         }
     }
+
+    @Override
+    public void launchForEdit (String[] oldValues) {
+        campaignName.setText(oldValues[0]);
+        levelName.setText(oldValues[1]);
+    }
 }

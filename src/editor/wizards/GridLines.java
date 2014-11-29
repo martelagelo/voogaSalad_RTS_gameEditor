@@ -1,6 +1,7 @@
 package editor.wizards;
 
 import javafx.scene.Group;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 
@@ -49,6 +50,7 @@ public class GridLines extends Group {
         line.setStartY(0);
         line.setEndX(myWidth);
         line.setEndY(0);
+        line.setStroke(Paint.valueOf("grey"));
         return line;
     }
 
@@ -67,6 +69,7 @@ public class GridLines extends Group {
         line.setStartY(0);
         line.setEndX(0);
         line.setEndY(myHeight);
+        line.setStroke(Paint.valueOf("grey"));
         return line;
     }
 

@@ -106,8 +106,7 @@ public class TabViewController extends GUIContainer {
         BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
             updateLevelTriggersView();
             TriggerWizard wiz = (TriggerWizard) WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
-            String[] oldStrings = oldValues.split("\n");
-            wiz.launchForEdit(oldStrings[0], oldStrings[1]);
+            wiz.launchForEdit(oldValues.split("\n"));
             Consumer<WizardData> bc = (data) -> {
                 Map<String, List<String>> actions = myLevelGoals.get(position).getActions();
                 actions.clear();

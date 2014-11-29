@@ -14,6 +14,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
@@ -73,6 +76,11 @@ public class DrawableGameElementWizard extends Wizard {
     private TextField stopFrame;
     @FXML
     private CheckBox animationRepeat;
+    @FXML
+    private VBox existingTriggers;
+    @FXML
+    private Text wizardDataText;
+    
 
     private ImageView imageView;
     private GridLines gridLines;
@@ -103,9 +111,27 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     private void launchNestedWizard (String s) {
-        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(600, 300));
+        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
+            Button b = new Button();
+            b.setText(data.getValueByKey(WizardDataType.ACTIONTYPE));
+            b.setOnAction(e -> launchEditWizard(s, data));
+            existingTriggers.getChildren().add(b);
+            wizardDataText.setText(getWizardData().toString());
+            wiz.getStage().close();
+        };
+        wiz.setSubmit(bc);
+    }
+    
+    private void launchEditWizard (String s, WizardData oldData) {
+        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
+        String[] oldValues = oldData.getData().values().toArray(new String[0]);
+        wiz.launchForEdit(oldValues);
+        Consumer<WizardData> bc = (data) -> {
+            removeWizardData(oldData);
+            addWizardData(data);
+            wizardDataText.setText(getWizardData().toString());
             wiz.getStage().close();
         };
         wiz.setSubmit(bc);
@@ -160,6 +186,9 @@ public class DrawableGameElementWizard extends Wizard {
         createTextFieldListeners();
         imagePath = "";
         attachTextProperties();
+        errorMessage.setFill(Paint.valueOf("white"));
+        wizardDataText.setFill(Paint.valueOf("white"));
+        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
     }
 
     /**
@@ -223,8 +252,7 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     @Override
-    public void updateData () {
-        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+    public void updateData () {        
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
@@ -235,6 +263,11 @@ public class DrawableGameElementWizard extends Wizard {
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
+    }
+
+    @Override
+    public void launchForEdit (String[] oldValues) {
+        // TODO implement this!      
     }
 
 }

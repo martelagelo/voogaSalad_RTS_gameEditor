@@ -38,6 +38,11 @@ public class WizardData {
     public void addWizardData (WizardData wizData) {
         myWizards.add(wizData);
     }
+    
+    public void clear() {
+        myData.clear();
+        myWizards.clear();
+    }
 
     public Map<WizardDataType, String> getData () {
         return myData;
@@ -59,6 +64,10 @@ public class WizardData {
         return myWizards.stream().filter(e -> e.getType().equals(type))
                 .collect(Collectors.toList());
     }
+    
+    public void removeWizardData (WizardData data) {
+        myWizards.remove(data);
+    }        
 
     @Override
     public String toString () {
@@ -70,6 +79,6 @@ public class WizardData {
             sb.append(wiz.toString());
         }
         return sb.toString();
-    }
+    }   
 
 }

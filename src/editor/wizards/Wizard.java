@@ -1,6 +1,7 @@
 package editor.wizards;
 
 import java.util.function.Consumer;
+import com.sun.corba.se.spi.orb.StringPair;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -133,6 +134,8 @@ public abstract class Wizard implements GUIController {
      * addWizardData(WizardData).
      */
     public abstract void updateData ();
+    
+    public abstract void launchForEdit(String[] oldValues);
 
     /**
      * used internally to display the default error message if none has been provided.
@@ -155,6 +158,10 @@ public abstract class Wizard implements GUIController {
      */
     public void setErrorMesssage (String error) {
         errorMessage.setText(error);
+    }
+    
+    public void removeWizardData(WizardData data) {
+        myUserInput.removeWizardData(data);
     }
 
     /**
