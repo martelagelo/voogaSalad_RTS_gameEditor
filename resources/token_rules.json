@@ -1,14 +1,50 @@
 [
     {
-        "label": "parameter",
-        "body": "\\$\\w+",
-        "opening": "\\W+",
+        "label": "function_name",
+        "body": "\\\\\\w+",
+        "opening": ".*",
         "closing": "\\W+"
     },
     {
-        "label": "evaluator",
-        "body": "#\\w+",
-        "opening": "\\W+",
+        "label": "game_variable",
+        "body": "\\$\\w+\\.(self|string|number)(\\[\\w+\\])?",
+        "opening": ".*",
+        "closing": "[^\\[]+"
+    },
+    {
+        "label": "comma",
+        "body": ",",
+        "opening": ".*",
+        "closing": ".+"
+    },
+    {
+        "label": "opening_parentheses",
+        "body": "\\(",
+        "opening": ".*",
+        "closing": ".+"
+    },
+    {
+        "label": "closing_parentheses",
+        "body": "\\)",
+        "opening": ".*",
+        "closing": ".+"
+    },
+    {
+        "label": "string",
+        "body": "\".+\"",
+        "opening": ".*",
         "closing": "\\W+"
+    },
+    {
+        "label": "number",
+        "body": "[0-9]+",
+        "opening": ".*",
+        "closing": "[^0-9]+"
+    },
+    {
+        "label": "semicolon",
+        "body": ";",
+        "opening": ".*",
+        "closing": ".*"
     }
 ]
