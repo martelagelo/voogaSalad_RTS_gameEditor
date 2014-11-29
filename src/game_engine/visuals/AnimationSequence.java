@@ -6,7 +6,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Upd
  * A basic animation. Keeps track of progress, the frame bounds, and the
  * animation that will be played after it
  *
- * @author Zachary Bears
+ * @author Zachary Bears, Rahul Harikrishnan
  *
  */
 public class AnimationSequence implements Updatable {
@@ -29,7 +29,7 @@ public class AnimationSequence implements Updatable {
      * @param stopFrame
      *            the stop frame of the animation
      */
-    public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats) {
+    public AnimationSequence (String name, int startFrame, int stopFrame) {
         this(name, startFrame, stopFrame, new NullAnimationSequence());
 
     }
@@ -43,7 +43,7 @@ public class AnimationSequence implements Updatable {
      */
     public AnimationSequence (String name, int startFrame, int stopFrame, boolean repeats,
             double slownessMultiplier) {
-        this(name, startFrame, stopFrame, repeats);
+        this(name, startFrame, stopFrame);
         if (slownessMultiplier < 1) {
             mySlownessMultiplier = slownessMultiplier;
         }
@@ -88,8 +88,8 @@ public class AnimationSequence implements Updatable {
      * @return
      */
     public AnimationSequence getNextAnimation () {
-        return (myNextAnimation == null)  ? this.reset() : myNextAnimation.reset(); 
-        
+        return (myNextAnimation == null) ? this.reset() : myNextAnimation.reset();
+
     }
 
     /**

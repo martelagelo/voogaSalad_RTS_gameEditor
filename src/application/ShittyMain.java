@@ -7,7 +7,6 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Dimension;
-import game_engine.visuals.NullAnimationSequence;
 import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.Spritesheet;
 import game_engine.visuals.TerrainGrid;
@@ -20,7 +19,6 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 
 public class ShittyMain extends Application {
 
@@ -35,16 +33,15 @@ public class ShittyMain extends Application {
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
             Scene s = new Scene(g, shittyWidth, 0.9 * screenSize.getHeight());
-            s.getStylesheets()
-                    .add(this.getClass().getClassLoader()
+            s.getStylesheets().add(
+                    this.getClass().getClassLoader()
                             .getResource("game_engine/visuals/stylesheets/engine.style.css")
                             .toExternalForm());
             System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("what did you expect this is shit");
         }
@@ -53,10 +50,10 @@ public class ShittyMain extends Application {
     private MainModel hardCodeAGame () throws Exception {
 
         SelectableGameElementState archeryRange = new SelectableGameElementState(600, 600);
-        archeryRange.addAnimation(new NullAnimationSequence());
         System.out.println(archeryRange.toJSON());
-        double[] archeryBounds = {-100,0,-100,175,150,175,150,0};
-        archeryRange.setSpritesheet(new Spritesheet("resources/img/graphics/buildings/archeryRange.png", new Dimension(312, 260), 1));
+        double[] archeryBounds = { -100, 0, -100, 175, 150, 175, 150, 0 };
+        archeryRange.setSpritesheet(new Spritesheet(
+                "resources/img/graphics/buildings/archeryRange.png", new Dimension(312, 260), 1));
         archeryRange.setBounds(archeryBounds);
         archeryRange.setNumericalAttribute(StateTags.TEAM_ID, 1);
 
@@ -68,8 +65,7 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState4 = createArcher(bounds, 400, 200, 2, 0);
         SelectableGameElementState archerState5 = createArcher(bounds, 800, 800, 2, 1);
 
-        TerrainGrid grid =
-                new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
+        TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
         List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         MainModel model = new MainModel();
@@ -90,45 +86,56 @@ public class ShittyMain extends Application {
         return model;
     }
 
-    private SelectableGameElementState createArcher (double[] bounds,
-                                                     double x,
-                                                     double y,
-                                                     int teamID,
-                                                     int randomMovement) {
+    private SelectableGameElementState createArcher (double[] bounds, double x, double y,
+            int teamID, int randomMovement) {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState
-                .setSpritesheet(new Spritesheet(
-                                                "resources/img/graphics/units/eagleWarrior.png",
-                                                new Dimension(294, 98), 14));
+        archerState.setSpritesheet(new Spritesheet("resources/img/graphics/units/eagleWarrior.png",
+                new Dimension(294, 98), 14));
         archerState.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
 
         /**
-         * TODO: we need to initialize these programmatically. Also, the animation should somehow
-         * be applied to a type of unit, rather than to each unit individually.
+         * TODO: we need to initialize these programmatically. Also, the
+         * animation should somehow be applied to a type of unit, rather than to
+         * each unit individually.
          */
         // setting standing animations
-        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_left", 29, 37, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk_left", 43, 51, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk", 57, 65, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_right", 85, 93, true, 0.2));
-        archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107, true, 0.2));
+        archerState.addAnimation(new AnimationSequence("stand_fwd", 0, 9, new AnimationSequence(
+                "stand_fwd", 0, 9, null)));
+        archerState.addAnimation(new AnimationSequence("stand_fwd_left", 15, 23,
+                new AnimationSequence("stand_fwd_left", 15, 23, null)));
+        archerState.addAnimation(new AnimationSequence("stand_left", 29, 37, new AnimationSequence(
+                "stand_left", 29, 37, null)));
+        archerState.addAnimation(new AnimationSequence("stand_bk_left", 43, 51,
+                new AnimationSequence("stand_bk_left", 43, 51, null)));
+        archerState.addAnimation(new AnimationSequence("stand_bk", 57, 65, new AnimationSequence(
+                "stand_bk", 57, 65, null)));
+        archerState.addAnimation(new AnimationSequence("stand_bk_right", 71, 79,
+                new AnimationSequence("stand_bk_right", 71, 79, null)));
+        archerState.addAnimation(new AnimationSequence("stand_right", 85, 93,
+                new AnimationSequence("stand_right", 85, 93, null)));
+        archerState.addAnimation(new AnimationSequence("stand_fwd_right", 99, 107,
+                new AnimationSequence("stand_fwd_right", 99, 107, null)));
         archerState.setBounds(bounds);
         // setting walking animations
-        archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_left", 140, 153, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk_left", 154, 167, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk", 168, 181, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_right", 196, 209, true, 0.4));
-        archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223, true, 0.4));
+        archerState.addAnimation(new AnimationSequence("walk_fwd", 112, 125, new AnimationSequence(
+                "walk_fwd", 112, 125, null)));
+        archerState.addAnimation(new AnimationSequence("walk_fwd_left", 126, 139,
+                new AnimationSequence("walk_fwd_left", 126, 139, null)));
+        archerState.addAnimation(new AnimationSequence("walk_left", 140, 153,
+                new AnimationSequence("walk_left", 140, 153, null)));
+        archerState.addAnimation(new AnimationSequence("walk_bk_left", 154, 167,
+                new AnimationSequence("walk_bk_left", 154, 167, null)));
+        archerState.addAnimation(new AnimationSequence("walk_bk", 168, 181, new AnimationSequence(
+                "walk_bk", 168, 181, null)));
+        archerState.addAnimation(new AnimationSequence("walk_bk_right", 182, 195,
+                new AnimationSequence("walk_bk_right", 182, 195, null)));
+        archerState.addAnimation(new AnimationSequence("walk_right", 196, 209,
+                new AnimationSequence("walk_right", 196, 209, null)));
+        archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223,
+                new AnimationSequence("walk_fwd_right", 210, 223, null)));
         archerState.setAnimation("walk_left");
         System.out.println(archerState.toJSON());
-        archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING,
-                                          randomMovement);
+        archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING, randomMovement);
         archerState.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         return archerState;
     }

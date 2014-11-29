@@ -72,8 +72,8 @@ public class GameElementStateFactory {
 
         // TODO: actually get animation name from the user
         AnimationSequence myAnimation = new AnimationSequence("animation", Integer.parseInt(data
-                .getValueByKey(START_FRAME)), Integer.parseInt(data.getValueByKey(STOP_FRAME)),
-                Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
+                .getValueByKey(START_FRAME)), Integer.parseInt(data.getValueByKey(STOP_FRAME)));
+                //Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
         // state.addAnimation(myAnimation);
 
         // TODO: actually get bounds from the user
