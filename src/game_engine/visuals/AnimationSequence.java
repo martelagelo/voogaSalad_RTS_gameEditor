@@ -31,6 +31,7 @@ public class AnimationSequence implements Updatable {
      */
     public AnimationSequence (String name, int startFrame, int stopFrame) {
         this(name, startFrame, stopFrame, new NullAnimationSequence());
+        mySlownessMultiplier = 1; // TODO: wtf is this
 
     }
 

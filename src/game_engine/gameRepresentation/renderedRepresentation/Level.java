@@ -1,11 +1,9 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
-import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.computers.pathingComputers.MapGrid;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javafx.scene.Group;
 
@@ -20,8 +18,10 @@ import javafx.scene.Group;
  */
 public class Level {
 
-    private LevelState myLevelState;
-    private Group myDisplayGroup;
+    private LevelState myState;
+    private Group myTerrainAndBuildingsGroup;
+    private Group myUnitsGroup;
+    private MapGrid myGrid;
     private List<DrawableGameElement> myTerrain;
     private List<SelectableGameElement> myUnits;
     private List<GameElement> myGoals;
@@ -31,44 +31,36 @@ public class Level {
      * 
      * @param levelState
      */
-    public Level (LevelState levelState) {
-        // TODO split this into multiple methods
-        myTerrain = new ArrayList<>();
-        myUnits = new ArrayList<>();
-        myGoals = new ArrayList<>();
-        myLevelState = levelState;
-        // Create and add the terrains
-        for (DrawableGameElementState element : levelState.getTerrain()) {
-            myTerrain.add(new DrawableGameElement(element,
-                                                  new HashMap<String, List<Evaluatable<?>>>()));
-        }
-        // Create and add the units to the map
-        for (SelectableGameElementState element : levelState.getUnits()) {
-            myUnits.add(new SelectableGameElement(element,
-                                                  new HashMap<String, List<Evaluatable<?>>>()));
-        }
-        // TODO Use factory to create game elements from game element states and add to this list
-        // goals.addAll(level.getGoals());
-
-        List<DrawableGameElement> allElements = new ArrayList<DrawableGameElement>();
-        allElements.addAll(myTerrain);
-        allElements.addAll(myUnits);
-        myDisplayGroup = new Group();
-        for (DrawableGameElement element : allElements) {
-            myDisplayGroup.getChildren().add(element.getNode());
-        }
+    public Level (LevelState levelState,
+                  List<DrawableGameElement> terrain,
+                  List<SelectableGameElement> units,
+                  List<GameElement> goals,
+                  Group terrainAndBuildingsGroup,
+                  Group unitsGroup,
+                  MapGrid grid) {
+        myState = levelState;
+        myTerrain = terrain;
+        myUnits = units;
+        myGoals = goals;
+        myTerrainAndBuildingsGroup = terrainAndBuildingsGroup;
+        myUnitsGroup = unitsGroup;
+        myGrid = grid;
     }
 
     public LevelState getLevelState () {
-        return myLevelState;
+        return myState;
     }
 
     public String getName () {
-        return myLevelState.getName();
+        return myState.getName();
     }
 
     public String getDescription () {
-        return myLevelState.getDescription();
+        return myState.getDescription();
+    }
+
+    public MapGrid getGrid () {
+        return myGrid;
     }
 
     public List<DrawableGameElement> getTerrain () {
@@ -83,8 +75,36 @@ public class Level {
         return myGoals;
     }
 
-    public Group getGroup () {
-        return myDisplayGroup;
+    public List<Group> getGroups () {
+        List<Group> displayGroups = new ArrayList<Group>();
+        displayGroups.add(myTerrainAndBuildingsGroup);
+        displayGroups.add(myUnitsGroup);
+        return displayGroups;
+    }
+
+    public void addElement (GameElement newElement) {
+        myGoals.add(newElement);
+    }
+
+    public void addElement (DrawableGameElement newElement) {
+        myTerrain.add(newElement);
+        myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
+        if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+            myGrid.registerObstaclePlacement(newElement.getBounds());
+        }
+    }
+
+    public void addElement (SelectableGameElement newElement) {
+        myUnits.add(newElement);
+        if (newElement.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0) {
+            myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
+            if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+                myGrid.registerObstaclePlacement(newElement.getBounds());
+            }
+        }
+        else {
+            myUnitsGroup.getChildren().add(newElement.getNode());
+        }
     }
 
 }

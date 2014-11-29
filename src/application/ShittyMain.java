@@ -126,7 +126,7 @@ public class ShittyMain extends Application {
                 new AnimationSequence("walk_right", 196, 209, null)));
         archerState.addAnimation(new AnimationSequence("walk_fwd_right", 210, 223,
                 new AnimationSequence("walk_fwd_right", 210, 223, null)));
-        archerState.setAnimation("walk_left");
+        // TODO: FIX archerState.setAnimation("walk_left");
         System.out.println(archerState.toJSON());
         archerState.setNumericalAttribute(StateTags.RANDOM_MOVEMENT_STRING, randomMovement);
         archerState.setNumericalAttribute(StateTags.TEAM_ID, teamID);
