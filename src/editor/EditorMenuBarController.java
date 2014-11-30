@@ -10,10 +10,12 @@ import javafx.scene.control.MenuItem;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
+import view.GUIScreen;
+import view.ViewScreen;
 import view.WizardUtility;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
-import gamemodel.GameElementStateFactory;
+import editor.wizards.WizardDataType;
 
 
 /**
@@ -28,6 +30,7 @@ public class EditorMenuBarController extends GUIContainer {
     private final static String NEW_CAMPAIGN_KEY = "NewCampaign";
     private final static String NEW_LEVEL_KEY = "NewLevel";
     private final static String SAVE_KEY = "Save";
+    private final static String QUIT_KEY = "Quit";
 
     private final static String LANGUAGE_KEY = "Languages";
 
@@ -44,9 +47,13 @@ public class EditorMenuBarController extends GUIContainer {
     private MenuItem newLevelMenuItem;
     @FXML
     private MenuItem saveMenuItem;
+    @FXML
+    private MenuItem quitMenuItem;
 
     @FXML
     private Menu languageMenu;
+
+    private GUIScreen myScreen;
 
     @Override
     public Node getRoot () {
@@ -67,6 +74,7 @@ public class EditorMenuBarController extends GUIContainer {
             newLevelMenuItem.textProperty().bind(util.getStringProperty(NEW_LEVEL_KEY));
             newCampaignMenuItem.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_KEY));
             saveMenuItem.textProperty().bind(util.getStringProperty(SAVE_KEY));
+            quitMenuItem.textProperty().bind(util.getStringProperty(QUIT_KEY));
             languageMenu.textProperty().bind(util.getStringProperty(LANGUAGE_KEY));
         }
         catch (LanguageException e) {
@@ -93,22 +101,27 @@ public class EditorMenuBarController extends GUIContainer {
     private void initFileMenu () {
         newCampaignMenuItem.setOnAction(e -> onNewCampaignClick());
         newLevelMenuItem.setOnAction(e -> onNewLevelClick());
-        saveMenuItem.setOnAction(e -> {
-            myMainModel.saveGame();
-        });
+        saveMenuItem.setOnAction(e -> myMainModel.saveGame());
+        quitMenuItem.setOnAction(e -> myScreen.switchScreen(ViewScreen.SPLASH));
+    }
+
+    public void attachScreen (GUIScreen screen) {
+        myScreen = screen;
     }
 
     private void onNewLevelClick () {
         Wizard wiz = WizardUtility.loadWizard(LEVEL_WIZARD, new Dimension(300, 300));
-        Consumer<WizardData> bc = (data) -> {
-            try {
-                myMainModel.createLevel(data.getValueByKey(GameElementStateFactory.NAME), data.getValueByKey(GameElementStateFactory.CAMPAIGN));
-                wiz.getStage().close();
-            }
-            catch (Exception e1) {
-                wiz.setErrorMesssage(e1.getMessage());                   
-            }                
-        };
+        Consumer<WizardData> bc =
+                (data) -> {
+                    try {
+                        myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
+                                                data.getValueByKey(WizardDataType.CAMPAIGN));
+                        wiz.getStage().close();
+                    }
+                    catch (Exception e1) {
+                        wiz.setErrorMesssage(e1.getMessage());
+                    }
+                };
         wiz.setSubmit(bc);
     }
 
@@ -116,12 +129,12 @@ public class EditorMenuBarController extends GUIContainer {
         Wizard wiz = WizardUtility.loadWizard(CAMPAIGN_WIZARD, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             try {
-                myMainModel.createCampaign(data.getValueByKey(GameElementStateFactory.NAME));
+                myMainModel.createCampaign(data.getValueByKey(WizardDataType.NAME));
                 wiz.getStage().close();
             }
             catch (Exception e1) {
                 wiz.setErrorMesssage("Campaign Already Exists!");
-            }                
+            }
         };
         wiz.setSubmit(bc);
     }

@@ -46,7 +46,7 @@ public class Vooga {
     /**
      * Public api for initializing a vooga salad.
      */
-    public void toss () {
+    public void dress () {
         initialize();
     }
 

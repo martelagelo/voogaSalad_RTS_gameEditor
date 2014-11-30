@@ -16,8 +16,8 @@ import gamemodel.exceptions.DescribableStateException;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import org.json.JSONException;
 import javafx.scene.Group;
+import org.json.JSONException;
 import application.ShittyMain;
 
 

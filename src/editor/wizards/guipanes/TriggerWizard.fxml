@@ -12,9 +12,9 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<TextField fx:id="condition" />
+					<ComboBox fx:id="actionType" />
 					<TextField fx:id="action" />
-					<Button fx:id="save" text="save" />
+					<Button defaultButton="true" fx:id="save" text="save" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

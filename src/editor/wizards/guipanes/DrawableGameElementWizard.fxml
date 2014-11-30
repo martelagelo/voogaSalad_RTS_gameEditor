@@ -10,14 +10,17 @@
 <SplitPane fx:id="root" fx:controller="editor.wizards.DrawableGameElementWizard"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<items>
-		<AnchorPane>
+		<AnchorPane fx:id="leftPane">
 			<children>
 				<VBox>
-					<TextField fx:id="name" text="name" />
-					<Button fx:id="trigger" text="new trigger" />
-					<Button fx:id="stringAttribute" text="new string attribute" />
-					<Button fx:id="numberAttribute" text="new number attribute" />					
-					<Button fx:id="image" text="Load Image" />
+					<TextField fx:id="name" />
+					<Button fx:id="trigger" defaultButton="true"/>		
+					<VBox fx:id="existingTriggers" />			
+					<Button fx:id="stringAttribute" defaultButton="true"/>
+					<VBox fx:id="existingStringAttributes" />
+					<Button fx:id="numberAttribute" defaultButton="true"/>
+					<VBox fx:id="existingNumberAttributes" />
+					<Button fx:id="image" defaultButton="true"/>
 					<HBox>
 						<Slider fx:id="frameWidth" />
 						<TextField fx:id="frameWidthText" />
@@ -25,18 +28,20 @@
 					<HBox>
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
-					</HBox>					
-					<TextField fx:id="numRows" text="#rows" />
-					<TextField fx:id="startFrame" text="start frame" />
-					<TextField fx:id="stopFrame" text="stop frame" />
-					<CheckBox fx:id="animationRepeat" />	
-					<Button fx:id="save" text="save" />				
+					</HBox>
+					<TextField fx:id="numRows" />
+					<TextField fx:id="startFrame" />
+					<TextField fx:id="stopFrame" />
+					<CheckBox fx:id="animationRepeat" />
+					<Button fx:id="save" defaultButton="true"/>
 					<Text fx:id="errorMessage" />
+					<Text fx:id="wizardDataText" />
 				</VBox>
 			</children>
 		</AnchorPane>
+		
 		<ScrollPane fx:id="imageScroll">
 			<Group fx:id="spritesheet" />
-		</ScrollPane>				
+		</ScrollPane>
 	</items>
 </SplitPane>

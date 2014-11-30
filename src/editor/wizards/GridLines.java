@@ -1,11 +1,12 @@
 package editor.wizards;
 
 import javafx.scene.Group;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 
 /**
- * Grid Lines
+ * Grid Lines used to be displayed over a sprite sheet within the drawable game element wizard.
  *
  * @author Jonathan Tseng, Nishad Agrawal
  *
@@ -35,7 +36,7 @@ public class GridLines extends Group {
     }
 
     private void createRows () {
-        int rows = (int) (myWidth /myFrameX);
+        int rows = (int) (myWidth / myFrameX);
         for (int i = 0; i <= rows; i++) {
             Line line = createRow();
             line.setTranslateY(myHeight * i / rows);
@@ -52,8 +53,8 @@ public class GridLines extends Group {
         return line;
     }
 
-    private void createColumns () {        
-        int cols = (int) (myHeight / myFrameY );
+    private void createColumns () {
+        int cols = (int) (myHeight / myFrameY);
         for (int i = 0; i <= cols; i++) {
             Line line = createColumn();
             line.setTranslateX(myWidth * i / cols);
@@ -69,12 +70,12 @@ public class GridLines extends Group {
         line.setEndY(myHeight);
         return line;
     }
-    
-    public double getFrameX() {
+
+    public double getFrameX () {
         return myFrameX;
     }
-    
-    public double getFrameY() {
+
+    public double getFrameY () {
         return myFrameY;
     }
 

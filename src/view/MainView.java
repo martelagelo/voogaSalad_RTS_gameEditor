@@ -46,12 +46,13 @@ public class MainView implements Observer {
         myMainModel = model;
         launchScreen(ViewScreen.SPLASH);
         myLoadStyleUtility = GUILoadStyleUtility.getInstance();
-        myLoadStyleUtility.setScene(myScene);
+        myLoadStyleUtility.addScene(myScene);
         myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
         myLoadStyleUtility.addStyle("./stylesheets/main.css");
     }
 
     public void start () {
+        myStage.setFullScreen(true);
         myStage.show();
     }
 
@@ -70,12 +71,12 @@ public class MainView implements Observer {
         myStage.setScene(myScene);
         myCurrentController.attachSceneHandler(this);
         myCurrentController.setModel(myMainModel);
-        myCurrentController.update();
+        update(myMainModel, null);
     }
 
     @Override
     public void update (Observable arg0, Object arg1) {
-        myCurrentController.update();
+        myCurrentController.update(arg0, arg1);
     }
 
 }

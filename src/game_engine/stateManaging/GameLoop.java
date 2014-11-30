@@ -32,24 +32,31 @@ import javafx.util.Duration;
 
 
 /**
+ * <<<<<<< HEAD
  * The main loop for running the game, checking for collisions, and updating game entities
  *
  * @author Michael D., John, Steve, Zach
+ *         =======
+ *         The main game loop. Sets the timeline and game loop in motion and calls the update method
+ *         of all
+ *         the elements in the game
+ *
+ * @author Makru Dengu, Steve
+ *         >>>>>>> model
  *
  */
 public class GameLoop {
-
     public static final Double framesPerSecond = 60.0;
-
     private String myCampaignName;
     private Level myCurrentLevel;
+
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
-
-    private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers = new ArrayList<>();
-    private Timeline timeline;
-
     private List<Line> unitPaths;
+
+    private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
+            new ArrayList<>();
+    private Timeline timeline;
 
     private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
         @Override
@@ -79,8 +86,7 @@ public class GameLoop {
         Evaluator<?, ?, Boolean> collisionEvaluator =
                 new CollisionEvaluator<>("", objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter("", StateTags.X_POS_STRING,
-                                              null,
+                new NumericAttributeParameter("", StateTags.X_POS_STRING, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
                 new NumericAttributeParameter("", StateTags.Y_POS_STRING, null,
@@ -100,48 +106,53 @@ public class GameLoop {
         Evaluator<?, ?, ?> collisionAndStopCAPair =
                 new IfThenEvaluator<>("", collisionEvaluator, reverseMotionEvaluator);
 
-        myCurrentLevel
-                .getUnits()
-                .stream()
+        myCurrentLevel.getUnits().stream()
                 .forEach(element -> element.addAction("collision", collisionAndStopCAPair));
-
     }
 
+    /**
+     * Start the game loop
+     */
     public void startGameLoop () {
         KeyFrame frame = start(framesPerSecond);
         startTimeline(frame);
     }
 
+    /**
+     * Create a keyframe with the given framerate
+     *
+     * @param framesPerSecond the number of frames per second of the keyframe
+     * @return the keyframe
+     */
     private KeyFrame start (Double framesPerSecond) {
         KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
         return frame;
     }
 
+    /**
+     * Update the states of all prominant elements and aspects of the game
+     */
     private void update () {
-    	//Clears all path lines from the GUI
+        // Clears all path lines from the GUI
         clearLinesFromRoot();
-        //Adds needed path lines to the GUI
+        // Adds needed path lines to the GUI
         addPathsToRoot();
-        // Updates the background of the application
-        myVisualManager.update();
-        // Updates all of the conditions and actions of the game elements
-        List<DrawableGameElement> allElements =
-                new ArrayList<DrawableGameElement>();
         // TODO add stream that collects into objects
-        allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
-            return element;
-        }).collect(Collectors.toList()));
-        // allElements.addAll(myCurrentLevel.getTerrain());
-        // TODO fix this logic
-        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            for (Computer<DrawableGameElement, DrawableGameElement> computer : myComputers) {
-                computer.compute(selectableElement, allElements);
-            }
-        }
-        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
-            selectableElement.update();
-        }
-        myMiniMap.updateMiniMap();
+//        allElements.addAll(myCurrentLevel.getUnits().stream().map(element -> {
+//            return element;
+//        }).collect(Collectors.toList()));
+//        // allElements.addAll(myCurrentLevel.getTerrain());
+//        // TODO fix this logic
+//        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+//            for (Computer<DrawableGameElement, DrawableGameElement> computer : myComputers) {
+//                computer.compute(selectableElement, allElements);
+//            }
+//        }
+//        //
+//        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+//            selectableElement.update();
+//        }
+//        myMiniMap.updateMiniMap();
     }
 
     private void addPathsToRoot () {
@@ -156,6 +167,11 @@ public class GameLoop {
         unitPaths.clear();
     }
 
+    /**
+     * Start the timeline
+     *
+     * @param frame the keyframe for the timeline
+     */
     private void startTimeline (KeyFrame frame) {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().clear();
@@ -163,21 +179,35 @@ public class GameLoop {
         timeline.playFromStart();
     }
 
+    /**
+     * Play the game
+     */
     public void play () {
         timeline.play();
     }
 
+    /**
+     * Pause the game
+     */
     public void pause () {
         timeline.pause();
     }
 
+    /**
+     * Stop the game
+     */
     public void stop () {
         timeline.stop();
     }
 
+    /**
+     * Indicate if this level is the current levels
+     *
+     * @param level the levelState of the level in question
+     * @return a boolean indicating if the level is the current level
+     */
     public boolean isCurrentLevel (LevelState level, String campaignName) {
         return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName
                 .equals(campaignName));
     }
-
 }

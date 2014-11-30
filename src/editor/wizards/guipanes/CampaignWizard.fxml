@@ -11,8 +11,8 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<TextField fx:id="name" text="campaign name"/>
-					<Button fx:id="save" text="save" />
+					<TextField fx:id="name" />
+					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

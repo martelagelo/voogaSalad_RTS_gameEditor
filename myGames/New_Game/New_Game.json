@@ -1,10 +1,75 @@
 {
-  "myCampaigns": [],
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [
+            {
+              "myConditionActionPairings": {},
+              "myNumericalAttributes": [],
+              "myTextualAttributes": []
+            }
+          ],
+          "myName": "level name",
+          "myDescription": ""
+        }
+      ],
+      "myName": "campaign name",
+      "myDescription": ""
+    }
+  ],
   "myGameUniverse": {
     "myNumericalAttributes": [],
     "myStringAttributes": [],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "mySpritesheet": {
+          "imageTag": "testSpritesheet\\Archer.png",
+          "frameDimensions": {
+            "myWidth": 142,
+            "myHeight": 36
+          },
+          "numCols": 10
+        },
+        "myAnimations": {},
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myConditionActionPairings": {
+          "die": "fight"
+        },
+        "myNumericalAttributes": [
+          {
+            "myData": 0.0,
+            "myName": "xPosition"
+          },
+          {
+            "myData": 0.0,
+            "myName": "yPosition"
+          },
+          {
+            "myData": 100.0,
+            "myName": "hp"
+          }
+        ],
+        "myTextualAttributes": [
+          {
+            "myData": "bob",
+            "myName": "myname"
+          },
+          {
+            "myData": "Archer",
+            "myName": "Name"
+          }
+        ]
+      }
+    ],
     "mySelectableGameElementStates": []
   },
   "myName": "New Game",

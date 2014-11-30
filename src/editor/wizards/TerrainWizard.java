@@ -31,8 +31,8 @@ public class TerrainWizard extends DrawableGameElementWizard {
      */
     private void loadImage () {
         FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
-        addToData("Image", "" + file);
+        File file = fileChooser.showOpenDialog(new Stage()); 
+        addToData(WizardDataType.IMAGE, "" + file);
         try {
             Image image = new Image(new FileInputStream(file));
             spritesheet.setImage(image);
@@ -55,7 +55,7 @@ public class TerrainWizard extends DrawableGameElementWizard {
     @Override
     public void updateData() {
         super.updateData();
-        setDataName("Terrain");
+        setDataType(WizardDataType.TERRAIN);
     }
 
 }

@@ -1,9 +1,10 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -15,8 +16,15 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 import view.WizardUtility;
 
 
@@ -27,12 +35,24 @@ import view.WizardUtility;
  */
 public class DrawableGameElementWizard extends Wizard {
 
+    private final static String NAME_KEY = "Name";
+    private final static String NEW_TRIGGER_KEY = "NewTrigger";
+    private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
+    private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
+    private final static String LOAD_IMAGE_KEY = "LoadImage";
+    private final static String NUM_ROWS_KEY = "NumRows";
+    private final static String START_FRAME_KEY = "StartFrame";
+    private final static String STOP_FRAME_KEY = "StopFrame";
+
     private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
     private static final String NUM_ATTR_WIZARD =
             "/editor/wizards/guipanes/NumberAttributeWizard.fxml";
     private static final String STRING_ATTR_WIZARD =
             "/editor/wizards/guipanes/StringAttributeWizard.fxml";
     private static final String TRIGGER_WIZARD = "/editor/wizards/guipanes/TriggerWizard.fxml";
+    
+    @FXML
+    private AnchorPane leftPane;
     @FXML
     private TextField name;
     @FXML
@@ -63,8 +83,17 @@ public class DrawableGameElementWizard extends Wizard {
     private TextField stopFrame;
     @FXML
     private CheckBox animationRepeat;
+    @FXML
+    private VBox existingTriggers;
+    @FXML
+    private VBox existingStringAttributes;
+    @FXML
+    private VBox existingNumberAttributes;
     
-    
+    @FXML
+    private Text wizardDataText;
+    private List<String> myGlobalStringAttributes;
+    private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
     private GridLines gridLines;
     private String imagePath;
@@ -74,7 +103,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(TRIGGER_WIZARD);
+        launchNestedWizard(TRIGGER_WIZARD, existingTriggers, null);
     }
 
     /**
@@ -82,21 +111,56 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchStringAttributeEditor () {
-        launchNestedWizard(STRING_ATTR_WIZARD);
+        launchNestedWizard(STRING_ATTR_WIZARD, existingStringAttributes, myGlobalStringAttributes);
     }
 
     /**
-     * Launches a Nuumber Attribute Wizard
+     * Launches a Number Attribute Wizard
      * 
      */
     private void launchNumberAttributeEditor () {
-        launchNestedWizard(NUM_ATTR_WIZARD);
+        launchNestedWizard(NUM_ATTR_WIZARD, existingNumberAttributes, myGlobalNumberAttributes);
     }
 
-    private void launchNestedWizard (String s) {
-        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(600, 300));
+    private void launchNestedWizard (String s, VBox existing, List<String> globalAttrs) {        
+        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
+            
+            HBox newElement = new HBox();
+            Button edit = new Button();
+            edit.setText((new ArrayList<String>(data.getData().values())).get(0));
+            edit.setOnAction(e -> launchEditWizard(s, data, edit));
+            newElement.getChildren().add(edit);
+            
+            Button delete = new Button();
+            delete.setText("X");
+            delete.setOnAction(e -> {
+                removeWizardData(data);                
+                existing.getChildren().remove(newElement);
+                wizardDataText.setText(getWizardData().toString());
+            });
+            newElement.getChildren().add(delete);            
+            existing.getChildren().add(newElement);
+            
+            wizardDataText.setText(getWizardData().toString());
+            wiz.getStage().close();
+        };
+        wiz.setSubmit(bc);
+    }
+    
+    private void launchEditWizard (String s, WizardData oldData, Button button) {
+        Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
+        wiz.launchForEdit(oldData);
+        Consumer<WizardData> bc = (data) -> {
+            removeWizardData(oldData);
+            addWizardData(data);
+            oldData.clear();
+            for (WizardDataType type: data.getData().keySet()) {
+                oldData.addDataPair(type, data.getValueByKey(type));
+            }
+            button.setText((new ArrayList<String>(data.getData().values())).get(0));
+            wizardDataText.setText(getWizardData().toString());
             wiz.getStage().close();
         };
         wiz.setSubmit(bc);
@@ -150,6 +214,34 @@ public class DrawableGameElementWizard extends Wizard {
         createSliderListeners();
         createTextFieldListeners();
         imagePath = "";
+        attachTextProperties();
+        errorMessage.setFill(Paint.valueOf("white"));
+        wizardDataText.setFill(Paint.valueOf("white"));
+        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+    }
+
+    /**
+     * Attaches multilanguage utility to text
+     * in the wizard
+     * 
+     */
+    @Override
+    protected void attachTextProperties () {
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        try {
+            name.textProperty().bind(util.getStringProperty(NAME_KEY));
+            trigger.textProperty().bind(util.getStringProperty(NEW_TRIGGER_KEY));
+            stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
+            numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
+            image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
+            numRows.textProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
+            startFrame.textProperty().bind(util.getStringProperty(START_FRAME_KEY));
+            stopFrame.textProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
+            super.attachTextProperties();
+        }
+        catch (LanguageException e) {
+            // TODO Do something useful with this exception
+        }
     }
 
     private void createTextFieldListeners () {
@@ -189,18 +281,35 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     @Override
-    public void updateData () {
-        setDataName(GameElementStateFactory.DRAWABLE_GAME_ELEMENT);
-        addToData(GameElementStateFactory.NAME, name.getText());
-        addToData(GameElementStateFactory.IMAGE, imagePath);
-        addToData(GameElementStateFactory.WIDTH, "" + imageView.getImage().getWidth());
-        addToData(GameElementStateFactory.HEIGHT, "" + imageView.getImage().getHeight());
-        addToData(GameElementStateFactory.FRAME_X, "" + (int) frameWidth.getValue());
-        addToData(GameElementStateFactory.FRAME_Y, "" + (int) frameHeight.getValue());
-        addToData(GameElementStateFactory.ROWS, numRows.getText());
-        addToData(GameElementStateFactory.START_FRAME, startFrame.getText());
-        addToData(GameElementStateFactory.STOP_FRAME, stopFrame.getText());
-        addToData(GameElementStateFactory.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));        
+    public void updateData () {        
+        addToData(WizardDataType.NAME, name.getText());
+        addToData(WizardDataType.IMAGE, imagePath);
+        addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
+        addToData(WizardDataType.HEIGHT, "" + imageView.getImage().getHeight());
+        addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
+        addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
+        addToData(WizardDataType.ROWS, numRows.getText());
+        addToData(WizardDataType.START_FRAME, startFrame.getText());
+        addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
+        addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
+    }
+    
+    public void attachStringAttributes(List<String> stringAttributes) {
+        myGlobalStringAttributes = stringAttributes;
+    }
+    
+    public void attachNumberAttributes(List<String> numberAttributes) {
+        myGlobalNumberAttributes = numberAttributes;
+    }
+
+    @Override
+    public void launchForEdit (WizardData oldValues) {
+        // TODO implement this!      
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // do nothing
     }
 
 }

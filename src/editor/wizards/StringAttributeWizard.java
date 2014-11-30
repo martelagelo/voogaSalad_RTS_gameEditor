@@ -1,11 +1,13 @@
 package editor.wizards;
 
-import gamemodel.GameElementStateFactory;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 
 /**
+ * This represents the Wizard responsible for storing a string attribute along with its attribute
+ * name as a key. It only requires both fields to not be null.
  * 
  * @author Joshua, Nishad
  *
@@ -23,8 +25,19 @@ public class StringAttributeWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataName(GameElementStateFactory.STRING_ATTRIBUTE);
-        addToData(GameElementStateFactory.ATTRIBUTE, key.getText());
-        addToData(GameElementStateFactory.VALUE, stringValue.getText());
+        setDataType(WizardDataType.STRING_ATTRIBUTE);
+        addToData(WizardDataType.ATTRIBUTE, key.getText());
+        addToData(WizardDataType.VALUE, stringValue.getText());
     }
+
+    @Override
+    public void launchForEdit (WizardData oldValues) {
+        key.setText(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));
+        stringValue.setText(oldValues.getValueByKey(WizardDataType.VALUE));
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // TODO: implement this        
+    }    
 }
