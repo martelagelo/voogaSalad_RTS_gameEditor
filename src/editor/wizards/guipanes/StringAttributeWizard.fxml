@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane fx:id="root" fx:controller="editor.wizards.StringAttributeWizard"
+<SplitPane fx:id="root" fx:controller="editor.wizards.AttributeWizard"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<items>		
 		<AnchorPane>
 			<children>
 				<VBox>
 					<ComboBox fx:id="key" editable="true" promptText="Attribute Name" />
-					<TextField fx:id="stringValue" />
+					<TextField fx:id="value" />
 					<Button fx:id="save" defaultButton="true" text="save" />
 					<Text fx:id="errorMessage" />
 				</VBox>

@@ -12,7 +12,7 @@
 			<children>
 				<VBox>
 					<ComboBox fx:id="key" editable="true" promptText="Attribute Name" />
-					<TextField fx:id="numberValue" />
+					<TextField fx:id="value" />
 					<Button fx:id="save" defaultButton="true" text="save" />
 					<Text fx:id="errorMessage" />
 				</VBox>

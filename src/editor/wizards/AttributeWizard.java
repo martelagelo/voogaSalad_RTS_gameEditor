@@ -16,25 +16,33 @@ import javafx.scene.control.TextField;
  * @author Joshua, Nishad
  *
  */
-public class StringAttributeWizard extends Wizard {
+public class AttributeWizard extends Wizard {
     @FXML
-    private ComboBox<String> key;
+    protected ComboBox<String> key;
     @FXML
-    private TextField stringValue;
+    protected TextField value;
 
-    private ObservableList<String> attributes;
+    protected ObservableList<String> attributes;
 
     @Override
     public boolean checkCanSave () {
+        return areFieldsNotNull();
+    }
+
+    protected boolean areFieldsNotNull () {
         return (key.getSelectionModel().getSelectedItem() != null ||
-               key.valueProperty().get() != null) && !stringValue.getText().isEmpty();
+               key.valueProperty().get() != null) && !value.getText().isEmpty();
     }
 
     @Override
     public void updateData () {
         setDataType(WizardDataType.STRING_ATTRIBUTE);
+        storeKeyValuePair();
+    }
+
+    protected void storeKeyValuePair () {
         addToData(WizardDataType.ATTRIBUTE, key.getSelectionModel().getSelectedItem());
-        addToData(WizardDataType.VALUE, stringValue.getText());
+        addToData(WizardDataType.VALUE, value.getText());
     }
     
     @Override
@@ -47,7 +55,7 @@ public class StringAttributeWizard extends Wizard {
     @Override
     public void launchForEdit (WizardData oldValues) {
         key.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));
-        stringValue.setText(oldValues.getValueByKey(WizardDataType.VALUE));
+        value.setText(oldValues.getValueByKey(WizardDataType.VALUE));
     }
 
     @Override
