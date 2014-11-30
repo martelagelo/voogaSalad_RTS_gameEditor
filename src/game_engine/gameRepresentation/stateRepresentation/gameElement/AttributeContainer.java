@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Attributes {
+public class AttributeContainer {
     private Set<Attribute<Number>> myNumericalAttributes;
     private Set<Attribute<String>> myTextualAttributes;
 
-    public Attributes(){
+    public AttributeContainer(){
         myNumericalAttributes = new HashSet<>();
         myTextualAttributes = new HashSet<>();
     }

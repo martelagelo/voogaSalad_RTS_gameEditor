@@ -21,7 +21,7 @@ public class AnimatorState implements JSONable {
     public String imageTag;
     public Dimension frameDimensions;
     public int numCols;
-    public Map<AnimationTags, AnimationSequence> animationMap;
+    public Map<AnimationTag, AnimationSequence> animationMap;
 
     /**
      * Create the Spritesheet
@@ -35,20 +35,27 @@ public class AnimatorState implements JSONable {
      *            the number of columns across in the spritesheet
      */
     public AnimatorState (String imageTag, Dimension frameDimensions, int numCols,
-            Map<AnimationTags, AnimationSequence> animationMap) {
+            Map<AnimationTag, AnimationSequence> animationMap) {
         this.imageTag = imageTag;
         this.frameDimensions = frameDimensions;
         this.numCols = numCols;
         this.animationMap = animationMap;
     }
 
-    public void addAnimationSequence (AnimationTags tag, AnimationSequence seq) {
+    public void addAnimationSequence (AnimationTag tag, AnimationSequence seq) {
         if (animationMap != null)
             animationMap.put(tag, seq);
     }
 
-    public AnimationSequence getAnimationSequence (AnimationTags tag) {
+    public AnimationSequence getAnimationSequence (AnimationTag tag) {
         return (animationMap != null) ? animationMap.get(tag) : null;
+    }
+    
+    public static void main(String[] args){
+        System.out.println("Max long: " + Long.MAX_VALUE);
+        System.out.println("Max log_25 long: " + (Math.log(Long.MAX_VALUE) / Math.log(25)));
+        System.out.println("Max double: " + Double.MAX_VALUE);
+        System.out.println("Max integer: " + Integer.MAX_VALUE);
     }
 
 }

@@ -35,13 +35,13 @@ public class GameElementState implements JSONable {
      * allowing for much more power on the side of engine extensibility at the
      * cost of some "parameter uncertainty" in the engine.
      */
-    public Attributes myAttributes;
+    public AttributeContainer myAttributes;
 
     /**
      * Initialize the game element state and its internal data structures.
      */
     public GameElementState () {
-        myAttributes = new Attributes();
+        myAttributes = new AttributeContainer();
         myActions = new HashMap<String, List<String>>();
     }
 

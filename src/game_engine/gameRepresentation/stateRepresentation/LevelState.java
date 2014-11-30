@@ -1,6 +1,6 @@
 package game_engine.gameRepresentation.stateRepresentation;
 
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Attributes;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.AttributeContainer;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class LevelState extends DescribableState {
 
-    public Attributes myAttributes;
+    public AttributeContainer myAttributes;
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
 
     public LevelState (String name) {
         super(name);
-        myAttributes = new Attributes();
+        myAttributes = new AttributeContainer();
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();
