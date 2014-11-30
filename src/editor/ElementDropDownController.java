@@ -78,6 +78,7 @@ public class ElementDropDownController implements GUIController {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
                                          Number newValue) {
+                        //TODO
                         System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
                     }
                 });
@@ -98,7 +99,6 @@ public class ElementDropDownController implements GUIController {
         @Override
         public void updateItem (String item, boolean empty) {
             super.updateItem(item, empty);
-            System.out.println(item);
             if (item != null) {
                 setGraphic(myElementsMap.get(item));
             }

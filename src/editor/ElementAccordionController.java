@@ -145,7 +145,6 @@ public class ElementAccordionController extends GUIContainer {
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {
-                                System.out.println(e.toString());
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
@@ -157,7 +156,6 @@ public class ElementAccordionController extends GUIContainer {
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {
-                                System.out.println(e.toString());
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
