@@ -16,19 +16,18 @@ public class SpriteImageContainer {
     private Image mySpritesheet;
     private Map<String, Image> myTeamColorMasks;
     private SaveLoadMediator mySaveLoadMediator;
-    
-    
-    public SpriteImageContainer(String imageTag) throws Exception {
-            locateSpritesheet(imageTag);
-            locateTeamColorMasks(imageTag);
-        
-    }
-    
-    private void locateTeamColorMasks (String imageTag) {
-        mySaveLoadMediator.locateTeamColorMasks(imageTag);
+
+    public SpriteImageContainer (String imageTag) throws Exception {
+        locateSpritesheet(imageTag);
+        locateTeamColorMasks(imageTag);
+
     }
 
-    private void locateSpritesheet(String imageTag) throws Exception {
+    private void locateTeamColorMasks (String imageTag) {
+        myTeamColorMasks = mySaveLoadMediator.locateTeamColorMasks(imageTag);
+    }
+
+    private void locateSpritesheet (String imageTag) throws Exception {
         mySaveLoadMediator.loadSpritesheet(imageTag);
     }
 
@@ -38,7 +37,7 @@ public class SpriteImageContainer {
 
     public Image getTeamColorSheet (String teamColor) {
         return myTeamColorMasks.getOrDefault(teamColor, myTeamColorMasks.get("BLUE"));
-        
+
     }
 
 }
