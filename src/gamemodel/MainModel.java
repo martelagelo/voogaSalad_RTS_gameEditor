@@ -235,6 +235,7 @@ public class MainModel extends Observable {
      */
     public SpriteImageContainer getSpriteImageContainer (String imageTag) {
         //TODO return this container 
+        return null;
     }
 
     /**

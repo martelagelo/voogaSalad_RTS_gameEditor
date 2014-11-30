@@ -5,7 +5,10 @@ import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
+
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 import javafx.scene.image.Image;
 
@@ -29,7 +32,7 @@ public class SaveLoadMediator {
      * @throws Exception
      */
     public <T> T loadGame (String gameName) throws Exception {
-        return SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(gameName));
+        return SaveLoadUtility.loadResource(GameState.class, getGameLocation(gameName));
 
     }
 
@@ -41,7 +44,7 @@ public class SaveLoadMediator {
      * @throws Exception
      */
     public String saveGame (JSONable gameState, String gameName) throws Exception {
-        return SaveLoadUtility.save(gameState, getGameSaveLocation(gameName));
+        return SaveLoadUtility.save(gameState, getGameLocation(gameName));
 
     }
 
@@ -61,8 +64,18 @@ public class SaveLoadMediator {
 
     }
 
-    private String getGameSaveLocation (String name) {
+    private String getGameLocation (String name) {
         return "myGames" + File.separator + name + File.separator + name + JSON_EXT;
+    }
+    
+    private String getSpritesheetLocation(String imageTag) {
+        //TODO return the path at which spritesheets are saved to and loaded from.
+        return "";
+    }
+    
+    private String getColorMasksLocation(String imageTag) {
+        //TODO return the path at which the colormasks are located.
+        return "";
     }
 
     /**
@@ -74,6 +87,17 @@ public class SaveLoadMediator {
     public Image loadImage (String filePath) throws Exception {
         return SaveLoadUtility.loadImage(filePath);
 
+    }
+
+    public Image loadSpritesheet (String imageTag) throws Exception {
+        return SaveLoadUtility.loadImage(getSpritesheetLocation(imageTag));
+    }
+
+    public void locateTeamColorMasks (String imageTag) {
+        File directory = new File(getColorMasksLocation(imageTag));
+        FileFilter fileFilter = new WildcardFileFilter(imageTag + "*" + PNG_EXT);
+        // TODO: need to determine how to get the color from the file
+        File[] files = directory.listFiles(fileFilter);
     }
 
 }
