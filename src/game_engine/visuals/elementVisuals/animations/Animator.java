@@ -95,6 +95,8 @@ public class Animator implements Updatable {
         determineAnimationDirection();
         animationTag.addAll(currentDirection);
         animationTag.add(determineAnimationType());
+        myCurrentAnimation = myState.getAnimationSequence(animationTag);
+        myCurrentAnimation.reset();
     }
 
     private void determineAnimationDirection () {
