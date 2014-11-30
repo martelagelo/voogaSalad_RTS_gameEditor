@@ -13,8 +13,10 @@ import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.VisualManager;
 import gamemodel.MainModel;
 import gamemodel.exceptions.DescribableStateException;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import org.json.JSONException;
 import javafx.scene.Group;
 import application.ShittyMain;
 
@@ -36,12 +38,14 @@ public class Engine extends Observable implements Observer {
     private MiniMap myMiniMap;
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
+    private EvaluatableFactory myEvaluatableFactory;
 
-    public Engine (MainModel mainModel) {
+    public Engine (MainModel mainModel) throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
         myInputManager = new InputManager();
+        myEvaluatableFactory = new EvaluatableFactory();
         myElementFactory =
-                new GameElementFactory(myMainModel.getGameUniverse(), new EvaluatableFactory());
+                new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
 
         // TODO hard-coding the visual representation for now, should remove this dependency
@@ -65,6 +69,7 @@ public class Engine extends Observable implements Observer {
         myMiniMap.setUnits(newLevel.getUnits());
         myGameLoop = new GameLoop(campaignName, newLevel, myVisualManager, myMiniMap);
         myElementManager = new GameElementManager(newLevel, myElementFactory);
+        myEvaluatableFactory.setManager(myElementManager);
         newLevel.getGroups().stream().forEach(g -> myVisualManager.addObjects(g));
         myVisualManager.addBoxObserver(myElementManager);
         myInputManager.addClickObserver(myElementManager);
@@ -105,6 +110,7 @@ public class Engine extends Observable implements Observer {
             myMiniMap.setUnits(nextLevel.getUnits());
             myGameLoop = new GameLoop(currentCampaign, nextLevel, myVisualManager, myMiniMap);
             myElementManager = new GameElementManager(nextLevel, myElementFactory);
+            myEvaluatableFactory.setManager(myElementManager);
             nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObjects(g));
             myVisualManager.addBoxObserver(myElementManager);
             myInputManager.addClickObserver(myElementManager);

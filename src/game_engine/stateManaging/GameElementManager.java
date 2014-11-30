@@ -14,10 +14,12 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
 import gamemodel.GameUniverse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
+import org.json.JSONException;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
 
@@ -165,12 +167,21 @@ public class GameElementManager implements Observer {
         sges.attributes.setTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING, "archer");
         u.addSelectableGameElementState(sges);
         
-        GameElementFactory gef = new GameElementFactory(u, new EvaluatableFactory());
+        GameElementFactory gef;
+        try {
+            gef = new GameElementFactory(u, new EvaluatableFactory());
+        }
+        //FIXME
+        catch (ClassNotFoundException | JSONException | IOException e) {
+            e.printStackTrace();
+            return;
+        }
         LevelState ls = new LevelState("testLevel");
         LevelFactory lf = new LevelFactory(gef);
         Level l = lf.createLevel(ls);
         
         GameElementManager gem = new GameElementManager(l, gef);
+        
         gem.addSelectableGameElementToLevel("archer", 0, 0);
     }
 }

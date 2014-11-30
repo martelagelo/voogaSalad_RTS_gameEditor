@@ -4,6 +4,11 @@ import static org.junit.Assert.assertEquals;
 import game_engine.gameRepresentation.evaluatables.ConditionParser;
 import java.io.IOException;
 import java.lang.reflect.Method;
+<<<<<<< HEAD
+=======
+import java.util.List;
+import org.json.JSONException;
+>>>>>>> engine_conditions
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,10 +28,12 @@ public class ConditionParsingTest {
      * Set up the parser, grab a reference to all of its methods and set them to be public
      * @throws InvalidRulesException 
      * @throws IOException 
+     * @throws JSONException 
+     * @throws ClassNotFoundException 
      */
     @Before
-    public void setUpParser () throws IOException {
-        myParser = new ConditionParser();
+    public void setUpParser () throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
+        myParser = new ConditionParser(null);
         myMethods = myParser.getClass().getDeclaredMethods();
         for (Method method : myMethods) {
             method.setAccessible(true);
