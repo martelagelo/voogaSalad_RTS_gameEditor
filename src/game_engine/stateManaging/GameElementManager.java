@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
-import org.json.JSONException;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
+import org.json.JSONException;
 
 
 /**
@@ -78,9 +78,9 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown) e.select(false);
+            if (!isShiftDown) e.deselect();
             if (contains(rectPoints, e.getLocation())) {
-                e.select(true);
+                e.select();
             }
         }
     }
@@ -90,7 +90,7 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown) e.select(false);
+            if (!isShiftDown) e.deselect();
             double[] bounds = e.getBounds();
             double[] cornerBounds =
                     new double[] { e.getLocation().getX() - bounds[2] / 2,
@@ -99,7 +99,7 @@ public class GameElementManager implements Observer {
                                   e.getLocation().getY() + bounds[3] / 2 };
 
             if (contains(cornerBounds, clickLoc)) {
-                e.select(true);
+                e.select();
                 break;
             }
         }
@@ -118,16 +118,16 @@ public class GameElementManager implements Observer {
         return false;
 
     }
-
-    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary, boolean shiftHeld) {
-        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
-                .collect(Collectors.toList())) {
-            if (!isPrimary) {
-                if (!shiftHeld) e.clearHeadings();
-                e.setHeading(click);
-            }
-        }
-    }
+// TODO : belongs in input manager? generates evaluatables? calls pathing computer?
+//    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary, boolean shiftHeld) {
+//        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
+//                .collect(Collectors.toList())) {
+//            if (!isPrimary) {
+//                if (!shiftHeld) e.clearHeadings();
+//                e.setHeading(click);
+//            }
+//        }
+//    }
 
     /**
      * Update the rectangle on the image and check for clicks
@@ -148,10 +148,10 @@ public class GameElementManager implements Observer {
                 selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
                         .isShiftDown());
             }
-            sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
-
-            .getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick()
-                    .isShiftDown());
+            //sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
+//
+//            .getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick()
+//                    .isShiftDown());
 
         }
         else if (o instanceof KeyboardManager) {

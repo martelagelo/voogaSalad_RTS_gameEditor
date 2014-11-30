@@ -28,14 +28,16 @@ public class GameElementFactory {
             "resources.properties.InteractingElementTypes";
 
     private GameUniverse myUniverse;
-    private EvaluatableFactory myFactory;
+    private EvaluatableFactory myEvaluatableFactory;
+    private VisualizerFactory myVisualizerFactory;
 
     private ResourceBundle actionTypes;
     private ResourceBundle interactingElementTypes;
 
-    public GameElementFactory (GameUniverse universe, EvaluatableFactory factory) {
+    public GameElementFactory (GameUniverse universe, EvaluatableFactory evaluatableFactory, VisualizerFactory visualizerFactory) {
         myUniverse = universe;
-        myFactory = factory;
+        myEvaluatableFactory = evaluatableFactory;
+        myVisualizerFactory = visualizerFactory;
         actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
         interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
@@ -80,6 +82,6 @@ public class GameElementFactory {
     }
 
     private Map<String, List<Evaluatable<?>>> generateActions (GameElementState state) {
-        return myFactory.generateEvaluatables(state.getActions());
+        return myEvaluatableFactory.generateEvaluatables(state.getActions());
     }
 }

@@ -8,6 +8,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.elementVisuals.animations.SpriteImageContainer;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
@@ -272,6 +273,11 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
+    }
+
+    public SpriteImageContainer fetchImageContainer (String imageTag) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

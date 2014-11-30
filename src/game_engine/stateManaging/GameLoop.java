@@ -86,10 +86,10 @@ public class GameLoop {
                 new NumericAttributeParameter("", StateTags.Y_POSITION, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> xVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.X_VEL, null,
+                new NumericAttributeParameter("", StateTags.X_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.Y_VEL, null,
+                new NumericAttributeParameter("", StateTags.Y_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> xAddEvaluator =
                 new SubtractionAssignmentEvaluator<>("", xPosition, xVelocity);
@@ -144,9 +144,10 @@ public class GameLoop {
         myMiniMap.updateMiniMap();
     }
 
+    // TODO: what the fuck is this
     private void addPathsToRoot () {
         for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            unitPaths.addAll(SGE.getLines());
+            //unitPaths.addAll(SGE.getLines());
         }
         myVisualManager.getBackground().getChildren().addAll(unitPaths);
     }
