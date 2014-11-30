@@ -11,7 +11,7 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<TextField fx:id="campaignName" />
+					<ComboBox fx:id="campaignName" />
 					<TextField fx:id="levelName"  />
 					<Button fx:id="save" defaultButton = "true"/>
 					<Text fx:id="errorMessage" />

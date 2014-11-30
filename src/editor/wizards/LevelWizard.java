@@ -1,9 +1,13 @@
 package editor.wizards;
 
+import java.util.ArrayList;
 import java.util.List;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 
@@ -23,19 +27,22 @@ public class LevelWizard extends Wizard {
     private final String NEW_LEVEL_DEFAULT_KEY = "NewLevelDefault";
     private final String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
     @FXML
-    private TextField campaignName;
+    private ComboBox<String> campaignName;
     @FXML
     private TextField levelName;
+    
+    private ObservableList<String> campaigns;
 
     @Override
     public boolean checkCanSave () {
-        return !campaignName.getText().isEmpty() && !levelName.getText().isEmpty();
+        return campaignName.getSelectionModel().getSelectedItem() != null &&
+               !levelName.getText().isEmpty();
     }
 
     @Override
     public void updateData () {
         setDataType(WizardDataType.LEVEL);
-        addToData(WizardDataType.CAMPAIGN, campaignName.getText());
+        addToData(WizardDataType.CAMPAIGN, campaignName.getSelectionModel().getSelectedItem());
         addToData(WizardDataType.NAME, levelName.getText());
     }
 
@@ -51,15 +58,22 @@ public class LevelWizard extends Wizard {
             // TODO Do something with this exception
         }
     }
+    
+    @Override
+    public void initialize () {
+        super.initialize();
+        campaigns = FXCollections.observableList(new ArrayList<>());
+        campaignName.setItems(campaigns);
+    }
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        campaignName.setText(oldValues.getValueByKey(WizardDataType.CAMPAIGN));
+        campaignName.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.CAMPAIGN));
         levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));
     }
 
     @Override
     public void loadGlobalValues (List<String> values) {
-        // TODO: have this load all existing campaigns into a combobox        
+        campaigns.addAll(values);
     }
 }

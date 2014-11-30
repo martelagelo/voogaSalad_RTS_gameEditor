@@ -1,7 +1,9 @@
 package editor;
 
 import java.awt.Dimension;
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Menu;
@@ -111,17 +113,19 @@ public class EditorMenuBarController extends GUIContainer {
 
     private void onNewLevelClick () {
         Wizard wiz = WizardUtility.loadWizard(LEVEL_WIZARD, new Dimension(300, 300));
-        Consumer<WizardData> bc =
-                (data) -> {
-                    try {
-                        myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
-                                                data.getValueByKey(WizardDataType.CAMPAIGN));
-                        wiz.getStage().close();
-                    }
-                    catch (Exception e1) {
-                        wiz.setErrorMesssage(e1.getMessage());
-                    }
-                };
+        List<String> existingCampaigns = myMainModel.getCurrentGame().getCampaigns().stream()
+                .map(camp -> camp.getName()).collect(Collectors.toList());
+        wiz.loadGlobalValues(existingCampaigns);
+        Consumer<WizardData> bc = (data) -> {
+            try {
+                myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
+                                        data.getValueByKey(WizardDataType.CAMPAIGN));
+                wiz.getStage().close();
+            }
+            catch (Exception e1) {
+                wiz.setErrorMesssage(e1.getMessage());
+            }
+        };
         wiz.setSubmit(bc);
     }
 
