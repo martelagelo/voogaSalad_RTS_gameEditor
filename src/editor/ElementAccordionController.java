@@ -2,6 +2,7 @@ package editor;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -19,17 +20,19 @@ import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
 import view.GUILoadStyleUtility;
 import view.WizardUtility;
-import editor.wizards.DrawableGameElementWizard;
+import editor.wizards.SelectableGameElementWizard;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
+import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 
 
 public class ElementAccordionController extends GUIContainer {
 
     // private static final String TERRAIN_WIZARD = "/editor/wizards/guipanes/TerrainWizard.fxml";
     private static final String GAME_ELEMENT_WIZARD =
-            "/editor/wizards/guipanes/DrawableGameElementWizard.fxml";
+            "/editor/wizards/guipanes/SelectableGameElementWizard.fxml";
     private static final String ACCORDION_SUBPANE_PATH =
             "/editor/guipanes/GameElementDropDown.fxml";
 
@@ -83,7 +86,7 @@ public class ElementAccordionController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> openGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer = (c) -> {
-            DrawableGameElementWizard wiz = (DrawableGameElementWizard)
+            SelectableGameElementWizard wiz = (SelectableGameElementWizard)
                     WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
             List<String> stringAttrs = myMainModel.getGameUniverse().
                     getStringAttributes().stream().map(atr -> atr.getName())
@@ -95,8 +98,15 @@ public class ElementAccordionController extends GUIContainer {
             wiz.attachNumberAttributes(numberAttrs);
             
             Consumer<WizardData> cons = (data) -> {
-                myMainModel.createDrawableGameElement(data);
-                wiz.getStage().close();
+                Optional<DrawableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse().getDrawableGameElementStates()
+                        .stream().filter(element -> element.getName().equals(data.getValueByKey(WizardDataType.NAME))).findFirst();
+                if (sameElementExistsOption.isPresent()) {
+                    wiz.setErrorMesssage("A Drawable Game Element with this name already exists");
+                }
+                else {
+                    myMainModel.createDrawableGameElement(data);
+                    wiz.getStage().close();
+                }
             };
             wiz.setSubmit(cons);
         };

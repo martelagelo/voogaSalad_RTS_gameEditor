@@ -33,7 +33,7 @@ import view.WizardUtility;
  * @author Joshua, Nishad
  *
  */
-public class DrawableGameElementWizard extends Wizard {
+public class SelectableGameElementWizard extends Wizard {
 
     private final static String NAME_KEY = "Name";
     private final static String NEW_TRIGGER_KEY = "NewTrigger";
