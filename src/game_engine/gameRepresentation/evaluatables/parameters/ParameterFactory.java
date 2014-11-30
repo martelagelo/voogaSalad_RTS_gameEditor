@@ -30,8 +30,7 @@ public class ParameterFactory {
         myManager = manager;
     }
 
-    public Parameter make (ISyntaxNode<Evaluatable> currentNode, List<Evaluatable> children)
-                                                                                            throws BadParameterFormatException {
+    public Parameter<?> make (ISyntaxNode<Evaluatable<?>> currentNode, List<Evaluatable<?>> children) throws BadParameterFormatException {
         String parameterText = currentNode.token().text().trim();
         // I can haz sed(1) and cut(1)?
         parameterText = parameterText.replaceFirst("^\\$", "");
@@ -55,19 +54,19 @@ public class ParameterFactory {
      * @throws BadParameterFormatException
      */
     public Parameter<?> createParameter (String actorTag, String dataType, String attributeTag)
-                                                                                               throws BadParameterFormatException {
+                                                                                            throws BadParameterFormatException {
         ObjectOfInterestIdentifier identifier = getObjectOfInterestIdentifier(actorTag);
         return makeParameter(identifier, dataType, attributeTag);
     }
 
-    private Parameter<?> getParameter (ObjectOfInterestIdentifier identifier,
-                                       String dataType,
-                                       String attributeTag) throws BadParameterFormatException {
+    private Parameter<?> makeParameter (ObjectOfInterestIdentifier identifier,
+                                    String dataType,
+                                    String attributeTag) throws BadParameterFormatException {
         Class<?> parameterClass = getClassFromString(myParameters, dataType);
 
         try {
-            return (Parameter<?>) c.getConstructor(String.class, GameElementManager.class,
-                                                   ObjectOfInterestIdentifier.class)
+            return (Parameter<?>) parameterClass.getConstructor(String.class, GameElementManager.class,
+                                                ObjectOfInterestIdentifier.class)
                     .newInstance(attributeTag, myManager, identifier);
         }
         catch (Exception e) {
