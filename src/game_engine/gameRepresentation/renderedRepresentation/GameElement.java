@@ -189,7 +189,7 @@ public class GameElement {
     }
     
     public void setPosition (double x, double y) {
-        myState.attributes.setNumericalAttribute(StateTags.X_POS_STRING, x);
-        myState.attributes.setNumericalAttribute(StateTags.Y_POS_STRING, y);
+        myState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
+        myState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
     }
 }

@@ -8,6 +8,7 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.elementVisuals.animations.SpriteImageContainer;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
@@ -15,6 +16,7 @@ import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Observable;
 import util.SaveLoadUtility;
 
@@ -32,6 +34,7 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
+    private Map<String,SpriteImageContainer> imageConatinerMap;
 
     public MainModel () {
     }
@@ -272,6 +275,10 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
+    }
+
+    public SpriteImageContainer fetchImageContainer (String imageTag) {
+        return imageConatinerMap.get(imageTag);
     }
 
 }

@@ -92,7 +92,7 @@ public class ShittyMain extends Application {
          * Spritesheet("resources/img/graphics/units/eagleWarrior.png", new
          * Dimension(294, 98), 14));
          */
-        archerState.attributes.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
+        //archerState.attributes.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
 
         /**
          * TODO: we need to initialize these programmatically. Also, the

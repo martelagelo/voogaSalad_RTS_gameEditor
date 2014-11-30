@@ -79,17 +79,17 @@ public class GameLoop {
         Evaluator<?, ?, Boolean> collisionEvaluator =
                 new CollisionEvaluator<>("", objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter("", StateTags.X_POS_STRING,
+                new NumericAttributeParameter("", StateTags.X_POSITION,
                                               null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
-                new NumericAttributeParameter("", StateTags.Y_POS_STRING, null,
+                new NumericAttributeParameter("", StateTags.Y_POSITION, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> xVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.X_VEL, null,
+                new NumericAttributeParameter("", StateTags.X_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.Y_VEL, null,
+                new NumericAttributeParameter("", StateTags.Y_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> xAddEvaluator =
                 new SubtractionAssignmentEvaluator<>("", xPosition, xVelocity);
@@ -144,9 +144,10 @@ public class GameLoop {
         myMiniMap.updateMiniMap();
     }
 
+    // TODO: what the fuck is this
     private void addPathsToRoot () {
         for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            unitPaths.addAll(SGE.getLines());
+            //unitPaths.addAll(SGE.getLines());
         }
         myVisualManager.getBackground().getChildren().addAll(unitPaths);
     }

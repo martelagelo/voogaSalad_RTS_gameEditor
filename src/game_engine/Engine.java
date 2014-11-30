@@ -1,8 +1,10 @@
 package game_engine;
 
 import game_engine.UI.InputManager;
+import game_engine.elementFactories.AnimatorFactory;
 import game_engine.elementFactories.GameElementFactory;
 import game_engine.elementFactories.LevelFactory;
+import game_engine.elementFactories.VisualizerFactory;
 import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
 import game_engine.gameRepresentation.renderedRepresentation.Level;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
@@ -16,8 +18,8 @@ import gamemodel.exceptions.DescribableStateException;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import org.json.JSONException;
 import javafx.scene.Group;
+import org.json.JSONException;
 import application.ShittyMain;
 
 
@@ -32,20 +34,27 @@ public class Engine extends Observable implements Observer {
 
     private MainModel myMainModel;
     private GameLoop myGameLoop;
+
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
     private InputManager myInputManager;
+
+    // TODO : move into visual manager
     private MiniMap myMiniMap;
+
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
     private EvaluatableFactory myEvaluatableFactory;
+    private VisualizerFactory myVisualizerFactory;
 
     public Engine (MainModel mainModel) throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
         myInputManager = new InputManager();
         myEvaluatableFactory = new EvaluatableFactory();
+        myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
         myElementFactory =
-                new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory);
+                new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
+                                       myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
 
         // TODO hard-coding the visual representation for now, should remove this dependency

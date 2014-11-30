@@ -4,15 +4,15 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
-import game_engine.visuals.AnimationPlayer;
-import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
-import game_engine.visuals.NullAnimationSequence;
-
+import game_engine.visuals.elementVisuals.Visualizer;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
+import game_engine.visuals.elementVisuals.animations.NullAnimationSequence;
+import game_engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
+import game_engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -30,15 +30,10 @@ import javafx.scene.layout.VBox;
  *
  */
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
-    // TODO this must be removed...
-    final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
+
     private DrawableGameElementState drawableState;
-    protected AnimationPlayer myAnimation;
-    protected Group myDisplay;
-    protected VBox myDisplayVBox;
-    private Image mySelectedImage;
-    private ImageView mySelectedImageView;
-    private AnimationSequence myCurrentAnimation;
+    private Visualizer myVisualizer;
+
 
     /**
      * Create a drawable game element from the given state
@@ -50,34 +45,14 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      *            be passed into the element)
      */
     public DrawableGameElement (DrawableGameElementState state,
-            Map<String, List<Evaluatable<?>>> actions, ResourceBundle actionTypes) {
+            Map<String, List<Evaluatable<?>>> actions, ResourceBundle actionTypes, Visualizer visualizer) {
         super(state, actions, actionTypes);
-        myCurrentAnimation = new NullAnimationSequence();
         drawableState = state;
-        // TODO no longer spritesheet object
-        // Spritesheet spritesheet = state.getSpritesheet();
-        try {
-            // TODO remove this. testing only
-            /*
-             * myAnimation =
-             * 
-             * new AnimationPlayer(new Image(spritesheet.imageTag),
-             * spritesheet.frameDimensions, spritesheet.numCols);
-             */
-        } catch (Exception e) {
-            // System.out.println("No spritesheet set for game element. Testing?");
-        }
-        myDisplay = new Group();
-        myDisplayVBox = new VBox(1);
-        // TODO undo for testing only
-        try {
-            mySelectedImage = new Image(SELECT_ARROW_URL);
-            mySelectedImageView = new ImageView(mySelectedImage);
-            initializeDisplay();
-        } catch (Exception e) {
-            // do nothing
-        }
+        myVisualizer = visualizer;
 
+        // TODO: remove, this is for testing only
+        AttributeDisplayer xPosBar = new AttributeBarDisplayer(drawableState.attributes, StateTags.X_POSITION, 0, 500);
+        myVisualizer.addWidget(xPosBar);
     }
 
     /**
@@ -86,45 +61,17 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     @Override
     public void update () {
         super.update();
-        myAnimation.setAnimation(myCurrentAnimation);
-        myAnimation.update();
+        myVisualizer.update();
     }
 
     /**
      * Update the element's image location based on its x and y position
      */
     protected void updateImageLocation () {
-        myDisplay.setLayoutX(getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
+        myVisualizer.getNode().setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
+        myVisualizer.getNode().setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
     }
 
-    /**
-     * Set the element's animation to a given sequence
-     * 
-     * @param animation
-     *            the animation sequence to set
-     */
-    public void setAnimation (AnimationSequence animation) {
-        myAnimation.setAnimation(animation);
-    }
-
-    /**
-     * @return the animation that is currently being displayed by the element
-     */
-    public AnimationSequence getAnimation () {
-        return myCurrentAnimation;
-    }
-
-    /**
-     * Set the animation currently being played by the drawable game element to
-     * the animation with the given name
-     * 
-     * @param animationName
-     *            the name of the animation to set the current animation to
-     */
-    public void setAnimation (String animationName) {
-        myCurrentAnimation = drawableState.getAnimation(animationName);
-    }
 
     /**
      * Gets the node that is being displayed on the scene
@@ -133,16 +80,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      */
     @Override
     public Node getNode () {
-        return myDisplay;
-    }
-
-    /**
-     * Gets the VBox of stats of the game element
-     * 
-     * @return The VBox of the game element
-     */
-    public VBox getDisplayVBox () {
-        return myDisplayVBox;
+        return myVisualizer.getNode();
     }
 
     /**
@@ -167,14 +105,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * Initializes the display for each game element
      */
     private void initializeDisplay () {
-        myDisplay.getChildren().add(myDisplayVBox);
-        myDisplayVBox.setAlignment(Pos.TOP_CENTER);
-        myDisplayVBox.getChildren().add(mySelectedImageView);
-        mySelectedImageView.setOpacity(0.0);
-        myDisplayVBox.getChildren().add(myAnimation.getNode());
-        myDisplay.setLayoutX(getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
-        myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
-        myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
+        myVisualizer.getNode().setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
+        myVisualizer.getNode().setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
+        myVisualizer.getNode().setTranslateX(-drawableState.myAnimatorState.getViewportSize().getWidth() / 2);
+        myVisualizer.getNode().setTranslateY(-drawableState.myAnimatorState.getViewportSize().getHeight() / 2);
     }
 }
