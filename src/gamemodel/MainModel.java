@@ -16,8 +16,7 @@ import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.io.IOException;
 import java.util.Observable;
-import util.SaveLoadManager;
-
+import util.SaveLoadMediator;
 
 /**
  * Main class for the model of the game
@@ -31,10 +30,10 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-    private SaveLoadManager mySaveLoadManager;
+    private SaveLoadMediator mySaveLoadManager;
 
     public MainModel () {
-        mySaveLoadManager = new SaveLoadManager();
+        mySaveLoadManager = new SaveLoadMediator();
     }
 
     public void newGame (String gameName) {
@@ -55,8 +54,7 @@ public class MainModel extends Observable {
             myGameState = mySaveLoadManager.loadGame(game);
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // TODO Get rid of stack trace printing
             e.printStackTrace();
         }
@@ -64,8 +62,7 @@ public class MainModel extends Observable {
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
-                                                                                            throws CampaignNotFoundException,
-                                                                                            LevelNotFoundException {
+            throws CampaignNotFoundException, LevelNotFoundException {
         DescribableState state = getDescribableState(selection);
         state.updateName(name);
         state.updateDescription(description);
@@ -73,17 +70,14 @@ public class MainModel extends Observable {
     }
 
     public DescribableState getDescribableState (String[] selection)
-                                                                    throws CampaignNotFoundException,
-                                                                    LevelNotFoundException {
+            throws CampaignNotFoundException, LevelNotFoundException {
         if (selection[2].isEmpty()) {
             if (selection[1].isEmpty()) {
                 return myGameState;
-            }
-            else {
+            } else {
                 return myGameState.getCampaign(selection[1]);
             }
-        }
-        else {
+        } else {
             return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
         }
     }
@@ -93,8 +87,7 @@ public class MainModel extends Observable {
             // TODO: Save location
             String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             // TODO: eliminate stack trace printing
             e.printStackTrace();
@@ -107,8 +100,7 @@ public class MainModel extends Observable {
     }
 
     public LevelState getLevel (String campaignName, String levelName)
-                                                                      throws LevelNotFoundException,
-                                                                      CampaignNotFoundException {
+            throws LevelNotFoundException, CampaignNotFoundException {
         return getCampaign(campaignName).getLevel(levelName);
     }
 
@@ -117,7 +109,7 @@ public class MainModel extends Observable {
     }
 
     public void setCurrentLevel (String campaignName, String levelName)
-                                                                       throws DescribableStateException {
+            throws DescribableStateException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName);
         myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
         updateObservers();
@@ -163,7 +155,7 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-                                                                   CampaignNotFoundException {
+            CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
         myCurrentLevelState = new LevelState(levelName.trim());
         myCurrentCampaignState.addLevel(myCurrentLevelState);
@@ -224,7 +216,7 @@ public class MainModel extends Observable {
         myCurrentLevelState.addGoal(goal);
         updateObservers();
     }
-    
+
     public void removeGoal (int index) {
         myCurrentLevelState.getGoals().remove(index);
         updateObservers();
@@ -234,6 +226,15 @@ public class MainModel extends Observable {
         setChanged();
         notifyObservers();
         clearChanged();
+    }
+
+    /**
+     * 
+     * @param imageTag
+     * @return
+     */
+    public SpriteImageContainer getSpriteImageContainer (String imageTag) {
+        //TODO return this container 
     }
 
     /**

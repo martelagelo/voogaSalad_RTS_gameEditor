@@ -10,34 +10,38 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 
 /**
+ * This class mediates between the Model and the SaveLoadUtility. Using the
+ * composition pattern, MainModel holds a reference to this class allowing us to
+ * consolidate all file path related function calls in one place and
+ * specifically away from the model.
  * 
  * @author Rahul
  *
  */
-public class SaveLoadManager {
+public class SaveLoadMediator {
     private static final String PNG_EXT = ".png";
     private static final String JSON_EXT = ".json";
 
     /**
      * 
-     * @param filePath
+     * @param gameName
      * @return
      * @throws Exception
      */
-    public <T> T loadGame (String filePath) throws Exception {
-        return SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(filePath));
+    public <T> T loadGame (String gameName) throws Exception {
+        return SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(gameName));
 
     }
 
     /**
      * 
      * @param gameState
-     * @param filePath
+     * @param gameName
      * @return
      * @throws Exception
      */
-    public String saveGame (JSONable gameState, String filePath) throws Exception {
-        return SaveLoadUtility.save(gameState, getGameSaveLocation(filePath));
+    public String saveGame (JSONable gameState, String gameName) throws Exception {
+        return SaveLoadUtility.save(gameState, getGameSaveLocation(gameName));
 
     }
 
