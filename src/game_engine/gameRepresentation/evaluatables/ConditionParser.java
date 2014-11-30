@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.evaluatables;
 
+import game_engine.stateManaging.GameElementManager;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -37,12 +38,14 @@ import distilled_slogo.tokenization.Tokenizer;
 public class ConditionParser {
     private ITokenizer myTokenizer;
     private IParser myParser;
-    public ConditionParser() throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
+    private GameElementManager myManager;
+    public ConditionParser(GameElementManager manager) throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
+        myManager = manager;
         TokenRuleLoader tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
         myTokenizer = new Tokenizer(tokenLoader.getRules());
         GrammarRuleLoader<Evaluatable> grammarLoader = new GrammarRuleLoader<>("./resources/parsing_rules.json");
         myParser = new Parser<>(grammarLoader.getRules(),
-                new EvaluatableFactory("./resources/evaluatables.json", new ExternalFileLoader()));
+                new EvaluatableFactory().setManager(myManager));
     }
     // TODO make work
 //    public final static String REGEX_LOCATION = "resources.properties.CommentRegex";

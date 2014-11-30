@@ -28,7 +28,9 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.Dimension;
 import game_engine.visuals.Spritesheet;
 import gamemodel.GameUniverse;
+import java.io.IOException;
 import java.util.Iterator;
+import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,9 +53,12 @@ public class ConditionFunctionalityTest {
 
     /**
      * Create some test game elements for us to work with in the test
+     * @throws IOException 
+     * @throws JSONException 
+     * @throws ClassNotFoundException 
      */
     @Before
-    public void initialize () {
+    public void initialize () throws ClassNotFoundException, JSONException, IOException {
         // TODO: add universe
         GameElementFactory myFactory = new GameElementFactory(new GameUniverse(), new EvaluatableFactory());
         // Make a spritesheet to prevent error throwing

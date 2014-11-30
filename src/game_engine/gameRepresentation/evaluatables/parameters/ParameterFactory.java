@@ -1,5 +1,6 @@
 package game_engine.gameRepresentation.evaluatables.parameters;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +18,29 @@ import game_engine.stateManaging.GameElementManager;
  * @author John
  *
  */
-// TODO Fix up implementation. This is a very rough implementation of a factory pattern for the
-// parameters. Methods need comments as this class is currently a work in progress
 public class ParameterFactory {
 
     private GameElementManager myManager;
+    private Map<String, Class<?>> myParameters;
+    private Map<String, Class<?>> myObjectIdentifiers;
 
-    //FIXME
-    public ParameterFactory (Map<String, Class> myParameters, Map<String, Class> myObjectIdentifiers){
-        myManager = null;
-    }
-    public ParameterFactory (GameElementManager manager) {
+    public ParameterFactory (Map<String, Class<?>> parameters, Map<String, Class<?>> objectIdentifiers, GameElementManager manager){
+        myParameters = parameters;
+        myObjectIdentifiers = objectIdentifiers;
         myManager = manager;
+    }
+
+    public Parameter make (ISyntaxNode<Evaluatable> currentNode, List<Evaluatable> children) throws BadParameterFormatException {
+        String parameterText = currentNode.token().text().trim();
+        // I can haz sed(1) and cut(1)?
+        parameterText = parameterText.replaceFirst("^\\$", "");
+        parameterText = parameterText.replaceFirst("\\]$", "");
+        String[] splitByPeriod = parameterText.split("\\.");
+        String[] splitByOpeningBracket = splitByPeriod[1].split("\\[");
+        String actorTag = splitByPeriod[0];
+        String dataType = splitByOpeningBracket[0];
+        String attributeTag = splitByOpeningBracket[1];
+        return createParameter(actorTag, dataType, attributeTag);
     }
 
     /**
@@ -43,24 +55,17 @@ public class ParameterFactory {
      */
     public Parameter createParameter (String actorTag, String dataType, String attributeTag)
                                                                                             throws BadParameterFormatException {
-        // this.double("health")
         ObjectOfInterestIdentifier identifier = getObjectOfInterestIdentifier(actorTag);
-        return getParameter(identifier, dataType, attributeTag);
+        return makeParameter(identifier, dataType, attributeTag);
     }
 
-    private Parameter getParameter (ObjectOfInterestIdentifier identifier,
+    private Parameter makeParameter (ObjectOfInterestIdentifier identifier,
                                     String dataType,
                                     String attributeTag) throws BadParameterFormatException {
-        Map<String, Class<?>> map = new HashMap<>();
-
-        // TODO build this map using reflection from a properties file
-        map.put("double", NumericAttributeParameter.class);
-        map.put("string", StringAttributeParameter.class);
-
-        Class<?> c = getClassFromString(map, dataType);
+        Class<?> parameterClass = getClassFromString(myParameters, dataType);
 
         try {
-            return (Parameter) c.getConstructor(String.class, GameElementManager.class,
+            return (Parameter) parameterClass.getConstructor(String.class, GameElementManager.class,
                                                 ObjectOfInterestIdentifier.class)
                     .newInstance(attributeTag, myManager, identifier);
         }
@@ -70,18 +75,10 @@ public class ParameterFactory {
     }
 
     private ObjectOfInterestIdentifier getObjectOfInterestIdentifier (String actorTag)
-                                                                                      throws BadParameterFormatException {
-        Map<String, Class<?>> map = new HashMap<>();
-
-        // TODO build this map using reflection from the properties file
-        map.put("this", ActorObjectIdentifier.class);
-        map.put("other", ActeeObjectIdentifier.class); // TODO this regex doesn't work
-        map.put("^[A-Z].*", GlobalObjectIdentifier.class);
-
-        Class<?> c = getClassFromString(map, actorTag);
-
+            throws BadParameterFormatException {
+        Class<?> identifierClass = getClassFromString(myObjectIdentifiers, actorTag);
         try {
-            return (ObjectOfInterestIdentifier) c.newInstance();
+            return (ObjectOfInterestIdentifier) identifierClass.newInstance();
         }
         catch (Exception e) {
             throw new BadParameterFormatException("actor tag unrecognized");
@@ -98,8 +95,5 @@ public class ParameterFactory {
         return c;
     }
 
-    public Parameter make (ISyntaxNode<Evaluatable> currentNode, List<Evaluatable> children) {
-        return null;
-    }
 
 }

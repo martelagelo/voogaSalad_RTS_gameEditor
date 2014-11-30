@@ -25,6 +25,7 @@
     },
     "identifiers": {
         "this": "ActorObjectIdentifier",
-        "other": "ActeeObjectIdentifier"
+        "other": "ActeeObjectIdentifier",
+        "^[A-Z].*": "GlobalObjectIdentifier"
     }
 }

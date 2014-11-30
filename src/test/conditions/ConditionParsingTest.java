@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 import distilled_slogo.tokenization.IToken;
@@ -28,10 +29,12 @@ public class ConditionParsingTest {
      * Set up the parser, grab a reference to all of its methods and set them to be public
      * @throws InvalidRulesException 
      * @throws IOException 
+     * @throws JSONException 
+     * @throws ClassNotFoundException 
      */
     @Before
-    public void setUpParser () throws IOException, InvalidRulesException {
-        myParser = new ConditionParser();
+    public void setUpParser () throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
+        myParser = new ConditionParser(null);
         myMethods = myParser.getClass().getDeclaredMethods();
         for (Method method : myMethods) {
             method.setAccessible(true);
