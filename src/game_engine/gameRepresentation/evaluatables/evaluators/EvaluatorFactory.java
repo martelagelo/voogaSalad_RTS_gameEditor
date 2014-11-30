@@ -31,7 +31,11 @@ public class EvaluatorFactory {
     private Evaluator<?,?,?> makeEvaluatorWithArguments(ISyntaxNode<Evaluatable<?>> currentNode, Class<?> evaluator, List<Evaluatable<?>> children) throws EvaluatorCreationException {
         try {
             Constructor<?> constructor = evaluator.getConstructor(String.class, Evaluatable.class, Evaluatable.class);
-            return (Evaluator<?,?,?>) constructor.newInstance(currentNode.token().text(), children.get(0), children.get(1));
+            Evaluatable<?> lastChild = null;
+            if (children.size() > 1) {
+                lastChild = children.get(1);
+            }
+            return (Evaluator<?,?,?>) constructor.newInstance(currentNode.token().text(), children.get(0), lastChild);
         }
         catch (IllegalAccessException | NoSuchMethodException | SecurityException | InstantiationException | IllegalArgumentException | InvocationTargetException e) {
             throw new EvaluatorCreationException(e.getMessage());
