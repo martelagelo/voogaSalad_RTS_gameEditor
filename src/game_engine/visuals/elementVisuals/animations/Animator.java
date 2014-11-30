@@ -54,7 +54,9 @@ public class Animator implements Updatable {
         myState = state;
         attributesOfInterest = attributes;
 
-        mySprite = new ImageView(myImages.getSpritesheet());
+        Image spritesheet = myImages.getSpritesheet();
+        mySpritesheetBounds = getImageBounds(spritesheet);
+        mySprite = new ImageView(spritesheet);
         String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
         mySpriteTeamOverlay = new ImageView(myImages.getTeamColorSheet(teamColor));
         mySpriteDisplay.getChildren().add(mySprite);
@@ -115,6 +117,7 @@ public class Animator implements Updatable {
         }
     }
 
+    //TODO is there a better way?
     private AnimationTag determineAnimationType () {
         double xVelocity =
                 attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY).doubleValue();
