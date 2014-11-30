@@ -1,10 +1,11 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import javafx.scene.Node;
 import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 import game_engine.gameRepresentation.stateRepresentation.AnimatorState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
-import game_engine.visuals.elementVisuals.AnimationSequence;
-import game_engine.visuals.elementVisuals.NullAnimationSequence;
+import game_engine.visuals.Displayable;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
 
 
 /**
@@ -15,7 +16,7 @@ import game_engine.visuals.elementVisuals.NullAnimationSequence;
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements Boundable {
+public class DrawableGameElementState extends GameElementState implements Boundable, Displayable {
     
     private AnimatorState myAnimatorState;
     private double[] myBounds;
@@ -76,6 +77,13 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      */
     public void setBounds (double[] bounds) {
         myBounds = bounds;
+    }
+
+
+    @Override
+    public Node getNode () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

@@ -1,7 +1,7 @@
 package test.animations;
 
 import game_engine.visuals.Dimension;
-import game_engine.visuals.elementVisuals.Animator;
+import game_engine.visuals.elementVisuals.animations.Animator;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

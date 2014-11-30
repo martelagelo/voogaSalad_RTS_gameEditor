@@ -1,5 +1,6 @@
-package game_engine.visuals.elementVisuals;
+package game_engine.visuals.elementVisuals.animations;
 
+import java.util.List;
 import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 
@@ -7,7 +8,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Upd
  * A basic animation. Keeps track of progress, the frame bounds, and the
  * animation that will be played after it
  *
- * @author Zachary Bears, Rahul Harikrishnan
+ * @author Zachary Bears, Rahul Harikrishnan, Steve
  *
  */
 public class AnimationSequence implements Updatable {
@@ -15,7 +16,7 @@ public class AnimationSequence implements Updatable {
     private int myStartFrame;
     private int myStopFrame;
     private int myCurrentFrame;
-    private AnimationTag myName;
+    private List<AnimationTag> myTags;
 
 
     private AnimationSequence myNextAnimation;
@@ -32,7 +33,7 @@ public class AnimationSequence implements Updatable {
      * @param stopFrame
      *            the stop frame of the animation
      */
-    public AnimationSequence (AnimationTag name, int startFrame, int stopFrame) {
+    public AnimationSequence (List<AnimationTag> name, int startFrame, int stopFrame) {
         this(name, startFrame, stopFrame, new NullAnimationSequence());
         mySlownessMultiplier = 1; // TODO: wtf is this
 
@@ -45,7 +46,7 @@ public class AnimationSequence implements Updatable {
      *            a multiplier for the speed of the animation. Must be less than
      *            1.
      */
-    public AnimationSequence (AnimationTag name, int startFrame, int stopFrame, boolean repeats,
+    public AnimationSequence (List<AnimationTag> name, int startFrame, int stopFrame, boolean repeats,
             double slownessMultiplier) {
         this(name, startFrame, stopFrame);
         if (slownessMultiplier < 1) {
@@ -58,12 +59,12 @@ public class AnimationSequence implements Updatable {
      *
      * @param nextAnimation
      */
-    public AnimationSequence (AnimationTag name, int startFrame, int stopFrame,
+    public AnimationSequence (List<AnimationTag> name, int startFrame, int stopFrame,
             AnimationSequence nextAnimation) {
         myStartFrame = startFrame;
         myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
-        myName = name;
+        myTags = name;
         mySlownessMultiplier = 1;
         myNextAnimation = nextAnimation;
     }
@@ -123,7 +124,7 @@ public class AnimationSequence implements Updatable {
         return myCurrentFrame;
     }
     
-    public AnimationTag getMyName () {
-        return myName;
+    public List<AnimationTag> getMyName () {
+        return myTags;
     }
 }

@@ -1,15 +1,15 @@
 package game_engine.gameRepresentation.renderedRepresentation;
 
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.renderedRepresentation.attributeModules.AttributeBarDisplayer;
-import game_engine.gameRepresentation.renderedRepresentation.attributeModules.AttributeDisplayer;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.Displayable;
-import game_engine.visuals.elementVisuals.Animator;
-import game_engine.visuals.elementVisuals.AnimationSequence;
-import game_engine.visuals.elementVisuals.NullAnimationSequence;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
+import game_engine.visuals.elementVisuals.animations.Animator;
+import game_engine.visuals.elementVisuals.animations.NullAnimationSequence;
+import game_engine.visuals.elementVisuals.widgets.AttributeBarDisplayer;
+import game_engine.visuals.elementVisuals.widgets.AttributeDisplayer;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;

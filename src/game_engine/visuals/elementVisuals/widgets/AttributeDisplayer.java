@@ -1,10 +1,10 @@
-package game_engine.gameRepresentation.renderedRepresentation.attributeModules;
+package game_engine.visuals.elementVisuals.widgets;
 
+import java.util.function.Consumer;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.AttributeContainer;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
-import game_engine.visuals.Displayable;
 
 
 /**
@@ -14,10 +14,10 @@ import game_engine.visuals.Displayable;
  * @author Zach
  *
  */
-public abstract class AttributeDisplayer implements Displayable, Updatable {
+public abstract class AttributeDisplayer implements Updatable {
 
     private Group myGroup;
-    private GameElement myElementOfInterest;
+    private AttributeContainer attributesOfInterest;
     private String myNumericParameterTag;
     private double myMinValue;
     private double myMaxValue;
@@ -25,33 +25,31 @@ public abstract class AttributeDisplayer implements Displayable, Updatable {
     /**
      * Create an attribute displayer
      * 
-     * @param elementOfInterest the element whose attribute will be reflected
+     * @param attributes the element whose attribute will be reflected
      * @param numericParameterTag the tag of the numeric parameter to display
      * @param minValue the min value of the parameter
      * @param maxValue the max value of the parameter
      */
-    public AttributeDisplayer (GameElement elementOfInterest,
+    public AttributeDisplayer (AttributeContainer attributes,
                                String numericParameterTag,
                                double minValue,
                                double maxValue) {
         myGroup = createDisplay();
-        myElementOfInterest = elementOfInterest;
+        attributesOfInterest = attributes;
         myNumericParameterTag = numericParameterTag;
         myMinValue = minValue;
         myMaxValue = maxValue;
     }
-
-    @Override
-    public boolean update () {
-        updateDisplay(myElementOfInterest.getNumericAttribute(myNumericParameterTag).doubleValue(),
-                      myMinValue,
-                      myMaxValue);
-        return true;
+    
+    public void registerNode (Consumer<Node> registerFunction) {
+        registerFunction.accept(myGroup);
     }
 
     @Override
-    public Node getNode () {
-        return myGroup;
+    public boolean update () {
+        updateDisplay(attributesOfInterest.getNumericalAttribute(myNumericParameterTag)
+                .doubleValue(), myMinValue, myMaxValue);
+        return true;
     }
 
     /**

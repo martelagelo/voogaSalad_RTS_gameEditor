@@ -1,6 +1,6 @@
-package game_engine.gameRepresentation.renderedRepresentation.attributeModules;
+package game_engine.visuals.elementVisuals.widgets;
 
-import game_engine.gameRepresentation.renderedRepresentation.GameElement;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.AttributeContainer;
 import javafx.scene.Group;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * A displaying module that displays an attribute in a bar-like form
  * 
- * @author Zach
+ * @author Zach, Steve
  *
  */
 public class AttributeBarDisplayer extends AttributeDisplayer {
@@ -19,21 +19,20 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
     public final static String BG_COLOR = "Green";
     private Rectangle myAttributeRectangle;
 
-    public AttributeBarDisplayer (GameElement elementOfInterest,
+    public AttributeBarDisplayer (AttributeContainer attributes,
                                   String numericParameterTag,
                                   double minValue,
                                   double maxValue) {
-        super(elementOfInterest, numericParameterTag, minValue, maxValue);
-        // TODO Auto-generated constructor stub
+        super(attributes, numericParameterTag, minValue, maxValue);
     }
 
     @Override
     protected Group createDisplay () {
         Group group = new Group();
         Rectangle r = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
-        r.setFill(Paint.valueOf("Red"));
+        r.setFill(Paint.valueOf(FG_COLOR));
         myAttributeRectangle = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
-        myAttributeRectangle.setFill(Paint.valueOf("Green"));
+        myAttributeRectangle.setFill(Paint.valueOf(BG_COLOR));
         group.getChildren().add(r);
         group.getChildren().add(myAttributeRectangle);
         return group;
