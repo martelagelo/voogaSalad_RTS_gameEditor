@@ -1,0 +1,5 @@
+<map id="gamemodel.MainModel.createSelectableGameElement" name="gamemodel.MainModel.createSelectableGameElement">
+<area shape="rect" id="node2" href="$d9/d7e/classgamemodel_1_1_game_universe.html#abe2200207e9137e1b53207d4e1950cd6" title="gamemodel.GameUniverse.add\lSelectableGameElementState" alt="" coords="315,5,541,46"/>
+<area shape="rect" id="node3" href="$db/dca/classgamemodel_1_1_game_element_state_factory.html#a650f6af6f37627cd3e05511a1f96cac8" title="gamemodel.GameElementState\lFactory.createSelectableGameElementState" alt="" coords="275,70,581,111"/>
+<area shape="rect" id="node4" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a5db4a89800dd1f66ba1ef5d2a151eadb" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getGameUniverse" alt="" coords="270,135,586,177"/>
+</map>

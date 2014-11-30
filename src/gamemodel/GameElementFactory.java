@@ -11,7 +11,36 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
  *
  */
 public class GameElementFactory {
-
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * TODO: DELETE THIS CLASS 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
     // private Map<String, String> myStringAttributes = new HashMap<>();
     // private Map<String, Number> myNumberAttributes = new HashMap<>();
     // private Map<String, String> myTriggers = new HashMap<>();

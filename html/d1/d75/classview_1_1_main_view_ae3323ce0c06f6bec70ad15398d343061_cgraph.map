@@ -1,0 +1,8 @@
+<map id="view.MainView.launchScreen" name="view.MainView.launchScreen">
+<area shape="rect" id="node2" href="$d0/df3/classview_1_1_g_u_i_screen.html#aa3bd2694a7f1db074ac70109c5d80fa3" title="view.GUIScreen.attachScene\lHandler" alt="" coords="271,5,476,46"/>
+<area shape="rect" id="node3" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="256,70,491,111"/>
+<area shape="rect" id="node4" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html#a9e203d0832fe3c0cf44329aa92660dff" title="view.GUIController.getRoot" alt="" coords="279,136,468,163"/>
+<area shape="rect" id="node5" href="$d1/d44/classview_1_1_g_u_i_container.html#aa9bf996d090f6241a22f98726fe4b72b" title="view.GUIContainer.setModel" alt="" coords="274,187,473,213"/>
+<area shape="rect" id="node6" href="$d1/d44/classview_1_1_g_u_i_container.html#a68d9f4c62e3412c4af3f5aecfacd801d" title="view.GUIContainer.update" alt="" coords="281,237,466,264"/>
+<area shape="rect" id="node7" href="$d1/d44/classview_1_1_g_u_i_container.html#a9918ff17def85dc172179e0a907d36a6" title="view.GUIContainer.update" alt="" coords="539,237,725,264"/>
+</map>

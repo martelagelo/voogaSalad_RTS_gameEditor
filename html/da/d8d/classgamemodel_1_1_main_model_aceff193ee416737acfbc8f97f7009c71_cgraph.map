@@ -1,0 +1,5 @@
+<map id="gamemodel.MainModel.loadGame" name="gamemodel.MainModel.loadGame">
+<area shape="rect" id="node2" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a6f29506b70f4a31135a03b9b011af828" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getCampaigns" alt="" coords="296,5,589,46"/>
+<area shape="rect" id="node3" href="$da/d8d/classgamemodel_1_1_main_model.html#aa186004c65880e30cd920500b77c0fde" title="gamemodel.MainModel.getGame\lSaveLocation" alt="" coords="325,70,560,111"/>
+<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#ab3aad60d0ba0fc214f02016621abc9a6" title="util.SaveLoadUtility.load\lResource" alt="" coords="356,135,529,177"/>
+</map>

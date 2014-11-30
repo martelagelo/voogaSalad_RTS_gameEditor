@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+import org.json.JSONException;
 import game_engine.Engine;
 import gamemodel.MainModel;
 import javafx.stage.Stage;
@@ -21,9 +23,14 @@ public class Vooga {
     public Vooga (Stage stage) {
         myMainModel = new MainModel();
         myMainView = new MainView(stage, myMainModel);
-        myGameEngine = new Engine(myMainModel);
-        // TODO: uncomment
-        // myMainModel.addObserver(myGameEngine);
+        try {
+            myGameEngine = new Engine(myMainModel);
+        }
+        catch (ClassNotFoundException | JSONException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        myMainModel.addObserver(myGameEngine);
         myMainModel.addObserver(myMainView);
     }
 

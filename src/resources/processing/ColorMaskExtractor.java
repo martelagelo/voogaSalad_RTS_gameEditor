@@ -108,7 +108,7 @@ public class ColorMaskExtractor {
             public final int filterRGB (int x, int y, int rgb) {
                 Color original = new Color(rgb,true);
                 float[] hsbRepresentation =
-                        original.RGBtoHSB(original.getRed(), original.getGreen(),
+                        Color.RGBtoHSB(original.getRed(), original.getGreen(),
                                           original.getBlue(), null);
                 hsbRepresentation[0] = desiredHue;
                 Color newColor =

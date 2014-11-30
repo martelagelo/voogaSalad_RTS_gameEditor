@@ -1,0 +1,6 @@
+<map id="editor.wizards.LevelWizard.updateData" name="editor.wizards.LevelWizard.updateData">
+<area shape="rect" id="node2" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#aa88b7fa8c660190364c8c3c06113e137" title="editor.wizards.Wizard.add\lToData" alt="" coords="323,5,506,46"/>
+<area shape="rect" id="node4" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#ac990b6545e07a6e24731e434770e9aea" title="editor.wizards.Wizard.set\lDataName" alt="" coords="325,70,504,111"/>
+<area shape="rect" id="node3" href="$dc/d23/classeditor_1_1wizards_1_1_wizard_data.html#a2de2ac096dc357a4e6951095e776809e" title="editor.wizards.WizardData.add\lDataPair" alt="" coords="573,5,787,46"/>
+<area shape="rect" id="node5" href="$dc/d23/classeditor_1_1wizards_1_1_wizard_data.html#a914bf7943e77021054547fa598c32e34" title="editor.wizards.WizardData.setName" alt="" coords="555,77,805,104"/>
+</map>

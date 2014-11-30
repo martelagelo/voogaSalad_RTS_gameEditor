@@ -3,12 +3,16 @@ package game_engine.gameRepresentation.renderedRepresentation;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
-import game_engine.visuals.AnimationPlayer;
-import game_engine.visuals.AnimationSequence;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
 import game_engine.visuals.Displayable;
-import game_engine.visuals.Spritesheet;
+import game_engine.visuals.elementVisuals.Visualizer;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
+import game_engine.visuals.elementVisuals.animations.NullAnimationSequence;
+import game_engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
+import game_engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -16,7 +20,6 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-
 
 /**
  * A game element that is capable of being drawn. Combines a game element state
@@ -26,50 +29,30 @@ import javafx.scene.layout.VBox;
  * @author Zach, Jonathan, Nishad, Rahul, John L., Michael D.
  *
  */
-public class DrawableGameElement extends GameElement implements Displayable {
+public class DrawableGameElement extends GameElement implements Displayable, Boundable {
 
-    final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
-    private DrawableGameElementState myState;
-    protected AnimationPlayer myAnimation;
-    protected Group myDisplay;
-    protected VBox myDisplayVBox;
-    private Image mySelectedImage;
-    private ImageView mySelectedImageView;
+    private DrawableGameElementState drawableState;
+    private Visualizer myVisualizer;
+
 
     /**
      * Create a drawable game element from the given state
      * 
-     * @param element
-     *        the state of the drawable element
+     * @param state
+     *            the state of the drawable element
+     * @param actions
+     *            the actions map for the game element (Created by a factory to
+     *            be passed into the element)
      */
-    public DrawableGameElement (DrawableGameElementState element,
-                                Map<String, List<Evaluatable<?>>> conditionActionPairs) {
-        super(element, conditionActionPairs);
-        myState = element;
-        Spritesheet spritesheet = element.getSpritesheet();
-        // TODO uncomment. For testing only
-        try {
-            myAnimation =
-                    new AnimationPlayer(new Image(spritesheet.imageTag),
-                                        spritesheet.frameDimensions,
-                                        spritesheet.numCols);
-        }
-        catch (Exception e) {
-            // DO nothing
-        }
+    public DrawableGameElement (DrawableGameElementState state,
+            Map<String, List<Evaluatable<?>>> actions, ResourceBundle actionTypes, Visualizer visualizer) {
+        super(state, actions, actionTypes);
+        drawableState = state;
+        myVisualizer = visualizer;
 
-        myDisplay = new Group();
-        myDisplayVBox = new VBox(1);
-        // TODO undo for testing only
-        try {
-            mySelectedImage = new Image(SELECT_ARROW_URL);
-            mySelectedImageView = new ImageView(mySelectedImage);
-            initializeDisplay();
-        }
-        catch (Exception e) {
-            // do nothing
-        }
-
+        // TODO: remove, this is for testing only
+        AttributeDisplayer xPosBar = new AttributeBarDisplayer(drawableState.attributes, StateTags.X_POSITION, 0, 500);
+        myVisualizer.addWidget(xPosBar);
     }
 
     /**
@@ -78,29 +61,17 @@ public class DrawableGameElement extends GameElement implements Displayable {
     @Override
     public void update () {
         super.update();
-        // state.update();
-        // Use polling because java.util.observable requires inheritance
-        // and javafx.beans.observable isn't serializable.
-        myAnimation.setAnimation(myState.getAnimation());
-        myAnimation.update();
+        myVisualizer.update();
     }
 
     /**
-     * Set the element's animation to a given sequence
-     * 
-     * @param animation
-     *        the animation sequence to set
+     * Update the element's image location based on its x and y position
      */
-    public void setAnimation (AnimationSequence animation) {
-        myAnimation.setAnimation(animation);
+    protected void updateImageLocation () {
+        myVisualizer.getNode().setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
+        myVisualizer.getNode().setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
     }
 
-    /**
-     * @return the current state of the element
-     */
-    public DrawableGameElementState getState () {
-        return myState;
-    }
 
     /**
      * Gets the node that is being displayed on the scene
@@ -109,16 +80,7 @@ public class DrawableGameElement extends GameElement implements Displayable {
      */
     @Override
     public Node getNode () {
-        return myDisplay;
-    }
-
-    /**
-     * Gets the VBox of stats of the game element
-     * 
-     * @return The VBox of the game element
-     */
-    public VBox getDisplayVBox () {
-        return myDisplayVBox;
+        return myVisualizer.getNode();
     }
 
     /**
@@ -127,14 +89,11 @@ public class DrawableGameElement extends GameElement implements Displayable {
      * @return the object's bounds
      */
     public double[] getBounds () {
-        return myState.getBounds();
+        return drawableState.getBounds();
     }
 
+    // TODO from here down, remove this crap
     // TODO: Fix. Move logic into group
-    public void updateImageLocation () {
-        myDisplay.setLayoutX(myState.getNumericalAttribute(StateTags.X_POS_STRING).doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(StateTags.Y_POS_STRING).doubleValue());
-    }
 
     public Point2D getLocation () {
         // TODO move positions and fix
@@ -146,18 +105,9 @@ public class DrawableGameElement extends GameElement implements Displayable {
      * Initializes the display for each game element
      */
     private void initializeDisplay () {
-        myDisplay.getChildren().add(myDisplayVBox);
-        myDisplayVBox.setAlignment(Pos.TOP_CENTER);
-        myDisplayVBox.getChildren().add(mySelectedImageView);
-        mySelectedImageView.setOpacity(0.0);
-        myDisplayVBox.getChildren().add(myAnimation.getNode());
-        myDisplay.setLayoutX(myState.getNumericalAttribute(
-                                                           StateTags.X_POS_STRING)
-                .doubleValue());
-        myDisplay.setLayoutY(myState.getNumericalAttribute(
-                                                           StateTags.Y_POS_STRING)
-                .doubleValue());
-        myDisplay.setTranslateX(-myAnimation.getDimension().getWidth() / 2);
-        myDisplay.setTranslateY(-myAnimation.getDimension().getHeight() / 2);
+        myVisualizer.getNode().setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
+        myVisualizer.getNode().setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
+        myVisualizer.getNode().setTranslateX(-drawableState.myAnimatorState.getViewportSize().getWidth() / 2);
+        myVisualizer.getNode().setTranslateY(-drawableState.myAnimatorState.getViewportSize().getHeight() / 2);
     }
 }

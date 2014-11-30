@@ -1,0 +1,4 @@
+<map id="game_engine.visuals.UI.SelectionBox.setLocation" name="game_engine.visuals.UI.SelectionBox.setLocation">
+<area shape="rect" id="node2" href="$de/d18/classgame__engine_1_1visuals_1_1_scrollable_scene.html#a4b9d92052fba7caaceb3f079905d006e" title="game_engine.visuals.Scrollable\lScene.initializeHandlers" alt="" coords="291,5,514,46"/>
+<area shape="rect" id="node3" href="$de/d18/classgame__engine_1_1visuals_1_1_scrollable_scene.html#a7ece40832b8fac4ef87045b6cc9e3e33" title="game_engine.visuals.Scrollable\lScene.ScrollableScene" alt="" coords="563,5,786,46"/>
+</map>

@@ -8,15 +8,17 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.elementVisuals.animations.SpriteImageContainer;
+import gamemodel.GameElementStateFactory;
+import gamemodel.GameUniverse;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
-
 import java.io.IOException;
+import java.util.Map;
 import java.util.Observable;
-
 import util.SaveLoadMediator;
 
 /**
@@ -32,6 +34,7 @@ public class MainModel extends Observable {
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
     private SaveLoadMediator mySaveLoadManager;
+    private Map<String,SpriteImageContainer> imageConatinerMap;
 
     public MainModel () {
         mySaveLoadManager = new SaveLoadMediator();
@@ -87,9 +90,7 @@ public class MainModel extends Observable {
         try {
             // TODO: Save location
             String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
-
         } catch (Exception e) {
-
             // TODO: eliminate stack trace printing
             e.printStackTrace();
             // throw new RuntimeException(e);
@@ -184,7 +185,6 @@ public class MainModel extends Observable {
         // TODO: figure out the actual save location for this
         try {
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
-
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, actualSaveLocation);
 
@@ -230,18 +230,6 @@ public class MainModel extends Observable {
     }
 
     /**
-     * 
-     * @param imageTag
-     * @return
-     * @throws Exception
-     */
-    public SpriteImageContainer fetchImageContainer (String imageTag) throws Exception {
-        // TODO return this container
-        SpriteImageContainer container = new SpriteImageContainer(imageTag);
-        return container;
-    }
-
-    /**
      * returns the current campaign
      * 
      * @return
@@ -267,6 +255,10 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
+    }
+
+    public SpriteImageContainer fetchImageContainer (String imageTag) {
+        return imageConatinerMap.get(imageTag);
     }
 
 }

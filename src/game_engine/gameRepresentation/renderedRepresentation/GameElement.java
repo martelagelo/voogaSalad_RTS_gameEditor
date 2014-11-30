@@ -4,11 +4,14 @@ import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.evaluatables.NullElementPair;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
@@ -20,7 +23,6 @@ import java.util.ResourceBundle;
  *
  */
 public class GameElement {
-    public final static String ACTION_TYPE_LOCATION = "resources.properties.ActionTypes";
     /**
      * The action lists map is a map of action strings to lists of possible actions. For example,
      * The String "Collision" might map to a list of actions that should be run whenever an element
@@ -29,7 +31,7 @@ public class GameElement {
      */
     private Map<String, List<Evaluatable<?>>> myActionLists;
     private GameElementState myState;
-    private ResourceBundle actionTypes;
+    protected ResourceBundle actionTypes;
 
     /**
      * Create a game element with the given state
@@ -37,10 +39,11 @@ public class GameElement {
      * @param gameElementState the state of the game element
      */
     public GameElement (GameElementState gameElementState,
-                        Map<String, List<Evaluatable<?>>> conditionActionPairs) {
+                        Map<String, List<Evaluatable<?>>> conditionActionPairs,
+                        ResourceBundle actionTypesBundle) {
         myState = gameElementState;
         myActionLists = conditionActionPairs;
-        actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
+        actionTypes = actionTypesBundle;
         createActionLists();
     }
 
@@ -49,10 +52,13 @@ public class GameElement {
      * against uninstantiated action entities at runtime.
      */
     private void createActionLists () {
-        for (String key : actionTypes.keySet())
-        {
-            if (!myActionLists.containsKey(key)) {
-                myActionLists.put(key, new ArrayList<>());
+        if (myActionLists == null) {
+            myActionLists = new HashMap<>();
+        }
+        for (String key : actionTypes.keySet()) {
+            String type = actionTypes.getString(key);
+            if (!myActionLists.containsKey(type)) {
+                myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
         }
 
@@ -84,26 +90,67 @@ public class GameElement {
      */
     public void addAction (String actionType, Evaluatable<?> action) {
         if (!myActionLists.containsKey(actionType)) {
-            myActionLists.put(actionType, new ArrayList<>());
+            myActionLists.put(actionType, new CopyOnWriteArrayList<>());
         }
         myActionLists.get(actionType).add(action);
     }
 
     /**
-     * Remove an action with the given string from the array of actions
+     * Remove the given action the array of actions
      * 
-     * @param actionType the type action to be removed
-     * @param actionString the string representation of the action to be removed
+     * @param actionID the identifier string for the action tree @see Evaluatable
      */
-    public void removeAction (String actionType, String actionString) {
-        getActionsOfType(actionType).forEachRemaining(action -> {
-            if (action.toString()
-                    .equals(actionString)) {
-                myActionLists.get(actionType)
-                        .remove(action);
-            }
-        });
+    public void removeAction (String actionID) {
+        for (String actionType : myActionLists.keySet()) {
+            getActionsOfType(actionType).forEachRemaining(action -> {
+                if (action.getID().equals(actionID)) {
+                    System.out.println("Action should be removed");
+                    myActionLists.get(actionType).remove(action);
+                }
+            });
+        }
     }
+    
+    /**
+     * Get a numeric attribute contained by the game element
+     *
+     * @param attributTag the tag of the attribute of interest
+     * @return the atribute's value or 0 if the attribute was not declared
+     */
+    public Number getNumericalAttribute (String attributeTag) {
+        return myState.attributes.getNumericalAttribute(attributeTag);
+    }
+
+    /**
+     * Set a numeric attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the value of the attribute
+     */
+    public void setNumericalAttribute (String attributeTag, Number attributeValue) {
+        myState.attributes.setNumericalAttribute(attributeTag, attributeValue);
+    }
+
+    /**
+     * Get a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @return the value of the attribute or "" if it does not exist
+     */
+    public String getTextualAttribute (String attributeTag) {
+        return myState.attributes.getTextualAttribute(attributeTag);
+    }
+
+    /**
+     * Set the value of a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the attribute's value
+     */
+    public void setTextualAttribute (String attributeTag, String attributeValue) {
+        myState.attributes.setTextualAttribute(attributeTag, attributeValue);
+    }
+
 
     /**
      * Update the element based on its internal state
@@ -128,7 +175,7 @@ public class GameElement {
      *        interested in e.g. the current unit and a unit nearby it
      */
     protected void executeAllActions (String actionKey, ElementPair elementPair) {
-        getActionsOfType(actionKey).forEachRemaining(action -> action.getValue(elementPair));
+        getActionsOfType(actionKey).forEachRemaining(action -> action.evaluate(elementPair));
     }
 
     /**
@@ -140,44 +187,9 @@ public class GameElement {
     protected void executeAllActions (String actionKey) {
         executeAllActions(actionKey, new NullElementPair());
     }
-
-    /**
-     * Get a numeric attribute contained by the game element
-     *
-     * @param attributTag the tag of the attribute of interest
-     * @return the atribute's value or 0 if the attribute was not declared
-     */
-    public Number getNumericAttribute (String attributeTag) {
-        return myState.getNumericalAttribute(attributeTag);
-    }
-
-    /**
-     * Set a numeric attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @param attributeValue the value of the attribute
-     */
-    public void setNumericAttribute (String attributeTag, Number attributeValue) {
-        myState.setNumericalAttribute(attributeTag, attributeValue);
-    }
-
-    /**
-     * Get a textual attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @return the value of the attribute or "" if it does not exist
-     */
-    public String getTextualAttribute (String attributeTag) {
-        return myState.getTextualAttribute(attributeTag);
-    }
-
-    /**
-     * Set the value of a textual attribute contained by the game element
-     *
-     * @param attributeTag the tag of the attribute
-     * @param attributeValue the attribute's value
-     */
-    public void setTextualAttribute (String attributeTag, String attributeValue) {
-        myState.setTextualAttribute(attributeTag, attributeValue);
+    
+    public void setPosition (double x, double y) {
+        myState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
+        myState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
     }
 }

@@ -1,0 +1,8 @@
+<map id="editor.EditorScreen.updateInfoBox" name="editor.EditorScreen.updateInfoBox">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a03ee385be5a20c1b4d78297d1d530ca4" title="gamemodel.MainModel.getDescribable\lState" alt="" coords="278,37,549,78"/>
+<area shape="rect" id="node5" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html#a7108656fbd1c53845de1b007500245ea" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState.getDescription" alt="" coords="249,102,578,143"/>
+<area shape="rect" id="node6" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html#a9f8b1e677c899d1ab9af302a9f4854f3" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState.getName" alt="" coords="265,167,561,209"/>
+<area shape="rect" id="node7" href="$d4/d51/classeditor_1_1_describable_info_box_controller.html#a28559e3bd64e776c451f68ad0aef116c" title="editor.DescribableInfoBox\lController.setText" alt="" coords="321,233,505,274"/>
+<area shape="rect" id="node3" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a6df7851d201fb6229f31f1c90d9794a0" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getCampaign" alt="" coords="627,5,914,46"/>
+<area shape="rect" id="node4" href="$dd/dec/classgame__engine_1_1game_representation_1_1state_representation_1_1_campaign_state.html#a55aa43b37f93e1661b90c2977e10211b" title="game_engine.gameRepresentation.state\lRepresentation.CampaignState.getLevel" alt="" coords="629,70,912,111"/>
+</map>

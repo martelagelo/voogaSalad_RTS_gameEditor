@@ -1,0 +1,5 @@
+<map id="game_engine.elementFactories.GameElementFactory.generateActions" name="game_engine.elementFactories.GameElementFactory.generateActions">
+<area shape="rect" id="node2" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#a693481f3e10e5b95613764c6a85315f4" title="game_engine.elementFactories.\lGameElementFactory.createDrawable\lGameElement" alt="" coords="337,5,599,61"/>
+<area shape="rect" id="node3" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#a1c33a1c2f91867c1c48c7cd17d110d3a" title="game_engine.elementFactories.\lGameElementFactory.createGameElement" alt="" coords="321,85,615,126"/>
+<area shape="rect" id="node4" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#ab02517baceb90b5d0c6f7a9f86ddcc8d" title="game_engine.elementFactories.\lGameElementFactory.createSelectable\lGameElement" alt="" coords="333,149,603,205"/>
+</map>

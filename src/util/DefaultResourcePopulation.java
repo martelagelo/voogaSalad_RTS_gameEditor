@@ -1,8 +1,6 @@
 package util;
 
 import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.apache.commons.io.FileUtils;
 
 /**

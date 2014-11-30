@@ -1,0 +1,8 @@
+<map id="game_engine.gameRepresentation.stateRepresentation.GameState.getCampaigns" name="game_engine.gameRepresentation.stateRepresentation.GameState.getCampaigns">
+<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#aceff193ee416737acfbc8f97f7009c71" title="gamemodel.MainModel.loadGame" alt="" coords="347,5,589,32"/>
+<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#ac7ef3a7b7923f0c52a43bac98c41418b" title="editor.EditorScreen.update\lProjectExplorer" alt="" coords="371,57,565,98"/>
+<area shape="rect" id="node3" href="$dd/d02/classview_1_1_splash_screen.html#a4ab544f7771d377db789832819fdad38" title="view.SplashScreen.setUpButtons" alt="" coords="637,5,869,32"/>
+<area shape="rect" id="node4" href="$dd/d02/classview_1_1_splash_screen.html#ae17a6b61826bb7b6cc90f510260860ab" title="view.SplashScreen.init" alt="" coords="933,5,1096,32"/>
+<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="657,64,850,91"/>
+<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="918,57,1111,98"/>
+</map>

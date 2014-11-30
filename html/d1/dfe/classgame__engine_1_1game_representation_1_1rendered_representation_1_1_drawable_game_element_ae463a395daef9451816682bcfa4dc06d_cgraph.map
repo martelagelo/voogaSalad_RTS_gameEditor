@@ -1,0 +1,11 @@
+<map id="game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement.update" name="game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement.update">
+<area shape="rect" id="node2" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#aa5c013b4e7921b161cf6bbd5392c3991" title="game_engine.visuals.Animation\lPlayer.setAnimation" alt="" coords="377,38,602,79"/>
+<area shape="rect" id="node3" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#addbbb32f262afe91ba733db1edef2ee9" title="game_engine.visuals.Animation\lPlayer.update" alt="" coords="377,103,602,145"/>
+<area shape="rect" id="node4" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a916ca3c35e0bb00df938510a7c8a9fe7" title="game_engine.visuals.Animation\lSequence.update" alt="" coords="651,5,877,46"/>
+<area shape="rect" id="node5" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a753f1ddcfa0df45516dfba1930850efb" title="game_engine.visuals.Animation\lSequence.getNextAnimation" alt="" coords="651,70,877,111"/>
+<area shape="rect" id="node7" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#ac3e631e64143baf4e749fbffab99ec52" title="game_engine.visuals.Animation\lPlayer.getViewport" alt="" coords="651,135,877,177"/>
+<area shape="rect" id="node10" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a9c6067b99259d8fb0b336ef107027bc1" title="game_engine.visuals.Animation\lSequence.getFrame" alt="" coords="651,201,877,242"/>
+<area shape="rect" id="node6" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a3ca6fdb870eb33d104c1ab73d2991c3f" title="game_engine.visuals.Animation\lSequence.reset" alt="" coords="939,70,1165,111"/>
+<area shape="rect" id="node8" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a30a627da15298901fc10675636958c8e" title="game_engine.visuals.Dimension.get\lWidth" alt="" coords="925,135,1179,177"/>
+<area shape="rect" id="node9" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="925,201,1179,242"/>
+</map>

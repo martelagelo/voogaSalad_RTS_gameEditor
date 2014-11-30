@@ -1,0 +1,7 @@
+<map id="vooga.request.forwarder.IForwarder.register" name="vooga.request.forwarder.IForwarder.register">
+<area shape="rect" id="node2" href="$d6/d2a/classtest_1_1request_1_1_request_mediator_test.html#a71acafc04f870ab4891592b89c83d373" title="test.request.RequestMediator\lTest.setup" alt="" coords="235,70,445,111"/>
+<area shape="rect" id="node3" href="$d6/d2a/classtest_1_1request_1_1_request_mediator_test.html#a3ce44cf06a1ca8b38614042f48b6df02" title="test.request.RequestMediator\lTest.testAddressConflictException" alt="" coords="501,5,739,46"/>
+<area shape="rect" id="node4" href="$d6/d2a/classtest_1_1request_1_1_request_mediator_test.html#ac2d582aae01844b42676c08296a137da" title="test.request.RequestMediator\lTest.testReceiverNotFoundException" alt="" coords="493,70,747,111"/>
+<area shape="rect" id="node5" href="$d6/d2a/classtest_1_1request_1_1_request_mediator_test.html#a678c36354cae2cbc906f69f8da4d6e0b" title="test.request.RequestMediator\lTest.testSendPingPong" alt="" coords="515,135,725,177"/>
+<area shape="rect" id="node6" href="$d6/d2a/classtest_1_1request_1_1_request_mediator_test.html#a1e05c721b8ec11ae0500baf4c68e2538" title="test.request.RequestMediator\lTest.testSendToSelf" alt="" coords="515,201,725,242"/>
+</map>

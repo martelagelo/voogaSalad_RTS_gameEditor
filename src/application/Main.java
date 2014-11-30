@@ -7,7 +7,6 @@ import view.dialog.DialogChoice;
 
 
 
-
 public class Main extends Application {
 
     @Override

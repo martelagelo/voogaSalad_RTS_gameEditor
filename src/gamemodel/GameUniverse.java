@@ -51,8 +51,8 @@ public class GameUniverse {
     }
     
     private void storeAttributes (GameElementState ges) {
-        myNumericalAttributes.addAll(ges.getNumericalAttributes());
-        myTextualAttributes.addAll(ges.getTextualAttributes());
+        myNumericalAttributes.addAll(ges.attributes.getNumericalAttributes());
+        myTextualAttributes.addAll(ges.attributes.getTextualAttributes());
     }
 
     public Set<GameElementState> getGameElementStates () {
@@ -80,21 +80,25 @@ public class GameUniverse {
     }
 
     public GameElementState getGameElementState (String elementName) {
-        List<GameElementState> matches = myGameElementStates.stream()
-                .filter(e -> (e.getName().equals(elementName))).collect(Collectors.toList());
+        List<GameElementState> matches =
+                myGameElementStates.stream().filter(e -> (e.getName().equals(elementName)))
+                        .collect(Collectors.toList());
         return (matches.size() != 0) ? matches.get(0) : null;
 
     }
 
     public DrawableGameElementState getDrawableGameElementState (String elementName) {
-        List<DrawableGameElementState> matches = myDrawableGameElementStates.stream()
-                .filter(e -> (e.getName().equals(elementName))).collect(Collectors.toList());
+        List<DrawableGameElementState> matches =
+                myDrawableGameElementStates.stream().filter(e -> (e.getName().equals(elementName)))
+                        .collect(Collectors.toList());
         return (matches.size() != 0) ? matches.get(0) : null;
     }
 
-    public SelectableGameElementState getSelectableElementState (String elementName) {
-        List<SelectableGameElementState> matches = mySelectableGameElementStates.stream()
-                .filter(e -> (e.getName().equals(elementName))).collect(Collectors.toList());
+    public SelectableGameElementState getSelectableGameElementState (String elementName) {
+        List<SelectableGameElementState> matches =
+                mySelectableGameElementStates.stream()
+                        .filter(e -> (e.getName().equals(elementName)))
+                        .collect(Collectors.toList());
         return (matches.size() != 0) ? matches.get(0) : null;
     }
 

@@ -39,7 +39,7 @@ public class SaveLoadUtility {
      * @return Java class object
      * @throws Exception
      */
-    public static <T> T loadResource (Class className, String filePath) throws Exception {
+    public static <T> T loadResource (Class<?> className, String filePath) throws Exception {
         T jsonRepresentation = (T) myGson.fromJson(new FileReader(new File(filePath)), className);
         return jsonRepresentation;
     }

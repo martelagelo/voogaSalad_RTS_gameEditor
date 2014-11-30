@@ -1,0 +1,10 @@
+<map id="game_engine.visuals.MiniMap" name="game_engine.visuals.MiniMap">
+<area shape="rect" id="node3" href="$d2/d97/classgame__engine_1_1visuals_1_1_scrollable_pane.html" title="game_engine.visuals.ScrollablePane" alt="" coords="1631,123,1884,149"/>
+<area shape="rect" id="node5" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html" title="game_engine.visuals.Scrollable\lBackground" alt="" coords="1198,6,1421,47"/>
+<area shape="rect" id="node7" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html" title="game_engine.visuals.SelectionBox" alt="" coords="243,123,485,149"/>
+<area shape="rect" id="node11" href="$df/d88/classgame__engine_1_1_u_i_1_1_input_manager.html" title="game_engine.UI.InputManager" alt="" coords="1200,240,1419,267"/>
+<area shape="rect" id="node13" href="$df/d1f/classgame__engine_1_1_u_i_1_1_mouse_manager.html" title="game_engine.UI.MouseManager" alt="" coords="250,211,478,237"/>
+<area shape="rect" id="node14" href="$da/dd3/classgame__engine_1_1_u_i_1_1_keyboard_manager.html" title="game_engine.UI.KeyboardManager" alt="" coords="509,380,755,407"/>
+<area shape="rect" id="node12" href="$de/dec/classgame__engine_1_1_u_i_1_1_click_manager.html" title="game_engine.UI.ClickManager" alt="" coords="779,240,994,267"/>
+<area shape="rect" id="node15" href="$dc/dcb/classgame__engine_1_1_u_i_1_1_mouse_drag_manager.html" title="game_engine.UI.MouseDrag\lManager" alt="" coords="785,174,988,215"/>
+</map>

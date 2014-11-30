@@ -1,0 +1,4 @@
+<map id="game_engine.UI.MouseManager" name="game_engine.UI.MouseManager">
+<area shape="rect" id="node3" href="$de/dec/classgame__engine_1_1_u_i_1_1_click_manager.html" title="game_engine.UI.ClickManager" alt="" coords="5,163,219,189"/>
+<area shape="rect" id="node4" href="$dc/dcb/classgame__engine_1_1_u_i_1_1_mouse_drag_manager.html" title="game_engine.UI.MouseDrag\lManager" alt="" coords="244,155,447,197"/>
+</map>

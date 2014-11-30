@@ -24,7 +24,7 @@ public interface ISaveLoad {
      * @return Java class object
      * @throws Exception
      */
-    public <T> T loadResource (Class className, String filePath) throws Exception;
+    public <T> T loadResource (Class<?> className, String filePath) throws Exception;
 
     /**
      * Save a JSONable object to a library file. Note ".json" extension added
