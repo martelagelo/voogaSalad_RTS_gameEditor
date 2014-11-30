@@ -34,8 +34,6 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
 
-    // TODO remove this. for testing only
-    private AttributeDisplayer xPosBar;
 
     /**
      * Create a drawable game element from the given state
@@ -52,8 +50,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         drawableState = state;
         myVisualizer = visualizer;
 
-
-        xPosBar = new AttributeBarDisplayer(drawableState.attributes, StateTags.X_POSITION, 0, 500);
+        // TODO: remove, this is for testing only
+        AttributeDisplayer xPosBar = new AttributeBarDisplayer(drawableState.attributes, StateTags.X_POSITION, 0, 500);
         myVisualizer.addWidget(xPosBar);
     }
 
