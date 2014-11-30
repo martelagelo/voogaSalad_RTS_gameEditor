@@ -1,7 +1,15 @@
 [
     {
-        "pattern": ["parameter", "evaluator", "parameter"],
-        "parent": "1",
-        "grandparent": "parameter"
+        "pattern": [
+            {"label": "function_name", "level": 1},
+            {"label": "opening_parentheses", "level": -1},
+            {"label": "parameter|result", "level": 0},
+            {"label": "comma", "level": -1},
+            {"label": "parameter|result", "level": 0},
+            {"label": "closing_parentheses", "level": -1}
+        ],
+        "additional": [
+            {"label": "result", "level": 2}
+        ]
     }
 ]

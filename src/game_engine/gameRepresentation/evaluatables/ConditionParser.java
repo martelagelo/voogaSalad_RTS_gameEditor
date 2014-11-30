@@ -37,14 +37,14 @@ import distilled_slogo.tokenization.Tokenizer;
 // TODO implement. This is a very rough class that needs a lot of work
 public class ConditionParser {
     private ITokenizer myTokenizer;
-    private IParser myParser;
+    private IParser<Evaluatable<?>> myParser;
     private GameElementManager myManager;
     public ConditionParser(GameElementManager manager) throws IOException, InvalidRulesException, ClassNotFoundException, JSONException {
         myManager = manager;
         TokenRuleLoader tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
         myTokenizer = new Tokenizer(tokenLoader.getRules());
-        GrammarRuleLoader<Evaluatable> grammarLoader = new GrammarRuleLoader<>("./resources/parsing_rules.json");
-        myParser = new Parser<>(grammarLoader.getRules(),
+        GrammarRuleLoader<Evaluatable<?>> grammarLoader = new GrammarRuleLoader<>("./resources/parsing_rules.json");
+        myParser = new Parser<Evaluatable<?>>(grammarLoader.getRules(),
                 new EvaluatableFactory().setManager(myManager));
     }
     // TODO make work
@@ -64,36 +64,35 @@ public class ConditionParser {
 //        return input.replaceAll(myBundle.getString("strip"), "");
 //    }
 //
-//    // TODO stripInput
-//    public Evaluatable parseCondition (String conditionString) {
-//        System.out.println(Pattern.matches(".*(" + myBundle.getString("operators") + ").*",
-//                                           conditionString));
-//        TokenRuleLoader tokenLoader = null;
-//        Tokenizer tokenizer = null;
-//        List<IToken> tokens = null;
-//        try {
-//            tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
-//            tokenizer = new Tokenizer(tokenLoader.getRules());
-//            tokens = tokenizer.tokenize(new StringReader(conditionString));
-//        }
-//        catch (IOException | InvalidTokenRulesException | ProcessingException e) {
-//            e.printStackTrace();
-//        }
-//        GrammarRuleLoader grammarLoader = null;
-//        IParser<String> parser = null;
-//        ISyntaxNode<String> tree = null;
-//        try {
-//            grammarLoader = new GrammarRuleLoader("./resources/parsing_rules.json");
-//            parser = new Parser<String>(grammarLoader.getRules());
-//            tree = parser.parse(tokens);
-//        }
-//        catch (IOException | InvalidRulesException | MalformedSyntaxException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        System.out.println(tree);
-//        return null;
-//    }
+    public Evaluatable parseCondition (String conditionString) {
+        //System.out.println(Pattern.matches(".*(" + myBundle.getString("operators") + ").*",
+        //                                   conditionString));
+        TokenRuleLoader tokenLoader = null;
+        Tokenizer tokenizer = null;
+        List<IToken> tokens = null;
+        try {
+            tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
+            tokenizer = new Tokenizer(tokenLoader.getRules());
+            tokens = tokenizer.tokenize(new StringReader(conditionString));
+        }
+        catch (IOException | InvalidRulesException e) {
+            e.printStackTrace();
+        }
+        GrammarRuleLoader grammarLoader = null;
+        IParser<Evaluatable<?>> parser = null;
+        ISyntaxNode<Evaluatable<?>> tree = null;
+        try {
+            grammarLoader = new GrammarRuleLoader("./resources/parsing_rules.json");
+            parser = new Parser<Evaluatable<?>>(grammarLoader.getRules(), new EvaluatableFactory());
+            tree = parser.parse(tokens);
+        }
+        catch (IOException | InvalidRulesException | MalformedSyntaxException | ClassNotFoundException | JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(tree);
+        return null;
+    }
 //
 //    /**
 //     * A method used to remove empty strings from a list that result from malformed input

@@ -19,7 +19,7 @@ import distilled_slogo.parsing.ISyntaxNode;
 import distilled_slogo.util.ExternalFileLoader;
 import distilled_slogo.util.FileLoader;
 
-public class EvaluatableFactory implements IOperationFactory<Evaluatable>{
+public class EvaluatableFactory implements IOperationFactory<Evaluatable<?>>{
     private static final String evaluatorsPackage =
             "game_engine.gameRepresentation.evaluatables.evaluators";
     private static final String parametersPackage =
@@ -77,12 +77,12 @@ public class EvaluatableFactory implements IOperationFactory<Evaluatable>{
     }
 
     @Override
-    public Evaluatable makeOperation (ISyntaxNode<Evaluatable> currentNode) {
-        List<Evaluatable> children = new ArrayList<>();
-        for (ISyntaxNode<Evaluatable> child: currentNode.children()) {
+    public Evaluatable<?> makeOperation (ISyntaxNode<Evaluatable<?>> currentNode) {
+        List<Evaluatable<?>> children = new ArrayList<>();
+        for (ISyntaxNode<Evaluatable<?>> child: currentNode.children()) {
             children.add(child.operation());
         }
-        Evaluatable operation = null;
+        Evaluatable<?> operation = null;
         try {
             operation = makeEvaluatable(currentNode, children);
         }
@@ -93,8 +93,8 @@ public class EvaluatableFactory implements IOperationFactory<Evaluatable>{
         return operation;
     }
 
-    private Evaluatable makeEvaluatable (ISyntaxNode<Evaluatable> currentNode,
-                                         List<Evaluatable> children) throws BadParameterFormatException, EvaluatorCreationException {
+    private Evaluatable<?> makeEvaluatable (ISyntaxNode<Evaluatable<?>> currentNode,
+                                         List<Evaluatable<?>> children) throws BadParameterFormatException, EvaluatorCreationException {
         if (children.size() == 0) {
             return myParameterFactory.make(currentNode, children);
         }
