@@ -79,11 +79,11 @@ public class GameLoop {
         Evaluator<?, ?, Boolean> collisionEvaluator =
                 new CollisionEvaluator<>("", objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter("", StateTags.X_POS_STRING,
+                new NumericAttributeParameter("", StateTags.X_POSITION,
                                               null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
-                new NumericAttributeParameter("", StateTags.Y_POS_STRING, null,
+                new NumericAttributeParameter("", StateTags.Y_POSITION, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> xVelocity =
                 new NumericAttributeParameter("", SelectableGameElement.X_VEL, null,

@@ -19,10 +19,10 @@ import util.JSONable;
 
 public class AnimatorState implements JSONable {
 
-    public String imageTag;
-    public Dimension viewportSize;
-    public int numCols;
-    public Map<List<AnimationTag>, AnimationSequence> animationMap;
+    private String imageTag;
+    private Dimension viewportSize;
+    private int numCols;
+    private Map<List<AnimationTag>, AnimationSequence> animationMap;
 
     /**
      * Create the Spritesheet
@@ -55,5 +55,17 @@ public class AnimatorState implements JSONable {
 
     public boolean containsAnimationSequence (List<AnimationTag> tag) {
         return animationMap.containsKey(tag);
+    }
+    
+    public String getImageTag () {
+        return imageTag;
+    }
+
+    public Dimension getViewportSize () {
+        return viewportSize;
+    }
+
+    public int getNumCols () {
+        return numCols;
     }
 }

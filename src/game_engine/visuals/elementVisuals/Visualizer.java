@@ -3,7 +3,7 @@ package game_engine.visuals.elementVisuals;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.elementVisuals.animations.Animator;
-import game_engine.visuals.elementVisuals.widgets.AttributeDisplayer;
+import game_engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
@@ -24,9 +24,9 @@ public class Visualizer implements Updatable, Displayable {
     
     public void addWidget(AttributeDisplayer widget){
         myWidgets.add(widget);
-        widget.registerNode(n -> visualRepresentation.getChildren().add(n));
+        widget.registerAsComponent(n -> visualRepresentation.getChildren().add(n));
     }
-
+    
     @Override
     public Node getNode () {
         return visualRepresentation;

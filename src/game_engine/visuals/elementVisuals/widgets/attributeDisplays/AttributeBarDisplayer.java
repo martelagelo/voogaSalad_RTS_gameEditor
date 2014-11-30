@@ -1,4 +1,4 @@
-package game_engine.visuals.elementVisuals.widgets;
+package game_engine.visuals.elementVisuals.widgets.attributeDisplays;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.AttributeContainer;
 import javafx.scene.Group;

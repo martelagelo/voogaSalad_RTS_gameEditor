@@ -10,19 +10,18 @@ package game_engine.gameRepresentation.stateRepresentation.gameElement;
  */
 // TODO move this into a config file or equivalent
 public class StateTags {
-    public static final String NAME_ATTRIBUTE_STRING = "Name";
-    public static final String TYPE_ATTRIBUTE_STRING = "Type";
-    public static final String X_POS_STRING = "xPosition";
-    public static final String Y_POS_STRING = "yPosition";
-    public static final String CAN_MOVE_STRING = "canMove";
+    public static final String NAME = "name";
+    public static final String TYPE = "type";
+    public static final String X_POSITION = "xPosition";
+    public static final String Y_POSITION = "yPosition";
+    public static final String X_VELOCITY = "xVelocity";
+    public static final String Y_VELOCITY = "yVelocity";
     public static final String RANDOM_MOVEMENT_STRING = "randomMove";
     public static final String TEAM_ID = "teamID";
-    public static final String TYPE_STRING = "type";
     public static final String MOVEMENT_SPEED = "movementSpeed";
     public static final String BLOCKING = "blocking";
     public static final String TEAM_COLOR = "teamColor";
-    public static final String X_VELOCITY = "xVelocity";
-    public static final String Y_VELOCITY = "yVelocity";
+    public static final String IS_SELECTED = "isSelected";
     public static final String CURRENT_ACTION = "currentAction"; // attack, die, decay, gather??
 
 }

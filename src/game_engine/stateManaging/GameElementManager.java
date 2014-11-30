@@ -164,7 +164,7 @@ public class GameElementManager implements Observer {
         
         GameUniverse u = new GameUniverse();
         SelectableGameElementState sges = new SelectableGameElementState(0,0);
-        sges.attributes.setTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING, "archer");
+        sges.attributes.setTextualAttribute(StateTags.NAME, "archer");
         u.addSelectableGameElementState(sges);
         
         GameElementFactory gef;

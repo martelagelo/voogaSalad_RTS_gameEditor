@@ -117,7 +117,7 @@ public class Animator implements Updatable {
         }
     }
 
-    //TODO is there a better way?
+    // TODO is there a better way?
     private AnimationTag determineAnimationType () {
         double xVelocity =
                 attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY).doubleValue();
@@ -133,10 +133,10 @@ public class Animator implements Updatable {
             return AnimationTag.MOVE;
         }
         else {
-            if(isDecaying){
+            if (isDecaying) {
                 return AnimationTag.DECAY;
             }
-            else if (isDying){
+            else if (isDying) {
                 return AnimationTag.DIE;
             }
             else if (isAttacking) {
@@ -154,10 +154,11 @@ public class Animator implements Updatable {
      * vertical traversal of frames
      */
     private Rectangle2D getViewport (int frameNumber) {
-        int colNumber = frameNumber / myState.numCols;
-        int rowNumber = frameNumber % myState.numCols;
-        return new Rectangle2D(colNumber * myState.viewportSize.getWidth(),
-                               rowNumber * myState.viewportSize.getHeight(),
-                               myState.viewportSize.getWidth(), myState.viewportSize.getHeight());
+        int colNumber = frameNumber / myState.getNumCols();
+        int rowNumber = frameNumber % myState.getNumCols();
+        return new Rectangle2D(colNumber * myState.getViewportSize().getWidth(),
+                               rowNumber * myState.getViewportSize().getHeight(), 
+                               myState.getViewportSize().getWidth(), 
+                               myState.getViewportSize().getHeight());
     }
 }

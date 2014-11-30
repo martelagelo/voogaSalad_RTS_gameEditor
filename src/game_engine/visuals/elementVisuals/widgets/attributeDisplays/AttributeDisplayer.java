@@ -1,8 +1,9 @@
-package game_engine.visuals.elementVisuals.widgets;
+package game_engine.visuals.elementVisuals.widgets.attributeDisplays;
 
-import java.util.function.Consumer;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.AttributeContainer;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
+import game_engine.visuals.elementVisuals.widgets.Widget;
+import java.util.function.Consumer;
 import javafx.scene.Group;
 import javafx.scene.Node;
 
@@ -14,7 +15,7 @@ import javafx.scene.Node;
  * @author Zach
  *
  */
-public abstract class AttributeDisplayer implements Updatable {
+public abstract class AttributeDisplayer implements Updatable, Widget {
 
     private Group myGroup;
     private AttributeContainer attributesOfInterest;
@@ -41,10 +42,11 @@ public abstract class AttributeDisplayer implements Updatable {
         myMaxValue = maxValue;
     }
     
-    public void registerNode (Consumer<Node> registerFunction) {
-        registerFunction.accept(myGroup);
+    @Override
+    public void registerAsComponent (Consumer<Node> registeringFunction) {
+        registeringFunction.accept(myGroup);
     }
-
+    
     @Override
     public boolean update () {
         updateDisplay(attributesOfInterest.getNumericalAttribute(myNumericParameterTag)
