@@ -117,7 +117,7 @@ public class Animator implements Updatable {
         }
     }
 
-    // TODO is there a better way?
+    // TODO is there a better way? make this dynamic? add an Evaluatatble?
     private AnimationTag determineAnimationType () {
         double xVelocity =
                 attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY).doubleValue();
