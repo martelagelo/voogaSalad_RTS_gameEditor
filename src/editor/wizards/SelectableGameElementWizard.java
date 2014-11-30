@@ -33,7 +33,7 @@ import view.WizardUtility;
  * @author Joshua, Nishad
  *
  */
-public class DrawableGameElementWizard extends Wizard {
+public class SelectableGameElementWizard extends Wizard {
 
     private final static String NAME_KEY = "Name";
     private final static String NEW_TRIGGER_KEY = "NewTrigger";
@@ -95,7 +95,7 @@ public class DrawableGameElementWizard extends Wizard {
     private List<String> myGlobalStringAttributes;
     private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
-    private GridLines gridLines;
+    private AnimationGrid animationGrid;
     private String imagePath;
 
     /**
@@ -192,10 +192,10 @@ public class DrawableGameElementWizard extends Wizard {
             frameHeight.setMax(image.getHeight());
             frameHeight.setValue(100.0);
 
-            gridLines =
-                    new GridLines(image.getWidth(), image.getHeight(), frameWidth.getValue(),
+            animationGrid =
+                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
                                   frameHeight.getValue());
-            spritesheet.getChildren().add(gridLines);
+            spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {
             setErrorMesssage("Unable to Load Image");
@@ -262,14 +262,14 @@ public class DrawableGameElementWizard extends Wizard {
     private void createSliderListeners () {
         frameWidth.valueProperty().addListener(e -> {
             frameWidthText.setText("" + (int) frameWidth.getValue());
-            if (gridLines != null) {
-                gridLines.changeSize(frameWidth.getValue(), gridLines.getFrameY());
+            if (animationGrid != null) {
+                animationGrid.changeSize(frameWidth.getValue(), animationGrid.getFrameY());
             }
         });
         frameHeight.valueProperty().addListener(e -> {
             frameHeightText.setText("" + (int) frameHeight.getValue());
-            if (gridLines != null) {
-                gridLines.changeSize(gridLines.getFrameX(), frameHeight.getValue());
+            if (animationGrid != null) {
+                animationGrid.changeSize(animationGrid.getFrameX(), frameHeight.getValue());
             }
         });
     }

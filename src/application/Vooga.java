@@ -30,7 +30,9 @@ public class Vooga {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        myMainModel.addObserver(myGameEngine);
+        //TODO: This still needs to be fixed to handle all of the editor changes appropriately.
+        // its currently throwing lots of null pointer exceptions which the editor doesn't know about
+//        myMainModel.addObserver(myGameEngine);
         myMainModel.addObserver(myMainView);
     }
 

@@ -2,6 +2,7 @@ package editor;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
@@ -18,8 +19,11 @@ import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
 import view.WizardUtility;
 import view.dialog.DialogBoxUtility;
-import editor.wizards.DrawableGameElementWizard;
+import editor.wizards.SelectableGameElementWizard;
 import editor.wizards.WizardData;
+import editor.wizards.WizardDataType;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+
 
 /**
  * Element Accordion Controller to handle communication between model and element accordion
@@ -31,7 +35,7 @@ public class ElementAccordionController extends GUIContainer {
 
     // private static final String TERRAIN_WIZARD = "/editor/wizards/guipanes/TerrainWizard.fxml";
     private static final String GAME_ELEMENT_WIZARD =
-            "/editor/wizards/guipanes/DrawableGameElementWizard.fxml";
+            "/editor/wizards/guipanes/SelectableGameElementWizard.fxml";
 
     private static final String UNIT_KEY = "Unit";
     private static final String TERRAIN_KEY = "Terrain";
@@ -94,7 +98,7 @@ public class ElementAccordionController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> openGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer = (c) -> {
-            DrawableGameElementWizard wiz = (DrawableGameElementWizard)
+            SelectableGameElementWizard wiz = (SelectableGameElementWizard)
                     WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
             List<String> stringAttrs = myMainModel.getGameUniverse().
                     getStringAttributes().stream().map(atr -> atr.getName())
@@ -106,8 +110,15 @@ public class ElementAccordionController extends GUIContainer {
             wiz.attachNumberAttributes(numberAttrs);
 
             Consumer<WizardData> cons = (data) -> {
-                myMainModel.createDrawableGameElement(data);
-                wiz.getStage().close();
+                Optional<SelectableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse().getSelectableGameElementStates()
+                        .stream().filter(element -> element.getName().equals(data.getValueByKey(WizardDataType.NAME))).findFirst();
+                if (sameElementExistsOption.isPresent()) {
+                    wiz.setErrorMesssage("A Selectable Game Element with this name already exists");
+                }
+                else {
+                    myMainModel.createSelectableGameElementState(data);
+                    wiz.getStage().close();
+                }
             };
             wiz.setSubmit(cons);
         };
@@ -117,7 +128,7 @@ public class ElementAccordionController extends GUIContainer {
     @Override
     public void update () {
         List<ImageElementPair> states =
-                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
+                myMainModel.getGameUniverse().getSelectableGameElementStates().stream()
                         .map( (element) -> {
                             try {
                                 // TODO GET IMAGES

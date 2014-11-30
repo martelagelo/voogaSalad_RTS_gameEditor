@@ -43,10 +43,10 @@ public class GameElementStateFactory {
     public static DrawableGameElementState createDrawableGameElementState (WizardData data,
                                                                            String imagePath) {
         //TODO: MAKE THIS WORK WITH THE NEW STUFF
-//        DrawableGameElementState state =
-//                (DrawableGameElementState) addEssentials(
-//                                                         new DrawableGameElementState(0.0, 0.0, null),
-//                                                         data);
+        DrawableGameElementState state =
+                (DrawableGameElementState) addEssentials(
+                                                         new DrawableGameElementState(0.0, 0.0, null),
+                                                         data);
 //        Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
 //                                      Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 //        Spritesheet mySpritesheet = new Spritesheet(imagePath, dim, Integer.parseInt(data
@@ -62,17 +62,25 @@ public class GameElementStateFactory {
 //                                              .getValueByKey(WizardDataType.STOP_FRAME)),
 //                                      Boolean.parseBoolean(data
 //                                              .getValueByKey(WizardDataType.ANIMATION_REPEAT)));
-//        // state.addAnimation(myAnimation);
-//
-//        // TODO: actually get bounds from the user
-//        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
-//        state.setBounds(myBounds);
+        // state.addAnimation(myAnimation);
 
-        return null;
+        // TODO: actually get bounds from the user
+        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        state.setBounds(myBounds);
+
+        return state;
     }
 
-    public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
-        return null;
+    public static SelectableGameElementState createSelectableGameElementState (WizardData data,
+                                                                               String imagePath) {
+        SelectableGameElementState state =
+                (SelectableGameElementState) addEssentials(
+                                                         new SelectableGameElementState(0.0, 0.0),
+                                                         data);
+        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        state.setBounds(myBounds);
+
+        return state;
     }
 
     public static GameElementState createGoal (WizardData data) {

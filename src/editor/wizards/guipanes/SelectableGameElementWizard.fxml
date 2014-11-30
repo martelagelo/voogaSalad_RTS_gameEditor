@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 
-<SplitPane fx:id="root" fx:controller="editor.wizards.DrawableGameElementWizard"
+<SplitPane fx:id="root" fx:controller="editor.wizards.SelectableGameElementWizard"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<items>
 		<AnchorPane fx:id="leftPane">
