@@ -1,12 +1,10 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 import game_engine.gameRepresentation.stateRepresentation.AnimatorState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
-import game_engine.visuals.AnimationSequence;
-import game_engine.visuals.NullAnimationSequence;
-
-import java.util.HashMap;
-import java.util.Map;
+import game_engine.visuals.elementVisuals.AnimationSequence;
+import game_engine.visuals.elementVisuals.NullAnimationSequence;
 
 
 /**
@@ -18,8 +16,8 @@ import java.util.Map;
  */
 
 public class DrawableGameElementState extends GameElementState implements Boundable {
+    
     private AnimatorState myAnimatorState;
-    private Map<String, AnimationSequence> myAnimations;
     private double[] myBounds;
 
     /**
@@ -31,8 +29,9 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public DrawableGameElementState (Number xPosition, Number yPosition, AnimatorState animatorState) {
         super();
         myAnimatorState = animatorState;
-        myBounds = new double[4]; // Initialize the bounds to an empty array
-        myAnimations = new HashMap<>();
+        
+        //TODO find better fixes?
+        myBounds = new double[8]; // Initialize the bounds to an empty array
 
         // These positions are stored in a numerical attribute map to allow for
         // easy retrieval of
@@ -42,6 +41,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         attributes.setNumericalAttribute(StateTags.Y_POS_STRING, yPosition);
     }
 
+    
+    // TODO : why do the next two methods exist?
     /**
      * Add an animation to the DrawableGameElementState's list of possible
      * animations
@@ -49,7 +50,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      * @param animation the animation to add
      */
     public void addAnimation (AnimationSequence animation) {
-        myAnimations.put(animation.toString(), animation);
+        myAnimatorState.addAnimationSequence(animation.getMyName(), animation);
     }
 
     /**
@@ -58,9 +59,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      * @param animationName the name of the animation sequence
      * @return the animation of interest if it exists or null if it does not
      */
-    public AnimationSequence getAnimation (String animationName) {
-        if (myAnimations.containsKey(animationName)) { return myAnimations.get(animationName); }
-        return new NullAnimationSequence();
+    public AnimationSequence getAnimation (AnimationTag tag) {
+        return myAnimatorState.getAnimationSequence(tag);
     }
 
     @Override

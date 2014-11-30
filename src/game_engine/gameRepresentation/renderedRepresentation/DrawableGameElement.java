@@ -4,15 +4,13 @@ import game_engine.gameRepresentation.evaluatables.Evaluatable;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
-import game_engine.visuals.AnimationPlayer;
-import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
-import game_engine.visuals.NullAnimationSequence;
-
+import game_engine.visuals.elementVisuals.Animator;
+import game_engine.visuals.elementVisuals.AnimationSequence;
+import game_engine.visuals.elementVisuals.NullAnimationSequence;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -33,7 +31,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     // TODO this must be removed...
     final static String SELECT_ARROW_URL = "resources/img/Red_Arrow_Down.png";
     private DrawableGameElementState drawableState;
-    protected AnimationPlayer myAnimation;
+    protected Animator myAnimation;
     protected Group myDisplay;
     protected VBox myDisplayVBox;
     private Image mySelectedImage;
@@ -54,19 +52,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         super(state, actions, actionTypes);
         myCurrentAnimation = new NullAnimationSequence();
         drawableState = state;
-        // TODO no longer spritesheet object
-        // Spritesheet spritesheet = state.getSpritesheet();
-        try {
-            // TODO remove this. testing only
-            /*
-             * myAnimation =
-             * 
-             * new AnimationPlayer(new Image(spritesheet.imageTag),
-             * spritesheet.frameDimensions, spritesheet.numCols);
-             */
-        } catch (Exception e) {
-            // System.out.println("No spritesheet set for game element. Testing?");
-        }
+
         myDisplay = new Group();
         myDisplayVBox = new VBox(1);
         // TODO undo for testing only

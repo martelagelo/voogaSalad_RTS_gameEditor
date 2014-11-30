@@ -1,4 +1,4 @@
-package game_engine.visuals;
+package game_engine.visuals.elementVisuals;
 
 import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 

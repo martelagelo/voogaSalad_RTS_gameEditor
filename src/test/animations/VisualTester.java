@@ -1,7 +1,7 @@
 package test.animations;
 
-import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.Dimension;
+import game_engine.visuals.elementVisuals.Animator;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -40,7 +40,7 @@ public class VisualTester extends Application {
     protected Group getDisplay () {
         Group group = new Group();
         Image image = new Image("resources/img/exploBig.png");
-        AnimationPlayer player = new AnimationPlayer(image, new Dimension(40, 40), 7);
+        Animator player = new Animator(image, new Dimension(40, 40), 7);
         //TODO fix animation sequence now takes an animationtag object instead of a string tag
         //AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
         //player.setAnimation(animation);

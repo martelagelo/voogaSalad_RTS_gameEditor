@@ -1,4 +1,4 @@
-package game_engine.visuals;
+package game_engine.visuals.elementVisuals;
 
 import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
@@ -16,6 +16,8 @@ public class AnimationSequence implements Updatable {
     private int myStopFrame;
     private int myCurrentFrame;
     private AnimationTag myName;
+
+
     private AnimationSequence myNextAnimation;
     private double mySlownessMultiplier;
     private int myFrameCounter;
@@ -120,10 +122,8 @@ public class AnimationSequence implements Updatable {
     public int getFrame () {
         return myCurrentFrame;
     }
-
-    //TODO: fix because no longer takes in a String name but an AnimationTag
-  /*  @Override
-    public String toString () {
+    
+    public AnimationTag getMyName () {
         return myName;
-    }*/
+    }
 }

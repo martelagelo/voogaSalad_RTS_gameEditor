@@ -1,6 +1,8 @@
-package game_engine.visuals;
+package game_engine.visuals.elementVisuals;
 
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable;
+import game_engine.visuals.Dimension;
+import game_engine.visuals.Displayable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -16,7 +18,7 @@ import com.sun.istack.internal.NotNull;
  * @author Zach
  *
  */
-public class AnimationPlayer implements Updatable, Displayable {
+public class Animator implements Updatable, Displayable {
 
     private Dimension myTileSize;
     private AnimationSequence myCurrentAnimation;
@@ -36,7 +38,7 @@ public class AnimationPlayer implements Updatable, Displayable {
      *        the number of columns across the spritesheet goes before
      *        moving to the next row
      */
-    public AnimationPlayer (Image spriteSheet, Dimension tileSize, int numCols) {
+    public Animator (Image spriteSheet, Dimension tileSize, int numCols) {
         myTileSize = tileSize;
         myNumCols = numCols;
         myDisplay = new ImageView(spriteSheet);
