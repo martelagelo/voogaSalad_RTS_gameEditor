@@ -40,14 +40,13 @@ public class ElementDropDownController implements GUIController {
     @FXML
     private TitledPane elementDropDown;
 
-    private ObservableList<String> myElementsList;
     private HashMap<String, Node> myElementsMap;
     private Consumer<String> myDeletionConsumer = (String element) -> {
     };
 
     public void addElement (String element, Node image) {
-        if (!myElementsList.contains(element)) {
-            myElementsList.add(element);
+        if (!elementListView.getItems().contains(element)) {
+            elementListView.getItems().add(element);
             myElementsMap.put(element, image);
         }
     }
@@ -65,7 +64,7 @@ public class ElementDropDownController implements GUIController {
     }
 
     private void initListView () {
-        myElementsList = FXCollections.observableArrayList();
+        ObservableList<String> myElementsList = FXCollections.observableArrayList();
         myElementsMap = new HashMap<>();
         elementListView.setItems(myElementsList);
         elementListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
@@ -88,7 +87,7 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {
             String selected = elementListView.getSelectionModel().getSelectedItem();
             if (selected != null) {
-                myElementsList.remove(selected);
+                elementListView.getItems().remove(selected);
                 myElementsMap.remove(selected);
                 myDeletionConsumer.accept(selected);
             }
@@ -99,7 +98,7 @@ public class ElementDropDownController implements GUIController {
         @Override
         public void updateItem (String item, boolean empty) {
             super.updateItem(item, empty);
-            setText(item);
+            System.out.println(item);
             if (item != null) {
                 setGraphic(myElementsMap.get(item));
             }
@@ -123,7 +122,7 @@ public class ElementDropDownController implements GUIController {
                     .getStringProperty(DELETE_SELECTED_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
 

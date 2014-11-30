@@ -28,6 +28,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 /**
  * Element Accordion Controller to handle communication between model and element accordion
  * as well as to the titled panes in the accordion
+ * 
  * @author Jonathan Tseng
  *
  */
@@ -81,12 +82,12 @@ public class ElementAccordionController extends GUIContainer {
         unitTitledPaneController.setButtonAction(openGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
             DialogBoxUtility.createMessageDialog("TODO remove shit");
-            //myMainModel.removeDrawableGameElement(elementName);
-        });
+            // myMainModel.removeDrawableGameElement(elementName);
+            });
         unitTitledPaneController.setDeleteConsumer( (String elementName) -> {
             DialogBoxUtility.createMessageDialog("TODO remove shit");
-            //myMainModel.removeSelectableGameElement(elementName);
-        });
+            // myMainModel.removeSelectableGameElement(elementName);
+            });
     }
 
     private void updateList (ElementDropDownController dropDownController,
@@ -97,37 +98,46 @@ public class ElementAccordionController extends GUIContainer {
     }
 
     private Consumer<Consumer<WizardData>> openGameElementWizard () {
-        Consumer<Consumer<WizardData>> consumer = (c) -> {
-            SelectableGameElementWizard wiz = (SelectableGameElementWizard)
-                    WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
-            List<String> stringAttrs = myMainModel.getGameUniverse().
-                    getStringAttributes().stream().map(atr -> atr.getName())
-                    .collect(Collectors.toList());
-            wiz.attachStringAttributes(stringAttrs);
-            List<String> numberAttrs = myMainModel.getGameUniverse().
-                    getNumericalAttributes().stream().map(atr -> atr.getName())
-                    .collect(Collectors.toList());
-            wiz.attachNumberAttributes(numberAttrs);
+        Consumer<Consumer<WizardData>> consumer =
+                (c) -> {
+                    SelectableGameElementWizard wiz = (SelectableGameElementWizard)
+                            WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
+                    List<String> stringAttrs = myMainModel.getGameUniverse().
+                            getStringAttributes().stream().map(atr -> atr.getName())
+                            .collect(Collectors.toList());
+                    wiz.attachStringAttributes(stringAttrs);
+                    List<String> numberAttrs = myMainModel.getGameUniverse().
+                            getNumericalAttributes().stream().map(atr -> atr.getName())
+                            .collect(Collectors.toList());
+                    wiz.attachNumberAttributes(numberAttrs);
 
-            Consumer<WizardData> cons = (data) -> {
-                Optional<SelectableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse().getSelectableGameElementStates()
-                        .stream().filter(element -> element.getName().equals(data.getValueByKey(WizardDataType.NAME))).findFirst();
-                if (sameElementExistsOption.isPresent()) {
-                    wiz.setErrorMesssage("A Selectable Game Element with this name already exists");
-                }
-                else {
-                    myMainModel.createSelectableGameElementState(data);
-                    wiz.getStage().close();
-                }
-            };
-            wiz.setSubmit(cons);
-        };
+                    Consumer<WizardData> cons =
+                            (data) -> {
+                                Optional<SelectableGameElementState> sameElementExistsOption =
+                                        myMainModel
+                                                .getGameUniverse()
+                                                .getSelectableGameElementStates()
+                                                .stream()
+                                                .filter(element -> element
+                                                                .getName()
+                                                                .equals(data.getValueByKey(WizardDataType.NAME)))
+                                                .findFirst();
+                                if (sameElementExistsOption.isPresent()) {
+                                    wiz.setErrorMesssage("A Selectable Game Element with this name already exists");
+                                }
+                                else {
+                                    myMainModel.createSelectableGameElementState(data);
+                                    wiz.getStage().close();
+                                }
+                            };
+                    wiz.setSubmit(cons);
+                };
         return consumer;
     }
 
     @Override
     public void update () {
-        List<ImageElementPair> states =
+        List<ImageElementPair> selectableStates =
                 myMainModel.getGameUniverse().getSelectableGameElementStates().stream()
                         .map( (element) -> {
                             try {
@@ -139,8 +149,20 @@ public class ElementAccordionController extends GUIContainer {
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
-        updateList(terrainTitledPaneController, states);
-        updateList(unitTitledPaneController, states);
+        List<ImageElementPair> drawableStates =
+                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
+                        .map( (element) -> {
+                            try {
+                                // TODO GET IMAGES
+                                return new ImageElementPair(null, element.getName());
+                            }
+                            catch (Exception e) {
+                                System.out.println(e.toString());
+                                return new ImageElementPair(null, "failure");
+                            }
+                        }).collect(Collectors.toList());
+        updateList(terrainTitledPaneController, drawableStates);
+        updateList(unitTitledPaneController, selectableStates);
         elementAccordion.setExpandedPane(terrainTitledPane);
     }
 

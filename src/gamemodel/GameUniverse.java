@@ -1,6 +1,5 @@
 package gamemodel;
 
-import game_engine.elementFactories.DeepCopy;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
@@ -56,7 +55,7 @@ public class GameUniverse {
     }
 
     public Set<GameElementState> getGameElementStates () {
-        return (Set<GameElementState>) DeepCopy.deepCopy(myGameElementStates);
+        return Collections.unmodifiableSet(myGameElementStates);
     }
 
     public Set<DrawableGameElementState> getDrawableGameElementStates () {
@@ -64,7 +63,7 @@ public class GameUniverse {
     }
 
     public Set<SelectableGameElementState> getSelectableGameElementStates () {
-        return (Set<SelectableGameElementState>) DeepCopy.deepCopy(mySelectableGameElementStates);
+        return Collections.unmodifiableSet(mySelectableGameElementStates);
     }
 
     public void removeSelectableGameElementState (SelectableGameElementState sges) {
