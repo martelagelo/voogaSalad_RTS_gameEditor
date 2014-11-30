@@ -4,9 +4,11 @@ import static org.junit.Assert.assertEquals;
 import game_engine.gameRepresentation.evaluatables.ConditionParser;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
+import distilled_slogo.tokenization.IToken;
 import distilled_slogo.util.InvalidRulesException;
 
 
@@ -100,9 +102,9 @@ public class ConditionParsingTest {
         testTokens(command, tokens_string);
     }
     public void testTokens(String command, String[] expected) throws IOException {
-//        List<IToken> tokens = myParser.tokenize(command);
-//        for (int i = 0; i < expected.length; i++) {
-//            assertEquals(expected[i], tokens.get(i).label());
-//        }
+        List<IToken> tokens = myParser.tokenize(command);
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], tokens.get(i).label());
+        }
     }
 }
