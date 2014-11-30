@@ -10,15 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 import view.GUIController;
 import editor.TabViewController.TriggerPair;
@@ -44,11 +39,11 @@ public class LevelTriggersViewController implements GUIController {
     @FXML
     private Button newLevelTrigger;
     @FXML
+    private Button deleteTrigger;
+    @FXML
     private ListView<String> levelTriggers;
 
     private ObservableList<String> myTriggerList;
-    
-    private BiConsumer<Integer, String> deleteConsumer; 
 
     /**
      * 
@@ -65,9 +60,9 @@ public class LevelTriggersViewController implements GUIController {
     public void setSelectedAction (BiConsumer<Integer, String> consumer) {
         levelTriggers.setOnMouseClicked(e -> itemClicked(2, e, consumer));
     }
-    
-    public void setDeleteAction(BiConsumer<Integer, String> consumer) {
-        deleteConsumer = consumer;
+
+    public void setDeleteAction (Consumer<Integer> consumer) {
+        deleteTrigger.setOnAction(e -> buttonClicked(consumer));
     }
 
     @Override
@@ -78,9 +73,6 @@ public class LevelTriggersViewController implements GUIController {
     @Override
     public void initialize () {
         initListView();
-        deleteConsumer = (Integer i, String s) -> {
-            System.out.println("delete something here");
-        };
     }
 
     private void initListView () {
@@ -108,21 +100,17 @@ public class LevelTriggersViewController implements GUIController {
      * @param mouseEvent
      * @param consumer
      */
-    private void itemClicked (int clicks, MouseEvent mouseEvent, BiConsumer<Integer, String> consumer) {
+    private void itemClicked (int clicks,
+                              MouseEvent mouseEvent,
+                              BiConsumer<Integer, String> consumer) {
         if (mouseEvent.getClickCount() == clicks) {
-            String action = levelTriggers.getSelectionModel()
-                    .getSelectedItem();
-            System.out.println(action);
-            System.out.println(levelTriggers.getSelectionModel().getSelectedIndex());
-
-            consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(), action);
+            consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(),
+                            levelTriggers.getSelectionModel().getSelectedItem());
         }
     }
-    
-    private void buttonClicked (BiConsumer<Integer, String> consumer) {
-        //TODO: position is always -1 because of nothing is selected when button is clicked
-        String action = levelTriggers.getSelectionModel().getSelectedItem();
-        consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex(), action);
+
+    private void buttonClicked (Consumer<Integer> consumer) {
+        consumer.accept(levelTriggers.getSelectionModel().getSelectedIndex());
     }
 
     /**
@@ -134,41 +122,20 @@ public class LevelTriggersViewController implements GUIController {
         triggers.forEach( (trigger) -> myTriggerList.add(trigger.myActionType + "\n" +
                                                          trigger.myAction));
     }
-    
+
     /**
      * 
      * An internal class to populate the cells within our ListView.
      *
      */
     private class TriggerListCell extends ListCell<String> {
-        HBox trigger;
-        Label label;
-        Pane pane;
-        Button button;
-        
-        public TriggerListCell () {
-            super();
-            trigger = new HBox();
-            label = new Label();
-            pane = new Pane();
-            button = new Button("X");
-            button.setOnAction(e -> buttonClicked(deleteConsumer));
-            trigger.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);       
-        }
-        
+
         @Override
         public void updateItem (String item, boolean empty) {
-            super.updateItem(item, empty);                         
-            setText(null);  // No text in label of super class
-            if (empty || item == null) {
-                setGraphic(null);
-            } else {
-                label.setText(item);
-                setGraphic(trigger);
-            }
+            super.updateItem(item, empty);
+            setText(item);
         }
-        
+
     }
-   
+
 }

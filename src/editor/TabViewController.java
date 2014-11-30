@@ -4,7 +4,6 @@ import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.LevelState;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.awt.Dimension;
@@ -42,10 +41,9 @@ public class TabViewController extends GUIContainer {
     private BorderPane tabPane;
 
     private static final String TRIGGER_WIZARD = "/editor/wizards/guipanes/TriggerWizard.fxml";
-    
-    private List<GameElementState> myLevelGoals;
+
     private LevelState myLevel;
-    
+
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
             Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
@@ -58,10 +56,11 @@ public class TabViewController extends GUIContainer {
         return consumer;
     }
 
-    public void setLevel(String campaign, String level) throws LevelNotFoundException, CampaignNotFoundException {
+    public void setLevel (String campaign, String level) throws LevelNotFoundException,
+                                                        CampaignNotFoundException {
         myLevel = myMainModel.getLevel(campaign, level);
     }
-    
+
     @Override
     public void update () {
         updateLevelTriggersView();
@@ -71,10 +70,8 @@ public class TabViewController extends GUIContainer {
      * This is the code required to filter the goals by type within the level goals view
      */
     private void updateLevelTriggersView () {
-        myLevelGoals = myLevel.getGoals();
-        
         List<TriggerPair> triggers = new ArrayList<>();
-        myLevelGoals.forEach( (ges) -> {
+        myLevel.getGoals().forEach( (ges) -> {
             ges.getActions().forEach( (actionType, actions) -> {
                 actions.forEach( (act) -> {
                     triggers.add(new TriggerPair(actionType, act));
@@ -93,47 +90,45 @@ public class TabViewController extends GUIContainer {
             myAction = action;
         }
     }
-    
+
     @Override
     public void init () {
-        System.out.println(levelTriggerController == null);
         levelTriggerController.setButtonAction(launchNestedWizard());
         levelTriggerController.setSelectedAction(modifyGoals());
         levelTriggerController.setDeleteAction(deleteGoal());
     }
-    
+
     private BiConsumer<Integer, String> modifyGoals () {
         BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
             updateLevelTriggersView();
-            Wizard wiz =  WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
+            Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
             // TODO: THIS SHOULD BE CLEANED UP TO MATCH OTHER WIZARDS
-            String[] oldStrings = oldValues.split("\n");
-            WizardData oldData = new WizardData();
-            oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
-            oldData.addDataPair(WizardDataType.ACTION, oldStrings[1]);
-            wiz.launchForEdit(oldData);
-            Consumer<WizardData> bc = (data) -> {
-                Map<String, List<String>> actions = myLevelGoals.get(position).getActions();
-                actions.clear();
-                List<String> actionValue = new ArrayList<>();
-                actionValue.add(data.getValueByKey(WizardDataType.ACTION));
-                actions.put(data.getValueByKey(WizardDataType.ACTIONTYPE), actionValue);
-                updateLevelTriggersView();
-                wiz.getStage().close();
+                String[] oldStrings = oldValues.split("\n");
+                WizardData oldData = new WizardData();
+                oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
+                oldData.addDataPair(WizardDataType.ACTION, oldStrings[1]);
+                wiz.launchForEdit(oldData);
+                Consumer<WizardData> bc =
+                        (data) -> {
+                            Map<String, List<String>> actions =
+                                    myLevel.getGoals().get(position).getActions();
+                            actions.clear();
+                            List<String> actionValue = new ArrayList<>();
+                            actionValue.add(data.getValueByKey(WizardDataType.ACTION));
+                            actions.put(data.getValueByKey(WizardDataType.ACTIONTYPE), actionValue);
+                            updateLevelTriggersView();
+                            wiz.getStage().close();
+                        };
+                wiz.setSubmit(bc);
             };
-            wiz.setSubmit(bc);
-        };
         return consumer;
     }
-    
-    private BiConsumer<Integer,String> deleteGoal () {
-        BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
-            System.out.println("#:" + position);
-            for (GameElementState ges: myLevel.getGoals()) {
-                System.out.println(ges.getActions());
+
+    private Consumer<Integer> deleteGoal () {
+        Consumer<Integer> consumer = (position) -> {
+            if (position > -1) {
+                myMainModel.removeGoal(position);
             }
-            myLevel.getGoals().remove(position);
-            updateLevelTriggersView();
         };
         return consumer;
     }

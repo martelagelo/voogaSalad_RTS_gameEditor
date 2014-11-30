@@ -13,5 +13,10 @@
 			<Double fx:constant="MAX_VALUE" />
 		</maxWidth>
 	</Button>
+	<Button fx:id="deleteTrigger" defaultButton="true" text="Delete Selected">
+		<maxWidth>
+			<Double fx:constant="MAX_VALUE" />
+		</maxWidth>
+	</Button>
 	<ListView fx:id="levelTriggers" VBox.vgrow="ALWAYS"/>
 </VBox>
