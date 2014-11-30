@@ -51,8 +51,8 @@ public class GameUniverse {
     }
     
     private void storeAttributes (GameElementState ges) {
-        myNumericalAttributes.addAll(ges.getNumericalAttributes());
-        myTextualAttributes.addAll(ges.getTextualAttributes());
+        myNumericalAttributes.addAll(ges.attributes.getNumericalAttributes());
+        myTextualAttributes.addAll(ges.attributes.getTextualAttributes());
     }
 
     public Set<GameElementState> getGameElementStates () {

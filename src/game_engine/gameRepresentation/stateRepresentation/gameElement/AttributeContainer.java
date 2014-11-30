@@ -50,6 +50,14 @@ public class AttributeContainer {
     public Number getNumericalAttribute (String name) {
         return getAttribute(myNumericalAttributes, name, new Double(0));
     }
+    
+    public Set<Attribute<Number>> getNumericalAttributes() {
+        return myNumericalAttributes;
+    }
+    
+    public Set<Attribute<String>> getTextualAttributes() {
+        return myTextualAttributes;
+    }
 
     /**
      * Add an attribute with the given values to a given collection. Used to

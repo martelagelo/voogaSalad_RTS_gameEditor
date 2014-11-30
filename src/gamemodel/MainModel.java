@@ -1,7 +1,6 @@
 package gamemodel;
 
 import editor.wizards.WizardData;
-import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
@@ -31,15 +30,10 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-<<<<<<< HEAD
-
-    public MainModel () {
-=======
     private SaveLoadManager mySaveLoadManager;
 
     public MainModel () {
         mySaveLoadManager = new SaveLoadManager();
->>>>>>> model
     }
 
     public void newGame (String gameName) {
@@ -57,11 +51,7 @@ public class MainModel extends Observable {
 
         try {
             // TODO: insert Save Load code here and instantiate myGameState
-<<<<<<< HEAD
-            myGameState = SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(game));
-=======
             myGameState = mySaveLoadManager.loadGame(game);
->>>>>>> model
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         }
@@ -100,13 +90,7 @@ public class MainModel extends Observable {
     public void saveGame () throws RuntimeException {
         try {
             // TODO: Save location
-<<<<<<< HEAD
-            String location = SaveLoadUtility
-                    .save(myGameState, getGameSaveLocation(myGameState.getName()));
-=======
             String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
->>>>>>> model
-
         }
         catch (Exception e) {
 
@@ -204,19 +188,7 @@ public class MainModel extends Observable {
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save location for this
         try {
-<<<<<<< HEAD
-            System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
-
-            String actualSaveLocation =
-                    SaveLoadUtility.saveImage(
-                                       data.getValueByKey(GameElementStateFactory.IMAGE),
-                                       saveLocation + System.getProperty("file.separator")
-                                               + data.getValueByKey(GameElementStateFactory.NAME) +
-                                               ".png");
-=======
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
-
->>>>>>> model
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, actualSaveLocation);
 
