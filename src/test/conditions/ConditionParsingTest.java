@@ -4,13 +4,10 @@ import static org.junit.Assert.assertEquals;
 import game_engine.gameRepresentation.evaluatables.ConditionParser;
 import java.io.IOException;
 import java.lang.reflect.Method;
-<<<<<<< HEAD
-=======
-import java.util.List;
 import org.json.JSONException;
->>>>>>> engine_conditions
 import org.junit.Before;
 import org.junit.Test;
+import distilled_slogo.util.InvalidRulesException;
 
 
 /**
