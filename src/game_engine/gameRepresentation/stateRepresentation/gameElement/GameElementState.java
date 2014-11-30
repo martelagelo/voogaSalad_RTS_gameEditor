@@ -35,13 +35,13 @@ public class GameElementState implements JSONable {
      * allowing for much more power on the side of engine extensibility at the
      * cost of some "parameter uncertainty" in the engine.
      */
-    public AttributeContainer myAttributes;
+    public AttributeContainer attributes;
 
     /**
      * Initialize the game element state and its internal data structures.
      */
     public GameElementState () {
-        myAttributes = new AttributeContainer();
+        attributes = new AttributeContainer();
         myActions = new HashMap<String, List<String>>();
     }
 
@@ -49,7 +49,7 @@ public class GameElementState implements JSONable {
      * @return the name of the element, if it has been set
      */
     public String getName () {
-        return myAttributes.getTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING);
+        return attributes.getTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING);
     }
 
     /**
@@ -57,7 +57,7 @@ public class GameElementState implements JSONable {
      * @return the type of the element, if it has been set
      */
     public String getType () {
-        return myAttributes.getTextualAttribute(StateTags.TYPE_ATTRIBUTE_STRING);
+        return attributes.getTextualAttribute(StateTags.TYPE_ATTRIBUTE_STRING);
     }
     
     /**

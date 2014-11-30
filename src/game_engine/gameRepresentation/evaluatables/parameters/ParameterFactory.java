@@ -35,14 +35,14 @@ public class ParameterFactory {
      * @return
      * @throws BadParameterFormatException
      */
-    public Parameter createParameter (String actorTag, String dataType, String attributeTag)
+    public Parameter<?> createParameter (String actorTag, String dataType, String attributeTag)
                                                                                             throws BadParameterFormatException {
         // this.double("health")
         ObjectOfInterestIdentifier identifier = getObjectOfInterestIdentifier(actorTag);
         return getParameter(identifier, dataType, attributeTag);
     }
 
-    private Parameter getParameter (ObjectOfInterestIdentifier identifier,
+    private Parameter<?> getParameter (ObjectOfInterestIdentifier identifier,
                                     String dataType,
                                     String attributeTag) throws BadParameterFormatException {
         Map<String, Class<?>> map = new HashMap<>();
@@ -54,7 +54,7 @@ public class ParameterFactory {
         Class<?> c = getClassFromString(map, dataType);
 
         try {
-            return (Parameter) c.getConstructor(String.class, GameElementManager.class,
+            return (Parameter<?>) c.getConstructor(String.class, GameElementManager.class,
                                                 ObjectOfInterestIdentifier.class)
                     .newInstance(attributeTag, myManager, identifier);
         }

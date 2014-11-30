@@ -23,10 +23,5 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/json-schema-validator-2.2.6-lib.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.commons.io.jar"/>
-	<classpathentry kind="lib" path="/home/mren/Documents/00DukeCurrent/308/workspace/voogasalad_TheException/lib/distilled-slogo-2.0.0.jar" sourcepath="lib/distilled-slogo-2.0.0-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/voogasalad_TheException/lib/distilled-slogo-2.0.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

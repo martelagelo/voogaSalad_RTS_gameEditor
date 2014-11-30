@@ -32,10 +32,8 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-    private SaveLoadUtility mySLUtil;
 
     public MainModel () {
-        mySLUtil = new SaveLoadUtility();
     }
 
     public void newGame (String newGameName) {
@@ -54,7 +52,7 @@ public class MainModel extends Observable {
 
         try {
             // TODO: insert Save Load code here and instantiate myGameState
-            myGameState = mySLUtil.loadResource(GameState.class, getGameSaveLocation(game));
+            myGameState = SaveLoadUtility.loadResource(GameState.class, getGameSaveLocation(game));
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         }
@@ -97,7 +95,7 @@ public class MainModel extends Observable {
     public void saveGame () throws RuntimeException {
         try {
             // TODO: Save location
-            String location = mySLUtil
+            String location = SaveLoadUtility
                     .save(myGameState, getGameSaveLocation(myGameState.getName()));
 
         }
@@ -205,7 +203,7 @@ public class MainModel extends Observable {
             System.out.println(data.getValueByKey(GameElementStateFactory.IMAGE));
 
             String actualSaveLocation =
-                    mySLUtil.saveImage(
+                    SaveLoadUtility.saveImage(
                                        data.getValueByKey(GameElementStateFactory.IMAGE),
                                        saveLocation + System.getProperty("file.separator")
                                                + data.getValueByKey(GameElementStateFactory.NAME) +

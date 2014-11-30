@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class LevelState extends DescribableState {
 
-    public AttributeContainer myAttributes;
+    public AttributeContainer attributes;
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
 
     public LevelState (String name) {
         super(name);
-        myAttributes = new AttributeContainer();
+        attributes = new AttributeContainer();
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();

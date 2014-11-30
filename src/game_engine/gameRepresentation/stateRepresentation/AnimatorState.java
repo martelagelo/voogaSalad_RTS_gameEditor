@@ -50,12 +50,4 @@ public class AnimatorState implements JSONable {
     public AnimationSequence getAnimationSequence (AnimationTag tag) {
         return (animationMap != null) ? animationMap.get(tag) : null;
     }
-    
-    public static void main(String[] args){
-        System.out.println("Max long: " + Long.MAX_VALUE);
-        System.out.println("Max log_25 long: " + (Math.log(Long.MAX_VALUE) / Math.log(25)));
-        System.out.println("Max double: " + Double.MAX_VALUE);
-        System.out.println("Max integer: " + Integer.MAX_VALUE);
-    }
-
 }

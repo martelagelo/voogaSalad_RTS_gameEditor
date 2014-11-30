@@ -4,8 +4,6 @@ import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.AnimationSequence;
-import game_engine.visuals.Dimension;
 
 /**
  * Factory that creates a SavableGameElementState based on the info args
@@ -39,12 +37,12 @@ public class GameElementStateFactory {
     public static final String ANIMATION_REPEAT = "AnimationRepeat";
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.setTextualAttribute(NAME, data.getValueByKey(NAME));
+        state.attributes.setTextualAttribute(NAME, data.getValueByKey(NAME));
         for (WizardData wiz : data.getWizardDataByType(STRING_ATTRIBUTE)) {
-            state.setTextualAttribute(wiz.getValueByKey(ATTRIBUTE), wiz.getValueByKey(VALUE));
+            state.attributes.setTextualAttribute(wiz.getValueByKey(ATTRIBUTE), wiz.getValueByKey(VALUE));
         }
         for (WizardData wiz : data.getWizardDataByType(NUMBER_ATTRIBUTE)) {
-            state.setNumericalAttribute(wiz.getValueByKey(ATTRIBUTE),
+            state.attributes.setNumericalAttribute(wiz.getValueByKey(ATTRIBUTE),
                     Double.parseDouble(wiz.getValueByKey(VALUE)));
         }
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {

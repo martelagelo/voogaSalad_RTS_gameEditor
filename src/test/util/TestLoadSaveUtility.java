@@ -1,10 +1,8 @@
 package test.util;
 
-import java.io.IOException;
 import javafx.scene.image.Image;
 import org.junit.Test;
 import util.SaveLoadUtility;
-import util.LoadSaveUtility;
 
 
 /**
@@ -15,24 +13,23 @@ import util.LoadSaveUtility;
  *
  */
 public class TestLoadSaveUtility {
-    private SaveLoadUtility myLoadSaveUtility = new SaveLoadUtility();
 
     @Test
     public void testLoadSaveFunction () throws Exception {
-        myLoadSaveUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
+        SaveLoadUtility.save(new TestCampaign("Campaign 1", "Campaign 1 Description"),
 
         "resources" + SaveLoadUtility.FILE_SEPARATOR + "game" + SaveLoadUtility.FILE_SEPARATOR
                 + "campaign");
-        TestCampaign campaign = myLoadSaveUtility.<TestCampaign> loadResource(TestCampaign.class,
+        TestCampaign campaign = SaveLoadUtility.<TestCampaign> loadResource(TestCampaign.class,
                 "resources" + SaveLoadUtility.FILE_SEPARATOR + "game"
                         + SaveLoadUtility.FILE_SEPARATOR + "campaign.json");
-        myLoadSaveUtility.loadImage("src" + SaveLoadUtility.FILE_SEPARATOR + "resources"
+        SaveLoadUtility.loadImage("src" + SaveLoadUtility.FILE_SEPARATOR + "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
                 + "exploBig.png");
-        myLoadSaveUtility.saveImage(("src/resources/img/exploBig.png"), "resources"
+        SaveLoadUtility.saveImage(("src/resources/img/exploBig.png"), "resources"
                 + SaveLoadUtility.FILE_SEPARATOR + "img" + SaveLoadUtility.FILE_SEPARATOR
                 + "explo Big Copy.png");
-        Image image = myLoadSaveUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR
+        Image image = SaveLoadUtility.loadImage("resources" + SaveLoadUtility.FILE_SEPARATOR
                 + "img" + SaveLoadUtility.FILE_SEPARATOR + "exploBigCopy.png");
         System.out.println(image.getHeight());
         TestCampaign loadedCampaign = campaign;

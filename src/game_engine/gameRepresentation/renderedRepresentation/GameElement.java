@@ -118,7 +118,7 @@ public class GameElement {
      * @return the atribute's value or 0 if the attribute was not declared
      */
     public Number getNumericalAttribute (String attributeTag) {
-        return myState.myAttributes.getNumericalAttribute(attributeTag);
+        return myState.attributes.getNumericalAttribute(attributeTag);
     }
 
     /**
@@ -128,7 +128,7 @@ public class GameElement {
      * @param attributeValue the value of the attribute
      */
     public void setNumericalAttribute (String attributeTag, Number attributeValue) {
-        myState.myAttributes.setNumericalAttribute(attributeTag, attributeValue);
+        myState.attributes.setNumericalAttribute(attributeTag, attributeValue);
     }
 
     /**
@@ -138,7 +138,7 @@ public class GameElement {
      * @return the value of the attribute or "" if it does not exist
      */
     public String getTextualAttribute (String attributeTag) {
-        return myState.myAttributes.getTextualAttribute(attributeTag);
+        return myState.attributes.getTextualAttribute(attributeTag);
     }
 
     /**
@@ -148,7 +148,7 @@ public class GameElement {
      * @param attributeValue the attribute's value
      */
     public void setTextualAttribute (String attributeTag, String attributeValue) {
-        myState.myAttributes.setTextualAttribute(attributeTag, attributeValue);
+        myState.attributes.setTextualAttribute(attributeTag, attributeValue);
     }
 
 
@@ -189,7 +189,7 @@ public class GameElement {
     }
     
     public void setPosition (double x, double y) {
-        myState.myAttributes.setNumericalAttribute(StateTags.X_POS_STRING, x);
-        myState.myAttributes.setNumericalAttribute(StateTags.Y_POS_STRING, y);
+        myState.attributes.setNumericalAttribute(StateTags.X_POS_STRING, x);
+        myState.attributes.setNumericalAttribute(StateTags.Y_POS_STRING, y);
     }
 }

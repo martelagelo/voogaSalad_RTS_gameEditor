@@ -23,9 +23,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributePa
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
-import game_engine.visuals.Dimension;
 import gamemodel.GameUniverse;
 import java.util.Iterator;
 import org.junit.Before;

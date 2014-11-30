@@ -82,7 +82,7 @@ public class Level {
      * @return the atribute's value or 0 if the attribute was not declared
      */
     public Number getNumericalAttribute (String attributeTag) {
-        return myState.myAttributes.getNumericalAttribute(attributeTag);
+        return myState.attributes.getNumericalAttribute(attributeTag);
     }
 
     /**
@@ -92,7 +92,7 @@ public class Level {
      * @param attributeValue the value of the attribute
      */
     public void setNumericalAttribute (String attributeTag, Number attributeValue) {
-        myState.myAttributes.setNumericalAttribute(attributeTag, attributeValue);
+        myState.attributes.setNumericalAttribute(attributeTag, attributeValue);
     }
 
     /**
@@ -102,7 +102,7 @@ public class Level {
      * @return the value of the attribute or "" if it does not exist
      */
     public String getTextualAttribute (String attributeTag) {
-        return myState.myAttributes.getTextualAttribute(attributeTag);
+        return myState.attributes.getTextualAttribute(attributeTag);
     }
 
     /**
@@ -112,7 +112,7 @@ public class Level {
      * @param attributeValue the attribute's value
      */
     public void setTextualAttribute (String attributeTag, String attributeValue) {
-        myState.myAttributes.setTextualAttribute(attributeTag, attributeValue);
+        myState.attributes.setTextualAttribute(attributeTag, attributeValue);
     }
 
 

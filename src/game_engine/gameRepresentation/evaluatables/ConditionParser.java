@@ -1,28 +1,5 @@
 package game_engine.gameRepresentation.evaluatables;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Stack;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import org.json.JSONException;
-import com.github.fge.jsonschema.core.exceptions.ProcessingException;
-import distilled_slogo.util.GrammarRuleLoader;
-import distilled_slogo.util.InvalidRulesException;
-import distilled_slogo.parsing.IParser;
-import distilled_slogo.parsing.InvalidGrammarRuleException;
-import distilled_slogo.parsing.MalformedSyntaxException;
-import distilled_slogo.parsing.Parser;
-import distilled_slogo.parsing.ISyntaxNode;
-import distilled_slogo.tokenization.IToken;
-import distilled_slogo.tokenization.ITokenizer;
-import distilled_slogo.tokenization.InvalidTokenRulesException;
-import distilled_slogo.util.TokenRuleLoader;
-import distilled_slogo.tokenization.Tokenizer;
 
 
 /**
@@ -34,12 +11,12 @@ import distilled_slogo.tokenization.Tokenizer;
  */
 // TODO implement. This is a very rough class that needs a lot of work
 public class ConditionParser {
-    private ITokenizer myTokenizer;
-    private IParser myParser;
-    public ConditionParser() throws IOException, InvalidRulesException {
-        TokenRuleLoader tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
-        myTokenizer = new Tokenizer(tokenLoader.getRules());
-    }
+//    private ITokenizer myTokenizer;
+//    private IParser myParser;
+//    public ConditionParser() throws IOException, InvalidRulesException {
+//        TokenRuleLoader tokenLoader = new TokenRuleLoader("./resources/token_rules.json");
+//        myTokenizer = new Tokenizer(tokenLoader.getRules());
+//    }
     // TODO make work
 //    public final static String REGEX_LOCATION = "resources.properties.CommentRegex";
 //    private ResourceBundle myBundle;
@@ -113,8 +90,8 @@ public class ConditionParser {
 //        new ArrayList<>();
 //
 //    }
-
-    public List<IToken> tokenize (String command) throws IOException {
-        return myTokenizer.tokenize(new StringReader(command));
-    }
+//
+//    public List<IToken> tokenize (String command) throws IOException {
+//        return myTokenizer.tokenize(new StringReader(command));
+//    }
 }

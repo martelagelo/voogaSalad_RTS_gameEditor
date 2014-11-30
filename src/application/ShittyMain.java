@@ -5,15 +5,11 @@ import game_engine.gameRepresentation.stateRepresentation.LevelState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
-import game_engine.visuals.AnimationSequence;
-import game_engine.visuals.Dimension;
 import game_engine.visuals.ScrollablePane;
 import game_engine.visuals.TerrainGrid;
 import gamemodel.MainModel;
-
 import java.awt.Toolkit;
 import java.util.List;
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -57,7 +53,7 @@ public class ShittyMain extends Application {
          * Dimension(312, 260), 1));
          */
         archeryRange.setBounds(archeryBounds);
-        archeryRange.setNumericalAttribute(StateTags.TEAM_ID, 1);
+        archeryRange.attributes.setNumericalAttribute(StateTags.TEAM_ID, 1);
 
         double[] bounds = { 0, 0, 40, 0, 40, 40, 0, 40 };
 
@@ -96,7 +92,7 @@ public class ShittyMain extends Application {
          * Spritesheet("resources/img/graphics/units/eagleWarrior.png", new
          * Dimension(294, 98), 14));
          */
-        archerState.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
+        archerState.attributes.setNumericalAttribute(StateTags.CAN_MOVE_STRING, 1);
 
         /**
          * TODO: we need to initialize these programmatically. Also, the

@@ -20,7 +20,7 @@ public interface ILoadSave {
      *        that resource to be loaded from
      * @return Java class object
      */
-    public <T> T loadResource (Class className, String filePath);
+    public <T> T loadResource (Class<?> className, String filePath);
 
     /**
      * Save a JSONable object to a library file
