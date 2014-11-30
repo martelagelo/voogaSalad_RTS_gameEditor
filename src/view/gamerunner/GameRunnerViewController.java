@@ -20,22 +20,30 @@ public class GameRunnerViewController extends GUIContainer {
     @FXML
     private BorderPane root;
     @FXML
-    private Pane sceneGraphPane;
+    private BorderPane sceneGraphPane;
     @FXML
     private GridPane buttonPane;
     @FXML
     private Pane statusPane;
     @FXML
-    private Pane minimapPane;
+    private BorderPane minimapPane;
 
     @Override
     public Node getRoot () {
         return root;
     }
 
+    public void attachSceneGraph (Node sceneGraph) {
+        sceneGraphPane.setCenter(sceneGraph);
+    }
+
+    public void attachMiniMap (Node miniMap) {
+        minimapPane.setCenter(miniMap);
+    }
+
     @Override
     protected void init () {
-        
+
     }
 
     @Override
