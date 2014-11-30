@@ -99,6 +99,7 @@ public class TabViewController extends GUIContainer {
         System.out.println(levelTriggerController == null);
         levelTriggerController.setButtonAction(launchNestedWizard());
         levelTriggerController.setSelectedAction(modifyGoals());
+        levelTriggerController.setDeleteAction(deleteGoal());
     }
     
     private BiConsumer<Integer, String> modifyGoals () {
@@ -121,6 +122,18 @@ public class TabViewController extends GUIContainer {
                 wiz.getStage().close();
             };
             wiz.setSubmit(bc);
+        };
+        return consumer;
+    }
+    
+    private BiConsumer<Integer,String> deleteGoal () {
+        BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
+            System.out.println("#:" + position);
+            for (GameElementState ges: myLevel.getGoals()) {
+                System.out.println(ges.getActions());
+            }
+            myLevel.getGoals().remove(position);
+            updateLevelTriggersView();
         };
         return consumer;
     }
