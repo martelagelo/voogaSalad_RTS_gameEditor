@@ -3,7 +3,6 @@ package editor;
 import java.awt.Dimension;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
@@ -21,11 +20,9 @@ import view.GUIContainer;
 import view.GUILoadStyleUtility;
 import view.WizardUtility;
 import editor.wizards.SelectableGameElementWizard;
-import editor.wizards.Wizard;
 import editor.wizards.WizardData;
 import editor.wizards.WizardDataType;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 
 
 public class ElementAccordionController extends GUIContainer {
@@ -98,13 +95,13 @@ public class ElementAccordionController extends GUIContainer {
             wiz.attachNumberAttributes(numberAttrs);
             
             Consumer<WizardData> cons = (data) -> {
-                Optional<DrawableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse().getDrawableGameElementStates()
+                Optional<SelectableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse().getSelectableGameElementStates()
                         .stream().filter(element -> element.getName().equals(data.getValueByKey(WizardDataType.NAME))).findFirst();
                 if (sameElementExistsOption.isPresent()) {
-                    wiz.setErrorMesssage("A Drawable Game Element with this name already exists");
+                    wiz.setErrorMesssage("A Selectable Game Element with this name already exists");
                 }
                 else {
-                    myMainModel.createDrawableGameElement(data);
+                    myMainModel.createSelectableGameElementState(data);
                     wiz.getStage().close();
                 }
             };
@@ -116,7 +113,7 @@ public class ElementAccordionController extends GUIContainer {
     @Override
     public void update () {
         List<ImageElementPair> states =
-                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
+                myMainModel.getGameUniverse().getSelectableGameElementStates().stream()
                         .map( (element) -> {
                             try {
                                 return new ImageElementPair(null, element.getName());

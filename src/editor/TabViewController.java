@@ -48,7 +48,7 @@ public class TabViewController extends GUIContainer {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
             Wizard wiz = WizardUtility.loadWizard(TRIGGER_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
-                myMainModel.addGoal(data);
+                myMainModel.createGoal(data);
                 wiz.getStage().close();
             };
             wiz.setSubmit(bc);

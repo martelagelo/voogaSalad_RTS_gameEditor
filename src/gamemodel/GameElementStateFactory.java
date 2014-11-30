@@ -71,8 +71,16 @@ public class GameElementStateFactory {
         return state;
     }
 
-    public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
-        return null;
+    public static SelectableGameElementState createSelectableGameElementState (WizardData data,
+                                                                               String imagePath) {
+        SelectableGameElementState state =
+                (SelectableGameElementState) addEssentials(
+                                                         new SelectableGameElementState(0.0, 0.0),
+                                                         data);
+        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        state.setBounds(myBounds);
+
+        return state;
     }
 
     public static GameElementState createGoal (WizardData data) {

@@ -169,9 +169,8 @@ public class MainModel extends Observable {
      * 
      * @param data
      */
-    public void createGameElement (WizardData data) {
+    public void createGameElementState (WizardData data) {
         GameElementState gameElement = GameElementStateFactory.createGameElementState(data);
-        System.out.println(gameElement);
         myGameState.getGameUniverse().addGameElementState(gameElement);
         updateObservers();
     }
@@ -181,38 +180,39 @@ public class MainModel extends Observable {
      * 
      * @param data
      */
-    public void createDrawableGameElement (WizardData data) {
-        // TODO: figure out the actual save location for this
+    public void createDrawableGameElementState (WizardData data) {
         try {
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data, actualSaveLocation);
-
-            System.out.println(gameElement);
             myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-            setChanged();
-            notifyObservers();
-            clearChanged();
+            updateObservers();
+        } catch (IOException e) {
+            // TODO remove
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * called by editor when creating a new game element
+     * 
+     * @param data
+     */
+    public void createSelectableGameElementState (WizardData data) {
+        // TODO: figure out the actual save location for this
+        try {
+            String actualSaveLocation = mySaveLoadManager.saveImage(data);
+            SelectableGameElementState gameElement = GameElementStateFactory
+                    .createSelectableGameElementState(data, actualSaveLocation);
+            myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
+            updateObservers();
         } catch (IOException e) {
             // TODO remove
             e.printStackTrace();
         }
     }
 
-    /**
-     * called by editor when creating a new game element
-     * 
-     * @param data
-     */
-    public void createSelectableGameElement (WizardData data) {
-        SelectableGameElementState gameElement = GameElementStateFactory
-                .createSelectableGameElementState(data);
-        System.out.println(gameElement);
-        myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
-        updateObservers();
-    }
-
-    public void addGoal (WizardData data) {
+    public void createGoal (WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
         updateObservers();
