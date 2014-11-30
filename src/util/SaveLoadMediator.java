@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-
 import javafx.scene.image.Image;
+
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 /**
  * This class mediates between the Model and the SaveLoadUtility. Using the
@@ -24,6 +24,8 @@ import javafx.scene.image.Image;
  *
  */
 public class SaveLoadMediator {
+    private static final String GAME_DIRECTORY = "myGames";
+    private static final String DEFAULT_COLOR = "blue";
     private static final String RESOURCES = "resources";
     private static final String GAME_ELEMENT_RESOURCES = "gameelementresources";
     private static final String PNG_EXT = ".png";
@@ -70,7 +72,7 @@ public class SaveLoadMediator {
     }
 
     private String getGameLocation (String name) {
-        return "myGames" + File.separator + name + File.separator + name + JSON_EXT;
+        return GAME_DIRECTORY + File.separator + name + File.separator + name + JSON_EXT;
     }
 
     private String getSpritesheetLocation (String imageTag) {
@@ -142,8 +144,7 @@ public class SaveLoadMediator {
         // Color mask file of format archer_red.png
         int colorIndex = fileName.lastIndexOf("_");
         int fileExtensionIndex = fileName.lastIndexOf(".");
-        return (colorIndex < fileExtensionIndex) ? fileName.substring(colorIndex,
-                fileExtensionIndex) : "blue";
+        return (colorIndex < fileExtensionIndex) ? fileName.substring(colorIndex+1,
+                fileExtensionIndex) : DEFAULT_COLOR;
     }
-
 }

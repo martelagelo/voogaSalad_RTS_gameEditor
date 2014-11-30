@@ -1,7 +1,6 @@
 package gamemodel;
 
 import editor.wizards.WizardData;
-import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.CampaignState;
 import game_engine.gameRepresentation.stateRepresentation.DescribableState;
 import game_engine.gameRepresentation.stateRepresentation.GameState;
@@ -14,8 +13,10 @@ import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
 import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
+
 import java.io.IOException;
 import java.util.Observable;
+
 import util.SaveLoadMediator;
 
 /**
@@ -232,10 +233,12 @@ public class MainModel extends Observable {
      * 
      * @param imageTag
      * @return
+     * @throws Exception
      */
-    public SpriteImageContainer getSpriteImageContainer (String imageTag) {
-        //TODO return this container 
-        return null;
+    public SpriteImageContainer fetchImageContainer (String imageTag) throws Exception {
+        // TODO return this container
+        SpriteImageContainer container = new SpriteImageContainer(imageTag);
+        return container;
     }
 
     /**

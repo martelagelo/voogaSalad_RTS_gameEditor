@@ -7,7 +7,8 @@ import javafx.scene.image.Image;
 
 /**
  * Passive data structure that wraps an animation spritesheet with team color
- * masks.
+ * masks. Holds a reference to a SaveLoadMediator object allowing for filepath
+ * related contents to be concentrated in a single location.
  * 
  * @author Rahul
  *
