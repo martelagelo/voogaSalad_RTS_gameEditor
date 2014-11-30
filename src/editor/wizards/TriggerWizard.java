@@ -52,4 +52,9 @@ public class TriggerWizard extends Wizard {
         actionType.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.ACTIONTYPE));
         action.setText(oldValues.getValueByKey(WizardDataType.ACTION));
     }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // do nothing        
+    }
 }

@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import java.util.List;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -36,5 +37,10 @@ public class NumberAttributeWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         key.setText(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));
         numberValue.setText(oldValues.getValueByKey(WizardDataType.VALUE));
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // TODO: implement this
     }
 }

@@ -113,6 +113,26 @@ public class GameElementState implements JSONable {
     public Map<String, List<String>> getActions() {
         return myActions;
     }
+    
+    /**
+     * This method will only be called by the MainModel in order display the possible 
+     * attributes associated with each GameElementState Wizard.
+     * 
+     * @return
+     */
+    public Set<Attribute<Number>> getNumericalAttributes() {
+        return myNumericalAttributes;
+    }
+    
+    /**
+     * This method will only be called by the MainModel in order display the possible 
+     * attributes associated with each GameElementState Wizard.
+     * 
+     * @return
+     */
+    public Set<Attribute<String>> getTextualAttributes() {
+        return myTextualAttributes;
+    }
 
     /**
      * Add an attribute with the given values to a given collection. Used to

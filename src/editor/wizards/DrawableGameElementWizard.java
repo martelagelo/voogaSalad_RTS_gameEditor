@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -91,8 +92,8 @@ public class DrawableGameElementWizard extends Wizard {
     
     @FXML
     private Text wizardDataText;
-    
-
+    private List<String> myGlobalStringAttributes;
+    private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
     private GridLines gridLines;
     private String imagePath;
@@ -102,7 +103,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(TRIGGER_WIZARD, existingTriggers);
+        launchNestedWizard(TRIGGER_WIZARD, existingTriggers, null);
     }
 
     /**
@@ -110,7 +111,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchStringAttributeEditor () {
-        launchNestedWizard(STRING_ATTR_WIZARD, existingStringAttributes);
+        launchNestedWizard(STRING_ATTR_WIZARD, existingStringAttributes, myGlobalStringAttributes);
     }
 
     /**
@@ -118,10 +119,10 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchNumberAttributeEditor () {
-        launchNestedWizard(NUM_ATTR_WIZARD, existingNumberAttributes);
+        launchNestedWizard(NUM_ATTR_WIZARD, existingNumberAttributes, myGlobalNumberAttributes);
     }
 
-    private void launchNestedWizard (String s, VBox existing) {        
+    private void launchNestedWizard (String s, VBox existing, List<String> globalAttrs) {        
         Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
@@ -292,10 +293,23 @@ public class DrawableGameElementWizard extends Wizard {
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
     }
+    
+    public void attachStringAttributes(List<String> stringAttributes) {
+        myGlobalStringAttributes = stringAttributes;
+    }
+    
+    public void attachNumberAttributes(List<String> numberAttributes) {
+        myGlobalNumberAttributes = numberAttributes;
+    }
 
     @Override
     public void launchForEdit (WizardData oldValues) {
         // TODO implement this!      
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // do nothing
     }
 
 }

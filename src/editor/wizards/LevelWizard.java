@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import java.util.List;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import javafx.fxml.FXML;
@@ -55,5 +56,10 @@ public class LevelWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         campaignName.setText(oldValues.getValueByKey(WizardDataType.CAMPAIGN));
         levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // TODO: have this load all existing campaigns into a combobox        
     }
 }

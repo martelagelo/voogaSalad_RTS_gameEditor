@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import java.util.List;
 import java.util.function.Consumer;
 import com.sun.corba.se.spi.orb.StringPair;
 import javafx.fxml.FXML;
@@ -136,6 +137,8 @@ public abstract class Wizard implements GUIController {
     public abstract void updateData ();
     
     public abstract void launchForEdit(WizardData oldValues);
+    
+    public abstract void loadGlobalValues(List<String> values);
 
     /**
      * used internally to display the default error message if none has been provided.

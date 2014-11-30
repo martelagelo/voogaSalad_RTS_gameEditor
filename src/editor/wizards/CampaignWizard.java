@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import java.util.List;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import javafx.fxml.FXML;
@@ -46,5 +47,10 @@ public class CampaignWizard extends Wizard {
     @Override
     public void launchForEdit (WizardData oldValues) {
         name.setText(oldValues.getValueByKey(WizardDataType.NAME));
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        //do nothing
     }
 }

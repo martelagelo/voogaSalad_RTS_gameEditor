@@ -2,6 +2,7 @@ package editor;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
@@ -18,8 +19,10 @@ import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
 import view.GUILoadStyleUtility;
 import view.WizardUtility;
+import editor.wizards.DrawableGameElementWizard;
 import editor.wizards.Wizard;
 import editor.wizards.WizardData;
+import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
 
 
 public class ElementAccordionController extends GUIContainer {
@@ -80,7 +83,17 @@ public class ElementAccordionController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> openGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer = (c) -> {
-            Wizard wiz = WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
+            DrawableGameElementWizard wiz = (DrawableGameElementWizard)
+                    WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
+            List<String> stringAttrs = myMainModel.getGameUniverse().
+                    getStringAttributes().stream().map(atr -> atr.getName())
+                    .collect(Collectors.toList());
+            wiz.attachStringAttributes(stringAttrs);
+            List<String> numberAttrs = myMainModel.getGameUniverse().
+                    getNumericalAttributes().stream().map(atr -> atr.getName())
+                    .collect(Collectors.toList());
+            wiz.attachNumberAttributes(numberAttrs);
+            
             Consumer<WizardData> cons = (data) -> {
                 myMainModel.createDrawableGameElement(data);
                 wiz.getStage().close();
@@ -88,7 +101,7 @@ public class ElementAccordionController extends GUIContainer {
             wiz.setSubmit(cons);
         };
         return consumer;
-    }
+    }   
 
     @Override
     public void update () {

@@ -1,5 +1,6 @@
 package editor.wizards;
 
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -33,5 +34,10 @@ public class StringAttributeWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         key.setText(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));
         stringValue.setText(oldValues.getValueByKey(WizardDataType.VALUE));
+    }
+
+    @Override
+    public void loadGlobalValues (List<String> values) {
+        // TODO: implement this        
     }    
 }

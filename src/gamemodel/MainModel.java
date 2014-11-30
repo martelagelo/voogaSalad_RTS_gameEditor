@@ -176,7 +176,6 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createGameElement (WizardData data) {
-        // TODO: use factory to create game element
         GameElementState gameElement = GameElementStateFactory.createGameElementState(data);
         System.out.println(gameElement);
         myGameState.getGameUniverse().addGameElementState(gameElement);
@@ -191,9 +190,6 @@ public class MainModel extends Observable {
     public void createDrawableGameElement (WizardData data) {
         // TODO: figure out the actual save location for this
         try {
-            System.out.println("we made it hereeee");
-            System.out.println(data.getValueByKey(WizardDataType.IMAGE));
-
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
 
             DrawableGameElementState gameElement = GameElementStateFactory

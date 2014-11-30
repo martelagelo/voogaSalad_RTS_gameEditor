@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
  */
 public class GameUniverse {
     private Set<Attribute<Number>> myNumericalAttributes;
-    private Set<Attribute<String>> myStringAttributes;
+    private Set<Attribute<String>> myTextualAttributes;
     private Set<GameElementState> myGameElementStates;
     private Set<DrawableGameElementState> myDrawableGameElementStates;
     private Set<SelectableGameElementState> mySelectableGameElementStates;
 
     public GameUniverse () {
         myNumericalAttributes = new HashSet<>();
-        myStringAttributes = new HashSet<>();
+        myTextualAttributes = new HashSet<>();
         myDrawableGameElementStates = new HashSet<>();
         mySelectableGameElementStates = new HashSet<>();
         myGameElementStates = new HashSet<>();
@@ -37,14 +37,22 @@ public class GameUniverse {
 
     public void addGameElementState (GameElementState ges) {
         myGameElementStates.add(ges);
-    }
+        storeAttributes(ges);
+    }    
 
     public void addDrawableGameElementState (DrawableGameElementState dges) {
         myDrawableGameElementStates.add(dges);
+        storeAttributes(dges);
     }
 
     public void addSelectableGameElementState (SelectableGameElementState sges) {
         mySelectableGameElementStates.add(sges);
+        storeAttributes(sges);
+    }
+    
+    private void storeAttributes (GameElementState ges) {
+        myNumericalAttributes.addAll(ges.getNumericalAttributes());
+        myTextualAttributes.addAll(ges.getTextualAttributes());
     }
 
     public Set<GameElementState> getGameElementStates () {
@@ -90,19 +98,11 @@ public class GameUniverse {
         return (matches.size() != 0) ? matches.get(0) : null;
     }
 
-    public void addNumericalAttribute (Attribute<Number> number) {
-        myNumericalAttributes.add(number);
-    }
-
-    public void addStringAttribute (Attribute<String> string) {
-        myStringAttributes.add(string);
-    }
-
     public Set<Attribute<Number>> getNumericalAttributes () {
         return myNumericalAttributes;
     }
 
     public Set<Attribute<String>> getStringAttributes () {
-        return myStringAttributes;
+        return myTextualAttributes;
     }
 }
