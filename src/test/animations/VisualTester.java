@@ -1,9 +1,7 @@
 package test.animations;
 
-import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.Dimension;
-import game_engine.visuals.NullAnimationSequence;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,7 +12,6 @@ import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -44,8 +41,9 @@ public class VisualTester extends Application {
         Group group = new Group();
         Image image = new Image("resources/img/exploBig.png");
         AnimationPlayer player = new AnimationPlayer(image, new Dimension(40, 40), 7);
-        AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
-        player.setAnimation(animation);
+        //TODO fix animation sequence now takes an animationtag object instead of a string tag
+        //AnimationSequence animation = new AnimationSequence("explode", 0, 13, true, 0.01);
+        //player.setAnimation(animation);
         Duration oneFrameAmt = Duration.millis(1000 / 60);
         final KeyFrame oneFrame = new KeyFrame(oneFrameAmt,
                                                new EventHandler<ActionEvent>() {

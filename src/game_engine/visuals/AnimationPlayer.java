@@ -47,10 +47,6 @@ public class AnimationPlayer implements Updatable, Displayable {
 
     /**
      * Get a rectangular bounds of an image based on its dimensions
-     *
-     * @param img
-     *        the image of interest
-     * @return the bounds
      */
     private Rectangle2D getImageBounds (Image img) {
         return new Rectangle2D(0, 0, img.getWidth(), img.getHeight());
@@ -59,9 +55,6 @@ public class AnimationPlayer implements Updatable, Displayable {
 
     /**
      * Set and play the current animation
-     *
-     * @param animation
-     *        the current animation
      */
     public void setAnimation (AnimationSequence animation) {
         myCurrentAnimation = animation;

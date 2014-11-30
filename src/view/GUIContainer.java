@@ -8,10 +8,10 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.fxml.FXML;
 
-
 /**
- * Superclass for any GUI pane that holds sub guipanes and needs to delegate info to its
- * subpanes. Handles updating from the model and delegating updates to its subpanes
+ * Superclass for any GUI pane that holds sub guipanes and needs to delegate
+ * info to its subpanes. Handles updating from the model and delegating updates
+ * to its subpanes
  * 
  * @author Jonathan Tseng
  *
@@ -37,7 +37,7 @@ public abstract class GUIContainer implements Observer, GUIController {
         });
     }
 
-    protected void attachChildContainers (GUIContainer ... children) {
+    protected void attachChildContainers (GUIContainer... children) {
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
         myChildContainers.forEach( (child) -> {
             child.setModel(myMainModel);
@@ -57,6 +57,7 @@ public abstract class GUIContainer implements Observer, GUIController {
 
     public abstract void update ();
 
+    // TODO this method never used?
     private void checkAndCreateChildContainers () {
         if (myChildContainers == null) {
             myChildContainers = new ArrayList<>();

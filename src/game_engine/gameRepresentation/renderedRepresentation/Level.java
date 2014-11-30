@@ -74,6 +74,47 @@ public class Level {
     public List<GameElement> getGoals () {
         return myGoals;
     }
+    
+    /**
+     * Get a numeric attribute contained by the game element
+     *
+     * @param attributTag the tag of the attribute of interest
+     * @return the atribute's value or 0 if the attribute was not declared
+     */
+    public Number getNumericalAttribute (String attributeTag) {
+        return myState.attributes.getNumericalAttribute(attributeTag);
+    }
+
+    /**
+     * Set a numeric attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the value of the attribute
+     */
+    public void setNumericalAttribute (String attributeTag, Number attributeValue) {
+        myState.attributes.setNumericalAttribute(attributeTag, attributeValue);
+    }
+
+    /**
+     * Get a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @return the value of the attribute or "" if it does not exist
+     */
+    public String getTextualAttribute (String attributeTag) {
+        return myState.attributes.getTextualAttribute(attributeTag);
+    }
+
+    /**
+     * Set the value of a textual attribute contained by the game element
+     *
+     * @param attributeTag the tag of the attribute
+     * @param attributeValue the attribute's value
+     */
+    public void setTextualAttribute (String attributeTag, String attributeValue) {
+        myState.attributes.setTextualAttribute(attributeTag, attributeValue);
+    }
+
 
     public List<Group> getGroups () {
         List<Group> displayGroups = new ArrayList<Group>();

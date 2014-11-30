@@ -46,7 +46,7 @@ public class GameLoop {
     private VisualManager myVisualManager;
     private MiniMap myMiniMap;
 
-    private List<Computer> myComputers = new ArrayList<>();
+    private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers = new ArrayList<>();
     private Timeline timeline;
 
     private List<Line> unitPaths;

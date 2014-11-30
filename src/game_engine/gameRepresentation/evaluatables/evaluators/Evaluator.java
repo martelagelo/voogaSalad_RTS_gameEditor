@@ -3,7 +3,6 @@ package game_engine.gameRepresentation.evaluatables.evaluators;
 import game_engine.gameRepresentation.evaluatables.Action;
 import game_engine.gameRepresentation.evaluatables.ElementPair;
 import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
 
 

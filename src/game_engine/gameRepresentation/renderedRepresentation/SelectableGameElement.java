@@ -16,7 +16,6 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;

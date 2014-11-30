@@ -27,7 +27,7 @@ public class LoadSaveUtility implements ILoadSave {
     public String myDefaultLocation = "resources" + LoadSaveUtility.FILE_SEPARATOR + "img"
                                       + LoadSaveUtility.FILE_SEPARATOR;
 
-    public <T> T loadResource (Class className, String filePath) {
+    public <T> T loadResource (Class<?> className, String filePath) {
         Gson gson = new Gson();
 
         T jsonRepresentation = null;

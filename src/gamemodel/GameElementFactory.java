@@ -45,7 +45,7 @@ public class GameElementFactory {
     // private Map<String, Number> myNumberAttributes = new HashMap<>();
     // private Map<String, String> myTriggers = new HashMap<>();
 
-    public static Ga    meElementState createGameElementState (GameElementInfoBundle bundle) {
+    public static GameElementState createGameElementState (GameElementInfoBundle bundle) {
         GameElementState state = new GameElementState();
         // Map<String, String> myConditionActionPairs;
         // List<Attribute<Number>> numericalAttributes;
@@ -54,11 +54,11 @@ public class GameElementFactory {
         return state;
     }
 
-    public static DrawableG     ameElementState createDrawableGameElementState (GameElementInfoBundle bundle) {
+    public static DrawableGameElementState createDrawableGameElementState (GameElementInfoBundle bundle) {
         return null;
     }
 
-    public static SelectableGa  meElementState createSelectableGameElementState (GameElementInfoBundle bundle) {
+    public static SelectableGameElementState createSelectableGameElementState (GameElementInfoBundle bundle) {
         return null;
     }
 

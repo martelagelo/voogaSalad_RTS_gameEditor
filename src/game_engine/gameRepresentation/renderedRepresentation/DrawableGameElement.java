@@ -8,10 +8,11 @@ import game_engine.visuals.AnimationPlayer;
 import game_engine.visuals.AnimationSequence;
 import game_engine.visuals.Displayable;
 import game_engine.visuals.NullAnimationSequence;
-import game_engine.visuals.Spritesheet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -19,7 +20,6 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-
 
 /**
  * A game element that is capable of being drawn. Combines a game element state
@@ -44,25 +44,27 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * Create a drawable game element from the given state
      * 
      * @param state
-     *        the state of the drawable element
-     * @param actions the actions map for the game element (Created by a factory to be passed into
-     *        the element)
+     *            the state of the drawable element
+     * @param actions
+     *            the actions map for the game element (Created by a factory to
+     *            be passed into the element)
      */
     public DrawableGameElement (DrawableGameElementState state,
-                                Map<String, List<Evaluatable<?>>> actions,
-                                ResourceBundle actionTypes) {
+            Map<String, List<Evaluatable<?>>> actions, ResourceBundle actionTypes) {
         super(state, actions, actionTypes);
         myCurrentAnimation = new NullAnimationSequence();
         drawableState = state;
-        Spritesheet spritesheet = state.getSpritesheet();
+        // TODO no longer spritesheet object
+        // Spritesheet spritesheet = state.getSpritesheet();
         try {
             // TODO remove this. testing only
-            myAnimation =
-
-                    new AnimationPlayer(new Image(spritesheet.imageTag),
-                                        spritesheet.frameDimensions, spritesheet.numCols);
-        }
-        catch (Exception e) {
+            /*
+             * myAnimation =
+             * 
+             * new AnimationPlayer(new Image(spritesheet.imageTag),
+             * spritesheet.frameDimensions, spritesheet.numCols);
+             */
+        } catch (Exception e) {
             // System.out.println("No spritesheet set for game element. Testing?");
         }
         myDisplay = new Group();
@@ -72,8 +74,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
             mySelectedImage = new Image(SELECT_ARROW_URL);
             mySelectedImageView = new ImageView(mySelectedImage);
             initializeDisplay();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // do nothing
         }
 
@@ -101,7 +102,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
      * Set the element's animation to a given sequence
      * 
      * @param animation
-     *        the animation sequence to set
+     *            the animation sequence to set
      */
     public void setAnimation (AnimationSequence animation) {
         myAnimation.setAnimation(animation);
@@ -115,10 +116,11 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     }
 
     /**
-     * Set the animation currently being played by the drawable game element to the animation with
-     * the given name
+     * Set the animation currently being played by the drawable game element to
+     * the animation with the given name
      * 
-     * @param animationName the name of the animation to set the current animation to
+     * @param animationName
+     *            the name of the animation to set the current animation to
      */
     public void setAnimation (String animationName) {
         myCurrentAnimation = drawableState.getAnimation(animationName);

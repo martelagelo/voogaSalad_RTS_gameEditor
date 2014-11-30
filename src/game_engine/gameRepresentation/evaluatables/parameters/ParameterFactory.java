@@ -1,14 +1,12 @@
 package game_engine.gameRepresentation.evaluatables.parameters;
 
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
+import game_engine.gameRepresentation.evaluatables.Evaluatable;
+import game_engine.gameRepresentation.evaluatables.parameters.exceptions.BadParameterFormatException;
+import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import game_engine.stateManaging.GameElementManager;
 import java.util.List;
 import java.util.Map;
 import distilled_slogo.parsing.ISyntaxNode;
-import game_engine.gameRepresentation.evaluatables.Evaluatable;
-import game_engine.gameRepresentation.evaluatables.parameters.exceptions.BadParameterFormatException;
-import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.*;
-import game_engine.stateManaging.GameElementManager;
 
 
 /**
@@ -24,7 +22,9 @@ public class ParameterFactory {
     private Map<String, Class<?>> myParameters;
     private Map<String, Class<?>> myObjectIdentifiers;
 
-    public ParameterFactory (Map<String, Class<?>> parameters, Map<String, Class<?>> objectIdentifiers, GameElementManager manager){
+    public ParameterFactory (Map<String, Class<?>> parameters,
+                             Map<String, Class<?>> objectIdentifiers,
+                             GameElementManager manager) {
         myParameters = parameters;
         myObjectIdentifiers = objectIdentifiers;
         myManager = manager;
@@ -75,7 +75,7 @@ public class ParameterFactory {
     }
 
     private ObjectOfInterestIdentifier getObjectOfInterestIdentifier (String actorTag)
-            throws BadParameterFormatException {
+                                                                                      throws BadParameterFormatException {
         Class<?> identifierClass = getClassFromString(myObjectIdentifiers, actorTag);
         try {
             return (ObjectOfInterestIdentifier) identifierClass.newInstance();
@@ -94,6 +94,5 @@ public class ParameterFactory {
         }
         return c;
     }
-
 
 }

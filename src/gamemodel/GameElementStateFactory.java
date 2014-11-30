@@ -4,10 +4,6 @@ import editor.wizards.WizardData;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.AnimationSequence;
-import game_engine.visuals.Dimension;
-import game_engine.visuals.Spritesheet;
-
 
 /**
  * Factory that creates a SavableGameElementState based on the info args
@@ -41,13 +37,13 @@ public class GameElementStateFactory {
     public static final String ANIMATION_REPEAT = "AnimationRepeat";
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.setTextualAttribute(NAME, data.getValueByKey(NAME));
+        state.attributes.setTextualAttribute(NAME, data.getValueByKey(NAME));
         for (WizardData wiz : data.getWizardDataByType(STRING_ATTRIBUTE)) {
-            state.setTextualAttribute(wiz.getValueByKey(ATTRIBUTE), wiz.getValueByKey(VALUE));
+            state.attributes.setTextualAttribute(wiz.getValueByKey(ATTRIBUTE), wiz.getValueByKey(VALUE));
         }
         for (WizardData wiz : data.getWizardDataByType(NUMBER_ATTRIBUTE)) {
-            state.setNumericalAttribute(wiz.getValueByKey(ATTRIBUTE),
-                                        Double.parseDouble(wiz.getValueByKey(VALUE)));
+            state.attributes.setNumericalAttribute(wiz.getValueByKey(ATTRIBUTE),
+                    Double.parseDouble(wiz.getValueByKey(VALUE)));
         }
         for (WizardData wiz : data.getWizardDataByType(TRIGGER)) {
             state.addAction(wiz.getValueByKey(CONDITION), wiz.getValueByKey(ACTION));
@@ -60,29 +56,34 @@ public class GameElementStateFactory {
     }
 
     public static DrawableGameElementState createDrawableGameElementState (WizardData data,
-                                                                           String imagePath) {
-        DrawableGameElementState state =
-                (DrawableGameElementState) addEssentials(new DrawableGameElementState(0.0, 0.0),
-                                                         data);
-        Dimension dim =
-                new Dimension(Integer.parseInt(data.getValueByKey(FRAME_X)), Integer.parseInt(data
-                        .getValueByKey(FRAME_Y)));
-        Spritesheet mySpritesheet =
-                new Spritesheet(imagePath, dim, Integer.parseInt(data.getValueByKey(ROWS)));
-        state.setSpritesheet(mySpritesheet);
-
-        // TODO: actually get animation name from the user
-        AnimationSequence myAnimation = new AnimationSequence("animation", Integer.parseInt(data
-                .getValueByKey(START_FRAME)), Integer.parseInt(data.getValueByKey(STOP_FRAME)));
-                //Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
+            String imagePath) {
+        /*
+         * DrawableGameElementState state = (DrawableGameElementState)
+         * addEssentials(new DrawableGameElementState(0.0, 0.0), data);
+         * Dimension dim = new
+         * Dimension(Integer.parseInt(data.getValueByKey(FRAME_X)),
+         * Integer.parseInt(data .getValueByKey(FRAME_Y))); Spritesheet
+         * mySpritesheet = new Spritesheet(imagePath, dim,
+         * Integer.parseInt(data.getValueByKey(ROWS)));
+         * state.setSpritesheet(mySpritesheet);
+         * 
+         * // TODO: actually get animation name from the user AnimationSequence
+         * myAnimation = new AnimationSequence("animation",
+         * Integer.parseInt(data .getValueByKey(START_FRAME)),
+         * Integer.parseInt(data.getValueByKey(STOP_FRAME)));
+         */
+        // Boolean.parseBoolean(data.getValueByKey(ANIMATION_REPEAT)));
         // state.addAnimation(myAnimation);
 
-        // TODO: actually get bounds from the user - we are using the double[] implementation
-        // necessary to make Polygons, so we need groups of two doubles per point on the polygon
-        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
-        state.setBounds(myBounds);
+        // TODO: actually get bounds from the user - we are using the double[]
+        // implementation
+        // necessary to make Polygons, so we need groups of two doubles per
+        // point on the polygon
+        // double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        // state.setBounds(myBounds);
 
-        return state;
+        // return state;
+        return null;
     }
 
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {

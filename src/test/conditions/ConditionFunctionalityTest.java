@@ -23,10 +23,7 @@ import game_engine.gameRepresentation.evaluatables.parameters.NumericAttributePa
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import game_engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
-import game_engine.visuals.Dimension;
-import game_engine.visuals.Spritesheet;
 import gamemodel.GameUniverse;
 import java.io.IOException;
 import java.util.Iterator;
@@ -62,7 +59,8 @@ public class ConditionFunctionalityTest {
         // TODO: add universe
         GameElementFactory myFactory = new GameElementFactory(new GameUniverse(), new EvaluatableFactory());
         // Make a spritesheet to prevent error throwing
-        Spritesheet spritesheet =
+        // TODO fix this because spritesheet no longer exists and dges constructor changed to take in an animatorstate
+      /*  Spritesheet spritesheet =
                 new Spritesheet("resources/img/Red_Arrow_Down.png", new Dimension(50, 50), 1);
         // Create game elements
         DrawableGameElementState state1 = new DrawableGameElementState(0, 0);
@@ -77,7 +75,7 @@ public class ConditionFunctionalityTest {
         state2.setSpritesheet(spritesheet);
         state2.setBounds(bounds2);
         myElement2 = myFactory.createDrawableGameElement(state2);
-        myNumAttrParam = new NumericAttributeParameter("", "Health", null,
+*/        myNumAttrParam = new NumericAttributeParameter("", "Health", null,
                                                        new ActorObjectIdentifier());
         myNumberParam = new NumberParameter("", 10d);
         myElementParam1 = new GameElementParameter("", new ActorObjectIdentifier(),

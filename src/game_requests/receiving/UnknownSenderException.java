@@ -8,6 +8,7 @@ import game_requests.IRequest;
  */
 public class UnknownSenderException extends Exception {
 
+    private static final long serialVersionUID = 1L;
     private String mySender;
     private IRequest myRequest;
 

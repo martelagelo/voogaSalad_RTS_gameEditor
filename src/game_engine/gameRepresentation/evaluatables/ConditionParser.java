@@ -36,6 +36,7 @@ import distilled_slogo.tokenization.Tokenizer;
  */
 // TODO implement. This is a very rough class that needs a lot of work
 public class ConditionParser {
+
     private ITokenizer myTokenizer;
     private IParser<Evaluatable<?>> myParser;
     private GameElementManager myManager;

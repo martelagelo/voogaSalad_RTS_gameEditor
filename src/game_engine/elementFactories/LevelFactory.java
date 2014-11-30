@@ -33,8 +33,8 @@ public class LevelFactory {
         List<GameElement> goals = generateGoalElements(state.getGoals());
         List<DrawableGameElement> terrain = generateTerrainElements(state.getTerrain());
         List<SelectableGameElement> units = generateUnitEelements(state.getUnits());
-        Number levelHeight = state.getNumericalAttribute("LevelHeight");
-        Number levelWidth = state.getNumericalAttribute("LevelWidth");
+        Number levelHeight = state.attributes.getNumericalAttribute("LevelHeight");
+        Number levelWidth = state.attributes.getNumericalAttribute("LevelWidth");
         MapGrid newGrid = generateUpToDateGrid(levelHeight, levelWidth, terrain, units);
         Group terrainAndSessileUnitsGroup = generateBackGroundGroup(terrain, units);
         Group mobileUnitsGroup = generateUnitsGroup(units);
