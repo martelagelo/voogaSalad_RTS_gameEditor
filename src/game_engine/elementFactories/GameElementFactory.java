@@ -8,6 +8,7 @@ import game_engine.gameRepresentation.renderedRepresentation.SelectableGameEleme
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
+import game_engine.visuals.elementVisuals.Visualizer;
 import gamemodel.GameUniverse;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,9 @@ public class GameElementFactory {
     private ResourceBundle actionTypes;
     private ResourceBundle interactingElementTypes;
 
-    public GameElementFactory (GameUniverse universe, EvaluatableFactory evaluatableFactory, VisualizerFactory visualizerFactory) {
+    public GameElementFactory (GameUniverse universe,
+                               EvaluatableFactory evaluatableFactory,
+                               VisualizerFactory visualizerFactory) {
         myUniverse = universe;
         myEvaluatableFactory = evaluatableFactory;
         myVisualizerFactory = visualizerFactory;
@@ -42,46 +45,51 @@ public class GameElementFactory {
         interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
-    public GameElement createGameElement (String elementType, double x, double y){
+    public GameElement createGameElement (String elementType, double x, double y) {
         GameElementState state = myUniverse.getGameElementState(elementType);
         GameElement newElement = createGameElement(state);
         newElement.setPosition(x, y);
         return newElement;
     }
-    
+
     public GameElement createGameElement (GameElementState state) {
         GameElement element = new GameElement(state, generateActions(state), actionTypes);
         return element;
     }
 
-    public DrawableGameElement createDrawableGameElement (String elementType, double x, double y){
+    public DrawableGameElement createDrawableGameElement (String elementType, double x, double y) {
         DrawableGameElementState state = myUniverse.getDrawableGameElementState(elementType);
         DrawableGameElement newElement = createDrawableGameElement(state);
         newElement.setPosition(x, y);
         return newElement;
     }
-    
+
     public DrawableGameElement createDrawableGameElement (DrawableGameElementState state) {
         DrawableGameElement element =
-                new DrawableGameElement(state, generateActions(state), actionTypes);
+                new DrawableGameElement(state, generateActions(state), actionTypes,
+                                        generateVisualizer(state));
         return element;
     }
 
-    public SelectableGameElement createSelectableGameElement (String elementType, double x, double y){
+    public SelectableGameElement createSelectableGameElement (String elementType, double x, double y) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
         return newElement;
     }
-    
+
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
                 new SelectableGameElement(state, generateActions(state), actionTypes,
-                                          interactingElementTypes);
+                                          interactingElementTypes, generateVisualizer(state));
         return element;
     }
 
     private Map<String, List<Evaluatable<?>>> generateActions (GameElementState state) {
         return myEvaluatableFactory.generateEvaluatables(state.getActions());
+    }
+
+    private Visualizer generateVisualizer (DrawableGameElementState elementState) {
+        return myVisualizerFactory.createVisualizer(elementState);
     }
 }

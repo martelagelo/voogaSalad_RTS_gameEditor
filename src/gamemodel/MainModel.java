@@ -16,6 +16,7 @@ import gamemodel.exceptions.LevelExistsException;
 import gamemodel.exceptions.LevelNotFoundException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Observable;
 import util.SaveLoadUtility;
 
@@ -33,6 +34,7 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
+    private Map<String,SpriteImageContainer> imageConatinerMap;
 
     public MainModel () {
     }
@@ -276,8 +278,7 @@ public class MainModel extends Observable {
     }
 
     public SpriteImageContainer fetchImageContainer (String imageTag) {
-        // TODO Auto-generated method stub
-        return null;
+        return imageConatinerMap.get(imageTag);
     }
 
 }

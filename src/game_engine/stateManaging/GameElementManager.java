@@ -2,8 +2,10 @@ package game_engine.stateManaging;
 
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.elementFactories.AnimatorFactory;
 import game_engine.elementFactories.GameElementFactory;
 import game_engine.elementFactories.LevelFactory;
+import game_engine.elementFactories.VisualizerFactory;
 import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -14,6 +16,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
 import gamemodel.GameUniverse;
+import gamemodel.MainModel;
 import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
@@ -160,6 +163,7 @@ public class GameElementManager implements Observer {
         }
     }
 
+    // TODO: remove, for testing only
     public static void main (String[] args) {
         
         GameUniverse u = new GameUniverse();
@@ -167,11 +171,14 @@ public class GameElementManager implements Observer {
         sges.attributes.setTextualAttribute(StateTags.NAME, "archer");
         u.addSelectableGameElementState(sges);
         
+        MainModel m = new MainModel();
+        AnimatorFactory af = new AnimatorFactory(m);
+        VisualizerFactory vf = new VisualizerFactory(af);
         GameElementFactory gef;
         try {
-            gef = new GameElementFactory(u, new EvaluatableFactory());
+            gef = new GameElementFactory(u, new EvaluatableFactory(), vf);
         }
-        //FIXME
+        // TODO: FIXME
         catch (ClassNotFoundException | JSONException | IOException e) {
             e.printStackTrace();
             return;
