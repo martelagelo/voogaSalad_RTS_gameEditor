@@ -102,8 +102,8 @@ public class DrawableGameElementWizard extends Wizard {
      * Launches a TriggerEditorWizard
      * 
      */
-    private void launchTriggerEditor () {
-        launchNestedWizard(TRIGGER_WIZARD, existingTriggers, null);
+    private void launchTriggerEditor () {        
+        launchNestedWizard(TRIGGER_WIZARD, existingTriggers, new ArrayList<String> ());
     }
 
     /**
@@ -124,13 +124,16 @@ public class DrawableGameElementWizard extends Wizard {
 
     private void launchNestedWizard (String s, VBox existing, List<String> globalAttrs) {        
         Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
+        for (String atr: globalAttrs) {
+            System.out.println(atr);
+        }
+        wiz.loadGlobalValues(globalAttrs);
         Consumer<WizardData> bc = (data) -> {
-            addWizardData(data);
-            
+            addWizardData(data);            
             HBox newElement = new HBox();
             Button edit = new Button();
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-            edit.setOnAction(e -> launchEditWizard(s, data, edit));
+            edit.setOnAction(e -> launchEditWizard(s, data, edit, globalAttrs));
             newElement.getChildren().add(edit);
             
             Button delete = new Button();
@@ -149,7 +152,7 @@ public class DrawableGameElementWizard extends Wizard {
         wiz.setSubmit(bc);
     }
     
-    private void launchEditWizard (String s, WizardData oldData, Button button) {
+    private void launchEditWizard (String s, WizardData oldData, Button button, List<String> globalAttrs) {
         Wizard wiz = WizardUtility.loadWizard(s, new Dimension(300, 300));
         wiz.launchForEdit(oldData);
         Consumer<WizardData> bc = (data) -> {
@@ -195,8 +198,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.getChildren().add(gridLines);
         }
         catch (Exception e) {
-            // e.printStackTrace();
-            System.out.println("Invalid Image");
+            setErrorMesssage("Unable to Load Image");
         }
     }
 
@@ -229,14 +231,14 @@ public class DrawableGameElementWizard extends Wizard {
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
-            name.textProperty().bind(util.getStringProperty(NAME_KEY));
+            name.promptTextProperty().bind(util.getStringProperty(NAME_KEY));
             trigger.textProperty().bind(util.getStringProperty(NEW_TRIGGER_KEY));
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
-            numRows.textProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
-            startFrame.textProperty().bind(util.getStringProperty(START_FRAME_KEY));
-            stopFrame.textProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
+            numRows.promptTextProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
+            startFrame.promptTextProperty().bind(util.getStringProperty(START_FRAME_KEY));
+            stopFrame.promptTextProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {

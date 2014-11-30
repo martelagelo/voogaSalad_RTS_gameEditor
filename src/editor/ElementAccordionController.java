@@ -87,7 +87,7 @@ public class ElementAccordionController extends GUIContainer {
                     WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
             List<String> stringAttrs = myMainModel.getGameUniverse().
                     getStringAttributes().stream().map(atr -> atr.getName())
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList());            
             wiz.attachStringAttributes(stringAttrs);
             List<String> numberAttrs = myMainModel.getGameUniverse().
                     getNumericalAttributes().stream().map(atr -> atr.getName())
