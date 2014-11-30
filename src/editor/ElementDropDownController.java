@@ -2,7 +2,6 @@ package editor;
 
 import java.util.HashMap;
 import java.util.function.Consumer;
-import editor.wizards.WizardData;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,6 +17,7 @@ import javafx.util.Callback;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIController;
+import editor.wizards.WizardData;
 
 
 /**
@@ -28,10 +28,13 @@ import view.GUIController;
  */
 public class ElementDropDownController implements GUIController {
 
-    private final static String CREATE_NEW_KEY= "CreateNew";
+    private final static String DELETE_SELECTED_KEY = "DeleteSelected";
+    private final static String CREATE_NEW_KEY = "CreateNew";
 
     @FXML
     private Button newElementButton;
+    @FXML
+    private Button deleteElementButton;
     @FXML
     private ListView<String> elementListView;
     @FXML
@@ -39,24 +42,26 @@ public class ElementDropDownController implements GUIController {
 
     private ObservableList<String> myElementsList;
     private HashMap<String, Node> myElementsMap;
+    private Consumer<String> myDeletionConsumer = (String element) -> {
+    };
 
     public void addElement (String element, Node image) {
-        myElementsList.add(element);
-        myElementsMap.put(element, image);
+        if (!myElementsList.contains(element)) {
+            myElementsList.add(element);
+            myElementsMap.put(element, image);
+        }
     }
-    
+
     public void setButtonAction (Consumer<Consumer<WizardData>> consumer) {
         newElementButton.setOnAction(e -> consumer.accept(null));
     }
 
+    public void setDeleteConsumer (Consumer<String> deleteConsumer) {
+        myDeletionConsumer = deleteConsumer;
+    }
+
     public void bindGameElement (ObjectProperty<String> elementName) {
         elementDropDown.textProperty().bind(elementName);
-        try {
-            newElementButton.textProperty().bind(MultiLanguageUtility.getInstance().getStringProperty(CREATE_NEW_KEY));
-        }
-        catch (LanguagePropertyNotFoundException e) {
-            System.out.println(e.toString());
-        }
     }
 
     private void initListView () {
@@ -79,12 +84,15 @@ public class ElementDropDownController implements GUIController {
                 });
     }
 
-    private void initNewElementButton () {
-        newElementButton.setOnAction(event -> addElement());
-    }
-
-    private void addElement () {
-        System.out.println("clicked");
+    private void initDeleteElementButton () {
+        deleteElementButton.setOnAction(event -> {
+            String selected = elementListView.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                myElementsList.remove(selected);
+                myElementsMap.remove(selected);
+                myDeletionConsumer.accept(selected);
+            }
+        });
     }
 
     private class GameElementListCell extends ListCell<String> {
@@ -106,7 +114,17 @@ public class ElementDropDownController implements GUIController {
     @Override
     public void initialize () {
         initListView();
-        initNewElementButton();
+        initDeleteElementButton();
+
+        try {
+            newElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(CREATE_NEW_KEY));
+            deleteElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(DELETE_SELECTED_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            System.out.println(e.toString());
+        }
     }
 
 }

@@ -4,4 +4,9 @@
 <?import javafx.scene.control.*?>
 
 <Accordion xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-	fx:controller="editor.ElementAccordionController" fx:id="elementAccordion" />
+	fx:controller="editor.ElementAccordionController" fx:id="elementAccordion">
+	<panes>
+		<fx:include source="GameElementDropDown.fxml" fx:id="terrainTitledPane" />
+		<fx:include source="GameElementDropDown.fxml" fx:id="unitTitledPane" />
+	</panes>
+</Accordion>

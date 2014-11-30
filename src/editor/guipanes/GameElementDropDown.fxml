@@ -18,6 +18,11 @@
 						<Double fx:constant="MAX_VALUE" />
 					</maxWidth>
 				</Button>
+				<Button fx:id="deleteElementButton" VBox.vgrow="NEVER">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
 				<ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
 					<content>
 						<ListView fx:id="elementListView" />

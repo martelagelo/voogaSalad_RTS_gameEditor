@@ -2,7 +2,6 @@ package editor;
 
 import java.awt.Dimension;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
@@ -17,31 +16,36 @@ import javafx.scene.image.ImageView;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.GUIContainer;
-import view.GUILoadStyleUtility;
 import view.WizardUtility;
+import view.dialog.DialogBoxUtility;
 import editor.wizards.DrawableGameElementWizard;
-import editor.wizards.Wizard;
 import editor.wizards.WizardData;
-import game_engine.gameRepresentation.stateRepresentation.gameElement.Attribute;
 
-
+/**
+ * Element Accordion Controller to handle communication between model and element accordion
+ * as well as to the titled panes in the accordion
+ * @author Jonathan Tseng
+ *
+ */
 public class ElementAccordionController extends GUIContainer {
 
     // private static final String TERRAIN_WIZARD = "/editor/wizards/guipanes/TerrainWizard.fxml";
     private static final String GAME_ELEMENT_WIZARD =
             "/editor/wizards/guipanes/DrawableGameElementWizard.fxml";
-    private static final String ACCORDION_SUBPANE_PATH =
-            "/editor/guipanes/GameElementDropDown.fxml";
 
-    private static final String ELEMENT_KEY = "GameElement";
+    private static final String UNIT_KEY = "Unit";
+    private static final String TERRAIN_KEY = "Terrain";
 
     @FXML
     private Accordion elementAccordion;
-
-    @Override
-    public Node getRoot () {
-        return null;
-    }
+    @FXML
+    private TitledPane terrainTitledPane;
+    @FXML
+    private TitledPane unitTitledPane;
+    @FXML
+    private ElementDropDownController terrainTitledPaneController;
+    @FXML
+    private ElementDropDownController unitTitledPaneController;
 
     @Override
     public void init () {
@@ -59,26 +63,33 @@ public class ElementAccordionController extends GUIContainer {
                 });
             }
         });
-    }
-
-    private void updateItems (List<ImageElementPair> items) {
-        elementAccordion.getPanes().clear();
-        ElementDropDownController dropDownController =
-                (ElementDropDownController) GUILoadStyleUtility
-                        .generateGUIPane(ACCORDION_SUBPANE_PATH);
         try {
-            dropDownController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(ELEMENT_KEY));
+            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(TERRAIN_KEY));
+            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(UNIT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            System.out.println(e.toString());
+            // Should never happen
+            DialogBoxUtility.createMessageDialog(e.toString());
         }
-        items.forEach( (item) -> {
+        terrainTitledPaneController.setButtonAction(openGameElementWizard());
+        unitTitledPaneController.setButtonAction(openGameElementWizard());
+        terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
+            DialogBoxUtility.createMessageDialog("TODO remove shit");
+            //myMainModel.removeDrawableGameElement(elementName);
+        });
+        unitTitledPaneController.setDeleteConsumer( (String elementName) -> {
+            DialogBoxUtility.createMessageDialog("TODO remove shit");
+            //myMainModel.removeSelectableGameElement(elementName);
+        });
+    }
+
+    private void updateList (ElementDropDownController dropDownController,
+                             List<ImageElementPair> units) {
+        units.forEach( (item) -> {
             dropDownController.addElement(item.myElementName, new ImageView(item.myImage));
         });
-        dropDownController.setButtonAction(openGameElementWizard());
-        elementAccordion.getPanes().add((TitledPane) dropDownController.getRoot());
-        elementAccordion.setExpandedPane(elementAccordion.getPanes().get(0));
     }
 
     private Consumer<Consumer<WizardData>> openGameElementWizard () {
@@ -87,13 +98,13 @@ public class ElementAccordionController extends GUIContainer {
                     WizardUtility.loadWizard(GAME_ELEMENT_WIZARD, new Dimension(800, 600));
             List<String> stringAttrs = myMainModel.getGameUniverse().
                     getStringAttributes().stream().map(atr -> atr.getName())
-                    .collect(Collectors.toList());            
+                    .collect(Collectors.toList());
             wiz.attachStringAttributes(stringAttrs);
             List<String> numberAttrs = myMainModel.getGameUniverse().
                     getNumericalAttributes().stream().map(atr -> atr.getName())
                     .collect(Collectors.toList());
             wiz.attachNumberAttributes(numberAttrs);
-            
+
             Consumer<WizardData> cons = (data) -> {
                 myMainModel.createDrawableGameElement(data);
                 wiz.getStage().close();
@@ -101,7 +112,7 @@ public class ElementAccordionController extends GUIContainer {
             wiz.setSubmit(cons);
         };
         return consumer;
-    }   
+    }
 
     @Override
     public void update () {
@@ -109,23 +120,23 @@ public class ElementAccordionController extends GUIContainer {
                 myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
                         .map( (element) -> {
                             try {
+                                // TODO GET IMAGES
                                 return new ImageElementPair(null, element.getName());
-                                // return new
-                                // ImageElementPair(SaveLoadUtility.loadImage(element.getSpritesheet().imageTag),
-                                // element.getName());
                             }
                             catch (Exception e) {
                                 System.out.println(e.toString());
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
-        updateItems(states);
+        updateList(terrainTitledPaneController, states);
+        updateList(unitTitledPaneController, states);
+        elementAccordion.setExpandedPane(terrainTitledPane);
     }
 
     /**
      * data structure for holding accordion tile view data
      * 
-     * @author Jonathan Tseng, Nishad Agrawal
+     * @author Jonathan Tseng
      *
      */
     private class ImageElementPair {
@@ -136,6 +147,11 @@ public class ElementAccordionController extends GUIContainer {
             myImage = image;
             myElementName = elementName;
         }
+    }
+
+    @Override
+    public Node getRoot () {
+        return elementAccordion;
     }
 
 }

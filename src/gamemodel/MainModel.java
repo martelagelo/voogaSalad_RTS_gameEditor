@@ -9,8 +9,6 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGa
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
 import game_engine.visuals.elementVisuals.animations.SpriteImageContainer;
-import gamemodel.GameElementStateFactory;
-import gamemodel.GameUniverse;
 import gamemodel.exceptions.CampaignExistsException;
 import gamemodel.exceptions.CampaignNotFoundException;
 import gamemodel.exceptions.DescribableStateException;
@@ -19,6 +17,7 @@ import gamemodel.exceptions.LevelNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Optional;
 import util.SaveLoadMediator;
 
 /**
@@ -212,6 +211,24 @@ public class MainModel extends Observable {
         updateObservers();
     }
 
+    public void removeDrawableGameElement(String elementName) {
+        Optional<DrawableGameElementState> option = getGameUniverse().getDrawableGameElementStates().stream().filter((state)->{
+            return state.getName().equals(elementName);
+        }).findFirst();
+        if (option.isPresent()) {
+            getGameUniverse().removeDrawableGameElementState(option.get());
+        }
+    }
+    
+    public void removeSelectableGameElement(String elementName) {
+        Optional<SelectableGameElementState> option = getGameUniverse().getSelectableGameElementStates().stream().filter((state)->{
+            return state.getName().equals(elementName);
+        }).findFirst();
+        if (option.isPresent()) {
+            getGameUniverse().removeSelectableGameElementState(option.get());
+        }
+    }
+    
     public void addGoal (WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
