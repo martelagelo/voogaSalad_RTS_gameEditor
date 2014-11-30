@@ -2,8 +2,10 @@ package game_engine.stateManaging;
 
 import game_engine.UI.ClickManager;
 import game_engine.UI.KeyboardManager;
+import game_engine.elementFactories.AnimatorFactory;
 import game_engine.elementFactories.GameElementFactory;
 import game_engine.elementFactories.LevelFactory;
+import game_engine.elementFactories.VisualizerFactory;
 import game_engine.gameRepresentation.evaluatables.EvaluatableFactory;
 import game_engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import game_engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -14,14 +16,15 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 import game_engine.gameRepresentation.stateRepresentation.gameElement.StateTags;
 import game_engine.visuals.SelectionBox;
 import gamemodel.GameUniverse;
+import gamemodel.MainModel;
 import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
-import org.json.JSONException;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
+import org.json.JSONException;
 
 
 /**
@@ -78,9 +81,9 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown) e.select(false);
+            if (!isShiftDown) e.deselect();
             if (contains(rectPoints, e.getLocation())) {
-                e.select(true);
+                e.select();
             }
         }
     }
@@ -90,7 +93,7 @@ public class GameElementManager implements Observer {
             if (!e.getNumericalAttribute(StateTags.TEAM_ID).equals(1)) {
                 continue;
             }
-            if (!isShiftDown) e.select(false);
+            if (!isShiftDown) e.deselect();
             double[] bounds = e.getBounds();
             double[] cornerBounds =
                     new double[] { e.getLocation().getX() - bounds[2] / 2,
@@ -99,7 +102,7 @@ public class GameElementManager implements Observer {
                                   e.getLocation().getY() + bounds[3] / 2 };
 
             if (contains(cornerBounds, clickLoc)) {
-                e.select(true);
+                e.select();
                 break;
             }
         }
@@ -118,16 +121,16 @@ public class GameElementManager implements Observer {
         return false;
 
     }
-
-    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary, boolean shiftHeld) {
-        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
-                .collect(Collectors.toList())) {
-            if (!isPrimary) {
-                if (!shiftHeld) e.clearHeadings();
-                e.setHeading(click);
-            }
-        }
-    }
+// TODO : belongs in input manager? generates evaluatables? calls pathing computer?
+//    private void sendClickToSelectedUnits (Point2D click, boolean isPrimary, boolean shiftHeld) {
+//        for (SelectableGameElement e : myLevel.getUnits().stream().filter(e -> e.isSelected())
+//                .collect(Collectors.toList())) {
+//            if (!isPrimary) {
+//                if (!shiftHeld) e.clearHeadings();
+//                e.setHeading(click);
+//            }
+//        }
+//    }
 
     /**
      * Update the rectangle on the image and check for clicks
@@ -148,10 +151,10 @@ public class GameElementManager implements Observer {
                 selectUnitsClick(clickManager.getMapLoc(), clickManager.getLastClick()
                         .isShiftDown());
             }
-            sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
-
-            .getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick()
-                    .isShiftDown());
+            //sendClickToSelectedUnits(clickManager.getMapLoc(), clickManager
+//
+//            .getLastClick().getButton().equals(MouseButton.PRIMARY), clickManager.getLastClick()
+//                    .isShiftDown());
 
         }
         else if (o instanceof KeyboardManager) {
@@ -160,18 +163,22 @@ public class GameElementManager implements Observer {
         }
     }
 
+    // TODO: remove, for testing only
     public static void main (String[] args) {
         
         GameUniverse u = new GameUniverse();
         SelectableGameElementState sges = new SelectableGameElementState(0,0);
-        sges.attributes.setTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING, "archer");
+        sges.attributes.setTextualAttribute(StateTags.NAME, "archer");
         u.addSelectableGameElementState(sges);
         
+        MainModel m = new MainModel();
+        AnimatorFactory af = new AnimatorFactory(m);
+        VisualizerFactory vf = new VisualizerFactory(af);
         GameElementFactory gef;
         try {
-            gef = new GameElementFactory(u, new EvaluatableFactory());
+            gef = new GameElementFactory(u, new EvaluatableFactory(), vf);
         }
-        //FIXME
+        // TODO: FIXME
         catch (ClassNotFoundException | JSONException | IOException e) {
             e.printStackTrace();
             return;

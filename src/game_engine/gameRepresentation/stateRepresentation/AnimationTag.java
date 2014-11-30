@@ -4,50 +4,19 @@ package game_engine.gameRepresentation.stateRepresentation;
  * Enum with Animation Tags allowing for easy reference to specific animation
  * sequences.
  * 
- * @author Rahul
+ * @author Rahul, Steve
  *
  */
 public enum AnimationTag {
     // TODO: Make this list exhaustive (villagers)?
-    WALK_FORWARD,
-    WALK_FORWARD_LEFT,
-    WALK_LEFT,
-    WALK_BACKWARD_LEFT,
-    WALK_BACKWARD,
-    WALK_BACKWARD_RIGHT,
-    WALK_RIGHT,
-    WALK_FORWARD_RIGHT,
-    STAND_FORWARD,
-    STAND_FORWARD_LEFT,
-    STAND_LEFT,
-    STAND_BACKWARD_LEFT,
-    STAND_BACKWARD,
-    STAND_BACKWARD_RIGHT,
-    STAND_RIGHT,
-    STAND_FORWARD_RIGHT,
-    ATTACK_FORWARD,
-    ATTACK_FORWARD_LEFT,
-    ATTACK_LEFT,
-    ATTACK_BACKWARD_LEFT,
-    ATTACK_BACKWARD,
-    ATTACK_BACKWARD_RIGHT,
-    ATTACK_RIGHT,
-    ATTACK_FORWARD_RIGHT,
-    DIE_FORWARD,
-    DIE_FORWARD_LEFT,
-    DIE_LEFT,
-    DIE_BACKWARD_LEFT,
-    DIE_BACKWARD,
-    DIE_BACKWARD_RIGHT,
-    DIE_RIGHT,
-    DIE_FORWARD_RIGHT,
-    DECAY_FORWARD,
-    DECAY_FORWARD_LEFT,
-    DECAY_LEFT,
-    DECAY_BACKWARD_LEFT,
-    DECAY_BACKWARD,
-    DECAY_BACKWARD_RIGHT,
-    DECAY_RIGHT,
-    DECAY_FORWARD_RIGHT,
+    STAND,
+    MOVE,
+    ATTACK,
+    DIE,
+    DECAY,
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT,
     DO_NOTHING;
 }

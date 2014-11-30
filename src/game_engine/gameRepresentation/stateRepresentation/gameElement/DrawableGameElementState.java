@@ -1,10 +1,11 @@
 package game_engine.gameRepresentation.stateRepresentation.gameElement;
 
+import javafx.scene.Node;
 import game_engine.gameRepresentation.stateRepresentation.AnimationTag;
 import game_engine.gameRepresentation.stateRepresentation.AnimatorState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable;
-import game_engine.visuals.elementVisuals.AnimationSequence;
-import game_engine.visuals.elementVisuals.NullAnimationSequence;
+import game_engine.visuals.Displayable;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
 
 
 /**
@@ -15,9 +16,9 @@ import game_engine.visuals.elementVisuals.NullAnimationSequence;
  *
  */
 
-public class DrawableGameElementState extends GameElementState implements Boundable {
+public class DrawableGameElementState extends GameElementState implements Boundable, Displayable {
     
-    private AnimatorState myAnimatorState;
+    public AnimatorState myAnimatorState;
     private double[] myBounds;
 
     /**
@@ -37,30 +38,8 @@ public class DrawableGameElementState extends GameElementState implements Bounda
         // easy retrieval of
         // attributes by conditions and actions
 
-        attributes.setNumericalAttribute(StateTags.X_POS_STRING, xPosition);
-        attributes.setNumericalAttribute(StateTags.Y_POS_STRING, yPosition);
-    }
-
-    
-    // TODO : why do the next two methods exist?
-    /**
-     * Add an animation to the DrawableGameElementState's list of possible
-     * animations
-     *
-     * @param animation the animation to add
-     */
-    public void addAnimation (AnimationSequence animation) {
-        myAnimatorState.addAnimationSequence(animation.getMyName(), animation);
-    }
-
-    /**
-     * Return the animation sequence with a given name
-     *
-     * @param animationName the name of the animation sequence
-     * @return the animation of interest if it exists or null if it does not
-     */
-    public AnimationSequence getAnimation (AnimationTag tag) {
-        return myAnimatorState.getAnimationSequence(tag);
+        attributes.setNumericalAttribute(StateTags.X_POSITION, xPosition);
+        attributes.setNumericalAttribute(StateTags.Y_POSITION, yPosition);
     }
 
     @Override
@@ -76,6 +55,13 @@ public class DrawableGameElementState extends GameElementState implements Bounda
      */
     public void setBounds (double[] bounds) {
         myBounds = bounds;
+    }
+
+
+    @Override
+    public Node getNode () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

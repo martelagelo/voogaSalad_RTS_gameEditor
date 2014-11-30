@@ -32,19 +32,10 @@ import javafx.util.Duration;
 
 
 /**
- * <<<<<<< HEAD
  * The main loop for running the game, checking for collisions, and updating game entities
  *
  * @author Michael D., John, Steve, Zach
- *         =======
- *         The main game loop. Sets the timeline and game loop in motion and calls the update method
- *         of all
- *         the elements in the game
- *
- * @author Makru Dengu, Steve
- *         >>>>>>> model
- *
- */
+ **/
 public class GameLoop {
     public static final Double framesPerSecond = 60.0;
     private String myCampaignName;
@@ -86,16 +77,17 @@ public class GameLoop {
         Evaluator<?, ?, Boolean> collisionEvaluator =
                 new CollisionEvaluator<>("", objectParameter1, objectParameter2);
         Evaluatable<?> xPosition =
-                new NumericAttributeParameter("", StateTags.X_POS_STRING, null,
+                new NumericAttributeParameter("", StateTags.X_POSITION,
+                                              null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yPosition =
-                new NumericAttributeParameter("", StateTags.Y_POS_STRING, null,
+                new NumericAttributeParameter("", StateTags.Y_POSITION, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> xVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.X_VEL, null,
+                new NumericAttributeParameter("", StateTags.X_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluatable<?> yVelocity =
-                new NumericAttributeParameter("", SelectableGameElement.Y_VEL, null,
+                new NumericAttributeParameter("", StateTags.Y_VELOCITY, null,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> xAddEvaluator =
                 new SubtractionAssignmentEvaluator<>("", xPosition, xVelocity);
@@ -155,9 +147,10 @@ public class GameLoop {
 //        myMiniMap.updateMiniMap();
     }
 
+    // TODO: what the fuck is this
     private void addPathsToRoot () {
         for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            unitPaths.addAll(SGE.getLines());
+            //unitPaths.addAll(SGE.getLines());
         }
         myVisualManager.getBackground().getChildren().addAll(unitPaths);
     }

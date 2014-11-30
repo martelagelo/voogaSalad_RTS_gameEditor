@@ -140,9 +140,9 @@ public class ConditionFunctionalityTest {
         // Now move the game element to the a far away location and make sure
         // they don't intersect
         myElement1.setNumericalAttribute(
-                                       StateTags.X_POS_STRING, 100);
+                                       StateTags.X_POSITION, 100);
         myElement1.setNumericalAttribute(
-                                       StateTags.Y_POS_STRING, 100);
+                                       StateTags.Y_POSITION, 100);
         assertFalse((Boolean) (evaluator.evaluate(myElementPair)));
 
     }

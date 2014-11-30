@@ -1,8 +1,9 @@
 package game_engine.gameRepresentation.stateRepresentation;
 
 import game_engine.visuals.Dimension;
-import game_engine.visuals.elementVisuals.AnimationSequence;
-import game_engine.visuals.elementVisuals.NullAnimationSequence;
+import game_engine.visuals.elementVisuals.animations.AnimationSequence;
+import game_engine.visuals.elementVisuals.animations.NullAnimationSequence;
+import java.util.List;
 import java.util.Map;
 import util.JSONable;
 
@@ -12,16 +13,16 @@ import util.JSONable;
  * spritesheet. Internal data is intentionally made public as this is just a
  * data wrapper to simplify the passing of data
  * 
- * @author Rahul, Zach
+ * @author Rahul, Zach, Steve
  *
  */
 
 public class AnimatorState implements JSONable {
 
-    public String imageTag;
-    public Dimension frameDimensions;
-    public int numCols;
-    public Map<AnimationTag, AnimationSequence> animationMap;
+    private String imageTag;
+    private Dimension viewportSize;
+    private int numCols;
+    private Map<List<AnimationTag>, AnimationSequence> animationMap;
 
     /**
      * Create the Spritesheet
@@ -37,22 +38,34 @@ public class AnimatorState implements JSONable {
     public AnimatorState (String imageTag,
                           Dimension frameDimensions,
                           int numCols,
-                          Map<AnimationTag, AnimationSequence> animationMap) {
+                          Map<List<AnimationTag>, AnimationSequence> animationMap) {
         this.imageTag = imageTag;
-        this.frameDimensions = frameDimensions;
+        this.viewportSize = frameDimensions;
         this.numCols = numCols;
         this.animationMap = animationMap;
     }
 
-    public void addAnimationSequence (AnimationTag tag, AnimationSequence seq) {
+    public void addAnimationSequence (List<AnimationTag> tag, AnimationSequence seq) {
         animationMap.put(tag, seq);
     }
 
-    public AnimationSequence getAnimationSequence (AnimationTag tag) {
+    public AnimationSequence getAnimationSequence (List<AnimationTag> tag) {
         return (animationMap.containsKey(tag)) ? animationMap.get(tag) : new NullAnimationSequence();
     }
 
-    public boolean containsAnimationSequence (AnimationTag tag) {
+    public boolean containsAnimationSequence (List<AnimationTag> tag) {
         return animationMap.containsKey(tag);
+    }
+    
+    public String getImageTag () {
+        return imageTag;
+    }
+
+    public Dimension getViewportSize () {
+        return viewportSize;
+    }
+
+    public int getNumCols () {
+        return numCols;
     }
 }

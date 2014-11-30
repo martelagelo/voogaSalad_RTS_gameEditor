@@ -5,8 +5,6 @@ import editor.wizards.WizardDataType;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState;
 import game_engine.gameRepresentation.stateRepresentation.gameElement.SelectableGameElementState;
-import game_engine.visuals.Dimension;
-import game_engine.visuals.elementVisuals.AnimationSequence;
 
 
 /**

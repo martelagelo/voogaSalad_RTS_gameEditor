@@ -92,7 +92,7 @@ public class ConditionParser {
             e.printStackTrace();
         }
         System.out.println(tree);
-        return null;
+        return tree.operation();
     }
 //
 //    /**

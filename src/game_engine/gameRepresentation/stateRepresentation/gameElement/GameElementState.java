@@ -49,7 +49,7 @@ public class GameElementState implements JSONable {
      * @return the name of the element, if it has been set
      */
     public String getName () {
-        return attributes.getTextualAttribute(StateTags.NAME_ATTRIBUTE_STRING);
+        return attributes.getTextualAttribute(StateTags.NAME);
     }
 
     /**
@@ -57,7 +57,7 @@ public class GameElementState implements JSONable {
      * @return the type of the element, if it has been set
      */
     public String getType () {
-        return attributes.getTextualAttribute(StateTags.TYPE_ATTRIBUTE_STRING);
+        return attributes.getTextualAttribute(StateTags.TYPE);
     }
     
     /**
