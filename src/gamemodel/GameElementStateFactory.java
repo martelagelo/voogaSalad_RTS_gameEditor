@@ -16,7 +16,7 @@ import game_engine.gameRepresentation.stateRepresentation.gameElement.Selectable
 public class GameElementStateFactory {
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.attributes.setTextualAttribute("Name",
+        state.attributes.setTextualAttribute("name",
                                   data.getValueByKey(WizardDataType.NAME));
 
         for (WizardData wiz : data.getWizardDataByType(WizardDataType.STRING_ATTRIBUTE)) {
@@ -47,6 +47,7 @@ public class GameElementStateFactory {
                 (DrawableGameElementState) addEssentials(
                                                          new DrawableGameElementState(0.0, 0.0, null),
                                                          data);
+        System.out.println(state.getName());
 //        Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
 //                                      Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 //        Spritesheet mySpritesheet = new Spritesheet(imagePath, dim, Integer.parseInt(data
