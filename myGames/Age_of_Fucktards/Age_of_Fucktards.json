@@ -1,0 +1,119 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [],
+            "myTextualAttributes": []
+          },
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [],
+          "myName": "Fuck Joan of Arc",
+          "myDescription": ""
+        }
+      ],
+      "myName": "Fight for France",
+      "myDescription": ""
+    }
+  ],
+  "myGameUniverse": {
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 300.0,
+        "myName": "HP"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "Archer",
+        "myName": "name"
+      },
+      {
+        "myData": "FUCK",
+        "myName": "Name"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": [
+      {
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 300.0,
+              "myName": "HP"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "Archer",
+              "myName": "name"
+            },
+            {
+              "myData": "FUCK",
+              "myName": "Name"
+            }
+          ]
+        }
+      },
+      {
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 300.0,
+              "myName": "HP"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "ARCHERFUCK",
+              "myName": "name"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "myName": "Age of Fucktards",
+  "myDescription": ""
+}

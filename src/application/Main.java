@@ -5,6 +5,15 @@ import javafx.stage.Stage;
 import model.MainModel;
 import view.MainView;
 
+/**
+ * 
+ * @author jonathan, nishad, joshua
+ * 
+ * This class is the starting point of our application.
+ * It instantiates a model and a view, and adds the view
+ * as an observer of the model.
+ *
+ */
 
 public class Main extends Application {
 
