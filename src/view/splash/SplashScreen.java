@@ -1,14 +1,9 @@
 package view.splash;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -75,14 +70,14 @@ public class SplashScreen extends GUIScreen {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
 
-        File folder = new File(GAMES_DIRECTORY);
-        List<File> files = Arrays.asList(folder.listFiles());
-        List<String> gameNames = files
-                .stream()
-                .filter(f -> f.isDirectory())
-                .map(f -> f.getName())
-                .collect(Collectors.toList());
-        gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
+//        File folder = new File(GAMES_DIRECTORY);
+//        List<File> files = Arrays.asList(folder.listFiles());
+//        List<String> gameNames = files
+//                .stream()
+//                .filter(f -> f.isDirectory())
+//                .map(f -> f.getName())
+//                .collect(Collectors.toList());
+//        gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
 
         setUpButtons();
         drawTitle();

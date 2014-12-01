@@ -36,12 +36,16 @@ public class ElementDropDownController implements GUIController {
     @FXML
     private Button deleteElementButton;
     @FXML
+    private Button addToLevelButton;
+    @FXML
     private ListView<String> elementListView;
     @FXML
     private TitledPane elementDropDown;
 
     private HashMap<String, Node> myElementsMap;
     private Consumer<String> myDeletionConsumer = (String element) -> {
+    };
+    private Consumer<String> myAddToLevelConsumer = (String element) -> {
     };
 
     public void addElement (String element, Node image) {
@@ -57,6 +61,10 @@ public class ElementDropDownController implements GUIController {
 
     public void setDeleteConsumer (Consumer<String> deleteConsumer) {
         myDeletionConsumer = deleteConsumer;
+    }
+    
+    public void setAddToLevelConsumer (Consumer<String> levelConsumer) {
+        myAddToLevelConsumer = levelConsumer;
     }
 
     public void bindGameElement (ObjectProperty<String> elementName) {
@@ -88,9 +96,18 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {
             String selected = elementListView.getSelectionModel().getSelectedItem();
             if (selected != null) {
-                elementListView.getItems().remove(selected);
-                myElementsMap.remove(selected);
+                // elementListView.getItems().remove(selected);
+                // myElementsMap.remove(selected);
                 myDeletionConsumer.accept(selected);
+            }
+        });
+    }
+    
+    private void initAddToLevelButton () {
+        addToLevelButton.setOnAction(event -> {
+            String selected = elementListView.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                myAddToLevelConsumer.accept(selected);
             }
         });
     }
@@ -115,6 +132,7 @@ public class ElementDropDownController implements GUIController {
     public void initialize () {
         initListView();
         initDeleteElementButton();
+        initAddToLevelButton();
 
         try {
             newElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
@@ -125,6 +143,6 @@ public class ElementDropDownController implements GUIController {
         catch (LanguagePropertyNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }    
 
 }

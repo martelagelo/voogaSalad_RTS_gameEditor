@@ -250,6 +250,21 @@ public class MainModel extends Observable {
         myCurrentLevelState.getGoals().remove(index);
         updateObservers();
     }
+    
+    public void addSelectableToLevel (String elementName) {
+        // TODO: do i need to deep copy this into the level state?
+        getCurrentLevel().addUnit(getGameUniverse().getSelectableGameElementState(elementName));
+    }
+
+    public void setTerrain (String terrainName) {
+        // TODO: do i need to deep copy this into the level state?
+        
+    }
+    
+    public void addDrawableToLevel (String elementName) {
+        // TODO: do i need to deep copy this into the level state?
+        getCurrentLevel().addTerrain(getGameUniverse().getDrawableGameElementState(elementName));
+    }
 
     private void updateObservers () {
         setChanged();
