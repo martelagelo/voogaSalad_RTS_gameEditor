@@ -99,6 +99,7 @@ public class ElementDropDownController implements GUIController {
         @Override
         public void updateItem (String item, boolean empty) {
             super.updateItem(item, empty);
+            setText(item);
             if (item != null) {
                 setGraphic(myElementsMap.get(item));
             }
