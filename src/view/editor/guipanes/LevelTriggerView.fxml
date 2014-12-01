@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:id="levelTriggersView" fx:controller="view.editor.LevelTriggersViewController">
+	<Button fx:id="newLevelTrigger" defaultButton="true" text="New Trigger">
+		<maxWidth>
+			<Double fx:constant="MAX_VALUE" />
+		</maxWidth>
+	</Button>
+	<Button fx:id="deleteTrigger" defaultButton="true" text="Delete Selected">
+		<maxWidth>
+			<Double fx:constant="MAX_VALUE" />
+		</maxWidth>
+	</Button>
+	<ListView fx:id="levelTriggers" VBox.vgrow="ALWAYS"/>
+</VBox>
