@@ -13,10 +13,12 @@ import java.util.regex.Pattern;
  */
 public class NumberAttributeWizard extends AttributeWizard {    
 
+    private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
+
     @Override
     public boolean checkCanSave () {
         return areFieldsNotNull() &&
-               Pattern.matches("-?[0-9]+\\.?[0-9]*", value.getText());
+               Pattern.matches(NUM_REGEX, value.getText());
     }
 
     @Override

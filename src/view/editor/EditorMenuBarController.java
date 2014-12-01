@@ -116,10 +116,13 @@ public class EditorMenuBarController extends GUIContainer {
         Consumer<WizardData> bc = (data) -> {
             try {
                 myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
-                                        data.getValueByKey(WizardDataType.CAMPAIGN));
+                                        data.getValueByKey(WizardDataType.CAMPAIGN),
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.WIDTH)),
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)));
                 wiz.getStage().close();
             }
             catch (Exception e1) {
+                e1.printStackTrace();
                 wiz.setErrorMesssage(e1.getMessage());
             }
         };

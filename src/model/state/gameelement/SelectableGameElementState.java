@@ -16,6 +16,11 @@ import model.state.gameelement.traits.Sighted;
  */
 public class SelectableGameElementState extends DrawableGameElementState implements Sighted {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 778064050257391179L;
+    
     private Map<String, Map<String, String>> myAllAbilityRepresentations;
     private Map<String, String> myCurrentAbilityRepresentation;
 

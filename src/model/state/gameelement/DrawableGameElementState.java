@@ -16,6 +16,11 @@ import engine.visual.Displayable;
 
 public class DrawableGameElementState extends GameElementState implements Boundable, Displayable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -2449775294910832264L;
+    
     public AnimatorState myAnimatorState;
     private double[] myBounds;
 

@@ -76,8 +76,8 @@ public class ElementAccordionController extends GUIContainer {
             // Should never happen
             DialogBoxUtility.createMessageDialog(e.toString());
         }
-        terrainTitledPaneController.setButtonAction(openSelectableGameElementWizard());
-        unitTitledPaneController.setButtonAction(openDrawableGameElementWizard());
+        terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
+        unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
             DialogBoxUtility.createMessageDialog("TODO remove shit");
             // myMainModel.removeDrawableGameElement(elementName);
@@ -87,11 +87,15 @@ public class ElementAccordionController extends GUIContainer {
             // myMainModel.removeSelectableGameElement(elementName);
             });
         terrainTitledPaneController.setAddToLevelConsumer( (String elementName) -> {
-            myMainModel.setTerrain(elementName);
+            if (myMainModel.getCurrentLevel() != null) {
+                myMainModel.setTerrain(elementName);
+            }
             System.out.println("Set Terrain!");
         });
         unitTitledPaneController.setAddToLevelConsumer( (String elementName) -> {
-            myMainModel.addSelectableToLevel(elementName);
+            if (myMainModel.getCurrentLevel() != null) {
+                myMainModel.addSelectableToLevel(elementName);
+            }
             System.out.println("Add to level!");
         });
     }

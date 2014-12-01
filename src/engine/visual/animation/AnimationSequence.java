@@ -1,5 +1,6 @@
 package engine.visual.animation;
 
+import java.io.Serializable;
 import java.util.List;
 import model.state.AnimationTag;
 import model.state.gameelement.traits.Updatable;
@@ -12,8 +13,13 @@ import model.state.gameelement.traits.Updatable;
  * @author Zachary Bears, Rahul Harikrishnan, Steve
  *
  */
-public class AnimationSequence implements Updatable {
+public class AnimationSequence implements Updatable, Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -9193394127044465741L;
+    
     private int myStartFrame;
     private int myStopFrame;
     private int myCurrentFrame;

@@ -13,6 +13,8 @@
 				<VBox>
 					<ComboBox fx:id="campaignName" />
 					<TextField fx:id="levelName"  />
+					<TextField fx:id="levelWidth" promptText="Width" />
+					<TextField fx:id="levelHeight" promptText="Height" />
 					<Button fx:id="save" defaultButton = "true"/>
 					<Text fx:id="errorMessage" />
 				</VBox>

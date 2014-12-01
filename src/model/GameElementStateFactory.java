@@ -3,6 +3,7 @@ package model;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.StateTags;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 
@@ -16,7 +17,7 @@ import view.editor.wizards.WizardDataType;
 public class GameElementStateFactory {
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.attributes.setTextualAttribute("name",
+        state.attributes.setTextualAttribute(StateTags.NAME,
                                   data.getValueByKey(WizardDataType.NAME));
 
         for (WizardData wiz : data.getWizardDataByType(WizardDataType.STRING_ATTRIBUTE)) {

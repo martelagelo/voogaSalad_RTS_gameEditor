@@ -1,5 +1,7 @@
 package model.state.gameelement;
 
+import java.io.Serializable;
+
 /**
  * This is the manner in which all basic attributes will be encoded in a GameElement. Essentially is
  * a data wrapper around an attribute with a given name and given data. Intentionally has very
@@ -9,8 +11,13 @@ package model.state.gameelement;
  *
  * @param <T> - the type of attribute that is being encoded.
  */
-public class Attribute<T> {
+public class Attribute<T> implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 6301035732364800965L;
+    
     private T myData;
     private String myName;
 

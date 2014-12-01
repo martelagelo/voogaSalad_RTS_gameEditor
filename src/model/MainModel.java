@@ -16,6 +16,7 @@ import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.StateTags;
 import util.SaveLoadMediator;
 import view.editor.wizards.WizardData;
 
@@ -94,6 +95,7 @@ public class MainModel extends Observable {
         try {
             // TODO: Save location
             String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
+            System.out.println(location);
         }
         catch (Exception e) {
             // TODO: eliminate stack trace printing
@@ -162,11 +164,14 @@ public class MainModel extends Observable {
      * @param levelName
      * @throws LevelExistsException
      */
-    public void createLevel (String levelName, String campaignName) throws LevelExistsException,
-                                                                   CampaignNotFoundException {
+    public void createLevel (String levelName, String campaignName,
+                             Number width, Number height) throws LevelExistsException,
+                                                         CampaignNotFoundException {
         myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
         myCurrentLevelState = new LevelState(levelName.trim());
-        myCurrentCampaignState.addLevel(myCurrentLevelState);
+        myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
+        myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
+        myCurrentCampaignState.addLevel(myCurrentLevelState);        
         updateObservers();
     }
 
@@ -250,19 +255,25 @@ public class MainModel extends Observable {
         myCurrentLevelState.getGoals().remove(index);
         updateObservers();
     }
-    
+
     public void addSelectableToLevel (String elementName) {
-        // TODO: do i need to deep copy this into the level state?
         getCurrentLevel().addUnit(getGameUniverse().getSelectableGameElementState(elementName));
     }
 
     public void setTerrain (String terrainName) {
-        // TODO: do i need to deep copy this into the level state?
-        
+        int width = getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).intValue();
+        int height = (int) getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(terrainName);
+                terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
+                terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
+                getCurrentLevel().addTerrain(terrain);
+            }
+        }                
     }
-    
+
     public void addDrawableToLevel (String elementName) {
-        // TODO: do i need to deep copy this into the level state?
         getCurrentLevel().addTerrain(getGameUniverse().getDrawableGameElementState(elementName));
     }
 
