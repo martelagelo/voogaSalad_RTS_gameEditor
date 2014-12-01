@@ -18,11 +18,19 @@ public class DefaultResourcePopulation {
         File libraryDirectory = new File(LIBRARY_DIRECTORY);
         File destinationDirectory = new File(filePath);
         FileUtils.copyDirectory(libraryDirectory, destinationDirectory);
-        
     }
-
+    
+    /**
+     * Sets a default destination to which
+     * resources should be saved
+     * 
+     * @param destination 
+     *        A string of the filepath that the resources
+     *        should be saved to
+     * @throws Exception
+     */
     void setDefaults (String destination) throws Exception {
-        
+
         class Copy implements Runnable {
             String myDestination;
 
@@ -33,8 +41,8 @@ public class DefaultResourcePopulation {
             public void run () {
                 try {
                     copyResources(destination);
-                    
                 } catch (Exception e) {
+                	
                 }
             }
 
