@@ -1,6 +1,0 @@
-<map id="editor.wizards.GameElementWizard.launchNestedWizard" name="editor.wizards.GameElementWizard.launchNestedWizard">
-<area shape="rect" id="node2" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a36d16948cedf3264544e469103e9cb5b" title="editor.wizards.GameElement\lWizard.launchNumberAttributeEditor" alt="" coords="259,5,514,46"/>
-<area shape="rect" id="node4" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a4b1d74e8098e7e3c7365c5da226fd046" title="editor.wizards.GameElement\lWizard.launchStringAttributeEditor" alt="" coords="266,70,507,111"/>
-<area shape="rect" id="node5" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#ae40410b2e2c9ae8e176922013ead90d2" title="editor.wizards.GameElement\lWizard.launchTriggerEditor" alt="" coords="284,135,489,177"/>
-<area shape="rect" id="node3" href="$d0/d1b/classeditor_1_1wizards_1_1_game_element_wizard.html#a30d75eef840bd76d5d98533b084a341c" title="editor.wizards.GameElement\lWizard.initialize" alt="" coords="563,70,768,111"/>
-</map>

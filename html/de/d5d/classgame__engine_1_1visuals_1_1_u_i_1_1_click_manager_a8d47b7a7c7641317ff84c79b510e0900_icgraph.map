@@ -1,5 +1,0 @@
-<map id="game_engine.visuals.UI.ClickManager.isPrimary" name="game_engine.visuals.UI.ClickManager.isPrimary">
-<area shape="rect" id="node2" href="$de/d5d/classgame__engine_1_1visuals_1_1_u_i_1_1_click_manager.html#a8d76fdb96dcc88e0e5dc233a1605c17b" title="game_engine.visuals.UI.Click\lManager.clicked" alt="" coords="262,5,469,46"/>
-<area shape="rect" id="node3" href="$de/d18/classgame__engine_1_1visuals_1_1_scrollable_scene.html#a4b9d92052fba7caaceb3f079905d006e" title="game_engine.visuals.Scrollable\lScene.initializeHandlers" alt="" coords="518,5,741,46"/>
-<area shape="rect" id="node4" href="$de/d18/classgame__engine_1_1visuals_1_1_scrollable_scene.html#a7ece40832b8fac4ef87045b6cc9e3e33" title="game_engine.visuals.Scrollable\lScene.ScrollableScene" alt="" coords="790,5,1013,46"/>
-</map>

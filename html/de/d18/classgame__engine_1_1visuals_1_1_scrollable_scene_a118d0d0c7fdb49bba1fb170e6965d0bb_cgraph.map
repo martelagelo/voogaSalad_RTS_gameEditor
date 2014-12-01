@@ -1,6 +1,0 @@
-<map id="game_engine.visuals.ScrollableScene.update" name="game_engine.visuals.ScrollableScene.update">
-<area shape="rect" id="node2" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#aa3e45f17fefa5bfe70b5a6969e3154c0" title="game_engine.visuals.Scrollable\lBackground.update" alt="" coords="278,70,501,111"/>
-<area shape="rect" id="node3" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a93c9c6e271b451d685e9b83178f4d2f4" title="game_engine.visuals.Scrollable\lBackground.retractOutOfBoundsScroll" alt="" coords="550,5,815,46"/>
-<area shape="rect" id="node4" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a9db27907868527e610a6cf43a2ef4b2a" title="game_engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="571,70,794,111"/>
-<area shape="rect" id="node5" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a544e882d9281fbfdf28fa445601f59d7" title="game_engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="571,135,794,177"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="editor.wizards.GridLines.createRow" name="editor.wizards.GridLines.createRow">
-<area shape="rect" id="node2" href="$d5/de7/classeditor_1_1wizards_1_1_grid_lines.html#a539fc244705619c2f6e0d66313e8a9fb" title="editor.wizards.GridLines.createRows" alt="" coords="296,45,544,72"/>
-<area shape="rect" id="node3" href="$d5/de7/classeditor_1_1wizards_1_1_grid_lines.html#af3dcb599db02b71980e2993710e22d57" title="editor.wizards.GridLines.create\lGridLines" alt="" coords="593,38,810,79"/>
-<area shape="rect" id="node4" href="$d5/de7/classeditor_1_1wizards_1_1_grid_lines.html#af5f87f6c22b0bd0cc2d012d11b79592b" title="editor.wizards.GridLines.changeSize" alt="" coords="859,45,1109,72"/>
-<area shape="rect" id="node5" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a4bbb89fc834554f435ae2d3b49b54744" title="editor.wizards.DrawableGame\lElementWizard.createSliderListeners" alt="" coords="1157,5,1413,46"/>
-<area shape="rect" id="node7" href="$d5/de7/classeditor_1_1wizards_1_1_grid_lines.html#aa40f90ca697ec1c8c033f44b23e08249" title="editor.wizards.GridLines.\lGridLines" alt="" coords="1197,70,1373,111"/>
-<area shape="rect" id="node6" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html#a7a37e4c518775da5c3d49fb7b1a7ff85" title="editor.wizards.DrawableGame\lElementWizard.initialize" alt="" coords="1461,5,1672,46"/>
-</map>

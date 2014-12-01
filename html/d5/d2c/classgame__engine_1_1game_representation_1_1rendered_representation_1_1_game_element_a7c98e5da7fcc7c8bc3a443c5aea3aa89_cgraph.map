@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.renderedRepresentation.GameElement.update" name="game_engine.gameRepresentation.renderedRepresentation.GameElement.update">
-<area shape="rect" id="node2" href="$d5/d2c/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a87d6ee266a334166934935462f52df04" title="game_engine.gameRepresentation.rendered\lRepresentation.GameElement.updateSelfDue\lToInternalFactors" alt="" coords="363,4,677,60"/>
-<area shape="rect" id="node3" href="$d5/d2c/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a9c2414004c7f1b69376562f8ed6b85f2" title="game_engine.gameRepresentation.rendered\lRepresentation.GameElement.executeAllActions" alt="" coords="725,11,1056,53"/>
-<area shape="rect" id="node4" href="$d5/d2c/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a59bd8329d1507c5af7c4002edb8d661d" title="game_engine.gameRepresentation.rendered\lRepresentation.GameElement.getActionsOfType" alt="" coords="1104,11,1432,53"/>
-</map>

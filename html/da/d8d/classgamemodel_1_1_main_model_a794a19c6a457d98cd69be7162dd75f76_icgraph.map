@@ -1,7 +1,0 @@
-<map id="gamemodel.MainModel.createCampaign" name="gamemodel.MainModel.createCampaign">
-<area shape="rect" id="node2" href="$d1/dcc/classapplication_1_1_shitty_main.html#a2421ffa1f3b59fae50faa3fb14704767" title="application.ShittyMain.hard\lCodeAGame" alt="" coords="291,5,485,46"/>
-<area shape="rect" id="node4" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a3537dbc6abb354eba1673ec6ab94e7fa" title="editor.EditorMenuBarController.on\lNewCampaignClick" alt="" coords="269,70,507,111"/>
-<area shape="rect" id="node3" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="577,12,773,39"/>
-<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="555,70,795,111"/>
-<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="843,77,1083,104"/>
-</map>

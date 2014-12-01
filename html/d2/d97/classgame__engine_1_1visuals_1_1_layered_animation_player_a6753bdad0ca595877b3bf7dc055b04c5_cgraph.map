@@ -1,5 +1,0 @@
-<map id="game_engine.visuals.LayeredAnimationPlayer.LayeredAnimationPlayer" name="game_engine.visuals.LayeredAnimationPlayer.LayeredAnimationPlayer">
-<area shape="rect" id="node2" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="299,5,552,46"/>
-<area shape="rect" id="node3" href="$d2/d97/classgame__engine_1_1visuals_1_1_layered_animation_player.html#a267eeddfd8c9533d64a42cb5cd3278fc" title="game_engine.visuals.Layered\lAnimationPlayer.getImageBounds" alt="" coords="306,70,545,111"/>
-<area shape="rect" id="node4" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a30a627da15298901fc10675636958c8e" title="game_engine.visuals.Dimension.get\lWidth" alt="" coords="299,135,552,177"/>
-</map>

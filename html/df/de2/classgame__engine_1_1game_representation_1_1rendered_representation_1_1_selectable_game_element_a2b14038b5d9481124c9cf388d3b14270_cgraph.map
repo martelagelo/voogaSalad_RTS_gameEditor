@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement.setAnimationDirection" name="game_engine.gameRepresentation.renderedRepresentation.SelectableGameElement.setAnimationDirection">
-<area shape="rect" id="node2" href="$df/de2/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a4f9bf2f908748ba1e78663c849ea1c53" title="game_engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.get\lDirection" alt="" coords="390,5,698,61"/>
-<area shape="rect" id="node3" href="$d1/dfe/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#af9c0e5a3203d72f14ae4b2ddae2823f3" title="game_engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.setAnimation" alt="" coords="363,85,725,126"/>
-<area shape="rect" id="node4" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#aa5c013b4e7921b161cf6bbd5392c3991" title="game_engine.visuals.Animation\lPlayer.setAnimation" alt="" coords="774,85,999,126"/>
-</map>

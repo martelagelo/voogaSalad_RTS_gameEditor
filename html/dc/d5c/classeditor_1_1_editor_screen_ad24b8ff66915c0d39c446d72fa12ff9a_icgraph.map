@@ -1,5 +1,0 @@
-<map id="editor.EditorScreen.loadWizard" name="editor.EditorScreen.loadWizard">
-<area shape="rect" id="node2" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9d2750eb19eeba62360576825c264ae8" title="editor.EditorScreen.open\lGameElementWizard" alt="" coords="230,5,410,46"/>
-<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a7e25f02e5b970538d8e14c98b1ce7a94" title="editor.EditorScreen.open\lTerrainWizard" alt="" coords="230,70,410,111"/>
-<area shape="rect" id="node3" href="$dc/d5c/classeditor_1_1_editor_screen.html#ace4f22524f30894bd2856236d2a1600a" title="editor.EditorScreen.initialize" alt="" coords="459,45,658,72"/>
-</map>

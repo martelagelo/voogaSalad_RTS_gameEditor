@@ -1,6 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState.setSpritesheet" name="game_engine.gameRepresentation.stateRepresentation.gameElement.DrawableGameElementState.setSpritesheet">
-<area shape="rect" id="node2" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="396,5,649,46"/>
-<area shape="rect" id="node3" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html#aa40f5f12d9fa1ea430b6da56c002338d" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElement\lState.getNumericalAttribute" alt="" coords="369,69,677,125"/>
-<area shape="rect" id="node5" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a30a627da15298901fc10675636958c8e" title="game_engine.visuals.Dimension.get\lWidth" alt="" coords="396,149,649,190"/>
-<area shape="rect" id="node4" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html#a92d017656dffc9e74dabe8f016ffacd8" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElement\lState.getAttribute" alt="" coords="726,69,1034,125"/>
-</map>

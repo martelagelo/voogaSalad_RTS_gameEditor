@@ -1,5 +1,0 @@
-<map id="editor.wizards.TerrainWizard" name="editor.wizards.TerrainWizard">
-<area shape="rect" id="node2" href="$df/d00/classeditor_1_1wizards_1_1_drawable_game_element_wizard.html" title="editor.wizards.DrawableGame\lElementWizard" alt="" coords="4,155,213,197"/>
-<area shape="rect" id="node3" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html" title="editor.wizards.Wizard" alt="" coords="32,80,185,107"/>
-<area shape="rect" id="node4" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html" title="view.GUIController" alt="" coords="41,5,177,32"/>
-</map>

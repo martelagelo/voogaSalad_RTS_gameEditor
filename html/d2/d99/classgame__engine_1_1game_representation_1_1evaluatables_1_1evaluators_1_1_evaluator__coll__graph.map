@@ -1,9 +1,0 @@
-<map id="game_engine.gameRepresentation.evaluatables.evaluators.Evaluator&lt; A, B, T &gt;" name="game_engine.gameRepresentation.evaluatables.evaluators.Evaluator&lt; A, B, T &gt;">
-<area shape="rect" id="node2" href="$d2/dfb/classgame__engine_1_1game_representation_1_1evaluatables_1_1_evaluatable.html" title="game_engine::gameRepresentation\l::evaluatables::Evaluatable\&lt; T \&gt;" alt="" coords="1472,5,1723,46"/>
-<area shape="rect" id="node3" href="$d2/dfb/classgame__engine_1_1game_representation_1_1evaluatables_1_1_evaluatable.html" title="game_engine.gameRepresentation.evaluatables.\lEvaluatable\&lt; A \&gt;" alt="" coords="1430,70,1765,111"/>
-<area shape="rect" id="node4" href="$dd/ddd/classgame__engine_1_1game_representation_1_1evaluatables_1_1_element_pair.html" title="game_engine.gameRepresentation.evaluatables.\lElementPair" alt="" coords="1430,135,1765,177"/>
-<area shape="rect" id="node5" href="$d5/d2c/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_game_element.html" title="game_engine.gameRepresentation.rendered\lRepresentation.GameElement" alt="" coords="1014,135,1322,177"/>
-<area shape="rect" id="node8" href="$dc/d2d/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.GameElementState" alt="" coords="529,207,871,249"/>
-<area shape="rect" id="node9" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="113,113,217,140"/>
-<area shape="rect" id="node13" href="$d2/dfb/classgame__engine_1_1game_representation_1_1evaluatables_1_1_evaluatable.html" title="game_engine.gameRepresentation.evaluatables.\lEvaluatable\&lt; B \&gt;" alt="" coords="1430,201,1765,242"/>
-</map>

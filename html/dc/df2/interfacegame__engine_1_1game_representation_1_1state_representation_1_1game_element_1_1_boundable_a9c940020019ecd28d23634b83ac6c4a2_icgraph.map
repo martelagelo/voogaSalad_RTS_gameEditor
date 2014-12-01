@@ -1,4 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable.getBounds" name="game_engine.gameRepresentation.stateRepresentation.gameElement.Boundable.getBounds">
-<area shape="rect" id="node2" href="$d1/df1/classgame__engine_1_1computers_1_1bounds_computers_1_1_collision_computer.html#a7aa2747fe46b4186131fdbb7e87e879b" title="game_engine.computers.bounds\lComputers.CollisionComputer.check\lComputingCondition" alt="" coords="439,5,692,61"/>
-<area shape="rect" id="node3" href="$d5/d07/classgame__engine_1_1computers_1_1bounds_computers_1_1_vision_computer.html#a1faf53713aec545e247a2ac8183a2ce4" title="game_engine.computers.bounds\lComputers.VisionComputer.checkComputing\lCondition" alt="" coords="411,85,720,141"/>
-</map>

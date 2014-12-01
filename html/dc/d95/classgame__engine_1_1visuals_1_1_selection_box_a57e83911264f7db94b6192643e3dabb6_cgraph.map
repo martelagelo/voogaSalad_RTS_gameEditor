@@ -1,7 +1,0 @@
-<map id="game_engine.visuals.SelectionBox.reactToDrag" name="game_engine.visuals.SelectionBox.reactToDrag">
-<area shape="rect" id="node2" href="$df/d1f/classgame__engine_1_1_u_i_1_1_mouse_manager.html#a44ae788495fd3e6b981d410aa104fa89" title="game_engine.UI.MouseManager.get\lLastClick" alt="" coords="273,5,525,46"/>
-<area shape="rect" id="node3" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a53564ae96122a205192e9e1a6cdc10c8" title="game_engine.visuals.Selection\lBox.setSize" alt="" coords="289,70,508,111"/>
-<area shape="rect" id="node4" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a492fcf3d24fbdbdffe003cf329aa9956" title="game_engine.visuals.Selection\lBox.setVisible" alt="" coords="289,135,508,177"/>
-<area shape="rect" id="node5" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a0cbd7bdf1841a501812fb1de49b3c67e" title="game_engine.visuals.Selection\lBox.setX" alt="" coords="289,201,508,242"/>
-<area shape="rect" id="node6" href="$dc/d95/classgame__engine_1_1visuals_1_1_selection_box.html#a354cf30e0d225e5c905d29142c5afe7a" title="game_engine.visuals.Selection\lBox.setY" alt="" coords="289,266,508,307"/>
-</map>

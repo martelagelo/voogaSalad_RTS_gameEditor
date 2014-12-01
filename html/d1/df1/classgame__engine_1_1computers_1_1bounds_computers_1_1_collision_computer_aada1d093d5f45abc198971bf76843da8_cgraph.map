@@ -1,4 +1,0 @@
-<map id="game_engine.computers.boundsComputers.CollisionComputer.givePrimaryObjectElements" name="game_engine.computers.boundsComputers.CollisionComputer.givePrimaryObjectElements">
-<area shape="rect" id="node2" href="$d8/d0a/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_selectable_game_element_state.html#a0336fc3cfe2244167f5a3a8e4a002d5e" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Selectable\lGameElementState.addCollidingElements" alt="" coords="296,4,587,60"/>
-<area shape="rect" id="node3" href="$d8/d0a/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_selectable_game_element_state.html#aac0f3c37dc1ae26f434730356caeb117" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Selectable\lGameElementState.addInteractingElement" alt="" coords="635,4,933,60"/>
-</map>

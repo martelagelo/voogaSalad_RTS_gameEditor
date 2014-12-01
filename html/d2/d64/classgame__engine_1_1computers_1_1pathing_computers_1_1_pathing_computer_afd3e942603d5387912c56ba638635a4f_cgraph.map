@@ -1,8 +1,0 @@
-<map id="game_engine.computers.pathingComputers.PathingComputer.findPath" name="game_engine.computers.pathingComputers.PathingComputer.findPath">
-<area shape="rect" id="node2" href="$d2/d64/classgame__engine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#a8a99708e545392836dae5cc3bd0846bd" title="game_engine.computers.pathing\lComputers.PathingComputer.determineCost" alt="" coords="320,13,627,54"/>
-<area shape="rect" id="node4" href="$d2/d64/classgame__engine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#aaa75d036e76356e2793366d4e315e399" title="game_engine.computers.pathing\lComputers.PathingComputer.determine\lHeuristic" alt="" coords="335,77,612,133"/>
-<area shape="rect" id="node5" href="$d1/d40/classgame__engine_1_1computers_1_1pathing_computers_1_1_map_grid.html#acab40d3982e31f9573869574a58a859f" title="game_engine.computers.pathing\lComputers.MapGrid.getNeighbors" alt="" coords="353,157,593,198"/>
-<area shape="rect" id="node6" href="$d1/d40/classgame__engine_1_1computers_1_1pathing_computers_1_1_map_grid.html#aa086e8ae936b58ff1cd4ae644d8aa057" title="game_engine.computers.pathing\lComputers.MapGrid.getNeighborsFor\lXYCoordinate" alt="" coords="686,237,946,293"/>
-<area shape="rect" id="node7" href="$d2/d64/classgame__engine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#a2c1e56ce0ec6988a9624785a70c1bbac" title="game_engine.computers.pathing\lComputers.PathingComputer.reconstructPath" alt="" coords="317,274,629,315"/>
-<area shape="rect" id="node3" href="$d2/d64/classgame__engine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#aea5fe3429fd9d061e208e6e742c259de" title="game_engine.computers.pathing\lComputers.PathingComputer.determine\lPathLength" alt="" coords="677,5,955,61"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="game_engine.visuals.MiniMap.MiniMap" name="game_engine.visuals.MiniMap.MiniMap">
-<area shape="rect" id="node2" href="$db/da1/classgame__engine_1_1visuals_1_1_mini_map.html#a489453e0d92b2c4f5384e52c7f3ebe7a" title="game_engine.visuals.Mini\lMap.initializeDisplay" alt="" coords="253,5,438,46"/>
-<area shape="rect" id="node3" href="$db/da1/classgame__engine_1_1visuals_1_1_mini_map.html#aafe5084da889414a17e74237c3f94b4a" title="game_engine.visuals.Mini\lMap.initializeGraphicsContext" alt="" coords="240,70,451,111"/>
-</map>

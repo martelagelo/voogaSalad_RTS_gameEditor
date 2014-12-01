@@ -1,9 +1,0 @@
-<map id="game_engine.elementFactories.LevelFactory.generateGoalElements" name="game_engine.elementFactories.LevelFactory.generateGoalElements">
-<area shape="rect" id="node2" href="$d6/dcb/classgame__engine_1_1element_factories_1_1_level_factory.html#a7acb6c6aec6cc26a07124942af2efadc" title="game_engine.elementFactories.\lLevelFactory.createLevel" alt="" coords="304,70,531,111"/>
-<area shape="rect" id="node3" href="$dd/de3/classgame__engine_1_1state_managing_1_1_game_element_manager.html#a57d7eca6f7e470da027067ad2d4a249a" title="game_engine.stateManaging.\lGameElementManager.main" alt="" coords="579,5,791,46"/>
-<area shape="rect" id="node4" href="$d1/d3a/classgame__engine_1_1_engine.html#a33096e19a0dd6c4541ade6bdfcf092c4" title="game_engine.Engine.select\lLevel" alt="" coords="586,70,785,111"/>
-<area shape="rect" id="node5" href="$d1/d3a/classgame__engine_1_1_engine.html#ae864f59e5ead7ef5b675a70ed813e75f" title="game_engine.Engine.update\lGameLoop" alt="" coords="583,135,788,177"/>
-<area shape="rect" id="node6" href="$d1/d3a/classgame__engine_1_1_engine.html#a66b9572272f4556e51893ee93c719196" title="game_engine.Engine.play" alt="" coords="849,117,1036,144"/>
-<area shape="rect" id="node8" href="$d1/d3a/classgame__engine_1_1_engine.html#aae1f63d0e4f4a2a5c36e886c658b6656" title="game_engine.Engine.update" alt="" coords="840,168,1045,195"/>
-<area shape="rect" id="node7" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="1094,117,1290,144"/>
-</map>

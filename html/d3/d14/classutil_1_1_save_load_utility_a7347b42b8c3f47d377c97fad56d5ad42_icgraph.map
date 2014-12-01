@@ -1,9 +1,0 @@
-<map id="util.SaveLoadUtility.topLevelDirectory" name="util.SaveLoadUtility.topLevelDirectory">
-<area shape="rect" id="node2" href="$d3/d14/classutil_1_1_save_load_utility.html#a818b911d475402390309ba8c186b94a7" title="util.SaveLoadUtility.save" alt="" coords="221,75,397,101"/>
-<area shape="rect" id="node3" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#ae6cfdcbbcc6c6eb2f12aefded0c6337f" title="resources.processing.Sprite\lSheetCreationUtility.createSpriteSheet" alt="" coords="445,7,715,49"/>
-<area shape="rect" id="node5" href="$da/d8d/classgamemodel_1_1_main_model.html#a8b6be04509cb75d215fbc008b697ed1c" title="gamemodel.MainModel.saveGame" alt="" coords="458,75,702,101"/>
-<area shape="rect" id="node8" href="$d0/d77/classtest_1_1util_1_1_test_load_save_utility.html#a563b6accea25a4a5868cbff906216e55" title="test.util.TestLoadSaveUtility.test\lLoadSaveFunction" alt="" coords="467,126,693,167"/>
-<area shape="rect" id="node4" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a061298d3fd66edebf2f8d1fb9770df3c" title="resources.processing.Sprite\lSheetCreationUtility.main" alt="" coords="783,5,983,46"/>
-<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="763,70,1003,111"/>
-<area shape="rect" id="node7" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="1051,77,1291,104"/>
-</map>

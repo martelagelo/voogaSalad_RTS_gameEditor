@@ -1,9 +1,0 @@
-<map id="view.GUIContainer" name="view.GUIContainer">
-<area shape="rect" id="node4" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html" title="editor.EditorMenuBarController" alt="" coords="389,5,608,32"/>
-<area shape="rect" id="node5" href="$d4/dcd/classeditor_1_1_element_accordion_controller.html" title="editor.ElementAccordionController" alt="" coords="379,56,619,83"/>
-<area shape="rect" id="node6" href="$df/d32/classeditor_1_1_tab_view_controller.html" title="editor.TabViewController" alt="" coords="411,107,586,133"/>
-<area shape="rect" id="node7" href="$d0/df3/classview_1_1_g_u_i_screen.html" title="view.GUIScreen" alt="" coords="439,157,559,184"/>
-<area shape="rect" id="node3" href="$d7/d84/interfaceview_1_1_g_u_i_controller.html" title="view.GUIController" alt="" coords="6,107,143,133"/>
-<area shape="rect" id="node8" href="$dc/d5c/classeditor_1_1_editor_screen.html" title="editor.EditorScreen" alt="" coords="667,132,811,159"/>
-<area shape="rect" id="node9" href="$dd/d02/classview_1_1_splash_screen.html" title="view.SplashScreen" alt="" coords="669,183,809,209"/>
-</map>

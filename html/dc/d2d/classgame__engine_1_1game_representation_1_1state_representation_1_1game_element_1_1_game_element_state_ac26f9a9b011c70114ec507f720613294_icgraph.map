@@ -1,6 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState.getActions" name="game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState.getActions">
-<area shape="rect" id="node2" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#a295099355a2fc0bc11f4dc9ddad26e62" title="game_engine.elementFactories.\lGameElementFactory.generateActions" alt="" coords="363,85,629,126"/>
-<area shape="rect" id="node3" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#a693481f3e10e5b95613764c6a85315f4" title="game_engine.elementFactories.\lGameElementFactory.createDrawable\lGameElement" alt="" coords="694,5,957,61"/>
-<area shape="rect" id="node4" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#a1c33a1c2f91867c1c48c7cd17d110d3a" title="game_engine.elementFactories.\lGameElementFactory.createGameElement" alt="" coords="678,85,973,126"/>
-<area shape="rect" id="node5" href="$dd/d79/classgame__engine_1_1element_factories_1_1_game_element_factory.html#ab02517baceb90b5d0c6f7a9f86ddcc8d" title="game_engine.elementFactories.\lGameElementFactory.createSelectable\lGameElement" alt="" coords="690,149,961,205"/>
-</map>

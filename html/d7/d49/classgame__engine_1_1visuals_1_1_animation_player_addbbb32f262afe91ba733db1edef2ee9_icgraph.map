@@ -1,5 +1,0 @@
-<map id="game_engine.visuals.AnimationPlayer.update" name="game_engine.visuals.AnimationPlayer.update">
-<area shape="rect" id="node2" href="$de/d5e/classtest_1_1animations_1_1_visual_tester.html#a37f024347407df22653086b777c1fb81" title="test.animations.VisualTester.get\lDisplay" alt="" coords="328,5,555,46"/>
-<area shape="rect" id="node4" href="$d1/dfe/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#ae463a395daef9451816682bcfa4dc06d" title="game_engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.update" alt="" coords="280,70,603,111"/>
-<area shape="rect" id="node3" href="$de/d5e/classtest_1_1animations_1_1_visual_tester.html#abe2b0dbff36ae9c68e11aad756c4fc51" title="test.animations.VisualTester.start" alt="" coords="651,12,885,39"/>
-</map>

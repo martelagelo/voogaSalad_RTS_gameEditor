@@ -1,5 +1,0 @@
-<map id="game_requests.forwarding.RequestMediator.forward" name="game_requests.forwarding.RequestMediator.forward">
-<area shape="rect" id="node2" href="$d7/d05/classgame__requests_1_1forwarding_1_1_request_mediator.html#acbebd158346e8f9141612381e21371a4" title="game_requests.forwarding.\lRequestMediator.checkKnownAddress" alt="" coords="251,5,514,46"/>
-<area shape="rect" id="node4" href="$d7/d05/classgame__requests_1_1forwarding_1_1_request_mediator.html#a7bce3bb27c19e763628642a5c79034dd" title="game_requests.forwarding.\lRequestMediator.checkValidAddress" alt="" coords="257,70,508,111"/>
-<area shape="rect" id="node3" href="$d7/d05/classgame__requests_1_1forwarding_1_1_request_mediator.html#a552f7847b49e5db12f8bffbefe5fc824" title="game_requests.forwarding.\lRequestMediator.isKnownAddress" alt="" coords="563,5,797,46"/>
-</map>
