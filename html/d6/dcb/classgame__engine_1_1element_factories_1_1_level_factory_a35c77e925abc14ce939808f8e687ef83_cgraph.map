@@ -1,4 +1,0 @@
-<map id="game_engine.elementFactories.LevelFactory.updateGridForObstacles" name="game_engine.elementFactories.LevelFactory.updateGridForObstacles">
-<area shape="rect" id="node2" href="$d1/d40/classgame__engine_1_1computers_1_1pathing_computers_1_1_map_grid.html#a912f27d7df3b0dad44b978213c4d2bb6" title="game_engine.computers.pathing\lComputers.MapGrid.registerObstacle\lPlacement" alt="" coords="312,4,571,60"/>
-<area shape="rect" id="node3" href="$d1/d40/classgame__engine_1_1computers_1_1pathing_computers_1_1_map_grid.html#ae2891f9e24252b8a408986de19178a84" title="game_engine.computers.pathing\lComputers.MapGrid.alterLocations\lInsideBounds" alt="" coords="619,4,863,60"/>
-</map>

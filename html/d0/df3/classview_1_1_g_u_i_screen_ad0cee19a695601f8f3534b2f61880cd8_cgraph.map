@@ -1,4 +1,0 @@
-<map id="view.GUIScreen.switchScreen" name="view.GUIScreen.switchScreen">
-<area shape="rect" id="node2" href="$d1/d75/classview_1_1_main_view.html#aa7bef8e36cefa579d2123e2eeba859e7" title="view.MainView.launchScreen" alt="" coords="262,5,463,32"/>
-<area shape="rect" id="node3" href="$d3/de6/enumview_1_1_view_screen.html#a54b22a66be15917327d5baa8e230a5e0" title="view.ViewScreen.getFilePath" alt="" coords="513,5,711,32"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.DescribableState.getDescription" name="game_engine.gameRepresentation.stateRepresentation.DescribableState.getDescription">
-<area shape="rect" id="node2" href="$d5/d35/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_level.html#aec00186f3984f8a522ebf09fc076551b" title="game_engine.gameRepresentation.rendered\lRepresentation.Level.getDescription" alt="" coords="385,5,693,46"/>
-<area shape="rect" id="node3" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9280fc6d569014016e800182e893f540" title="editor.EditorScreen.update\lInfoBox" alt="" coords="442,70,635,111"/>
-<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6e24378bdf2713de4dbc530d63d5782e" title="editor.EditorScreen.init\lProjectExplorer" alt="" coords="755,41,922,82"/>
-<area shape="rect" id="node6" href="$dc/d5c/classeditor_1_1_editor_screen.html#ae17f78235329632f2090fdfb7b358a66" title="editor.EditorScreen.update" alt="" coords="742,107,935,133"/>
-<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a85668e9b3fd80cec58fa6b207854e588" title="editor.EditorScreen.init" alt="" coords="998,48,1165,75"/>
-<area shape="rect" id="node7" href="$dc/d5c/classeditor_1_1_editor_screen.html#a13378a8f469be9b38ba16457a64b7e9a" title="editor.EditorScreen.update\lTabViewControllers" alt="" coords="985,99,1178,141"/>
-</map>

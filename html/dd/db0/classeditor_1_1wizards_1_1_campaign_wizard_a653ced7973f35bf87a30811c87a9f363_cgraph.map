@@ -1,6 +1,0 @@
-<map id="editor.wizards.CampaignWizard.updateData" name="editor.wizards.CampaignWizard.updateData">
-<area shape="rect" id="node2" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#aa88b7fa8c660190364c8c3c06113e137" title="editor.wizards.Wizard.add\lToData" alt="" coords="355,5,538,46"/>
-<area shape="rect" id="node4" href="$d9/d24/classeditor_1_1wizards_1_1_wizard.html#ac990b6545e07a6e24731e434770e9aea" title="editor.wizards.Wizard.set\lDataName" alt="" coords="357,70,536,111"/>
-<area shape="rect" id="node3" href="$dc/d23/classeditor_1_1wizards_1_1_wizard_data.html#a2de2ac096dc357a4e6951095e776809e" title="editor.wizards.WizardData.add\lDataPair" alt="" coords="605,5,819,46"/>
-<area shape="rect" id="node5" href="$dc/d23/classeditor_1_1wizards_1_1_wizard_data.html#a914bf7943e77021054547fa598c32e34" title="editor.wizards.WizardData.setName" alt="" coords="587,77,837,104"/>
-</map>

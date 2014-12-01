@@ -1,6 +1,0 @@
-<map id="game_engine.Engine.Engine" name="game_engine.Engine.Engine">
-<area shape="rect" id="node2" href="$da/d8d/classgamemodel_1_1_main_model.html#a53f66be5755c649b3422db0c4ed01c2e" title="gamemodel.MainModel.getGame\lUniverse" alt="" coords="265,5,500,46"/>
-<area shape="rect" id="node4" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="256,70,509,111"/>
-<area shape="rect" id="node5" href="$db/d53/classgame__engine_1_1visuals_1_1_visual_manager.html#afa6ca2179c0b45c2dabf0b410a44d95f" title="game_engine.visuals.Visual\lManager.getScrollingScene" alt="" coords="283,135,482,177"/>
-<area shape="rect" id="node3" href="$df/ddb/classgame__engine_1_1game_representation_1_1state_representation_1_1_game_state.html#a5db4a89800dd1f66ba1ef5d2a151eadb" title="game_engine.gameRepresentation.state\lRepresentation.GameState.getGameUniverse" alt="" coords="558,5,874,46"/>
-</map>

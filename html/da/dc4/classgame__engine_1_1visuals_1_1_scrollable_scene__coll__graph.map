@@ -1,6 +1,0 @@
-<map id="game_engine.visuals.ScrollableScene" name="game_engine.visuals.ScrollableScene">
-<area shape="rect" id="node3" href="$de/d5d/classgame__engine_1_1visuals_1_1_u_i_1_1_click_manager.html" title="game_engine.visuals.UI.Click\lManager" alt="" coords="265,187,471,229"/>
-<area shape="rect" id="node7" href="$d4/de4/classgame__engine_1_1visuals_1_1_u_i_1_1_selection_box.html" title="game_engine.visuals.UI.SelectionBox" alt="" coords="238,253,498,280"/>
-<area shape="rect" id="node9" href="$d0/d48/classgame__engine_1_1visuals_1_1_u_i_1_1_keyboard_manager.html" title="game_engine.visuals.UI.Keyboard\lManager" alt="" coords="250,122,486,163"/>
-<area shape="rect" id="node5" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html" title="game_engine.visuals.Scrollable\lBackground" alt="" coords="257,57,479,98"/>
-</map>

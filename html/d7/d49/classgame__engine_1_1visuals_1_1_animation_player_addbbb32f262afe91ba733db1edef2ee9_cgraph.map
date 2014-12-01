@@ -1,9 +1,0 @@
-<map id="game_engine.visuals.AnimationPlayer.update" name="game_engine.visuals.AnimationPlayer.update">
-<area shape="rect" id="node2" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a9c6067b99259d8fb0b336ef107027bc1" title="game_engine.visuals.Animation\lSequence.getFrame" alt="" coords="281,5,506,46"/>
-<area shape="rect" id="node3" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a753f1ddcfa0df45516dfba1930850efb" title="game_engine.visuals.Animation\lSequence.getNextAnimation" alt="" coords="281,70,506,111"/>
-<area shape="rect" id="node5" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#ac3e631e64143baf4e749fbffab99ec52" title="game_engine.visuals.Animation\lPlayer.getViewport" alt="" coords="281,135,506,177"/>
-<area shape="rect" id="node8" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a916ca3c35e0bb00df938510a7c8a9fe7" title="game_engine.visuals.Animation\lSequence.update" alt="" coords="281,201,506,242"/>
-<area shape="rect" id="node4" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html#a3ca6fdb870eb33d104c1ab73d2991c3f" title="game_engine.visuals.Animation\lSequence.reset" alt="" coords="569,70,794,111"/>
-<area shape="rect" id="node6" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a4d803b0b96a4432a77516cf17c413617" title="game_engine.visuals.Dimension.get\lHeight" alt="" coords="555,135,808,177"/>
-<area shape="rect" id="node7" href="$de/d86/classgame__engine_1_1visuals_1_1_dimension.html#a30a627da15298901fc10675636958c8e" title="game_engine.visuals.Dimension.get\lWidth" alt="" coords="555,201,808,242"/>
-</map>

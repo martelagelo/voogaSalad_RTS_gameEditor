@@ -2,9 +2,8 @@ package application;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.dialog.DialogBoxUtility;
-import view.dialog.DialogChoice;
-
+import model.MainModel;
+import view.MainView;
 
 
 public class Main extends Application {
@@ -12,9 +11,10 @@ public class Main extends Application {
     @Override
     public void start (Stage primaryStage) {
         try {
-            Vooga salad = new Vooga(primaryStage);
-            // gotta have some freshly dressed salad
-            salad.dress();
+            MainModel myMainModel = new MainModel();
+            MainView myMainView = new MainView(primaryStage, myMainModel);
+            myMainModel.addObserver(myMainView);
+            myMainView.start();
         }
         catch (Exception e) {
             e.printStackTrace();

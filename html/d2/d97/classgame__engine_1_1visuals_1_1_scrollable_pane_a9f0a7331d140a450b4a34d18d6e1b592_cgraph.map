@@ -1,5 +1,0 @@
-<map id="game_engine.visuals.ScrollablePane.mousePressed" name="game_engine.visuals.ScrollablePane.mousePressed">
-<area shape="rect" id="node2" href="$df/d88/classgame__engine_1_1_u_i_1_1_input_manager.html#adb364731c7ce8ec51e82fc159e0c9c0a" title="game_engine.UI.InputManager.input\lOccurred" alt="" coords="277,5,531,46"/>
-<area shape="rect" id="node3" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a9db27907868527e610a6cf43a2ef4b2a" title="game_engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="293,70,515,111"/>
-<area shape="rect" id="node4" href="$da/d4a/classgame__engine_1_1visuals_1_1_scrollable_background.html#a544e882d9281fbfdf28fa445601f59d7" title="game_engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="293,135,515,177"/>
-</map>

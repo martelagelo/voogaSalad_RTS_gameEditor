@@ -1,4 +1,0 @@
-<map id="game_engine.gameRepresentation.renderedRepresentation.Level.Level" name="game_engine.gameRepresentation.renderedRepresentation.Level.Level">
-<area shape="rect" id="node2" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#af11ffe561f4ef9abeb5db90d65e70eea" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.getTerrain" alt="" coords="363,5,645,46"/>
-<area shape="rect" id="node3" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#aad6873b4851ec226171d9326d00212d8" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.getUnits" alt="" coords="363,70,645,111"/>
-</map>

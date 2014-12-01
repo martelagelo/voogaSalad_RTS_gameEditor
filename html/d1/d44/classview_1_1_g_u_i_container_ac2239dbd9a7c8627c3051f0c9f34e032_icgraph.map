@@ -1,6 +1,0 @@
-<map id="view.GUIContainer.clearChildContainers" name="view.GUIContainer.clearChildContainers">
-<area shape="rect" id="node2" href="$dc/d5c/classeditor_1_1_editor_screen.html#a9fec11d30bd430472af8e052596c4c89" title="editor.EditorScreen.create\lNewTab" alt="" coords="256,5,445,46"/>
-<area shape="rect" id="node3" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6507f3b4db362b2b3110e33019e3abf8" title="editor.EditorScreen.launchTab" alt="" coords="493,12,704,39"/>
-<area shape="rect" id="node4" href="$dc/d5c/classeditor_1_1_editor_screen.html#a6e24378bdf2713de4dbc530d63d5782e" title="editor.EditorScreen.init\lProjectExplorer" alt="" coords="753,5,919,46"/>
-<area shape="rect" id="node5" href="$dc/d5c/classeditor_1_1_editor_screen.html#a85668e9b3fd80cec58fa6b207854e588" title="editor.EditorScreen.init" alt="" coords="969,12,1135,39"/>
-</map>

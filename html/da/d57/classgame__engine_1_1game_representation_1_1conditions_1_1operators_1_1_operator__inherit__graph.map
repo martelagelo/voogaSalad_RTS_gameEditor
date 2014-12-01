@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.conditions.operators.Operator" name="game_engine.gameRepresentation.conditions.operators.Operator">
-<area shape="rect" id="node3" href="$d8/d6f/classgame__engine_1_1game_representation_1_1conditions_1_1operators_1_1_and_operator.html" title="game_engine.gameRepresentation.conditions.operators.\lAndOperator" alt="" coords="809,5,1194,46"/>
-<area shape="rect" id="node4" href="$d0/d94/classgame__engine_1_1game_representation_1_1conditions_1_1operators_1_1_or_operator.html" title="game_engine.gameRepresentation.conditions.operators.\lOrOperator" alt="" coords="809,70,1194,111"/>
-<area shape="rect" id="node2" href="$dd/ddf/interfacegame__engine_1_1game_representation_1_1conditions_1_1_evaluatable.html" title="game_engine.gameRepresentation.conditions.\lEvaluatable" alt="" coords="6,38,325,79"/>
-</map>

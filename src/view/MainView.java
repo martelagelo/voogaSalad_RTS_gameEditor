@@ -1,17 +1,17 @@
 package view;
 
-import gamemodel.MainModel;
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.MainModel;
 import util.multilanguage.MultiLanguageUtility;
+import view.gui.GUIScreen;
+import view.gui.ViewScreenPath;
 
 
 /**
@@ -44,7 +44,7 @@ public class MainView implements Observer {
         myScene = new Scene(new Pane(), SCENE_DIMENSIONS.getWidth(),
                 SCENE_DIMENSIONS.getHeight());
         myMainModel = model;
-        launchScreen(ViewScreen.SPLASH);
+        launchScreen(ViewScreenPath.SPLASH);
         myLoadStyleUtility = GUILoadStyleUtility.getInstance();
         myLoadStyleUtility.addScene(myScene);
         myLoadStyleUtility.addStyle("./stylesheets/JMetroDarkTheme.css");
@@ -56,7 +56,7 @@ public class MainView implements Observer {
         myStage.show();
     }
 
-    public void launchScreen (ViewScreen screen) {
+    public void launchScreen (ViewScreenPath screen) {
         launchScreen(screen.getFilePath());
     }
 

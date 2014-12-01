@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.GUIController;
+import view.gui.GUIController;
 
 
 /**

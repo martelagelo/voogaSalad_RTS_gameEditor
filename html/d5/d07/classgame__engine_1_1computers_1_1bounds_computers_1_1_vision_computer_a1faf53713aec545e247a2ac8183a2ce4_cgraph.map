@@ -1,4 +1,0 @@
-<map id="game_engine.computers.boundsComputers.VisionComputer.checkComputingCondition" name="game_engine.computers.boundsComputers.VisionComputer.checkComputingCondition">
-<area shape="rect" id="node2" href="$dc/df2/interfacegame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_boundable.html#a9c940020019ecd28d23634b83ac6c4a2" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Boundable.getBounds" alt="" coords="363,5,720,46"/>
-<area shape="rect" id="node3" href="$dd/db9/interfacegame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_sighted.html#ad176bedddd2ce90ece7711e37986bc12" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Sighted.get\lVisionBounds" alt="" coords="396,69,687,125"/>
-</map>

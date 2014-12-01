@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState" name="game_engine.gameRepresentation.stateRepresentation.gameElement.GameElementState">
-<area shape="rect" id="node3" href="$db/d72/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_drawable_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.DrawableGame\lElementState" alt="" coords="549,4,864,60"/>
-<area shape="rect" id="node2" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="5,19,109,45"/>
-<area shape="rect" id="node4" href="$d8/d0a/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_selectable_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Selectable\lGameElementState" alt="" coords="912,4,1195,60"/>
-</map>

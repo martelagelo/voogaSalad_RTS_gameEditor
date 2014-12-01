@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import view.gui.GUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 

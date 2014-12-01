@@ -1,6 +1,0 @@
-<map id="game_engine.visuals.AnimationPlayer.getViewport" name="game_engine.visuals.AnimationPlayer.getViewport">
-<area shape="rect" id="node2" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html#addbbb32f262afe91ba733db1edef2ee9" title="game_engine.visuals.Animation\lPlayer.update" alt="" coords="281,38,506,79"/>
-<area shape="rect" id="node3" href="$d1/dfe/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#ae463a395daef9451816682bcfa4dc06d" title="game_engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.update" alt="" coords="555,5,877,46"/>
-<area shape="rect" id="node4" href="$de/d5e/classtest_1_1animations_1_1_visual_tester.html#a37f024347407df22653086b777c1fb81" title="test.animations.VisualTester.get\lDisplay" alt="" coords="603,70,829,111"/>
-<area shape="rect" id="node5" href="$de/d5e/classtest_1_1animations_1_1_visual_tester.html#abe2b0dbff36ae9c68e11aad756c4fc51" title="test.animations.VisualTester.start" alt="" coords="925,77,1160,104"/>
-</map>

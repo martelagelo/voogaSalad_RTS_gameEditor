@@ -1,8 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.LevelState.getCampaignState" name="game_engine.gameRepresentation.stateRepresentation.LevelState.getCampaignState">
-<area shape="rect" id="node2" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#adca0d423baa7811a5a569d5d96ba49a3" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.sameLevel" alt="" coords="368,23,651,65"/>
-<area shape="rect" id="node3" href="$d7/daf/classgame__engine_1_1state_managing_1_1_game_loop.html#aaf3bf4fcc3d0e47ec74926482b08626b" title="game_engine.stateManaging.\lGameLoop.isCurrentLevel" alt="" coords="699,23,911,65"/>
-<area shape="rect" id="node4" href="$d1/d3a/classgame__engine_1_1_engine.html#ab6c764092ba69d14447f29ce60f02883" title="game_engine.Engine.update\lGameLoop" alt="" coords="960,23,1165,65"/>
-<area shape="rect" id="node5" href="$d1/d3a/classgame__engine_1_1_engine.html#a66b9572272f4556e51893ee93c719196" title="game_engine.Engine.play" alt="" coords="1223,5,1409,32"/>
-<area shape="rect" id="node7" href="$d1/d3a/classgame__engine_1_1_engine.html#aae1f63d0e4f4a2a5c36e886c658b6656" title="game_engine.Engine.update" alt="" coords="1213,56,1419,83"/>
-<area shape="rect" id="node6" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="1467,5,1663,32"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="util.SaveLoadUtility.save" name="util.SaveLoadUtility.save">
-<area shape="rect" id="node2" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#ae6cfdcbbcc6c6eb2f12aefded0c6337f" title="resources.processing.Sprite\lSheetCreationUtility.createSpriteSheet" alt="" coords="229,7,499,49"/>
-<area shape="rect" id="node4" href="$da/d8d/classgamemodel_1_1_main_model.html#a8b6be04509cb75d215fbc008b697ed1c" title="gamemodel.MainModel.saveGame" alt="" coords="242,75,486,101"/>
-<area shape="rect" id="node7" href="$d0/d77/classtest_1_1util_1_1_test_load_save_utility.html#a563b6accea25a4a5868cbff906216e55" title="test.util.TestLoadSaveUtility.test\lLoadSaveFunction" alt="" coords="251,126,477,167"/>
-<area shape="rect" id="node3" href="$d9/dd2/classresources_1_1processing_1_1_sprite_sheet_creation_utility.html#a061298d3fd66edebf2f8d1fb9770df3c" title="resources.processing.Sprite\lSheetCreationUtility.main" alt="" coords="567,5,767,46"/>
-<area shape="rect" id="node5" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a4263ec1503bc67c1ee7293d6fa303ab0" title="editor.EditorMenuBarController.init\lFileMenu" alt="" coords="547,70,787,111"/>
-<area shape="rect" id="node6" href="$d1/d74/classeditor_1_1_editor_menu_bar_controller.html#a5e27bce310879b43b5726c8b90f98743" title="editor.EditorMenuBarController.init" alt="" coords="835,77,1075,104"/>
-</map>

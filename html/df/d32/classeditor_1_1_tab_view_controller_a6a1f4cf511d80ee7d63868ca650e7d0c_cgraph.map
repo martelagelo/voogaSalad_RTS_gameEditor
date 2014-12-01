@@ -1,6 +1,0 @@
-<map id="editor.TabViewController.update" name="editor.TabViewController.update">
-<area shape="rect" id="node2" href="$df/d32/classeditor_1_1_tab_view_controller.html#a5cee15e1caf0e725907b149c6cb96303" title="editor.TabViewController.update\lLevelTriggersView" alt="" coords="278,70,501,111"/>
-<area shape="rect" id="node3" href="$da/d8d/classgamemodel_1_1_main_model.html#a41355aa1468a712c51c609d1b94eeb6a" title="gamemodel.MainModel.getCurrent\lLevel" alt="" coords="569,5,813,46"/>
-<area shape="rect" id="node4" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#ae415af1c9b718eb598d0f319974738ec" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.getGoals" alt="" coords="549,70,832,111"/>
-<area shape="rect" id="node5" href="$d8/d9d/classeditor_1_1_level_triggers_view_controller.html#a286ce6655c07d9b36b3773783b7fcf1e" title="editor.LevelTriggersView\lController.updateTriggerList" alt="" coords="593,135,789,177"/>
-</map>

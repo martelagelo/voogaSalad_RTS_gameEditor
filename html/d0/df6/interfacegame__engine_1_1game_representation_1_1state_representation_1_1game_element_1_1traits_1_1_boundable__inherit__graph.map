@@ -1,6 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable" name="game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Boundable">
-<area shape="rect" id="node2" href="$d1/dfe/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html" title="game_engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement" alt="" coords="379,5,687,46"/>
-<area shape="rect" id="node4" href="$db/d72/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_drawable_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.DrawableGame\lElementState" alt="" coords="376,69,691,125"/>
-<area shape="rect" id="node3" href="$df/de2/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html" title="game_engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement" alt="" coords="739,5,1047,46"/>
-<area shape="rect" id="node5" href="$d8/d0a/classgame__engine_1_1game_representation_1_1state_representation_1_1game_element_1_1_selectable_game_element_state.html" title="game_engine.gameRepresentation.state\lRepresentation.gameElement.Selectable\lGameElementState" alt="" coords="752,69,1035,125"/>
-</map>

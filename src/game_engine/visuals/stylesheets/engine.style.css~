@@ -1,7 +1,0 @@
-#buttonTray {
-    -fx-background-image: url("../../../resources/img/graphics/interface/interactionPane.png"); 
-}
-
-.button {
-
-}

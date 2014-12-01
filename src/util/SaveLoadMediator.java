@@ -1,18 +1,15 @@
 package util;
 
-import editor.wizards.WizardData;
-import editor.wizards.WizardDataType;
-import game_engine.gameRepresentation.stateRepresentation.GameState;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.scene.image.Image;
-
+import model.state.GameState;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import view.editor.wizards.WizardData;
+import view.editor.wizards.WizardDataType;
 
 /**
  * This class mediates between the Model and the SaveLoadUtility. Using the

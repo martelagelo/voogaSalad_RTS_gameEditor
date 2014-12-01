@@ -1,6 +1,0 @@
-<map id="game_engine.stateManaging.GameLoop.isCurrentLevel" name="game_engine.stateManaging.GameLoop.isCurrentLevel">
-<area shape="rect" id="node2" href="$d5/d35/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_level.html#ab4f7a698363f16e7fd2b83ef84eb01e2" title="game_engine.gameRepresentation.rendered\lRepresentation.Level.getLevelState" alt="" coords="267,5,575,46"/>
-<area shape="rect" id="node3" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#adca0d423baa7811a5a569d5d96ba49a3" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.sameLevel" alt="" coords="280,70,563,111"/>
-<area shape="rect" id="node4" href="$d3/d7a/classgame__engine_1_1game_representation_1_1state_representation_1_1_level_state.html#a491d6889f1c1a6e5215e6fc929e568b1" title="game_engine.gameRepresentation.state\lRepresentation.LevelState.getCampaignState" alt="" coords="624,37,939,78"/>
-<area shape="rect" id="node5" href="$da/d2f/classgame__engine_1_1game_representation_1_1state_representation_1_1_describable_state.html#a9f8b1e677c899d1ab9af302a9f4854f3" title="game_engine.gameRepresentation.state\lRepresentation.DescribableState.getName" alt="" coords="633,102,929,143"/>
-</map>

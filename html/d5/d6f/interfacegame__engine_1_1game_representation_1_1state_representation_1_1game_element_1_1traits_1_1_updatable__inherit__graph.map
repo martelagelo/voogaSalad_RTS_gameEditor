@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable" name="game_engine.gameRepresentation.stateRepresentation.gameElement.traits.Updatable">
-<area shape="rect" id="node2" href="$d7/d49/classgame__engine_1_1visuals_1_1_animation_player.html" title="game_engine.visuals.Animation\lPlayer" alt="" coords="5,97,229,138"/>
-<area shape="rect" id="node3" href="$d4/d58/classgame__engine_1_1visuals_1_1_animation_sequence.html" title="game_engine.visuals.Animation\lSequence" alt="" coords="254,97,479,138"/>
-<area shape="rect" id="node4" href="$d6/dd2/classgame__engine_1_1visuals_1_1_null_animation_sequence.html" title="game_engine.visuals.Null\lAnimationSequence" alt="" coords="275,187,459,229"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="game_engine.visuals.MiniMap.setUnits" name="game_engine.visuals.MiniMap.setUnits">
-<area shape="rect" id="node2" href="$d1/d3a/classgame__engine_1_1_engine.html#a33096e19a0dd6c4541ade6bdfcf092c4" title="game_engine.Engine.select\lLevel" alt="" coords="243,5,442,46"/>
-<area shape="rect" id="node3" href="$d1/d3a/classgame__engine_1_1_engine.html#ae864f59e5ead7ef5b675a70ed813e75f" title="game_engine.Engine.update\lGameLoop" alt="" coords="240,70,445,111"/>
-<area shape="rect" id="node4" href="$d1/d3a/classgame__engine_1_1_engine.html#a66b9572272f4556e51893ee93c719196" title="game_engine.Engine.play" alt="" coords="503,52,689,79"/>
-<area shape="rect" id="node6" href="$d1/d3a/classgame__engine_1_1_engine.html#aae1f63d0e4f4a2a5c36e886c658b6656" title="game_engine.Engine.update" alt="" coords="493,103,699,129"/>
-<area shape="rect" id="node5" href="$d1/dcc/classapplication_1_1_shitty_main.html#af8b91a9a9eb3ba2c8a66baee2bed773b" title="application.ShittyMain.start" alt="" coords="747,52,943,79"/>
-</map>

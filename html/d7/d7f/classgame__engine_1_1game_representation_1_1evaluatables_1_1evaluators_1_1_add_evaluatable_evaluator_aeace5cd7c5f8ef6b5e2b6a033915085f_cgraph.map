@@ -1,5 +1,0 @@
-<map id="game_engine.gameRepresentation.evaluatables.evaluators.AddEvaluatableEvaluator.evaluate" name="game_engine.gameRepresentation.evaluatables.evaluators.AddEvaluatableEvaluator.evaluate">
-<area shape="rect" id="node2" href="$d5/d2c/classgame__engine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#abd8cea337c35bc37cc5cafd4a05f966d" title="game_engine.gameRepresentation.rendered\lRepresentation.GameElement.addAction" alt="" coords="475,5,783,46"/>
-<area shape="rect" id="node3" href="$d6/dc5/classgame__engine_1_1game_representation_1_1evaluatables_1_1_action.html#aa680c63221ee912b6aec5b184978bb62" title="game_engine.gameRepresentation.evaluatables.\lAction.getActionType" alt="" coords="462,70,797,111"/>
-<area shape="rect" id="node4" href="$d6/dc5/classgame__engine_1_1game_representation_1_1evaluatables_1_1_action.html#aed5358670f054a34b51880458dc539cb" title="game_engine.gameRepresentation.evaluatables.\lAction.getEvaluatable" alt="" coords="462,135,797,177"/>
-</map>

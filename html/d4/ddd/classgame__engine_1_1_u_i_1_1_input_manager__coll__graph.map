@@ -1,6 +1,0 @@
-<map id="game_engine.UI.InputManager" name="game_engine.UI.InputManager">
-<area shape="rect" id="node4" href="$df/d1f/classgame__engine_1_1_u_i_1_1_mouse_manager.html" title="game_engine.UI.MouseManager" alt="" coords="219,137,447,164"/>
-<area shape="rect" id="node6" href="$da/dd3/classgame__engine_1_1_u_i_1_1_keyboard_manager.html" title="game_engine.UI.KeyboardManager" alt="" coords="472,13,717,40"/>
-<area shape="rect" id="node3" href="$de/dec/classgame__engine_1_1_u_i_1_1_click_manager.html" title="game_engine.UI.ClickManager" alt="" coords="742,189,957,216"/>
-<area shape="rect" id="node7" href="$dc/dcb/classgame__engine_1_1_u_i_1_1_mouse_drag_manager.html" title="game_engine.UI.MouseDrag\lManager" alt="" coords="748,123,951,165"/>
-</map>
