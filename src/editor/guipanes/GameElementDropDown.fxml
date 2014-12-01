@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+
+<TitledPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:id="elementDropDown" fx:controller="editor.ElementDropDownController">
+	<content>
+		<VBox>
+			<padding>
+				<Insets top="0" bottom="0" right="0" left="0" />
+			</padding>
+			<children>
+				<Button fx:id="newElementButton" VBox.vgrow="NEVER">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="deleteElementButton" VBox.vgrow="NEVER">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
+					<content>
+						<ListView fx:id="elementListView" />
+					</content>
+				</ScrollPane>
+			</children>
+		</VBox>
+	</content>
+</TitledPane>
