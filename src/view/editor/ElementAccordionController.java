@@ -20,6 +20,7 @@ import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.SelectableGameElementWizard;
+import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardUtility;
@@ -90,14 +91,30 @@ public class ElementAccordionController extends GUIContainer {
             if (myMainModel.getCurrentLevel() != null) {
                 myMainModel.setTerrain(elementName);
             }
-            System.out.println("Set Terrain!");
         });
-        unitTitledPaneController.setAddToLevelConsumer( (String elementName) -> {
+        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
+    }
+
+    private Consumer<String> addUnitToLevel () {
+        return (String elementName) -> {
             if (myMainModel.getCurrentLevel() != null) {
-                myMainModel.addSelectableToLevel(elementName);
+                Wizard wiz =
+                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
+                                                                                            300));
+                Consumer<WizardData> cons =
+                        (data) -> {
+                            myMainModel
+                                    .addUnitToLevel(elementName,
+                                                          Double.parseDouble(data
+                                                                  .getValueByKey(WizardDataType.X_POSITION)),
+                                                          Double.parseDouble(data
+                                                                  .getValueByKey(WizardDataType.Y_POSITION)));
+                            wiz.getStage().close();
+                        };
+                wiz.setSubmit(cons);
             }
             System.out.println("Add to level!");
-        });
+        };
     }
 
     private void updateList (ElementDropDownController dropDownController,

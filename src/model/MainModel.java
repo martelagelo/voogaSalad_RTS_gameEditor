@@ -35,9 +35,11 @@ public class MainModel extends Observable {
     private GameElementState myEditorSelectedElement;
     private SaveLoadMediator mySaveLoadManager;
     private Map<String, SpriteImageContainer> imageConatinerMap;
+    private ModifiedContainer myModifiedContainer;
 
     public MainModel () {
         mySaveLoadManager = new SaveLoadMediator();
+        myModifiedContainer = new ModifiedContainer();
     }
 
     public void newGame (String gameName) {
@@ -248,33 +250,47 @@ public class MainModel extends Observable {
     public void createGoal (WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         myCurrentLevelState.addGoal(goal);
+        myModifiedContainer.getRecentlyAddedGoals().add(goal);
         updateObservers();
     }
 
     public void removeGoal (int index) {
-        myCurrentLevelState.getGoals().remove(index);
+        GameElementState goal = myCurrentLevelState.getGoals().get(index);
+        myCurrentLevelState.getGoals().remove(goal);
+        myModifiedContainer.getRecentlyDeletedGoals().add(goal);
         updateObservers();
     }
 
-    public void addSelectableToLevel (String elementName) {
-        getCurrentLevel().addUnit(getGameUniverse().getSelectableGameElementState(elementName));
+    public void addUnitToLevel (String elementName, Double xValue, Double yValue) {
+        // TODO: check that the position is actually inside the grid
+        SelectableGameElementState unit = getGameUniverse().getSelectableGameElementState(elementName);
+        unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
+        unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+        myModifiedContainer.getRecentlyAddedUnits().add(unit);
+        getCurrentLevel().addUnit(unit);
     }
 
     public void setTerrain (String terrainName) {
         int width = getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).intValue();
-        int height = (int) getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
+        int height = getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(terrainName);
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
+                myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
                 getCurrentLevel().addTerrain(terrain);
             }
         }                
     }
 
-    public void addDrawableToLevel (String elementName) {
-        getCurrentLevel().addTerrain(getGameUniverse().getDrawableGameElementState(elementName));
+    public void addTerrainToLevel (String elementName, Double xValue, Double yValue) {
+        // TODO: check that the position is actually inside the grid
+        DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(elementName);
+        terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
+        terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+        myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
+        getCurrentLevel().addTerrain(terrain);
     }
 
     private void updateObservers () {
@@ -309,6 +325,10 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
+    }
+        
+    public ModifiedContainer getModifiedContainer() {
+        return myModifiedContainer;
     }
 
     public SpriteImageContainer fetchImageContainer (String imageTag) {

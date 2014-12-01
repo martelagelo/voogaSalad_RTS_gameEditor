@@ -26,6 +26,7 @@ public enum GUIPanePath {
     SELECTABLE_GAME_ELEMENT_WIZARD("/view/editor/wizards/guipanes/SelectableGameElementWizard.fxml"),
     STRING_ATTRIBUTE_WIZARD("/view/editor/wizards/guipanes/StringAttributeWizard.fxml"),
     TRIGGER_WIZARD("/view/editor/wizards/guipanes/TriggerWizard.fxml"),
+    POSITION_WIZARD("/view/editor/wizards/guipanes/PositionWizard.fxml"),
 
     // dialog
     DIALOG_BOX("/view/dialog/DialogBox.fxml");

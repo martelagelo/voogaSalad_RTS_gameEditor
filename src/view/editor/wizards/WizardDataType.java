@@ -30,5 +30,8 @@ public enum WizardDataType {
     START_FRAME,
     STOP_FRAME,
     ANIMATION_REPEAT,
-    TERRAIN
+    TERRAIN,
+    POSITION,
+    X_POSITION,
+    Y_POSITION
 }
