@@ -142,8 +142,6 @@ public class ElementAccordionController extends GUIContainer {
                         .map( (element) -> {
                             try {
                                 // TODO GET IMAGES
-                                System.out.println(element.getName());
-
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {
@@ -155,8 +153,6 @@ public class ElementAccordionController extends GUIContainer {
                         .map( (element) -> {
                             try {
                                 // TODO GET IMAGES
-                                System.out.println(element.getName());
-
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {
