@@ -61,7 +61,7 @@ public class SaveLoadMediator {
      */
     public String saveImage (WizardData data) throws IOException {
         // TODO: Remove this hardcoded save location
-        String saveLocation = "testSpritesheet";
+        String saveLocation = "savedImages";
 
         return SaveLoadUtility.saveImage(data.getValueByKey(WizardDataType.IMAGE), saveLocation
                 + File.separator + data.getValueByKey(WizardDataType.NAME) + PNG_EXT);
