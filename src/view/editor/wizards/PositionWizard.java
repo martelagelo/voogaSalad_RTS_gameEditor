@@ -14,8 +14,6 @@ import javafx.scene.control.TextField;
  */
 public class PositionWizard extends Wizard {
 
-    private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
-
     @FXML
     protected TextField xValue;
     @FXML

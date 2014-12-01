@@ -44,8 +44,6 @@ public class SelectableGameElementWizard extends Wizard {
     private final static String START_FRAME_KEY = "StartFrame";
     private final static String STOP_FRAME_KEY = "StopFrame";
 
-    private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
-
     @FXML
     private AnchorPane leftPane;
     @FXML

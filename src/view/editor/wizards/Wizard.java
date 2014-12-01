@@ -27,6 +27,8 @@ import view.gui.GUIController;
 public abstract class Wizard implements GUIController {
 
     private final static String SAVE_KEY = "Save";
+    private static final String ERROR = "CANNOT SAVE!";
+    public static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
 
     @FXML
     protected SplitPane root;
@@ -39,7 +41,7 @@ public abstract class Wizard implements GUIController {
     /**
      * Default error message
      */
-    private static final String ERROR = "CANNOT SAVE!";
+    
 
     private Consumer<WizardData> mySaveConsumer;
     private WizardData myUserInput;

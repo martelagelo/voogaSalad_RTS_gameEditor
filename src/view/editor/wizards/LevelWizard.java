@@ -27,7 +27,6 @@ public class LevelWizard extends Wizard {
 
     private final String NEW_LEVEL_DEFAULT_KEY = "NewLevelDefault";
     private final String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
-    private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
     
     @FXML
     private ComboBox<String> campaignName;

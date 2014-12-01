@@ -19,6 +19,7 @@ import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.SaveLoadMediator;
 import view.editor.wizards.WizardData;
+import view.editor.wizards.WizardDataType;
 
 
 /**
@@ -196,8 +197,9 @@ public class MainModel extends Observable {
     public void createDrawableGameElementState (WizardData data) {
         try {
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
+            data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             DrawableGameElementState gameElement = GameElementStateFactory
-                    .createDrawableGameElementState(data, actualSaveLocation);
+                    .createDrawableGameElementState(data);
             myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
             updateObservers();
         }
@@ -216,8 +218,9 @@ public class MainModel extends Observable {
         // TODO: figure out the actual save location for this
         try {
             String actualSaveLocation = mySaveLoadManager.saveImage(data);
+            data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             SelectableGameElementState gameElement = GameElementStateFactory
-                    .createSelectableGameElementState(data, actualSaveLocation);
+                    .createSelectableGameElementState(data);
             myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
             updateObservers();
         }
