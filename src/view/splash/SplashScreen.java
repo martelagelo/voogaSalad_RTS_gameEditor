@@ -56,7 +56,7 @@ public class SplashScreen extends GUIScreen {
     private ComboBox<String> myGames;
     private static final String LAUNCH_EDITOR = "Launch Editor";
     private static final String LAUNCH_RUNNER = "Launch Runner";
-    private static final String GAMES_DIRECTORY = "./myGames/";
+    private static final String GAMES_DIRECTORY = "../myGames/";
 
     @FXML
     private ComboBox<String> gameDropDown;
@@ -75,14 +75,14 @@ public class SplashScreen extends GUIScreen {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
 
-        File folder = new File(GAMES_DIRECTORY);
+       /* File folder = new File(GAMES_DIRECTORY);
         List<File> files = Arrays.asList(folder.listFiles());
         List<String> gameNames = files
                 .stream()
                 .filter(f -> f.isDirectory())
                 .map(f -> f.getName())
                 .collect(Collectors.toList());
-        gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
+        gameDropDown.setItems(FXCollections.observableArrayList(gameNames));*/
 
         setUpButtons();
         drawTitle();

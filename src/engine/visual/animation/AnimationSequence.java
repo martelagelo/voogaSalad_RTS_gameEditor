@@ -29,6 +29,19 @@ public class AnimationSequence implements Updatable {
      * @param slownessMultiplier
      *        a multiplier for the speed of the animation. Must be less than
      *        1.
+     * @param startFrame
+     *        the startframe of the animation. This is the index at which the
+     *        animation begins.
+     * @param stopFrame
+     * 		  the stopFrame of the animation. This is the index at which the
+     *        animation ends.
+     * @param repeats
+     * 		  a boolean which controls whether or not the animation sequence
+     *        repeats itself.
+     * @param name
+     * 		  the name of the particular list of sprites the animation traverses
+     *        through.
+     *        
      */
     public AnimationSequence (List<AnimationTag> name,
                               int startFrame,
