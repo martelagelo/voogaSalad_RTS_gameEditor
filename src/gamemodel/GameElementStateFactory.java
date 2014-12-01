@@ -47,7 +47,6 @@ public class GameElementStateFactory {
                 (DrawableGameElementState) addEssentials(
                                                          new DrawableGameElementState(0.0, 0.0, null),
                                                          data);
-        System.out.println(state.getName());
 //        Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
 //                                      Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 //        Spritesheet mySpritesheet = new Spritesheet(imagePath, dim, Integer.parseInt(data
