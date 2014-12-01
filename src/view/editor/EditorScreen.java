@@ -127,8 +127,7 @@ public class EditorScreen extends GUIScreen {
     }
 
     private Tab createNewTab (String campaign, String level) {
-        Tab tab = new Tab();
-        tab.setText(String.format("%s: %s", campaign, level));
+        Tab tab = new Tab(String.format("%s: %s", campaign, level));
 
         TabViewController tabController =
                 (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW.getFilePath());
