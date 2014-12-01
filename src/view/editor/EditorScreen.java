@@ -68,6 +68,7 @@ public class EditorScreen extends GUIScreen {
     private ElementAccordionController levelElementAccordionController;
 
     private Tab myCurrentTab;
+    private final int myHashingPrime = 31;
 
     @Override
     public Node getRoot () {
@@ -221,7 +222,7 @@ public class EditorScreen extends GUIScreen {
 
         @Override
         public int hashCode () {
-            final int prime = 31;
+            final int prime = myHashingPrime; // this prime is magic. should be extracted.
             int result = 1;
             result = prime * result + ((myCampaign == null) ? 0 : myCampaign.getName().hashCode());
             result = prime * result + ((myLevel == null) ? 0 : myLevel.getName().hashCode());
