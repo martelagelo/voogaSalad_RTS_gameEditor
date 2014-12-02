@@ -1,0 +1,1 @@
+All the jsons for animationstate element resources go in here.  The image tag helps identify where to look to get the spritesheet and the colormasks and wraps its up in a SpriteImageContainer

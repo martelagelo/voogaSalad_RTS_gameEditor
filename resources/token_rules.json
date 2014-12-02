@@ -1,0 +1,14 @@
+[
+    {
+        "label": "parameter",
+        "body": "\\$\\w+",
+        "opening": "\\W+",
+        "closing": "\\W+"
+    },
+    {
+        "label": "evaluator",
+        "body": "#\\w+",
+        "opening": "\\W+",
+        "closing": "\\W+"
+    }
+]
