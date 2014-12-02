@@ -1,9 +1,9 @@
 package model;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
+
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.DescribableStateException;
@@ -17,7 +17,7 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import util.SaveLoadMediator;
+import util.GameSaveLoadMediator;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 
@@ -34,13 +34,19 @@ public class MainModel extends Observable {
     private CampaignState myCurrentCampaignState;
     private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
-    private SaveLoadMediator mySaveLoadManager;
-    private Map<String, SpriteImageContainer> imageConatinerMap;
+    private GameSaveLoadMediator mySaveLoadMediator;
+    private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
     public MainModel () {
-        mySaveLoadManager = new SaveLoadMediator();
         myModifiedContainer = new ModifiedContainer();
+        try {
+        mySaveLoadMediator = new GameSaveLoadMediator();
+        mySpriteImageGenerator = new SpriteImageGenerator();
+        } catch (Exception e) {
+         // TODO Error loading resources need to notify view of this error
+            e.printStackTrace();
+        }
     }
 
     public void newGame (String gameName) {
@@ -58,7 +64,7 @@ public class MainModel extends Observable {
 
         try {
             // TODO: insert Save Load code here and instantiate myGameState
-            myGameState = mySaveLoadManager.loadGame(game);
+            myGameState = mySaveLoadMediator.loadGame(game);
             // TODO remove print lines
             System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         }
@@ -97,7 +103,7 @@ public class MainModel extends Observable {
     public void saveGame () throws RuntimeException {
         try {
             // TODO: Save location
-            String location = mySaveLoadManager.saveGame(myGameState, myGameState.getName());
+            String location = mySaveLoadMediator.saveGame(myGameState, myGameState.getName());
             System.out.println(location);
         }
         catch (Exception e) {
@@ -196,7 +202,7 @@ public class MainModel extends Observable {
      */
     public void createDrawableGameElementState (WizardData data) {
         try {
-            String actualSaveLocation = mySaveLoadManager.saveImage(data);
+            String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data);
@@ -217,7 +223,7 @@ public class MainModel extends Observable {
     public void createSelectableGameElementState (WizardData data) {
         // TODO: figure out the actual save location for this
         try {
-            String actualSaveLocation = mySaveLoadManager.saveImage(data);
+            String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             SelectableGameElementState gameElement = GameElementStateFactory
                     .createSelectableGameElementState(data);
@@ -333,9 +339,16 @@ public class MainModel extends Observable {
     public ModifiedContainer getModifiedContainer() {
         return myModifiedContainer;
     }
-
+    
+    /**
+     * 
+     * @param imageTag
+     * @return
+     * @throws Exception
+     */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
-        return imageConatinerMap.get(imageTag);
+        return mySpriteImageGenerator.fetchImageContainer(imageTag);
     }
+
 
 }
