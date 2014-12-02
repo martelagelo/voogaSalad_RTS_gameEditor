@@ -13,6 +13,7 @@
 			<children>
 				<VBox>
 					<ComboBox fx:id="actionType" />
+					<ComboBox fx:id="actionChoice" />
 					<TextField fx:id="action" />
 					<Button defaultButton="true" fx:id="save" text="save" />
 					<Text fx:id="errorMessage" />

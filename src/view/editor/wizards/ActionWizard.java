@@ -3,6 +3,9 @@ package view.editor.wizards;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -16,11 +19,15 @@ import javafx.scene.control.TextField;
  */
 public class ActionWizard extends Wizard {
 
-    private static final String ACTION_TYPES_PROPS = "resources.properties.engine.ActionTypes";
+	private static final String ACTION_ROOT = "resources.properties.engine.actions.";
+    private static final String ACTION_TYPES_PROPS = "ActionTypes";
+    private static final String COLLISION_ACTION_TYPES_PROPS = "CollisionActionTypes";
     @FXML
     private ComboBox<String> actionType;
     @FXML
     private TextField action;
+    @FXML
+    private ComboBox<String> actionChoice;
     
     private ResourceBundle actionTypeBundle;
 
@@ -39,12 +46,22 @@ public class ActionWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        actionTypeBundle = ResourceBundle.getBundle(ACTION_TYPES_PROPS);        
+        actionTypeBundle = ResourceBundle.getBundle(ACTION_ROOT+ACTION_TYPES_PROPS);        
         List<String> actionTypes = new ArrayList<>();                 
         actionTypeBundle.keySet().forEach((value) -> {
             actionTypes.add(actionTypeBundle.getString(value));
         });        
         actionType.setItems(FXCollections.observableArrayList(actionTypes));
+        actionType.valueProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue ov, String t, String t1) {
+            	actionTypeBundle = ResourceBundle.getBundle(ACTION_ROOT+t1); 
+                actionTypes.clear();
+                actionTypeBundle.keySet().forEach((value) -> {
+                    actionTypes.add(actionTypeBundle.getString(value));
+                });      
+                actionChoice.setItems(FXCollections.observableArrayList(actionTypes));
+              }    
+          });
     }
 
     @Override
