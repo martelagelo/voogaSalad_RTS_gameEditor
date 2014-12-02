@@ -23,7 +23,7 @@ public class ResourceBundleRetriever {
      * @return resource bundle associated with the provided file
      * @throws MalformedURLException
      */
-    protected ResourceBundle getBundle (File file) throws MalformedURLException {
+    public ResourceBundle getBundle (File file) throws MalformedURLException {
         File externalFolder = file.getParentFile();
         URL[] urls = { externalFolder.toURI().toURL() };
         ClassLoader loader = new URLClassLoader(urls);

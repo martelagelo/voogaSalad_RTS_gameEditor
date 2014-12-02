@@ -47,7 +47,7 @@ public class TabViewController extends GUIContainer {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
             Wizard wiz = WizardUtility.loadWizard(GUIPanePath.TRIGGER_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
-                myMainModel.createGoal(data);
+                myMainModel.createGoal(myLevel, data);
                 wiz.getStage().close();
             };
             wiz.setSubmit(bc);
@@ -126,7 +126,7 @@ public class TabViewController extends GUIContainer {
     private Consumer<Integer> deleteGoal () {
         Consumer<Integer> consumer = (position) -> {
             if (position > -1) {
-                myMainModel.removeGoal(position);
+                myMainModel.removeGoal(myLevel, position);
             }
         };
         return consumer;

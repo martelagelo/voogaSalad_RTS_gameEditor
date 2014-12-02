@@ -1,9 +1,9 @@
 package model.state.gameelement;
 
 import javafx.scene.Node;
-import model.state.AnimatorState;
 import model.state.gameelement.traits.Boundable;
 import engine.visual.Displayable;
+import engine.visual.animation.AnimatorState;
 
 
 /**

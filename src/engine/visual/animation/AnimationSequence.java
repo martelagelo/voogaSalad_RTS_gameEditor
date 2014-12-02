@@ -1,7 +1,6 @@
 package engine.visual.animation;
 
 import java.util.List;
-import model.state.AnimationTag;
 import model.state.gameelement.traits.Updatable;
 
 
@@ -50,7 +49,7 @@ public class AnimationSequence implements Updatable {
         myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
         myTags = name;
-        myRepeatFlag = true;
+        myRepeatFlag = false;
         mySlownessMultiplier = 1;
     }
 
@@ -95,4 +94,17 @@ public class AnimationSequence implements Updatable {
     public List<AnimationTag> getMyName () {
         return myTags;
     }
+    
+    @Override
+    public boolean equals (Object arg) {
+        if (!(arg instanceof AnimationSequence)) return false;
+        return this.hashCode() == arg.hashCode();
+    }
+
+    @Override
+    public int hashCode () {
+        return myTags.hashCode();
+    }
+    
+    
 }

@@ -1,8 +1,6 @@
-package model;
+package model.sprite;
 
 import java.util.Map;
-
-import util.SaveLoadMediator;
 import javafx.scene.image.Image;
 
 /**
@@ -16,24 +14,27 @@ import javafx.scene.image.Image;
 public class SpriteImageContainer {
     private Image mySpritesheet;
     private Map<String, Image> myTeamColorMasks;
-    private SaveLoadMediator mySaveLoadMediator;
 
     public SpriteImageContainer (String imageTag) throws Exception {
         locateSpritesheet(imageTag);
         locateTeamColorMasks(imageTag);
-
     }
 
-    private void locateTeamColorMasks (String imageTag) {
-        myTeamColorMasks = mySaveLoadMediator.locateTeamColorMasks(imageTag);
+    private void locateTeamColorMasks (String imageTag) throws Exception {
+        myTeamColorMasks = SpriteImageLoader.loadTeamColorMasks(imageTag);
     }
 
     private void locateSpritesheet (String imageTag) throws Exception {
-        mySaveLoadMediator.loadSpritesheet(imageTag);
+
+        mySpritesheet = SpriteImageLoader.loadSpritesheet(imageTag);
     }
 
     public Image getSpritesheet () {
         return mySpritesheet;
+    }
+
+    public Map<String, Image> getTeamColorMasks () {
+        return myTeamColorMasks;
     }
 
     public Image getTeamColorSheet (String teamColor) {
