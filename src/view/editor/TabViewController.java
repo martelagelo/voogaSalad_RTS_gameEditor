@@ -45,7 +45,7 @@ public class TabViewController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
-            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.TRIGGER_WIZARD, new Dimension(300, 300));
+            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
                 myMainModel.createGoal(data);
                 wiz.getStage().close();
@@ -100,7 +100,7 @@ public class TabViewController extends GUIContainer {
     private BiConsumer<Integer, String> modifyGoals () {
         BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
             updateLevelTriggersView();
-            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.TRIGGER_WIZARD, new Dimension(300, 300));
+            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(300, 300));
             // TODO: THIS SHOULD BE CLEANED UP TO MATCH OTHER WIZARDS
                 String[] oldStrings = oldValues.split("\n");
                 WizardData oldData = new WizardData();
