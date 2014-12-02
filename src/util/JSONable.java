@@ -10,6 +10,13 @@ import com.google.gson.GsonBuilder;
  *
  */
 public interface JSONable {
+	
+	/**
+	 * Returns a Gsonified version of the object
+	 *  
+	 * @return String
+	 *         a json of the object
+	 */
     public default String toJSON() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(this);

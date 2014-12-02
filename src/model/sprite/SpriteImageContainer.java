@@ -1,7 +1,6 @@
-package model;
+package model.sprite;
 
 import java.util.Map;
-
 import javafx.scene.image.Image;
 
 /**

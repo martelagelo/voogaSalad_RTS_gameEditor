@@ -1,4 +1,4 @@
-package model.state;
+package engine.visual.animation;
 
 /**
  * Enum with Animation Tags allowing for easy reference to specific animation

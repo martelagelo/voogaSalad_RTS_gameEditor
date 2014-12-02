@@ -2,7 +2,6 @@ package util;
 
 import java.io.File;
 import java.io.IOException;
-
 import javafx.scene.image.Image;
 import model.state.GameState;
 import view.editor.wizards.WizardData;

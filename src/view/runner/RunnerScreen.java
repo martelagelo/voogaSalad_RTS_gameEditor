@@ -14,6 +14,11 @@ public class RunnerScreen extends GUIScreen {
 
     @FXML
     BorderPane root;
+    @FXML
+    BorderPane gameRunner;
+    @FXML 
+    GameRunnerPaneController runnerController;
+    
 
     @Override
     public Node getRoot () {
@@ -22,7 +27,7 @@ public class RunnerScreen extends GUIScreen {
 
     @Override
     protected void init () {
-
+        
     }
 
     @Override

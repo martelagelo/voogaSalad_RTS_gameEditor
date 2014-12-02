@@ -31,26 +31,56 @@ public class LevelState extends DescribableState {
         myGoals = new ArrayList<>();
     }
 
+    /**
+     * 
+     * @return List<DrawableGameElementState>
+     *         the list of the level's terrains
+     */
     public List<DrawableGameElementState> getTerrain () {
         return myTerrains;
     }
 
+    /**
+     * 
+     * @param terrain
+     *        the terrain to be added to the level's terrains
+     */
     public void addTerrain (DrawableGameElementState terrain) {
         myTerrains.add(terrain);
     }
-
+    
+    /**
+     * 
+     * @return myUnits
+     *         the list of the level's units
+     */
     public List<SelectableGameElementState> getUnits () {
         return myUnits;
     }
 
+    /**
+     * 
+     * @param unit
+     *        the unit to be added to the level's list of units
+     */
     public void addUnit (SelectableGameElementState unit) {
         myUnits.add(unit);
     }
 
+    /**
+     * 
+     * @return List<GameElementState>
+     *         the list of the level's goals
+     */
     public List<GameElementState> getGoals () {
         return myGoals;
     }
 
+    /**
+     * 
+     * @param goal
+     *        the goal to be added to the level's list of goals
+     */
     public void addGoal (GameElementState goal) {
         myGoals.add(goal);
     }

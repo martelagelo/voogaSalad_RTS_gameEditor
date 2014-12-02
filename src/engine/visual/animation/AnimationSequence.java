@@ -2,7 +2,6 @@ package engine.visual.animation;
 
 import java.io.Serializable;
 import java.util.List;
-import model.state.AnimationTag;
 import model.state.gameelement.traits.Updatable;
 
 
@@ -35,6 +34,19 @@ public class AnimationSequence implements Updatable, Serializable {
      * @param slownessMultiplier
      *        a multiplier for the speed of the animation. Must be less than
      *        1.
+     * @param startFrame
+     *        the startframe of the animation. This is the index at which the
+     *        animation begins.
+     * @param stopFrame
+     * 		  the stopFrame of the animation. This is the index at which the
+     *        animation ends.
+     * @param repeats
+     * 		  a boolean which controls whether or not the animation sequence
+     *        repeats itself.
+     * @param name
+     * 		  the name of the particular list of sprites the animation traverses
+     *        through.
+     *        
      */
     public AnimationSequence (List<AnimationTag> name,
                               int startFrame,
@@ -56,7 +68,7 @@ public class AnimationSequence implements Updatable, Serializable {
         myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
         myTags = name;
-        myRepeatFlag = true;
+        myRepeatFlag = false;
         mySlownessMultiplier = 1;
     }
 
@@ -101,4 +113,17 @@ public class AnimationSequence implements Updatable, Serializable {
     public List<AnimationTag> getMyName () {
         return myTags;
     }
+    
+    @Override
+    public boolean equals (Object arg) {
+        if (!(arg instanceof AnimationSequence)) return false;
+        return this.hashCode() == arg.hashCode();
+    }
+
+    @Override
+    public int hashCode () {
+        return myTags.hashCode();
+    }
+    
+    
 }

@@ -1,6 +1,5 @@
 package model;
 
-import model.state.AnimatorState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -8,6 +7,7 @@ import model.state.gameelement.StateTags;
 import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import engine.visual.animation.AnimatorState;
 
 
 /**

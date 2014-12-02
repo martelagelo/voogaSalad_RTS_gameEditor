@@ -46,7 +46,8 @@ public class CampaignState extends DescribableState {
     /**
      * gets unmodifiable list of all of the levels
      * 
-     * @return
+     * @return List<LevelState>
+     *         the list of all the campaign state's levels
      */
     public List<LevelState> getLevels () {
         return Collections.unmodifiableList(myLevels);
@@ -56,6 +57,8 @@ public class CampaignState extends DescribableState {
      * adds a level to the campaign
      * 
      * @param levelToAdd
+     *        the level to be appended to the list of the campaignstate's
+     *        levelstates
      * @throws LevelExistsException
      */
     public void addLevel (LevelState levelToAdd) throws LevelExistsException {
@@ -73,6 +76,7 @@ public class CampaignState extends DescribableState {
      * removes a level with a given name
      * 
      * @param levelName
+     *        the name of the level to be removed
      */
     public void removeLevel (String levelName) {
         myLevels = myLevels.stream().filter( (level) -> {

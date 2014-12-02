@@ -5,9 +5,10 @@ import java.util.Observable;
 import java.util.Optional;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
-import model.exceptions.DescribableStateException;
 import model.exceptions.LevelExistsException;
 import model.exceptions.LevelNotFoundException;
+import model.sprite.SpriteImageContainer;
+import model.sprite.SpriteImageGenerator;
 import model.state.CampaignState;
 import model.state.DescribableState;
 import model.state.GameState;
@@ -30,21 +31,19 @@ import view.editor.wizards.WizardDataType;
 public class MainModel extends Observable {
 
     private GameState myGameState;
-    private CampaignState myCurrentCampaignState;
-    private LevelState myCurrentLevelState;
     private GameElementState myEditorSelectedElement;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
+
     public MainModel () {
-        myModifiedContainer = new ModifiedContainer();
         try {
             mySaveLoadMediator = new GameSaveLoadMediator();
-            mySpriteImageGenerator = new SpriteImageGenerator();
+            myModifiedContainer = new ModifiedContainer();
         }
         catch (Exception e) {
-            // TODO Error loading resources need to notify view of this error
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -104,7 +103,6 @@ public class MainModel extends Observable {
         try {
             // TODO: Save location
             String location = mySaveLoadMediator.saveGame(myGameState, myGameState.getName());
-            System.out.println(location);
         }
         catch (Exception e) {
             // TODO: eliminate stack trace printing
@@ -125,13 +123,6 @@ public class MainModel extends Observable {
 
     public CampaignState getCampaign (String campaignName) throws CampaignNotFoundException {
         return myGameState.getCampaign(campaignName);
-    }
-
-    public void setCurrentLevel (String campaignName, String levelName)
-                                                                       throws DescribableStateException {
-        myCurrentCampaignState = myGameState.getCampaign(campaignName);
-        myCurrentLevelState = myCurrentCampaignState.getLevel(levelName);
-        updateObservers();
     }
 
     /**
@@ -161,8 +152,8 @@ public class MainModel extends Observable {
      * @throws CampaignExistsException
      */
     public void createCampaign (String campaignName) throws CampaignExistsException {
-        myCurrentCampaignState = new CampaignState(campaignName.trim());
-        myGameState.addCampaign(myCurrentCampaignState);
+        CampaignState newCampaignState = new CampaignState(campaignName.trim());
+        myGameState.addCampaign(newCampaignState);
         updateObservers();
     }
 
@@ -173,14 +164,13 @@ public class MainModel extends Observable {
      * @param levelName
      * @throws LevelExistsException
      */
-    public void createLevel (String levelName, String campaignName,
-                             Number width, Number height) throws LevelExistsException,
-                                                         CampaignNotFoundException {
-        myCurrentCampaignState = myGameState.getCampaign(campaignName.trim());
-        myCurrentLevelState = new LevelState(levelName.trim());
-        myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
-        myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
-        myCurrentCampaignState.addLevel(myCurrentLevelState);
+    public void createLevel (String levelName, String campaignName, Number width, Number height) throws LevelExistsException,
+                                                                   CampaignNotFoundException {
+        CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
+        LevelState newLevelState = new LevelState(levelName.trim());
+        newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
+        newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
+        campaignState.addLevel(newLevelState);
         updateObservers();
     }
 
@@ -206,7 +196,6 @@ public class MainModel extends Observable {
             // specifies the save location so we dont need to make this method call below
             String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
-            
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data);
             myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
@@ -259,36 +248,36 @@ public class MainModel extends Observable {
         }
     }
 
-    public void createGoal (WizardData data) {
+    public void createGoal (LevelState levelState, WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
-        myCurrentLevelState.addGoal(goal);
+        levelState.addGoal(goal);
         myModifiedContainer.getRecentlyAddedGoals().add(goal);
         updateObservers();
     }
 
-    public void removeGoal (int index) {
-        GameElementState goal = myCurrentLevelState.getGoals().get(index);
-        myCurrentLevelState.getGoals().remove(goal);
+    public void removeGoal (LevelState levelState, int index) {
+        GameElementState goal = levelState.getGoals().get(index);
+        levelState.getGoals().remove(goal);
         myModifiedContainer.getRecentlyDeletedGoals().add(goal);
         updateObservers();
     }
 
-    public void addUnitToLevel (String elementName, Double xValue, Double yValue) {
+    public void addUnitToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) {
         // TODO: check that the position is actually inside the grid
         SelectableGameElementState unit =
                 getGameUniverse().getSelectableGameElementState(elementName);
         unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
         unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
         myModifiedContainer.getRecentlyAddedUnits().add(unit);
-        getCurrentLevel().addUnit(unit);
+        levelState.addUnit(unit);
     }
 
-    public void setTerrain (String terrainName) {
+    public void setTerrain (LevelState levelState, String terrainName) {
         int width =
-                getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH)
+                levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH)
                         .intValue();
         int height =
-                getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT)
+                levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT)
                         .intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -297,43 +286,25 @@ public class MainModel extends Observable {
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
                 myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
-                getCurrentLevel().addTerrain(terrain);
+                levelState.addTerrain(terrain);
             }
         }
     }
 
-    public void addTerrainToLevel (String elementName, Double xValue, Double yValue) {
+    public void addTerrainToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) {
         // TODO: check that the position is actually inside the grid
         DrawableGameElementState terrain =
                 getGameUniverse().getDrawableGameElementState(elementName);
         terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
         terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
         myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
-        getCurrentLevel().addTerrain(terrain);
+        levelState.addTerrain(terrain);
     }
 
     private void updateObservers () {
         setChanged();
         notifyObservers();
         clearChanged();
-    }
-
-    /**
-     * returns the current campaign
-     * 
-     * @return
-     */
-    public CampaignState getCurrentCampaign () {
-        return myCurrentCampaignState;
-    }
-
-    /**
-     * returns the current level
-     * 
-     * @return
-     */
-    public LevelState getCurrentLevel () {
-        return myCurrentLevelState;
     }
 
     /**

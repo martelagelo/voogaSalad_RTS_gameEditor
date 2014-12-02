@@ -1,4 +1,4 @@
-package model.state;
+package engine.visual.animation;
 
 import java.awt.Dimension;
 import java.io.Serializable;
@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import util.JSONable;
-import engine.visual.animation.AnimationSequence;
-import engine.visual.animation.NullAnimationSequence;
 
 /**
  * A data wrapper object used to group the pertinent information for a
@@ -23,8 +21,7 @@ public class AnimatorState implements JSONable, Serializable {
     /**
      * 
      */
-    private static final long serialVersionUID = -6051903442691923237L;
-    
+    private static final long serialVersionUID = 1609072629703433749L;
     private String imageTag;
     private Dimension viewportSize;
     private int numCols;

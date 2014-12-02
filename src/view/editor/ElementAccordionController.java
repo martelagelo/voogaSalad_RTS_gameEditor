@@ -14,6 +14,9 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.exceptions.CampaignNotFoundException;
+import model.exceptions.LevelNotFoundException;
+import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import util.multilanguage.LanguagePropertyNotFoundException;
@@ -50,6 +53,13 @@ public class ElementAccordionController extends GUIContainer {
     private ElementDropDownController terrainTitledPaneController;
     @FXML
     private ElementDropDownController unitTitledPaneController;
+    
+    private LevelState myLevel;
+
+    public void setLevel (String campaign, String level) throws LevelNotFoundException,
+                                                        CampaignNotFoundException {
+        myLevel = myMainModel.getLevel(campaign, level);
+    }
 
     @Override
     public void init () {
@@ -87,25 +97,29 @@ public class ElementAccordionController extends GUIContainer {
             DialogBoxUtility.createMessageDialog("TODO remove shit");
             // myMainModel.removeSelectableGameElement(elementName);
             });
-        terrainTitledPaneController.setAddToLevelConsumer( (String elementName) -> {
-            if (myMainModel.getCurrentLevel() != null) {
-                myMainModel.setTerrain(elementName);
+        terrainTitledPaneController.setAddToLevelConsumer(setTerrain());
+        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
+    }
+
+    private Consumer<String> setTerrain () {
+        return (String elementName) -> {
+            if (myLevel != null) {
+                myMainModel.setTerrain(myLevel, elementName);
             }
             else {
                 System.out.println("No level currently selected");
             }
-        });
-        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
+        };
     }
 
     private Consumer<String> addUnitToLevel () {
         return (String elementName) -> {
-            if (myMainModel.getCurrentLevel() != null) {
+            if (myLevel != null) {
                 Wizard wiz =
                         WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
                                                                                             300));
                 Consumer<WizardData> cons = (data) -> {
-                    myMainModel.addUnitToLevel(elementName,
+                    myMainModel.addUnitToLevel(myLevel, elementName,
                                                Double.parseDouble(data
                                                        .getValueByKey(WizardDataType.X_POSITION)),
                                                Double.parseDouble(data
@@ -231,7 +245,6 @@ public class ElementAccordionController extends GUIContainer {
                         }).collect(Collectors.toList());
         updateList(terrainTitledPaneController, drawableStates);
         updateList(unitTitledPaneController, selectableStates);
-        elementAccordion.setExpandedPane(terrainTitledPane);
     }
 
     /**
