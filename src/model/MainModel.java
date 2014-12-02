@@ -3,7 +3,6 @@ package model;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Optional;
-
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.DescribableStateException;
@@ -41,10 +40,11 @@ public class MainModel extends Observable {
     public MainModel () {
         myModifiedContainer = new ModifiedContainer();
         try {
-        mySaveLoadMediator = new GameSaveLoadMediator();
-        mySpriteImageGenerator = new SpriteImageGenerator();
-        } catch (Exception e) {
-         // TODO Error loading resources need to notify view of this error
+            mySaveLoadMediator = new GameSaveLoadMediator();
+            mySpriteImageGenerator = new SpriteImageGenerator();
+        }
+        catch (Exception e) {
+            // TODO Error loading resources need to notify view of this error
             e.printStackTrace();
         }
     }
@@ -180,7 +180,7 @@ public class MainModel extends Observable {
         myCurrentLevelState = new LevelState(levelName.trim());
         myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
         myCurrentLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
-        myCurrentCampaignState.addLevel(myCurrentLevelState);        
+        myCurrentCampaignState.addLevel(myCurrentLevelState);
         updateObservers();
     }
 
@@ -202,8 +202,11 @@ public class MainModel extends Observable {
      */
     public void createDrawableGameElementState (WizardData data) {
         try {
+            // TODO: actualSaveLocation gets ignored now that we use the json file. That itself
+            // specifies the save location so we dont need to make this method call below
             String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
+            
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data);
             myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
@@ -221,10 +224,10 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createSelectableGameElementState (WizardData data) {
-        // TODO: figure out the actual save location for this
         try {
             String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
+            
             SelectableGameElementState gameElement = GameElementStateFactory
                     .createSelectableGameElementState(data);
             myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
@@ -272,7 +275,8 @@ public class MainModel extends Observable {
 
     public void addUnitToLevel (String elementName, Double xValue, Double yValue) {
         // TODO: check that the position is actually inside the grid
-        SelectableGameElementState unit = getGameUniverse().getSelectableGameElementState(elementName);
+        SelectableGameElementState unit =
+                getGameUniverse().getSelectableGameElementState(elementName);
         unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
         unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
         myModifiedContainer.getRecentlyAddedUnits().add(unit);
@@ -280,22 +284,28 @@ public class MainModel extends Observable {
     }
 
     public void setTerrain (String terrainName) {
-        int width = getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).intValue();
-        int height = getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
+        int width =
+                getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH)
+                        .intValue();
+        int height =
+                getCurrentLevel().attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT)
+                        .intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(terrainName);
+                DrawableGameElementState terrain =
+                        getGameUniverse().getDrawableGameElementState(terrainName);
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
                 myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
                 getCurrentLevel().addTerrain(terrain);
             }
-        }                
+        }
     }
 
     public void addTerrainToLevel (String elementName, Double xValue, Double yValue) {
         // TODO: check that the position is actually inside the grid
-        DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(elementName);
+        DrawableGameElementState terrain =
+                getGameUniverse().getDrawableGameElementState(elementName);
         terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
         terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
         myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
@@ -335,11 +345,11 @@ public class MainModel extends Observable {
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
     }
-        
-    public ModifiedContainer getModifiedContainer() {
+
+    public ModifiedContainer getModifiedContainer () {
         return myModifiedContainer;
     }
-    
+
     /**
      * 
      * @param imageTag
@@ -349,6 +359,5 @@ public class MainModel extends Observable {
     public SpriteImageContainer fetchImageContainer (String imageTag) {
         return mySpriteImageGenerator.fetchImageContainer(imageTag);
     }
-
 
 }

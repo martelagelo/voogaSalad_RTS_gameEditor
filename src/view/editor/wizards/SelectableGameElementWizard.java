@@ -44,30 +44,31 @@ public class SelectableGameElementWizard extends Wizard {
     private Button trigger;
     @FXML
     private VBox existingTriggers;
-    
+
     @FXML
     private Button stringAttribute;
     @FXML
     private VBox existingStringAttributes;
-    
+
     @FXML
     private Button numberAttribute;
     @FXML
     private VBox existingNumberAttributes;
-    
+
     @FXML
     private Button image;
     @FXML
     private Group spritesheet;
     @FXML
-    private ScrollPane imageScroll;          
+    private ScrollPane imageScroll;
     @FXML
     private Button animation;
-    
+
     private List<String> myGlobalStringAttributes;
     private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
     private String imagePath;
+    private String jsonPath;
 
     /**
      * Launches a TriggerEditorWizard
@@ -94,13 +95,13 @@ public class SelectableGameElementWizard extends Wizard {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
                            myGlobalNumberAttributes);
     }
-    
+
     /**
      * Launches an Animation Wizard
      * 
      */
     private void launchAnimationEditor () {
-        
+
     }
 
     private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs) {
@@ -111,17 +112,17 @@ public class SelectableGameElementWizard extends Wizard {
         wiz.loadGlobalValues(globalAttrs);
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
-            
+
             Button edit = new Button();
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));            
+            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));
             Button delete = new Button();
-            delete.setText("X");            
+            delete.setText("X");
             HBox newElement = new HBox(edit, delete);
             delete.setOnAction(e -> {
                 removeWizardData(data);
                 existing.getChildren().remove(newElement);
-            });                        
+            });
             existing.getChildren().add(newElement);
 
             wiz.getStage().close();
@@ -170,16 +171,18 @@ public class SelectableGameElementWizard extends Wizard {
             setErrorMesssage("Unable to Load Image");
         }
     }
-    
+
     private void loadAnimationJSON () {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
-//        fileChooser.setInitialDirectory(
-//                                        new File(System.getProperty("user.home"))
-//                                    ); 
+        fileChooser.setInitialDirectory(new File("resources/gameelementresources"));
         File file = fileChooser.showOpenDialog(new Stage());
-        
-        System.out.println(file.getPath());        
+        try {
+            jsonPath = file.getPath();
+        }
+        catch (Exception e) {
+            setErrorMesssage("Unable to Load JSON File");
+        }
     }
 
     /**
@@ -196,11 +199,11 @@ public class SelectableGameElementWizard extends Wizard {
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
         animation.setOnAction(e -> launchAnimationEditor());
         image.setOnAction(i -> loadImage());
-        animation.setOnAction(i -> loadAnimationJSON());        
+        animation.setOnAction(i -> loadAnimationJSON());
         imagePath = "";
+        jsonPath = "";
         attachTextProperties();
-        errorMessage.setFill(Paint.valueOf("white"));
-        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+        errorMessage.setFill(Paint.valueOf("white"));        
     }
 
     /**
@@ -224,7 +227,6 @@ public class SelectableGameElementWizard extends Wizard {
         }
     }
 
-
     @Override
     public boolean checkCanSave () {
         return !name.getText().isEmpty() && imageView != null;
@@ -232,10 +234,10 @@ public class SelectableGameElementWizard extends Wizard {
 
     @Override
     public void updateData () {
+        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
-        addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
-        addToData(WizardDataType.HEIGHT, "" + imageView.getImage().getHeight());
+        addToData(WizardDataType.ANIMATOR_STATE, jsonPath);
     }
 
     public void attachStringAttributes (List<String> stringAttributes) {

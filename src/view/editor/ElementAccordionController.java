@@ -91,6 +91,9 @@ public class ElementAccordionController extends GUIContainer {
             if (myMainModel.getCurrentLevel() != null) {
                 myMainModel.setTerrain(elementName);
             }
+            else {
+                System.out.println("No level currently selected");
+            }
         });
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
     }
@@ -101,19 +104,16 @@ public class ElementAccordionController extends GUIContainer {
                 Wizard wiz =
                         WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
                                                                                             300));
-                Consumer<WizardData> cons =
-                        (data) -> {
-                            myMainModel
-                                    .addUnitToLevel(elementName,
-                                                          Double.parseDouble(data
-                                                                  .getValueByKey(WizardDataType.X_POSITION)),
-                                                          Double.parseDouble(data
-                                                                  .getValueByKey(WizardDataType.Y_POSITION)));
-                            wiz.getStage().close();
-                        };
+                Consumer<WizardData> cons = (data) -> {
+                    myMainModel.addUnitToLevel(elementName,
+                                               Double.parseDouble(data
+                                                       .getValueByKey(WizardDataType.X_POSITION)),
+                                               Double.parseDouble(data
+                                                       .getValueByKey(WizardDataType.Y_POSITION)));
+                    wiz.getStage().close();
+                };
                 wiz.setSubmit(cons);
             }
-            System.out.println("Add to level!");
         };
     }
 
@@ -129,14 +129,8 @@ public class ElementAccordionController extends GUIContainer {
                 (c) -> {
                     SelectableGameElementWizard wiz = (SelectableGameElementWizard)
                             WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD, new Dimension(800, 600));
-                    List<String> stringAttrs = myMainModel.getGameUniverse().
-                            getStringAttributes().stream().map(atr -> atr.getName())
-                            .collect(Collectors.toList());
-                    wiz.attachStringAttributes(stringAttrs);
-                    List<String> numberAttrs = myMainModel.getGameUniverse().
-                            getNumericalAttributes().stream().map(atr -> atr.getName())
-                            .collect(Collectors.toList());
-                    wiz.attachNumberAttributes(numberAttrs);
+                    addStringAttributes(wiz);
+                    addNumberAttributes(wiz);
 
                     Consumer<WizardData> cons =
                             (data) -> {
@@ -165,16 +159,13 @@ public class ElementAccordionController extends GUIContainer {
     private Consumer<Consumer<WizardData>> openDrawableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
-                    SelectableGameElementWizard wiz = (SelectableGameElementWizard)
-                            WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD, new Dimension(800, 600));
-                    List<String> stringAttrs = myMainModel.getGameUniverse().
-                            getStringAttributes().stream().map(atr -> atr.getName())
-                            .collect(Collectors.toList());
-                    wiz.attachStringAttributes(stringAttrs);
-                    List<String> numberAttrs = myMainModel.getGameUniverse().
-                            getNumericalAttributes().stream().map(atr -> atr.getName())
-                            .collect(Collectors.toList());
-                    wiz.attachNumberAttributes(numberAttrs);
+                    // TODO: make a drawable ges wizard
+                    SelectableGameElementWizard wiz =
+                            (SelectableGameElementWizard)
+                            WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD,
+                                                     new Dimension(800, 600));
+                    addStringAttributes(wiz);
+                    addNumberAttributes(wiz);
 
                     Consumer<WizardData> cons =
                             (data) -> {
@@ -198,6 +189,20 @@ public class ElementAccordionController extends GUIContainer {
                     wiz.setSubmit(cons);
                 };
         return consumer;
+    }
+
+    private void addNumberAttributes (SelectableGameElementWizard wiz) {
+        List<String> numberAttrs = myMainModel.getGameUniverse().
+                getNumericalAttributes().stream().map(atr -> atr.getName())
+                .collect(Collectors.toList());
+        wiz.attachNumberAttributes(numberAttrs);
+    }
+
+    private void addStringAttributes (SelectableGameElementWizard wiz) {
+        List<String> stringAttrs = myMainModel.getGameUniverse().
+                getStringAttributes().stream().map(atr -> atr.getName())
+                .collect(Collectors.toList());
+        wiz.attachStringAttributes(stringAttrs);
     }
 
     @Override
