@@ -223,7 +223,7 @@ public class SelectableGameElementWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            // TODO Do something useful with this exception
+            setErrorMesssage(e.getMessage());
         }
     }
 

@@ -165,11 +165,16 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName, Number width, Number height) throws LevelExistsException,
-                                                                   CampaignNotFoundException {
+                                                                   CampaignNotFoundException, Exception {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim());
-        newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
-        newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
+        if (width.doubleValue() > 0 && height.doubleValue() > 0) {
+            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
+            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);            
+        }
+        else {
+            throw new Exception("invalid size of level");
+        }
         campaignState.addLevel(newLevelState);
         updateObservers();
     }
@@ -262,14 +267,19 @@ public class MainModel extends Observable {
         updateObservers();
     }
 
-    public void addUnitToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) {
-        // TODO: check that the position is actually inside the grid
-        SelectableGameElementState unit =
-                getGameUniverse().getSelectableGameElementState(elementName);
-        unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
-        unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
-        myModifiedContainer.getRecentlyAddedUnits().add(unit);
-        levelState.addUnit(unit);
+    public void addUnitToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) throws Exception {
+        if (areCoordinatesValid(levelState, xValue, yValue)) {
+            SelectableGameElementState unit =
+                    getGameUniverse().getSelectableGameElementState(elementName);
+            unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
+            unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+            myModifiedContainer.getRecentlyAddedUnits().add(unit);
+            levelState.addUnit(unit);
+        }
+        else {
+            throw new Exception("location not within level grid bounds");
+        }
+        
     }
 
     public void setTerrain (LevelState levelState, String terrainName) {
@@ -291,14 +301,24 @@ public class MainModel extends Observable {
         }
     }
 
-    public void addTerrainToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) {
-        // TODO: check that the position is actually inside the grid
-        DrawableGameElementState terrain =
-                getGameUniverse().getDrawableGameElementState(elementName);
-        terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
-        terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
-        myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
-        levelState.addTerrain(terrain);
+    public void addTerrainToLevel (LevelState levelState, String elementName, Double xValue, Double yValue) throws Exception{                
+        if (areCoordinatesValid(levelState, xValue, yValue)) {
+            DrawableGameElementState terrain =
+                    getGameUniverse().getDrawableGameElementState(elementName);
+            terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
+            terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+            myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
+            levelState.addTerrain(terrain);
+        }
+        else {
+            throw new Exception("location not within level grid bounds");
+        }                
+    }
+    
+    private boolean areCoordinatesValid(LevelState levelState, Double x, Double y) {
+        Number width = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH);
+        Number height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT);        
+        return (x >= 0 && width.doubleValue() > x && y >= 0 && height.doubleValue() > y);
     }
 
     private void updateObservers () {

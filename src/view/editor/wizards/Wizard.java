@@ -195,7 +195,7 @@ public abstract class Wizard implements GUIController {
             save.textProperty().bind(util.getStringProperty(SAVE_KEY));
         }
         catch (LanguageException e) {
-            // TODO Do something with this exception
+            setErrorMesssage(e.getMessage());
         }
     }
 

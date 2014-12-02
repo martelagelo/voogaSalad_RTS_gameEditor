@@ -119,12 +119,17 @@ public class ElementAccordionController extends GUIContainer {
                         WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
                                                                                             300));
                 Consumer<WizardData> cons = (data) -> {
-                    myMainModel.addUnitToLevel(myLevel, elementName,
-                                               Double.parseDouble(data
-                                                       .getValueByKey(WizardDataType.X_POSITION)),
-                                               Double.parseDouble(data
-                                                       .getValueByKey(WizardDataType.Y_POSITION)));
-                    wiz.getStage().close();
+                    try {
+                        myMainModel.addUnitToLevel(myLevel, elementName,
+                                                   Double.parseDouble(data
+                                                           .getValueByKey(WizardDataType.X_POSITION)),
+                                                   Double.parseDouble(data
+                                                           .getValueByKey(WizardDataType.Y_POSITION)));
+                        wiz.getStage().close();
+                    }
+                    catch (Exception e) {
+                        wiz.setErrorMesssage(e.getMessage());
+                    }
                 };
                 wiz.setSubmit(cons);
             }
