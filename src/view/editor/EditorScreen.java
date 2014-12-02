@@ -17,7 +17,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import model.exceptions.CampaignNotFoundException;
-import model.exceptions.DescribableStateException;
 import model.exceptions.LevelNotFoundException;
 import model.state.CampaignState;
 import model.state.DescribableState;
@@ -94,7 +93,9 @@ public class EditorScreen extends GUIScreen {
                                                            description);
                     }
                     catch (CampaignNotFoundException | LevelNotFoundException e) {
-                        DialogBoxUtility.createMessageDialog(String.format("Failed to update selected describable state due to: %s", e.toString()));
+                        DialogBoxUtility.createMessageDialog(String
+                                .format("Failed to update selected describable state due to: %s",
+                                        e.toString()));
                     }
                 });
     }
@@ -105,7 +106,9 @@ public class EditorScreen extends GUIScreen {
             gameInfoBoxController.setText(state.getName(), state.getDescription());
         }
         catch (Exception e) {
-            DialogBoxUtility.createMessageDialog(String.format("Failed to update InfoBox based on project selection due to: %s", e.toString()));
+            DialogBoxUtility.createMessageDialog(String
+                    .format("Failed to update InfoBox based on project selection due to: %s",
+                            e.toString()));
         }
     }
 
@@ -131,7 +134,8 @@ public class EditorScreen extends GUIScreen {
         Tab tab = new Tab(String.format("%s: %s", campaign, level));
 
         TabViewController tabController =
-                (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW.getFilePath());
+                (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW
+                        .getFilePath());
         attachChildContainers(tabController);
         try {
             tabController.setLevel(campaign, level);
@@ -149,15 +153,9 @@ public class EditorScreen extends GUIScreen {
     private void tabChanged (ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
         myCurrentTab = newTab;
         if (myCurrentTab != null) {
-            try {
-                CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
-                myMainModel.setCurrentLevel(id.myCampaign.getName(),
-                                            id.myLevel.getName());
-            }
-            catch (DescribableStateException e) {
-                // Should never happen
-                DialogBoxUtility.createMessageDialog(e.toString());
-            }
+            CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
+            // TODO: Not sure if need anything here... nothing really to do when the tab changes
+            // anymore
         }
     }
 
@@ -177,13 +175,13 @@ public class EditorScreen extends GUIScreen {
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
     }
 
-    private void updateTabTexts() {
-        tabPane.getTabs().forEach((tab)->{
+    private void updateTabTexts () {
+        tabPane.getTabs().forEach( (tab) -> {
             CampaignLevelPair id = (CampaignLevelPair) tab.getUserData();
             tab.setText(String.format("%s: %s", id.myCampaign.getName(), id.myLevel.getName()));
         });
     }
-    
+
     private void updateProjectExplorer () {
         GameState game = myMainModel.getCurrentGame();
         Map<String, List<String>> campaignLevelMap = new HashMap<>();

@@ -19,7 +19,7 @@ import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
-import view.runner.GameRunnerViewController;
+import view.runner.GameRunnerPaneController;
 
 
 /**
@@ -37,7 +37,7 @@ public class TabViewController extends GUIContainer {
     @FXML
     private BorderPane gameRunnerPane;
     @FXML
-    private GameRunnerViewController gameRunnerPaneController;
+    private GameRunnerPaneController gameRunnerPaneController;
     @FXML
     private BorderPane tabPane;
    
@@ -47,7 +47,7 @@ public class TabViewController extends GUIContainer {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
             Wizard wiz = WizardUtility.loadWizard(GUIPanePath.TRIGGER_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
-                myMainModel.createGoal(data);
+                myMainModel.createGoal(myLevel, data);
                 wiz.getStage().close();
             };
             wiz.setSubmit(bc);
@@ -126,7 +126,7 @@ public class TabViewController extends GUIContainer {
     private Consumer<Integer> deleteGoal () {
         Consumer<Integer> consumer = (position) -> {
             if (position > -1) {
-                myMainModel.removeGoal(position);
+                myMainModel.removeGoal(myLevel, position);
             }
         };
         return consumer;

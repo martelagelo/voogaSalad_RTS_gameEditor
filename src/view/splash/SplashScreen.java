@@ -1,14 +1,9 @@
 package view.splash;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +17,6 @@ import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.gui.GUIScreen;
 import view.gui.ViewScreenPath;
-
 
 
 /**
@@ -54,9 +48,6 @@ public class SplashScreen extends GUIScreen {
     private Button launchRunnerButton;
     @FXML
     private ComboBox<String> myGames;
-    private static final String LAUNCH_EDITOR = "Launch Editor";
-    private static final String LAUNCH_RUNNER = "Launch Runner";
-    private static final String GAMES_DIRECTORY = "../myGames/";
 
     @FXML
     private ComboBox<String> gameDropDown;
@@ -75,14 +66,17 @@ public class SplashScreen extends GUIScreen {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
 
-       /* File folder = new File(GAMES_DIRECTORY);
-        List<File> files = Arrays.asList(folder.listFiles());
-        List<String> gameNames = files
-                .stream()
-                .filter(f -> f.isDirectory())
-                .map(f -> f.getName())
-                .collect(Collectors.toList());
-        gameDropDown.setItems(FXCollections.observableArrayList(gameNames));*/
+        // TODO: we need a better way of getting the current list of games
+        // probably from the model or something
+
+        // File folder = new File(GAMES_DIRECTORY);
+        // List<File> files = Arrays.asList(folder.listFiles());
+        // List<String> gameNames = files
+        // .stream()
+        // .filter(f -> f.isDirectory())
+        // .map(f -> f.getName())
+        // .collect(Collectors.toList());
+        // gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
 
         setUpButtons();
         drawTitle();
@@ -92,7 +86,9 @@ public class SplashScreen extends GUIScreen {
         newGameButton.setOnAction(e -> {
             String gameName;
             try {
-                gameName = MultiLanguageUtility.getInstance().getStringProperty(DEFAULT_NEW_GAME_KEY).getValue();
+                gameName =
+                        MultiLanguageUtility.getInstance().getStringProperty(DEFAULT_NEW_GAME_KEY)
+                                .getValue();
             }
             catch (Exception e1) {
                 // Should never happen

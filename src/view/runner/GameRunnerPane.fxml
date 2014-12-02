@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="view.runner.GameRunnerViewController" fx:id="root">
+	fx:controller="view.runner.GameRunnerPaneController" fx:id="root">
 
 	<!-- <center> -->
 	<!-- <Circle fill="DODGERBLUE" radius="200.0" stroke="BLACK" -->
