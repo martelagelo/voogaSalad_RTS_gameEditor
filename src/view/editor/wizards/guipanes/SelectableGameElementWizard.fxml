@@ -20,6 +20,7 @@
 					<VBox fx:id="existingStringAttributes" />
 					<Button fx:id="numberAttribute" defaultButton="true"/>
 					<VBox fx:id="existingNumberAttributes" />
+										
 					<Button fx:id="image" defaultButton="true"/>
 					<HBox>
 						<Slider fx:id="frameWidth" />
@@ -29,13 +30,12 @@
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
 					</HBox>
-					<TextField fx:id="numRows" />
-					<TextField fx:id="startFrame" />
-					<TextField fx:id="stopFrame" />
-					<CheckBox fx:id="animationRepeat" />
+					
+					<TextField fx:id="numCols" />
+					<Button fx:id="animation" defaultButton="true"/>
+					<VBox fx:id="existingAnimations" />					
 					<Button fx:id="save" defaultButton="true"/>
 					<Text fx:id="errorMessage" />
-					<Text fx:id="wizardDataText" />
 				</VBox>
 			</children>
 		</AnchorPane>

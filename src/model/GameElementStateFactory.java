@@ -2,10 +2,9 @@ package model;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import engine.visual.animation.AnimationSequence;
+import java.util.Set;
 import model.state.AnimationTag;
 import model.state.AnimatorState;
 import model.state.gameelement.DrawableGameElementState;
@@ -14,6 +13,7 @@ import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import engine.visual.animation.AnimationSequence;
 
 
 /**
@@ -55,16 +55,16 @@ public class GameElementStateFactory {
         Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
                                       Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
                 
-        Map<List<AnimationTag>, AnimationSequence> animationMap = new HashMap<>();
+        Set<AnimationSequence> animationSet = new HashSet<>();
         List<AnimationTag> tags = new ArrayList<>();
         tags.add(AnimationTag.STAND);        
         AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
-        animationMap.put(tags, sequence);
+        animationSet.add(sequence);
         
         AnimatorState anim = new AnimatorState(data.getValueByKey(WizardDataType.IMAGE), 
                                                dim, 
                                                Integer.parseInt(data.getValueByKey(WizardDataType.ROWS)),
-                                               animationMap);
+                                               animationSet);
         state.myAnimatorState = anim;
 
         // TODO: actually get bounds from the user

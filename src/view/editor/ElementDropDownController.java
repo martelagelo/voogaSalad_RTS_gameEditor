@@ -86,8 +86,7 @@ public class ElementDropDownController implements GUIController {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
                                          Number newValue) {
-                        //TODO
-                        System.out.println(myElementsMap.get(myElementsList.get(newValue.intValue())));
+                        //TODO: drag and drop goes here
                     }
                 });
     }
@@ -96,8 +95,8 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {
             String selected = elementListView.getSelectionModel().getSelectedItem();
             if (selected != null) {
-                // elementListView.getItems().remove(selected);
-                // myElementsMap.remove(selected);
+                 elementListView.getItems().remove(selected);
+                 myElementsMap.remove(selected);
                 myDeletionConsumer.accept(selected);
             }
         });

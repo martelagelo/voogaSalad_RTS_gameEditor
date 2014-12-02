@@ -3,11 +3,11 @@ package model.state;
 import java.awt.Dimension;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 import util.JSONable;
 import engine.visual.animation.AnimationSequence;
 import engine.visual.animation.NullAnimationSequence;
-
 
 /**
  * A data wrapper object used to group the pertinent information for a
@@ -23,45 +23,44 @@ public class AnimatorState implements JSONable, Serializable {
     /**
      * 
      */
-    private static final long serialVersionUID = 1506367147205711564L;
+    private static final long serialVersionUID = -6051903442691923237L;
     
     private String imageTag;
     private Dimension viewportSize;
     private int numCols;
-    private Map<List<AnimationTag>, AnimationSequence> animationMap;
+    private Set<AnimationSequence> animationSequenceList;
 
     /**
      * Create the Spritesheet
      * 
      * @param imageTag
-     *        the tag for the image that will be sent to the save/load
-     *        utility to get the image
+     *            the tag for the image that will be sent to the save/load
+     *            utility to get the image
      * @param frameDimensions
-     *        the dimensions of a frame of the spritesheet
+     *            the dimensions of a frame of the spritesheet
      * @param numCols
-     *        the number of columns across in the spritesheet
+     *            the number of columns across in the spritesheet
      */
-    public AnimatorState (String imageTag,
-                          Dimension frameDimensions,
-                          int numCols,
-                          Map<List<AnimationTag>, AnimationSequence> animationMap) {
+    public AnimatorState (String imageTag, Dimension frameDimensions, int numCols,
+            Set<AnimationSequence> animationSequenceList) {
         this.imageTag = imageTag;
         this.viewportSize = frameDimensions;
         this.numCols = numCols;
-        this.animationMap = animationMap;
+        this.animationSequenceList = animationSequenceList;
     }
 
-    public void addAnimationSequence (List<AnimationTag> tag, AnimationSequence seq) {
-        animationMap.put(tag, seq);
+    public void addAnimationSequence (AnimationSequence seq) {
+        animationSequenceList.add(seq);
     }
 
-    public AnimationSequence getAnimationSequence (List<AnimationTag> tag) {
-        return (animationMap.containsKey(tag)) ? animationMap.get(tag)
-                                              : new NullAnimationSequence();
+    public AnimationSequence getAnimationSequence (List<AnimationTag> tags) {
+        List<AnimationSequence> animationSequences = animationSequenceList.stream()
+                .filter(o -> o.getMyName().equals(tags)).collect(Collectors.toList());
+        return (animationSequences.size() != 0) ? animationSequences.get(0) :  new NullAnimationSequence();
     }
 
-    public boolean containsAnimationSequence (List<AnimationTag> tag) {
-        return animationMap.containsKey(tag);
+    public boolean containsAnimationSequence (AnimationSequence seq) {
+        return animationSequenceList.contains(seq);
     }
 
     public String getImageTag () {
