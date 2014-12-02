@@ -6,16 +6,13 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -38,10 +35,9 @@ public class SelectableGameElementWizard extends Wizard {
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
-    private final static String NUM_ROWS_KEY = "NumCols";
 
     @FXML
-    private AnchorPane leftPane;
+    private ScrollPane leftPane;
     @FXML
     private TextField name;
     @FXML
@@ -64,28 +60,13 @@ public class SelectableGameElementWizard extends Wizard {
     @FXML
     private Group spritesheet;
     @FXML
-    private ScrollPane imageScroll;
-    
-    @FXML    
-    private Slider frameWidth;
-    @FXML
-    private TextField frameWidthText;
-    @FXML
-    private Slider frameHeight;
-    @FXML
-    private TextField frameHeightText;
-    @FXML
-    private TextField numCols;    
-    
+    private ScrollPane imageScroll;          
     @FXML
     private Button animation;
-    @FXML
-    private VBox existingAnimations;    
     
     private List<String> myGlobalStringAttributes;
     private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
-    private AnimationGrid animationGrid;
     private String imagePath;
 
     /**
@@ -119,8 +100,7 @@ public class SelectableGameElementWizard extends Wizard {
      * 
      */
     private void launchAnimationEditor () {
-        launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
-                           myGlobalNumberAttributes);
+        
     }
 
     private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs) {
@@ -131,19 +111,17 @@ public class SelectableGameElementWizard extends Wizard {
         wiz.loadGlobalValues(globalAttrs);
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
-            HBox newElement = new HBox();
+            
             Button edit = new Button();
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));
-            newElement.getChildren().add(edit);
-
+            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));            
             Button delete = new Button();
-            delete.setText("X");
+            delete.setText("X");            
+            HBox newElement = new HBox(edit, delete);
             delete.setOnAction(e -> {
                 removeWizardData(data);
                 existing.getChildren().remove(newElement);
-            });
-            newElement.getChildren().add(delete);
+            });                        
             existing.getChildren().add(newElement);
 
             wiz.getStage().close();
@@ -178,6 +156,8 @@ public class SelectableGameElementWizard extends Wizard {
      */
     private void loadImage () {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                                                 new FileChooser.ExtensionFilter("JPG", "*.jpg"));
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             spritesheet.getChildren().clear();
@@ -185,22 +165,21 @@ public class SelectableGameElementWizard extends Wizard {
             imagePath = file.getPath();
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
-
-            frameWidth.setMin(20.0);
-            frameWidth.setMax(image.getWidth());
-            frameWidth.setValue(100.0);
-            frameHeight.setMin(20.0);
-            frameHeight.setMax(image.getHeight());
-            frameHeight.setValue(100.0);
-
-            animationGrid =
-                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
-                                      frameHeight.getValue());
-            spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {
             setErrorMesssage("Unable to Load Image");
         }
+    }
+    
+    private void loadAnimationJSON () {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
+//        fileChooser.setInitialDirectory(
+//                                        new File(System.getProperty("user.home"))
+//                                    ); 
+        File file = fileChooser.showOpenDialog(new Stage());
+        
+        System.out.println(file.getPath());        
     }
 
     /**
@@ -210,13 +189,14 @@ public class SelectableGameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
+        leftPane.setFitToWidth(true);
+        root.setDividerPositions(0.4);
         trigger.setOnAction(e -> launchTriggerEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
         animation.setOnAction(e -> launchAnimationEditor());
         image.setOnAction(i -> loadImage());
-        createSliderListeners();
-        createTextFieldListeners();
+        animation.setOnAction(i -> loadAnimationJSON());        
         imagePath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
@@ -237,7 +217,6 @@ public class SelectableGameElementWizard extends Wizard {
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
-            numCols.promptTextProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
@@ -245,38 +224,10 @@ public class SelectableGameElementWizard extends Wizard {
         }
     }
 
-    private void createTextFieldListeners () {
-        frameWidthText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameWidthText.getText())) {
-                frameWidth.setValue(Double.parseDouble(frameWidthText.getText()));
-            }
-        });
-        frameHeightText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameHeightText.getText())) {
-                frameHeight.setValue(Double.parseDouble(frameHeightText.getText()));
-            }
-        });
-    }
-
-    private void createSliderListeners () {
-        frameWidth.valueProperty().addListener(e -> {
-            frameWidthText.setText("" + (int) frameWidth.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(frameWidth.getValue(), animationGrid.getFrameY());
-            }
-        });
-        frameHeight.valueProperty().addListener(e -> {
-            frameHeightText.setText("" + (int) frameHeight.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(animationGrid.getFrameX(), frameHeight.getValue());
-            }
-        });
-    }
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null && !numCols.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, numCols.getText());
+        return !name.getText().isEmpty() && imageView != null;
     }
 
     @Override
@@ -285,9 +236,6 @@ public class SelectableGameElementWizard extends Wizard {
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
         addToData(WizardDataType.HEIGHT, "" + imageView.getImage().getHeight());
-        addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
-        addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
-        addToData(WizardDataType.ROWS, numCols.getText());        
     }
 
     public void attachStringAttributes (List<String> stringAttributes) {
