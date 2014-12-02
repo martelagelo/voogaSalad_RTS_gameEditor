@@ -19,7 +19,7 @@ import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
-import view.runner.GameRunnerViewController;
+import view.runner.GameRunnerPaneController;
 
 
 /**
@@ -37,7 +37,7 @@ public class TabViewController extends GUIContainer {
     @FXML
     private BorderPane gameRunnerPane;
     @FXML
-    private GameRunnerViewController gameRunnerPaneController;
+    private GameRunnerPaneController gameRunnerPaneController;
     @FXML
     private BorderPane tabPane;
    

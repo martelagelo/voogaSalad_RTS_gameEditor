@@ -1,5 +1,6 @@
 package view.runner;
 
+import com.sun.xml.internal.ws.api.pipe.Engine;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -15,7 +16,7 @@ import view.gui.GUIContainer;
  * @author Jonathan Tseng
  *
  */
-public class GameRunnerViewController extends GUIContainer {
+public class GameRunnerPaneController extends GUIContainer {
 
     @FXML
     private BorderPane root;
@@ -27,7 +28,7 @@ public class GameRunnerViewController extends GUIContainer {
     private Pane statusPane;
     @FXML
     private BorderPane minimapPane;
-
+    
     @Override
     public Node getRoot () {
         return root;
@@ -43,7 +44,7 @@ public class GameRunnerViewController extends GUIContainer {
 
     @Override
     protected void init () {
-
+        Engine
     }
 
     @Override
