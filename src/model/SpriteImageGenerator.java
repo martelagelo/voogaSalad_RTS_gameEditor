@@ -16,6 +16,13 @@ import util.GameSaveLoadMediator;
 import util.ResourceBundleRetriever;
 import util.SaveLoadUtility;
 
+/**
+ * Class to generator sprite image containers from .json files for Animator
+ * States
+ * 
+ * @author Rahul
+ *
+ */
 public class SpriteImageGenerator {
     private ResourceBundleRetriever myBundleRetriever;
     private ResourceBundle myBundle;
