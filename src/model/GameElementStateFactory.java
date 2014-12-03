@@ -1,5 +1,10 @@
 package model;
 
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -7,6 +12,8 @@ import model.state.gameelement.StateTags;
 import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import engine.visual.animation.AnimationSequence;
+import engine.visual.animation.AnimationTag;
 import engine.visual.animation.AnimatorState;
 
 
@@ -25,7 +32,23 @@ public class GameElementStateFactory {
     public static DrawableGameElementState createDrawableGameElementState (WizardData data) {
         DrawableGameElementState state = (DrawableGameElementState) 
                 addEssentials(new DrawableGameElementState(0.0, 0.0,null), data);
-        return addVisuals(data, state);
+        
+        Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
+                                      Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
+        
+        Set<AnimationSequence> sequences = new HashSet<>();
+        List<AnimationTag> tags = new ArrayList<>();
+        AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
+        
+        AnimatorState anim = new AnimatorState(data.getValueByKey(WizardDataType.IMAGE), 
+                                               dim, 
+                                               Integer.parseInt(data.getValueByKey(WizardDataType.COLS)), 
+                                               sequences);                              
+
+        // TODO: actually get bounds from the user
+        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        state.setBounds(myBounds);
+        return state;
     }
 
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {

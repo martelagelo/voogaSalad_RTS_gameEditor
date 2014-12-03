@@ -197,8 +197,6 @@ public class MainModel extends Observable {
      */
     public void createDrawableGameElementState (WizardData data) {
         try {
-            // TODO: actualSaveLocation gets ignored now that we use the json file. That itself
-            // specifies the save location so we dont need to make this method call below
             String actualSaveLocation = mySaveLoadMediator.saveImage(data);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             DrawableGameElementState gameElement = GameElementStateFactory
