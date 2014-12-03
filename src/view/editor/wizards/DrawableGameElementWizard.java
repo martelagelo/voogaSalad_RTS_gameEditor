@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -179,26 +180,32 @@ public class DrawableGameElementWizard extends Wizard {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
         try {
+            spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
+            imageScroll.setOnMouseClicked(e -> System.out.println("fuckkkk"));
             spritesheet.getChildren().clear();
             Image image = new Image(new FileInputStream(file));
             imagePath = file.getPath();
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
 
-            frameWidth.setMin(20.0);
+            frameWidth.setMin(10.0);
             frameWidth.setMax(image.getWidth());
             frameWidth.setValue(100.0);
-            frameHeight.setMin(20.0);
+            frameHeight.setMin(10.0);
             frameHeight.setMax(image.getHeight());
             frameHeight.setValue(100.0);
 
+            BiConsumer<Integer, Integer> determineStartStopFrame = null;
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
-                                      frameHeight.getValue());
+                                      frameHeight.getValue(), null);
             spritesheet.getChildren().add(animationGrid);
+            spritesheet.toFront();            
+            spritesheet.setOnMousePressed(e -> System.out.println("shitttt"));
         }
         catch (Exception e) {
-            setErrorMesssage("Unable to Load Image");
+            e.printStackTrace();
+//            setErrorMesssage("Unable to Load Image");
         }
     }
 

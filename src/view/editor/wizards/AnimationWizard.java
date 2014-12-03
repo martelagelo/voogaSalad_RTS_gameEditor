@@ -76,7 +76,7 @@ public class AnimationWizard extends Wizard {
             spritesheet.getChildren().add(imageView);
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.doubleValue(),
-                                      frameHeight.doubleValue());
+                                      frameHeight.doubleValue(), null);
             spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {

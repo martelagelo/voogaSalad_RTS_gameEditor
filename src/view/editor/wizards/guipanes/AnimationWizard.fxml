@@ -16,7 +16,7 @@
 					<TextField fx:id="numCols" />
 					<TextField fx:id="startFrame" />
 					<TextField fx:id="stopFrame" />
-					<CheckBox fx:id="animationRepeat" />
+					<CheckBox fx:id="animationRepeat" text="Repeat?"/>
 					<Button fx:id="save" defaultButton="true"/>
 					<Text fx:id="errorMessage" />					
 				</VBox>
