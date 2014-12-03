@@ -1,19 +1,14 @@
 package view.editor.wizards;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-
-import engine.action.ActionType;
-import view.gui.ActionTypes;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import action.Action;
+import action.ActionType;
 
 
 /**
@@ -23,17 +18,12 @@ import javafx.scene.control.TextField;
  */
 public class ActionWizard extends Wizard {
 
-	private static final String ACTION_ROOT = "resources.properties.engine.actions.";
-    private static final String ACTION_TYPES_PROPS = "ActionTypes";
-    private static final String COLLISION_ACTION_TYPES_PROPS = "CollisionActionTypes";
     @FXML
-    private ComboBox<String> actionType;
+    private ComboBox<ActionType> actionType;
     @FXML
     private TextField action;
     @FXML
-    private ComboBox<String> actionChoice;
-    
-    private ResourceBundle actionTypeBundle;
+    private ComboBox<Action> actionChoice;   
 
     @Override
     public boolean checkCanSave () {
@@ -43,36 +33,39 @@ public class ActionWizard extends Wizard {
     @Override
     public void updateData () {
         setDataType(WizardDataType.TRIGGER);
-        addToData(WizardDataType.ACTIONTYPE, actionType.getSelectionModel().getSelectedItem());
+        addToData(WizardDataType.ACTIONTYPE, actionType.getSelectionModel().getSelectedItem().name());
         addToData(WizardDataType.ACTION, action.getText());
     }
     
     @Override
     public void initialize () {
-        super.initialize();
-        List<String> actionTypes = Arrays.asList(
-         		engine.action.ActionType.values())
-         		.stream()
-         		.map(a -> a.name())
-         		.collect(Collectors.toList());       
-        actionType.setItems(FXCollections.observableArrayList(actionTypes));
-        actionType.valueProperty().addListener(new ChangeListener<String>() {
-            @Override public void changed(ObservableValue ov, String t, String t1) {
-            	System.out.println(engine.action.ActionType.valueOf(t1));
-                List<String> actionChoices =Arrays.asList(
-                 		engine.action.ActionType.valueOf(t1).values())
-                 		.stream()
-                 		.map(a -> a.name())
-                 		.collect(Collectors.toList());
-                actionChoice.setItems(FXCollections.observableArrayList(actionChoices));
+        super.initialize();     
+        actionType.setItems(FXCollections.observableArrayList(ActionType.values()));
+        actionType.valueProperty().addListener(new ChangeListener<ActionType>() {
+            @Override public void changed(ObservableValue ov, ActionType t, ActionType t1) {
+            	System.out.println(t1.name());
+                actionChoice.setItems(FXCollections.observableArrayList(t1.getActions()));
+                actionChoice.valueProperty().addListener(new ChangeListener<Action>() {
+                    @Override
+                    public void changed (ObservableValue<? extends Action> observable,
+                                         Action oldValue,
+                                         Action newValue) {
+                        System.out.println(newValue.name());
+                        String s = "";
+                        for (String temp: newValue.getTemplate()) {
+                            s = s + temp + "###";
+                        }
+                        action.setText(s);
+                    }
+                });
                 }    
                
           });
     }
 
     @Override
-    public void launchForEdit (WizardData oldValues) {
-        actionType.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.ACTIONTYPE));
+    public void launchForEdit (WizardData oldValues) {        
+        actionType.getSelectionModel().select(ActionType.valueOf(oldValues.getValueByKey(WizardDataType.ACTIONTYPE)));
         action.setText(oldValues.getValueByKey(WizardDataType.ACTION));
     }
 
