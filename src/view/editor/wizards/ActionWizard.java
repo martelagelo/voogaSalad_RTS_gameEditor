@@ -1,9 +1,13 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
+import engine.action.ActionType;
+import view.gui.ActionTypes;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -46,21 +50,23 @@ public class ActionWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        actionTypeBundle = ResourceBundle.getBundle(ACTION_ROOT+ACTION_TYPES_PROPS);        
-        List<String> actionTypes = new ArrayList<>();                 
-        actionTypeBundle.keySet().forEach((value) -> {
-            actionTypes.add(actionTypeBundle.getString(value));
-        });        
+        List<String> actionTypes = Arrays.asList(
+         		engine.action.ActionType.values())
+         		.stream()
+         		.map(a -> a.name())
+         		.collect(Collectors.toList());       
         actionType.setItems(FXCollections.observableArrayList(actionTypes));
         actionType.valueProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue ov, String t, String t1) {
-            	actionTypeBundle = ResourceBundle.getBundle(ACTION_ROOT+t1); 
-                actionTypes.clear();
-                actionTypeBundle.keySet().forEach((value) -> {
-                    actionTypes.add(actionTypeBundle.getString(value));
-                });      
-                actionChoice.setItems(FXCollections.observableArrayList(actionTypes));
-              }    
+            @Override public void changed(ObservableValue ov, String t, String t1) {
+            	System.out.println(engine.action.ActionType.valueOf(t1));
+                List<String> actionChoices =Arrays.asList(
+                 		engine.action.ActionType.valueOf(t1).values())
+                 		.stream()
+                 		.map(a -> a.name())
+                 		.collect(Collectors.toList());
+                actionChoice.setItems(FXCollections.observableArrayList(actionChoices));
+                }    
+               
           });
     }
 
