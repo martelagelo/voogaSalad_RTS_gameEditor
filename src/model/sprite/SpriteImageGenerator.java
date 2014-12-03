@@ -6,19 +6,27 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import model.state.gameelement.GameElementType;
+
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+
 import util.GameSaveLoadMediator;
 import util.ResourceBundleRetriever;
 import util.SaveLoadUtility;
 import engine.visual.animation.AnimatorState;
 
-
+/**
+ * This class generates the SpriteImageContainers and caches them and can be
+ * retrieved via the model from the tag passed in.
+ * 
+ * @author Rahul
+ *
+ */
 public class SpriteImageGenerator {
     private ResourceBundleRetriever myBundleRetriever;
     private ResourceBundle myBundle;
-    private static final String RESOURCES_PROPERTIES_FILE_LOCATION =
-            "resources/gameelementresources/gameelementresources.properties";
+    private static final String RESOURCES_PROPERTIES_FILE_LOCATION = "resources/gameelementresources/gameelementresources.properties";
     private Map<String, String> myResourceMapping;
     private Map<String, SpriteImageContainer> myCachedContainer;
 
@@ -41,19 +49,18 @@ public class SpriteImageGenerator {
     }
 
     public Map<String, SpriteImageContainer> loadSpriteImageContainers () throws Exception {
-        String animationStateLocation =
-                myResourceMapping.get(GameElementType.ANIMATORSTATE.toString());
+        String animationStateLocation = myResourceMapping.get(GameElementType.ANIMATORSTATE
+                .toString());
         File directory = new File(animationStateLocation);
-        FileFilter fileFilter =
-                new WildcardFileFilter(GameSaveLoadMediator.WILDCARD +
-                                       GameSaveLoadMediator.JSON_EXT);
+        FileFilter fileFilter = new WildcardFileFilter(GameSaveLoadMediator.WILDCARD
+                + GameSaveLoadMediator.JSON_EXT);
         File[] files = directory.listFiles(fileFilter);
         if (files != null) {
             for (File f : files) {
-                AnimatorState state =
-                        SaveLoadUtility.loadResource(AnimatorState.class, f.getPath());
+                AnimatorState state = SaveLoadUtility
+                        .loadResource(AnimatorState.class, f.getPath());
                 myCachedContainer.put(state.getImageTag(),
-                                      new SpriteImageContainer(state.getImageTag()));
+                        new SpriteImageContainer(state.getImageTag()));
             }
         }
         return myCachedContainer;
