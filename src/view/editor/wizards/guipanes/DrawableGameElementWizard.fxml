@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+
+<SplitPane fx:id="root"
+	fx:controller="view.editor.wizards.DrawableGameElementWizard" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<AnchorPane fx:id="leftPane">
+			<children>
+				<VBox>
+					<TextField fx:id="name" />
+					<Button fx:id="trigger" defaultButton="true" />
+					<VBox fx:id="existingTriggers" />
+					<Button fx:id="stringAttribute" defaultButton="true" />
+					<VBox fx:id="existingStringAttributes" />
+					<Button fx:id="numberAttribute" defaultButton="true" />
+					<VBox fx:id="existingNumberAttributes" />
+					<Button fx:id="image" defaultButton="true" />
+					<HBox>
+						<Label text="Frame Width" />
+						<Slider fx:id="frameWidth" />
+						<TextField fx:id="frameWidthText" />
+					</HBox>
+					<HBox>
+						<Label text="Frame Height" />
+						<Slider fx:id="frameHeight" />
+						<TextField fx:id="frameHeightText" />
+					</HBox>
+					<Button fx:id="animation" defaultButton="true" text="Add Animation"/>
+					<VBox fx:id="existingAnimations" />
+					<Button fx:id="setBounds" defaultButton="true" text="Set Bounds"/>
+					<Button fx:id="save" defaultButton="true" />
+					<Text fx:id="errorMessage" />
+				</VBox>
+			</children>
+		</AnchorPane>
+
+		<ScrollPane fx:id="imageScroll">
+			<Group fx:id="spritesheet" />
+		</ScrollPane>
+	</items>
+</SplitPane>

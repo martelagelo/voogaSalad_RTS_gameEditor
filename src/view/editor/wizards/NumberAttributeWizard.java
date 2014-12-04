@@ -16,12 +16,12 @@ public class NumberAttributeWizard extends AttributeWizard {
     @Override
     public boolean checkCanSave () {
         return areFieldsNotNull() &&
-               Pattern.matches("-?[0-9]+\\.?[0-9]*", value.getText());
+               Pattern.matches(NUM_REGEX, value.getText());
     }
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.NUMBER_ATTRIBUTE);
+        setWizardType(WizardType.NUMBER_ATTRIBUTE);
         storeKeyValuePair();
     }
 

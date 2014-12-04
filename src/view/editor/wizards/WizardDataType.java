@@ -7,28 +7,32 @@ package view.editor.wizards;
  * @author Nishad Agrawal
  *
  */
-public enum WizardDataType {
-    UNSPECIFIED,
-    GAME_ELEMENT,
-    DRAWABLE_GAME_ELEMENT,
+public enum WizardDataType {        
     NAME,
-    STRING_ATTRIBUTE,
-    NUMBER_ATTRIBUTE,
+    //attributes
     ATTRIBUTE,
     VALUE,
-    TRIGGER,
+    // actions: this will change
     ACTIONTYPE,
     ACTION,
-    CAMPAIGN,
-    LEVEL,
+    
+    CAMPAIGN_NAME,
+    // animation specifics
     IMAGE,
     WIDTH,
     HEIGHT,
+    ANIMATOR_STATE,
     FRAME_X,
     FRAME_Y,
-    ROWS,
+    COLS,
+    ANIMATION_TAG,
     START_FRAME,
     STOP_FRAME,
     ANIMATION_REPEAT,
-    TERRAIN
+    SLOWNESS_MULTIPLIER,
+    // place into level: this will change
+    X_POSITION,
+    Y_POSITION,
+    // bounds of dges
+    BOUND_VALUES
 }

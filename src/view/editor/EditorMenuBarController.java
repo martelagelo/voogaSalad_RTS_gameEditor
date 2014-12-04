@@ -82,11 +82,14 @@ public class EditorMenuBarController extends MenuBarController {
         Consumer<WizardData> bc = (data) -> {
             try {
                 myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
-                                        data.getValueByKey(WizardDataType.CAMPAIGN));
-                wiz.getStage().close();
+                                        data.getValueByKey(WizardDataType.CAMPAIGN_NAME),
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.WIDTH)),
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)));
+                wiz.closeStage();
             }
             catch (Exception e1) {
-                wiz.setErrorMesssage(e1.getMessage());
+                e1.printStackTrace();
+                wiz.displayErrorMessage(e1.getMessage());
             }
         };
         wiz.setSubmit(bc);
@@ -97,10 +100,10 @@ public class EditorMenuBarController extends MenuBarController {
         Consumer<WizardData> bc = (data) -> {
             try {
                 myMainModel.createCampaign(data.getValueByKey(WizardDataType.NAME));
-                wiz.getStage().close();
+                wiz.closeStage();
             }
             catch (Exception e1) {
-                wiz.setErrorMesssage("Campaign Already Exists!");
+                wiz.displayErrorMessage("Campaign Already Exists!");
             }
         };
         wiz.setSubmit(bc);

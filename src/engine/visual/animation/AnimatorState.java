@@ -1,6 +1,7 @@
 package engine.visual.animation;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,8 +16,12 @@ import util.JSONable;
  *
  */
 
-public class AnimatorState implements JSONable {
+public class AnimatorState implements JSONable, Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1609072629703433749L;
     private String imageTag;
     private Dimension viewportSize;
     private int numCols;

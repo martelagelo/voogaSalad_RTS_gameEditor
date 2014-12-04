@@ -139,6 +139,9 @@ public class EditorScreen extends GUIScreen {
         attachChildContainers(tabController);
         try {
             tabController.setLevel(campaign, level);
+            // TODO: Jonathan fix "current level" for the accordion pane
+            levelElementAccordionController.setLevel(campaign, level);
+            
         }
         catch (LevelNotFoundException | CampaignNotFoundException e) {
             // Should not happen
@@ -154,8 +157,13 @@ public class EditorScreen extends GUIScreen {
         myCurrentTab = newTab;
         if (myCurrentTab != null) {
             CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
-            // TODO: Not sure if need anything here... nothing really to do when the tab changes
-            // anymore
+            // TODO: Jonathan fix "current level" for the accordion pane
+            try {
+                levelElementAccordionController.setLevel(id.myCampaign.getName(), id.myLevel.getName());
+            }
+            catch (LevelNotFoundException | CampaignNotFoundException e) {
+                e.printStackTrace();
+            }            
         }
     }
 

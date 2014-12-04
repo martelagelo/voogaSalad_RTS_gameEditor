@@ -11,6 +11,11 @@ import java.util.ArrayList;
  */
 public class NullAnimationSequence extends AnimationSequence {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 2526081900070531108L;
+
     public NullAnimationSequence () {
         super(new ArrayList<AnimationTag>() {
             {

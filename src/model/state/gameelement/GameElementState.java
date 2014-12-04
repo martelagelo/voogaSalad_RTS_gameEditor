@@ -1,5 +1,6 @@
 package model.state.gameelement;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,12 @@ import util.JSONable;
  *
  */
 
-public class GameElementState implements JSONable {
+public class GameElementState implements JSONable, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 6832117170246376287L;
+
     /**
      * The actions for a given game element state will be stored in a map of
      * Strings that represent the type of action e.g. collision, internal, etc.

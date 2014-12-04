@@ -23,5 +23,7 @@ public class StateTags {
     public static final String TEAM_COLOR = "teamColor";
     public static final String IS_SELECTED = "isSelected";
     public static final String CURRENT_ACTION = "currentAction"; // attack, die, decay, gather??
+    public static final String LEVEL_HEIGHT = "LevelHeight";
+    public static final String LEVEL_WIDTH = "LevelWidth";
 
 }
