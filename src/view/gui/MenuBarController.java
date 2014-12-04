@@ -21,12 +21,12 @@ public abstract class MenuBarController extends GUIContainer {
     @FXML
     protected MenuItem quitMenuItem;
     @FXML
-    private Menu fileMenu;
+    protected Menu fileMenu;
     @FXML
-    private MenuBar menuBar;
+    protected MenuBar menuBar;
 
     @FXML
-    private Menu languageMenu;
+    protected Menu languageMenu;
 
     protected GUIScreen myScreen;
 
