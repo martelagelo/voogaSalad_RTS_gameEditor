@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIScreen;
 import view.gui.ViewScreenPath;
 
@@ -34,6 +35,7 @@ public class SplashScreen extends GUIScreen {
     private static final String NEW_GAME_KEY = "NewGame";
     private static final String CHOOSE_GAME_KEY = "ChooseGame";
     private static final String DEFAULT_NEW_GAME_KEY = "NewGameDefault";
+    private static final String NO_GAME_SELECT_ERROR_KEY = "NoGameSelectedError";
 
     private static final String DUVALL_PATH = "resources/duvall.txt";
     // TODO make longer to scroll, 1 for now for the sake of testing
@@ -114,7 +116,13 @@ public class SplashScreen extends GUIScreen {
         }
                 else {
                     // TODO: ERROR POPUP ON SPLASH SCREEN, nishad... animation controller thingy
-                    System.out.println("ERROR: NO GAME SELECTED");
+                    try {
+                        DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+                                .getStringProperty(NO_GAME_SELECT_ERROR_KEY).getValue());
+                    }
+                    catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
                 }
 
             });

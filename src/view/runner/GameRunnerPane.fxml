@@ -6,29 +6,4 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="view.runner.GameRunnerPaneController" fx:id="root">
-
-	<!-- <center> -->
-	<!-- <Circle fill="DODGERBLUE" radius="200.0" stroke="BLACK" -->
-	<!-- strokeType="INSIDE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-		/> -->
-	<!-- </center> -->
-	<center>
-		<BorderPane BorderPane.alignment="CENTER" fx:id="sceneGraphPane" />
-	</center>
-	<bottom>
-		<HBox BorderPane.alignment="CENTER">
-			<children>
-				<GridPane fx:id="buttonPane">
-					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" />
-					</columnConstraints>
-					<rowConstraints>
-						<RowConstraints vgrow="SOMETIMES" />
-					</rowConstraints>
-				</GridPane>
-				<Pane fx:id="statusPane" />
-				<BorderPane fx:id="minimapPane" />
-			</children>
-		</HBox>
-	</bottom>
 </BorderPane>

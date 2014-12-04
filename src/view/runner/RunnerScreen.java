@@ -2,6 +2,7 @@ package view.runner;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import view.gui.GUIScreen;
 
@@ -18,8 +19,11 @@ public class RunnerScreen extends GUIScreen {
     BorderPane gameRunner;
     @FXML 
     GameRunnerPaneController runnerController;
+    @FXML
+    MenuBar runnerMenuBar;
+    @FXML
+    RunnerMenuBarController runnerMenuBarController;
     
-
     @Override
     public Node getRoot () {
         return root;
@@ -27,7 +31,8 @@ public class RunnerScreen extends GUIScreen {
 
     @Override
     protected void init () {
-        
+        attachChildContainers(runnerMenuBarController);
+        runnerMenuBarController.attachScreen(this);
     }
 
     @Override
