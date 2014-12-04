@@ -1,7 +1,0 @@
-[
-    {
-        "pattern": ["parameter", "evaluator", "parameter"],
-        "parent": "1",
-        "grandparent": "parameter"
-    }
-]
