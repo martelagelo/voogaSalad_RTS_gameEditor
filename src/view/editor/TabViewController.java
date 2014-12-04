@@ -48,7 +48,7 @@ public class TabViewController extends GUIContainer {
             Wizard wiz = WizardUtility.loadWizard(GUIPanePath.TRIGGER_WIZARD, new Dimension(300, 300));
             Consumer<WizardData> bc = (data) -> {
                 myMainModel.createGoal(myLevel, data);
-                wiz.getStage().close();
+                wiz.closeStage();
             };
             wiz.setSubmit(bc);
         };
@@ -116,7 +116,7 @@ public class TabViewController extends GUIContainer {
                             actionValue.add(data.getValueByKey(WizardDataType.ACTION));
                             actions.put(data.getValueByKey(WizardDataType.ACTIONTYPE), actionValue);
                             updateLevelTriggersView();
-                            wiz.getStage().close();
+                            wiz.closeStage();
                         };
                 wiz.setSubmit(bc);
             };

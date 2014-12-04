@@ -36,7 +36,7 @@ public class AttributeWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.STRING_ATTRIBUTE);
+        setWizardType(WizardType.STRING_ATTRIBUTE);
         storeKeyValuePair();
     }
 

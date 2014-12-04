@@ -17,17 +17,17 @@ import java.util.stream.Collectors;
  *
  */
 public class WizardData {
-    private WizardDataType myType;
+    private WizardType myType;
     private Map<WizardDataType, String> myData;
     private List<WizardData> myWizards;
 
     public WizardData () {
-        myType = WizardDataType.UNSPECIFIED;
+        myType = WizardType.UNSPECIFIED;
         myData = new HashMap<>();
         myWizards = new ArrayList<>();
     }
 
-    public void setType (WizardDataType type) {
+    public void setType (WizardType type) {
         myType = type;
     }
 
@@ -52,7 +52,7 @@ public class WizardData {
         return myWizards;
     }
 
-    public WizardDataType getType () {
+    public WizardType getType () {
         return myType;
     }
 
@@ -60,7 +60,7 @@ public class WizardData {
         return myData.get(key);
     }
 
-    public List<WizardData> getWizardDataByType (WizardDataType type) {
+    public List<WizardData> getWizardDataByType (WizardType type) {
         return myWizards.stream().filter(e -> e.getType().equals(type))
                 .collect(Collectors.toList());
     }

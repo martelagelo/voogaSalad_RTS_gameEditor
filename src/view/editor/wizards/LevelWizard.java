@@ -3,13 +3,13 @@ package view.editor.wizards;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import util.multilanguage.LanguageException;
-import util.multilanguage.MultiLanguageUtility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -50,8 +50,8 @@ public class LevelWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.LEVEL);
-        addToData(WizardDataType.CAMPAIGN, campaignName.getSelectionModel().getSelectedItem());
+        setWizardType(WizardType.LEVEL);
+        addToData(WizardDataType.CAMPAIGN_NAME, campaignName.getSelectionModel().getSelectedItem());
         addToData(WizardDataType.NAME, levelName.getText());
         addToData(WizardDataType.WIDTH, levelWidth.getText());
         addToData(WizardDataType.HEIGHT, levelHeight.getText());
@@ -80,7 +80,7 @@ public class LevelWizard extends Wizard {
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        campaignName.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.CAMPAIGN));
+        campaignName.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.CAMPAIGN_NAME));
         levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));
     }
 

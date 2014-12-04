@@ -125,12 +125,12 @@ public class DrawableGameElementWizard extends Wizard {
     
     private void launchBoundsEditor () {
         Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, new Dimension(500,700));
-        if (this.getWizardData().getWizardDataByType(WizardDataType.BOUNDS).size() != 0) {            
-            wiz.launchForEdit(this.getWizardData().getWizardDataByType(WizardDataType.BOUNDS).get(0));
+        if (this.getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0) {            
+            wiz.launchForEdit(this.getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
         }
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -156,7 +156,7 @@ public class DrawableGameElementWizard extends Wizard {
             newElement.getChildren().add(delete);
             existing.getChildren().add(newElement);
             
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -175,7 +175,7 @@ public class DrawableGameElementWizard extends Wizard {
                 oldData.addDataPair(type, data.getValueByKey(type));
             }
             button.setText((new ArrayList<String>(data.getData().values())).get(0));
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -235,7 +235,7 @@ public class DrawableGameElementWizard extends Wizard {
         imagePath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
-        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
     }
 
     /**
@@ -290,7 +290,7 @@ public class DrawableGameElementWizard extends Wizard {
     @Override
     public boolean checkCanSave () {
         return !name.getText().isEmpty() && imageView != null &&
-               getWizardData().getWizardDataByType(WizardDataType.BOUNDS).size() != 0;
+               getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0;
     }
 
     @Override

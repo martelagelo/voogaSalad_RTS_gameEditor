@@ -126,7 +126,7 @@ public class ElementAccordionController extends GUIContainer {
                                                            .getValueByKey(WizardDataType.X_POSITION)),
                                                    Double.parseDouble(data
                                                            .getValueByKey(WizardDataType.Y_POSITION)));
-                        wiz.getStage().close();
+                        wiz.closeStage();
                     }
                     catch (Exception e) {
                         wiz.displayErrorMessage(e.getMessage());
@@ -168,7 +168,7 @@ public class ElementAccordionController extends GUIContainer {
                                 }
                                 else {
                                     myMainModel.createSelectableGameElementState(data);
-                                    wiz.getStage().close();
+                                    wiz.closeStage();
                                 }
                             };
                     wiz.setSubmit(cons);
@@ -203,7 +203,7 @@ public class ElementAccordionController extends GUIContainer {
                                 }
                                 else {
                                     myMainModel.createDrawableGameElementState(data);
-                                    wiz.getStage().close();
+                                    wiz.closeStage();
                                 }
                             };
                     wiz.setSubmit(cons);

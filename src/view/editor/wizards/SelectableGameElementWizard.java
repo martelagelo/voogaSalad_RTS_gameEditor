@@ -124,8 +124,7 @@ public class SelectableGameElementWizard extends Wizard {
                 existing.getChildren().remove(newElement);
             });
             existing.getChildren().add(newElement);
-
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -144,7 +143,7 @@ public class SelectableGameElementWizard extends Wizard {
                 oldData.addDataPair(type, data.getValueByKey(type));
             }
             button.setText((new ArrayList<String>(data.getData().values())).get(0));
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -234,7 +233,8 @@ public class SelectableGameElementWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+        // TODO: consolidate game element wizards
+        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.ANIMATOR_STATE, jsonPath);

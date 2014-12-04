@@ -13,6 +13,7 @@ import model.state.gameelement.StateTags;
 import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import view.editor.wizards.WizardType;
 import engine.visual.animation.AnimationSequence;
 import engine.visual.animation.AnimationTag;
 import engine.visual.animation.AnimatorState;
@@ -47,9 +48,14 @@ public class GameElementStateFactory {
                                   Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
                                   sequences);
 
-        // TODO: actually get bounds from the user
-        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
+        String bounds = data.getWizardDataByType(WizardType.BOUNDS).get(0).getValueByKey(WizardDataType.BOUND_VALUES);
+        String[] points = bounds.split(",");
+        double[] myBounds = new double[points.length];
+        for (int i = 0; i < points.length; i++) {
+            myBounds[i] = Double.parseDouble(points[i]);
+        }
         state.setBounds(myBounds);
+        
         return state;
     }
 
@@ -78,10 +84,7 @@ public class GameElementStateFactory {
             System.out.println("unable to load json into animator state object");
             e.printStackTrace();
         }
-
-        // TODO: actually get bounds from the user
-        double[] myBounds = new double[] { 0.0, 0.0, 0.0, 0.0 };
-        state.setBounds(myBounds);
+                
         return state;
     }
 
@@ -91,24 +94,24 @@ public class GameElementStateFactory {
 
         addToState( (String key, String value) ->
                    state.attributes.setTextualAttribute(key, value),
-                   data, WizardDataType.STRING_ATTRIBUTE, WizardDataType.ATTRIBUTE,
+                   data, WizardType.STRING_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
         addToState( (String key, String value) ->
                    state.attributes.setNumericalAttribute(key, Double.parseDouble(value)),
-                   data, WizardDataType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
+                   data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
         addToState( (String key, String value) -> state.addAction(key, value),
-                   data, WizardDataType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
+                   data, WizardType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
 
         return state;
     }
 
-    private static void addToState (BiConsumer<String, String> cons, WizardData data,
+    private static void addToState (BiConsumer<String, String> cons, WizardData data, WizardType type,
                                     WizardDataType ... dataTypes) {
-        for (WizardData wiz : data.getWizardDataByType(dataTypes[0])) {
-            cons.accept(wiz.getValueByKey(dataTypes[1]), wiz.getValueByKey(dataTypes[2]));
+        for (WizardData wiz : data.getWizardDataByType(type)) {
+            cons.accept(wiz.getValueByKey(dataTypes[0]), wiz.getValueByKey(dataTypes[1]));
         }
     }
 

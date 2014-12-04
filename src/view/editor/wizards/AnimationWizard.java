@@ -157,7 +157,7 @@ public class AnimationWizard extends Wizard {
 
     @Override
     public void updateData () {       
-        setDataType(WizardDataType.ANIMATION_SEQUENCE);
+        setWizardType(WizardType.ANIMATION_SEQUENCE);
         addToData(WizardDataType.ANIMATION_TAG, animationTag.getSelectionModel().getSelectedItem().name());
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());

@@ -79,13 +79,13 @@ public class BoundsWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.BOUNDS);
-        addToData(WizardDataType.BOUNDS, getCoordinates()); 
+        setWizardType(WizardType.BOUNDS);
+        addToData(WizardDataType.BOUND_VALUES, getCoordinates()); 
     }
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        String bounds = oldValues.getValueByKey(WizardDataType.BOUNDS);
+        String bounds = oldValues.getValueByKey(WizardDataType.BOUND_VALUES);
         String[] points = bounds.split(",");
         for (int i = 0; i < points.length; i+=2) {
             addXYPair(points[i], points[i+1]);

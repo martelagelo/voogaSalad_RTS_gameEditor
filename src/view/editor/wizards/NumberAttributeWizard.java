@@ -21,7 +21,7 @@ public class NumberAttributeWizard extends AttributeWizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.NUMBER_ATTRIBUTE);
+        setWizardType(WizardType.NUMBER_ATTRIBUTE);
         storeKeyValuePair();
     }
 

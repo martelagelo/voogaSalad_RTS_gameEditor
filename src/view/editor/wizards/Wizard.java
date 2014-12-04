@@ -119,7 +119,7 @@ public abstract class Wizard implements GUIController {
      * 
      * @param type defines what type of wizard this is for a factory within the model
      */
-    protected void setDataType (WizardDataType type) {
+    protected void setWizardType (WizardType type) {
         myUserInput.setType(type);
     }
 
@@ -189,8 +189,8 @@ public abstract class Wizard implements GUIController {
      * 
      * @return The stage which holds this Wizard.
      */
-    public Stage getStage () {
-        return myStage;
+    public void closeStage () {
+        myStage.close();
     }
 
     /**

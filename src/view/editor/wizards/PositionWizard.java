@@ -27,7 +27,7 @@ public class PositionWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.POSITION);
+        setWizardType(WizardType.POSITION);
         addToData(WizardDataType.X_POSITION, xValue.getText());
         addToData(WizardDataType.Y_POSITION, yValue.getText());
     }
