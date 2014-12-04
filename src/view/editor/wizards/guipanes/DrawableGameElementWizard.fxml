@@ -32,9 +32,9 @@
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
 					</HBox>
-					<TextField fx:id="numCols" />
-					<Button fx:id="animation" defaultButton="true" />
+					<Button fx:id="animation" defaultButton="true" text="Add Animation"/>
 					<VBox fx:id="existingAnimations" />
+					<Button fx:id="setBounds" defaultButton="true" text="Set Bounds"/>
 					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>

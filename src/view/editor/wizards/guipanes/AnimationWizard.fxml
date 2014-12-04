@@ -17,6 +17,7 @@
 					<TextField fx:id="startFrame" />
 					<TextField fx:id="stopFrame" />
 					<CheckBox fx:id="animationRepeat" text="Repeat?"/>
+					<TextField fx:id="slownessMultiplier" promptText="Slowness Multiplier"/>
 					<Button fx:id="save" defaultButton="true"/>
 					<Text fx:id="errorMessage" />					
 				</VBox>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane fx:id="root" fx:controller="view.editor.wizards.BoundsWizard"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<AnchorPane>
+			<children>
+				<VBox>
+					<VBox fx:id="allPoints"/>
+					<Button fx:id="addPoint" defaultButton="true" text="Add Point"/>								
+					<Button fx:id="save" defaultButton="true" text="save" />
+					<Text fx:id="errorMessage" />
+				</VBox>
+			</children>
+		</AnchorPane>
+	</items>
+</SplitPane>

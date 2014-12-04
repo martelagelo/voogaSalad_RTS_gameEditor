@@ -29,6 +29,7 @@ public enum GUIPanePath {
     TRIGGER_WIZARD("/view/editor/wizards/guipanes/TriggerWizard.fxml"),
     POSITION_WIZARD("/view/editor/wizards/guipanes/PositionWizard.fxml"),
     ANIMATION_WIZARD("/view/editor/wizards/guipanes/AnimationWizard.fxml"),
+    BOUNDS_WIZARD("/view/editor/wizards/guipanes/BoundsWizard.fxml"),
 
     // dialog
     DIALOG_BOX("/view/dialog/DialogBox.fxml");

@@ -47,6 +47,8 @@ public class AnimationWizard extends Wizard {
     private TextField stopFrame;
     @FXML
     private CheckBox animationRepeat;
+    @FXML
+    private TextField slownessMultiplier;
     
     private ImageView imageView;
     private AnimationGrid animationGrid;
@@ -70,7 +72,7 @@ public class AnimationWizard extends Wizard {
             spritesheet.getChildren().add(imageView);
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.doubleValue(),
-                                      frameHeight.doubleValue(), null);
+                                      frameHeight.doubleValue());
             spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {
@@ -148,7 +150,9 @@ public class AnimationWizard extends Wizard {
                Pattern.matches(NUM_REGEX, startFrame.getText()) && 
                !stopFrame.getText().isEmpty() &&
                Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
-               animationTag.getSelectionModel().getSelectedItem() != null;
+               animationTag.getSelectionModel().getSelectedItem() != null &&
+               !slownessMultiplier.getText().isEmpty() &&
+               Pattern.matches(NUM_REGEX, slownessMultiplier.getText());
     }
 
     @Override
@@ -158,6 +162,7 @@ public class AnimationWizard extends Wizard {
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
+        addToData(WizardDataType.SLOWNESS_MULTIPLIER, slownessMultiplier.getText());
     }
 
     @Override

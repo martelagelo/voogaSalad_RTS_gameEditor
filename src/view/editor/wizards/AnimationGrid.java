@@ -2,7 +2,6 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
 import javafx.scene.Group;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -15,20 +14,22 @@ import javafx.scene.shape.Rectangle;
  *
  */
 public class AnimationGrid extends Group {
+    private static final String FRAME_STROKE_COLOR = "black";
+    private static final String STOP_COLOR = "red";
+    private static final String START_COLOR = "green";
     private static final String INVALID_STOP_MESSAGE = "Stop frame must come after start frame";
     private static final String INVALID_FRAME_MESSAGE = "this is an invalid frame number";
     private double myWidth;
     private double myHeight;
     private double myFrameX;
     private double myFrameY;
-    private List<List<Frame>> rectangleCols;
+    private List<List<Frame>> frameCols;
     private int start;
 
-    public AnimationGrid (double imageWidth, double imageHeight, double frameX, double frameY,
-                          BiConsumer<Integer, Integer> consumer) {
+    public AnimationGrid (double imageWidth, double imageHeight, double frameX, double frameY) {
         myWidth = imageWidth;
         myHeight = imageHeight;
-        rectangleCols = new ArrayList<>();
+        frameCols = new ArrayList<>();
         changeSize(frameX, frameY);
         start = 0;
     }
@@ -40,33 +41,31 @@ public class AnimationGrid extends Group {
         createGridLines();
     }
 
-    public void setStart (int frameIndex) throws IndexOutOfBoundsException {        
-        selectFrame(frameIndex, "blue");
+    public void setStart (int frameIndex) throws IndexOutOfBoundsException {
+        selectFrame(frameIndex, START_COLOR);
         start = frameIndex;
     }
 
     public void setStop (int frameIndex) throws IndexOutOfBoundsException {
-        if (frameIndex < start) {
-            throw new IndexOutOfBoundsException(INVALID_STOP_MESSAGE);
-        }
-        selectFrame(frameIndex, "red"); 
+        if (frameIndex < start) { throw new IndexOutOfBoundsException(INVALID_STOP_MESSAGE); }
+        selectFrame(frameIndex, STOP_COLOR);
     }
 
     private void selectFrame (int frameIndex, String color) throws IndexOutOfBoundsException {
-        if (frameIndex < 0 || frameIndex > (rectangleCols.size() + rectangleCols.get(0).size() - 1)) {
+        if (frameIndex < 0 || frameIndex > (frameCols.size() * frameCols.get(0).size() - 1)) {
             throw new IndexOutOfBoundsException(INVALID_FRAME_MESSAGE); 
         }
         resetExistingFill(color);
-        int col = frameIndex / rectangleCols.get(0).size();
-        int row = frameIndex % rectangleCols.get(0).size();
-        Frame f = rectangleCols.get(col).get(row);
+        int col = frameIndex / frameCols.get(0).size();
+        int row = frameIndex % frameCols.get(0).size();
+        Frame f = frameCols.get(col).get(row);
         if (f.getFill() == null) {
             f.setFill(Paint.valueOf(color));
         }
     }
 
     private void resetExistingFill (String primary) {
-        rectangleCols.forEach(col -> col
+        frameCols.forEach(col -> col
                 .stream()
                 .filter(frame -> frame.getFill() != null &&
                                  frame.getFill().equals(Paint.valueOf(primary)))
@@ -74,14 +73,14 @@ public class AnimationGrid extends Group {
     }
 
     private void createGridLines () {
-        rectangleCols.clear();
+        frameCols.clear();
         createColumns();
     }
 
     private void createColumns () {
         int col = 0;
         for (int i = 0; i < myWidth; i += myFrameX) {
-            rectangleCols.add(col, new ArrayList<>());
+            frameCols.add(col, new ArrayList<>());
             Group column = createColumn(col);
             column.setTranslateX(i);
             getChildren().add(column);
@@ -96,7 +95,7 @@ public class AnimationGrid extends Group {
             Frame frame = createFrame(row, col);
             column.getChildren().add(frame);
             frame.setTranslateY(i);
-            rectangleCols.get(col).add(row, frame);
+            frameCols.get(col).add(row, frame);
             row++;
         }
         return column;
@@ -104,7 +103,7 @@ public class AnimationGrid extends Group {
 
     private Frame createFrame (int row, int col) {
         Frame frame = new Frame(myFrameX, myFrameY);
-        frame.setStroke(Paint.valueOf("black"));
+        frame.setStroke(Paint.valueOf(FRAME_STROKE_COLOR));
         frame.setFill(null);
         return frame;
     }
@@ -115,6 +114,10 @@ public class AnimationGrid extends Group {
 
     public double getFrameY () {
         return myFrameY;
+    }
+    
+    public int getNumColumns() {
+        return frameCols.size();
     }
 
     class Frame extends Rectangle {
