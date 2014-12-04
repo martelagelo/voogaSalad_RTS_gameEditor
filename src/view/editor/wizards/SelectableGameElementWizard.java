@@ -168,7 +168,7 @@ public class SelectableGameElementWizard extends Wizard {
             spritesheet.getChildren().add(imageView);
         }
         catch (Exception e) {
-            setErrorMesssage("Unable to Load Image");
+            displayErrorMessage("Unable to Load Image");
         }
     }
 
@@ -181,7 +181,7 @@ public class SelectableGameElementWizard extends Wizard {
             jsonPath = file.getPath();
         }
         catch (Exception e) {
-            setErrorMesssage("Unable to Load JSON File");
+            displayErrorMessage("Unable to Load JSON File");
         }
     }
 
@@ -223,7 +223,7 @@ public class SelectableGameElementWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            setErrorMesssage(e.getMessage());
+            displayErrorMessage(e.getMessage());
         }
     }
 

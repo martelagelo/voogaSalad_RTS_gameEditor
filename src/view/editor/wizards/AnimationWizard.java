@@ -5,10 +5,13 @@ import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -27,15 +30,8 @@ import engine.visual.animation.AnimationTag;
  */
 public class AnimationWizard extends Wizard {
 
-    private final static String NUM_COLS_KEY = "NumCols";
     private final static String START_FRAME_KEY = "StartFrame";
     private final static String STOP_FRAME_KEY = "StopFrame";
-    
-//    public AnimationSequence (List<AnimationTag> name,
-//                              int startFrame,
-//                              int stopFrame,
-//                              boolean repeats,
-//                              double slownessMultiplier) {
 
     @FXML
     private AnchorPane leftPane;
@@ -44,7 +40,7 @@ public class AnimationWizard extends Wizard {
     @FXML
     private ScrollPane imageScroll;
     @FXML
-    private TextField numCols;
+    private ComboBox<AnimationTag> animationTag;
     @FXML
     private TextField startFrame;
     @FXML
@@ -56,9 +52,7 @@ public class AnimationWizard extends Wizard {
     private AnimationGrid animationGrid;
     private String imagePath; 
     private Double frameWidth;
-    private Double frameHeight;
-    
-    private List<String> gloabalAnimationTags; 
+    private Double frameHeight;   
     
     /**
      * Fired when the user uploads a new picture
@@ -80,7 +74,7 @@ public class AnimationWizard extends Wizard {
             spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {
-            setErrorMesssage("Unable to Load Image");
+            displayErrorMessage("Unable to Load Image");
         }
     }
 
@@ -94,9 +88,40 @@ public class AnimationWizard extends Wizard {
         imagePath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
-        gloabalAnimationTags =
-                Arrays.asList(AnimationTag.values()).stream().map(tag -> tag.toString())
-                        .collect(Collectors.toList());
+        animationTag.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())));
+        startFrame.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed (ObservableValue<? extends String> observable,
+                                 String oldValue,
+                                 String newValue) {                
+                if (Pattern.matches(NUM_REGEX, newValue)) {
+                    int start = Integer.parseInt(newValue);
+                    try {
+                        animationGrid.setStart(start);
+                    }
+                    catch (IndexOutOfBoundsException e) {
+                        displayErrorMessage(e.getMessage());
+                    }
+                }
+            }
+        });
+        
+        stopFrame.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed (ObservableValue<? extends String> observable,
+                                 String oldValue,
+                                 String newValue) {                
+                if (Pattern.matches(NUM_REGEX, newValue)) {
+                    int stop = Integer.parseInt(newValue);
+                    try {
+                        animationGrid.setStop(stop);
+                    }
+                    catch (IndexOutOfBoundsException e) {
+                        displayErrorMessage(e.getMessage());
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -108,27 +133,28 @@ public class AnimationWizard extends Wizard {
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
-            numCols.promptTextProperty().bind(util.getStringProperty(NUM_COLS_KEY));
             startFrame.promptTextProperty().bind(util.getStringProperty(START_FRAME_KEY));
             stopFrame.promptTextProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            setErrorMesssage(e.getMessage());
+            displayErrorMessage(e.getMessage());
         }
     }    
 
     @Override
     public boolean checkCanSave () {
         return !startFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, startFrame.getText()) && !stopFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, stopFrame.getText());
+               Pattern.matches(NUM_REGEX, startFrame.getText()) && 
+               !stopFrame.getText().isEmpty() &&
+               Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
+               animationTag.getSelectionModel().getSelectedItem() != null;
     }
 
     @Override
     public void updateData () {       
         setDataType(WizardDataType.ANIMATION_SEQUENCE);
-        addToData(WizardDataType.COLS, numCols.getText());
+        addToData(WizardDataType.ANIMATION_TAG, animationTag.getSelectionModel().getSelectedItem().name());
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));

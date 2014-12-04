@@ -2,12 +2,14 @@ package view.editor.wizards;
 
 import java.util.List;
 import java.util.function.Consumer;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.gui.GUIController;
@@ -26,6 +28,7 @@ import view.gui.GUIController;
  */
 public abstract class Wizard implements GUIController {
 
+    private static final int ERROR_DISPLAY_DURATION = 3000;
     private final static String SAVE_KEY = "Save";
     private static final String ERROR = "CANNOT SAVE!";
     public static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
@@ -41,7 +44,6 @@ public abstract class Wizard implements GUIController {
     /**
      * Default error message
      */
-    
 
     private Consumer<WizardData> mySaveConsumer;
     private WizardData myUserInput;
@@ -136,16 +138,16 @@ public abstract class Wizard implements GUIController {
      * addWizardData(WizardData).
      */
     public abstract void updateData ();
-    
-    public abstract void launchForEdit(WizardData oldValues);
-    
-    public abstract void loadGlobalValues(List<String> values);
+
+    public abstract void launchForEdit (WizardData oldValues);
+
+    public abstract void loadGlobalValues (List<String> values);
 
     /**
      * used internally to display the default error message if none has been provided.
      */
     private void displayWarning () {
-        errorMessage.setText(ERROR);
+        displayErrorMessage(ERROR);
     }
 
     /**
@@ -160,11 +162,17 @@ public abstract class Wizard implements GUIController {
      * 
      * @param error The new message to display when called.
      */
-    public void setErrorMesssage (String error) {
+    public void displayErrorMessage (String error) {
         errorMessage.setText(error);
+        FadeTransition ft =
+                new FadeTransition(Duration.millis(ERROR_DISPLAY_DURATION), errorMessage);
+        ft.setFromValue(1);
+        ft.setToValue(0);
+        ft.setCycleCount(1);
+        ft.play();
     }
-    
-    public void removeWizardData(WizardData data) {
+
+    public void removeWizardData (WizardData data) {
         myUserInput.removeWizardData(data);
     }
 
@@ -195,7 +203,7 @@ public abstract class Wizard implements GUIController {
             save.textProperty().bind(util.getStringProperty(SAVE_KEY));
         }
         catch (LanguageException e) {
-            setErrorMesssage(e.getMessage());
+            displayErrorMessage(e.getMessage());
         }
     }
 

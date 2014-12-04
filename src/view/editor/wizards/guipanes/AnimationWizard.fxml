@@ -13,7 +13,7 @@
 		<AnchorPane fx:id="leftPane">
 			<children>
 				<VBox>
-					<TextField fx:id="numCols" />
+					<ComboBox fx:id="animationTag" />
 					<TextField fx:id="startFrame" />
 					<TextField fx:id="stopFrame" />
 					<CheckBox fx:id="animationRepeat" text="Repeat?"/>

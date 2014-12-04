@@ -129,7 +129,7 @@ public class ElementAccordionController extends GUIContainer {
                         wiz.getStage().close();
                     }
                     catch (Exception e) {
-                        wiz.setErrorMesssage(e.getMessage());
+                        wiz.displayErrorMessage(e.getMessage());
                     }
                 };
                 wiz.setSubmit(cons);
@@ -164,7 +164,7 @@ public class ElementAccordionController extends GUIContainer {
                                                                 .equals(data.getValueByKey(WizardDataType.NAME)))
                                                 .findFirst();
                                 if (sameElementExistsOption.isPresent()) {
-                                    wiz.setErrorMesssage("A Selectable Game Element with this name already exists");
+                                    wiz.displayErrorMessage("A Selectable Game Element with this name already exists");
                                 }
                                 else {
                                     myMainModel.createSelectableGameElementState(data);
@@ -199,7 +199,7 @@ public class ElementAccordionController extends GUIContainer {
                                                                 .equals(data.getValueByKey(WizardDataType.NAME)))
                                                 .findFirst();
                                 if (sameElementExistsOption.isPresent()) {
-                                    wiz.setErrorMesssage("A Drawable Game Element with this name already exists");
+                                    wiz.displayErrorMessage("A Drawable Game Element with this name already exists");
                                 }
                                 else {
                                     myMainModel.createDrawableGameElementState(data);

@@ -67,7 +67,7 @@ public class LevelWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            setErrorMesssage(e.getMessage());
+            displayErrorMessage(e.getMessage());
         }
     }
     

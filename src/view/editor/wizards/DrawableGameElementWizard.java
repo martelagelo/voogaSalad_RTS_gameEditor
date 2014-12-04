@@ -122,7 +122,7 @@ public class DrawableGameElementWizard extends Wizard {
                                   imageValues, new Dimension(800, 600));
         }
         else {
-            setErrorMesssage("Can't launch due to unspecified image information");
+            displayErrorMessage("Can't launch due to unspecified image information");
         }
     }
 

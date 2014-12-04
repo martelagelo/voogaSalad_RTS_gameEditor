@@ -28,6 +28,7 @@ public enum WizardDataType {
     FRAME_X,
     FRAME_Y,
     COLS,
+    ANIMATION_TAG,
     START_FRAME,
     STOP_FRAME,
     ANIMATION_REPEAT,

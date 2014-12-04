@@ -123,7 +123,7 @@ public class EditorMenuBarController extends GUIContainer {
             }
             catch (Exception e1) {
                 e1.printStackTrace();
-                wiz.setErrorMesssage(e1.getMessage());
+                wiz.displayErrorMessage(e1.getMessage());
             }
         };
         wiz.setSubmit(bc);
@@ -137,7 +137,7 @@ public class EditorMenuBarController extends GUIContainer {
                 wiz.getStage().close();
             }
             catch (Exception e1) {
-                wiz.setErrorMesssage("Campaign Already Exists!");
+                wiz.displayErrorMessage("Campaign Already Exists!");
             }
         };
         wiz.setSubmit(bc);
