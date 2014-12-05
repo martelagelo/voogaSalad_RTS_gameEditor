@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -37,7 +38,11 @@ public class DrawableGameElementWizard extends Wizard {
     private final static String NEW_TRIGGER_KEY = "NewTrigger";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
+    private final static String ADD_ANIMATION_KEY = "AddAnimation";
+    private final static String SET_BOUNDS_KEY = "SetBounds";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
+    private final static String FRAME_HEIGHT_KEY = "FrameHeight";
+    private final static String FRAME_WIDTH_KEY = "FrameWidth";
 
     @FXML
     private AnchorPane leftPane;
@@ -56,13 +61,17 @@ public class DrawableGameElementWizard extends Wizard {
     @FXML
     private ScrollPane imageScroll;
     @FXML
+    private Label frameWidthLabel;
+    @FXML
     private Slider frameWidth;
     @FXML
     private TextField frameWidthText;
     @FXML
+    private Label frameHeightLabel;
+    @FXML
     private Slider frameHeight;
     @FXML
-    private TextField frameHeightText;    
+    private TextField frameHeightText;
     @FXML
     private Button animation;
     @FXML
@@ -108,7 +117,7 @@ public class DrawableGameElementWizard extends Wizard {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
                            myGlobalNumberAttributes, new Dimension(300, 300));
     }
-    
+
     private void launchAnimationEditor () {
         if (imageView != null) {
             List<String> imageValues = new ArrayList<>();
@@ -116,16 +125,16 @@ public class DrawableGameElementWizard extends Wizard {
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
-                                  imageValues, new Dimension(800, 600));
+                               imageValues, new Dimension(800, 600));
         }
         else {
             displayErrorMessage("Can't launch due to unspecified image information");
         }
     }
-    
+
     private void launchBoundsEditor () {
-        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, new Dimension(500,700));
-        if (this.getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0) {            
+        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, new Dimension(500, 700));
+        if (this.getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0) {
             wiz.launchForEdit(this.getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
         }
         Consumer<WizardData> bc = (data) -> {
@@ -134,9 +143,11 @@ public class DrawableGameElementWizard extends Wizard {
         };
         wiz.setSubmit(bc);
     }
-    
 
-    private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs, Dimension dim) {
+    private void launchNestedWizard (GUIPanePath path,
+                                     VBox existing,
+                                     List<String> globalAttrs,
+                                     Dimension dim) {
         Wizard wiz = WizardUtility.loadWizard(path, dim);
         wiz.loadGlobalValues(globalAttrs);
         Consumer<WizardData> bc = (data) -> {
@@ -155,7 +166,7 @@ public class DrawableGameElementWizard extends Wizard {
             });
             newElement.getChildren().add(delete);
             existing.getChildren().add(newElement);
-            
+
             wiz.closeStage();
         };
         wiz.setSubmit(bc);
@@ -191,7 +202,6 @@ public class DrawableGameElementWizard extends Wizard {
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
-            imageScroll.setOnMouseClicked(e -> System.out.println("fuckkkk"));
             spritesheet.getChildren().clear();
             Image image = new Image(new FileInputStream(file));
             imagePath = file.getPath();
@@ -209,8 +219,7 @@ public class DrawableGameElementWizard extends Wizard {
                     new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
                                       frameHeight.getValue());
             spritesheet.getChildren().add(animationGrid);
-            spritesheet.toFront();            
-            spritesheet.setOnMousePressed(e -> System.out.println("shitttt"));
+            spritesheet.toFront();
         }
         catch (Exception e) {
             displayErrorMessage("Unable to Load Image");
@@ -252,6 +261,10 @@ public class DrawableGameElementWizard extends Wizard {
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
+            animation.textProperty().bind(util.getStringProperty(ADD_ANIMATION_KEY));
+            setBounds.textProperty().bind(util.getStringProperty(SET_BOUNDS_KEY));
+            frameHeightLabel.textProperty().bind(util.getStringProperty(FRAME_HEIGHT_KEY));
+            frameWidthLabel.textProperty().bind(util.getStringProperty(FRAME_WIDTH_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {

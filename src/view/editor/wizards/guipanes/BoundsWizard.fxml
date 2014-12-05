@@ -11,9 +11,9 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<VBox fx:id="allPoints"/>
-					<Button fx:id="addPoint" defaultButton="true" text="Add Point"/>								
-					<Button fx:id="save" defaultButton="true" text="save" />
+					<VBox fx:id="allPoints" />
+					<Button fx:id="addPoint" defaultButton="true" />
+					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

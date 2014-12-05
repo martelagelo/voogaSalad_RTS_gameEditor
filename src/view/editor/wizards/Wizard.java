@@ -11,7 +11,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.multilanguage.LanguageException;
+import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIController;
 
 
@@ -30,7 +32,7 @@ public abstract class Wizard implements GUIController {
 
     private static final int ERROR_DISPLAY_DURATION = 3000;
     private final static String SAVE_KEY = "Save";
-    private static final String ERROR = "CANNOT SAVE!";
+    private static final String ERROR_KEY = "SaveError";
     public static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
 
     @FXML
@@ -65,11 +67,13 @@ public abstract class Wizard implements GUIController {
      */
     @Override
     public void initialize () {
+        System.out.println("what the fuck1");
+        attachTextProperties();
+        System.out.println("what the fuck2");
         myUserInput = new WizardData();
         mySaveConsumer = (myUserInput) -> {
         };
         save.setOnAction(e -> save());
-        attachTextProperties();
     }
 
     /**
@@ -147,7 +151,13 @@ public abstract class Wizard implements GUIController {
      * used internally to display the default error message if none has been provided.
      */
     private void displayWarning () {
-        displayErrorMessage(ERROR);
+        try {
+            displayErrorMessage(MultiLanguageUtility.getInstance().getStringProperty(ERROR_KEY)
+                    .getValue());
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
     }
 
     /**
@@ -198,6 +208,7 @@ public abstract class Wizard implements GUIController {
      * wizard
      */
     protected void attachTextProperties () {
+        System.out.println("What the ACTUAL FUCK");
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             save.textProperty().bind(util.getStringProperty(SAVE_KEY));

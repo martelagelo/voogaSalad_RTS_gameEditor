@@ -18,7 +18,7 @@
 						<Double fx:constant="MAX_VALUE" />
 					</maxWidth>
 				</Button>
-				<Button fx:id="addToLevelButton" VBox.vgrow="NEVER" text="Add To Level">
+				<Button fx:id="addToLevelButton" VBox.vgrow="NEVER">
 					<maxWidth>
 						<Double fx:constant="MAX_VALUE" />
 					</maxWidth>

@@ -26,7 +26,7 @@ import util.multilanguage.MultiLanguageUtility;
 public class LevelWizard extends Wizard {
 
     private final String NEW_LEVEL_DEFAULT_KEY = "NewLevelDefault";
-    private final String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
+    private final String CAMPAIGN_KEY="Campaign";
     
     @FXML
     private ComboBox<String> campaignName;
@@ -62,7 +62,7 @@ public class LevelWizard extends Wizard {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             levelName.promptTextProperty().bind(util.getStringProperty(NEW_LEVEL_DEFAULT_KEY));
-            campaignName.promptTextProperty().bind(util.getStringProperty(NEW_CAMPAIGN_DEFAULT_KEY));
+            campaignName.promptTextProperty().bind(util.getStringProperty(CAMPAIGN_KEY));
             //TODO: add multilingual for width and height
             super.attachTextProperties();
         }

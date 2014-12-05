@@ -30,6 +30,7 @@ public class ElementDropDownController implements GUIController {
 
     private final static String DELETE_SELECTED_KEY = "DeleteSelected";
     private final static String CREATE_NEW_KEY = "CreateNew";
+    private final static String ADD_TO_LEVEL_KEY = "AddToLevel";
 
     @FXML
     private Button newElementButton;
@@ -62,7 +63,7 @@ public class ElementDropDownController implements GUIController {
     public void setDeleteConsumer (Consumer<String> deleteConsumer) {
         myDeletionConsumer = deleteConsumer;
     }
-    
+
     public void setAddToLevelConsumer (Consumer<String> levelConsumer) {
         myAddToLevelConsumer = levelConsumer;
     }
@@ -86,7 +87,7 @@ public class ElementDropDownController implements GUIController {
                     @Override
                     public void changed (ObservableValue<? extends Number> value, Number oldValue,
                                          Number newValue) {
-                        //TODO: drag and drop goes here
+                        // TODO: drag and drop goes here
                     }
                 });
     }
@@ -95,13 +96,13 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {
             String selected = elementListView.getSelectionModel().getSelectedItem();
             if (selected != null) {
-                 elementListView.getItems().remove(selected);
-                 myElementsMap.remove(selected);
+                elementListView.getItems().remove(selected);
+                myElementsMap.remove(selected);
                 myDeletionConsumer.accept(selected);
             }
         });
     }
-    
+
     private void initAddToLevelButton () {
         addToLevelButton.setOnAction(event -> {
             String selected = elementListView.getSelectionModel().getSelectedItem();
@@ -132,16 +133,17 @@ public class ElementDropDownController implements GUIController {
         initListView();
         initDeleteElementButton();
         initAddToLevelButton();
-
         try {
             newElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
                     .getStringProperty(CREATE_NEW_KEY));
             deleteElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
                     .getStringProperty(DELETE_SELECTED_KEY));
+            addToLevelButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(ADD_TO_LEVEL_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             e.printStackTrace();
         }
-    }    
+    }
 
 }

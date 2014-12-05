@@ -23,18 +23,18 @@
 					<VBox fx:id="existingNumberAttributes" />
 					<Button fx:id="image" defaultButton="true" />
 					<HBox>
-						<Label text="Frame Width" />
+						<Label fx:id="frameWidthLabel" />
 						<Slider fx:id="frameWidth" />
 						<TextField fx:id="frameWidthText" />
 					</HBox>
 					<HBox>
-						<Label text="Frame Height" />
+						<Label fx:id="frameHeightLabel" />
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
 					</HBox>
-					<Button fx:id="animation" defaultButton="true" text="Add Animation"/>
+					<Button fx:id="animation" defaultButton="true" />
 					<VBox fx:id="existingAnimations" />
-					<Button fx:id="setBounds" defaultButton="true" text="Set Bounds"/>
+					<Button fx:id="setBounds" defaultButton="true" />
 					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>
