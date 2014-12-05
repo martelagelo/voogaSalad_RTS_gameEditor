@@ -54,7 +54,7 @@ public class ElementAccordionController extends GUIContainer {
     private ElementDropDownController terrainTitledPaneController;
     @FXML
     private ElementDropDownController unitTitledPaneController;
-    
+
     private LevelState myLevel;
 
     public void setLevel (String campaign, String level) throws LevelNotFoundException,
@@ -100,6 +100,8 @@ public class ElementAccordionController extends GUIContainer {
             });
         terrainTitledPaneController.setAddToLevelConsumer(setTerrain());
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
+        elementAccordion.setExpandedPane(elementAccordion.getPanes()
+                .get(elementAccordion.getPanes().size() - 1));
     }
 
     private Consumer<String> setTerrain () {
@@ -119,19 +121,22 @@ public class ElementAccordionController extends GUIContainer {
                 Wizard wiz =
                         WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
                                                                                             300));
-                Consumer<WizardData> cons = (data) -> {
-                    try {
-                        myMainModel.addUnitToLevel(myLevel, elementName,
-                                                   Double.parseDouble(data
-                                                           .getValueByKey(WizardDataType.X_POSITION)),
-                                                   Double.parseDouble(data
-                                                           .getValueByKey(WizardDataType.Y_POSITION)));
-                        wiz.closeStage();
-                    }
-                    catch (Exception e) {
-                        wiz.displayErrorMessage(e.getMessage());
-                    }
-                };
+                Consumer<WizardData> cons =
+                        (data) -> {
+                            try {
+                                myMainModel
+                                        .addUnitToLevel(myLevel,
+                                                        elementName,
+                                                        Double.parseDouble(data
+                                                                .getValueByKey(WizardDataType.X_POSITION)),
+                                                        Double.parseDouble(data
+                                                                .getValueByKey(WizardDataType.Y_POSITION)));
+                                wiz.closeStage();
+                            }
+                            catch (Exception e) {
+                                wiz.displayErrorMessage(e.getMessage());
+                            }
+                        };
                 wiz.setSubmit(cons);
             }
         };
@@ -144,11 +149,13 @@ public class ElementAccordionController extends GUIContainer {
         });
     }
 
-    private Consumer<Consumer<WizardData>> openSelectableGameElementWizard () {        
+    private Consumer<Consumer<WizardData>> openSelectableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
-                    SelectableGameElementWizard wiz = (SelectableGameElementWizard)
-                            WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD, new Dimension(800, 600));
+                    SelectableGameElementWizard wiz =
+                            (SelectableGameElementWizard)
+                            WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD,
+                                                     new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
 
@@ -175,7 +182,7 @@ public class ElementAccordionController extends GUIContainer {
                 };
         return consumer;
     }
-    
+
     private Consumer<Consumer<WizardData>> openDrawableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
@@ -224,7 +231,7 @@ public class ElementAccordionController extends GUIContainer {
                 .collect(Collectors.toList());
         wiz.attachStringAttributes(stringAttrs);
     }
-    
+
     // TODO: clean up this duplicated code
     private void addNumberAttributes (DrawableGameElementWizard wiz) {
         List<String> numberAttrs = myMainModel.getGameUniverse().
@@ -239,8 +246,6 @@ public class ElementAccordionController extends GUIContainer {
                 .collect(Collectors.toList());
         wiz.attachStringAttributes(stringAttrs);
     }
-    
-    
 
     @Override
     public void update () {
