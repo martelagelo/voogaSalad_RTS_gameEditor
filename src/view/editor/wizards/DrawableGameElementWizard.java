@@ -97,7 +97,7 @@ public class DrawableGameElementWizard extends Wizard {
      */
     private void launchTriggerEditor () {
         launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, new ArrayList<String>(),
-                           new Dimension(300, 300));
+                           new Dimension(400, 600));
     }
 
     /**
@@ -154,8 +154,9 @@ public class DrawableGameElementWizard extends Wizard {
             addWizardData(data);
             HBox newElement = new HBox();
             Button edit = new Button();
+            //TODO: Fix the text that goes into the button           
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));
+            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs, dim));
             newElement.getChildren().add(edit);
 
             Button delete = new Button();
@@ -175,8 +176,8 @@ public class DrawableGameElementWizard extends Wizard {
     private void launchEditWizard (GUIPanePath path,
                                    WizardData oldData,
                                    Button button,
-                                   List<String> globalAttrs) {
-        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(300, 300));
+                                   List<String> globalAttrs, Dimension dim) {
+        Wizard wiz = WizardUtility.loadWizard(path, dim);
         wiz.launchForEdit(oldData);
         Consumer<WizardData> bc = (data) -> {
             removeWizardData(oldData);

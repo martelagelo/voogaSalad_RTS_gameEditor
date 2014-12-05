@@ -3,8 +3,6 @@ package view.editor;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,7 +35,7 @@ import view.gui.GUIController;
  */
 public class LevelTriggersViewController implements GUIController {
 
-    private static final String NEW_TRIGGER_KEY = "NewTrigger";
+    private static final String NEW_ACTION_KEY = "NewAction";
     private static final String DELETE_SELECTED_KEY = "DeleteSelected";
 
     @FXML
@@ -81,7 +79,7 @@ public class LevelTriggersViewController implements GUIController {
         initListView();
         try {
             newLevelTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                        .getStringProperty(NEW_TRIGGER_KEY));
+                                                        .getStringProperty(NEW_ACTION_KEY));
             deleteTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
                                                       .getStringProperty(DELETE_SELECTED_KEY));
         }
@@ -98,14 +96,7 @@ public class LevelTriggersViewController implements GUIController {
             public ListCell<String> call (ListView<String> arg0) {
                 return new TriggerListCell();
             }
-        });
-        levelTriggers.getSelectionModel().selectedIndexProperty()
-                .addListener(new ChangeListener<Number>() {
-                    @Override
-                    public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                                         Number newValue) {
-                    }
-                });
+        });        
     }
 
     /**

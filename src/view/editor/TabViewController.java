@@ -2,6 +2,7 @@ package view.editor;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -20,6 +21,7 @@ import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
 import view.runner.GameRunnerPaneController;
+import engine.actions.enumerations.ActionType;
 
 
 /**
@@ -73,7 +75,7 @@ public class TabViewController extends GUIContainer {
         myLevel.getGoals().forEach( (ges) -> {
             ges.getActions().forEach( (actionType, actions) -> {
                 actions.forEach( (act) -> {
-                    triggers.add(new TriggerPair(actionType, act));
+                    triggers.add(new TriggerPair(actionType, act.getActionClassName()));
                 });
             });
         });
@@ -109,12 +111,16 @@ public class TabViewController extends GUIContainer {
                 wiz.launchForEdit(oldData);
                 Consumer<WizardData> bc =
                         (data) -> {
-                            Map<String, List<String>> actions =
-                                    myLevel.getGoals().get(position).getActions();
+                            Map<String, List<String>> actions = new HashMap<>();
+                            myLevel.getGoals().get(position).getActions().forEach( (key, wrappers) -> {
+                                List<String> newActions = new ArrayList<>();
+                                wrappers.forEach(wrapper -> newActions.add(wrapper.getActionClassName()));
+                                actions.put(key, newActions);
+                            });
                             actions.clear();
                             List<String> actionValue = new ArrayList<>();
                             actionValue.add(data.getValueByKey(WizardDataType.ACTION));
-                            actions.put(data.getValueByKey(WizardDataType.ACTIONTYPE), actionValue);
+                            actions.put(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)).name(), actionValue);
                             updateLevelTriggersView();
                             wiz.closeStage();
                         };

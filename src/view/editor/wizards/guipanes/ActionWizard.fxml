@@ -9,17 +9,15 @@
 <SplitPane fx:id="root" fx:controller="view.editor.wizards.ActionWizard"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<items>
-		<AnchorPane>
-			<children>
-				<VBox>
-					<ComboBox fx:id="actionType" />
-					<ComboBox fx:id="actionChoice" />
-					<Text fx:id="message" />
-					<Button defaultButton="true" fx:id="save" text="save" />
-					<Text fx:id="errorMessage" />
-					<HBox fx:id="options"></HBox>
-				</VBox>
-			</children>
-		</AnchorPane>
+		<ScrollPane>
+			<VBox>
+				<ComboBox fx:id="actionType" />
+				<ComboBox fx:id="actionChoice" />
+				<Text fx:id="message" />
+				<VBox fx:id="options" />
+				<Button defaultButton="true" fx:id="save" />
+				<Text fx:id="errorMessage" />
+			</VBox>
+		</ScrollPane>
 	</items>
 </SplitPane>
