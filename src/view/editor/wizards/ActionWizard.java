@@ -1,19 +1,15 @@
 package view.editor.wizards;
 
-import java.util.Arrays;
 import java.util.List;
-
-import engine.actions.Action;
-import engine.actions.enumerations.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import engine.actions.enumerations.ActionOptions;
+import engine.actions.enumerations.ActionParameters;
+import engine.actions.enumerations.ActionType;
 
 
 /**
@@ -23,7 +19,8 @@ import javafx.scene.text.Text;
  */
 public class ActionWizard extends Wizard {
 
-	private final String EE_DELIMITER = "#";
+    private static final String EE_DELIMITER = "#";
+    private static final String DELIMETER = "((?<="+EE_DELIMITER+")|(?="+EE_DELIMITER+"))";
 	
     @FXML
     private ComboBox<ActionType> actionType;
@@ -52,27 +49,16 @@ public class ActionWizard extends Wizard {
         super.initialize();
         actionChoice.setVisible(false);
         actionType.setItems(FXCollections.observableArrayList(ActionType.values()));
-        actionType.valueProperty().addListener(new ChangeListener<ActionType>() {
-            @Override public void changed(ObservableValue ov, ActionType t, ActionType t1) {
-            	actionChoice.setVisible(true);
-            	actionChoice.setItems(FXCollections.observableArrayList(ActionOptions.values()));
-                actionChoice.valueProperty().addListener(new ChangeListener<ActionOptions>() {
-                    @Override
-                    public void changed (ObservableValue<? extends ActionOptions> observable,
-                                         ActionOptions oldValue,
-                                         ActionOptions newValue) {
-                    	buildOptionedString(newValue);
-                    }
-                });
-                }    
-               
-          });
+        actionType.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actionChoice.setVisible(true);
+            actionChoice.setItems(FXCollections.observableArrayList(ActionOptions.values()));
+            actionChoice.valueProperty().addListener((o, oldVal, newVal) -> buildOptionedString(newVal));
+        });
     }
     
     private void buildOptionedString (ActionOptions actionOption) {
     	String[] splitOnOptions = actionOption
-    			.getMessage()
-    			.split("((?<="+EE_DELIMITER+")|(?="+EE_DELIMITER+"))");
+    			.getMessage().split(DELIMETER);
     	int parameterIndex = 0;
     	List<ActionParameters> actionParameters = actionOption.getOperators();
     	options.getChildren().clear();
