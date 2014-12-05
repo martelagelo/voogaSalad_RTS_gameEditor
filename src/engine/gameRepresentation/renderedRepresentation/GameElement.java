@@ -235,10 +235,8 @@ public class GameElement {
     	function.accept(myState);
     }
 
-    public void setHeading (double x, double y) {
-        myState.attributes.setNumericalAttribute(StateTags.X_HEADING, x);
-        myState.attributes.setNumericalAttribute(StateTags.Y_HEADING, y);
-        myState.attributes.setNumericalAttribute(StateTags.X_TEMP_HEADING, x);
-        myState.attributes.setNumericalAttribute(StateTags.Y_TEMP_HEADING, y);
-    }
+	public void setPosition(double x, double y) {
+        setNumericalAttribute(StateTags.X_POSITION, x);
+        setNumericalAttribute(StateTags.Y_POSITION, y);
+	}
 }

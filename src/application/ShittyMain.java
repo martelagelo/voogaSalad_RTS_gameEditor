@@ -82,7 +82,9 @@ public class ShittyMain extends Application {
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
-
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
+        
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
 
@@ -104,8 +106,8 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_HEADING, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_HEADING, y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_HEADING, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_HEADING, y);
         archerState.attributes.setNumericalAttribute(StateTags.HEALTH, 500);

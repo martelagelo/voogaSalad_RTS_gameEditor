@@ -1,12 +1,17 @@
 package engine.gameRepresentation.renderedRepresentation;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
+import engine.computers.pathingComputers.Location;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerFactory;
 import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.Visualizer;
@@ -24,9 +29,12 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
  */
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
 
+	// TODO: remove this factory ... 
 	private AttributeDisplayerFactory myWidgetFactory;
+	
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
+    private Queue<Location> waypoints;
 
     /**
      * Create a drawable game element from the given state
@@ -43,6 +51,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         drawableState = state;
         myVisualizer = visualizer;
         myWidgetFactory = new AttributeDisplayerFactory();
+        waypoints = new LinkedList<>();
 
         /*
          * TODO: if this should be removed, where would you rather put it? The state needs to
@@ -53,9 +62,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         this.initializeDisplay();
 
         // TODO: remove, this is for testing only
-        AttributeDisplayer xPosBar =
+        AttributeDisplayer healthBar =
                 new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
-        myVisualizer.addWidget(xPosBar);
+        myVisualizer.addWidget(healthBar);
         // AttributeDisplayer selectionTriangle = new
         // UnitSelectedDisplayer(drawableState.attributes, StateTags.IS_SELECTED, 0, 1);
         // myVisualizer.addWidget(selectionTriangle);
@@ -126,6 +135,19 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     @Override
     public double[] findGlobalBounds () {
         return drawableState.findGlobalBounds();
+    }
+    
+    public void setWaypoints (List<Location> waypointsToAdd) {
+    	waypoints.clear();
+    	waypoints.addAll(waypointsToAdd);
+    	System.out.println(waypoints);
+    }
+    
+    public Location getNextWaypoint(){
+    	double currentX = getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+    	double currentY = getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+    	Location current = new Location(currentX, currentY);
+    	return waypoints.size() == 0 ? current : waypoints.poll();
     }
     
 }

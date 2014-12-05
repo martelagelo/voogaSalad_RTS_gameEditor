@@ -47,7 +47,7 @@ public class GameElementFactory {
     public GameElement createGameElement (String elementType, double x, double y) {
         GameElementState state = myUniverse.getGameElementState(elementType);
         GameElement newElement = createGameElement(state);
-        newElement.setHeading(x, y);
+        newElement.setPosition(x, y);
         return newElement;
     }
 
@@ -60,7 +60,7 @@ public class GameElementFactory {
     public DrawableGameElement createDrawableGameElement (String elementType, double x, double y) {
         DrawableGameElementState state = myUniverse.getDrawableGameElementState(elementType);
         DrawableGameElement newElement = createDrawableGameElement(state);
-        newElement.setHeading(x, y);
+        newElement.setPosition(x, y);
         return newElement;
     }
 
@@ -75,7 +75,7 @@ public class GameElementFactory {
     public SelectableGameElement createSelectableGameElement (String elementType, double x, double y) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
         SelectableGameElement newElement = createSelectableGameElement(state);
-        newElement.setHeading(x, y);
+        newElement.setPosition(x, y);
         return newElement;
     }
 

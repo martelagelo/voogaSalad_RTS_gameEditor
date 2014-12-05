@@ -2,6 +2,7 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 
 
@@ -21,17 +22,16 @@ public class HeadingUpdate<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     public Boolean evaluate (GameElement element1, GameElement element2) {
-        double xPos = element1.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-        double yPos = element1.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-        double tempXGoal = element1.getNumericalAttribute(StateTags.X_TEMP_HEADING).doubleValue();
-        double tempYGoal = element1.getNumericalAttribute(StateTags.Y_TEMP_HEADING).doubleValue();
-        double speed = element1.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
+    	DrawableGameElement element = (DrawableGameElement) element1; // only drawableElements can move
+        double xPos = element.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+        double yPos = element.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+        double tempXGoal = element.getNumericalAttribute(StateTags.X_GOAL_POSITION).doubleValue();
+        double tempYGoal = element.getNumericalAttribute(StateTags.Y_GOAL_POSITION).doubleValue();
+        double speed = element.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
         // If we're at our temp goal, set our goal to our main goal
         if (Math.abs(xPos - tempXGoal) < speed && Math.abs(yPos - tempYGoal) < speed) {
-            element1.setNumericalAttribute(StateTags.X_TEMP_HEADING,
-                                           element1.getNumericalAttribute(StateTags.X_HEADING));
-            element1.setNumericalAttribute(StateTags.Y_TEMP_HEADING,
-                                           element1.getNumericalAttribute(StateTags.Y_HEADING));
+        	element.setNumericalAttribute(StateTags.X_GOAL_POSITION,element.getNextWaypoint().myX);
+        	element.setNumericalAttribute(StateTags.Y_GOAL_POSITION,element.getNextWaypoint().myY);
         }
         return true;
     }

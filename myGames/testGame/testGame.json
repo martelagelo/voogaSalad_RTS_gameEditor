@@ -4,7 +4,16 @@
       "myLevels": [
         {
           "attributes": {
-            "myNumericalAttributes": [],
+            "myNumericalAttributes": [
+              {
+                "myData": 2000,
+                "myName": "LevelHeight"
+              },
+              {
+                "myData": 2000,
+                "myName": "LevelWidth"
+              }
+            ],
             "myTextualAttributes": []
           },
           "myTerrains": [],
