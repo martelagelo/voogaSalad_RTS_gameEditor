@@ -2,7 +2,7 @@ package view.editor;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
 import model.state.LevelState;
+import model.state.gameelement.ActionWrapper;
 import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -21,6 +22,7 @@ import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
 import view.runner.GameRunnerPaneController;
+import engine.actions.enumerations.ActionOptions;
 import engine.actions.enumerations.ActionType;
 
 
@@ -75,7 +77,7 @@ public class TabViewController extends GUIContainer {
         myLevel.getGoals().forEach( (ges) -> {
             ges.getActions().forEach( (actionType, actions) -> {
                 actions.forEach( (act) -> {
-                    triggers.add(new TriggerPair(actionType, act.getActionClassName()));
+                    triggers.add(new TriggerPair(actionType, act.getActionClassName(), act.getParameters()));
                 });
             });
         });
@@ -85,10 +87,12 @@ public class TabViewController extends GUIContainer {
     public class TriggerPair {
         public String myActionType;
         public String myAction;
+        public String[] myParams;
 
-        public TriggerPair (String actionType, String action) {
+        public TriggerPair (String actionType, String action, String[] params) {
             myActionType = actionType;
             myAction = action;
+            myParams = params;
         }
     }
 
@@ -107,19 +111,19 @@ public class TabViewController extends GUIContainer {
                 String[] oldStrings = oldValues.split("\n");
                 WizardData oldData = new WizardData();
                 oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
-                oldData.addDataPair(WizardDataType.ACTION, oldStrings[1]);
+                oldData.addDataPair(WizardDataType.ACTION, oldStrings[1]);                  
+                oldData.addDataPair(WizardDataType.ACTION_PARAMETERS, extractParamString(oldStrings));
                 wiz.launchForEdit(oldData);
                 Consumer<WizardData> bc =
                         (data) -> {
-                            Map<String, List<String>> actions = new HashMap<>();
-                            myLevel.getGoals().get(position).getActions().forEach( (key, wrappers) -> {
-                                List<String> newActions = new ArrayList<>();
-                                wrappers.forEach(wrapper -> newActions.add(wrapper.getActionClassName()));
-                                actions.put(key, newActions);
-                            });
+                            Map<String, List<ActionWrapper>> actions = myLevel.getGoals().get(position).getActions();                            
                             actions.clear();
-                            List<String> actionValue = new ArrayList<>();
-                            actionValue.add(data.getValueByKey(WizardDataType.ACTION));
+                            List<ActionWrapper> actionValue = new ArrayList<>();
+                            String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
+                            ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                                                      ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+                                                                      params);
+                            actionValue.add(wrapper);
                             actions.put(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)).name(), actionValue);
                             updateLevelTriggersView();
                             wiz.closeStage();
@@ -127,6 +131,13 @@ public class TabViewController extends GUIContainer {
                 wiz.setSubmit(bc);
             };
         return consumer;
+    }
+
+    private String extractParamString (String[] oldStrings) {
+        String[] params = oldStrings[2].substring(1, oldStrings[2].length()-1).split(",");
+        StringBuilder sb = new StringBuilder();
+        Arrays.asList(params).forEach(param -> sb.append(param + ","));
+        return sb.toString();
     }
 
     private Consumer<Integer> deleteGoal () {

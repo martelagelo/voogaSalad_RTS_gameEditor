@@ -1,5 +1,6 @@
 package view.editor;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -35,7 +36,7 @@ import view.gui.GUIController;
  */
 public class LevelTriggersViewController implements GUIController {
 
-    private static final String NEW_ACTION_KEY = "NewAction";
+    private static final String NEW_TRIGGER_KEY = "NewTrigger";
     private static final String DELETE_SELECTED_KEY = "DeleteSelected";
 
     @FXML
@@ -79,7 +80,7 @@ public class LevelTriggersViewController implements GUIController {
         initListView();
         try {
             newLevelTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                        .getStringProperty(NEW_ACTION_KEY));
+                                                        .getStringProperty(NEW_TRIGGER_KEY));
             deleteTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
                                                       .getStringProperty(DELETE_SELECTED_KEY));
         }
@@ -126,7 +127,7 @@ public class LevelTriggersViewController implements GUIController {
     public void updateTriggerList (List<TriggerPair> triggers) {
         myTriggerList.clear();
         triggers.forEach( (trigger) -> myTriggerList.add(trigger.myActionType + "\n" +
-                                                         trigger.myAction));
+                                                         trigger.myAction + "\n" + Arrays.toString(trigger.myParams)));
     }
 
     /**
