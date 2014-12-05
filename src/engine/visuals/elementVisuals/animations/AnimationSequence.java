@@ -110,7 +110,7 @@ public class AnimationSequence implements Updatable, Serializable {
         return myCurrentFrame;
     }
 
-    public List<AnimationTag> getMyName () {
+    public List<AnimationTag> getTags () {
         return myTags;
     }
     

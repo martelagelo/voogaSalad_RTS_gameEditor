@@ -83,22 +83,14 @@ public class Animator implements Updatable {
      */
     @Override
     public boolean update () {
-    	//System.out.println("Updating animator");
         determineCorrectAnimation();
         myCurrentAnimation.update();
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
         if (!mySpritesheetBounds.contains(viewport)){
-        	//System.out.println("viewport: " + viewport + "; mySpritesheetBounds: " + mySpritesheetBounds);
-        	//System.out.println("Current animation" + myCurrentAnimation);
-        	//System.out.println("Viewport not found");
             return false;
     	}
         mySprite.setViewport(viewport);
         mySpriteTeamOverlay.setViewport(viewport);
-        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-        if(teamColor.equals("BLUE")){
-        	//System.out.println("Current animation for archer (" + teamColor + "): " + myCurrentAnimation);
-        }
         return true;
     }
 
@@ -108,10 +100,6 @@ public class Animator implements Updatable {
         animationTag.addAll(currentDirection);
         animationTag.add(determineAnimationType());
         AnimationSequence myNextAnimation = myState.getAnimationSequence(animationTag);
-//        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-//        if(teamColor.equals("BLUE")){
-//            System.out.println(" " + animationTag.get(animationTag.size()-1) + "; frame: " + myCurrentAnimation.getFrame());
-//        }
         if (!myNextAnimation.equals(myCurrentAnimation)) {
             myCurrentAnimation.reset();
         }
@@ -133,10 +121,6 @@ public class Animator implements Updatable {
                 currentDirection.add(xVelocity > 0 ? AnimationTag.RIGHT : AnimationTag.LEFT);
             }
         }
-//        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-//        if(teamColor.equals("BLUE")){
-//            System.out.print("xVel: " + xVelocity + "; yVel: " + yVelocity + "direction: " + currentDirection);
-//        }
     }
 
     // TODO is there a better way? make this dynamic? add an Evaluatatble?

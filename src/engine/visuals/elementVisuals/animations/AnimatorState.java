@@ -25,7 +25,7 @@ public class AnimatorState implements JSONable, Serializable {
     private String imageTag;
     private Dimension viewportSize;
     private int numRows;
-    private Set<AnimationSequence> animationSequenceList;
+    private Set<AnimationSequence> animationSequences;
 
     /**
      * Create the Spritesheet
@@ -43,21 +43,21 @@ public class AnimatorState implements JSONable, Serializable {
         this.imageTag = imageTag;
         this.viewportSize = frameDimensions;
         this.numRows = numRows;
-        this.animationSequenceList = animationSequenceList;
+        this.animationSequences = animationSequenceList;
     }
 
     public void addAnimationSequence (AnimationSequence seq) {
-        animationSequenceList.add(seq);
+        animationSequences.add(seq);
     }
 
     public AnimationSequence getAnimationSequence (List<AnimationTag> tags) {
-        List<AnimationSequence> animationSequences = animationSequenceList.stream()
-                .filter(o -> o.getMyName().equals(tags)).collect(Collectors.toList());
-        return (animationSequences.size() != 0) ? animationSequences.get(0) :  new NullAnimationSequence();
+        List<AnimationSequence> matchingAnimationSequences = animationSequences.stream()
+                .filter(o -> o.getTags().equals(tags)).collect(Collectors.toList());
+        return (matchingAnimationSequences.size() != 0) ? matchingAnimationSequences.get(0) :  new NullAnimationSequence();
     }
 
     public boolean containsAnimationSequence (AnimationSequence seq) {
-        return animationSequenceList.contains(seq);
+        return animationSequences.contains(seq);
     }
 
     public String getImageTag () {
