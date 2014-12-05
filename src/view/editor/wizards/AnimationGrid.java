@@ -38,7 +38,7 @@ public class AnimationGrid extends Group {
         myFrameX = frameX;
         myFrameY = frameY;
         getChildren().clear();
-        createGridLines();
+        createGrid();
     }
 
     public void setStart (int frameIndex) throws IndexOutOfBoundsException {
@@ -72,7 +72,7 @@ public class AnimationGrid extends Group {
                 .forEach(frame -> frame.setFill(null)));
     }
 
-    private void createGridLines () {
+    private void createGrid () {
         frameCols.clear();
         createColumns();
     }
