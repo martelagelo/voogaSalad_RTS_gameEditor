@@ -10,6 +10,7 @@ import model.state.CampaignState;
 import model.state.LevelState;
 import org.json.JSONException;
 import application.ShittyMain;
+import engine.UI.AIManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
 import engine.elementFactories.GameElementFactory;
@@ -44,6 +45,7 @@ public class Engine extends Observable implements Observer {
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
     private RunnerInputManager myInputManager;
+    private AIManager myAiManager;
 
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
@@ -92,9 +94,11 @@ public class Engine extends Observable implements Observer {
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
 
+        myAiManager = new AIManager(myElementManager);
+        
         myGameLoop =
                 new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
-                             myElementManager);
+                             myElementManager, myAiManager);
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
