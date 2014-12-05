@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -17,9 +18,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import engine.visual.animation.AnimationTag;
+import engine.visual.animation.AnimationTag.AnimationType;
 
 
 /**
@@ -29,6 +32,8 @@ import engine.visual.animation.AnimationTag;
  */
 public class AnimationWizard extends Wizard {
 
+    private final static String GRID_PROMPT_KEY = "DirectionGridPrompt";
+    private final static String ANIMATION_ACTION_KEY = "AnimationAction";
     private final static String START_FRAME_KEY = "StartFrame";
     private final static String STOP_FRAME_KEY = "StopFrame";
 
@@ -39,7 +44,11 @@ public class AnimationWizard extends Wizard {
     @FXML
     private ScrollPane imageScroll;
     @FXML
-    private ComboBox<AnimationTag> animationTag;
+    private ComboBox<AnimationTag> animationAction;
+    @FXML
+    private Group animationDirection;
+    @FXML
+    private Text gridPrompt;
     @FXML
     private TextField startFrame;
     @FXML
@@ -51,7 +60,8 @@ public class AnimationWizard extends Wizard {
 
     private ImageView imageView;
     private AnimationGrid animationGrid;
-    private String imagePath;
+    private DirectionGrid directionGrid;
+    private String imagePath; 
     private Double frameWidth;
     private Double frameHeight;
 
@@ -90,13 +100,19 @@ public class AnimationWizard extends Wizard {
         imagePath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
-        animationTag.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())));
+        animationAction.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())
+                .stream().filter(tag -> tag.getType().equals(AnimationType.ACTION))
+                .collect(Collectors.toList())));
+                
         startFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
             updateAnimationGrid( (frame) -> animationGrid.setStart(frame), newValue);
         });
         stopFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
             updateAnimationGrid( (frame) -> animationGrid.setStop(frame), newValue);
         });
+        gridPrompt.setFill(Paint.valueOf("white"));
+        directionGrid = new DirectionGrid(50, 50);
+        animationDirection.getChildren().add(directionGrid);
     }
 
     private void updateAnimationGrid (Consumer<Integer> updateCons, String newValue) {
@@ -120,6 +136,8 @@ public class AnimationWizard extends Wizard {
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
+            gridPrompt.textProperty().bind(util.getStringProperty(GRID_PROMPT_KEY));
+            animationAction.promptTextProperty().bind(util.getStringProperty(ANIMATION_ACTION_KEY));
             startFrame.promptTextProperty().bind(util.getStringProperty(START_FRAME_KEY));
             stopFrame.promptTextProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
             super.attachTextProperties();
@@ -135,25 +153,49 @@ public class AnimationWizard extends Wizard {
                Pattern.matches(NUM_REGEX, startFrame.getText()) &&
                !stopFrame.getText().isEmpty() &&
                Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
-               animationTag.getSelectionModel().getSelectedItem() != null &&
+               animationAction.getSelectionModel().getSelectedItem() != null &&
                !slownessMultiplier.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, slownessMultiplier.getText());
+               Pattern.matches(NUM_REGEX, slownessMultiplier.getText()) &&
+               directionGrid.getDirections().size() > 0 ;
     }
 
     @Override
-    public void updateData () {
-        setWizardType(WizardType.ANIMATION_SEQUENCE);
-        addToData(WizardDataType.ANIMATION_TAG, animationTag.getSelectionModel().getSelectedItem()
-                .name());
+    public void updateData () {       
+        setWizardType(WizardType.ANIMATION_SEQUENCE);        
+        addToData(WizardDataType.ANIMATION_TAG, getTags());
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
         addToData(WizardDataType.SLOWNESS_MULTIPLIER, slownessMultiplier.getText());
     }
 
+    private String getTags () {
+        StringBuilder sb = new StringBuilder();
+        for (AnimationTag tag: directionGrid.getDirections()) {
+            sb.append(tag.name() + ",");
+        }
+        sb.append(animationAction.getSelectionModel().getSelectedItem().name());
+        return sb.toString();
+    }
+
     @Override
     public void launchForEdit (WizardData oldValues) {
-        // TODO implement this!
+        startFrame.setText(oldValues.getValueByKey(WizardDataType.START_FRAME));
+        stopFrame.setText(oldValues.getValueByKey(WizardDataType.STOP_FRAME));
+        animationRepeat.setSelected(Boolean.parseBoolean(oldValues.getValueByKey(WizardDataType.ANIMATION_REPEAT)));
+        slownessMultiplier.setText(oldValues.getValueByKey(WizardDataType.SLOWNESS_MULTIPLIER));
+        List<String> tags = Arrays.asList(oldValues.getValueByKey(WizardDataType.ANIMATION_TAG).split(","));
+        selectCorrectFrame(tags);
+    }
+
+    private void selectCorrectFrame (List<String> tags) {
+        int row = 1;
+        int col = 1;
+        if (tags.contains(AnimationTag.FORWARD.name())) row = 2;
+        else if (tags.contains(AnimationTag.BACKWARD.name())) row = 0;
+        if (tags.contains(AnimationTag.LEFT.name())) col = 0;
+        else if (tags.contains(AnimationTag.RIGHT.name())) col = 2;        
+        directionGrid.selectFrame(row, col);
     }
 
     @Override

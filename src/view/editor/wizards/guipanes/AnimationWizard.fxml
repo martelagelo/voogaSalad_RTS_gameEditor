@@ -13,7 +13,9 @@
 		<AnchorPane fx:id="leftPane">
 			<children>
 				<VBox>
-					<ComboBox fx:id="animationTag" />
+					<Text fx:id="gridPrompt" />
+					<Group fx:id="animationDirection" />
+					<ComboBox fx:id="animationAction" />
 					<TextField fx:id="startFrame" />
 					<TextField fx:id="stopFrame" />
 					<CheckBox fx:id="animationRepeat" text="Repeat?"/>

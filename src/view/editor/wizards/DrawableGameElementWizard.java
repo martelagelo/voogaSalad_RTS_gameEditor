@@ -178,6 +178,7 @@ public class DrawableGameElementWizard extends Wizard {
                                    Button button,
                                    List<String> globalAttrs, Dimension dim) {
         Wizard wiz = WizardUtility.loadWizard(path, dim);
+        wiz.loadGlobalValues(globalAttrs);
         wiz.launchForEdit(oldData);
         Consumer<WizardData> bc = (data) -> {
             removeWizardData(oldData);
