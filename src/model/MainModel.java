@@ -19,6 +19,7 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.GameSaveLoadMediator;
+import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
@@ -60,10 +61,11 @@ public class MainModel extends Observable {
      * Sets the game of the Model.
      * 
      * @param game
-     * @throws Exception
+     * @throws LanguagePropertyNotFoundException
      */
-    public void loadGame (String game) throws Exception {
-
+    public void loadGame (String game) throws LanguagePropertyNotFoundException {
+        // TODO: Move the dialog box utility message dialog to a View class as
+        // opposed to in model.
         try {
             // TODO: insert Save Load code here and instantiate myGameState
             myGameState = mySaveLoadMediator.loadGame(game);
