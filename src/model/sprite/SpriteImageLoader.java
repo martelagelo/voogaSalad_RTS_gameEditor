@@ -9,9 +9,8 @@ import org.apache.commons.io.filefilter.WildcardFileFilter;
 import util.GameSaveLoadMediator;
 import util.SaveLoadUtility;
 
+
 /**
- * This class loads contents required for a SpriteImageContainer (specifically,
- * color masks and spritesheets) based on tags.
  * 
  * @author Rahul
  *
@@ -26,14 +25,16 @@ public class SpriteImageLoader {
     public static final String DEFAULT_COLOR = "BLUE";
 
     public static Map<String, Image> loadTeamColorMasks (String imageTag) throws Exception {
-        // Loading every single resources takes far too long leading to Out of
-        // Memory -- figure out an alternative way
-        if (imageTag.equals("resources/gameelementresources/units/spritesheets/conquistador.png")) { // TODO:
-                                                                                                     // REMOVE
+        // TODO: Loading every single resources takes far too long leading to Out of Memory --
+        // figure out an alternative way
+        if (imageTag.equals("resources/gameelementresources/units/spritesheets/archer.png")) { // TODO:
+                                                                                               // REMOVE
             Map<String, Image> colorMasks = new HashMap<>();
             File directory = new File(getColorMasksLocation(imageTag));
-            FileFilter fileFilter = new WildcardFileFilter(getImageName(imageTag)
-                    + GameSaveLoadMediator.WILDCARD + GameSaveLoadMediator.PNG_EXT);
+            FileFilter fileFilter =
+                    new WildcardFileFilter(getImageName(imageTag)
+                                           + GameSaveLoadMediator.WILDCARD +
+                                           GameSaveLoadMediator.PNG_EXT);
             // TODO: need to determine how to get the color from the file
             File[] files = directory.listFiles(fileFilter);
             if (files != null) {
@@ -45,7 +46,7 @@ public class SpriteImageLoader {
             return colorMasks;
         } // REMOVE
         return null;
-
+        //throw new Exception("Failed to load team color masks");
     }
 
     public static Image loadSpritesheet (String imageTag) throws Exception {

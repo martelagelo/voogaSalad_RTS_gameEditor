@@ -3,6 +3,7 @@ package model.sprite;
 import java.util.Map;
 import javafx.scene.image.Image;
 
+
 /**
  * Passive data structure that wraps an animation spritesheet with team color
  * masks. Holds a reference to a SaveLoadMediator object allowing for filepath
@@ -25,7 +26,6 @@ public class SpriteImageContainer {
     }
 
     private void locateSpritesheet (String imageTag) throws Exception {
-
         mySpritesheet = SpriteImageLoader.loadSpritesheet(imageTag);
     }
 

@@ -4,7 +4,7 @@
     "myWidth": 107,
     "myHeight": 101
   },
-  "numCols": 40,
+  "numRows": 40,
   "animationSequenceList": [
     {
       "myStartFrame": 129,

@@ -13,6 +13,7 @@ import util.ResourceBundleRetriever;
 import util.SaveLoadUtility;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
+
 /**
  * This class generates the SpriteImageContainers and caches them and can be
  * retrieved via the model from the tag passed in.
@@ -23,7 +24,8 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 public class SpriteImageGenerator {
     private ResourceBundleRetriever myBundleRetriever;
     private ResourceBundle myBundle;
-    private static final String RESOURCES_PROPERTIES_FILE_LOCATION = "resources/gameelementresources/gameelementresources.properties";
+    private static final String RESOURCES_PROPERTIES_FILE_LOCATION =
+            "resources/gameelementresources/gameelementresources.properties";
     private Map<String, String> myResourceMapping;
     private Map<String, SpriteImageContainer> myCachedContainer;
 
@@ -50,14 +52,14 @@ public class SpriteImageGenerator {
                 .toString());
         File directory = new File(animationStateLocation);
         FileFilter fileFilter = new WildcardFileFilter(GameSaveLoadMediator.WILDCARD
-                + GameSaveLoadMediator.JSON_EXT);
+                                                       + GameSaveLoadMediator.JSON_EXT);
         File[] files = directory.listFiles(fileFilter);
         if (files != null) {
             for (File f : files) {
                 AnimatorState state = SaveLoadUtility
                         .loadResource(AnimatorState.class, f.getPath());
                 myCachedContainer.put(state.getImageTag(),
-                        new SpriteImageContainer(state.getImageTag()));
+                                      new SpriteImageContainer(state.getImageTag()));
             }
         }
         return myCachedContainer;

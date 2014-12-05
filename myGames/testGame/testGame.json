@@ -16,7 +16,7 @@
                   "myWidth": 138,
                   "myHeight": 103
                 },
-                "numRows": 0,
+                "numRows": 40,
                 "animationSequenceList": [
                   {
                     "myStartFrame": 129,
@@ -659,7 +659,7 @@
                   "myWidth": 138,
                   "myHeight": 103
                 },
-                "numRows": 0,
+                "numRows": 40,
                 "animationSequenceList": [
                   {
                     "myStartFrame": 129,
@@ -1302,7 +1302,7 @@
                   "myWidth": 138,
                   "myHeight": 103
                 },
-                "numRows": 0,
+                "numRows": 40,
                 "animationSequenceList": [
                   {
                     "myStartFrame": 129,
@@ -1945,7 +1945,7 @@
                   "myWidth": 138,
                   "myHeight": 103
                 },
-                "numRows": 0,
+                "numRows": 40,
                 "animationSequenceList": [
                   {
                     "myStartFrame": 129,

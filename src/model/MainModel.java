@@ -44,10 +44,11 @@ public class MainModel extends Observable {
     public MainModel () {
         try {
             mySaveLoadMediator = new GameSaveLoadMediator();
+            mySpriteImageGenerator = new SpriteImageGenerator();
             myModifiedContainer = new ModifiedContainer();
         }
         catch (Exception e) {
-            // TODO Auto-generated catch block
+            System.out.println(mySpriteImageGenerator == null);
             e.printStackTrace();
         }
     }
