@@ -15,6 +15,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
+import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.editor.TabViewController.TriggerPair;
 import view.editor.wizards.WizardData;
 import view.gui.GUIController;
@@ -33,6 +36,9 @@ import view.gui.GUIController;
  *
  */
 public class LevelTriggersViewController implements GUIController {
+
+    private static final String NEW_TRIGGER_KEY = "NewTrigger";
+    private static final String DELETE_SELECTED_KEY = "DeleteSelected";
 
     @FXML
     private VBox levelTriggersView;
@@ -73,6 +79,15 @@ public class LevelTriggersViewController implements GUIController {
     @Override
     public void initialize () {
         initListView();
+        try {
+            newLevelTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
+                                                        .getStringProperty(NEW_TRIGGER_KEY));
+            deleteTrigger.textProperty().bind(MultiLanguageUtility.getInstance()
+                                                      .getStringProperty(DELETE_SELECTED_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
     }
 
     private void initListView () {

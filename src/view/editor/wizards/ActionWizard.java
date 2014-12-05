@@ -41,7 +41,7 @@ public class ActionWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.TRIGGER);
+    	setWizardType(WizardType.TRIGGER);
         addToData(WizardDataType.ACTIONTYPE, actionType.getSelectionModel().getSelectedItem().name());
         // addToData(WizardDataType.ACTION, action.getText());
         addToData(WizardDataType.ACTION, "action");

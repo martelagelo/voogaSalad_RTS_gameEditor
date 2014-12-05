@@ -6,21 +6,16 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
@@ -40,22 +35,26 @@ public class SelectableGameElementWizard extends Wizard {
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
-    private final static String NUM_ROWS_KEY = "NumRows";
-    private final static String START_FRAME_KEY = "StartFrame";
-    private final static String STOP_FRAME_KEY = "StopFrame";
-
-    private static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
 
     @FXML
-    private AnchorPane leftPane;
+    private ScrollPane leftPane;
     @FXML
     private TextField name;
     @FXML
     private Button trigger;
     @FXML
+    private VBox existingTriggers;
+
+    @FXML
     private Button stringAttribute;
     @FXML
+    private VBox existingStringAttributes;
+
+    @FXML
     private Button numberAttribute;
+    @FXML
+    private VBox existingNumberAttributes;
+
     @FXML
     private Button image;
     @FXML
@@ -63,35 +62,13 @@ public class SelectableGameElementWizard extends Wizard {
     @FXML
     private ScrollPane imageScroll;
     @FXML
-    private Slider frameWidth;
-    @FXML
-    private TextField frameWidthText;
-    @FXML
-    private Slider frameHeight;
-    @FXML
-    private TextField frameHeightText;
-    @FXML
-    private TextField numRows;
-    @FXML
-    private TextField startFrame;
-    @FXML
-    private TextField stopFrame;
-    @FXML
-    private CheckBox animationRepeat;
-    @FXML
-    private VBox existingTriggers;
-    @FXML
-    private VBox existingStringAttributes;
-    @FXML
-    private VBox existingNumberAttributes;
+    private Button animation;
 
-    @FXML
-    private Text wizardDataText;
     private List<String> myGlobalStringAttributes;
     private List<String> myGlobalNumberAttributes;
     private ImageView imageView;
-    private AnimationGrid animationGrid;
     private String imagePath;
+    private String jsonPath;
 
     /**
      * Launches a TriggerEditorWizard
@@ -119,6 +96,14 @@ public class SelectableGameElementWizard extends Wizard {
                            myGlobalNumberAttributes);
     }
 
+    /**
+     * Launches an Animation Wizard
+     * 
+     */
+    private void launchAnimationEditor () {
+
+    }
+
     private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs) {
         Wizard wiz = WizardUtility.loadWizard(path, new Dimension(500, 500));
         for (String atr : globalAttrs) {
@@ -127,24 +112,19 @@ public class SelectableGameElementWizard extends Wizard {
         wiz.loadGlobalValues(globalAttrs);
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
-            HBox newElement = new HBox();
+
             Button edit = new Button();
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
             edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));
-            newElement.getChildren().add(edit);
-
             Button delete = new Button();
             delete.setText("X");
+            HBox newElement = new HBox(edit, delete);
             delete.setOnAction(e -> {
                 removeWizardData(data);
                 existing.getChildren().remove(newElement);
-                wizardDataText.setText(getWizardData().toString());
             });
-            newElement.getChildren().add(delete);
             existing.getChildren().add(newElement);
-
-            wizardDataText.setText(getWizardData().toString());
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -163,8 +143,7 @@ public class SelectableGameElementWizard extends Wizard {
                 oldData.addDataPair(type, data.getValueByKey(type));
             }
             button.setText((new ArrayList<String>(data.getData().values())).get(0));
-            wizardDataText.setText(getWizardData().toString());
-            wiz.getStage().close();
+            wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
@@ -177,6 +156,8 @@ public class SelectableGameElementWizard extends Wizard {
      */
     private void loadImage () {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                                                 new FileChooser.ExtensionFilter("JPG", "*.jpg"));
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             spritesheet.getChildren().clear();
@@ -184,21 +165,22 @@ public class SelectableGameElementWizard extends Wizard {
             imagePath = file.getPath();
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
-
-            frameWidth.setMin(20.0);
-            frameWidth.setMax(image.getWidth());
-            frameWidth.setValue(100.0);
-            frameHeight.setMin(20.0);
-            frameHeight.setMax(image.getHeight());
-            frameHeight.setValue(100.0);
-
-            animationGrid =
-                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
-                                      frameHeight.getValue());
-            spritesheet.getChildren().add(animationGrid);
         }
         catch (Exception e) {
-            setErrorMesssage("Unable to Load Image");
+            displayErrorMessage("Unable to Load Image");
+        }
+    }
+
+    private void loadAnimationJSON () {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        fileChooser.setInitialDirectory(new File("resources/gameelementresources"));
+        File file = fileChooser.showOpenDialog(new Stage());
+        try {
+            jsonPath = file.getPath();
+        }
+        catch (Exception e) {
+            displayErrorMessage("Unable to Load JSON File");
         }
     }
 
@@ -209,17 +191,18 @@ public class SelectableGameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
+        leftPane.setFitToWidth(true);
+        root.setDividerPositions(0.4);
         trigger.setOnAction(e -> launchTriggerEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
+        animation.setOnAction(e -> launchAnimationEditor());
         image.setOnAction(i -> loadImage());
-        createSliderListeners();
-        createTextFieldListeners();
+        animation.setOnAction(i -> loadAnimationJSON());
         imagePath = "";
+        jsonPath = "";
         attachTextProperties();
-        errorMessage.setFill(Paint.valueOf("white"));
-        wizardDataText.setFill(Paint.valueOf("white"));
-        setDataType(WizardDataType.DRAWABLE_GAME_ELEMENT);
+        errorMessage.setFill(Paint.valueOf("white"));        
     }
 
     /**
@@ -236,64 +219,25 @@ public class SelectableGameElementWizard extends Wizard {
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
-            numRows.promptTextProperty().bind(util.getStringProperty(NUM_ROWS_KEY));
-            startFrame.promptTextProperty().bind(util.getStringProperty(START_FRAME_KEY));
-            stopFrame.promptTextProperty().bind(util.getStringProperty(STOP_FRAME_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            // TODO Do something useful with this exception
+            displayErrorMessage(e.getMessage());
         }
-    }
-
-    private void createTextFieldListeners () {
-        frameWidthText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameWidthText.getText())) {
-                frameWidth.setValue(Double.parseDouble(frameWidthText.getText()));
-            }
-        });
-        frameHeightText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameHeightText.getText())) {
-                frameHeight.setValue(Double.parseDouble(frameHeightText.getText()));
-            }
-        });
-    }
-
-    private void createSliderListeners () {
-        frameWidth.valueProperty().addListener(e -> {
-            frameWidthText.setText("" + (int) frameWidth.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(frameWidth.getValue(), animationGrid.getFrameY());
-            }
-        });
-        frameHeight.valueProperty().addListener(e -> {
-            frameHeightText.setText("" + (int) frameHeight.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(animationGrid.getFrameX(), frameHeight.getValue());
-            }
-        });
     }
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null && !numRows.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, numRows.getText()) && !startFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, startFrame.getText()) && !stopFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, stopFrame.getText());
+        return !name.getText().isEmpty() && imageView != null;
     }
 
     @Override
     public void updateData () {
+        // TODO: consolidate game element wizards
+        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
-        addToData(WizardDataType.WIDTH, "" + imageView.getImage().getWidth());
-        addToData(WizardDataType.HEIGHT, "" + imageView.getImage().getHeight());
-        addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
-        addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
-        addToData(WizardDataType.ROWS, numRows.getText());
-        addToData(WizardDataType.START_FRAME, startFrame.getText());
-        addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
-        addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
+        addToData(WizardDataType.ANIMATOR_STATE, jsonPath);
     }
 
     public void attachStringAttributes (List<String> stringAttributes) {

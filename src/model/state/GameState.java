@@ -30,7 +30,9 @@ public class GameState extends DescribableState {
      * gets the campaign with associated campaignName
      * 
      * @param campaignName
+     *        the name of the campaign to be returned
      * @return
+     *        the Campaign with the associated campaignName
      * @throws CampaignNotFoundException
      */
     public CampaignState getCampaign (String campaignName) throws CampaignNotFoundException {
@@ -48,7 +50,8 @@ public class GameState extends DescribableState {
     /**
      * returns unmodifiable list of campaigns
      * 
-     * @return
+     * @return List<CampaignState>
+     *         the list of the gamestate's campaignstates
      */
     public List<CampaignState> getCampaigns () {
         return Collections.unmodifiableList(myCampaigns);
@@ -58,6 +61,7 @@ public class GameState extends DescribableState {
      * adds a campaign to the game
      * 
      * @param campaignToAdd
+     *        the campaignstate to be added to the gamestate's campaignstate's
      * @throws CampaignExistsExeption
      */
     public void addCampaign (CampaignState campaignToAdd) throws CampaignExistsException {
@@ -75,6 +79,7 @@ public class GameState extends DescribableState {
      * removes a campaign with a given name
      * 
      * @param campaignName
+     *        the name of the campaign to be removed
      */
     public void removeCampaign (String campaignName) {
         myCampaigns = myCampaigns.stream().filter( (campaign) -> {
@@ -85,7 +90,8 @@ public class GameState extends DescribableState {
     /**
      * returns the game universe for this game
      * 
-     * @return
+     * @return GameUniverse
+     *         the GameUniverse of the GameState
      */
     public GameUniverse getGameUniverse () {
         return myGameUniverse;

@@ -17,7 +17,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import model.exceptions.CampaignNotFoundException;
-import model.exceptions.DescribableStateException;
 import model.exceptions.LevelNotFoundException;
 import model.state.CampaignState;
 import model.state.DescribableState;
@@ -68,6 +67,7 @@ public class EditorScreen extends GUIScreen {
     private ElementAccordionController levelElementAccordionController;
 
     private Tab myCurrentTab;
+    private final int myHashingPrime = 31;
 
     @Override
     public Node getRoot () {
@@ -93,7 +93,9 @@ public class EditorScreen extends GUIScreen {
                                                            description);
                     }
                     catch (CampaignNotFoundException | LevelNotFoundException e) {
-                        DialogBoxUtility.createMessageDialog(String.format("Failed to update selected describable state due to: %s", e.toString()));
+                        DialogBoxUtility.createMessageDialog(String
+                                .format("Failed to update selected describable state due to: %s",
+                                        e.toString()));
                     }
                 });
     }
@@ -104,7 +106,9 @@ public class EditorScreen extends GUIScreen {
             gameInfoBoxController.setText(state.getName(), state.getDescription());
         }
         catch (Exception e) {
-            DialogBoxUtility.createMessageDialog(String.format("Failed to update InfoBox based on project selection due to: %s", e.toString()));
+            DialogBoxUtility.createMessageDialog(String
+                    .format("Failed to update InfoBox based on project selection due to: %s",
+                            e.toString()));
         }
     }
 
@@ -127,14 +131,17 @@ public class EditorScreen extends GUIScreen {
     }
 
     private Tab createNewTab (String campaign, String level) {
-        Tab tab = new Tab();
-        tab.setText(String.format("%s: %s", campaign, level));
+        Tab tab = new Tab(String.format("%s: %s", campaign, level));
 
         TabViewController tabController =
-                (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW.getFilePath());
+                (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW
+                        .getFilePath());
         attachChildContainers(tabController);
         try {
             tabController.setLevel(campaign, level);
+            // TODO: Jonathan fix "current level" for the accordion pane
+            levelElementAccordionController.setLevel(campaign, level);
+            
         }
         catch (LevelNotFoundException | CampaignNotFoundException e) {
             // Should not happen
@@ -149,15 +156,14 @@ public class EditorScreen extends GUIScreen {
     private void tabChanged (ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
         myCurrentTab = newTab;
         if (myCurrentTab != null) {
+            CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
+            // TODO: Jonathan fix "current level" for the accordion pane
             try {
-                CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
-                myMainModel.setCurrentLevel(id.myCampaign.getName(),
-                                            id.myLevel.getName());
+                levelElementAccordionController.setLevel(id.myCampaign.getName(), id.myLevel.getName());
             }
-            catch (DescribableStateException e) {
-                // Should never happen
-                DialogBoxUtility.createMessageDialog(e.toString());
-            }
+            catch (LevelNotFoundException | CampaignNotFoundException e) {
+                e.printStackTrace();
+            }            
         }
     }
 
@@ -177,13 +183,13 @@ public class EditorScreen extends GUIScreen {
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
     }
 
-    private void updateTabTexts() {
-        tabPane.getTabs().forEach((tab)->{
+    private void updateTabTexts () {
+        tabPane.getTabs().forEach( (tab) -> {
             CampaignLevelPair id = (CampaignLevelPair) tab.getUserData();
             tab.setText(String.format("%s: %s", id.myCampaign.getName(), id.myLevel.getName()));
         });
     }
-    
+
     private void updateProjectExplorer () {
         GameState game = myMainModel.getCurrentGame();
         Map<String, List<String>> campaignLevelMap = new HashMap<>();
@@ -222,7 +228,7 @@ public class EditorScreen extends GUIScreen {
 
         @Override
         public int hashCode () {
-            final int prime = 31;
+            final int prime = myHashingPrime; // this prime is magic. should be extracted.
             int result = 1;
             result = prime * result + ((myCampaign == null) ? 0 : myCampaign.getName().hashCode());
             result = prime * result + ((myLevel == null) ? 0 : myLevel.getName().hashCode());

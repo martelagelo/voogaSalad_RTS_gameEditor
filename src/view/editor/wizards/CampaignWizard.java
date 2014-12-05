@@ -1,10 +1,10 @@
 package view.editor.wizards;
 
 import java.util.List;
-import util.multilanguage.LanguageException;
-import util.multilanguage.MultiLanguageUtility;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -28,7 +28,7 @@ public class CampaignWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setDataType(WizardDataType.CAMPAIGN);
+        setWizardType(WizardType.CAMPAIGN);
         addToData(WizardDataType.NAME, name.getText());
     }
 
@@ -40,7 +40,7 @@ public class CampaignWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            setErrorMesssage(e.getMessage());
+            displayErrorMessage(e.getMessage());
         }
     }
 

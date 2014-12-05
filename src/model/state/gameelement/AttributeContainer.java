@@ -1,12 +1,18 @@
 package model.state.gameelement;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class AttributeContainer {
+public class AttributeContainer implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -3942254987685526285L;
+    
     private Set<Attribute<Number>> myNumericalAttributes;
     private Set<Attribute<String>> myTextualAttributes;
 

@@ -14,6 +14,12 @@
 				<MenuItem fx:id="quitMenuItem" />
 			</items>
 		</Menu>
+		<Menu fx:id="toggleMenu">
+			<items>
+				<MenuItem fx:id="playGameMenuItem" />
+				<MenuItem fx:id="editGameMenuItem" />
+			</items>
+		</Menu>
 		<Menu fx:id="languageMenu" />
 	</menus>
 </MenuBar>

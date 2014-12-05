@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import util.DeepCopy;
 import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -82,15 +83,14 @@ public class GameUniverse {
         List<GameElementState> matches =
                 myGameElementStates.stream().filter(e -> (e.getName().equals(elementName)))
                         .collect(Collectors.toList());
-        return (matches.size() != 0) ? matches.get(0) : null;
-
+        return (matches.size() != 0) ? (GameElementState) DeepCopy.deepCopy(matches.get(0)) : null;
     }
 
     public DrawableGameElementState getDrawableGameElementState (String elementName) {
         List<DrawableGameElementState> matches =
                 myDrawableGameElementStates.stream().filter(e -> (e.getName().equals(elementName)))
                         .collect(Collectors.toList());
-        return (matches.size() != 0) ? matches.get(0) : null;
+        return (matches.size() != 0) ? (DrawableGameElementState) DeepCopy.deepCopy(matches.get(0)) : null;
     }
 
     public SelectableGameElementState getSelectableGameElementState (String elementName) {
@@ -98,7 +98,7 @@ public class GameUniverse {
                 mySelectableGameElementStates.stream()
                         .filter(e -> (e.getName().equals(elementName)))
                         .collect(Collectors.toList());
-        return (matches.size() != 0) ? matches.get(0) : null;
+        return (matches.size() != 0) ? (SelectableGameElementState) DeepCopy.deepCopy(matches.get(0)) : null;
     }
 
     public Set<Attribute<Number>> getNumericalAttributes () {
