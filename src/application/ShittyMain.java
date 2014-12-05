@@ -54,6 +54,7 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
+        archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
 
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
@@ -66,24 +67,26 @@ public class ShittyMain extends Application {
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
 
         SelectableGameElementState archerState3 =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 3);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
-        //Make the third archer spawn archers on collision
-        archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
-        archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
+        // Make the third archer spawn archers on collision
+        archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
+        archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
+        archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
+                .getClassString(), "archer"));
 
-//        TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH, ScrollablePane.FIELD_HEIGHT);
-//        List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
+        // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
+        // ScrollablePane.FIELD_HEIGHT);
+        // List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         LevelState levelState = new LevelState("testLevel");
-//        for (DrawableGameElementState s : grassTerrain) {
-//            levelState.addTerrain(s);
-//        }
-        levelState.addUnit(archerState);
+        // for (DrawableGameElementState s : grassTerrain) {
+        // levelState.addTerrain(s);
+        // }
+        // levelState.addUnit(archerState);
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
-        
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
@@ -95,6 +98,10 @@ public class ShittyMain extends Application {
         MainModel model = new MainModel();
         model.saveGame(gameState);
         model.loadGame("testGame");
+        model.getGameUniverse().addSelectableGameElementState(archerState);
+        model.getGameUniverse().addSelectableGameElementState(archerState1);
+        model.getGameUniverse().addSelectableGameElementState(archerState2);
+        model.getGameUniverse().addSelectableGameElementState(archerState3);
         Engine engine =
                 new Engine(model, model.getCampaign("testCampaign"), model.getLevel("testCampaign",
                                                                                     "testLevel"));
@@ -134,7 +141,7 @@ public class ShittyMain extends Application {
         // Choose a random temporary waypoint if we collide with anything
         archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
                 .getClassString(),
-                                                "Collision", "RandomWaypoint"));
+                                                "NotCollision", "RandomWaypoint"));
         // On collision, attack an enemy
         archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
                 .getClassString(), "Collision", "Attack"));

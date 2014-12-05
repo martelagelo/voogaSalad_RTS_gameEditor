@@ -1,5 +1,8 @@
 package engine.visuals;
 
+import java.io.Serializable;
+
+
 /**
  *
  * Very simple class that holds dimensions for an object. This was created to avoid using the
@@ -8,7 +11,8 @@ package engine.visuals;
  * @author Steve, Zach
  *
  */
-public class Dimension {
+public class Dimension implements Serializable {
+    private static final long serialVersionUID = 519246965846726853L;
     private int myWidth;
     private int myHeight;
 

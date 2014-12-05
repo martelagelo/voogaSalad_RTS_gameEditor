@@ -5,6 +5,7 @@ import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.actions.ActionFactory;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
@@ -75,7 +76,13 @@ public class GameElementFactory {
     public SelectableGameElement createSelectableGameElement (String elementType, double x, double y) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
         SelectableGameElement newElement = createSelectableGameElement(state);
-        newElement.setHeading(x, y);
+        //TODO fix this with steve
+        newElement.setNumericalAttribute(StateTags.X_POSITION, x);
+        newElement.setNumericalAttribute(StateTags.Y_POSITION, y);
+        newElement.setNumericalAttribute(StateTags.X_HEADING, x);
+        newElement.setNumericalAttribute(StateTags.Y_HEADING, y);
+        newElement.setNumericalAttribute(StateTags.X_TEMP_HEADING, x);
+        newElement.setNumericalAttribute(StateTags.Y_TEMP_HEADING, y);
         return newElement;
     }
 
@@ -102,7 +109,7 @@ public class GameElementFactory {
                     action = myActionFactory.createAction(actionWrapper);
                 }
                 catch (Exception e) {
-                    //System.out.println("Error in action creation");
+                    // System.out.println("Error in action creation");
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }

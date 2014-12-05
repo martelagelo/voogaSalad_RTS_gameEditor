@@ -17,8 +17,8 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
     private final static double RANDOM_AMOUNT = 100;
 
     public RandomWaypoint (String id,
-                                    Evaluatable<A> parameter1,
-                                    Evaluatable<B> parameter2) {
+                           Evaluatable<A> parameter1,
+                           Evaluatable<B> parameter2) {
         super(Boolean.class, id, "RandomWaypoint", parameter1, parameter2);
     }
 
@@ -26,14 +26,22 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
     public Boolean evaluate (GameElement element1, GameElement element2) {
         double playerX = element1.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
         double playerY = element1.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-        // Choose a random new waypoint. The 0.5 was not made into a constant because it is used to
-        // simply get a random distribution centered on 0 and is not going to change
-        double waypointX = (Math.random() - 0.5) * RANDOM_AMOUNT + playerX;
-        double waypointY = (Math.random() - 0.5) * RANDOM_AMOUNT + playerY;
+        double playerSpeed = element1.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
+        double xHeading = element1.getNumericalAttribute(StateTags.X_HEADING).doubleValue();
+        double yHeading = element1.getNumericalAttribute(StateTags.Y_HEADING).doubleValue();
+        // If we're currently moving somewhere
+        if (Math.abs(playerX - xHeading) > playerSpeed ||
+            Math.abs(playerY - yHeading) > playerSpeed) {
+            // Choose a random new waypoint. The 0.5 was not made into a constant because it is used
+            // to
+            // simply get a random distribution centered on 0 and is not going to change
+            double waypointX = (Math.random() - 0.5) * RANDOM_AMOUNT + playerX;
+            double waypointY = (Math.random() - 0.5) * RANDOM_AMOUNT + playerY;
 
-        element1.setNumericalAttribute(StateTags.X_TEMP_HEADING, waypointX);
-        element1.setNumericalAttribute(StateTags.Y_TEMP_HEADING, waypointY);
-
+            element1.setNumericalAttribute(StateTags.X_TEMP_HEADING, waypointX);
+            element1.setNumericalAttribute(StateTags.Y_TEMP_HEADING, waypointY);
+        }
         return true;
+
     }
 }

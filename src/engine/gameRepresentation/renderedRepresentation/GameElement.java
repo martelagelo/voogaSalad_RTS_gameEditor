@@ -157,6 +157,7 @@ public class GameElement {
     public void update () {
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         //System.out.println("Updating game element: " + teamColor);
+        updateTimers();
         updateSelfDueToInternalFactors();
     }
 

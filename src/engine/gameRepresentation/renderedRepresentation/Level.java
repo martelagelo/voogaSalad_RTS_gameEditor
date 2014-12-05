@@ -3,6 +3,7 @@ package engine.gameRepresentation.renderedRepresentation;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -44,7 +45,7 @@ public class Level {
                   MapGrid grid) {
         myState = levelState;
         myTerrain = terrain;
-        myUnits = units;
+        myUnits = new CopyOnWriteArrayList<>(units);
         myGoals = goals;
         myTerrainAndBuildingsGroup = terrainAndBuildingsGroup;
         myUnitsGroup = unitsGroup;
@@ -127,13 +128,15 @@ public class Level {
     }
 
     /**
-     * Remove an element from the level's display
+     * Remove an element from the level
      * 
-     * @param unitNode the node of the element to be removed
+     * @param element the element to be removed
      */
-    public void removeElement (Node unitNode) {
-        myUnitsGroup.getChildren().remove(unitNode);
-        myTerrainAndBuildingsGroup.getChildren().remove(unitNode);
+    public void removeElement (DrawableGameElement element) {
+        myUnits.remove(element);
+        myTerrain.remove(element);
+        myUnitsGroup.getChildren().remove(element.getNode());
+        myTerrainAndBuildingsGroup.getChildren().remove(element.getNode());
     }
 
     public void addElement (GameElement newElement) {
@@ -163,7 +166,7 @@ public class Level {
         }
         newElement.registerAsSelectableChild(s -> myState.addUnit(s));
     }
-    
+
     /**
      * Evaluates all the goals of the level and determines whether the level needs to end
      * 
@@ -176,7 +179,7 @@ public class Level {
         int lost = 0;
         for (GameElement goal : getGoals()) {
             Iterator<Evaluatable<?>> goals = goal.getActionsOfType("Goal");
-            while(goals.hasNext()){
+            while (goals.hasNext()) {
                 goals.next().evaluate();
             }
             // iterate through the goals
@@ -185,14 +188,13 @@ public class Level {
             if (goal.getNumericalAttribute("Lost").doubleValue() == 1) lost = 1;
         }
         // TODO: temporary, replace with the iterator method above
-        won =  this.myUnits.stream()
+        won = this.myUnits.stream()
                 .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() != 1)
                 .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
-        
-        lost =  this.myUnits.stream()
+
+        lost = this.myUnits.stream()
                 .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() == 1)
                 .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
-
 
         return won - 2 * lost;
     }
