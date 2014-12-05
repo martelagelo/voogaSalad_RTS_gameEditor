@@ -95,6 +95,13 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     public void setWaypoints (List<Location> waypointsToAdd) {
         waypoints.clear();
         waypoints.addAll(waypointsToAdd);
+        Location newGoal = waypoints.poll();
+        //TODO make this into a method
+        setNumericalAttribute(StateTags.X_GOAL_POSITION,newGoal.myX);
+        setNumericalAttribute(StateTags.X_GOAL_POSITION,newGoal.myY);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION,newGoal.myX);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION,newGoal.myY);
+        
     }
 
     public void addWaypoint (double x, double y) {
