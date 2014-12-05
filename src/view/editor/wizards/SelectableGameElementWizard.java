@@ -120,7 +120,7 @@ public class SelectableGameElementWizard extends Wizard {
     }
 
     private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs) {
-        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(300, 300));
+        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(500, 500));
         for (String atr : globalAttrs) {
             System.out.println(atr);
         }

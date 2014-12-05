@@ -17,6 +17,7 @@
 					<TextField fx:id="action" />
 					<Button defaultButton="true" fx:id="save" text="save" />
 					<Text fx:id="errorMessage" />
+					<HBox fx:id="options"></HBox>
 				</VBox>
 			</children>
 		</AnchorPane>

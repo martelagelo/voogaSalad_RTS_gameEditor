@@ -1,14 +1,18 @@
 package view.editor.wizards;
 
 import java.util.List;
+
+import engine.actions.Action;
+import engine.actions.ActionType;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import action.Action;
-import action.ActionType;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 
 
 /**
@@ -18,12 +22,16 @@ import action.ActionType;
  */
 public class ActionWizard extends Wizard {
 
+	private final String EE_DELIMITER = "#";
+	
     @FXML
     private ComboBox<ActionType> actionType;
     @FXML
     private TextField action;
     @FXML
     private ComboBox<Action> actionChoice;   
+    @FXML
+    private HBox options;
 
     @Override
     public boolean checkCanSave () {
@@ -39,11 +47,11 @@ public class ActionWizard extends Wizard {
     
     @Override
     public void initialize () {
-        super.initialize();     
+        super.initialize();
+        buildOptionedString("YO#NISHADDIS#B#DA#SHIT");
         actionType.setItems(FXCollections.observableArrayList(ActionType.values()));
         actionType.valueProperty().addListener(new ChangeListener<ActionType>() {
             @Override public void changed(ObservableValue ov, ActionType t, ActionType t1) {
-            	System.out.println(t1.name());
                 actionChoice.setItems(FXCollections.observableArrayList(t1.getActions()));
                 actionChoice.valueProperty().addListener(new ChangeListener<Action>() {
                     @Override
@@ -61,6 +69,23 @@ public class ActionWizard extends Wizard {
                 }    
                
           });
+    }
+    
+    private void buildOptionedString (String opString) {
+    	String[] splitOnOptions = opString.split("((?<=#)|(?=#))");
+    	for(String s : splitOnOptions){
+    		Node newOption;
+    		if(s.equals(EE_DELIMITER)){
+    			ComboBox cb = new ComboBox();
+    			cb.setItems(FXCollections.observableArrayList(ActionType.values()));
+    			newOption = cb;
+    		}
+    		else{
+        		Text t = new Text(s);
+        		newOption = t;
+    		}
+    		options.getChildren().add(newOption);
+    	}
     }
 
     @Override
