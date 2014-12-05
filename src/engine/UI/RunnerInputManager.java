@@ -50,7 +50,7 @@ public class RunnerInputManager implements InputManager {
     	
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getSceneX(), mapTranslateY + e.getSceneY());
-        myElementManager.setSelectedUnitHeadings(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override

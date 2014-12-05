@@ -4,7 +4,16 @@
       "myLevels": [
         {
           "attributes": {
-            "myNumericalAttributes": [],
+            "myNumericalAttributes": [
+              {
+                "myData": 2000,
+                "myName": "LevelHeight"
+              },
+              {
+                "myData": 2000,
+                "myName": "LevelWidth"
+              }
+            ],
             "myTextualAttributes": []
           },
           "myTerrains": [],
@@ -535,7 +544,7 @@
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
-                      "Collision",
+                      "NotCollision",
                       "RandomWaypoint"
                     ],
                     "myActionType": "collision"
@@ -604,10 +613,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 200.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -629,7 +634,7 @@
                   },
                   {
                     "myData": 200.0,
-                    "myName": "yTempHeading"
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 500,
@@ -638,9 +643,17 @@
                   {
                     "myData": 2,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
+                  {
+                    "myData": "archer",
+                    "myName": "name"
+                  },
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
@@ -650,7 +663,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "AttributeDisplayerStates": []
             },
             {
               "myAnimatorState": {
@@ -1178,7 +1192,7 @@
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
-                      "Collision",
+                      "NotCollision",
                       "RandomWaypoint"
                     ],
                     "myActionType": "collision"
@@ -1247,10 +1261,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 200.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -1271,8 +1281,8 @@
                     "myName": "yHeading"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "yTempHeading"
+                    "myData": 200.0,
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 500,
@@ -1281,6 +1291,10 @@
                   {
                     "myData": 2,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1293,7 +1307,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "AttributeDisplayerStates": []
             },
             {
               "myAnimatorState": {
@@ -1821,7 +1836,7 @@
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
-                      "Collision",
+                      "NotCollision",
                       "RandomWaypoint"
                     ],
                     "myActionType": "collision"
@@ -1890,10 +1905,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -1914,8 +1925,8 @@
                     "myName": "yHeading"
                   },
                   {
-                    "myData": 100.0,
-                    "myName": "yTempHeading"
+                    "myData": 400.0,
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 100,
@@ -1924,6 +1935,10 @@
                   {
                     "myData": 0,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1936,7 +1951,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "AttributeDisplayerStates": []
             },
             {
               "myAnimatorState": {
@@ -2464,7 +2480,7 @@
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
-                      "Collision",
+                      "NotCollision",
                       "RandomWaypoint"
                     ],
                     "myActionType": "collision"
@@ -2482,6 +2498,13 @@
                     "myParameters": [
                       "Collision",
                       "MoveBack"
+                    ],
+                    "myActionType": "collision"
+                  },
+                  {
+                    "myActionName": "CreateObjectAction",
+                    "myParameters": [
+                      "archer"
                     ],
                     "myActionType": "collision"
                   }
@@ -2533,10 +2556,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 300.0,
                     "myName": "yPosition"
                   },
@@ -2549,6 +2568,10 @@
                     "myName": "yHeading"
                   },
                   {
+                    "myData": 400.0,
+                    "myName": "xTempPosition"
+                  },
+                  {
                     "myData": 500,
                     "myName": "health"
                   },
@@ -2557,23 +2580,23 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 100,
+                    "myData": 500,
                     "myName": "XSpawnOffset"
+                  },
+                  {
+                    "myData": 300.0,
+                    "myName": "yTempGoalPosition"
                   },
                   {
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
-                    "myData": 3,
+                    "myData": 1,
                     "myName": "teamID"
                   },
                   {
-                    "myData": 300.0,
-                    "myName": "yTempHeading"
-                  },
-                  {
-                    "myData": 100,
+                    "myData": 500,
                     "myName": "YSpawnOffset"
                   }
                 ],
@@ -2587,7 +2610,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "AttributeDisplayerStates": []
             }
           ],
           "myGoals": [
@@ -2601,7 +2625,8 @@
                   }
                 ],
                 "myTextualAttributes": []
-              }
+              },
+              "AttributeDisplayerStates": []
             }
           ],
           "myName": "testLevel",

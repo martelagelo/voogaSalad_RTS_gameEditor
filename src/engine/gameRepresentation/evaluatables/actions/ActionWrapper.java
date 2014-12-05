@@ -1,5 +1,8 @@
 package engine.gameRepresentation.evaluatables.actions;
 
+import java.io.Serializable;
+
+
 /**
  * A basic wrapper for an action that consists of a String containing the action type name and a
  * list of strings constituting the action's paramaters. Each Action defines the number of Strings
@@ -10,7 +13,11 @@ package engine.gameRepresentation.evaluatables.actions;
  * @author Zach
  *
  */
-public class ActionWrapper {
+public class ActionWrapper implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 5596741540525917388L;
     private String myActionName;
     private String[] myParameters;
     private String myActionType;

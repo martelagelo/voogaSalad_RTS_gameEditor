@@ -14,7 +14,7 @@
       {
         "myActionName": "ObjectConditionAction",
         "myParameters": [
-          "Collision",
+          "NotCollision",
           "RandomWaypoint"
         ],
         "myActionType": "collision"
@@ -83,15 +83,11 @@
         "myName": "ReloadTime"
       },
       {
-        "myData": 400.0,
-        "myName": "xTempHeading"
-      },
-      {
         "myData": 75,
         "myName": "attack"
       },
       {
-        "myData": 3,
+        "myData": 1,
         "myName": "teamID"
       },
       {
@@ -107,8 +103,8 @@
         "myName": "yHeading"
       },
       {
-        "myData": 300.0,
-        "myName": "yTempHeading"
+        "myData": 400.0,
+        "myName": "xTempPosition"
       },
       {
         "myData": 500,
@@ -117,6 +113,10 @@
       {
         "myData": 2,
         "myName": "movementSpeed"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yTempGoalPosition"
       }
     ],
     "myTextualAttributes": [
@@ -125,5 +125,6 @@
         "myName": "currentAction"
       }
     ]
-  }
+  },
+  "AttributeDisplayerStates": []
 }

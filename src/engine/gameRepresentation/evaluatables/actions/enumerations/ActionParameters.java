@@ -14,6 +14,7 @@ public enum ActionParameters {
     EE_EVAL(
             "Attack",
             "Collision",
+            "NotCollision",
             "Equals",
             "HeadingUpdate",
             "MoveBack",

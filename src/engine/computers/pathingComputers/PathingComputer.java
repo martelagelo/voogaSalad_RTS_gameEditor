@@ -1,5 +1,7 @@
 package engine.computers.pathingComputers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,19 +22,23 @@ public class PathingComputer {
         this.grid = grid;
     }
 
-    public List<Location> findPath (double xStart, double yStart, double xEnd, double yEnd) {
-        List<Location> rawPath = findPath(new Location(xStart,yStart), new Location(xEnd, yEnd));
+    public List<Location> findPath (Location from, Location to) {
+        List<Location> rawPath = computePath(from,to);
+        System.out.println("8===D");
+        System.out.println(rawPath);
+        System.out.println(optimizePath(rawPath));
     	return optimizePath(rawPath);
     }
 
     private List<Location> optimizePath(List<Location> rawPath) {
-		for(int i = 0; i<rawPath.size(); i++){
-			if(pointsAreColinear(rawPath.get(i), rawPath.get(i+1), rawPath.get(i+2))){
-				rawPath.remove(i+1);
+        List<Location> raw = new ArrayList<>(rawPath);
+		for(int i = 0; i<raw.size()-2; i++){
+			if(pointsAreColinear(raw.get(i), raw.get(i+1), raw.get(i+2))){
+			    raw.remove(i+1);
 				i--;
 			}
 		}
-		return null;
+		return raw;
 	}
     
     private boolean pointsAreColinear(Location first, Location second, Location third){
@@ -43,7 +49,7 @@ public class PathingComputer {
 		double x2 = third.myX;
 		double y2 = third.myY;
 		
-		return ((y1 - y0) == (y2 - y1)/(x2 - x1)*(x1-x0));
+		return Math.ulp((y1 - y0) - (y2 - y0)/(x2 - x0)*(x1-x0))<5;
     }
 
 	private PriorityQueue<Location> frontierLocations;
@@ -94,7 +100,7 @@ public class PathingComputer {
         return previousDistance + currentDistance;
     }
     
-    public List<Location> findPath (Location from, Location to){
+    private List<Location> computePath (Location from, Location to){
         origin = from;
         goals = grid.getNeighborsForXYCoordinate(to);
         
@@ -107,7 +113,8 @@ public class PathingComputer {
             Location currentLocation = frontierLocations.poll();
             if(goals.contains(currentLocation)){
                 List<Location> path = reconstructPath(currentLocation);
-                path.add(to);
+                path.add(0, to);
+                Collections.reverse(path);
                 return path;
             }
             else {

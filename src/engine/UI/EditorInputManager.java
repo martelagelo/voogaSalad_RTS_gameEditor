@@ -50,7 +50,7 @@ public class EditorInputManager implements InputManager {
             // if nothing then try to select units
         }
 
-        myElementManager.setSelectedUnitHeadings(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class EditorInputManager implements InputManager {
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getSceneX(), mapTranslateY + e.getSceneY());
 
-        myElementManager.setSelectedUnitHeadings(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override

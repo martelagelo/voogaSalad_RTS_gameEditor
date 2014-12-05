@@ -16,7 +16,7 @@ public class VisualizerFactory {
     public Visualizer createVisualizer(DrawableGameElementState elementState){
         Animator animator = myAnimatorFactory.createAnimator(elementState);
         // TODO : make widgets
-        Visualizer newVisualizer = new Visualizer(animator);
+        Visualizer newVisualizer = new Visualizer(animator, elementState.attributes);
         //newVisualizer.addWidget(widget);
         return newVisualizer; 
     }

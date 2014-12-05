@@ -60,7 +60,7 @@ public class ParticipantManager {
             boolean containsID =
                     myAIUsers.stream().filter(e -> e.checkSameTeam(ID))
                             .collect(Collectors.toList()).size() > 0;
-            if (!containsID && ID != 1) {
+            if (!containsID && ID!=1) {
                 myAIUsers.add(new AIParticipant(ID, "AI" + ID));
             }
         }
@@ -74,9 +74,10 @@ public class ParticipantManager {
                             .doubleValue())).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
-                    e.setHeading(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
+                    e.addWaypoint(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
                                  r.nextDouble() * ScrollablePane.FIELD_HEIGHT);
                 }
+
             }
         }
     }

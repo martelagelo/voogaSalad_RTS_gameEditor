@@ -1,5 +1,8 @@
 package engine.gameRepresentation.renderedRepresentation;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import javafx.geometry.Point2D;
@@ -7,7 +10,9 @@ import javafx.scene.Node;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
+import engine.computers.pathingComputers.Location;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerFactory;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.Visualizer;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
@@ -24,9 +29,13 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
  */
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
 
-	private AttributeDisplayerFactory myWidgetFactory;
+    // TODO: remove this factory ...
+    private AttributeDisplayerFactory myWidgetFactory;
+
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
+    private Queue<Location> waypoints;
+    private AttributeDisplayerState myAttributeDisplayerState;
 
     /**
      * Create a drawable game element from the given state
@@ -43,89 +52,67 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         drawableState = state;
         myVisualizer = visualizer;
         myWidgetFactory = new AttributeDisplayerFactory();
-
-        /*
-         * TODO: if this should be removed, where would you rather put it? The state needs to
-         * be initialized somewhere and DrawableGameElement is the lowest level that both has a
-         * visual
-         * component and actually has access to its own position
-         */
-        this.initializeDisplay();
+        waypoints = new LinkedList<>();
+        myVisualizer.initializeDisplay();
 
         // TODO: remove, this is for testing only
-        AttributeDisplayer xPosBar =
+        AttributeDisplayer healthBar =
                 new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
-        myVisualizer.addWidget(xPosBar);
-        // AttributeDisplayer selectionTriangle = new
-        // UnitSelectedDisplayer(drawableState.attributes, StateTags.IS_SELECTED, 0, 1);
-        // myVisualizer.addWidget(selectionTriangle);
+        myVisualizer.addWidget(healthBar);
+
+        myAttributeDisplayerState =
+                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
     }
 
-    
-    // TODO: add to visualizer
-    /**
-     * Update the drawable game element and its visual appearance.
-     */
     @Override
     public void update () {
-        super.update();        
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
-        //System.out.println("Updating drawable game element: " + teamColor);
+        super.update();
         myVisualizer.update();
-        // Make sure the element's visual aspects match its underlying state
-        myVisualizer.getNode()
-                .setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
-        myVisualizer.getNode()
-                .setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
-
     }
 
-    /**
-     * Gets the node that is being displayed on the scene
-     * 
-     * @return The game element
-     */
     @Override
     public Node getNode () {
         return myVisualizer.getNode();
     }
 
-    /**
-     * Get the bound array of the object
-     * 
-     * @return the object's bounds
-     */
     public double[] getBounds () {
         return drawableState.getBounds();
     }
 
-    // TOOD: move to visualizer
     public Point2D getPosition () {
-        return new Point2D(getNode().getLayoutX(), getNode().getLayoutY());
-    }
-    
-    public void registerAsDrawableChild(Consumer<DrawableGameElementState> function){
-    	function.accept(drawableState);
+        return myVisualizer.getNodeLocation();
     }
 
-    // TODO: move to visualizer and give visualizer attributes
-    /**
-     * Initializes the display for each game element
-     */
-    private void initializeDisplay () {
-        myVisualizer.getNode()
-                .setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
-        myVisualizer.getNode()
-                .setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
-        myVisualizer.getNode().setTranslateX(-drawableState.myAnimatorState.getViewportSize()
-                .getWidth() / 2);
-        myVisualizer.getNode().setTranslateY(-drawableState.myAnimatorState.getViewportSize()
-                .getHeight() / 2);
+    public void registerAsDrawableChild (Consumer<DrawableGameElementState> function) {
+        function.accept(drawableState);
     }
 
     @Override
     public double[] findGlobalBounds () {
         return drawableState.findGlobalBounds();
     }
-    
+
+    public void setWaypoints (List<Location> waypointsToAdd) {
+        waypoints.clear();
+        waypoints.addAll(waypointsToAdd);
+        Location newGoal = waypoints.poll();
+        //TODO make this into a method
+        setNumericalAttribute(StateTags.X_GOAL_POSITION,newGoal.myX);
+        setNumericalAttribute(StateTags.X_GOAL_POSITION,newGoal.myY);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION,newGoal.myX);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION,newGoal.myY);
+        
+    }
+
+    public void addWaypoint (double x, double y) {
+        Location newWaypoint = new Location(x, y);
+        waypoints.add(newWaypoint);
+    }
+
+    public Location getNextWaypoint () {
+        double currentX = getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+        double currentY = getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+        Location current = new Location(currentX, currentY);
+        return waypoints.size() == 0 ? current : waypoints.poll();
+    }
 }

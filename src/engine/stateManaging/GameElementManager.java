@@ -1,10 +1,14 @@
 package engine.stateManaging;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
+import engine.computers.pathingComputers.Location;
+import engine.computers.pathingComputers.PathingComputer;
 import engine.elementFactories.GameElementFactory;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -23,6 +27,7 @@ public class GameElementManager {
 
     private Level myLevel;
     private GameElementFactory myFactory;
+    private PathingComputer pathingComputer;
 
     public GameElementManager (GameElementFactory factory) {
         myFactory = factory;
@@ -35,6 +40,7 @@ public class GameElementManager {
      */
     public void setLevel (Level level) {
         myLevel = level;
+        pathingComputer = new PathingComputer(myLevel.getGrid());
     }
 
     /**
@@ -130,7 +136,7 @@ public class GameElementManager {
         }
     }
 
-    public void setSelectedUnitHeadings (Point2D click, boolean queueCommand, Participant u) {
+    public void setSelectedUnitWaypoints (Point2D click, boolean queueCommand, Participant u) {
         for (SelectableGameElement e : myLevel.getUnits().stream()
                 .filter(e -> e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1)
                 .collect(Collectors.toList())) {
@@ -141,7 +147,13 @@ public class GameElementManager {
                 // e.clearHeadings();
             }
             else {
-                e.setHeading(click.getX(), click.getY());
+            	double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+            	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+            	Location from = new Location(currentX, currentY);
+            	Location to = new Location(click.getX(), click.getY());
+            	System.out.println("8=D");
+            	List<Location> waypoints = pathingComputer.findPath(from, to);
+                e.setWaypoints(waypoints);
             }
         }
     }

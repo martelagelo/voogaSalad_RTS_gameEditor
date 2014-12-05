@@ -3,6 +3,7 @@ package engine.visuals.elementVisuals.animations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Updatable;
+import engine.visuals.Dimension;
 
 /**
  * An animation player that allows for the playing of animations using a given
@@ -157,9 +159,12 @@ public class Animator implements Updatable {
     private Rectangle2D getViewport (int frameNumber) {
         int colNumber = frameNumber / myState.getNumRows();
         int rowNumber = frameNumber % myState.getNumRows();
-        //System.out.println("frame number: " + frameNumber + "; colNumber: " + colNumber + "; rowNumber: " + rowNumber);
         return new Rectangle2D(colNumber * myState.getViewportSize().getWidth(), rowNumber
                 * myState.getViewportSize().getHeight(), myState.getViewportSize().getWidth(),
                 myState.getViewportSize().getHeight());
+    }
+    
+    public Dimension getViewportSize(){
+    	return myState.getViewportSize();
     }
 }
