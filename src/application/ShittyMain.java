@@ -11,6 +11,7 @@ import model.MainModel;
 import model.state.CampaignState;
 import model.state.GameState;
 import model.state.LevelState;
+import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.SaveLoadUtility;
@@ -82,9 +83,15 @@ public class ShittyMain extends Application {
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
+<<<<<<< HEAD
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
         
+=======
+        
+        levelState.addGoal(createGoal());
+
+>>>>>>> cleanIntegratedEngine
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
 
@@ -98,6 +105,21 @@ public class ShittyMain extends Application {
                 new Engine(model, model.getCampaign("testCampaign"), model.getLevel("testCampaign",
                                                                                     "testLevel"));
         return engine;
+    }
+
+    private GameElementState createGoal () {
+        GameElementState ges = new GameElementState();
+        ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
+        // archerState
+        // .addAction(new ActionWrapper("InternalActions",
+        // ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
+        // .getClassString(), StateTags.HEALTH,
+        // "LessThanEqual",
+        // "0",
+        // StateTags.IS_DEAD, "EqualsAssignment", "1"));
+        // ges.addAction(new ActionWrapper("InternalActions", ActionOptions.OBJECT_CONDITION_ACTION
+        // , parameters));
+        return ges;
     }
 
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)

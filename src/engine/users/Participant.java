@@ -61,15 +61,6 @@ public abstract class Participant {
     }
 
     /**
-     * Sets a new name for the user
-     * 
-     * @param newName The new name
-     */
-    public void setName (String newName) {
-        myName = newName;
-    }
-
-    /**
      * Adds a score to the list of scores of the user
      * 
      * @param level The level description of the new score

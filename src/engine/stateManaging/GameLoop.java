@@ -13,6 +13,7 @@ import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
+import engine.UI.AIManager;
 import engine.computers.Computer;
 import engine.computers.boundsComputers.CollisionComputer;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
@@ -31,6 +32,7 @@ public class GameLoop {
     private String myCampaignName;
     private Level myCurrentLevel;
     private GameElementManager myManager;
+    private AIManager myAiManager;
 
     private VisualManager myVisualManager;
     private List<Line> unitPaths;
@@ -49,9 +51,10 @@ public class GameLoop {
     public GameLoop (String campaignName,
                      Level level,
                      VisualManager visualManager,
-                     GameElementManager elementManager) {
+                     GameElementManager elementManager, AIManager aiManager) {
         myVisualManager = visualManager;
         myCampaignName = campaignName;
+        myAiManager = aiManager;
         myManager = elementManager;
         myCurrentLevel = level;
         unitPaths = new ArrayList<Line>();
@@ -113,6 +116,9 @@ public class GameLoop {
         }
 
         myVisualManager.update(myCurrentLevel.getUnits());
+        myAiManager.update(myCurrentLevel.getUnits());
+        
+        int levelEndState = myCurrentLevel.evaluateGoals();
     }
 
     private void addPathsToRoot () {
