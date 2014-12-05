@@ -1,6 +1,10 @@
 package util;
 
 import java.io.File;
+import java.io.IOException;
+
+import model.exceptions.SaveLoadException;
+
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -14,22 +18,18 @@ public class DefaultResourcePopulation {
     public static final String LIBRARY_DIRECTORY = "src/resources/img/graphics/buttons";
     Thread myThread;
 
-    private void copyResources (String filePath) throws Exception {
+    private void copyResources (String filePath) throws SaveLoadException {
         File libraryDirectory = new File(LIBRARY_DIRECTORY);
         File destinationDirectory = new File(filePath);
-        FileUtils.copyDirectory(libraryDirectory, destinationDirectory);
+        try {
+            FileUtils.copyDirectory(libraryDirectory, destinationDirectory);
+        } catch (IOException e) {
+            throw new SaveLoadException("Unable to copy default resources", e);
+        }
+
     }
-    
-    /**
-     * Sets a default destination to which
-     * resources should be saved
-     * 
-     * @param destination 
-     *        A string of the filepath that the resources
-     *        should be saved to
-     * @throws Exception
-     */
-    void setDefaults (String destination) throws Exception {
+
+    void setDefaults (String destination) throws SaveLoadException {
 
         class Copy implements Runnable {
             String myDestination;
@@ -41,13 +41,11 @@ public class DefaultResourcePopulation {
             public void run () {
                 try {
                     copyResources(destination);
-                } catch (Exception e) {
-                	
+                } catch (SaveLoadException e) {
+                    return;
                 }
             }
-
         }
-        
         myThread = new Thread(new Copy(destination));
         myThread.start();
     }
