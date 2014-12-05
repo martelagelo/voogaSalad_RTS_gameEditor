@@ -61,7 +61,7 @@ public class AnimationWizard extends Wizard {
     private ImageView imageView;
     private AnimationGrid animationGrid;
     private DirectionGrid directionGrid;
-    private String imagePath; 
+    private String imagePath;
     private Double frameWidth;
     private Double frameHeight;
 
@@ -103,7 +103,7 @@ public class AnimationWizard extends Wizard {
         animationAction.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())
                 .stream().filter(tag -> tag.getType().equals(AnimationType.ACTION))
                 .collect(Collectors.toList())));
-                
+
         startFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
             updateAnimationGrid( (frame) -> animationGrid.setStart(frame), newValue);
         });
@@ -156,12 +156,12 @@ public class AnimationWizard extends Wizard {
                animationAction.getSelectionModel().getSelectedItem() != null &&
                !slownessMultiplier.getText().isEmpty() &&
                Pattern.matches(NUM_REGEX, slownessMultiplier.getText()) &&
-               directionGrid.getDirections().size() > 0 ;
+               directionGrid.getDirections().size() > 0;
     }
 
     @Override
-    public void updateData () {       
-        setWizardType(WizardType.ANIMATION_SEQUENCE);        
+    public void updateData () {
+        setWizardType(WizardType.ANIMATION_SEQUENCE);
         addToData(WizardDataType.ANIMATION_TAG, getTags());
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
@@ -171,7 +171,7 @@ public class AnimationWizard extends Wizard {
 
     private String getTags () {
         StringBuilder sb = new StringBuilder();
-        for (AnimationTag tag: directionGrid.getDirections()) {
+        for (AnimationTag tag : directionGrid.getDirections()) {
             sb.append(tag.name() + ",");
         }
         sb.append(animationAction.getSelectionModel().getSelectedItem().name());
@@ -182,19 +182,28 @@ public class AnimationWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         startFrame.setText(oldValues.getValueByKey(WizardDataType.START_FRAME));
         stopFrame.setText(oldValues.getValueByKey(WizardDataType.STOP_FRAME));
-        animationRepeat.setSelected(Boolean.parseBoolean(oldValues.getValueByKey(WizardDataType.ANIMATION_REPEAT)));
+        animationRepeat.setSelected(Boolean.parseBoolean(oldValues
+                .getValueByKey(WizardDataType.ANIMATION_REPEAT)));
         slownessMultiplier.setText(oldValues.getValueByKey(WizardDataType.SLOWNESS_MULTIPLIER));
-        List<String> tags = Arrays.asList(oldValues.getValueByKey(WizardDataType.ANIMATION_TAG).split(","));
+        List<AnimationTag> tags =
+                Arrays.asList(oldValues.getValueByKey(WizardDataType.ANIMATION_TAG).split(","))
+                        .stream().map(tag -> AnimationTag.valueOf(tag))
+                        .collect(Collectors.toList());
         selectCorrectFrame(tags);
+        animationAction.getSelectionModel()
+                .select(tags.stream().filter(tag -> tag.getType().equals(AnimationType.ACTION))
+                        .collect(Collectors.toList()).get(0));
     }
 
-    private void selectCorrectFrame (List<String> tags) {
+    private void selectCorrectFrame (List<AnimationTag> tags) {
         int row = 1;
         int col = 1;
-        if (tags.contains(AnimationTag.FORWARD.name())) row = 2;
-        else if (tags.contains(AnimationTag.BACKWARD.name())) row = 0;
-        if (tags.contains(AnimationTag.LEFT.name())) col = 0;
-        else if (tags.contains(AnimationTag.RIGHT.name())) col = 2;        
+        if (tags.contains(AnimationTag.FORWARD))
+            row = 2;
+        else if (tags.contains(AnimationTag.BACKWARD)) row = 0;
+        if (tags.contains(AnimationTag.LEFT))
+            col = 0;
+        else if (tags.contains(AnimationTag.RIGHT)) col = 2;
         directionGrid.selectFrame(row, col);
     }
 

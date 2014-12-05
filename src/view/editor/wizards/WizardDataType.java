@@ -30,7 +30,7 @@ public enum WizardDataType {
     START_FRAME,
     STOP_FRAME,
     ANIMATION_REPEAT,
-    SLOWNESS_MULTIPLIER,
+    SLOWNESS_MULTIPLIER,    
     // place into level: this will change
     X_POSITION,
     Y_POSITION,

@@ -1,11 +1,12 @@
 package model;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import model.state.gameelement.ActionWrapper;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -41,15 +42,21 @@ public class GameElementStateFactory {
                                       Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 
         Set<AnimationSequence> sequences = new HashSet<>();
-        List<AnimationTag> tags = new ArrayList<>();
-        AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
-
+        for (WizardData animationData: data.getWizardDataByType(WizardType.ANIMATION_SEQUENCE)) {            
+            List<AnimationTag> tags =
+                Arrays.asList(animationData.getValueByKey(WizardDataType.ANIMATION_TAG).split(","))
+                        .stream().map(tag -> AnimationTag.valueOf(tag))
+                        .collect(Collectors.toList());
+            AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
+            sequences.add(sequence);
+        }
         AnimatorState anim =
                 new AnimatorState(data.getValueByKey(WizardDataType.IMAGE),
                                   dim,
                                   Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
                                   sequences);
-
+        state.myAnimatorState = anim;
+        
         String bounds = data.getWizardDataByType(WizardType.BOUNDS).get(0).getValueByKey(WizardDataType.BOUND_VALUES);
         String[] points = bounds.split(",");
         double[] myBounds = new double[points.length];
@@ -110,8 +117,8 @@ public class GameElementStateFactory {
         //TODO: clean this up into the consumer
         for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {
             String[] params = wiz.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
-            ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
-                                           ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+            ActionWrapper wrapper = new ActionWrapper(wiz.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                           ActionOptions.valueOf(wiz.getValueByKey(WizardDataType.ACTION)).getClassString(), 
                                            params);
             state.addAction(wrapper);            
         }        
