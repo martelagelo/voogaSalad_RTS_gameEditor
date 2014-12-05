@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.image.Image;
+import model.exceptions.SaveLoadException;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
@@ -26,7 +27,7 @@ public class SpriteImageLoader {
     public static final String SPRITESHEETS = "spritesheets";
     public static final String DEFAULT_COLOR = "BLUE";
 
-    public static Map<String, Image> loadTeamColorMasks (String imageTag) throws Exception {
+    public static Map<String, Image> loadTeamColorMasks (String imageTag) throws SaveLoadException {
         // TODO: Loading every single resources takes far too long leading to
         // Out of Memory -- figure out an alternative way
         if (imageTag.equals("resources/gameelementresources/units/spritesheets/archer.png")) { // TODO:
@@ -49,7 +50,7 @@ public class SpriteImageLoader {
 
     }
 
-    public static Image loadSpritesheet (String imageTag) throws Exception {
+    public static Image loadSpritesheet (String imageTag) throws SaveLoadException {
         Image image = SaveLoadUtility.loadImage(imageTag);
         return image;
     }

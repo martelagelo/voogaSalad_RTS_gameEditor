@@ -27,17 +27,13 @@ public class GameSaveLoadMediator {
     public static final String PNG_EXT = ".png";
     public static final String JSON_EXT = ".json";
 
-    public GameSaveLoadMediator () throws Exception {
-
-    }
-
     /**
      * 
      * @param gameName
      * @return
      * @throws Exception
      */
-    public <T> T loadGame (String gameName) throws Exception {
+    public <T> T loadGame (String gameName) throws SaveLoadException {
         return SaveLoadUtility.loadResource(GameState.class, getGameLocation(gameName));
 
     }
@@ -79,7 +75,7 @@ public class GameSaveLoadMediator {
      * @return
      * @throws Exception
      */
-    public Image loadImage (String filePath) throws Exception {
+    public Image loadImage (String filePath) throws SaveLoadException {
         return SaveLoadUtility.loadImage(filePath);
 
     }
