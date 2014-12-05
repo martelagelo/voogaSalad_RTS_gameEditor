@@ -1,0 +1,129 @@
+{
+  "myBounds": [
+    0.0,
+    0.0,
+    40.0,
+    0.0,
+    40.0,
+    40.0,
+    0.0,
+    40.0
+  ],
+  "myActions": {
+    "collision": [
+      {
+        "myActionName": "ObjectConditionAction",
+        "myParameters": [
+          "Collision",
+          "RandomWaypoint"
+        ],
+        "myActionType": "collision"
+      },
+      {
+        "myActionName": "ObjectConditionAction",
+        "myParameters": [
+          "Collision",
+          "Attack"
+        ],
+        "myActionType": "collision"
+      },
+      {
+        "myActionName": "ObjectConditionAction",
+        "myParameters": [
+          "Collision",
+          "MoveBack"
+        ],
+        "myActionType": "collision"
+      }
+    ],
+    "InternalActions": [
+      {
+        "myActionName": "CheckAttributeSetAttributeAction",
+        "myParameters": [
+          "health",
+          "LessThanEqual",
+          "0",
+          "IsDead",
+          "EqualsAssignment",
+          "1"
+        ],
+        "myActionType": "InternalActions"
+      },
+      {
+        "myActionName": "ActOnObjectsAction",
+        "myParameters": [
+          "UpdateMovementDirection"
+        ],
+        "myActionType": "InternalActions"
+      },
+      {
+        "myActionName": "ActOnObjectsAction",
+        "myParameters": [
+          "MovePlayer"
+        ],
+        "myActionType": "InternalActions"
+      },
+      {
+        "myActionName": "ActOnObjectsAction",
+        "myParameters": [
+          "HeadingUpdate"
+        ],
+        "myActionType": "InternalActions"
+      }
+    ]
+  },
+  "attributes": {
+    "myNumericalAttributes": [
+      {
+        "myData": 400.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 50,
+        "myName": "ReloadTime"
+      },
+      {
+        "myData": 400.0,
+        "myName": "xTempHeading"
+      },
+      {
+        "myData": 75,
+        "myName": "attack"
+      },
+      {
+        "myData": 3,
+        "myName": "teamID"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 400.0,
+        "myName": "xHeading"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yHeading"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yTempHeading"
+      },
+      {
+        "myData": 500,
+        "myName": "health"
+      },
+      {
+        "myData": 2,
+        "myName": "movementSpeed"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "STANDING",
+        "myName": "currentAction"
+      }
+    ]
+  }
+}

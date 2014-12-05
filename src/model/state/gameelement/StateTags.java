@@ -16,14 +16,24 @@ public class StateTags {
     public static final String Y_POSITION = "yPosition";
     public static final String X_VELOCITY = "xVelocity";
     public static final String Y_VELOCITY = "yVelocity";
+    public static final String X_HEADING = "xHeading";
+    public static final String Y_HEADING = "yHeading";
+    public static final String X_TEMP_HEADING = "xTempHeading";
+    public static final String Y_TEMP_HEADING = "yTempHeading";
     public static final String RANDOM_MOVEMENT_STRING = "randomMove";
     public static final String TEAM_ID = "teamID";
     public static final String MOVEMENT_SPEED = "movementSpeed";
     public static final String BLOCKING = "blocking";
     public static final String TEAM_COLOR = "teamColor";
     public static final String IS_SELECTED = "isSelected";
+    public static final String ATTACK = "attack";
+    public static final String HEALTH = "health";
     public static final String CURRENT_ACTION = "currentAction"; // attack, die, decay, gather??
     public static final String LEVEL_HEIGHT = "LevelHeight";
     public static final String LEVEL_WIDTH = "LevelWidth";
+    public static final String RELOAD_TIME = "ReloadTime";
+    public static final String IS_DEAD = "IsDead";
+    public static final String X_SPAWN_OFFSET = "XSpawnOffset";
+    public static final String Y_SPAWN_OFFSET = "YSpawnOffset";
 
 }

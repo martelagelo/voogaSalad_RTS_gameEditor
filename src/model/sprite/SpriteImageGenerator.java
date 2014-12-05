@@ -6,15 +6,12 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import model.state.gameelement.GameElementType;
-
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-
 import util.GameSaveLoadMediator;
 import util.ResourceBundleRetriever;
 import util.SaveLoadUtility;
-import engine.visual.animation.AnimatorState;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
  * This class generates the SpriteImageContainers and caches them and can be

@@ -1,0 +1,18 @@
+<HTML>
+<BODY>
+This package contains the main logic for the game engine. The engine receives game states from the model and
+is responsible for building game elements from these game states and attaching non-serializable graphical 
+representations to these elements. At the model's essence is the @link {game_engine.stateManaging.GameLoop.java} 
+class. This class goes through all the elements of the game and calls their update methods for various inputs.
+All functionality of the interaction between game elements is handled via the @link {game_engine.conditions.Evaluatable}
+class and the @link {game_engine.conditions.actions.Action.java} classes. 
+</br>
+The engine relies on receiving Game state through an observable relationship with the model and then builds elements
+specified in the game state through a set of factories. All communication between the engine and the view is done through this
+relationship with the model using the Game state.
+</br>
+In addition to changing and updating the states of internal game elements, the engine is also responsible for generating the 
+actual game's view as it would be seen by a player. This design choice was made to reduce the engine's external API whilst at
+the same time allowing the engine to have complete control over the contents of its display.
+</BODY>
+</HTML>

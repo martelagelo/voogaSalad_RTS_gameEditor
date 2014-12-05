@@ -18,6 +18,8 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.GameSaveLoadMediator;
+import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 
@@ -30,6 +32,8 @@ import view.editor.wizards.WizardDataType;
  */
 public class MainModel extends Observable {
 
+    private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
+    
     private GameState myGameState;
     private GameElementState myEditorSelectedElement;
     private GameSaveLoadMediator mySaveLoadMediator;
@@ -64,16 +68,32 @@ public class MainModel extends Observable {
         try {
             // TODO: insert Save Load code here and instantiate myGameState
             myGameState = mySaveLoadMediator.loadGame(game);
-            // TODO remove print lines
-            System.out.println(myGameState.getCampaigns().get(0).getLevels().get(0));
         }
         catch (Exception e) {
             // TODO Get rid of stack trace printing
-            e.printStackTrace();
+            DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance().getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
         updateObservers();
     }
 
+    public void saveGame () throws RuntimeException {
+        saveGame(myGameState);
+    }
+    
+    public void saveGame (GameState game) {
+        try {
+            // TODO: Save location
+            String location = mySaveLoadMediator.saveGame(game, game.getName());
+    
+        } catch (Exception e) {
+    
+            // TODO: eliminate stack trace printing
+            e.printStackTrace();
+            // throw new RuntimeException(e);
+        }
+    }
+
+    
     public void updateDescribableState (String[] selection, String name, String description)
                                                                                             throws CampaignNotFoundException,
                                                                                             LevelNotFoundException {
@@ -96,18 +116,6 @@ public class MainModel extends Observable {
         }
         else {
             return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
-        }
-    }
-
-    public void saveGame () throws RuntimeException {
-        try {
-            // TODO: Save location
-            String location = mySaveLoadMediator.saveGame(myGameState, myGameState.getName());
-        }
-        catch (Exception e) {
-            // TODO: eliminate stack trace printing
-            e.printStackTrace();
-            // throw new RuntimeException(e);
         }
     }
 
@@ -142,9 +150,6 @@ public class MainModel extends Observable {
         return myEditorSelectedElement;
     }
 
-    // TODO: error handling is done by view, but need to create exception
-    // classes
-    // for when campaign exists already
     /**
      * called by editor when creating a new campaign
      * 

@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,9 +13,11 @@ import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardType;
-import engine.visual.animation.AnimationSequence;
-import engine.visual.animation.AnimationTag;
-import engine.visual.animation.AnimatorState;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.visuals.Dimension;
+import engine.visuals.elementVisuals.animations.AnimationSequence;
+import engine.visuals.elementVisuals.animations.AnimationTag;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 
 /**
@@ -48,14 +49,16 @@ public class GameElementStateFactory {
                                   Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
                                   sequences);
 
-        String bounds = data.getWizardDataByType(WizardType.BOUNDS).get(0).getValueByKey(WizardDataType.BOUND_VALUES);
+        String bounds =
+                data.getWizardDataByType(WizardType.BOUNDS).get(0)
+                        .getValueByKey(WizardDataType.BOUND_VALUES);
         String[] points = bounds.split(",");
         double[] myBounds = new double[points.length];
         for (int i = 0; i < points.length; i++) {
             myBounds[i] = Double.parseDouble(points[i]);
         }
         state.setBounds(myBounds);
-        
+
         return state;
     }
 
@@ -67,8 +70,8 @@ public class GameElementStateFactory {
 
     public static GameElementState createGoal (WizardData data) {
         GameElementState goal = new GameElementState();
-        goal.addAction(data.getValueByKey(WizardDataType.ACTIONTYPE),
-                       data.getValueByKey(WizardDataType.ACTION));
+        // TODO FIX THIS STUFF TO WORK WITH ACTION WRAPPERS
+        goal.addAction(new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), data.getValueByKey(WizardDataType.ACTION)));
         return goal;
     }
 
@@ -84,7 +87,7 @@ public class GameElementStateFactory {
             System.out.println("unable to load json into animator state object");
             e.printStackTrace();
         }
-                
+
         return state;
     }
 
@@ -102,13 +105,16 @@ public class GameElementStateFactory {
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
-        addToState( (String key, String value) -> state.addAction(key, value),
-                   data, WizardType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
+        
+        // addToState( (String key, String value) -> state.addAction(key, value),
+        // data, WizardType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
 
         return state;
     }
 
-    private static void addToState (BiConsumer<String, String> cons, WizardData data, WizardType type,
+    private static void addToState (BiConsumer<String, String> cons,
+                                    WizardData data,
+                                    WizardType type,
                                     WizardDataType ... dataTypes) {
         for (WizardData wiz : data.getWizardDataByType(type)) {
             cons.accept(wiz.getValueByKey(dataTypes[0]), wiz.getValueByKey(dataTypes[1]));

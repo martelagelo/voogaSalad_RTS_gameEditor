@@ -2,8 +2,8 @@ package model.state.gameelement;
 
 import javafx.scene.Node;
 import model.state.gameelement.traits.Boundable;
-import engine.visual.Displayable;
-import engine.visual.animation.AnimatorState;
+import engine.visuals.Displayable;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 
 /**
@@ -64,6 +64,27 @@ public class DrawableGameElementState extends GameElementState implements Bounda
     public Node getNode () {
         // TODO Auto-generated method stub
         return null;
+    }
+    
+    /**
+     * Take an object's bounds and add its x and y position to the bounds to get
+     * the global object bounds
+     */
+    public double[] findGlobalBounds () {
+        double[] newBounds = myBounds.clone();
+        double width = newBounds[2]-newBounds[0];
+        double height = newBounds[5]-newBounds[3];
+        for (int i = 0; i < newBounds.length; i += 2) {
+            newBounds[i] +=
+                    attributes.getNumericalAttribute(
+                                                StateTags.X_POSITION)
+                            .doubleValue() - width/2;
+            newBounds[i + 1] +=
+                    attributes.getNumericalAttribute(
+                                                StateTags.Y_POSITION)
+                            .doubleValue() - height/2;
+        }
+        return newBounds;
     }
 
 }

@@ -1,7 +1,5 @@
 package model.state.gameelement;
 
-// import
-// game_engine.gameRepresentation.conditions.conditionsOnImmediateAttributes.ConditionOnImmediateElements;
 import java.util.Map;
 import model.state.gameelement.traits.Sighted;
 

@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
-import engine.visual.animation.AnimationTag;
+import engine.visuals.elementVisuals.animations.AnimationTag;
 
 
 /**

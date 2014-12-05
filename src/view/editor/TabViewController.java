@@ -20,6 +20,7 @@ import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
 import view.runner.GameRunnerPaneController;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 
 
 /**
@@ -73,7 +74,8 @@ public class TabViewController extends GUIContainer {
         myLevel.getGoals().forEach( (ges) -> {
             ges.getActions().forEach( (actionType, actions) -> {
                 actions.forEach( (act) -> {
-                    triggers.add(new TriggerPair(actionType, act));
+                    // TODO CLEAN THIS UP BECAUSE NOW ACTIONS NO MORE TRIGGERS
+                    triggers.add(new TriggerPair(actionType, act.getActionClassName()));
                 });
             });
         });
@@ -109,11 +111,12 @@ public class TabViewController extends GUIContainer {
                 wiz.launchForEdit(oldData);
                 Consumer<WizardData> bc =
                         (data) -> {
-                            Map<String, List<String>> actions =
+                            Map<String, List<ActionWrapper>> actions =
                                     myLevel.getGoals().get(position).getActions();
                             actions.clear();
-                            List<String> actionValue = new ArrayList<>();
-                            actionValue.add(data.getValueByKey(WizardDataType.ACTION));
+                            // TODO CLEAN THIS UP BECAUSE NOW ACTIONS NO MORE TRIGGERS
+                            List<ActionWrapper> actionValue = new ArrayList<>();
+                            actionValue.add(new ActionWrapper(data.getValueByKey(WizardDataType.ACTION), data.getValueByKey(WizardDataType.ACTION), data.getValueByKey(WizardDataType.ACTION)));
                             actions.put(data.getValueByKey(WizardDataType.ACTIONTYPE), actionValue);
                             updateLevelTriggersView();
                             wiz.closeStage();
