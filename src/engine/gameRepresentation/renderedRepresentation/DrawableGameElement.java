@@ -52,14 +52,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         myVisualizer = visualizer;
         myWidgetFactory = new AttributeDisplayerFactory();
         waypoints = new LinkedList<>();
-
-        /*
-         * TODO: if this should be removed, where would you rather put it? The state needs to
-         * be initialized somewhere and DrawableGameElement is the lowest level that both has a
-         * visual
-         * component and actually has access to its own position
-         */
-        this.initializeDisplay();
+        myVisualizer.initializeDisplay();
 
         // TODO: remove, this is for testing only
         AttributeDisplayer healthBar =
@@ -69,67 +62,28 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         // UnitSelectedDisplayer(drawableState.attributes, StateTags.IS_SELECTED, 0, 1);
         // myVisualizer.addWidget(selectionTriangle);
     }
-
     
-    // TODO: add to visualizer
-    /**
-     * Update the drawable game element and its visual appearance.
-     */
     @Override
     public void update () {
         super.update();        
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
-        //System.out.println("Updating drawable game element: " + teamColor);
         myVisualizer.update();
-        // Make sure the element's visual aspects match its underlying state
-        myVisualizer.getNode()
-                .setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
-        myVisualizer.getNode()
-                .setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
-
     }
 
-    /**
-     * Gets the node that is being displayed on the scene
-     * 
-     * @return The game element
-     */
     @Override
     public Node getNode () {
         return myVisualizer.getNode();
     }
 
-    /**
-     * Get the bound array of the object
-     * 
-     * @return the object's bounds
-     */
     public double[] getBounds () {
         return drawableState.getBounds();
     }
 
-    // TOOD: move to visualizer
     public Point2D getPosition () {
-        return new Point2D(getNode().getLayoutX(), getNode().getLayoutY());
+    	return myVisualizer.getNodeLocation();
     }
     
     public void registerAsDrawableChild(Consumer<DrawableGameElementState> function){
     	function.accept(drawableState);
-    }
-
-    // TODO: move to visualizer and give visualizer attributes
-    /**
-     * Initializes the display for each game element
-     */
-    private void initializeDisplay () {
-        myVisualizer.getNode()
-                .setLayoutX(getNumericalAttribute(StateTags.X_POSITION).doubleValue());
-        myVisualizer.getNode()
-                .setLayoutY(getNumericalAttribute(StateTags.Y_POSITION).doubleValue());
-        myVisualizer.getNode().setTranslateX(-drawableState.myAnimatorState.getViewportSize()
-                .getWidth() / 2);
-        myVisualizer.getNode().setTranslateY(-drawableState.myAnimatorState.getViewportSize()
-                .getHeight() / 2);
     }
 
     @Override
@@ -153,5 +107,4 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     	Location current = new Location(currentX, currentY);
     	return waypoints.size() == 0 ? current : waypoints.poll();
     }
-    
 }
