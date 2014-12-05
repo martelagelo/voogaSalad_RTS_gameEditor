@@ -40,7 +40,7 @@ public class DirectionGrid extends Group {
         f.setFill(Paint.valueOf(SELECTED_COLOR));  
         // I realize this is horrible code, but it is the simplest
         // most efficient way of directly mapping x,y coor to animation tags        
-        if (row == 0 && col == 0) directions.add(AnimationTag.HERE);
+        if (row == 1 && col == 1) directions.add(AnimationTag.HERE);
         if (row > 1) directions.add(AnimationTag.FORWARD);
         else if (row < 1) directions.add(AnimationTag.BACKWARD);
         

@@ -4,10 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -58,14 +57,14 @@ public class AnimationWizard extends Wizard {
     private CheckBox animationRepeat;
     @FXML
     private TextField slownessMultiplier;
-    
+
     private ImageView imageView;
     private AnimationGrid animationGrid;
     private DirectionGrid directionGrid;
     private String imagePath; 
     private Double frameWidth;
-    private Double frameHeight;   
-    
+    private Double frameHeight;
+
     /**
      * Fired when the user uploads a new picture
      * 
@@ -81,7 +80,8 @@ public class AnimationWizard extends Wizard {
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
             animationGrid =
-                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.doubleValue(),
+                    new AnimationGrid(image.getWidth(), image.getHeight(),
+                                      frameWidth.doubleValue(),
                                       frameHeight.doubleValue());
             spritesheet.getChildren().add(animationGrid);
         }
@@ -103,43 +103,28 @@ public class AnimationWizard extends Wizard {
         animationAction.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())
                 .stream().filter(tag -> tag.getType().equals(AnimationType.ACTION))
                 .collect(Collectors.toList())));
-        
-        startFrame.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed (ObservableValue<? extends String> observable,
-                                 String oldValue,
-                                 String newValue) {                
-                if (Pattern.matches(NUM_REGEX, newValue)) {
-                    int start = Integer.parseInt(newValue);
-                    try {
-                        animationGrid.setStart(start);
-                    }
-                    catch (IndexOutOfBoundsException e) {
-                        displayErrorMessage(e.getMessage());
-                    }
-                }
-            }
+                
+        startFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
+            updateAnimationGrid( (frame) -> animationGrid.setStart(frame), newValue);
         });
-        
-        stopFrame.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed (ObservableValue<? extends String> observable,
-                                 String oldValue,
-                                 String newValue) {                
-                if (Pattern.matches(NUM_REGEX, newValue)) {
-                    int stop = Integer.parseInt(newValue);
-                    try {
-                        animationGrid.setStop(stop);
-                    }
-                    catch (IndexOutOfBoundsException e) {
-                        displayErrorMessage(e.getMessage());
-                    }
-                }
-            }
+        stopFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
+            updateAnimationGrid( (frame) -> animationGrid.setStop(frame), newValue);
         });
         gridPrompt.setFill(Paint.valueOf("white"));
         directionGrid = new DirectionGrid(50, 50);
         animationDirection.getChildren().add(directionGrid);
+    }
+
+    private void updateAnimationGrid (Consumer<Integer> updateCons, String newValue) {
+        if (Pattern.matches(NUM_REGEX, newValue)) {
+            int intValue = Integer.parseInt(newValue);
+            try {
+                updateCons.accept(intValue);
+            }
+            catch (IndexOutOfBoundsException e) {
+                displayErrorMessage(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -160,12 +145,12 @@ public class AnimationWizard extends Wizard {
         catch (LanguageException e) {
             displayErrorMessage(e.getMessage());
         }
-    }    
+    }
 
     @Override
     public boolean checkCanSave () {
         return !startFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, startFrame.getText()) && 
+               Pattern.matches(NUM_REGEX, startFrame.getText()) &&
                !stopFrame.getText().isEmpty() &&
                Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
                animationAction.getSelectionModel().getSelectedItem() != null &&
@@ -195,7 +180,22 @@ public class AnimationWizard extends Wizard {
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        // TODO implement this!
+        startFrame.setText(oldValues.getValueByKey(WizardDataType.START_FRAME));
+        stopFrame.setText(oldValues.getValueByKey(WizardDataType.STOP_FRAME));
+        animationRepeat.setSelected(Boolean.parseBoolean(oldValues.getValueByKey(WizardDataType.ANIMATION_REPEAT)));
+        slownessMultiplier.setText(oldValues.getValueByKey(WizardDataType.SLOWNESS_MULTIPLIER));
+        List<String> tags = Arrays.asList(oldValues.getValueByKey(WizardDataType.ANIMATION_TAG).split(","));
+        selectCorrectFrame(tags);
+    }
+
+    private void selectCorrectFrame (List<String> tags) {
+        int row = 1;
+        int col = 1;
+        if (tags.contains(AnimationTag.FORWARD.name())) row = 2;
+        else if (tags.contains(AnimationTag.BACKWARD.name())) row = 0;
+        if (tags.contains(AnimationTag.LEFT.name())) col = 0;
+        else if (tags.contains(AnimationTag.RIGHT.name())) col = 2;        
+        directionGrid.selectFrame(row, col);
     }
 
     @Override

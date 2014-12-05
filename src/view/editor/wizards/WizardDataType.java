@@ -15,6 +15,7 @@ public enum WizardDataType {
     // actions: this will change
     ACTIONTYPE,
     ACTION,
+    ACTION_PARAMETERS,
     
     CAMPAIGN_NAME,
     // animation specifics

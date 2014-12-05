@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import util.JSONable;
 
+
 /**
  * The most basic flavor of GameElement - this type of element has no on-screen
  * representation. Examples include triggers and goals. States are essentially
@@ -25,12 +26,11 @@ public class GameElementState implements JSONable, Serializable {
     /**
      * The actions for a given game element state will be stored in a map of
      * Strings that represent the type of action e.g. collision, internal, etc.
-     * to a list of strings vscript of the actions to be executed. Conditions
-     * were removed from this representation as actions can easily check for
-     * their own conditions using an && sign. i.e. condition&&action will only
-     * evaluate the action if the condition is true.
+     * to a list of Action wrappers of vscript commands of the actions to be executed. Conditions
+     * were removed from this representation as actions internally check for
+     * their own conditions.
      */
-    protected Map<String, List<String>> myActions;
+    protected Map<String, List<ActionWrapper>> myActions;
     /**
      * It was decided that all attributes for a game element would be saved in
      * sets of attributes instead of in local instance variables. Although this
@@ -48,7 +48,7 @@ public class GameElementState implements JSONable, Serializable {
      */
     public GameElementState () {
         attributes = new AttributeContainer();
-        myActions = new HashMap<String, List<String>>();
+        myActions = new HashMap<String, List<ActionWrapper>>();
     }
 
     /**
@@ -65,28 +65,31 @@ public class GameElementState implements JSONable, Serializable {
     public String getType () {
         return attributes.getTextualAttribute(StateTags.TYPE);
     }
-    
+
     /**
      * Add a string condition-action pair to the game element state
      * 
      * @param actionType
-     *            the type of the action being added
+     *        the type of the action being added
      * @param actionString
-     *            a Vscript string representation of the action
+     *        a Vscript string representation of the action
      */
-    public void addAction (String actionType, String actionString) {
-        if (!myActions.containsKey(actionType)) {
-            myActions.put(actionType, new ArrayList<>());
+    public void addAction (ActionWrapper action) {
+        if (!myActions.containsKey(action.getActionType())) {
+            myActions.put(action.getActionType(), new ArrayList<>());
         }
-        myActions.get(actionType).add(actionString);
+        myActions.get(action.getActionType()).add(action);
     }
 
     /**
-     * Grabs all actions for use in evaluatable factory.
+     * Grabs all actions for use in evaluatable factory. Exposing the collection is in this case
+     * necessary for use by the factory as the element states are essentially data wrappers that are
+     * only used in the creation of objects by the factory
      * 
      * @return
      */
-    public Map<String, List<String>> getActions () {
+    public Map<String, List<ActionWrapper>> getActions () {
         return myActions;
     }
+
 }

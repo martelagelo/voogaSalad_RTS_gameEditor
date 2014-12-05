@@ -6,8 +6,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
@@ -64,19 +62,14 @@ public class ElementAccordionController extends GUIContainer {
 
     @Override
     public void init () {
-        elementAccordion.expandedPaneProperty().addListener(new ChangeListener<TitledPane>() {
-            @Override
-            public void changed (ObservableValue<? extends TitledPane> property,
-                                 final TitledPane oldPane,
-                                 final TitledPane newPane) {
-                if (oldPane != null) oldPane.setCollapsible(true);
-                if (newPane != null) Platform.runLater(new Runnable() {
-                    @Override
-                    public void run () {
-                        newPane.setCollapsible(false);
-                    }
-                });
-            }
+        elementAccordion.expandedPaneProperty().addListener((property, oldPane, newPane) -> {
+            if (oldPane != null) oldPane.setCollapsible(true);
+            if (newPane != null) Platform.runLater(new Runnable() {
+                @Override
+                public void run () {
+                    newPane.setCollapsible(false);
+                }
+            });
         });
         try {
             terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()

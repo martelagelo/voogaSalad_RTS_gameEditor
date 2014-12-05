@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
+import model.state.gameelement.ActionWrapper;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -14,6 +15,7 @@ import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardType;
+import engine.actions.enumerations.ActionOptions;
 import engine.visual.animation.AnimationSequence;
 import engine.visual.animation.AnimationTag;
 import engine.visual.animation.AnimatorState;
@@ -67,8 +69,11 @@ public class GameElementStateFactory {
 
     public static GameElementState createGoal (WizardData data) {
         GameElementState goal = new GameElementState();
-        goal.addAction(data.getValueByKey(WizardDataType.ACTIONTYPE),
-                       data.getValueByKey(WizardDataType.ACTION));
+        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
+        ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+                                                  params);
+        goal.addAction(wrapper);
         return goal;
     }
 
@@ -101,9 +106,15 @@ public class GameElementStateFactory {
                    state.attributes.setNumericalAttribute(key, Double.parseDouble(value)),
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
-
-        addToState( (String key, String value) -> state.addAction(key, value),
-                   data, WizardType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
+        
+        //TODO: clean this up into the consumer
+        for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {
+            String[] params = wiz.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
+            ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                           ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+                                           params);
+            state.addAction(wrapper);            
+        }        
 
         return state;
     }
