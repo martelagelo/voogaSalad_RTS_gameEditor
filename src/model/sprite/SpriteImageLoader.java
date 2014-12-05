@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.HashMap;
 import java.util.Map;
+
 import javafx.scene.image.Image;
+
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+
 import util.GameSaveLoadMediator;
 import util.SaveLoadUtility;
-
 
 /**
  * 
@@ -25,16 +27,14 @@ public class SpriteImageLoader {
     public static final String DEFAULT_COLOR = "BLUE";
 
     public static Map<String, Image> loadTeamColorMasks (String imageTag) throws Exception {
-        // TODO: Loading every single resources takes far too long leading to Out of Memory --
-        // figure out an alternative way
+        // TODO: Loading every single resources takes far too long leading to
+        // Out of Memory -- figure out an alternative way
         if (imageTag.equals("resources/gameelementresources/units/spritesheets/archer.png")) { // TODO:
                                                                                                // REMOVE
             Map<String, Image> colorMasks = new HashMap<>();
             File directory = new File(getColorMasksLocation(imageTag));
-            FileFilter fileFilter =
-                    new WildcardFileFilter(getImageName(imageTag)
-                                           + GameSaveLoadMediator.WILDCARD +
-                                           GameSaveLoadMediator.PNG_EXT);
+            FileFilter fileFilter = new WildcardFileFilter(getImageName(imageTag)
+                    + GameSaveLoadMediator.WILDCARD + GameSaveLoadMediator.PNG_EXT);
             // TODO: need to determine how to get the color from the file
             File[] files = directory.listFiles(fileFilter);
             if (files != null) {
@@ -46,7 +46,7 @@ public class SpriteImageLoader {
             return colorMasks;
         } // REMOVE
         return null;
-        //throw new Exception("Failed to load team color masks");
+
     }
 
     public static Image loadSpritesheet (String imageTag) throws Exception {

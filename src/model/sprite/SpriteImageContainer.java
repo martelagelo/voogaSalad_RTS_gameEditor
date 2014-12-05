@@ -1,8 +1,8 @@
 package model.sprite;
 
 import java.util.Map;
-import javafx.scene.image.Image;
 
+import javafx.scene.image.Image;
 
 /**
  * Passive data structure that wraps an animation spritesheet with team color
@@ -26,6 +26,7 @@ public class SpriteImageContainer {
     }
 
     private void locateSpritesheet (String imageTag) throws Exception {
+
         mySpritesheet = SpriteImageLoader.loadSpritesheet(imageTag);
     }
 
@@ -38,7 +39,8 @@ public class SpriteImageContainer {
     }
 
     public Image getTeamColorSheet (String teamColor) {
-        return myTeamColorMasks.getOrDefault(teamColor, myTeamColorMasks.get("BLUE"));
+        return myTeamColorMasks.getOrDefault(teamColor,
+                myTeamColorMasks.get(SpriteImageLoader.DEFAULT_COLOR));
 
     }
 

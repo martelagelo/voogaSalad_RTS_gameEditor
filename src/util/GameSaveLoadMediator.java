@@ -2,7 +2,9 @@ package util;
 
 import java.io.File;
 import java.io.IOException;
+
 import javafx.scene.image.Image;
+import model.exceptions.SaveLoadException;
 import model.state.GameState;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -47,7 +49,7 @@ public class GameSaveLoadMediator {
      * @return
      * @throws Exception
      */
-    public String saveGame (JSONable gameState, String gameName) throws Exception {
+    public String saveGame (JSONable gameState, String gameName) throws SaveLoadException {
         return SaveLoadUtility.save(gameState, getGameLocation(gameName));
 
     }
@@ -58,7 +60,7 @@ public class GameSaveLoadMediator {
      * @return
      * @throws IOException
      */
-    public String saveImage (WizardData data) throws IOException {
+    public String saveImage (WizardData data) throws SaveLoadException {
         // TODO: Remove this hardcoded save location
         String saveLocation = "testSpritesheet";
 
