@@ -1,12 +1,15 @@
 package engine.gameRepresentation.renderedRepresentation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.MapGrid;
+import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
@@ -159,6 +162,39 @@ public class Level {
             myUnitsGroup.getChildren().add(newElement.getNode());
         }
         newElement.registerAsSelectableChild(s -> myState.addUnit(s));
+    }
+    
+    /**
+     * Evaluates all the goals of the level and determines whether the level needs to end
+     * 
+     * @return positive if player has won, negative if player has lost, 0 else. If both win
+     *         and lose are set, will return negative (losing overrides winning)
+     */
+    public int evaluateGoals () {
+        // TODO: implement this in actions
+        int won = 0;
+        int lost = 0;
+        for (GameElement goal : getGoals()) {
+            Iterator<Evaluatable<?>> goals = goal.getActionsOfType("Goal");
+            while(goals.hasNext()){
+                goals.next().evaluate();
+            }
+            // iterate through the goals
+            // evaluating all of these goals will set the internal values of "won" or "lost"
+            if (goal.getNumericalAttribute("Won").doubleValue() == 1) won = 1;
+            if (goal.getNumericalAttribute("Lost").doubleValue() == 1) lost = 1;
+        }
+        // TODO: temporary, replace with the iterator method above
+        won =  this.myUnits.stream()
+                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() != 1)
+                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
+        
+        lost =  this.myUnits.stream()
+                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() == 1)
+                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
+
+
+        return won - 2 * lost;
     }
 
 }

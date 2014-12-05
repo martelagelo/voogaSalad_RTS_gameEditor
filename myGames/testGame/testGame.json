@@ -2590,7 +2590,20 @@
               }
             }
           ],
-          "myGoals": [],
+          "myGoals": [
+            {
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 0,
+                    "myName": "GoalSatisfied"
+                  }
+                ],
+                "myTextualAttributes": []
+              }
+            }
+          ],
           "myName": "testLevel",
           "myDescription": "",
           "myHashingPrime": 31
