@@ -80,18 +80,13 @@ public class ShittyMain extends Application {
 //            levelState.addTerrain(s);
 //        }
         levelState.addUnit(archerState);
-        levelState.addUnit(archerState1);
-        levelState.addUnit(archerState2);
-        levelState.addUnit(archerState3);
-<<<<<<< HEAD
+       // levelState.addUnit(archerState1);
+       // levelState.addUnit(archerState2);
+       // levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
-        
-=======
-        
         levelState.addGoal(createGoal());
-
->>>>>>> cleanIntegratedEngine
+        
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
 

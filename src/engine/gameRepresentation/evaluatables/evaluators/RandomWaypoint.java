@@ -1,7 +1,9 @@
 package engine.gameRepresentation.evaluatables.evaluators;
 
 import model.state.gameelement.StateTags;
+import engine.computers.pathingComputers.Location;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 
 
@@ -24,15 +26,15 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     public Boolean evaluate (GameElement element1, GameElement element2) {
-        double playerX = element1.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-        double playerY = element1.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+    	DrawableGameElement element = (DrawableGameElement) element1; // only drawableElements can move
+        double playerX = element.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+        double playerY = element.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
         // Choose a random new waypoint. The 0.5 was not made into a constant because it is used to
         // simply get a random distribution centered on 0 and is not going to change
         double waypointX = (Math.random() - 0.5) * RANDOM_AMOUNT + playerX;
         double waypointY = (Math.random() - 0.5) * RANDOM_AMOUNT + playerY;
 
-        element1.setNumericalAttribute(StateTags.X_TEMP_HEADING, waypointX);
-        element1.setNumericalAttribute(StateTags.Y_TEMP_HEADING, waypointY);
+        // TODO: zach fix
 
         return true;
     }

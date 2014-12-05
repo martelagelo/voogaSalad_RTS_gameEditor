@@ -1,6 +1,7 @@
 package engine.gameRepresentation.evaluatables.evaluators;
 
 import model.state.gameelement.StateTags;
+import engine.computers.pathingComputers.Location;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -29,9 +30,10 @@ public class HeadingUpdate<A, B> extends Evaluator<A, B, Boolean> {
         double tempYGoal = element.getNumericalAttribute(StateTags.Y_GOAL_POSITION).doubleValue();
         double speed = element.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
         // If we're at our temp goal, set our goal to our main goal
-        if (Math.abs(xPos - tempXGoal) < speed && Math.abs(yPos - tempYGoal) < speed) {
-        	element.setNumericalAttribute(StateTags.X_GOAL_POSITION,element.getNextWaypoint().myX);
-        	element.setNumericalAttribute(StateTags.Y_GOAL_POSITION,element.getNextWaypoint().myY);
+        if (Math.abs(xPos - tempXGoal) <= speed && Math.abs(yPos - tempYGoal) <= speed) {
+        	Location waypoint = element.getNextWaypoint();
+        	element.setNumericalAttribute(StateTags.X_GOAL_POSITION,waypoint.myX);
+        	element.setNumericalAttribute(StateTags.Y_GOAL_POSITION,waypoint.myY);
         }
         return true;
     }

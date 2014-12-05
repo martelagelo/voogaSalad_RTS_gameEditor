@@ -54,7 +54,7 @@ public class AIManager {
                             .doubleValue())).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
-                    e.setHeading(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
+                    e.addWaypoint(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
                                  r.nextDouble() * ScrollablePane.FIELD_HEIGHT);
                 }
 

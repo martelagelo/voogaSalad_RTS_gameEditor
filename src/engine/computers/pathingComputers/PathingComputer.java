@@ -1,5 +1,6 @@
 package engine.computers.pathingComputers;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -107,7 +108,8 @@ public class PathingComputer {
             Location currentLocation = frontierLocations.poll();
             if(goals.contains(currentLocation)){
                 List<Location> path = reconstructPath(currentLocation);
-                path.add(to);
+                path.add(0, to);
+                Collections.reverse(path);
                 return path;
             }
             else {
