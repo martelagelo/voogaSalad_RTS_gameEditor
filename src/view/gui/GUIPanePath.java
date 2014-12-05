@@ -26,7 +26,7 @@ public enum GUIPanePath {
     SELECTABLE_GAME_ELEMENT_WIZARD("/view/editor/wizards/guipanes/SelectableGameElementWizard.fxml"),
     DRAWABLE_GAME_ELEMENT_WIZARD("/view/editor/wizards/guipanes/DrawableGameElementWizard.fxml"),
     STRING_ATTRIBUTE_WIZARD("/view/editor/wizards/guipanes/StringAttributeWizard.fxml"),
-    TRIGGER_WIZARD("/view/editor/wizards/guipanes/TriggerWizard.fxml"),
+    ACTION_WIZARD("/view/editor/wizards/guipanes/ActionWizard.fxml"),
     POSITION_WIZARD("/view/editor/wizards/guipanes/PositionWizard.fxml"),
     ANIMATION_WIZARD("/view/editor/wizards/guipanes/AnimationWizard.fxml"),
     BOUNDS_WIZARD("/view/editor/wizards/guipanes/BoundsWizard.fxml"),

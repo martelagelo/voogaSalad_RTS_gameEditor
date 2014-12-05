@@ -68,6 +68,7 @@ public class SplashScreen extends GUIScreen {
         // TODO: when saving a game, should specify its name to be used in splash screen rather than
         // using file folder name
 
+
         // TODO: we need a better way of getting the current list of games
         // probably from the model or something
 
@@ -79,6 +80,7 @@ public class SplashScreen extends GUIScreen {
         // .map(f -> f.getName())
         // .collect(Collectors.toList());
         // gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
+
 
         setUpButtons();
         drawTitle();

@@ -4,9 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -49,13 +48,13 @@ public class AnimationWizard extends Wizard {
     private CheckBox animationRepeat;
     @FXML
     private TextField slownessMultiplier;
-    
+
     private ImageView imageView;
     private AnimationGrid animationGrid;
-    private String imagePath; 
+    private String imagePath;
     private Double frameWidth;
-    private Double frameHeight;   
-    
+    private Double frameHeight;
+
     /**
      * Fired when the user uploads a new picture
      * 
@@ -71,7 +70,8 @@ public class AnimationWizard extends Wizard {
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
             animationGrid =
-                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.doubleValue(),
+                    new AnimationGrid(image.getWidth(), image.getHeight(),
+                                      frameWidth.doubleValue(),
                                       frameHeight.doubleValue());
             spritesheet.getChildren().add(animationGrid);
         }
@@ -91,39 +91,24 @@ public class AnimationWizard extends Wizard {
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
         animationTag.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())));
-        startFrame.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed (ObservableValue<? extends String> observable,
-                                 String oldValue,
-                                 String newValue) {                
-                if (Pattern.matches(NUM_REGEX, newValue)) {
-                    int start = Integer.parseInt(newValue);
-                    try {
-                        animationGrid.setStart(start);
-                    }
-                    catch (IndexOutOfBoundsException e) {
-                        displayErrorMessage(e.getMessage());
-                    }
-                }
-            }
+        startFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
+            updateAnimationGrid( (frame) -> animationGrid.setStart(frame), newValue);
         });
-        
-        stopFrame.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed (ObservableValue<? extends String> observable,
-                                 String oldValue,
-                                 String newValue) {                
-                if (Pattern.matches(NUM_REGEX, newValue)) {
-                    int stop = Integer.parseInt(newValue);
-                    try {
-                        animationGrid.setStop(stop);
-                    }
-                    catch (IndexOutOfBoundsException e) {
-                        displayErrorMessage(e.getMessage());
-                    }
-                }
-            }
+        stopFrame.textProperty().addListener( (observable, oldValue, newValue) -> {
+            updateAnimationGrid( (frame) -> animationGrid.setStop(frame), newValue);
         });
+    }
+
+    private void updateAnimationGrid (Consumer<Integer> updateCons, String newValue) {
+        if (Pattern.matches(NUM_REGEX, newValue)) {
+            int intValue = Integer.parseInt(newValue);
+            try {
+                updateCons.accept(intValue);
+            }
+            catch (IndexOutOfBoundsException e) {
+                displayErrorMessage(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -142,12 +127,12 @@ public class AnimationWizard extends Wizard {
         catch (LanguageException e) {
             displayErrorMessage(e.getMessage());
         }
-    }    
+    }
 
     @Override
     public boolean checkCanSave () {
         return !startFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, startFrame.getText()) && 
+               Pattern.matches(NUM_REGEX, startFrame.getText()) &&
                !stopFrame.getText().isEmpty() &&
                Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
                animationTag.getSelectionModel().getSelectedItem() != null &&
@@ -156,9 +141,10 @@ public class AnimationWizard extends Wizard {
     }
 
     @Override
-    public void updateData () {       
+    public void updateData () {
         setWizardType(WizardType.ANIMATION_SEQUENCE);
-        addToData(WizardDataType.ANIMATION_TAG, animationTag.getSelectionModel().getSelectedItem().name());
+        addToData(WizardDataType.ANIMATION_TAG, animationTag.getSelectionModel().getSelectedItem()
+                .name());
         addToData(WizardDataType.START_FRAME, startFrame.getText());
         addToData(WizardDataType.STOP_FRAME, stopFrame.getText());
         addToData(WizardDataType.ANIMATION_REPEAT, Boolean.toString(animationRepeat.isSelected()));
