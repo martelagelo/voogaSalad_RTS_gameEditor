@@ -134,8 +134,8 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_HEADING, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_HEADING, y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.HEALTH, 500);
         archerState.attributes.setNumericalAttribute(StateTags.ATTACK, 75);
         archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);

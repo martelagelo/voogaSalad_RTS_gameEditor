@@ -83,10 +83,6 @@
         "myName": "ReloadTime"
       },
       {
-        "myData": 400.0,
-        "myName": "xTempHeading"
-      },
-      {
         "myData": 75,
         "myName": "attack"
       },
@@ -107,8 +103,8 @@
         "myName": "yHeading"
       },
       {
-        "myData": 300.0,
-        "myName": "yTempHeading"
+        "myData": 400.0,
+        "myName": "xTempPosition"
       },
       {
         "myData": 500,
@@ -117,6 +113,10 @@
       {
         "myData": 2,
         "myName": "movementSpeed"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yTempGoalPosition"
       }
     ],
     "myTextualAttributes": [

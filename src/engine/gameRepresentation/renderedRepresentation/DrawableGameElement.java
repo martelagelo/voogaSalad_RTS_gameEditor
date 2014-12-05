@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
-
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import model.state.gameelement.DrawableGameElementState;
@@ -30,14 +29,13 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
  */
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
 
-	// TODO: remove this factory ... 
-	private AttributeDisplayerFactory myWidgetFactory;
-	
+    // TODO: remove this factory ...
+    private AttributeDisplayerFactory myWidgetFactory;
+
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
     private Queue<Location> waypoints;
     private AttributeDisplayerState myAttributeDisplayerState;
-
 
     /**
      * Create a drawable game element from the given state
@@ -61,13 +59,14 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         AttributeDisplayer healthBar =
                 new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
         myVisualizer.addWidget(healthBar);
-        
-        myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
+
+        myAttributeDisplayerState =
+                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
     }
-    
+
     @Override
     public void update () {
-        super.update();        
+        super.update();
         myVisualizer.update();
     }
 
@@ -81,32 +80,32 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     }
 
     public Point2D getPosition () {
-    	return myVisualizer.getNodeLocation();
+        return myVisualizer.getNodeLocation();
     }
-    
-    public void registerAsDrawableChild(Consumer<DrawableGameElementState> function){
-    	function.accept(drawableState);
+
+    public void registerAsDrawableChild (Consumer<DrawableGameElementState> function) {
+        function.accept(drawableState);
     }
 
     @Override
     public double[] findGlobalBounds () {
         return drawableState.findGlobalBounds();
     }
-    
+
     public void setWaypoints (List<Location> waypointsToAdd) {
-    	waypoints.clear();
-    	waypoints.addAll(waypointsToAdd);
+        waypoints.clear();
+        waypoints.addAll(waypointsToAdd);
     }
-    
-	public void addWaypoint(double x, double y) {
-		Location newWaypoint = new Location(x,y);
-		waypoints.add(newWaypoint);
-	}
-    
-    public Location getNextWaypoint(){
-    	double currentX = getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-    	double currentY = getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-    	Location current = new Location(currentX, currentY);
-    	return waypoints.size() == 0 ? current : waypoints.poll();
+
+    public void addWaypoint (double x, double y) {
+        Location newWaypoint = new Location(x, y);
+        waypoints.add(newWaypoint);
+    }
+
+    public Location getNextWaypoint () {
+        double currentX = getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+        double currentY = getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+        Location current = new Location(currentX, currentY);
+        return waypoints.size() == 0 ? current : waypoints.poll();
     }
 }

@@ -613,10 +613,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 200.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -638,7 +634,7 @@
                   },
                   {
                     "myData": 200.0,
-                    "myName": "yTempHeading"
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 500,
@@ -647,6 +643,10 @@
                   {
                     "myData": 2,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1261,10 +1261,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 200.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -1285,8 +1281,8 @@
                     "myName": "yHeading"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "yTempHeading"
+                    "myData": 200.0,
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 500,
@@ -1295,6 +1291,10 @@
                   {
                     "myData": 2,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1905,10 +1905,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 75,
                     "myName": "attack"
                   },
@@ -1929,8 +1925,8 @@
                     "myName": "yHeading"
                   },
                   {
-                    "myData": 100.0,
-                    "myName": "yTempHeading"
+                    "myData": 400.0,
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 100,
@@ -1939,6 +1935,10 @@
                   {
                     "myData": 0,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yTempGoalPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -2556,10 +2556,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xTempHeading"
-                  },
-                  {
                     "myData": 300.0,
                     "myName": "yPosition"
                   },
@@ -2570,6 +2566,10 @@
                   {
                     "myData": 300.0,
                     "myName": "yHeading"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xTempPosition"
                   },
                   {
                     "myData": 500,
@@ -2584,16 +2584,16 @@
                     "myName": "XSpawnOffset"
                   },
                   {
+                    "myData": 300.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
                     "myData": 1,
                     "myName": "teamID"
-                  },
-                  {
-                    "myData": 300.0,
-                    "myName": "yTempHeading"
                   },
                   {
                     "myData": 500,

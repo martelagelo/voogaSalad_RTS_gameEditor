@@ -73,7 +73,6 @@ public class SelectableGameElement extends DrawableGameElement {
 
     public void select () {
         setNumericalAttribute(StateTags.IS_SELECTED, 1);
-        System.out.println("YEEEEEEEEEEEEEEEEEP");
     }
 
     public void deselect () {
@@ -84,7 +83,7 @@ public class SelectableGameElement extends DrawableGameElement {
     public void update () {
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
-        //System.out.println("Updating selectable game element: " + teamColor);
+        // System.out.println("Updating selectable game element: " + teamColor);
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
@@ -128,10 +127,9 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                                             // the
                                                                                             // list
     }
-    
-    
-    public void registerAsSelectableChild(Consumer<SelectableGameElementState> function){
-    	function.accept(selectableState);
+
+    public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
+        function.accept(selectableState);
     }
 
 }
