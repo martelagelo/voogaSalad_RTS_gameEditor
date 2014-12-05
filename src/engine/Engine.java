@@ -10,7 +10,7 @@ import model.state.CampaignState;
 import model.state.LevelState;
 import org.json.JSONException;
 import application.ShittyMain;
-import engine.UI.AIManager;
+import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
 import engine.elementFactories.GameElementFactory;
@@ -45,14 +45,14 @@ public class Engine extends Observable implements Observer {
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
     private RunnerInputManager myInputManager;
-    private AIManager myAiManager;
+    private ParticipantManager myParticipantManager;
 
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
     private ActionFactory myEvaluatableFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private Participant myUser;
+    private HumanParticipant myUser;
 
     public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
@@ -94,14 +94,15 @@ public class Engine extends Observable implements Observer {
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
 
-        myAiManager = new AIManager(myElementManager);
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
         
         myGameLoop =
                 new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
-                             myElementManager, myAiManager);
+                             myElementManager, myParticipantManager);
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
+        myVisualManager.attachParticipantManager(myParticipantManager);
     }
 
     public void play () {
