@@ -19,8 +19,8 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
     private final static double RANDOM_AMOUNT = 100;
 
     public RandomWaypoint (String id,
-                                    Evaluatable<A> parameter1,
-                                    Evaluatable<B> parameter2) {
+                           Evaluatable<A> parameter1,
+                           Evaluatable<B> parameter2) {
         super(Boolean.class, id, "RandomWaypoint", parameter1, parameter2);
     }
 
@@ -36,6 +36,13 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
 
         // TODO: zach fix
 
+//        // If we're currently moving somewhere
+//        if (Math.abs(playerX - xHeading) > playerSpeed ||
+//            Math.abs(playerY - yHeading) > playerSpeed) {
+//            element1.setNumericalAttribute(StateTags.X_TEMP_HEADING, waypointX);
+//            element1.setNumericalAttribute(StateTags.Y_TEMP_HEADING, waypointY);
+//        }
         return true;
+
     }
 }

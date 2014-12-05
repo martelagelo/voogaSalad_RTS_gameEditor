@@ -5,6 +5,7 @@ import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.actions.ActionFactory;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
@@ -102,7 +103,6 @@ public class GameElementFactory {
                     action = myActionFactory.createAction(actionWrapper);
                 }
                 catch (Exception e) {
-                    //System.out.println("Error in action creation");
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }

@@ -14,7 +14,7 @@
       {
         "myActionName": "ObjectConditionAction",
         "myParameters": [
-          "Collision",
+          "NotCollision",
           "RandomWaypoint"
         ],
         "myActionType": "collision"
@@ -91,7 +91,7 @@
         "myName": "attack"
       },
       {
-        "myData": 3,
+        "myData": 1,
         "myName": "teamID"
       },
       {
@@ -125,5 +125,6 @@
         "myName": "currentAction"
       }
     ]
-  }
+  },
+  "AttributeDisplayerStates": []
 }

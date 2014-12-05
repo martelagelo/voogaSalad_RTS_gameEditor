@@ -44,7 +44,12 @@ public enum ActionOptions {
                                ActionParameters.NUMBER,
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
-                               ActionParameters.NUMBER);
+                               ActionParameters.NUMBER),
+    CREATE_OBJECT_ACTION(
+                         "Create Object",
+                         "CreateObjectAction",
+                         "Create a # at my spawn location.",
+                         ActionParameters.STRING);
 
     private String myClassName;
     private String myDisplayName;

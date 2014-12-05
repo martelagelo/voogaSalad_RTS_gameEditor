@@ -93,13 +93,14 @@ public class GameLoop {
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
+        List<SelectableGameElement> elementsToRemove = new ArrayList<>();
         while (iter.hasNext()) {
             SelectableGameElement selectableElement = iter.next();
             if (selectableElement.getNumericalAttribute(StateTags.IS_DEAD).doubleValue() == 1) {
-                myCurrentLevel.removeElement(selectableElement.getNode());
-                iter.remove();
+                elementsToRemove.add(selectableElement);
             }
         }
+        elementsToRemove.forEach(element -> myCurrentLevel.removeElement(element));
 
         // Then populate the list of selectable elements for each object
         for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
@@ -111,13 +112,15 @@ public class GameLoop {
             }
         }
         // Then update each object
-        for (SelectableGameElement selectableElement : myCurrentLevel.getUnits()) {
+        iter = myCurrentLevel.getUnits().iterator();
+        while (iter.hasNext()) {
+            SelectableGameElement selectableElement = iter.next();
             selectableElement.update();
         }
 
         myVisualManager.update(myCurrentLevel.getUnits());
         myAiManager.update(myCurrentLevel.getUnits());
-        
+
         int levelEndState = myCurrentLevel.evaluateGoals();
     }
 

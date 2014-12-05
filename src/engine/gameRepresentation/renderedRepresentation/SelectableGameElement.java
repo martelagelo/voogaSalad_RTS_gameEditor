@@ -80,14 +80,11 @@ public class SelectableGameElement extends DrawableGameElement {
         setNumericalAttribute(StateTags.IS_SELECTED, 0);
     }
 
-    long timerVal = 0;
-
     @Override
     public void update () {
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         //System.out.println("Updating selectable game element: " + teamColor);
-        updateTimers();
         updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();

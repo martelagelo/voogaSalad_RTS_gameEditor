@@ -13,6 +13,7 @@ import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
 import engine.computers.pathingComputers.Location;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerFactory;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.Visualizer;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
@@ -35,6 +36,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
     private Queue<Location> waypoints;
+    private AttributeDisplayerState myAttributeDisplayerState;
+
 
     /**
      * Create a drawable game element from the given state
@@ -58,9 +61,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         AttributeDisplayer healthBar =
                 new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
         myVisualizer.addWidget(healthBar);
-        // AttributeDisplayer selectionTriangle = new
-        // UnitSelectedDisplayer(drawableState.attributes, StateTags.IS_SELECTED, 0, 1);
-        // myVisualizer.addWidget(selectionTriangle);
+        
+        myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
     }
     
     @Override

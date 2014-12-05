@@ -157,6 +157,7 @@ public class GameElement {
     public void update () {
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         //System.out.println("Updating game element: " + teamColor);
+        updateTimers();
         updateSelfDueToInternalFactors();
     }
 
@@ -236,6 +237,8 @@ public class GameElement {
     }
 
 	public void setPosition(double x, double y) {
+        setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
+        setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
         setNumericalAttribute(StateTags.X_POSITION, x);
         setNumericalAttribute(StateTags.Y_POSITION, y);
 	}

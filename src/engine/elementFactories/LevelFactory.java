@@ -81,7 +81,8 @@ public class LevelFactory {
     private Group generateBackGroundGroup (List<DrawableGameElement> terrain,
                                            List<SelectableGameElement> units) {
         Group backgroundGroup = new Group();
-        units.stream().filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0)
+        units.stream()
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> backgroundGroup.getChildren().add(n));
         terrain.stream().map(t -> t.getNode()).collect(Collectors.toList())
@@ -91,7 +92,8 @@ public class LevelFactory {
 
     private Group generateUnitsGroup (List<SelectableGameElement> units) {
         Group unitsGroup = new Group();
-        units.stream().filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() > 0)
+        units.stream()
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() > 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> unitsGroup.getChildren().add(n));
         return unitsGroup;

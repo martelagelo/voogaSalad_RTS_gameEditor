@@ -43,6 +43,7 @@ public class DrawableGameElementState extends GameElementState implements Bounda
 
         attributes.setNumericalAttribute(StateTags.X_POSITION, xPosition);
         attributes.setNumericalAttribute(StateTags.Y_POSITION, yPosition);
+        
     }
 
     @Override
