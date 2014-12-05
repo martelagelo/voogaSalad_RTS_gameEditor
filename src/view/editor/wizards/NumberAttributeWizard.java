@@ -23,6 +23,6 @@ public class NumberAttributeWizard extends AttributeWizard {
     public void updateData () {
         setWizardType(WizardType.NUMBER_ATTRIBUTE);
         storeKeyValuePair();
-    }
+    }       
 
 }

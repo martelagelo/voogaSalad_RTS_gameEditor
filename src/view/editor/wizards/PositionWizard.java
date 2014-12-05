@@ -2,6 +2,8 @@ package view.editor.wizards;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -18,6 +20,9 @@ public class PositionWizard extends Wizard {
     protected TextField xValue;
     @FXML
     protected TextField yValue;
+    
+    private final String X_VALUE_KEY = "XValue";
+    private final String Y_VALUE_KEY = "YValue";
 
     @Override
     public boolean checkCanSave () {
@@ -31,6 +36,20 @@ public class PositionWizard extends Wizard {
         addToData(WizardDataType.X_POSITION, xValue.getText());
         addToData(WizardDataType.Y_POSITION, yValue.getText());
     }
+    
+    @Override
+    protected void attachTextProperties () {
+        super.attachTextProperties();
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        try {
+            xValue.promptTextProperty().bind(util.getStringProperty(X_VALUE_KEY));
+            yValue.promptTextProperty().bind(util.getStringProperty(Y_VALUE_KEY));
+        }
+        catch (LanguageException e) {
+            displayErrorMessage(e.getMessage());
+        }
+    }
+
 
     @Override
     public void launchForEdit (WizardData oldValues) {

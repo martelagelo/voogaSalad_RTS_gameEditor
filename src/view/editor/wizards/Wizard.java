@@ -67,9 +67,7 @@ public abstract class Wizard implements GUIController {
      */
     @Override
     public void initialize () {
-        System.out.println("what the fuck1");
         attachTextProperties();
-        System.out.println("what the fuck2");
         myUserInput = new WizardData();
         mySaveConsumer = (myUserInput) -> {
         };
@@ -208,7 +206,6 @@ public abstract class Wizard implements GUIController {
      * wizard
      */
     protected void attachTextProperties () {
-        System.out.println("What the ACTUAL FUCK");
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             save.textProperty().bind(util.getStringProperty(SAVE_KEY));

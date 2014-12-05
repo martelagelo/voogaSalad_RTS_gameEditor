@@ -254,6 +254,7 @@ public class DrawableGameElementWizard extends Wizard {
      */
     @Override
     protected void attachTextProperties () {
+        super.attachTextProperties();
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             name.promptTextProperty().bind(util.getStringProperty(NAME_KEY));

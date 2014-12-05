@@ -2,6 +2,8 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,6 +25,9 @@ public class AttributeWizard extends Wizard {
     protected TextField value;
 
     protected ObservableList<String> attributes;
+    
+    private final String ATTRIBUTE_KEY_KEY = "AttributeKey";
+    private final String ATTRIBUTE_VALUE_KEY = "AttributeValue";
 
     @Override
     public boolean checkCanSave () {
@@ -50,6 +55,20 @@ public class AttributeWizard extends Wizard {
         super.initialize();
         attributes = FXCollections.observableList(new ArrayList<>());
         key.setItems(attributes);
+    }
+    
+
+    @Override
+    protected void attachTextProperties () {
+        super.attachTextProperties();
+        MultiLanguageUtility util = MultiLanguageUtility.getInstance();
+        try {
+            key.promptTextProperty().bind(util.getStringProperty(ATTRIBUTE_KEY_KEY));
+            value.promptTextProperty().bind(util.getStringProperty(ATTRIBUTE_VALUE_KEY));
+        }
+        catch (LanguageException e) {
+            displayErrorMessage(e.getMessage());
+        }
     }
 
     @Override
