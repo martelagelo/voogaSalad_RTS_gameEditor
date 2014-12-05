@@ -2,12 +2,14 @@ package engine.gameRepresentation.renderedRepresentation;
 
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerFactory;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.Visualizer;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
@@ -27,6 +29,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
 	private AttributeDisplayerFactory myWidgetFactory;
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
+    private AttributeDisplayerState myAttributeDisplayerState;
 
     /**
      * Create a drawable game element from the given state
@@ -43,7 +46,11 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         drawableState = state;
         myVisualizer = visualizer;
         myWidgetFactory = new AttributeDisplayerFactory();
+        
+        myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
 
+        
+        
         /*
          * TODO: if this should be removed, where would you rather put it? The state needs to
          * be initialized somewhere and DrawableGameElement is the lowest level that both has a
@@ -53,9 +60,8 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         this.initializeDisplay();
 
         // TODO: remove, this is for testing only
-        AttributeDisplayer xPosBar =
-                new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
-        myVisualizer.addWidget(xPosBar);
+        myVisualizer.addWidget( myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState, drawableState.attributes));
+        
         // AttributeDisplayer selectionTriangle = new
         // UnitSelectedDisplayer(drawableState.attributes, StateTags.IS_SELECTED, 0, 1);
         // myVisualizer.addWidget(selectionTriangle);

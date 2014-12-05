@@ -2,9 +2,12 @@ package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
+import model.state.gameelement.AttributeContainer;
 
 
 /**
@@ -18,7 +21,7 @@ public class AttributeDisplayerFactory {
     public final static String ATTRIBUTE_DISPLAYER_CLASSES =
             "resources.properties.engine.AttributeDisplayTypes";
     public final static String ATTRIBUTE_CLASS_LOCATIONS =
-            "engine.gameRepresentation.renderedRepresentation.attributeDisplayer.";
+    		"engine.visuals.elementVisuals.widgets.attributeDisplays.";
     private ResourceBundle myAttributeDisplayerBundle;
 
     public AttributeDisplayerFactory () {
@@ -34,7 +37,7 @@ public class AttributeDisplayerFactory {
      * @return
      */
     public AttributeDisplayer createAttributeDisplayer (AttributeDisplayerState attributeDisplayerState,
-                                                        GameElement attachee) {
+                                                        AttributeContainer attachee) {
         AttributeDisplayer displayer = null;
         Class<?> c = null;
         try {
@@ -43,7 +46,7 @@ public class AttributeDisplayerFactory {
                                   myAttributeDisplayerBundle
                                           .getString(attributeDisplayerState.displayerTag));
             displayer =
-                    (AttributeDisplayer) c.getDeclaredConstructor(GameElement.class,
+                    (AttributeDisplayer) c.getDeclaredConstructor(AttributeContainer.class,
                                                                   String.class,
                                                                   double.class,
                                                                   double.class)
@@ -55,6 +58,7 @@ public class AttributeDisplayerFactory {
                 | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
                 | MissingResourceException | SecurityException e) {
             // Class doesn't exist. fail silently
+        	e.printStackTrace();
         }
         return displayer;
 
