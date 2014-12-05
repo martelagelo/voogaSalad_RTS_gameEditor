@@ -2,10 +2,13 @@ package model.sprite;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.net.MalformedURLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import model.exceptions.SaveLoadException;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
@@ -22,9 +25,13 @@ public class SpriteImageGenerator {
     private Map<String, String> myResourceMapping;
     private Map<String, SpriteImageContainer> myCachedContainer;
 
-    public SpriteImageGenerator () throws Exception {
+    public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
-        myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_FILE_LOCATION));
+        try {
+            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_FILE_LOCATION));
+        } catch (MalformedURLException e) {
+            throw new SaveLoadException("Unable to load resources", e);
+        }
         myResourceMapping = new HashMap<>();
         myCachedContainer = new HashMap<>();
         populateMap();
@@ -40,7 +47,7 @@ public class SpriteImageGenerator {
         }
     }
 
-    public Map<String, SpriteImageContainer> loadSpriteImageContainers () throws Exception {
+    public Map<String, SpriteImageContainer> loadSpriteImageContainers () throws SaveLoadException {
         String animationStateLocation = myResourceMapping.get(GameElementType.ANIMATORSTATE
                 .toString());
         File directory = new File(animationStateLocation);

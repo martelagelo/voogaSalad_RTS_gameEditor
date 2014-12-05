@@ -3,6 +3,7 @@ package model.sprite;
 import java.util.Map;
 
 import javafx.scene.image.Image;
+import model.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with team color
@@ -16,16 +17,16 @@ public class SpriteImageContainer {
     private Image mySpritesheet;
     private Map<String, Image> myTeamColorMasks;
 
-    public SpriteImageContainer (String imageTag) throws Exception {
+    public SpriteImageContainer (String imageTag) throws SaveLoadException {
         locateSpritesheet(imageTag);
         locateTeamColorMasks(imageTag);
     }
 
-    private void locateTeamColorMasks (String imageTag) throws Exception {
+    private void locateTeamColorMasks (String imageTag) throws SaveLoadException {
         myTeamColorMasks = SpriteImageLoader.loadTeamColorMasks(imageTag);
     }
 
-    private void locateSpritesheet (String imageTag) throws Exception {
+    private void locateSpritesheet (String imageTag) throws SaveLoadException {
 
         mySpritesheet = SpriteImageLoader.loadSpritesheet(imageTag);
     }

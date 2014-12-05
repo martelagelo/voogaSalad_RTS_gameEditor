@@ -45,7 +45,7 @@ public class MainModel extends Observable {
             mySaveLoadMediator = new GameSaveLoadMediator();
             mySpriteImageGenerator = new SpriteImageGenerator();
             myModifiedContainer = new ModifiedContainer();
-        } catch (Exception e) {
+        } catch (SaveLoadException e) {
             System.out.println(mySpriteImageGenerator == null);
             e.printStackTrace();
         }
