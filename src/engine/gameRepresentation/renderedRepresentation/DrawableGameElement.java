@@ -60,9 +60,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
 //                new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
 //        myVisualizer.addWidget(healthBar);
 
-//        myAttributeDisplayerState =
-//                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
-//        myVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(this.myAttributeDisplayerState, drawableState.attributes));
+        myAttributeDisplayerState =
+                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
+        myVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(this.myAttributeDisplayerState, drawableState.attributes));
     }
 
     @Override

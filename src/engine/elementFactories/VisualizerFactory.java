@@ -28,22 +28,21 @@ public class VisualizerFactory {
 
 		Visualizer newVisualizer = new Visualizer(animator,
 				elementState.attributes);
-		for (Attribute<Number> a : elementState.getAttributeContainer()
-				.getNumericalAttributes()) {
-			AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState(
-					"attributeBar", a.getName(), 0, a.getData().doubleValue());
-			newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(
-					myAttributeDisplayerState,
-					elementState.getAttributeContainer()));
-		}
+//		for (Attribute<Number> a : elementState.getAttributeContainer()
+//				.getNumericalAttributes()) {
+//			AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState(
+//					"attributeBar", a.getName(), 0, a.getData().doubleValue());
+//			newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(
+//					myAttributeDisplayerState,
+//					elementState.getAttributeContainer()));
+//		}
 		// TODO: make widgets from Textual Attributes
-		// for(Attribute<String> a:
-		// elementState.getAttributeContainer().getTextualAttributes()) {
-		// AttributeDisplayerState myAttributeDisplayerState =
-		// new AttributeDisplayerState("attributeBar", a.getName(), 0, );
-		// newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,
-		// elementState.getAttributeContainer()));
-		// }
+//		 for(Attribute<String> a: elementState.getAttributeContainer().getTextualAttributes()) {
+//		 AttributeDisplayerState myAttributeDisplayerState =
+//		 new AttributeDisplayerState("attributeBar", a.getName(), a.getData());
+//		 newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,
+//		 elementState.getAttributeContainer()));
+//		 }
 		return newVisualizer;
 	}
 }
