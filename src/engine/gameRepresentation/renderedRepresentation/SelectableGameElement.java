@@ -20,7 +20,7 @@ import engine.visuals.elementVisuals.Visualizer;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach, Stanley
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
@@ -104,7 +104,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        executeAllActions(actionTypes.getString("objective"));
+        executeAllActions(ActionType.OBJECTIVE.toString());
     }
 
     private void updateSelfDueToFocusedElement () {
@@ -112,15 +112,15 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void updateSelfDueToSelection () {
-        executeAllActions(actionTypes.getString("selection"));
+        executeAllActions(ActionType.SELECTION.toString());
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", "vision");
+        updateSelfDueToInteractingElementsSubset("visible", ActionType.VISION.toString());
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", "collision");
+        updateSelfDueToInteractingElementsSubset("colliding", ActionType.COLLISION.toString());
     }
 
     private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {

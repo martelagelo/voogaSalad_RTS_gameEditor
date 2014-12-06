@@ -19,7 +19,14 @@
           "myTerrains": [],
           "myUnits": [
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -541,14 +548,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -556,7 +563,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -564,19 +571,10 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "Focused Element": [
-                  {
-                    "myActionName": "ActOnObjectsAction",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "Focused Element"
-                  }
-                ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -587,28 +585,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -676,7 +683,14 @@
               }
             },
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1198,14 +1212,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1213,7 +1227,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1221,19 +1235,10 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "Focused Element": [
-                  {
-                    "myActionName": "ActOnObjectsAction",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "Focused Element"
-                  }
-                ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -1244,28 +1249,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -1329,7 +1343,14 @@
               }
             },
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1851,14 +1872,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1866,7 +1887,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1874,7 +1895,7 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "CreateObjectAction",
@@ -1883,19 +1904,10 @@
                       "ArcherTimer",
                       "500"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "Focused Element": [
-                  {
-                    "myActionName": "ActOnObjectsAction",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "Focused Element"
-                  }
-                ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -1906,28 +1918,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -1962,7 +1983,7 @@
                     "myName": "health"
                   },
                   {
-                    "myData": 5,
+                    "myData": 2,
                     "myName": "movementSpeed"
                   },
                   {
@@ -2002,7 +2023,7 @@
           "myGoals": [
             {
               "myActions": {
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "PlayerStatsCheckAction",
                     "myParameters": [
@@ -2014,7 +2035,7 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   }
                 ]
               },
@@ -2112,7 +2133,14 @@
     "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -2634,14 +2662,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -2649,7 +2677,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -2657,19 +2685,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "Focused Element": [
-            {
-              "myActionName": "ActOnObjectsAction",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "Focused Element"
-            }
-          ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -2680,28 +2699,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -2769,7 +2797,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -3291,14 +3326,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3306,7 +3341,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3314,19 +3349,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "Focused Element": [
-            {
-              "myActionName": "ActOnObjectsAction",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "Focused Element"
-            }
-          ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -3337,28 +3363,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -3422,7 +3457,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -3944,14 +3986,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3959,7 +4001,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3967,19 +4009,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "Focused Element": [
-            {
-              "myActionName": "ActOnObjectsAction",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "Focused Element"
-            }
-          ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -3990,28 +4023,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -4075,7 +4117,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -4597,14 +4646,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -4612,7 +4661,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -4620,7 +4669,7 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "CreateObjectAction",
@@ -4629,19 +4678,10 @@
                 "ArcherTimer",
                 "500"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "Focused Element": [
-            {
-              "myActionName": "ActOnObjectsAction",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "Focused Element"
-            }
-          ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -4652,28 +4692,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -4708,7 +4757,7 @@
               "myName": "health"
             },
             {
-              "myData": 5,
+              "myData": 2,
               "myName": "movementSpeed"
             },
             {

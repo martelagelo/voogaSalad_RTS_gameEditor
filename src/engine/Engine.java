@@ -8,7 +8,6 @@ import model.MainModel;
 import model.exceptions.DescribableStateException;
 import model.state.LevelState;
 import org.json.JSONException;
-import application.ShittyMain;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
@@ -79,11 +78,6 @@ public class Engine extends Observable implements Observer {
     }
 
     private void instantiateManagers () {
-        // TODO hard-coding the visual representation for now, should remove
-        // this dependency
-        myVisualManager =
-                new VisualManager(new Group(), ShittyMain.shittyWidth,
-                                  ShittyMain.shittyWidth);
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
@@ -93,6 +87,9 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
+        
+        myVisualManager =
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight());
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
 
