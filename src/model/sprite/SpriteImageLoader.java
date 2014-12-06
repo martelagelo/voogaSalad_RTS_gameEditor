@@ -2,6 +2,7 @@ package model.sprite;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Map;
 
 import javafx.scene.image.Image;
 import model.exceptions.SaveLoadException;
@@ -17,13 +18,13 @@ import util.SaveLoadUtility;
  *
  */
 public class SpriteImageLoader {
-    private static final String EMPTY_STRING = "";
     private static final String DOT = ".";
     private static final String RELATIVE_PATH_DELIMITER = "/";
     public static final String TAG_DELIMITER = "|";
     public static final String ESCAPE_SEQ = "\\";
     public static final String COLORMASKS = "colormasks";
     public static final String SPRITESHEETS = "spritesheets";
+    public static final String DEFAULT_COLOR = "BLUE";
 
     public static Image loadTeamColorMasks (String imageTag) throws SaveLoadException {
         File directory = new File(getColorMasksLocation(imageTag));
@@ -52,8 +53,7 @@ public class SpriteImageLoader {
         String colorMaskLocation = processedTag.replace(SPRITESHEETS, COLORMASKS);
         int colorMaskDirectory = colorMaskLocation.lastIndexOf(RELATIVE_PATH_DELIMITER);
         // TODO make the return be a default location
-        return (colorMaskDirectory > 0) ? colorMaskLocation.substring(0, colorMaskDirectory)
-                : EMPTY_STRING;
+        return (colorMaskDirectory > 0) ? colorMaskLocation.substring(0, colorMaskDirectory) : "";
     }
 
     private static String processImageTag (String imageTag) {
@@ -69,7 +69,7 @@ public class SpriteImageLoader {
         int imageNameIndex = processedTag.lastIndexOf(RELATIVE_PATH_DELIMITER);
         int fileDotIndex = processedTag.lastIndexOf(DOT);
         return ((fileDotIndex > (imageNameIndex + 1)) && (imageNameIndex > 0)) ? processedTag
-                .substring(imageNameIndex + 1, fileDotIndex) : EMPTY_STRING;
+                .substring(imageNameIndex + 1, fileDotIndex) : "";
 
     }
 }

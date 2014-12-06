@@ -6,7 +6,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import model.exceptions.SaveLoadException;
 
 /**
@@ -22,11 +21,11 @@ public class SpriteImageContainer {
     private ImageView mySpritesheet;
     private ImageView myColorMask;
 
-    public SpriteImageContainer(ImageView spritesheet, ImageView colorMask) {
+    public SpriteImageContainer (ImageView spritesheet, ImageView colorMask) {
         mySpritesheet = spritesheet;
         myColorMask = colorMask;
     }
-    
+
     public SpriteImageContainer (String imageTag) throws SaveLoadException {
         locateSpritesheet(imageTag);
         locateTeamColorMasks(imageTag);
@@ -49,7 +48,7 @@ public class SpriteImageContainer {
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome,
                 new ColorInput(0, 0, myColorMask.getImage().getWidth(), myColorMask.getImage()
-                        .getHeight(), Color.rgb(0, 0, 255, 1)));      
+                        .getHeight(), ColorMapGenerator.getColorMask(color)));
         myColorMask.setEffect((Effect) blush);
 
         return myColorMask;

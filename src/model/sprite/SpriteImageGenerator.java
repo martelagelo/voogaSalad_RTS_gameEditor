@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import model.exceptions.SaveLoadException;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -24,9 +26,11 @@ public class SpriteImageGenerator {
     private static final String RESOURCES_PROPERTIES_FILE_LOCATION = "resources/gameelementresources/gameelementresources.properties";
     private Map<String, String> myResourceMapping;
     private Map<String, SpriteImageContainer> myCachedContainer;
+    private ColorMapGenerator myColorMapGenerator;
 
     public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
+        myColorMapGenerator = new ColorMapGenerator();
         try {
             myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_FILE_LOCATION));
         } catch (MalformedURLException e) {

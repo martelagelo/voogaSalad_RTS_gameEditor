@@ -31,7 +31,6 @@ import com.google.gson.JsonSyntaxException;
 public class SaveLoadUtility {
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
-    // private static DefaultResourcePopulation myDefaultResource = new DefaultResourcePopulation();
     private static Gson myGson = new Gson();
 
     /**
