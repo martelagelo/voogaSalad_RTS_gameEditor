@@ -1,6 +1,5 @@
 package engine.stateManaging;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.geometry.Point2D;
@@ -172,7 +171,6 @@ public class GameElementManager {
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
         System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
-        // TODO John: make this only go to selected things in your team
         filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
 
     }
@@ -200,6 +198,7 @@ public class GameElementManager {
         for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
             System.out.println(e.getNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID));
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
+            e.executeAllButtonActions();
         }
     }
 
