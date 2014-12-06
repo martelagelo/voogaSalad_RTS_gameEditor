@@ -91,11 +91,11 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        executeAllActions(actionTypes.getString("objective"));
+        executeAllActions(ActionType.OBJECTIVE.toString());
     }
 
     public void updateSelfDueToSelection () {
-        executeAllActions(actionTypes.getString("selection"));
+        executeAllActions(ActionType.SELECTION.toString());
     }
 
     private void updateSelfDueToVisions () {

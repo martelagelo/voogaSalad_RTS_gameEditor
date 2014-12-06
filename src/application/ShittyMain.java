@@ -67,7 +67,7 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
-        archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
+        archerState3.addAction(new ActionWrapper(ActionType.COLLISION.toString(), ActionOptions.CREATE_OBJECT_ACTION
                 .getClassString(), "archer","ArcherTimer","500"));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
@@ -110,7 +110,7 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL.toString(), ActionOptions.PLAYER_ATTRIBUTE_CONDITION
                 .getClassString(), "my", "Resources", "GreaterThanEqual", "10000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;

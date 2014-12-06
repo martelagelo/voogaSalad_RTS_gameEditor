@@ -56,14 +56,6 @@ public class GameElement {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
         }
-        
-        for (ActionType types : ActionType.values()) {
-            String type = types.toString();
-            if (!myActionLists.containsKey(type)) {
-                myActionLists.put(type, new CopyOnWriteArrayList<>());
-            }
-        }
-        
 //        for (String key : actionTypes.keySet()) {
 //            String type = actionTypes.getString(key);
 //            if (!myActionLists.containsKey(type)) {
@@ -71,7 +63,12 @@ public class GameElement {
 //            }
 //        }
         
-        
+        for (ActionType key : ActionType.values()) {
+            String type = key.toString();
+            if (!myActionLists.containsKey(type)) {
+                myActionLists.put(type, new CopyOnWriteArrayList<>());
+            }
+        }
 
     }
 
