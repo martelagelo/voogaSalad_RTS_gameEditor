@@ -52,7 +52,7 @@ public class GameElement {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
         }
-        
+
         for (ActionType key : ActionType.values()) {
             String type = key.toString();
             if (!myActionLists.containsKey(type)) {
@@ -232,6 +232,14 @@ public class GameElement {
 
     public void registerAsChild (Consumer<GameElementState> function) {
         function.accept(myState);
+    }
+
+    public boolean isType (String typeString) {
+        return myState.isType(typeString);
+    }
+
+    public List<String> getTypes () {
+        return myState.getTypes();
     }
 
     public void setPosition (double x, double y) {
