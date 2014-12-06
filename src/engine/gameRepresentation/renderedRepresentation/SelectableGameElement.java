@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Consumer;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
+import engine.computers.objectClassifications.ElementTypeEnums;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
@@ -27,15 +27,12 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState selectableState;
     private Map<String, Set<DrawableGameElement>> myInteractingElements;
-    private ResourceBundle myInteractingElementTypes;
     // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
         super(element, visualizer);
-        myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
     }
@@ -50,12 +47,13 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void initializeInteractingElementLists () {
         myInteractingElements = new HashMap<>();
-        for (String key : myInteractingElementTypes.keySet()) {
-            String type = myInteractingElementTypes.getString(key);
+        for (ElementTypeEnums key : ElementTypeEnums.values()) {
+            String type = key.toString();
             if (!myInteractingElements.containsKey(type)) {
                 myInteractingElements.put(type, new HashSet<>());
             }
         }
+        
 
     }
 
@@ -76,7 +74,7 @@ public class SelectableGameElement extends DrawableGameElement {
     public void addInteractingElements (String interactingElementType,
                                         List<DrawableGameElement> interactingElements) {
         for (DrawableGameElement element : interactingElements) {
-            addInteractingElement(myInteractingElementTypes.getString(interactingElementType),
+            addInteractingElement(ElementTypeEnums.valueOf(interactingElementType).toString(),
                                   element);
         }
     }
@@ -115,17 +113,17 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", ActionType.VISION.toString());
+        updateSelfDueToInteractingElementsSubset(ElementTypeEnums.VISIBLE.toString(), ActionType.VISION.toString());
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", ActionType.COLLISION.toString());
+        updateSelfDueToInteractingElementsSubset(ElementTypeEnums.COLLIDING.toString(), ActionType.COLLISION.toString());
     }
 
     private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {
         // TODO: string literals still exist
         Set<DrawableGameElement> elementsOfInterest =
-                myInteractingElements.get(myInteractingElementTypes.getString(elementType));
+                myInteractingElements.get(ElementTypeEnums.valueOf(elementType).toString());
         getActionsOfType(actionType).forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
@@ -134,8 +132,9 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                      // per game loop refresh
             }
         });
+        myInteractingElements.get(ElementTypeEnums.valueOf(elementType).toString()).clear();
         // After we've acted on the elements, clear the list
-        myInteractingElements.get(myInteractingElementTypes.getString(elementType)).clear();
+
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
