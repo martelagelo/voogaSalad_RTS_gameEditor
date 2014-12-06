@@ -19,6 +19,7 @@
           "myTerrains": [],
           "myUnits": [
             {
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -663,10 +664,10 @@
                     "myName": "teamColor"
                   }
                 ]
-              },
-              "AttributeDisplayerStates": []
+              }
             },
             {
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1307,10 +1308,10 @@
                     "myName": "teamColor"
                   }
                 ]
-              },
-              "AttributeDisplayerStates": []
+              }
             },
             {
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1951,10 +1952,10 @@
                     "myName": "teamColor"
                   }
                 ]
-              },
-              "AttributeDisplayerStates": []
+              }
             },
             {
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -2610,8 +2611,7 @@
                     "myName": "teamColor"
                   }
                 ]
-              },
-              "AttributeDisplayerStates": []
+              }
             }
           ],
           "myGoals": [
@@ -2625,8 +2625,7 @@
                   }
                 ],
                 "myTextualAttributes": []
-              },
-              "AttributeDisplayerStates": []
+              }
             }
           ],
           "myName": "testLevel",
