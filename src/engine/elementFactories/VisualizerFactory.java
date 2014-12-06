@@ -25,7 +25,6 @@ public class VisualizerFactory {
 
 	public Visualizer createVisualizer(DrawableGameElementState elementState) {
 		Animator animator = myAnimatorFactory.createAnimator(elementState);
-		//TODO move this up. This shouldn't be remade each time
 
 		Visualizer newVisualizer = new Visualizer(animator,
 				elementState.attributes);
