@@ -1,7 +1,10 @@
 package engine.visuals;
 
 import java.util.List;
+
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
@@ -42,6 +45,7 @@ public class VisualManager {
         root = gameObjectVisuals;
         myAbilityMatrix = new AbilityMatrix(scene.widthProperty(), scene.heightProperty());
         scene.addToScene(new Group(myAbilityMatrix.getNode()));
+       
     }
 
     /**

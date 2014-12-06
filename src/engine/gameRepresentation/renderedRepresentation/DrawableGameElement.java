@@ -1,11 +1,14 @@
 package engine.gameRepresentation.renderedRepresentation;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.Consumer;
+
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.shape.Line;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
@@ -109,5 +112,14 @@ public class DrawableGameElement extends GameElement implements Displayable,
 				.doubleValue();
 		Location current = new Location(currentX, currentY);
 		return waypoints.size() == 0 ? current : waypoints.poll();
+	}
+	
+	public List<Line> getLines() {
+		List<Line> lines = new ArrayList<Line>();
+		//Line line = new Line(super.g)
+		while(waypoints.peek() != null) {
+			
+		}
+		return lines;
 	}
 }
