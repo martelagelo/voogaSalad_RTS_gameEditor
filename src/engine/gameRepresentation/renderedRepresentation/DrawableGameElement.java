@@ -125,7 +125,7 @@ public class DrawableGameElement extends GameElement implements Displayable,
 			line.setStroke(Color.RED);
 			lines.add(line);
 //			while (waypoints.peek() != null) {
-//
+//				
 //			}
 		}
 		return lines;

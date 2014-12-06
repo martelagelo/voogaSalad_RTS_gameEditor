@@ -7,9 +7,15 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javafx.scene.Group;
+import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import engine.users.Participant;
 
 
 /**
@@ -70,6 +76,21 @@ public class VisualManager {
         // map
         scene.update();
         myMiniMap.updateMiniMap(list);
+        SelectableGameElement e = findFirstSelectedElement(list, myParticipantManager.getUser());
+        Map<Integer, String> map =
+                e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES)
+                         : new HashMap<>();
+        myAbilityMatrix.updateGridImages(map);
+    }
+
+    private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
+                                                            Participant user) {
+        for (SelectableGameElement e : list) {
+            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+                if (e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1) { return e; }
+            }
+        }
+        return null;
     }
 
     /**
@@ -113,7 +134,7 @@ public class VisualManager {
     public void attachInputManager (RunnerInputManager inputManager) {
         scene.attachInputManager(inputManager);
         myAbilityMatrix.attachInputManager(inputManager);
-        
+
     }
 
     public void attachParticipantManager (ParticipantManager participantManager) {

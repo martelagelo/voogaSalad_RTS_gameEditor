@@ -66,11 +66,15 @@ public class GameElementManager {
         myLevel.addElement(newElement);
     }
 
-    public void addSelectableGameElementToLevel (String typeName, double x,
-                                                 double y) {
+    public SelectableGameElement addSelectableGameElementToLevel (String typeName,
+                                                                  double x,
+                                                                  double y,
+                                                                  double team,
+                                                                  String color) {
         SelectableGameElement newElement = myFactory
-                .createSelectableGameElement(typeName, x, y);
+                .createSelectableGameElement(typeName, x, y, team, color);
         myLevel.addElement(newElement);
+        return newElement;
     }
 
     /**
@@ -170,13 +174,13 @@ public class GameElementManager {
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
         filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
 
     }
 
     private void clearSelectedElementsOfTarget (Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.clearFocusedElement());
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
+                .forEach(unit -> unit.clearFocusedElement());
     }
 
     private List<SelectableGameElement> filterSelectedUnits (List<SelectableGameElement> list) {
@@ -196,7 +200,6 @@ public class GameElementManager {
 
     public void notifyButtonClicked (int buttonID, Participant u) {
         for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
-            System.out.println(e.getNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID));
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
             e.executeAllButtonActions();
         }

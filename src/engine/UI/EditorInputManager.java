@@ -83,6 +83,7 @@ public class EditorInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // TODO: key presses
+        System.out.println("key pressed editor");
         if (e.getCode() == KeyCode.BACK_SPACE) {
             // TODO Delete selected elements from level
         }

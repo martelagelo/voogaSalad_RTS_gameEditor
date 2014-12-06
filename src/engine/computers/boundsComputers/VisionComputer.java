@@ -5,6 +5,7 @@ import javafx.scene.shape.Polygon;
 import model.state.gameelement.traits.Boundable;
 import model.state.gameelement.traits.Sighted;
 import engine.computers.Computer;
+import engine.computers.objectClassifications.InteractingElementType;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
@@ -48,7 +49,7 @@ public class VisionComputer extends
     protected void givePrimaryObjectElements (
                                               SelectableGameElement primaryObject,
                                               List<DrawableGameElement> listToAdd) {
-        primaryObject.addInteractingElements("visible", listToAdd);
+        primaryObject.addInteractingElements(InteractingElementType.VISIBLE, listToAdd);
     }
 
 }
