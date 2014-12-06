@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
@@ -87,7 +88,7 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	public double[] findGlobalBounds() {
 		return drawableState.findGlobalBounds();
 	}
-	
+
 	public void setWaypoints(List<Location> waypointsToAdd) {
 		waypoints.clear();
 		waypoints.addAll(waypointsToAdd);
@@ -113,12 +114,19 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		Location current = new Location(currentX, currentY);
 		return waypoints.size() == 0 ? current : waypoints.poll();
 	}
-	
+
 	public List<Line> getLines() {
 		List<Line> lines = new ArrayList<Line>();
-		//Line line = new Line(super.g)
-		while(waypoints.peek() != null) {
-			
+		if (getNumericalAttribute(StateTags.IS_SELECTED).intValue() == 1) {
+			Line line = new Line(getNumericalAttribute(StateTags.X_POSITION)
+					.doubleValue(), getNumericalAttribute(StateTags.Y_POSITION)
+					.doubleValue(), 100, 100);
+			line.getStrokeDashArray().addAll(25d, 10d);
+			line.setStroke(Color.RED);
+			lines.add(line);
+//			while (waypoints.peek() != null) {
+//
+//			}
 		}
 		return lines;
 	}

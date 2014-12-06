@@ -34,7 +34,7 @@ public class GameLoop extends Observable{
     private ParticipantManager myParticipantManager;
 
     private VisualManager myVisualManager;
-    private List<Line> unitPaths;
+//    private List<Line> unitPaths;
 
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
@@ -54,7 +54,7 @@ public class GameLoop extends Observable{
         myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
-        unitPaths = new ArrayList<Line>();
+//        unitPaths = new ArrayList<Line>();
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
         startGameLoop();
@@ -83,10 +83,7 @@ public class GameLoop extends Observable{
      * Update the states of all prominent elements and aspects of the game
      */
     private void update () {
-        // Clears all path lines from the GUI
-        clearLinesFromRoot();
-        // Adds needed path lines to the GUI
-         addPathsToRoot();
+        myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -128,17 +125,17 @@ public class GameLoop extends Observable{
         }
     }
 
-    private void addPathsToRoot () {
-        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            // unitPaths.addAll(SGE.getLines());
-        }
-        myVisualManager.getBackground().getChildren().addAll(unitPaths);
-    }
-
-    private void clearLinesFromRoot () {
-        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
-        unitPaths.clear();
-    }
+//    private void addPathsToRoot () {
+//        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
+//            unitPaths.addAll(SGE.getLines());
+//        }
+//        myVisualManager.getBackground().getChildren().addAll(unitPaths);
+//    }
+//
+//    private void clearLinesFromRoot () {
+//        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
+//        unitPaths.clear();
+//    }
 
     /**
      * Start the timeline
