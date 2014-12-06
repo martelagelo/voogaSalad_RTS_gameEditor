@@ -3,8 +3,10 @@ package engine.visuals;
 import java.io.IOException;
 import java.util.function.Consumer;
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -81,7 +83,16 @@ public class ScrollablePane extends Pane {
      * registering clicks/ drags
      */
     private void initializeHandlers () {
-        setOnKeyTyped(e -> myInputManager.keyPressed(e));
+        this.setOnKeyPressed(new EventHandler<KeyEvent>(){
+
+            @Override
+            public void handle (KeyEvent event) {
+               System.out.println("blah");
+                
+            }
+            
+        });
+//        setOnKeyTyped(e -> myInputManager.keyPressed(e));
         setOnMousePressed(e -> {
             myBackground.setXScrollSpeed(0);
             myBackground.setYScrollSpeed(0);

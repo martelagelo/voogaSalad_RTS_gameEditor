@@ -55,6 +55,10 @@ public class ShittyMain extends Application {
                 .addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                         StateTags.HEALTH, 0, 500));
 
+        archerState.attributes
+                .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,
+                                     "resources/img/graphics/buttons/buildings/0001.bmp");
+
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
