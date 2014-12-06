@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import util.DeepCopy;
 import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import util.DeepCopy;
 
 
 /**
@@ -98,6 +98,7 @@ public class GameUniverse {
                 mySelectableGameElementStates.stream()
                         .filter(e -> (e.getName().equals(elementName)))
                         .collect(Collectors.toList());
+        System.out.println(matches.size()==0?"returning null":"returning an object"+DeepCopy.deepCopy(matches.get(0)));
         return (matches.size() != 0) ? (SelectableGameElementState) DeepCopy.deepCopy(matches.get(0)) : null;
     }
 

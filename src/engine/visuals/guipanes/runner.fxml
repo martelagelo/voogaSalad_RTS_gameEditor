@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.textfield.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane fx:id="overlay" xmlns:fx="http://javafx.com/fxml"
+	minHeight="750" maxHeight="750">
+	<bottom>
+		<HBox>
+				<GridPane fx:id="buttonTray" alignment="center" hgap="0" vgap="0" minWidth="341">
+					<Button GridPane.rowIndex="0" GridPane.columnIndex="0">
+           			</Button>
+           			<Button GridPane.rowIndex="1" GridPane.columnIndex="0">
+           			</Button>
+           			<Button GridPane.rowIndex="2" GridPane.columnIndex="0">
+           			</Button>
+           			<Button GridPane.rowIndex="0" GridPane.columnIndex="1">
+           			</Button>
+           			<Button GridPane.rowIndex="1" GridPane.columnIndex="1">
+           			</Button>
+           			<Button GridPane.rowIndex="2" GridPane.columnIndex="1">
+           			</Button>
+           			<Button GridPane.rowIndex="0" GridPane.columnIndex="2">
+           			</Button>
+           			<Button GridPane.rowIndex="1" GridPane.columnIndex="2">
+           			</Button>
+           			<Button GridPane.rowIndex="2" GridPane.columnIndex="2">
+           			</Button>
+           			<Button GridPane.rowIndex="0" GridPane.columnIndex="3">
+           			</Button>
+           			<Button GridPane.rowIndex="1" GridPane.columnIndex="3">
+           			</Button>
+           			<Button GridPane.rowIndex="2" GridPane.columnIndex="3">
+           			</Button>
+           			<Button GridPane.rowIndex="0" GridPane.columnIndex="4">
+           			</Button>
+           			<Button GridPane.rowIndex="1" GridPane.columnIndex="4">
+           			</Button>
+           			<Button GridPane.rowIndex="2" GridPane.columnIndex="4">
+           			</Button>
+				</GridPane>
+		</HBox>
+	</bottom>
+</BorderPane>

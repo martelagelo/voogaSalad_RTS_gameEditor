@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.paint.Paint;
-import engine.visual.animation.AnimationTag;
+import engine.visuals.elementVisuals.animations.AnimationTag;
 
 
 /**

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import util.JSONable;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 
 
 /**
@@ -17,11 +18,11 @@ import util.JSONable;
  *
  */
 
-public class GameElementState implements JSONable, Serializable {
+public  class  GameElementState  implements  JSONable , Serializable {
     /**
      * 
      */
-    private static final long serialVersionUID = 6832117170246376287L;
+    private  static  final  long serialVersionUID =  6832117170246376287L ;
 
     /**
      * The actions for a given game element state will be stored in a map of
@@ -46,7 +47,7 @@ public class GameElementState implements JSONable, Serializable {
     /**
      * Initialize the game element state and its internal data structures.
      */
-    public GameElementState () {
+    public  GameElementState () {
         attributes = new AttributeContainer();
         myActions = new HashMap<String, List<ActionWrapper>>();
     }
@@ -54,7 +55,7 @@ public class GameElementState implements JSONable, Serializable {
     /**
      * @return the name of the element, if it has been set
      */
-    public String getName () {
+    public  String  getName () {
         return attributes.getTextualAttribute(StateTags.NAME);
     }
 
@@ -69,12 +70,12 @@ public class GameElementState implements JSONable, Serializable {
     /**
      * Add a string condition-action pair to the game element state
      * 
-     * @param actionType
+     * param actionType
      *        the type of the action being added
-     * @param actionString
+     * param actionString
      *        a Vscript string representation of the action
      */
-    public void addAction (ActionWrapper action) {
+    public  void  addAction ( ActionWrapper  action ) {
         if (!myActions.containsKey(action.getActionType())) {
             myActions.put(action.getActionType(), new ArrayList<>());
         }

@@ -21,8 +21,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
-import engine.visual.animation.AnimationTag;
-import engine.visual.animation.AnimationTag.AnimationType;
+import engine.visuals.elementVisuals.animations.AnimationTag;
+import engine.visuals.elementVisuals.animations.AnimationTag.AnimationType;
 
 
 /**

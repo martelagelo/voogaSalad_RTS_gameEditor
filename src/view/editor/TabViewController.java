@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
 import model.state.LevelState;
-import model.state.gameelement.ActionWrapper;
 import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -22,8 +21,10 @@ import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
 import view.runner.GameRunnerPaneController;
-import engine.actions.enumerations.ActionOptions;
-import engine.actions.enumerations.ActionType;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
+
 
 
 /**
@@ -49,7 +50,7 @@ public class TabViewController extends GUIContainer {
 
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer = (cons) -> {
-            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(300, 300));
+            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(400, 600));
             Consumer<WizardData> bc = (data) -> {
                 myMainModel.createGoal(myLevel, data);
                 wiz.closeStage();
@@ -106,7 +107,7 @@ public class TabViewController extends GUIContainer {
     private BiConsumer<Integer, String> modifyGoals () {
         BiConsumer<Integer, String> consumer = (Integer position, String oldValues) -> {
             updateLevelTriggersView();
-            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(300, 300));
+            Wizard wiz = WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(400, 600));
             // TODO: THIS SHOULD BE CLEANED UP TO MATCH OTHER WIZARDS
                 String[] oldStrings = oldValues.split("\n");
                 WizardData oldData = new WizardData();
