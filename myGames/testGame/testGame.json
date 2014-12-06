@@ -16,7 +16,57 @@
             ],
             "myTextualAttributes": []
           },
-          "myTerrains": [],
+          "myTerrains": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "testSpritesheet/farm.png",
+                "viewportSize": {
+                  "myWidth": 96,
+                  "myHeight": 48
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 200.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "farm",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
           "myUnits": [
             {
               "AttributeDisplayerStates": [
@@ -337,7 +387,7 @@
                   {
                     "myStartFrame": 0,
                     "myStopFrame": 10,
-                    "myCurrentFrame": 0,
+                    "myCurrentFrame": 8,
                     "myRepeatFlag": true,
                     "myTags": [
                       "FORWARD",
@@ -622,10 +672,6 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 200.0,
-                    "myName": "xPosition"
-                  },
-                  {
                     "myData": 50,
                     "myName": "ReloadTime"
                   },
@@ -636,6 +682,26 @@
                   {
                     "myData": 1,
                     "myName": "teamID"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "xPosition"
                   },
                   {
                     "myData": 200.0,
@@ -652,14 +718,6 @@
                   {
                     "myData": 200.0,
                     "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "movementSpeed"
                   },
                   {
                     "myData": 200.0,
@@ -1002,7 +1060,7 @@
                   {
                     "myStartFrame": 0,
                     "myStopFrame": 10,
-                    "myCurrentFrame": 0,
+                    "myCurrentFrame": 8,
                     "myRepeatFlag": true,
                     "myTags": [
                       "FORWARD",
@@ -1287,10 +1345,6 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 400.0,
-                    "myName": "xPosition"
-                  },
-                  {
                     "myData": 50,
                     "myName": "ReloadTime"
                   },
@@ -1303,22 +1357,6 @@
                     "myName": "teamID"
                   },
                   {
-                    "myData": 100.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xHeading"
-                  },
-                  {
-                    "myData": 100.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xTempPosition"
-                  },
-                  {
                     "myData": 100,
                     "myName": "health"
                   },
@@ -1327,8 +1365,36 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 100.0,
+                    "myData": 356.5613469806152,
+                    "myName": "xHeading"
+                  },
+                  {
+                    "myData": 30.279809386560473,
+                    "myName": "yHeading"
+                  },
+                  {
+                    "myData": 356.5613469806152,
+                    "myName": "xTempPosition"
+                  },
+                  {
+                    "myData": 30.279809386560473,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1663,7 +1729,7 @@
                   {
                     "myStartFrame": 0,
                     "myStopFrame": 10,
-                    "myCurrentFrame": 0,
+                    "myCurrentFrame": 8,
                     "myRepeatFlag": true,
                     "myTags": [
                       "FORWARD",
@@ -1957,12 +2023,44 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 400.0,
-                    "myName": "xPosition"
-                  },
-                  {
                     "myData": 50,
                     "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "YSpawnOffset"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xPosition"
                   },
                   {
                     "myData": 300.0,
@@ -1981,32 +2079,8 @@
                     "myName": "xTempPosition"
                   },
                   {
-                    "myData": 500,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "XSpawnOffset"
-                  },
-                  {
                     "myData": 300.0,
                     "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -2227,6 +2301,55 @@
           "myTextualAttributes": [
             {
               "myData": "GRASS",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "testSpritesheet/farm.png",
+          "viewportSize": {
+            "myWidth": 96,
+            "myHeight": 48
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "farm",
               "myName": "name"
             }
           ]
