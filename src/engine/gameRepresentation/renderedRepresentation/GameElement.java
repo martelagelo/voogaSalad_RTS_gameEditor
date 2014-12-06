@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import model.state.gameelement.GameElementState;
@@ -30,7 +29,7 @@ public class GameElement {
      * is dealing with a collision with another element whereas "Action1" might map to a list of
      * actions that should be executed when an element's action button is clicked.
      */
-    private Map<String, List<Evaluatable<?>>> myActionLists;
+    private Map<ActionType, List<Evaluatable<?>>> myActionLists;
     private GameElementState myState;
     private Map<String, Long> myTimers;
 
@@ -54,8 +53,7 @@ public class GameElement {
             myActionLists = new HashMap<>();
         }
         
-        for (ActionType key : ActionType.values()) {
-            String type = key.toString();
+        for (ActionType type : ActionType.values()) {
             if (!myActionLists.containsKey(type)) {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
@@ -69,7 +67,7 @@ public class GameElement {
      * @param actionType the tag for the type of action
      * @return an iterator containing all the actions of the desired type
      */
-    public Iterator<Evaluatable<?>> getActionsOfType (String actionType) {
+    public Iterator<Evaluatable<?>> getActionsOfType (ActionType actionType) {
         List<Evaluatable<?>> actionsOfInterest;
         if (!myActionLists.containsKey(actionType)) {
             actionsOfInterest = new ArrayList<Evaluatable<?>>();
@@ -87,7 +85,7 @@ public class GameElement {
      * @param actionType the type of the action to be added
      * @param action the action to be added
      */
-    public void addAction (String actionType, Evaluatable<?> action) {
+    public void addAction (ActionType actionType, Evaluatable<?> action) {
         if (!myActionLists.containsKey(actionType)) {
             myActionLists.put(actionType, new CopyOnWriteArrayList<>());
         }
@@ -100,7 +98,7 @@ public class GameElement {
      * @param actionID the identifier string for the action tree @see Evaluatable
      */
     public void removeAction (String actionID) {
-        for (String actionType : myActionLists.keySet()) {
+        for (ActionType actionType : myActionLists.keySet()) {
             getActionsOfType(actionType).forEachRemaining(action -> {
                 if (action.getID().equals(actionID)) {
                     // //System.out.println("Action should be removed");
@@ -165,7 +163,7 @@ public class GameElement {
      * element based on its internal velocity parameters.
      */
     private void updateSelfDueToInternalFactors () {
-        executeAllActions(ActionType.INTERNAL.toString());
+        executeAllActions(ActionType.INTERNAL);
     }
 
     /**
@@ -175,7 +173,7 @@ public class GameElement {
      * @param ElementPair an element pair of the current object and any objects it might be
      *        interested in e.g. the current unit and a unit nearby it
      */
-    protected void executeAllActions (String actionKey, ElementPair elementPair) {
+    protected void executeAllActions (ActionType actionKey, ElementPair elementPair) {
         getActionsOfType(actionKey).forEachRemaining(action -> action.evaluate(elementPair));
     }
 
@@ -185,7 +183,7 @@ public class GameElement {
      *
      * @param actionKey the key of the action set for which to execute all of the actions
      */
-    protected void executeAllActions (String actionKey) {
+    protected void executeAllActions (ActionType actionKey) {
         executeAllActions(actionKey, new ElementPair(this, this));
     }
 

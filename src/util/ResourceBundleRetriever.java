@@ -28,7 +28,7 @@ public class ResourceBundleRetriever {
         URL[] urls = { externalFolder.toURI().toURL() };
         ClassLoader loader = new URLClassLoader(urls);
         String fileName = removeFileExtension(file.getName());
-        ResourceBundle bundle = ResourceBundle.getBundle(fileName, Locale.getDefault(), loader);
+        ResourceBundle bundle = ResourceBundle.getBundle(fileName, Locale.getDefault(), loader);     
         return bundle;
     }
 

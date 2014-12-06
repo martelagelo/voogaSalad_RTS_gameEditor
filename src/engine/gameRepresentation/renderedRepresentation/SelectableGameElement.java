@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Consumer;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
+import engine.computers.objectClassifications.InteractingElementType;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
@@ -26,16 +26,14 @@ import engine.visuals.elementVisuals.Visualizer;
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState selectableState;
-    private Map<String, Set<DrawableGameElement>> myInteractingElements;
-    private ResourceBundle myInteractingElementTypes;
+
+    private Map<InteractingElementType, Set<DrawableGameElement>> myInteractingElements;
     // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
         super(element, visualizer);
-        myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
     }
@@ -50,12 +48,12 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void initializeInteractingElementLists () {
         myInteractingElements = new HashMap<>();
-        for (String key : myInteractingElementTypes.keySet()) {
-            String type = myInteractingElementTypes.getString(key);
+        for (InteractingElementType type : InteractingElementType.values()) {
             if (!myInteractingElements.containsKey(type)) {
                 myInteractingElements.put(type, new HashSet<>());
             }
         }
+        
 
     }
 
@@ -63,7 +61,7 @@ public class SelectableGameElement extends DrawableGameElement {
         return getTextualAttribute(StateTags.TYPE);
     }
 
-    public void addInteractingElement (String elementType, DrawableGameElement element) {
+    public void addInteractingElement (InteractingElementType elementType, DrawableGameElement element) {
         Set<DrawableGameElement> elements = new HashSet<>();
         Set<DrawableGameElement> oldElements = myInteractingElements.get(elementType);
         if (oldElements != null) {
@@ -73,10 +71,10 @@ public class SelectableGameElement extends DrawableGameElement {
         myInteractingElements.put(elementType, elements);
     }
 
-    public void addInteractingElements (String interactingElementType,
+    public void addInteractingElements (InteractingElementType interactingElementType,
                                         List<DrawableGameElement> interactingElements) {
         for (DrawableGameElement element : interactingElements) {
-            addInteractingElement(myInteractingElementTypes.getString(interactingElementType),
+            addInteractingElement(interactingElementType,
                                   element);
         }
     }
@@ -103,39 +101,39 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        executeAllActions(ActionType.OBJECTIVE.toString());
+        executeAllActions(ActionType.OBJECTIVE);
     }
 
     private void updateSelfDueToFocusedElement () {
-        executeAllActions(ActionType.FOCUSED.toString(), new ElementPair(this, myFocusedElement));
+        executeAllActions(ActionType.FOCUSED, new ElementPair(this, myFocusedElement));
     }
 
     public void updateSelfDueToSelection () {
-        executeAllActions(ActionType.SELECTION.toString());
+        executeAllActions(ActionType.SELECTION);
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", ActionType.VISION.toString());
+        updateSelfDueToInteractingElementsSubset(InteractingElementType.VISIBLE, ActionType.VISION);
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", ActionType.COLLISION.toString());
+        updateSelfDueToInteractingElementsSubset(InteractingElementType.COLLIDING, ActionType.COLLISION);
     }
 
-    private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {
+    private void updateSelfDueToInteractingElementsSubset (InteractingElementType elementType, ActionType actionType) {
         // TODO: string literals still exist
-        Set<DrawableGameElement> elementsOfInterest =
-                myInteractingElements.get(myInteractingElementTypes.getString(elementType));
+        Set<DrawableGameElement> elementsOfInterest = myInteractingElements.get(elementType);
         getActionsOfType(actionType).forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
-                if ((Boolean) action.evaluate(elements)) { return; } // By default, only evaluate
-                                                                     // one single collision action
-                                                                     // per game loop refresh
+                if ((Boolean) action.evaluate(elements)) { return; } 
+             // By default, only evaluate one single collision action per game loop refresh
             }
         });
+
+        myInteractingElements.get(elementType).clear();
         // After we've acted on the elements, clear the list
-        myInteractingElements.get(myInteractingElementTypes.getString(elementType)).clear();
+
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
@@ -143,7 +141,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
     
     public void executeAllButtonActions(){
-        this.executeAllActions(ActionType.BUTTON.toString());
+        this.executeAllActions(ActionType.BUTTON,new ElementPair(this,this));
     }
 
 }

@@ -182,6 +182,12 @@ public class ShittyMain extends Application {
         // Make the element so it follows another player when right-clicked on
         archerState.addAction(new ActionWrapper(ActionType.FOCUSED,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION, "Follow"));
+        archerState.addAction(new ActionWrapper(ActionType.BUTTON,
+                                                ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
+                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
+                                                "archer", "ArcherSpawnCooldown", "200"));
+        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
         archerState.setBounds(bounds);
         // TESTING SAVING SGES

@@ -1,13 +1,15 @@
 package engine.elementFactories;
 
-import java.util.ResourceBundle;
+import java.util.List;
+import java.util.Map.Entry;
 import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
-import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.actions.ActionFactory;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -31,15 +33,12 @@ public class GameElementFactory {
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private ResourceBundle interactingElementTypes;
-
     public GameElementFactory (GameUniverse universe,
                                ActionFactory actionFactory,
                                VisualizerFactory visualizerFactory) {
         myUniverse = universe;
         myActionFactory = actionFactory;
         myVisualizerFactory = visualizerFactory;
-        interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
     public GameElement createGameElement (String elementType, double x, double y) {
@@ -79,8 +78,7 @@ public class GameElementFactory {
 
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
-                new SelectableGameElement(state,
-                                          interactingElementTypes, generateVisualizer(state));
+                new SelectableGameElement(state,generateVisualizer(state));
         generateActions(element, state);
         return element;
     }
@@ -93,8 +91,8 @@ public class GameElementFactory {
      * @param state the game element's state
      */
     private void generateActions (GameElement element, GameElementState state) {
-        for (String key : state.getActions().keySet()) {
-            state.getActions().get(key).forEach(actionWrapper -> {
+        for (Entry<String,List<ActionWrapper>> entry : state.getActions().entrySet()) {
+            entry.getValue().forEach(actionWrapper -> {
                 Evaluatable<?> action;
                 try {
                     action = myActionFactory.createAction(actionWrapper);
@@ -103,7 +101,8 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                element.addAction(key, action);
+                System.out.println(entry.getKey());
+                element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
             });
         }
     }

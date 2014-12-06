@@ -16,57 +16,7 @@
             ],
             "myTextualAttributes": []
           },
-          "myTerrains": [
-            {
-              "AttributeDisplayerStates": [],
-              "myAnimatorState": {
-                "imageTag": "testSpritesheet/farm.png",
-                "viewportSize": {
-                  "myWidth": 96,
-                  "myHeight": 48
-                },
-                "numRows": 1,
-                "animationSequences": [
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 1,
-                    "myCurrentFrame": 0,
-                    "myRepeatFlag": false,
-                    "myTags": [
-                      "HERE",
-                      "DO_NOTHING"
-                    ],
-                    "mySlownessMultiplier": 0.0,
-                    "myFrameCounter": 0
-                  }
-                ]
-              },
-              "myBounds": [
-                0.0,
-                0.0
-              ],
-              "myActions": {},
-              "attributes": {
-                "myNumericalAttributes": [
-                  {
-                    "myData": 200.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 200.0,
-                    "myName": "yPosition"
-                  }
-                ],
-                "myTextualAttributes": [
-                  {
-                    "myData": "farm",
-                    "myName": "name"
-                  }
-                ]
-              },
-              "myTypes": []
-            }
-          ],
+          "myTerrains": [],
           "myUnits": [
             {
               "AttributeDisplayerStates": [
@@ -86,44 +36,6 @@
                 "numRows": 10,
                 "animationSequences": [
                   {
-                    "myStartFrame": 90,
-                    "myStopFrame": 100,
-                    "myCurrentFrame": 90,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 260,
-                    "myStopFrame": 270,
-                    "myCurrentFrame": 260,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 110,
-                    "myStopFrame": 120,
-                    "myCurrentFrame": 110,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 350,
                     "myStopFrame": 355,
                     "myCurrentFrame": 350,
@@ -131,42 +43,6 @@
                     "myTags": [
                       "RIGHT",
                       "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 140,
-                    "myStopFrame": 150,
-                    "myCurrentFrame": 140,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 20,
-                    "myStopFrame": 30,
-                    "myCurrentFrame": 20,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 300,
-                    "myStopFrame": 310,
-                    "myCurrentFrame": 300,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -184,64 +60,51 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 120,
-                    "myStopFrame": 130,
-                    "myCurrentFrame": 120,
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 210,
-                    "myStopFrame": 220,
-                    "myCurrentFrame": 210,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 325,
-                    "myStopFrame": 330,
-                    "myCurrentFrame": 325,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 335,
-                    "myStopFrame": 340,
-                    "myCurrentFrame": 335,
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DECAY"
+                      "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 180,
-                    "myStopFrame": 190,
-                    "myCurrentFrame": 180,
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "ATTACK"
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -260,24 +123,48 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 100,
-                    "myStopFrame": 110,
-                    "myCurrentFrame": 100,
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "MOVE"
+                      "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 230,
-                    "myStopFrame": 240,
-                    "myCurrentFrame": 230,
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
                       "RIGHT",
                       "ATTACK"
                     ],
@@ -297,43 +184,6 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 160,
-                    "myStopFrame": 170,
-                    "myCurrentFrame": 160,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 170,
-                    "myStopFrame": 180,
-                    "myCurrentFrame": 170,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 80,
-                    "myStopFrame": 90,
-                    "myCurrentFrame": 80,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 150,
                     "myStopFrame": 160,
                     "myCurrentFrame": 150,
@@ -347,64 +197,13 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 10,
-                    "myStopFrame": 20,
-                    "myCurrentFrame": 10,
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 30,
-                    "myStopFrame": 40,
-                    "myCurrentFrame": 30,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 280,
-                    "myStopFrame": 290,
-                    "myCurrentFrame": 280,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 10,
-                    "myCurrentFrame": 8,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 345,
-                    "myStopFrame": 350,
-                    "myCurrentFrame": 345,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
                       "RIGHT",
-                      "DECAY"
+                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -423,25 +222,75 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 40,
-                    "myStopFrame": 50,
-                    "myCurrentFrame": 40,
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 60,
-                    "myStopFrame": 70,
-                    "myCurrentFrame": 60,
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
                     "myRepeatFlag": true,
                     "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "RIGHT",
                       "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -460,13 +309,114 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 190,
-                    "myStopFrame": 200,
-                    "myCurrentFrame": 190,
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
                       "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -486,6 +436,55 @@
                     "myFrameCounter": 0
                   },
                   {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
                     "myStartFrame": 50,
                     "myStopFrame": 60,
                     "myCurrentFrame": 50,
@@ -499,87 +498,38 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 220,
-                    "myStopFrame": 230,
-                    "myCurrentFrame": 220,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 320,
-                    "myStopFrame": 325,
-                    "myCurrentFrame": 320,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 270,
-                    "myStopFrame": 280,
-                    "myCurrentFrame": 270,
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 130,
-                    "myStopFrame": 140,
-                    "myCurrentFrame": 130,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 70,
-                    "myStopFrame": 80,
-                    "myCurrentFrame": 70,
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "RIGHT",
+                      "BACKWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 200,
-                    "myStopFrame": 210,
-                    "myCurrentFrame": 200,
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 340,
-                    "myStopFrame": 345,
-                    "myCurrentFrame": 340,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
+                      "RIGHT",
                       "DECAY"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -598,6 +548,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -672,36 +636,12 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 50,
-                    "myName": "ReloadTime"
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "yVelocity"
-                  },
-                  {
                     "myData": 200.0,
                     "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "ReloadTime"
                   },
                   {
                     "myData": 200.0,
@@ -720,8 +660,32 @@
                     "myName": "xTempPosition"
                   },
                   {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
                     "myData": 200.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -759,44 +723,6 @@
                 "numRows": 10,
                 "animationSequences": [
                   {
-                    "myStartFrame": 90,
-                    "myStopFrame": 100,
-                    "myCurrentFrame": 90,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 260,
-                    "myStopFrame": 270,
-                    "myCurrentFrame": 260,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 110,
-                    "myStopFrame": 120,
-                    "myCurrentFrame": 110,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 350,
                     "myStopFrame": 355,
                     "myCurrentFrame": 350,
@@ -804,42 +730,6 @@
                     "myTags": [
                       "RIGHT",
                       "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 140,
-                    "myStopFrame": 150,
-                    "myCurrentFrame": 140,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 20,
-                    "myStopFrame": 30,
-                    "myCurrentFrame": 20,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 300,
-                    "myStopFrame": 310,
-                    "myCurrentFrame": 300,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -857,64 +747,51 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 120,
-                    "myStopFrame": 130,
-                    "myCurrentFrame": 120,
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 210,
-                    "myStopFrame": 220,
-                    "myCurrentFrame": 210,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 325,
-                    "myStopFrame": 330,
-                    "myCurrentFrame": 325,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 335,
-                    "myStopFrame": 340,
-                    "myCurrentFrame": 335,
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DECAY"
+                      "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 180,
-                    "myStopFrame": 190,
-                    "myCurrentFrame": 180,
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "ATTACK"
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -933,24 +810,48 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 100,
-                    "myStopFrame": 110,
-                    "myCurrentFrame": 100,
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "MOVE"
+                      "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 230,
-                    "myStopFrame": 240,
-                    "myCurrentFrame": 230,
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
                       "RIGHT",
                       "ATTACK"
                     ],
@@ -970,43 +871,6 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 160,
-                    "myStopFrame": 170,
-                    "myCurrentFrame": 160,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 170,
-                    "myStopFrame": 180,
-                    "myCurrentFrame": 170,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 80,
-                    "myStopFrame": 90,
-                    "myCurrentFrame": 80,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 150,
                     "myStopFrame": 160,
                     "myCurrentFrame": 150,
@@ -1020,64 +884,13 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 10,
-                    "myStopFrame": 20,
-                    "myCurrentFrame": 10,
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 30,
-                    "myStopFrame": 40,
-                    "myCurrentFrame": 30,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 280,
-                    "myStopFrame": 290,
-                    "myCurrentFrame": 280,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 10,
-                    "myCurrentFrame": 8,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 345,
-                    "myStopFrame": 350,
-                    "myCurrentFrame": 345,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
                       "RIGHT",
-                      "DECAY"
+                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1096,25 +909,75 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 40,
-                    "myStopFrame": 50,
-                    "myCurrentFrame": 40,
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 60,
-                    "myStopFrame": 70,
-                    "myCurrentFrame": 60,
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
                     "myRepeatFlag": true,
                     "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "RIGHT",
                       "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1133,13 +996,114 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 190,
-                    "myStopFrame": 200,
-                    "myCurrentFrame": 190,
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
                       "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -1159,6 +1123,55 @@
                     "myFrameCounter": 0
                   },
                   {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
                     "myStartFrame": 50,
                     "myStopFrame": 60,
                     "myCurrentFrame": 50,
@@ -1172,87 +1185,38 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 220,
-                    "myStopFrame": 230,
-                    "myCurrentFrame": 220,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 320,
-                    "myStopFrame": 325,
-                    "myCurrentFrame": 320,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 270,
-                    "myStopFrame": 280,
-                    "myCurrentFrame": 270,
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 130,
-                    "myStopFrame": 140,
-                    "myCurrentFrame": 130,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 70,
-                    "myStopFrame": 80,
-                    "myCurrentFrame": 70,
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "RIGHT",
+                      "BACKWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 200,
-                    "myStopFrame": 210,
-                    "myCurrentFrame": 200,
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 340,
-                    "myStopFrame": 345,
-                    "myCurrentFrame": 340,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
+                      "RIGHT",
                       "DECAY"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -1271,6 +1235,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -1345,8 +1323,44 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
+                    "myData": 400.0,
+                    "myName": "xPosition"
+                  },
+                  {
                     "myData": 50,
                     "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xHeading"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yHeading"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xTempPosition"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yTempGoalPosition"
                   },
                   {
                     "myData": 75,
@@ -1358,43 +1372,7 @@
                   },
                   {
                     "myData": 100,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 356.5613469806152,
-                    "myName": "xHeading"
-                  },
-                  {
-                    "myData": 30.279809386560473,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 356.5613469806152,
-                    "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 30.279809386560473,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "yVelocity"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 100.0,
-                    "myName": "yPosition"
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1428,44 +1406,6 @@
                 "numRows": 10,
                 "animationSequences": [
                   {
-                    "myStartFrame": 90,
-                    "myStopFrame": 100,
-                    "myCurrentFrame": 90,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 260,
-                    "myStopFrame": 270,
-                    "myCurrentFrame": 260,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 110,
-                    "myStopFrame": 120,
-                    "myCurrentFrame": 110,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 350,
                     "myStopFrame": 355,
                     "myCurrentFrame": 350,
@@ -1473,42 +1413,6 @@
                     "myTags": [
                       "RIGHT",
                       "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 140,
-                    "myStopFrame": 150,
-                    "myCurrentFrame": 140,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 20,
-                    "myStopFrame": 30,
-                    "myCurrentFrame": 20,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 300,
-                    "myStopFrame": 310,
-                    "myCurrentFrame": 300,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1526,64 +1430,51 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 120,
-                    "myStopFrame": 130,
-                    "myCurrentFrame": 120,
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 210,
-                    "myStopFrame": 220,
-                    "myCurrentFrame": 210,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 325,
-                    "myStopFrame": 330,
-                    "myCurrentFrame": 325,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 335,
-                    "myStopFrame": 340,
-                    "myCurrentFrame": 335,
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DECAY"
+                      "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 180,
-                    "myStopFrame": 190,
-                    "myCurrentFrame": 180,
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "ATTACK"
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1602,24 +1493,48 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 100,
-                    "myStopFrame": 110,
-                    "myCurrentFrame": 100,
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
                     "myRepeatFlag": true,
                     "myTags": [
                       "LEFT",
-                      "MOVE"
+                      "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 230,
-                    "myStopFrame": 240,
-                    "myCurrentFrame": 230,
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
                       "RIGHT",
                       "ATTACK"
                     ],
@@ -1639,43 +1554,6 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 160,
-                    "myStopFrame": 170,
-                    "myCurrentFrame": 160,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 170,
-                    "myStopFrame": 180,
-                    "myCurrentFrame": 170,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 80,
-                    "myStopFrame": 90,
-                    "myCurrentFrame": 80,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
                     "myStartFrame": 150,
                     "myStopFrame": 160,
                     "myCurrentFrame": 150,
@@ -1689,64 +1567,13 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 10,
-                    "myStopFrame": 20,
-                    "myCurrentFrame": 10,
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 30,
-                    "myStopFrame": 40,
-                    "myCurrentFrame": 30,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 280,
-                    "myStopFrame": 290,
-                    "myCurrentFrame": 280,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 10,
-                    "myCurrentFrame": 8,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 345,
-                    "myStopFrame": 350,
-                    "myCurrentFrame": 345,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
                       "RIGHT",
-                      "DECAY"
+                      "DIE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1765,25 +1592,75 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 40,
-                    "myStopFrame": 50,
-                    "myCurrentFrame": 40,
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "BACKWARD",
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 60,
-                    "myStopFrame": 70,
-                    "myCurrentFrame": 60,
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
                     "myRepeatFlag": true,
                     "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
                       "RIGHT",
                       "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
@@ -1802,13 +1679,114 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 190,
-                    "myStopFrame": 200,
-                    "myCurrentFrame": 190,
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
                       "ATTACK"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -1828,6 +1806,55 @@
                     "myFrameCounter": 0
                   },
                   {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
                     "myStartFrame": 50,
                     "myStopFrame": 60,
                     "myCurrentFrame": 50,
@@ -1841,87 +1868,38 @@
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 220,
-                    "myStopFrame": 230,
-                    "myCurrentFrame": 220,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 320,
-                    "myStopFrame": 325,
-                    "myCurrentFrame": 320,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 270,
-                    "myStopFrame": 280,
-                    "myCurrentFrame": 270,
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
                       "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 130,
-                    "myStopFrame": 140,
-                    "myCurrentFrame": 130,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
                       "MOVE"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 70,
-                    "myStopFrame": 80,
-                    "myCurrentFrame": 70,
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
                     "myRepeatFlag": true,
                     "myTags": [
-                      "FORWARD",
-                      "RIGHT",
+                      "BACKWARD",
                       "STAND"
                     ],
                     "mySlownessMultiplier": 1.0,
                     "myFrameCounter": 0
                   },
                   {
-                    "myStartFrame": 200,
-                    "myStopFrame": 210,
-                    "myCurrentFrame": 200,
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
                     "myRepeatFlag": true,
                     "myTags": [
                       "BACKWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 340,
-                    "myStopFrame": 345,
-                    "myCurrentFrame": 340,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
+                      "RIGHT",
                       "DECAY"
                     ],
                     "mySlownessMultiplier": 1.0,
@@ -1940,6 +1918,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2023,44 +2015,12 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 50,
-                    "myName": "ReloadTime"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "XSpawnOffset"
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "YSpawnOffset"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "yVelocity"
-                  },
-                  {
                     "myData": 400.0,
                     "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "ReloadTime"
                   },
                   {
                     "myData": 300.0,
@@ -2079,8 +2039,32 @@
                     "myName": "xTempPosition"
                   },
                   {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
                     "myData": 300.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -2149,14 +2133,6 @@
         "myName": "ReloadTime"
       },
       {
-        "myData": 75,
-        "myName": "attack"
-      },
-      {
-        "myData": 1,
-        "myName": "teamID"
-      },
-      {
         "myData": 200.0,
         "myName": "yPosition"
       },
@@ -2181,15 +2157,23 @@
         "myName": "movementSpeed"
       },
       {
+        "myData": 100,
+        "myName": "XSpawnOffset"
+      },
+      {
         "myData": 200.0,
         "myName": "yTempGoalPosition"
       },
       {
-        "myData": 500,
-        "myName": "XSpawnOffset"
+        "myData": 75,
+        "myName": "attack"
       },
       {
-        "myData": 500,
+        "myData": 1,
+        "myName": "teamID"
+      },
+      {
+        "myData": 100,
         "myName": "YSpawnOffset"
       }
     ],
@@ -2208,155 +2192,7 @@
       }
     ],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [
-      {
-        "AttributeDisplayerStates": [],
-        "myAnimatorState": {
-          "imageTag": "testSpritesheet/grass.png",
-          "viewportSize": {
-            "myWidth": 96,
-            "myHeight": 48
-          },
-          "numRows": 1,
-          "animationSequences": [
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 1,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "HERE",
-                "DO_NOTHING"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0
-        ],
-        "myActions": {},
-        "attributes": {
-          "myNumericalAttributes": [
-            {
-              "myData": 0.0,
-              "myName": "xPosition"
-            },
-            {
-              "myData": 0.0,
-              "myName": "yPosition"
-            }
-          ],
-          "myTextualAttributes": [
-            {
-              "myData": "grass",
-              "myName": "name"
-            }
-          ]
-        },
-        "myTypes": []
-      },
-      {
-        "AttributeDisplayerStates": [],
-        "myAnimatorState": {
-          "imageTag": "testSpritesheet/GRASS.png",
-          "viewportSize": {
-            "myWidth": 96,
-            "myHeight": 48
-          },
-          "numRows": 1,
-          "animationSequences": [
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 1,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": false,
-              "myTags": [
-                "HERE",
-                "DO_NOTHING"
-              ],
-              "mySlownessMultiplier": 0.0,
-              "myFrameCounter": 0
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0
-        ],
-        "myActions": {},
-        "attributes": {
-          "myNumericalAttributes": [
-            {
-              "myData": 0.0,
-              "myName": "xPosition"
-            },
-            {
-              "myData": 0.0,
-              "myName": "yPosition"
-            }
-          ],
-          "myTextualAttributes": [
-            {
-              "myData": "GRASS",
-              "myName": "name"
-            }
-          ]
-        },
-        "myTypes": []
-      },
-      {
-        "AttributeDisplayerStates": [],
-        "myAnimatorState": {
-          "imageTag": "testSpritesheet/farm.png",
-          "viewportSize": {
-            "myWidth": 96,
-            "myHeight": 48
-          },
-          "numRows": 1,
-          "animationSequences": [
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 1,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": false,
-              "myTags": [
-                "HERE",
-                "DO_NOTHING"
-              ],
-              "mySlownessMultiplier": 0.0,
-              "myFrameCounter": 0
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0
-        ],
-        "myActions": {},
-        "attributes": {
-          "myNumericalAttributes": [
-            {
-              "myData": 0.0,
-              "myName": "xPosition"
-            },
-            {
-              "myData": 0.0,
-              "myName": "yPosition"
-            }
-          ],
-          "myTextualAttributes": [
-            {
-              "myData": "farm",
-              "myName": "name"
-            }
-          ]
-        },
-        "myTypes": []
-      }
-    ],
+    "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
         "AttributeDisplayerStates": [
@@ -2376,44 +2212,6 @@
           "numRows": 10,
           "animationSequences": [
             {
-              "myStartFrame": 90,
-              "myStopFrame": 100,
-              "myCurrentFrame": 90,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 260,
-              "myStopFrame": 270,
-              "myCurrentFrame": 260,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 110,
-              "myStopFrame": 120,
-              "myCurrentFrame": 110,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 350,
               "myStopFrame": 355,
               "myCurrentFrame": 350,
@@ -2421,42 +2219,6 @@
               "myTags": [
                 "RIGHT",
                 "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 140,
-              "myStopFrame": 150,
-              "myCurrentFrame": 140,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 20,
-              "myStopFrame": 30,
-              "myCurrentFrame": 20,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 300,
-              "myStopFrame": 310,
-              "myCurrentFrame": 300,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -2474,64 +2236,51 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 120,
-              "myStopFrame": 130,
-              "myCurrentFrame": 120,
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 210,
-              "myStopFrame": 220,
-              "myCurrentFrame": 210,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 325,
-              "myStopFrame": 330,
-              "myCurrentFrame": 325,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 335,
-              "myStopFrame": 340,
-              "myCurrentFrame": 335,
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DECAY"
+                "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 180,
-              "myStopFrame": 190,
-              "myCurrentFrame": 180,
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "ATTACK"
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -2550,24 +2299,48 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 100,
-              "myStopFrame": 110,
-              "myCurrentFrame": 100,
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "MOVE"
+                "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 230,
-              "myStopFrame": 240,
-              "myCurrentFrame": 230,
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
                 "RIGHT",
                 "ATTACK"
               ],
@@ -2587,43 +2360,6 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 160,
-              "myStopFrame": 170,
-              "myCurrentFrame": 160,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 170,
-              "myStopFrame": 180,
-              "myCurrentFrame": 170,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 80,
-              "myStopFrame": 90,
-              "myCurrentFrame": 80,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 150,
               "myStopFrame": 160,
               "myCurrentFrame": 150,
@@ -2637,64 +2373,13 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 10,
-              "myStopFrame": 20,
-              "myCurrentFrame": 10,
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 30,
-              "myStopFrame": 40,
-              "myCurrentFrame": 30,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 280,
-              "myStopFrame": 290,
-              "myCurrentFrame": 280,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 10,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 345,
-              "myStopFrame": 350,
-              "myCurrentFrame": 345,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
                 "RIGHT",
-                "DECAY"
+                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -2713,25 +2398,75 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 40,
-              "myStopFrame": 50,
-              "myCurrentFrame": 40,
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 60,
-              "myStopFrame": 70,
-              "myCurrentFrame": 60,
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
               "myRepeatFlag": true,
               "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "RIGHT",
                 "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -2750,13 +2485,114 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 190,
-              "myStopFrame": 200,
-              "myCurrentFrame": 190,
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
                 "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
@@ -2776,6 +2612,55 @@
               "myFrameCounter": 0
             },
             {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
               "myStartFrame": 50,
               "myStopFrame": 60,
               "myCurrentFrame": 50,
@@ -2789,87 +2674,38 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 220,
-              "myStopFrame": 230,
-              "myCurrentFrame": 220,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 320,
-              "myStopFrame": 325,
-              "myCurrentFrame": 320,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 270,
-              "myStopFrame": 280,
-              "myCurrentFrame": 270,
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 130,
-              "myStopFrame": 140,
-              "myCurrentFrame": 130,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 70,
-              "myStopFrame": 80,
-              "myCurrentFrame": 70,
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "RIGHT",
+                "BACKWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 200,
-              "myStopFrame": 210,
-              "myCurrentFrame": 200,
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 340,
-              "myStopFrame": 345,
-              "myCurrentFrame": 340,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
+                "RIGHT",
                 "DECAY"
               ],
               "mySlownessMultiplier": 1.0,
@@ -2888,6 +2724,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2970,14 +2820,6 @@
               "myName": "ReloadTime"
             },
             {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
               "myData": 200.0,
               "myName": "yPosition"
             },
@@ -3002,8 +2844,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 200.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 1,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -3041,44 +2899,6 @@
           "numRows": 10,
           "animationSequences": [
             {
-              "myStartFrame": 90,
-              "myStopFrame": 100,
-              "myCurrentFrame": 90,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 260,
-              "myStopFrame": 270,
-              "myCurrentFrame": 260,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 110,
-              "myStopFrame": 120,
-              "myCurrentFrame": 110,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 350,
               "myStopFrame": 355,
               "myCurrentFrame": 350,
@@ -3086,42 +2906,6 @@
               "myTags": [
                 "RIGHT",
                 "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 140,
-              "myStopFrame": 150,
-              "myCurrentFrame": 140,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 20,
-              "myStopFrame": 30,
-              "myCurrentFrame": 20,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 300,
-              "myStopFrame": 310,
-              "myCurrentFrame": 300,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3139,64 +2923,51 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 120,
-              "myStopFrame": 130,
-              "myCurrentFrame": 120,
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 210,
-              "myStopFrame": 220,
-              "myCurrentFrame": 210,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 325,
-              "myStopFrame": 330,
-              "myCurrentFrame": 325,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 335,
-              "myStopFrame": 340,
-              "myCurrentFrame": 335,
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DECAY"
+                "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 180,
-              "myStopFrame": 190,
-              "myCurrentFrame": 180,
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "ATTACK"
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3215,24 +2986,48 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 100,
-              "myStopFrame": 110,
-              "myCurrentFrame": 100,
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "MOVE"
+                "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 230,
-              "myStopFrame": 240,
-              "myCurrentFrame": 230,
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
                 "RIGHT",
                 "ATTACK"
               ],
@@ -3252,43 +3047,6 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 160,
-              "myStopFrame": 170,
-              "myCurrentFrame": 160,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 170,
-              "myStopFrame": 180,
-              "myCurrentFrame": 170,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 80,
-              "myStopFrame": 90,
-              "myCurrentFrame": 80,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 150,
               "myStopFrame": 160,
               "myCurrentFrame": 150,
@@ -3302,64 +3060,13 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 10,
-              "myStopFrame": 20,
-              "myCurrentFrame": 10,
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 30,
-              "myStopFrame": 40,
-              "myCurrentFrame": 30,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 280,
-              "myStopFrame": 290,
-              "myCurrentFrame": 280,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 10,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 345,
-              "myStopFrame": 350,
-              "myCurrentFrame": 345,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
                 "RIGHT",
-                "DECAY"
+                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3378,25 +3085,75 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 40,
-              "myStopFrame": 50,
-              "myCurrentFrame": 40,
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 60,
-              "myStopFrame": 70,
-              "myCurrentFrame": 60,
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
               "myRepeatFlag": true,
               "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "RIGHT",
                 "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3415,13 +3172,114 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 190,
-              "myStopFrame": 200,
-              "myCurrentFrame": 190,
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
                 "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
@@ -3441,6 +3299,55 @@
               "myFrameCounter": 0
             },
             {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
               "myStartFrame": 50,
               "myStopFrame": 60,
               "myCurrentFrame": 50,
@@ -3454,87 +3361,38 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 220,
-              "myStopFrame": 230,
-              "myCurrentFrame": 220,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 320,
-              "myStopFrame": 325,
-              "myCurrentFrame": 320,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 270,
-              "myStopFrame": 280,
-              "myCurrentFrame": 270,
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 130,
-              "myStopFrame": 140,
-              "myCurrentFrame": 130,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 70,
-              "myStopFrame": 80,
-              "myCurrentFrame": 70,
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "RIGHT",
+                "BACKWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 200,
-              "myStopFrame": 210,
-              "myCurrentFrame": 200,
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 340,
-              "myStopFrame": 345,
-              "myCurrentFrame": 340,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
+                "RIGHT",
                 "DECAY"
               ],
               "mySlownessMultiplier": 1.0,
@@ -3553,6 +3411,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3635,14 +3507,6 @@
               "myName": "ReloadTime"
             },
             {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
               "myData": 400.0,
               "myName": "yPosition"
             },
@@ -3667,8 +3531,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 400.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 1,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -3702,44 +3582,6 @@
           "numRows": 10,
           "animationSequences": [
             {
-              "myStartFrame": 90,
-              "myStopFrame": 100,
-              "myCurrentFrame": 90,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 260,
-              "myStopFrame": 270,
-              "myCurrentFrame": 260,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 110,
-              "myStopFrame": 120,
-              "myCurrentFrame": 110,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 350,
               "myStopFrame": 355,
               "myCurrentFrame": 350,
@@ -3747,42 +3589,6 @@
               "myTags": [
                 "RIGHT",
                 "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 140,
-              "myStopFrame": 150,
-              "myCurrentFrame": 140,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 20,
-              "myStopFrame": 30,
-              "myCurrentFrame": 20,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 300,
-              "myStopFrame": 310,
-              "myCurrentFrame": 300,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3800,64 +3606,51 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 120,
-              "myStopFrame": 130,
-              "myCurrentFrame": 120,
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 210,
-              "myStopFrame": 220,
-              "myCurrentFrame": 210,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 325,
-              "myStopFrame": 330,
-              "myCurrentFrame": 325,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 335,
-              "myStopFrame": 340,
-              "myCurrentFrame": 335,
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DECAY"
+                "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 180,
-              "myStopFrame": 190,
-              "myCurrentFrame": 180,
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "ATTACK"
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -3876,24 +3669,48 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 100,
-              "myStopFrame": 110,
-              "myCurrentFrame": 100,
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "MOVE"
+                "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 230,
-              "myStopFrame": 240,
-              "myCurrentFrame": 230,
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
                 "RIGHT",
                 "ATTACK"
               ],
@@ -3913,43 +3730,6 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 160,
-              "myStopFrame": 170,
-              "myCurrentFrame": 160,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 170,
-              "myStopFrame": 180,
-              "myCurrentFrame": 170,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 80,
-              "myStopFrame": 90,
-              "myCurrentFrame": 80,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 150,
               "myStopFrame": 160,
               "myCurrentFrame": 150,
@@ -3963,64 +3743,13 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 10,
-              "myStopFrame": 20,
-              "myCurrentFrame": 10,
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 30,
-              "myStopFrame": 40,
-              "myCurrentFrame": 30,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 280,
-              "myStopFrame": 290,
-              "myCurrentFrame": 280,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 10,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 345,
-              "myStopFrame": 350,
-              "myCurrentFrame": 345,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
                 "RIGHT",
-                "DECAY"
+                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4039,25 +3768,75 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 40,
-              "myStopFrame": 50,
-              "myCurrentFrame": 40,
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 60,
-              "myStopFrame": 70,
-              "myCurrentFrame": 60,
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
               "myRepeatFlag": true,
               "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "RIGHT",
                 "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4076,13 +3855,114 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 190,
-              "myStopFrame": 200,
-              "myCurrentFrame": 190,
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
                 "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
@@ -4102,6 +3982,55 @@
               "myFrameCounter": 0
             },
             {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
               "myStartFrame": 50,
               "myStopFrame": 60,
               "myCurrentFrame": 50,
@@ -4115,87 +4044,38 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 220,
-              "myStopFrame": 230,
-              "myCurrentFrame": 220,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 320,
-              "myStopFrame": 325,
-              "myCurrentFrame": 320,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 270,
-              "myStopFrame": 280,
-              "myCurrentFrame": 270,
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 130,
-              "myStopFrame": 140,
-              "myCurrentFrame": 130,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 70,
-              "myStopFrame": 80,
-              "myCurrentFrame": 70,
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "RIGHT",
+                "BACKWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 200,
-              "myStopFrame": 210,
-              "myCurrentFrame": 200,
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 340,
-              "myStopFrame": 345,
-              "myCurrentFrame": 340,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
+                "RIGHT",
                 "DECAY"
               ],
               "mySlownessMultiplier": 1.0,
@@ -4214,6 +4094,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -4296,14 +4190,6 @@
               "myName": "ReloadTime"
             },
             {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 2,
-              "myName": "teamID"
-            },
-            {
               "myData": 100.0,
               "myName": "yPosition"
             },
@@ -4328,8 +4214,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 100.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 2,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -4363,44 +4265,6 @@
           "numRows": 10,
           "animationSequences": [
             {
-              "myStartFrame": 90,
-              "myStopFrame": 100,
-              "myCurrentFrame": 90,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 260,
-              "myStopFrame": 270,
-              "myCurrentFrame": 260,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 110,
-              "myStopFrame": 120,
-              "myCurrentFrame": 110,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 350,
               "myStopFrame": 355,
               "myCurrentFrame": 350,
@@ -4408,42 +4272,6 @@
               "myTags": [
                 "RIGHT",
                 "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 140,
-              "myStopFrame": 150,
-              "myCurrentFrame": 140,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 20,
-              "myStopFrame": 30,
-              "myCurrentFrame": 20,
-              "myRepeatFlag": true,
-              "myTags": [
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 300,
-              "myStopFrame": 310,
-              "myCurrentFrame": 300,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4461,64 +4289,51 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 120,
-              "myStopFrame": 130,
-              "myCurrentFrame": 120,
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 210,
-              "myStopFrame": 220,
-              "myCurrentFrame": 210,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 325,
-              "myStopFrame": 330,
-              "myCurrentFrame": 325,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 335,
-              "myStopFrame": 340,
-              "myCurrentFrame": 335,
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DECAY"
+                "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 180,
-              "myStopFrame": 190,
-              "myCurrentFrame": 180,
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "ATTACK"
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4537,24 +4352,48 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 100,
-              "myStopFrame": 110,
-              "myCurrentFrame": 100,
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
               "myRepeatFlag": true,
               "myTags": [
                 "LEFT",
-                "MOVE"
+                "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 230,
-              "myStopFrame": 240,
-              "myCurrentFrame": 230,
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
                 "RIGHT",
                 "ATTACK"
               ],
@@ -4574,43 +4413,6 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 160,
-              "myStopFrame": 170,
-              "myCurrentFrame": 160,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 170,
-              "myStopFrame": 180,
-              "myCurrentFrame": 170,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "LEFT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 80,
-              "myStopFrame": 90,
-              "myCurrentFrame": 80,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "MOVE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
               "myStartFrame": 150,
               "myStopFrame": 160,
               "myCurrentFrame": 150,
@@ -4624,64 +4426,13 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 10,
-              "myStopFrame": 20,
-              "myCurrentFrame": 10,
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 30,
-              "myStopFrame": 40,
-              "myCurrentFrame": 30,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "LEFT",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 280,
-              "myStopFrame": 290,
-              "myCurrentFrame": 280,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 10,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "STAND"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 345,
-              "myStopFrame": 350,
-              "myCurrentFrame": 345,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
                 "RIGHT",
-                "DECAY"
+                "DIE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4700,25 +4451,75 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 40,
-              "myStopFrame": 50,
-              "myCurrentFrame": 40,
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
               "myRepeatFlag": true,
               "myTags": [
-                "BACKWARD",
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 60,
-              "myStopFrame": 70,
-              "myCurrentFrame": 60,
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
               "myRepeatFlag": true,
               "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
                 "RIGHT",
                 "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
@@ -4737,13 +4538,114 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 190,
-              "myStopFrame": 200,
-              "myCurrentFrame": 190,
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
                 "ATTACK"
               ],
               "mySlownessMultiplier": 1.0,
@@ -4763,6 +4665,55 @@
               "myFrameCounter": 0
             },
             {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
               "myStartFrame": 50,
               "myStopFrame": 60,
               "myCurrentFrame": 50,
@@ -4776,87 +4727,38 @@
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 220,
-              "myStopFrame": 230,
-              "myCurrentFrame": 220,
-              "myRepeatFlag": true,
-              "myTags": [
-                "RIGHT",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 320,
-              "myStopFrame": 325,
-              "myCurrentFrame": 320,
-              "myRepeatFlag": true,
-              "myTags": [
-                "FORWARD",
-                "DECAY"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 270,
-              "myStopFrame": 280,
-              "myCurrentFrame": 270,
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
                 "LEFT",
-                "DIE"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 130,
-              "myStopFrame": 140,
-              "myCurrentFrame": 130,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
-                "RIGHT",
                 "MOVE"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 70,
-              "myStopFrame": 80,
-              "myCurrentFrame": 70,
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
               "myRepeatFlag": true,
               "myTags": [
-                "FORWARD",
-                "RIGHT",
+                "BACKWARD",
                 "STAND"
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             },
             {
-              "myStartFrame": 200,
-              "myStopFrame": 210,
-              "myCurrentFrame": 200,
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
               "myRepeatFlag": true,
               "myTags": [
                 "BACKWARD",
-                "ATTACK"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            },
-            {
-              "myStartFrame": 340,
-              "myStopFrame": 345,
-              "myCurrentFrame": 340,
-              "myRepeatFlag": true,
-              "myTags": [
-                "BACKWARD",
+                "RIGHT",
                 "DECAY"
               ],
               "mySlownessMultiplier": 1.0,
@@ -4875,6 +4777,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
