@@ -10,6 +10,7 @@ public enum ActionType {
     COLLISION("Collision"),
     INTERNAL("Internal"),
     VISION("Vision"),
+    BUTTON("Button"),
     FOCUSED("Focused Element"),
     OBJECTIVE("Objective"),
     SELECTION("Selection");
