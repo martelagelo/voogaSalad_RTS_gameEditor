@@ -53,8 +53,11 @@ public enum ActionOptions {
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",
-                               "If #(my/another player's) attribute # is # #",
+                               "If #(my/another player's) attribute # is # #, make the attribute # # #",
                                ActionParameters.STRING,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER,
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER),
