@@ -184,14 +184,6 @@ public class Level {
             if (goal.getNumericalAttribute("Won").doubleValue() == 1.0) won = 1;
             if (goal.getNumericalAttribute("Lost").doubleValue() == 1.0) lost = 1;
         }
-//        // TODO: temporary, replace with the iterator method above
-//        won = this.myUnits.stream()
-//                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() != 1)
-//                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
-//
-//        lost = this.myUnits.stream()
-//                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() == 1)
-//                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
 
         return won - 2 * lost;
     }

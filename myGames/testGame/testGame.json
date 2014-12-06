@@ -2624,7 +2624,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "500",
+                      "10000",
                       "Won",
                       "EqualsAssignment",
                       "1"

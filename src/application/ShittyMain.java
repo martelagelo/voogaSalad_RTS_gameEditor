@@ -115,17 +115,8 @@ public class ShittyMain extends Application {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
-                .getClassString(), "my", "Resources", "GreaterThanEqual", "1000", "Won",
+                .getClassString(), "my", "Resources", "GreaterThanEqual", "10000", "Won",
                                         "EqualsAssignment", "1"));
-        // archerState
-        // .addAction(new ActionWrapper("InternalActions",
-        // ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
-        // .getClassString(), StateTags.HEALTH,
-        // "LessThanEqual",
-        // "0",
-        // StateTags.IS_DEAD, "EqualsAssignment", "1"));
-        // ges.addAction(new ActionWrapper("InternalActions", ActionOptions.OBJECT_CONDITION_ACTION
-        // , parameters));
         return ges;
     }
 
