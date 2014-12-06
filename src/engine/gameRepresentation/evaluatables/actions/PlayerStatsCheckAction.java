@@ -34,11 +34,11 @@ public class PlayerStatsCheckAction extends Action {
                                                                                      EvaluatorCreationException {
         // TODO Make this a hierarchy with the parameter type identifying
         Evaluatable<?> playerAttr =
-                new ParticipantValueParameter(
+                new ParticipantValueParameter("",
                                               ((args[0].equals("me")) ? Arrays.asList(participantManager
                                                                              .getUser())
                                                                      : participantManager.getAI()),
-                                              args[1], "");
+                                              args[1]);
         Evaluatable<?> numberAttr = new NumberParameter("", Double.valueOf(args[3]));
         Evaluator<?, ?, ?> participantValueEvaluator =
                 factory.makeEvaluator(args[2], playerAttr, numberAttr);

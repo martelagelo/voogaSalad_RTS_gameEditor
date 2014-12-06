@@ -46,6 +46,7 @@ public class ActionFactory {
      */
     public void setParticipantManager (ParticipantManager manager) {
         myParticipantManager = manager;
+        System.out.println("Set participant manager");
     }
 
     /**
