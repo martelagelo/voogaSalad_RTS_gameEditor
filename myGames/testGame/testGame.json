@@ -548,14 +548,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -563,7 +563,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -571,10 +571,10 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -585,28 +585,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -1203,14 +1212,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1218,7 +1227,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1226,10 +1235,10 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -1240,28 +1249,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -1854,14 +1872,14 @@
                 40.0
               ],
               "myActions": {
-                "collision": [
+                "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
                     "myParameters": [
                       "NotCollision",
                       "RandomWaypoint"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1869,7 +1887,7 @@
                       "Collision",
                       "Attack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1877,7 +1895,7 @@
                       "Collision",
                       "MoveBack"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   },
                   {
                     "myActionName": "CreateObjectAction",
@@ -1886,10 +1904,10 @@
                       "ArcherTimer",
                       "500"
                     ],
-                    "myActionType": "collision"
+                    "myActionType": "Collision"
                   }
                 ],
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
                     "myParameters": [
@@ -1900,28 +1918,37 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "UpdateMovementDirection"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "MovePlayer"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   },
                   {
                     "myActionName": "ActOnObjectsAction",
                     "myParameters": [
                       "HeadingUpdate"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ]
               },
@@ -1996,7 +2023,7 @@
           "myGoals": [
             {
               "myActions": {
-                "InternalActions": [
+                "Internal": [
                   {
                     "myActionName": "PlayerStatsCheckAction",
                     "myParameters": [
@@ -2008,7 +2035,7 @@
                       "EqualsAssignment",
                       "1"
                     ],
-                    "myActionType": "InternalActions"
+                    "myActionType": "Internal"
                   }
                 ]
               },
@@ -2635,14 +2662,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -2650,7 +2677,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -2658,10 +2685,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -2672,28 +2699,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -3290,14 +3326,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3305,7 +3341,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3313,10 +3349,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -3327,28 +3363,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -3941,14 +3986,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3956,7 +4001,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -3964,10 +4009,10 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -3978,28 +4023,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },
@@ -4592,14 +4646,14 @@
           40.0
         ],
         "myActions": {
-          "collision": [
+          "Collision": [
             {
               "myActionName": "ObjectConditionAction",
               "myParameters": [
                 "NotCollision",
                 "RandomWaypoint"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -4607,7 +4661,7 @@
                 "Collision",
                 "Attack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "ObjectConditionAction",
@@ -4615,7 +4669,7 @@
                 "Collision",
                 "MoveBack"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             },
             {
               "myActionName": "CreateObjectAction",
@@ -4624,10 +4678,10 @@
                 "ArcherTimer",
                 "500"
               ],
-              "myActionType": "collision"
+              "myActionType": "Collision"
             }
           ],
-          "InternalActions": [
+          "Internal": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
               "myParameters": [
@@ -4638,28 +4692,37 @@
                 "EqualsAssignment",
                 "1"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "UpdateMovementDirection"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "MovePlayer"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
             },
             {
               "myActionName": "ActOnObjectsAction",
               "myParameters": [
                 "HeadingUpdate"
               ],
-              "myActionType": "InternalActions"
+              "myActionType": "Internal"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ]
         },

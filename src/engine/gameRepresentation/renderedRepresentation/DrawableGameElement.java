@@ -85,7 +85,7 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	public double[] findGlobalBounds() {
 		return drawableState.findGlobalBounds();
 	}
-
+	
 	public void setWaypoints(List<Location> waypointsToAdd) {
 		waypoints.clear();
 		waypoints.addAll(waypointsToAdd);

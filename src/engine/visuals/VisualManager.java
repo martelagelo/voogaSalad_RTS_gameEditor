@@ -28,13 +28,13 @@ public class VisualManager {
      * 
      * @param gameObjectVisuals the group for initial objects on the map. If no objects yet exist,
      *        add an empty new Group()
-     * @param screenWidth the width of the screen to create
-     * @param screenHeight the height of the screen to create
+     * @param fieldWidth the width of the map to create
+     * @param fieldHeight the height of the map to create
      */
     public VisualManager (Group gameObjectVisuals,
-                          double screenWidth,
-                          double screenHeight) {
-        scene = new ScrollablePane(gameObjectVisuals, screenWidth, screenHeight);
+                          double fieldWidth,
+                          double fieldHeight) {
+        scene = new ScrollablePane(gameObjectVisuals, fieldWidth, fieldHeight);
         background = scene.getScrollingBackground();
         myMiniMap = new MiniMap(scene);
         scene.addToScene(new Group(myMiniMap.getDisplay()));

@@ -3,13 +3,16 @@ package engine.gameRepresentation.evaluatables.actions.enumerations;
 /**
  * An enumeration for the types of actions available e.g. collision, internal, vision
  * 
- * @author Zach
+ * @author Zach, Stanley
  *
  */
 public enum ActionType {
     COLLISION("Collision"),
     INTERNAL("Internal"),
-    VISION("Vision");
+    VISION("Vision"),
+    FOCUSED("Focused Element"),
+    OBJECTIVE("Objective"),
+    SELECTION("Selection");
 
     private String myString;
 

@@ -3,7 +3,6 @@ package engine.stateManaging;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
@@ -137,17 +136,23 @@ public class GameElementManager {
 
     public void setSelectedUnitCommand (Point2D click, boolean queueCommand, Participant u) {
         // check to see if a unit was right-clicked on
-        if (filterSelectedUnits().stream()
-                .filter(e -> u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).intValue())).count() > 0) {
+        if (filterSelectedUnits()
+                .stream()
+                .filter(e -> u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).intValue()))
+                .count() > 0) {
+            boolean elementSelected = false;
             for (SelectableGameElement e : myLevel.getUnits()) {
                 double[] cornerBounds = e.findGlobalBounds();
                 if (new Polygon(cornerBounds).contains(click)) {
-                    issueOrderToSelectedUnits(e);
-                    return;
+                    notifySelectedElementsOfTarget(e);
+                    elementSelected = true;
                 }
             }
+            if (!elementSelected) {
+                clearSelectedElementsOfTarget();
+            }
         }
-        
+
         // if location is clicked on instead, tell all selected units to go there
         for (SelectableGameElement e : filterSelectedUnits()) {
             if (!checkOnTeam(e, u)) continue;
@@ -157,19 +162,25 @@ public class GameElementManager {
                 // e.clearHeadings();
             }
             else {
-            	double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-            	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-            	Location from = new Location(currentX, currentY);
-            	Location to = new Location(click.getX(), click.getY());
-            	List<Location> waypoints = pathingComputer.findPath(from, to);
+                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+                Location from = new Location(currentX, currentY);
+                Location to = new Location(click.getX(), click.getY());
+                List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
             }
         }
     }
 
-    private void issueOrderToSelectedUnits (SelectableGameElement e) {
-        System.out.println(e.getPosition().getX()+", "+e.getPosition().getY());
-        
+    private void notifySelectedElementsOfTarget (SelectableGameElement e) {
+        System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
+        // TODO John: make this only go to selected things in your team
+        filterSelectedUnits().forEach(unit -> unit.setFocusedElement(e));
+
+    }
+
+    private void clearSelectedElementsOfTarget () {
+        filterSelectedUnits().forEach(unit -> unit.clearFocusedElement());
     }
 
     private List<SelectableGameElement> filterSelectedUnits () {
