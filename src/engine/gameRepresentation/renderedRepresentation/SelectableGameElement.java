@@ -32,10 +32,9 @@ public class SelectableGameElement extends DrawableGameElement {
     private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle actionTypes,
                                   ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
-        super(element, actionTypes, visualizer);
+        super(element, visualizer);
         myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 

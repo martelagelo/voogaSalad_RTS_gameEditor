@@ -43,8 +43,8 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	 *            be passed into the element)
 	 */
 	public DrawableGameElement(DrawableGameElementState state,
-			ResourceBundle actionTypes, Visualizer visualizer) {
-		super(state, actionTypes);
+			Visualizer visualizer) {
+		super(state);
 		drawableState = state;
 		myVisualizer = visualizer;
 		waypoints = new LinkedList<>();
