@@ -31,7 +31,7 @@ public class VisualizerFactory {
 				elementState.attributes);
 		
 		AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
-		newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,elementState.getAttributeContainer()));
+		newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,elementState.attributes));
 		
 //		for (Attribute<Number> a : elementState.getAttributeContainer().getNumericalAttributes()) {
 //			AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", a.getName(), 0, a.getData().doubleValue());
