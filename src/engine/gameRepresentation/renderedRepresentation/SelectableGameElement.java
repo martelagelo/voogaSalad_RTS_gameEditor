@@ -11,6 +11,7 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.ElementPair;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
 
 
@@ -27,6 +28,8 @@ public class SelectableGameElement extends DrawableGameElement {
     private SelectableGameElementState selectableState;
     private Map<String, Set<DrawableGameElement>> myInteractingElements;
     private ResourceBundle myInteractingElementTypes;
+    // The element that is currently being focused on by the element
+    private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
                                   ResourceBundle actionTypes,
@@ -36,6 +39,14 @@ public class SelectableGameElement extends DrawableGameElement {
         myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
+    }
+
+    public void setFocusedElement (SelectableGameElement element) {
+        myFocusedElement = element;
+    }
+
+    public void clearFocusedElement () {
+        myFocusedElement = null;
     }
 
     private void initializeInteractingElementLists () {
@@ -82,6 +93,9 @@ public class SelectableGameElement extends DrawableGameElement {
     @Override
     public void update () {
         updateSelfDueToCollisions();
+        if (myFocusedElement != null) {
+            updateSelfDueToFocusedElement();
+        }
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         // System.out.println("Updating selectable game element: " + teamColor);
@@ -91,6 +105,10 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void updateSelfDueToCurrentObjective () {
         executeAllActions(actionTypes.getString("objective"));
+    }
+
+    private void updateSelfDueToFocusedElement () {
+        executeAllActions(ActionType.FOCUSED.toString(), new ElementPair(this, myFocusedElement));
     }
 
     public void updateSelfDueToSelection () {

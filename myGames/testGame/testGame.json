@@ -567,6 +567,15 @@
                     "myActionType": "collision"
                   }
                 ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
+                  }
+                ],
                 "InternalActions": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
@@ -1213,6 +1222,15 @@
                       "MoveBack"
                     ],
                     "myActionType": "collision"
+                  }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
                   }
                 ],
                 "InternalActions": [
@@ -1868,6 +1886,15 @@
                     "myActionType": "collision"
                   }
                 ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ActOnObjectsAction",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "Focused Element"
+                  }
+                ],
                 "InternalActions": [
                   {
                     "myActionName": "CheckAttributeSetAttributeAction",
@@ -1935,7 +1962,7 @@
                     "myName": "health"
                   },
                   {
-                    "myData": 2,
+                    "myData": 5,
                     "myName": "movementSpeed"
                   },
                   {
@@ -2633,6 +2660,15 @@
               "myActionType": "collision"
             }
           ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
+            }
+          ],
           "InternalActions": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
@@ -3281,6 +3317,15 @@
               "myActionType": "collision"
             }
           ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
+            }
+          ],
           "InternalActions": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
@@ -3923,6 +3968,15 @@
                 "MoveBack"
               ],
               "myActionType": "collision"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
             }
           ],
           "InternalActions": [
@@ -4578,6 +4632,15 @@
               "myActionType": "collision"
             }
           ],
+          "Focused Element": [
+            {
+              "myActionName": "ActOnObjectsAction",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "Focused Element"
+            }
+          ],
           "InternalActions": [
             {
               "myActionName": "CheckAttributeSetAttributeAction",
@@ -4645,7 +4708,7 @@
               "myName": "health"
             },
             {
-              "myData": 2,
+              "myData": 5,
               "myName": "movementSpeed"
             },
             {

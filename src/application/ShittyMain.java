@@ -18,6 +18,7 @@ import util.SaveLoadUtility;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -67,7 +68,8 @@ public class ShittyMain extends Application {
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
         archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
-                .getClassString(), "archer","ArcherTimer","500"));
+                .getClassString(), "archer", "ArcherTimer", "500"));
+        archerState3.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 5);
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -78,7 +80,7 @@ public class ShittyMain extends Application {
         // levelState.addTerrain(s);
         // }
         levelState.addUnit(archerState);
-        //levelState.addUnit(archerState1);
+        // levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
@@ -164,6 +166,10 @@ public class ShittyMain extends Application {
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION
                                                         .getClassString(),
                                                 "HeadingUpdate"));
+        // Make the element so it follows another player when right-clicked on
+        archerState.addAction(new ActionWrapper(ActionType.FOCUSED.toString(),
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION
+                                                        .getClassString(), "Follow"));
 
         archerState.setBounds(bounds);
         // TESTING SAVING SGES

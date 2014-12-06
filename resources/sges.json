@@ -37,6 +37,15 @@
         "myActionType": "collision"
       }
     ],
+    "Focused Element": [
+      {
+        "myActionName": "ActOnObjectsAction",
+        "myParameters": [
+          "Follow"
+        ],
+        "myActionType": "Focused Element"
+      }
+    ],
     "InternalActions": [
       {
         "myActionName": "CheckAttributeSetAttributeAction",
