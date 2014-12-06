@@ -81,7 +81,6 @@ public class GameElementManager {
      * @param rectPoints
      *        the points in the rectangle surrounding the player's units
      */
-
     public void selectUnitsInBounds (double[] rectPoints, boolean multiSelect, Participant u) {
         boolean isTeamSelected = false;
         for (SelectableGameElement e : myLevel.getUnits()) {
