@@ -35,7 +35,7 @@ public class PlayerStatsCheckAction extends Action {
         // TODO Make this a hierarchy with the parameter type identifying
         Evaluatable<?> playerAttr =
                 new ParticipantValueParameter("",
-                                              ((args[0].equals("me")) ? Arrays.asList(participantManager
+                                              ((args[0].equals("my")) ? Arrays.asList(participantManager
                                                                              .getUser())
                                                                      : participantManager.getAI()),
                                               args[1]);
