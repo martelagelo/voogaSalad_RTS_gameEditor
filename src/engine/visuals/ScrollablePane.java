@@ -3,7 +3,6 @@ package engine.visuals;
 import java.io.IOException;
 import java.util.function.Consumer;
 import javafx.beans.property.ReadOnlyDoubleProperty;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.input.MouseButton;
@@ -51,23 +50,12 @@ public class ScrollablePane extends Pane {
         this.myMapHeight = fieldHeight;
         this.root = root;
         Pane stackPane = new Pane();
-        BorderPane guiBP = null;
-        try {
-            // TODO: add a click listener for each of the buttons in each of these squares
-            guiBP =
-                    (BorderPane) FXMLLoader.load(getClass().getClassLoader()
-                            .getResource("engine/visuals/guipanes/runner.fxml"));
-        }
-        catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        
         this.getChildren().add(root);
         myBackground = new ScrollableBackground(fieldWidth, fieldHeight, this);
         mySelectionBox = new SelectionBox();
-        guiBP.setCenter(myBackground);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
-        stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
+        stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox());
         root.getChildren().add(stackPane);
         initializeHandlers();
     }

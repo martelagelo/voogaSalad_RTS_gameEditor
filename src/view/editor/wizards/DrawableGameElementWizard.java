@@ -157,6 +157,7 @@ public class DrawableGameElementWizard extends Wizard {
             //TODO: Fix the text that goes into the button           
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
             edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs, dim));
+            edit.setMaxWidth(Double.MAX_VALUE);
             newElement.getChildren().add(edit);
 
             Button delete = new Button();

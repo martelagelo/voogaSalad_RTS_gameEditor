@@ -45,7 +45,8 @@ public class AnimationGrid extends Grid {
     }
 
     private void selectFrame (int frameIndex, String color) throws IndexOutOfBoundsException {
-        if (frameIndex < 0 || frameIndex > (frameCols.size() * frameCols.get(0).size() - 1)) { 
+        int size = frameCols.size() * frameCols.get(0).size() - 1;
+        if (frameIndex < 0 || frameIndex > size) { 
             throw new IndexOutOfBoundsException(INVALID_FRAME_MESSAGE); 
         }
         resetExistingFill(color, null);

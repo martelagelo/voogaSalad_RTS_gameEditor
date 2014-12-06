@@ -28,15 +28,24 @@ public class SelectableGameElement extends DrawableGameElement {
     private SelectableGameElementState selectableState;
     private Map<String, Set<DrawableGameElement>> myInteractingElements;
     private ResourceBundle myInteractingElementTypes;
+    // The element that is currently being focused on by the element
+    private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle actionTypes,
                                   ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
-        super(element, actionTypes, visualizer);
+        super(element, visualizer);
         myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
+    }
+
+    public void setFocusedElement (SelectableGameElement element) {
+        myFocusedElement = element;
+    }
+
+    public void clearFocusedElement () {
+        myFocusedElement = null;
     }
 
     private void initializeInteractingElementLists () {
@@ -83,6 +92,9 @@ public class SelectableGameElement extends DrawableGameElement {
     @Override
     public void update () {
         updateSelfDueToCollisions();
+        if (myFocusedElement != null) {
+            updateSelfDueToFocusedElement();
+        }
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         // System.out.println("Updating selectable game element: " + teamColor);
@@ -92,6 +104,10 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void updateSelfDueToCurrentObjective () {
         executeAllActions(ActionType.OBJECTIVE.toString());
+    }
+
+    private void updateSelfDueToFocusedElement () {
+        executeAllActions(ActionType.FOCUSED.toString(), new ElementPair(this, myFocusedElement));
     }
 
     public void updateSelfDueToSelection () {
@@ -118,19 +134,16 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                      // per game loop refresh
             }
         });
-        myInteractingElements.get(myInteractingElementTypes.getString(elementType)).clear();// After
-                                                                                            // we've
-                                                                                            // acted
-                                                                                            // on
-                                                                                            // the
-                                                                                            // elements,
-                                                                                            // clear
-                                                                                            // the
-                                                                                            // list
+        // After we've acted on the elements, clear the list
+        myInteractingElements.get(myInteractingElementTypes.getString(elementType)).clear();
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
         function.accept(selectableState);
+    }
+    
+    public void executeAllButtonActions(){
+        this.executeAllActions(ActionType.BUTTON.toString());
     }
 
 }

@@ -99,7 +99,7 @@ public class EditorInputManager implements InputManager {
     }
 
     @Override
-    public void screenButtonClicked (String imagePath, int index) {
+    public void screenButtonClicked (int buttonID) {
         // TODO decide if we want this to do anything in the editor... maybe not
     }
 

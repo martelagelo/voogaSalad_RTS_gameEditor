@@ -71,6 +71,15 @@
         ],
         "myActionType": "INTERNAL"
       }
+    ],
+    "Focused Element": [
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "Follow"
+        ],
+        "myActionType": "FOCUSED"
+      }
     ]
   },
   "attributes": {
@@ -126,5 +135,6 @@
         "myName": "currentAction"
       }
     ]
-  }
+  },
+  "myTypes": []
 }
