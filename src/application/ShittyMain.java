@@ -73,7 +73,7 @@ public class ShittyMain extends Application {
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
         archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
-                .getClassString(), "archer"));
+                .getClassString(), "archer","ArcherTimer","500"));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -84,12 +84,11 @@ public class ShittyMain extends Application {
         // levelState.addTerrain(s);
         // }
         levelState.addUnit(archerState);
-        levelState.addUnit(archerState1);
+        //levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
-
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");

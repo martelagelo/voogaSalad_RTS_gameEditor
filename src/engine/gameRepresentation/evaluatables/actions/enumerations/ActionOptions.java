@@ -48,8 +48,8 @@ public enum ActionOptions {
     CREATE_OBJECT_ACTION(
                          "Create Object",
                          "CreateObjectAction",
-                         "Create a # at my spawn location.",
-                         ActionParameters.STRING),
+                         "Create a # at my spawn location with a cooldown timer named # with a value of # frames.",
+                         ActionParameters.STRING,ActionParameters.STRING,ActionParameters.NUMBER),
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",

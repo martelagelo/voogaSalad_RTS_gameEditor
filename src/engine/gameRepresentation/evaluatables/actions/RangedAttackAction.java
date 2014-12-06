@@ -15,22 +15,20 @@ import engine.stateManaging.GameElementManager;
 
 
 /**
- * Create an object with a given type with a given reload time on a given timer
+ * Execute a basic ranged attack
  * 
  * @author Zach
  *
  */
-public class CreateObjectAction extends Action {
-    private String myTimerName;
-    private int myReloadTime;
+public class RangedAttackAction extends Action {
+    private final static String RANGED_TIMER = "RangedTimer";
 
-    public CreateObjectAction (String id,
+    public RangedAttackAction (String id,
                                EvaluatorFactory factory,
                                GameElementManager elementManager,
                                ParticipantManager participantManager,
                                String[] args) {
         super(id, factory, elementManager, participantManager, args);
-
     }
 
     @Override
@@ -40,25 +38,17 @@ public class CreateObjectAction extends Action {
                                                ParticipantManager participantManager)
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
-
-        myTimerName = args[1];
-        myReloadTime = Integer.valueOf(args[2]);
         Evaluatable<?> elementPromise =
                 new ElementPromiseParameter("", new ElementPromise(args[0], elementManager));
         Evaluatable<?> me = new GameElementParameter("", new ActorObjectIdentifier());
         Evaluator<?, ?, ?> elementCreator = new SpawnSelectableElement<>("", me, elementPromise);
-
-        return elementCreator;
+        return null;
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
-        if (elements.getActor().getTimer(myTimerName) <= 0) {
-            System.out.println("making element");
-            action.evaluate(elements);
-            elements.getActor().setTimer(myTimerName, myReloadTime);
-        }
-        return true;
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
