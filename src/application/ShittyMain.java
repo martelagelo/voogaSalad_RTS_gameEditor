@@ -74,6 +74,23 @@ public class ShittyMain extends Application {
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
         archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
                 .getClassString(), "archer"));
+        
+        
+        SelectableGameElementState archerState4 =
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 500, 1);
+        SelectableGameElementState archerState5 =
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 700, 1);
+
+        SelectableGameElementState archerState6 =
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 600, 300, 1);
+
+        SelectableGameElementState archerState7 =
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 600, 500, 1);
+
+        SelectableGameElementState archerState8 =
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 800, 300, 1);
+
+
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -87,6 +104,11 @@ public class ShittyMain extends Application {
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
+        levelState.addUnit(archerState4);
+        levelState.addUnit(archerState5);
+        levelState.addUnit(archerState6);
+        levelState.addUnit(archerState7);
+        levelState.addUnit(archerState8);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
 
@@ -185,11 +207,11 @@ public class ShittyMain extends Application {
                                       "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
         // TESTING LOADING SGES
-        SelectableGameElementState sges =
+        /*SelectableGameElementState sges =
                 SaveLoadUtility.loadResource(
                                              SelectableGameElementState.class,
                                              "resources/sges.json");
-        Map<String, List<ActionWrapper>> map = sges.getActions();
+        Map<String, List<ActionWrapper>> map = sges.getActions();*/
 
         return archerState;
     }

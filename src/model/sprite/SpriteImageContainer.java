@@ -49,7 +49,7 @@ public class SpriteImageContainer {
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome,
                 new ColorInput(0, 0, myColorMask.getImage().getWidth(), myColorMask.getImage()
-                        .getHeight(), Color.rgb(0, 0, 255, 1)));
+                        .getHeight(), Color.rgb(0, 0, 255, 1)));      
         myColorMask.setEffect((Effect) blush);
 
         return myColorMask;

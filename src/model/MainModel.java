@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 import java.util.Optional;
 
@@ -340,11 +343,19 @@ public class MainModel extends Observable {
      * @throws Exception
      */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
-        SpriteImageContainer matchingContainer = mySpriteImageGenerator.fetchImageContainer(imageTag);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println("Looking...: " + dateFormat.format(date));
+        SpriteImageContainer matchingContainer = mySpriteImageGenerator
+                .fetchImageContainer(imageTag);
+        System.out.println("Found...: " + dateFormat.format(date));
         ImageView newImageView = new ImageView(matchingContainer.getSpritesheet().getImage());
-        ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE").getImage());
-        SpriteImageContainer spriteContainer = new SpriteImageContainer(
-                newImageView, newColorMaskImageView);
+        ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE")
+                .getImage());
+        SpriteImageContainer spriteContainer = new SpriteImageContainer(newImageView,
+                newColorMaskImageView);
+        System.out.println("Created copy...: " + dateFormat.format(date));
+        
         return spriteContainer;
     }
 
