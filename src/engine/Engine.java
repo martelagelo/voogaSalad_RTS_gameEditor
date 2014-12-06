@@ -52,6 +52,8 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
+    
+    private boolean gameWon = false;
 
     public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
@@ -99,6 +101,9 @@ public class Engine extends Observable implements Observer {
         myGameLoop =
                 new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);
+        // to notify engine when level is finished
+        myGameLoop.addObserver(this);
+        
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
@@ -115,8 +120,11 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        // TODO: decide if we need Engine to be observer still
-        // TODO utilize or delete the inputs to this method
+        if(observable instanceof GameLoop){
+            gameWon = ((int) arg) > 0;
+            this.pause();
+            System.out.println("Game is over! \n   Game won? "+gameWon);
+        }
     }
 
     public ScrollablePane getScene () {
