@@ -3,8 +3,12 @@ package model.state.gameelement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import util.JSONable;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 
@@ -14,7 +18,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
  * representation. Examples include triggers and goals. States are essentially
  * data-wrapping objects and as such have no internal logic.
  * 
- * @author Steve, Jonathan, Rahul, Nishad, Zach
+ * @author Steve, Jonathan, Rahul, Nishad, Zach, Michael D.
  *
  */
 
@@ -44,6 +48,8 @@ public class GameElementState implements JSONable, Serializable {
      * cost of some "parameter uncertainty" in the engine.
      */
     public AttributeContainer attributes;
+    
+    public Set<String> myTypes;
 
     /**
      * Initialize the game element state and its internal data structures.
@@ -51,6 +57,7 @@ public class GameElementState implements JSONable, Serializable {
     public GameElementState () {
         attributes = new AttributeContainer();
         myActions = new HashMap<String, List<ActionWrapper>>();
+        myTypes = new HashSet<String>();
     }
 
     /**
@@ -61,13 +68,34 @@ public class GameElementState implements JSONable, Serializable {
     }
 
     /**
-     *
-     * @return the type of the element, if it has been set
+     * Adds a type to a set of types
+     * 
+     * @param type The new type
      */
-    public String getType () {
-        return attributes.getTextualAttribute(StateTags.TYPE);
+    public void addType(String type) {
+    	myTypes.add(type);
     }
-
+    
+    /**
+     * @return A list of the types
+     */
+    public List<String> getTypes() {
+    	List<String> types = new ArrayList<String>();
+    	for(String s: myTypes) {
+    	    types.add(s);
+    	}
+    	return types;
+    }
+    
+    /**
+     * 
+     * @param typeString The type we want to check
+     * @return True if the type set contains typeString
+     */
+    public boolean isType(String typeString) {
+    	return myTypes.contains(typeString);
+    }
+    
     /**
      * Add a string condition-action pair to the game element state
      * 
