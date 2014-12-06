@@ -18,11 +18,14 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.GameSaveLoadMediator;
+import util.JSONableList;
+import util.SaveLoadUtility;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import view.splash.SplashScreen;
 
 /**
  * Main class for the model of the game
@@ -81,16 +84,18 @@ public class MainModel extends Observable {
     }
 
     public void saveGame (GameState game) {
+        
         try {
-            // TODO: Save location
             String location = mySaveLoadMediator.saveGame(game, game.getName());
+            JSONableList<String> existingGames = SaveLoadUtility.loadResource(JSONableList.class, 
+                    SplashScreen.EXISTING_GAMES);
+            existingGames.add(game.getName());
+            SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
 
         } catch (SaveLoadException e) {
-
-            // TODO: eliminate stack trace printing
             e.printStackTrace();
-            // throw new RuntimeException(e);
-        }
+        }                
+        
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
