@@ -12,6 +12,7 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
@@ -55,13 +56,23 @@ public class GameElement {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
         }
-        for (String key : actionTypes.keySet()) {
-            String type = actionTypes.getString(key);
+        
+        for (ActionType types : ActionType.values()) {
+            String type = types.toString();
             if (!myActionLists.containsKey(type)) {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
         }
-// In createactionlists have it go through all the enum
+        
+//        for (String key : actionTypes.keySet()) {
+//            String type = actionTypes.getString(key);
+//            if (!myActionLists.containsKey(type)) {
+//                myActionLists.put(type, new CopyOnWriteArrayList<>());
+//            }
+//        }
+        
+        
+
     }
 
     /**
@@ -166,7 +177,7 @@ public class GameElement {
      * element based on its internal velocity parameters.
      */
     private void updateSelfDueToInternalFactors () {
-        executeAllActions(actionTypes.getString("internal"));
+        executeAllActions(ActionType.INTERNAL.toString());
     }
 
     /**

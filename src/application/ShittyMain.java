@@ -115,7 +115,7 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper(ActionType.INTERNAL.toString(), ActionOptions.PLAYER_ATTRIBUTE_CONDITION
+        ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
                 .getClassString(), "my", "Resources", "GreaterThanEqual", "500", "Won",
                                         "EqualsAssignment", "1"));
         // archerState
