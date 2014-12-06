@@ -25,9 +25,6 @@ public class PathingComputer {
 
     public List<Location> findPath (Location from, Location to) {
         List<Location> rawPath = computePath(from,to);
-        System.out.println("8===D");
-        System.out.println(rawPath);
-        System.out.println(optimizePath(rawPath));
     	return optimizePath(rawPath);
     }
 

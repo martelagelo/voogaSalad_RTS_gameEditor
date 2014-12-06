@@ -151,7 +151,6 @@ public class GameElementManager {
             	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
             	Location from = new Location(currentX, currentY);
             	Location to = new Location(click.getX(), click.getY());
-            	System.out.println("8=D");
             	List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
             }
