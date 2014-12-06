@@ -1,5 +1,6 @@
 package engine.gameRepresentation.evaluatables.actions;
 
+import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
@@ -20,15 +21,18 @@ public class ActOnObjectsAction extends Action {
 
     public ActOnObjectsAction (String id,
                                EvaluatorFactory factory,
-                               GameElementManager manager,
+                               GameElementManager manager, ParticipantManager participantManager,
                                String[] args) {
-        super(id, factory, manager, args);
+        super(id, factory, manager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory, GameElementManager manager)
-                                                                                       throws ClassNotFoundException,
-                                                                                       EvaluatorCreationException {
+    protected Evaluatable<?> initializeAction (String[] args,
+                                               EvaluatorFactory factory,
+                                               GameElementManager manager,
+                                               ParticipantManager participantManager)
+                                                                                     throws ClassNotFoundException,
+                                                                                     EvaluatorCreationException {
         GameElementParameter me = new GameElementParameter("", new ActorObjectIdentifier());
         GameElementParameter you = new GameElementParameter("", new ActeeObjectIdentifier());
         return factory.makeEvaluator(args[0], me, you);

@@ -49,7 +49,23 @@ public enum ActionOptions {
                          "Create Object",
                          "CreateObjectAction",
                          "Create a # at my spawn location.",
-                         ActionParameters.STRING);
+                         ActionParameters.STRING),
+    PLAYER_ATTRIBUTE_CONDITION(
+                               "Player Stats Check",
+                               "PlayerStatsCheckAction",
+                               "If #(my/another player's) attribute # is # #",
+                               ActionParameters.STRING,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER),
+    OBJECT_LOCATION_DETECTION(
+                              "Object Location Check",
+                              "ObjectLocationCheckAction",
+                              "If #(my/another player's) object of type # is at the location #,#",
+                              ActionParameters.STRING,
+                              ActionParameters.STRING,
+                              ActionParameters.NUMBER,
+                              ActionParameters.NUMBER);
 
     private String myClassName;
     private String myDisplayName;
