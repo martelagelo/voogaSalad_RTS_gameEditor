@@ -28,11 +28,11 @@ public class SpriteImageLoader {
     public static Image loadTeamColorMasks (String imageTag) throws SaveLoadException {
         File directory = new File(getColorMasksLocation(imageTag));
         FileFilter fileFilter = new WildcardFileFilter(getImageName(imageTag)
-                + GameSaveLoadMediator.PNG_EXT);
+                + GameSaveLoadMediator.WILDCARD + GameSaveLoadMediator.PNG_EXT);
         // TODO: need to determine how to get the color from the file
         File[] files = directory.listFiles(fileFilter);
         Image colorMask = null;
-        if (files != null) {
+        if (files.length > 0) {
             colorMask = SaveLoadUtility.loadImage(files[0].getPath());
         }
         return colorMask;
@@ -52,7 +52,8 @@ public class SpriteImageLoader {
         String colorMaskLocation = processedTag.replace(SPRITESHEETS, COLORMASKS);
         int colorMaskDirectory = colorMaskLocation.lastIndexOf(RELATIVE_PATH_DELIMITER);
         // TODO make the return be a default location
-        return (colorMaskDirectory > 0) ? colorMaskLocation.substring(0, colorMaskDirectory) : EMPTY_STRING;
+        return (colorMaskDirectory > 0) ? colorMaskLocation.substring(0, colorMaskDirectory)
+                : EMPTY_STRING;
     }
 
     private static String processImageTag (String imageTag) {

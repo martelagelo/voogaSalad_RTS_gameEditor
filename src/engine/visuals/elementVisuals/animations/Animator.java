@@ -64,8 +64,9 @@ public class Animator implements Updatable {
         attributesOfInterest = attributes;
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
-        //String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-        mySpriteTeamOverlay = myImages.getColorMask();
+        // mySprite = new ImageView(spritesheet);
+        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
+        mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(

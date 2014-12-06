@@ -3,6 +3,7 @@ package model;
 import java.util.Observable;
 import java.util.Optional;
 
+import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelExistsException;
@@ -339,7 +340,12 @@ public class MainModel extends Observable {
      * @throws Exception
      */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
-        return mySpriteImageGenerator.fetchImageContainer(imageTag);
+        SpriteImageContainer matchingContainer = mySpriteImageGenerator.fetchImageContainer(imageTag);
+        ImageView newImageView = new ImageView(matchingContainer.getSpritesheet().getImage());
+        ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE").getImage());
+        SpriteImageContainer spriteContainer = new SpriteImageContainer(
+                newImageView, newColorMaskImageView);
+        return spriteContainer;
     }
 
 }
