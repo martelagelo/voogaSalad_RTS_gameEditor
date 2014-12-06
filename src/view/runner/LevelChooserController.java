@@ -18,7 +18,7 @@ import view.gui.GUIController;
 
 /**
  * 
- * Controler for the game runner to choose a level
+ * Controller for the game runner to choose a level
  * 
  * @author Jonathan Tseng
  *
