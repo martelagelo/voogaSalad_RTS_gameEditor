@@ -94,5 +94,9 @@ public class GameElementState implements JSONable, Serializable {
 	public Map<String, List<ActionWrapper>> getActions() {
 		return myActions;
 	}
+	
+	public AttributeContainer getAttributeContainer() {
+		return attributes;
+	}
 
 }
