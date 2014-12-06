@@ -127,7 +127,7 @@ public class ShittyMain extends Application {
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "10000", "Won",
+                                        "Resources", "GreaterThanEqual", "200", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }
@@ -148,18 +148,22 @@ public class ShittyMain extends Application {
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
         archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
         // Choose a random temporary waypoint if we collide with anything
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION,
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "NotCollision", "RandomWaypoint"));
         // On collision, attack an enemy
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION, 
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "Collision", "Attack"));
         // Move back if we collide with anything
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION,
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "Collision", "MoveBack"));
         // Check to see if our health is <0. If so, die.
         archerState
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
-                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, StateTags.HEALTH,
+                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                             StateTags.HEALTH,
                                              "LessThanEqual",
                                              "0",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));

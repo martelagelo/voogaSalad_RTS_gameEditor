@@ -119,9 +119,21 @@ public class Engine extends Observable implements Observer {
             gameWon = ((int) arg) > 0;
             this.pause();
             System.out.println("Game is over! \n   Game won? " + gameWon);
+            // TODO:something with this... display it?
+            myUser.getAttributes();
+            updateObservers();
         }
     }
 
+    /**
+     * called only when game is won
+     */
+    private void updateObservers () {
+        setChanged();
+        notifyObservers(myUser.getAttributes());
+        clearChanged();
+    }
+    
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }
