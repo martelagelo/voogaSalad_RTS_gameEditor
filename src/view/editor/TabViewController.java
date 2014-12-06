@@ -94,7 +94,7 @@ public class TabViewController extends GUIContainer {
                     ges.getActions()
                             .forEach( (actionType, actions) -> {
                                 actions.forEach( (act) -> {
-                                    triggers.add(new TriggerPair(actionType, act
+                                    triggers.add(new TriggerPair(act.getActionType(), act
                                             .getActionClassName(), act
                                             .getParameters()));
                                 });
@@ -119,7 +119,7 @@ public class TabViewController extends GUIContainer {
     public void init () {
         levelTriggerController.setButtonAction(launchNestedWizard());
         levelTriggerController.setSelectedAction(modifyGoals());
-        levelTriggerController.setDeleteAction(deleteGoal());
+        levelTriggerController.setDeleteAction(deleteGoal());        
     }
 
     private BiConsumer<Integer, String> modifyGoals () {
