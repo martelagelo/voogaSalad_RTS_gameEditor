@@ -81,7 +81,7 @@ public class Engine extends Observable implements Observer {
         // this dependency
         myVisualManager =
                 new VisualManager(new Group(), ShittyMain.shittyWidth,
-                                  0.9 * ShittyMain.screenSize.getHeight());
+                                  ShittyMain.shittyWidth);
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
@@ -91,7 +91,7 @@ public class Engine extends Observable implements Observer {
         myElementManager.setLevel(nextLevel);
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
-        
+
         myGameLoop =
                 new GameLoop(nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);

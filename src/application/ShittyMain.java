@@ -25,7 +25,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 public class ShittyMain extends Application {
 
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int shittyWidth = 1279;
+    public static final int shittyWidth = 1000;
 
     @Override
     public void start (Stage primaryStage) {

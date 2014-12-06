@@ -44,10 +44,12 @@ public class ScrollablePane extends Pane {
      */
     public ScrollablePane (Group root, double width, double height) {
         // super(root, width, height);
+        // setStyle("-fx-border-color: red;");
         this.setWidth(width);
         this.setHeight(height);
         this.setMinWidth(width);
         this.setMinHeight(height);
+        
         this.setMaxWidth(width);
         this.setMaxHeight(height);
         // myInputManager = new NullInputManager();
@@ -147,8 +149,8 @@ public class ScrollablePane extends Pane {
     }
 
     public void mouseMoved (MouseEvent event) {
-        double mouseX = event.getSceneX();
-        double mouseY = event.getSceneY();
+        double mouseX = event.getX();
+        double mouseY = event.getY();
 
         // doesn't make sense to route this through the inputManager, since it would just go
         // right back here again

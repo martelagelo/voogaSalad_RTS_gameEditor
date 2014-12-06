@@ -2,16 +2,10 @@ package view.runner;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import javafx.scene.layout.GridPane;
 import model.state.LevelState;
 import org.json.JSONException;
 import view.dialog.DialogBoxUtility;
@@ -39,36 +33,23 @@ public class GameRunnerPaneController extends GUIContainer {
         return root;
     }
 
-    private Button b;
-    private Background b2;
+    private ScrollablePane myPane;
 
     public void setLevel (LevelState levelState) {
         try {
             myEngine = new Engine(myMainModel, levelState);
-            ScrollablePane pane = myEngine.getScene();
-
-            System.out.println("init");
-            b.fire();
-
-            //root.setCenter(myEngine.getScene());
+            myPane = myEngine.getScene();
+            root.setCenter(myPane);
             myEngine.play();
         }
         catch (ClassNotFoundException | JSONException | IOException e) {
             DialogBoxUtility.createMessageDialog(e.toString());
         }
     }
-
+    
     @Override
     protected void init () {
-        // nothing to do until level is set
-        b2 = new Background(new BackgroundFill(Color.TRANSPARENT, new CornerRadii(0), new Insets(0)));
-        root.setBackground(b2);
-        
-        b = new Button("HERRO I AM DUH SOMBODI");
-        b.setOnAction(e -> {
-            System.out.println();
-        });
-        root.setTop(b);
+        // nothing to do until level is set   
     }
 
     @Override

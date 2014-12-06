@@ -71,9 +71,9 @@ public class SelectionBox {
     public void primaryClick (MouseEvent e) {
         if (e.getButton().equals(MouseButton.PRIMARY)) {
             resetBox();
-            pressedX = e.getSceneX();
-            pressedY = e.getSceneY();
-            setLocation(e.getSceneX(), e.getSceneY());
+            pressedX = e.getX();
+            pressedY = e.getY();
+            setLocation(e.getX(), e.getY());
         }
     }
 
@@ -81,8 +81,8 @@ public class SelectionBox {
         lastEvent = e;
         if (lastEvent.isPrimaryButtonDown()) {
             setVisible(true);
-            double newX = lastEvent.getSceneX();
-            double newY = lastEvent.getSceneY();
+            double newX = lastEvent.getX();
+            double newY = lastEvent.getY();
             double difX = newX - pressedX;
             double difY = newY - pressedY;
 
