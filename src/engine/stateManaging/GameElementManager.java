@@ -80,7 +80,6 @@ public class GameElementManager {
      * @param rectPoints
      *        the points in the rectangle surrounding the player's units
      */
-
     public void selectUnitsInBounds (double[] rectPoints, boolean multiSelect, Participant u) {
         boolean isTeamSelected = false;
         for (SelectableGameElement e : myLevel.getUnits()) {
@@ -138,12 +137,17 @@ public class GameElementManager {
     public void setSelectedUnitCommand (Point2D click, boolean queueCommand, Participant u) {
         // check to see if a unit was right-clicked on
         if (filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).size() > 0) {
+
+            boolean elementSelected = false;
             for (SelectableGameElement e : myLevel.getUnits()) {
                 double[] cornerBounds = e.findGlobalBounds();
                 if (new Polygon(cornerBounds).contains(click)) {
-                    issueOrderToSelectedUnits(e);
-                    return;
+                    notifySelectedElementsOfTarget(e, u);
+                    elementSelected = true;
                 }
+            }
+            if (!elementSelected) {
+                clearSelectedElementsOfTarget(u);
             }
         }
 
@@ -166,9 +170,15 @@ public class GameElementManager {
         }
     }
 
-    private void issueOrderToSelectedUnits (SelectableGameElement e) {
+    private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
         System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
+        // TODO John: make this only go to selected things in your team
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
 
+    }
+
+    private void clearSelectedElementsOfTarget (Participant u) {
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.clearFocusedElement());
     }
 
     private List<SelectableGameElement> filterSelectedUnits (List<SelectableGameElement> list) {

@@ -12,6 +12,7 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
@@ -19,7 +20,7 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  * an
  * update method to update the element due to its internal state.
  *
- * @author Jonathan, Nishad, Rahul, Steve, Zach
+ * @author Jonathan, Nishad, Rahul, Steve, Zach, Stanley
  *
  */
 public class GameElement {
@@ -32,17 +33,14 @@ public class GameElement {
     private Map<String, List<Evaluatable<?>>> myActionLists;
     private GameElementState myState;
     private Map<String, Long> myTimers;
-    protected ResourceBundle actionTypes;
 
     /**
      * Create a game element with the given state
      *
      * @param gameElementState the state of the game element
      */
-    public GameElement (GameElementState gameElementState,
-                        ResourceBundle actionTypesBundle) {
+    public GameElement (GameElementState gameElementState) {
         myState = gameElementState;
-        actionTypes = actionTypesBundle;
         myTimers = new HashMap<>();
         createActionLists();
     }
@@ -55,8 +53,9 @@ public class GameElement {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
         }
-        for (String key : actionTypes.keySet()) {
-            String type = actionTypes.getString(key);
+        
+        for (ActionType key : ActionType.values()) {
+            String type = key.toString();
             if (!myActionLists.containsKey(type)) {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
@@ -166,7 +165,7 @@ public class GameElement {
      * element based on its internal velocity parameters.
      */
     private void updateSelfDueToInternalFactors () {
-        executeAllActions(actionTypes.getString("internal"));
+        executeAllActions(ActionType.INTERNAL.toString());
     }
 
     /**
