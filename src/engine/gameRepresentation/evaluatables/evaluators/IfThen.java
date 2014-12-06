@@ -16,7 +16,7 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
 public class IfThen<A, B> extends Evaluator<A, B, Boolean> {
 
     public IfThen (String id, Evaluatable<A> parameter1,
-                            Evaluatable<B> parameter2) {
+                   Evaluatable<B> parameter2) {
         super(Boolean.class, id, "IFTHEN", parameter1, parameter2);
     }
 

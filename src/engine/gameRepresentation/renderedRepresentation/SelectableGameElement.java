@@ -143,7 +143,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
     
     public void executeAllButtonActions(){
-        this.executeAllActions(ActionType.BUTTON.toString());
+        this.executeAllActions(ActionType.BUTTON.toString(),new ElementPair(this,this));
     }
 
 }

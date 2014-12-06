@@ -54,7 +54,6 @@ public class CreateObjectAction extends Action {
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         if (elements.getActor().getTimer(myTimerName) <= 0) {
-            System.out.println("making element");
             action.evaluate(elements);
             elements.getActor().setTimer(myTimerName, myReloadTime);
         }
