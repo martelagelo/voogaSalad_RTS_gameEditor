@@ -33,17 +33,14 @@ public class GameElement {
     private Map<String, List<Evaluatable<?>>> myActionLists;
     private GameElementState myState;
     private Map<String, Long> myTimers;
-    protected ResourceBundle actionTypes;
 
     /**
      * Create a game element with the given state
      *
      * @param gameElementState the state of the game element
      */
-    public GameElement (GameElementState gameElementState,
-                        ResourceBundle actionTypesBundle) {
+    public GameElement (GameElementState gameElementState) {
         myState = gameElementState;
-        actionTypes = actionTypesBundle;
         myTimers = new HashMap<>();
         createActionLists();
     }

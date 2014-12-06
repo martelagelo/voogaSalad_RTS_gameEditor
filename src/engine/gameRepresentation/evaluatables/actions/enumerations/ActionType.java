@@ -9,9 +9,11 @@ package engine.gameRepresentation.evaluatables.actions.enumerations;
 public enum ActionType {
     COLLISION("Collision"),
     INTERNAL("Internal"),
+    VISION("Vision"),
+    BUTTON("Button"),
+    FOCUSED("Focused Element"),
     OBJECTIVE("Objective"),
-    SELECTION("Selection"),
-    VISION("Vision");
+    SELECTION("Selection");
 
     private String myString;
 

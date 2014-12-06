@@ -19,12 +19,11 @@ import engine.visuals.elementVisuals.Visualizer;
  * Factory that takes in GameElementStates and generates their JavaFX representations as well as
  * their Evaluatables, then packs it all into the rendered wrapper used in the engine.
  * 
- * @author Steve
+ * @author Steve, Stanley
  *
  */
 public class GameElementFactory {
 
-    public static final String ACTION_TYPE_LOCATION = "resources.properties.engine.ActionTypes";
     public static final String INTERACTING_ELEMENT_TYPE_LOCATION =
             "resources.properties.engine.InteractingElementTypes";
 
@@ -32,7 +31,6 @@ public class GameElementFactory {
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private ResourceBundle actionTypes;
     private ResourceBundle interactingElementTypes;
 
     public GameElementFactory (GameUniverse universe,
@@ -41,7 +39,6 @@ public class GameElementFactory {
         myUniverse = universe;
         myActionFactory = actionFactory;
         myVisualizerFactory = visualizerFactory;
-        actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
         interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
@@ -53,7 +50,7 @@ public class GameElementFactory {
     }
 
     public GameElement createGameElement (GameElementState state) {
-        GameElement element = new GameElement(state, actionTypes);
+        GameElement element = new GameElement(state);
         generateActions(element, state);
         return element;
     }
@@ -67,7 +64,7 @@ public class GameElementFactory {
 
     public DrawableGameElement createDrawableGameElement (DrawableGameElementState state) {
         DrawableGameElement element =
-                new DrawableGameElement(state, actionTypes,
+                new DrawableGameElement(state, 
                                         generateVisualizer(state));
         generateActions(element, state);
         return element;
@@ -82,7 +79,7 @@ public class GameElementFactory {
 
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
-                new SelectableGameElement(state, actionTypes,
+                new SelectableGameElement(state,
                                           interactingElementTypes, generateVisualizer(state));
         generateActions(element, state);
         return element;

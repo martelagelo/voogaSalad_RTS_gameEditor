@@ -70,7 +70,7 @@ public class NullInputManager implements InputManager {
     }
 
     @Override
-    public void screenButtonClicked (String imagePath, int index) {
+    public void screenButtonClicked (int buttonID) {
         // do nothing
         //System.out.println("Null Input Manager");
     }

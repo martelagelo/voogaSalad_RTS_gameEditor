@@ -608,6 +608,15 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -671,7 +680,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -1263,6 +1273,15 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -1322,7 +1341,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -1923,6 +1943,15 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+                ],
+                "Focused Element": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -1990,7 +2019,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             }
           ],
           "myGoals": [
@@ -2020,7 +2050,8 @@
                   }
                 ],
                 "myTextualAttributes": []
-              }
+              },
+              "myTypes": []
             }
           ],
           "myName": "testLevel",
@@ -2103,56 +2134,7 @@
       }
     ],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [
-      {
-        "AttributeDisplayerStates": [],
-        "myAnimatorState": {
-          "imageTag": "testSpritesheet/grass.png",
-          "viewportSize": {
-            "myWidth": 48,
-            "myHeight": 25
-          },
-          "numRows": 2,
-          "animationSequences": [
-            {
-              "myStartFrame": 0,
-              "myStopFrame": 0,
-              "myCurrentFrame": 0,
-              "myRepeatFlag": true,
-              "myTags": [
-                "HERE",
-                "DO_NOTHING"
-              ],
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0
-        ],
-        "myActions": {},
-        "attributes": {
-          "myNumericalAttributes": [
-            {
-              "myData": 0.0,
-              "myName": "xPosition"
-            },
-            {
-              "myData": 0.0,
-              "myName": "yPosition"
-            }
-          ],
-          "myTextualAttributes": [
-            {
-              "myData": "grass",
-              "myName": "name"
-            }
-          ]
-        }
-      }
-    ],
+    "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
         "AttributeDisplayerStates": [
@@ -2744,6 +2726,15 @@
               ],
               "myActionType": "INTERNAL"
             }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -2807,7 +2798,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -3398,6 +3390,15 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
             }
           ]
         },
@@ -3458,7 +3459,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -4050,6 +4052,15 @@
               ],
               "myActionType": "INTERNAL"
             }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -4109,7 +4120,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -4710,6 +4722,15 @@
               ],
               "myActionType": "INTERNAL"
             }
+          ],
+          "Focused Element": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -4777,7 +4798,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       }
     ]
   },

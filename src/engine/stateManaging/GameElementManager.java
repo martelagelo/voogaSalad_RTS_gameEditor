@@ -1,9 +1,7 @@
 package engine.stateManaging;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
@@ -81,7 +79,6 @@ public class GameElementManager {
      * @param rectPoints
      *        the points in the rectangle surrounding the player's units
      */
-
     public void selectUnitsInBounds (double[] rectPoints, boolean multiSelect, Participant u) {
         boolean isTeamSelected = false;
         for (SelectableGameElement e : myLevel.getUnits()) {
@@ -138,19 +135,23 @@ public class GameElementManager {
 
     public void setSelectedUnitCommand (Point2D click, boolean queueCommand, Participant u) {
         // check to see if a unit was right-clicked on
-        if (filterSelectedUnits().stream()
-                .filter(e -> u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).intValue())).count() > 0) {
+        if (filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).size() > 0) {
+
+            boolean elementSelected = false;
             for (SelectableGameElement e : myLevel.getUnits()) {
                 double[] cornerBounds = e.findGlobalBounds();
                 if (new Polygon(cornerBounds).contains(click)) {
-                    issueOrderToSelectedUnits(e);
-                    return;
+                    notifySelectedElementsOfTarget(e, u);
+                    elementSelected = true;
                 }
             }
+            if (!elementSelected) {
+                clearSelectedElementsOfTarget(u);
+            }
         }
-        
+
         // if location is clicked on instead, tell all selected units to go there
-        for (SelectableGameElement e : filterSelectedUnits()) {
+        for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
             if (!checkOnTeam(e, u)) continue;
             if (queueCommand) {
                 // TODO: either implement this and allow for having headings be a linked-list, or
@@ -158,27 +159,47 @@ public class GameElementManager {
                 // e.clearHeadings();
             }
             else {
-            	double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-            	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-            	Location from = new Location(currentX, currentY);
-            	Location to = new Location(click.getX(), click.getY());
-            	List<Location> waypoints = pathingComputer.findPath(from, to);
+                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+                Location from = new Location(currentX, currentY);
+                Location to = new Location(click.getX(), click.getY());
+                List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
             }
         }
     }
 
-    private void issueOrderToSelectedUnits (SelectableGameElement e) {
-        System.out.println(e.getPosition().getX()+", "+e.getPosition().getY());
-        
+    private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
+        System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
+
     }
 
-    private List<SelectableGameElement> filterSelectedUnits () {
-        return myLevel
-                .getUnits()
+    private void clearSelectedElementsOfTarget (Participant u) {
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.clearFocusedElement());
+    }
+
+    private List<SelectableGameElement> filterSelectedUnits (List<SelectableGameElement> list) {
+        return list
                 .stream()
                 .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1)
                 .collect(Collectors.toList());
+    }
+
+    private List<SelectableGameElement> filterTeamIDElements (List<SelectableGameElement> list,
+                                                              Participant p) {
+        return list
+                .stream()
+                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID)
+                        .doubleValue())).collect(Collectors.toList());
+    }
+
+    public void notifyButtonClicked (int buttonID, Participant u) {
+        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
+            System.out.println(e.getNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID));
+            e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
+            e.executeAllButtonActions();
+        }
     }
 
     /**
