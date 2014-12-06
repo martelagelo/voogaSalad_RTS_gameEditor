@@ -5,6 +5,12 @@ import view.gui.MenuBarController;
 import view.gui.ViewScreenPath;
 
 
+/**
+ * MenuBar for the runner view
+ * 
+ * @author Jonathan Tseng
+ *
+ */
 public class RunnerMenuBarController extends MenuBarController {
 
     @Override

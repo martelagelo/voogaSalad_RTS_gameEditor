@@ -1,10 +1,11 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -14,6 +15,7 @@ import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardType;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.visuals.Dimension;
 import engine.visuals.elementVisuals.animations.AnimationSequence;
 import engine.visuals.elementVisuals.animations.AnimationTag;
@@ -40,14 +42,21 @@ public class GameElementStateFactory {
                                       Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 
         Set<AnimationSequence> sequences = new HashSet<>();
-        List<AnimationTag> tags = new ArrayList<>();
-        AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
-
+        for (WizardData animationData : data.getWizardDataByType(WizardType.ANIMATION_SEQUENCE)) {
+            List<AnimationTag> tags =
+                    Arrays.asList(animationData.getValueByKey(WizardDataType.ANIMATION_TAG)
+                                          .split(","))
+                            .stream().map(tag -> AnimationTag.valueOf(tag))
+                            .collect(Collectors.toList());
+            AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
+            sequences.add(sequence);
+        }
         AnimatorState anim =
                 new AnimatorState(data.getValueByKey(WizardDataType.IMAGE),
                                   dim,
                                   Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
                                   sequences);
+        state.myAnimatorState = anim;
 
         String bounds =
                 data.getWizardDataByType(WizardType.BOUNDS).get(0)
@@ -70,8 +79,11 @@ public class GameElementStateFactory {
 
     public static GameElementState createGoal (WizardData data) {
         GameElementState goal = new GameElementState();
-        // TODO FIX THIS STUFF TO WORK WITH ACTION WRAPPERS
-        goal.addAction(new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), data.getValueByKey(WizardDataType.ACTION)));
+        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
+        ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+                                                  params);
+        goal.addAction(wrapper);
         return goal;
     }
 
@@ -104,11 +116,14 @@ public class GameElementStateFactory {
                    state.attributes.setNumericalAttribute(key, Double.parseDouble(value)),
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
-
-        
-        // addToState( (String key, String value) -> state.addAction(key, value),
-        // data, WizardType.TRIGGER, WizardDataType.ACTIONTYPE, WizardDataType.ACTION);
-
+        //TODO: clean this up into the consumer
+        for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {
+            String[] params = wiz.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
+            ActionWrapper wrapper = new ActionWrapper(wiz.getValueByKey(WizardDataType.ACTIONTYPE), 
+                                           ActionOptions.valueOf(wiz.getValueByKey(WizardDataType.ACTION)).getClassString(), 
+                                           params);
+            state.addAction(wrapper);            
+        }        
         return state;
     }
 

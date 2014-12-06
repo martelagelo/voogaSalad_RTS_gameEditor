@@ -1,0 +1,13 @@
+{
+  "myCampaigns": [],
+  "myGameUniverse": {
+    "myNumericalAttributes": [],
+    "myTextualAttributes": [],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": []
+  },
+  "myName": "sampleGame",
+  "myDescription": "",
+  "myHashingPrime": 31
+}

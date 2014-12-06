@@ -6,8 +6,11 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="view.editor.TabViewController">
+	<center>
+		<fx:include source="../../runner/GameRunnerPane.fxml"
+			fx:id="gameRunnerPane" />
+	</center>
 	<right>
 		<fx:include source="LevelTriggerView.fxml" fx:id="levelTrigger" />
 	</right>
-	<fx:include source="../../runner/GameRunnerPane.fxml" fx:id="gameRunnerPane" />
 </BorderPane>
