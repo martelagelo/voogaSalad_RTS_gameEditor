@@ -25,7 +25,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 public class ShittyMain extends Application {
 
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int shittyWidth = 1279;
+    public static final int shittyWidth = 1000;
 
     @Override
     public void start (Stage primaryStage) {
@@ -35,18 +35,12 @@ public class ShittyMain extends Application {
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
             Scene s = new Scene(g, shittyWidth, 0.9 * screenSize.getHeight());
-            s.getStylesheets()
-                    .add(this.getClass().getClassLoader()
-                            .getResource("engine/visuals/stylesheets/engine.style.css")
-                            .toExternalForm());
-            // //System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
         }
         catch (Exception e) {
             e.printStackTrace();
-            // //System.out.println("what did you expect this is shit");
         }
     }
 
@@ -104,9 +98,11 @@ public class ShittyMain extends Application {
         model.getGameUniverse().addSelectableGameElementState(archerState1);
         model.getGameUniverse().addSelectableGameElementState(archerState2);
         model.getGameUniverse().addSelectableGameElementState(archerState3);
+        model.saveGame();
+        MainModel model2 = new MainModel();
+        model2.loadGame("testGame");
         Engine engine =
-                new Engine(model, model.getCampaign("testCampaign"), model.getLevel("testCampaign",
-                                                                                    "testLevel"));
+                new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
         return engine;
     }
 

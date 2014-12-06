@@ -6,7 +6,6 @@ import java.util.Observer;
 import javafx.scene.Group;
 import model.MainModel;
 import model.exceptions.DescribableStateException;
-import model.state.CampaignState;
 import model.state.LevelState;
 import org.json.JSONException;
 import application.ShittyMain;
@@ -39,7 +38,6 @@ public class Engine extends Observable implements Observer {
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
-    private CampaignState myCampaignState;
 
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
@@ -55,10 +53,9 @@ public class Engine extends Observable implements Observer {
 
     private boolean gameWon = false;
 
-    public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
+    public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
-        myCampaignState = campaignState;
         myLevelState = levelState;
         // TODO fix this so it isn't null
         myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
@@ -86,7 +83,7 @@ public class Engine extends Observable implements Observer {
         // this dependency
         myVisualManager =
                 new VisualManager(new Group(), ShittyMain.shittyWidth,
-                                  0.9 * ShittyMain.screenSize.getHeight());
+                                  ShittyMain.shittyWidth);
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
@@ -97,8 +94,10 @@ public class Engine extends Observable implements Observer {
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
 
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
+
         myGameLoop =
-                new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
+                new GameLoop(nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);
         // to notify engine when level is finished
         myGameLoop.addObserver(this);

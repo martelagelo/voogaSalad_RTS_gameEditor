@@ -2,13 +2,27 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="view.runner.RunnerScreen" fx:id="root">
+	<center>
+		<StackPane fx:id="stackPane">
+			<children>
+				<Button fx:id="sizedButton">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+					<maxHeight>
+						<Double fx:constant="MAX_VALUE" />
+					</maxHeight>
+				</Button>
+				<fx:include fx:id="gameRunner" source="GameRunnerPane.fxml" />
+				<fx:include fx:id="levelChooser" source="LevelChooserPane.fxml" />
+			</children>
+		</StackPane>
+	</center>
 	<top>
 		<fx:include fx:id="runnerMenuBar" source="RunnerMenuBar.fxml" />
 	</top>
-	<center>
-		<fx:include fx:id="gameRunner" source="GameRunnerPane.fxml" />
-	</center>
 </BorderPane>

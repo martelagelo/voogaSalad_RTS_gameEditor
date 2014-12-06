@@ -1,9 +1,8 @@
 package engine.visuals;
 
-import engine.UI.InputManager;
-import engine.UI.RunnerInputManager;
 import java.io.IOException;
 import java.util.function.Consumer;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -11,6 +10,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import engine.UI.InputManager;
+import engine.UI.RunnerInputManager;
 
 
 /**
@@ -44,12 +45,9 @@ public class ScrollablePane extends Pane {
      */
     public ScrollablePane (Group root, double width, double height) {
         // super(root, width, height);
+        setStyle("-fx-border-color: red;");
         this.setWidth(width);
         this.setHeight(height);
-        this.setMinWidth(width);
-        this.setMinHeight(height);
-        this.setMaxWidth(width);
-        this.setMaxHeight(height);
         // myInputManager = new NullInputManager();
         this.root = root;
         Pane stackPane = new Pane();
@@ -65,15 +63,22 @@ public class ScrollablePane extends Pane {
             e.printStackTrace();
         }
         this.getChildren().add(root);
-        myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
+        myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT, this);
         mySelectionBox = new SelectionBox();
         guiBP.setCenter(myBackground);
-        guiBP.setMinHeight(height);
-        guiBP.setMinWidth(width);
+        // guiBP.setMinHeight(height);
+        // guiBP.setMinWidth(width);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
         root.getChildren().add(stackPane);
         initializeHandlers();
+    }
+    
+    public void bindSize(ReadOnlyDoubleProperty widthProperty, ReadOnlyDoubleProperty heightProperty){
+        this.prefHeightProperty().bind(heightProperty);
+        this.prefWidthProperty().bind(widthProperty);
+        this.setWidth(widthProperty.doubleValue());
+        this.setHeight(heightProperty.doubleValue());
     }
 
     /**
@@ -147,8 +152,8 @@ public class ScrollablePane extends Pane {
     }
 
     public void mouseMoved (MouseEvent event) {
-        double mouseX = event.getSceneX();
-        double mouseY = event.getSceneY();
+        double mouseX = event.getX();
+        double mouseY = event.getY();
 
         // doesn't make sense to route this through the inputManager, since it would just go
         // right back here again
