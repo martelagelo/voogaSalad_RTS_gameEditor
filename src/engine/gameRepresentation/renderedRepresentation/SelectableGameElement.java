@@ -81,10 +81,10 @@ public class SelectableGameElement extends DrawableGameElement {
 
     @Override
     public void update () {
+        updateSelfDueToCollisions();
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         // System.out.println("Updating selectable game element: " + teamColor);
-        updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
     }
