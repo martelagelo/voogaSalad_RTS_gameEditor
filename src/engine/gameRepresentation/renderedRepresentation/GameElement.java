@@ -156,7 +156,7 @@ public class GameElement {
      */
     public void update () {
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
-        //System.out.println("Updating game element: " + teamColor);
+        // System.out.println("Updating game element: " + teamColor);
         updateTimers();
         updateSelfDueToInternalFactors();
     }
@@ -231,15 +231,17 @@ public class GameElement {
             }
         }
     }
-    
-    public void registerAsChild(Consumer<GameElementState> function){
-    	function.accept(myState);
+
+    public void registerAsChild (Consumer<GameElementState> function) {
+        function.accept(myState);
     }
 
-	public void setPosition(double x, double y) {
+    public void setPosition (double x, double y) {
         setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
         setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
+        setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
         setNumericalAttribute(StateTags.X_POSITION, x);
         setNumericalAttribute(StateTags.Y_POSITION, y);
-	}
+    }
 }

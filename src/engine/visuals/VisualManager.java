@@ -1,9 +1,10 @@
 package engine.visuals;
 
-import engine.UI.RunnerInputManager;
-import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import java.util.List;
 import javafx.scene.Group;
+import engine.UI.ParticipantManager;
+import engine.UI.RunnerInputManager;
+import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
 
 /**
@@ -15,23 +16,25 @@ import javafx.scene.Group;
  *
  */
 public class VisualManager {
+    private StatisticsBox myStatisticsBox;
     private ScrollablePane scene;
     private ScrollableBackground background;
     private MiniMap myMiniMap;
     private Group root;
+    private ParticipantManager myParticipantManager;
 
     /**
      * Creates a new VisualManager. One visual manager should be created for every Scene (map)
      * 
      * @param gameObjectVisuals the group for initial objects on the map. If no objects yet exist,
      *        add an empty new Group()
-     * @param screenWidth the width of the screen to create
-     * @param screenHeight the height of the screen to create
+     * @param fieldWidth the width of the map to create
+     * @param fieldHeight the height of the map to create
      */
     public VisualManager (Group gameObjectVisuals,
-                          double screenWidth,
-                          double screenHeight) {
-        scene = new ScrollablePane(gameObjectVisuals, screenWidth, screenHeight);
+                          double fieldWidth,
+                          double fieldHeight) {
+        scene = new ScrollablePane(gameObjectVisuals, fieldWidth, fieldHeight);
         background = scene.getScrollingBackground();
         myMiniMap = new MiniMap(scene);
         scene.addToScene(new Group(myMiniMap.getDisplay()));
@@ -99,6 +102,12 @@ public class VisualManager {
 
     public void attachInputManager (RunnerInputManager myInputManager) {
         scene.attachInputManager(myInputManager);
+    }
 
+    public void attachParticipantManager (ParticipantManager participantManager) {
+        myParticipantManager = participantManager;
+        // TODO: programmatically determine position
+        myStatisticsBox = new StatisticsBox(30, 10, participantManager);
+        scene.addToScene(new Group(myStatisticsBox));
     }
 }

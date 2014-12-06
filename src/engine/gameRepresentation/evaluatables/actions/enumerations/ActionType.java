@@ -26,5 +26,5 @@ public enum ActionType {
     public String toString () {
         return myString;
     }
-
+    
 }

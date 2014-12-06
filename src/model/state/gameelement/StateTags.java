@@ -18,8 +18,8 @@ public class StateTags {
     public static final String Y_VELOCITY = "yVelocity";
     public static final String X_GOAL_POSITION = "xHeading";
     public static final String Y_GOAL_POSITION = "yHeading";
-    public static final String X_TEMP_HEADING = "xTempHeading";
-    public static final String Y_TEMP_HEADING = "yTempHeading";
+    public static final String X_TEMP_GOAL_POSITION = "xTempPosition";
+    public static final String Y_TEMP_GOAL_POSITION = "yTempGoalPosition";
     public static final String RANDOM_MOVEMENT_STRING = "randomMove";
     public static final String TEAM_ID = "teamID";
     public static final String MOVEMENT_SPEED = "movementSpeed";
@@ -35,5 +35,6 @@ public class StateTags {
     public static final String IS_DEAD = "IsDead";
     public static final String X_SPAWN_OFFSET = "XSpawnOffset";
     public static final String Y_SPAWN_OFFSET = "YSpawnOffset";
+    public static final String SUPPORTS_RANGED_ATTACK = "SupportsRange";
 
 }

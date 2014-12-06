@@ -1,9 +1,16 @@
 package view.runner;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import model.state.LevelState;
+import org.json.JSONException;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIContainer;
+import engine.Engine;
+import engine.visuals.ScrollablePane;
 
 
 /**
@@ -16,21 +23,40 @@ import view.gui.GUIContainer;
 public class GameRunnerPaneController extends GUIContainer {
 
     @FXML
-    private BorderPane root;
-    
+    private StackPane root;
+    @FXML
+    private Button sizedButton;
+
     @Override
     public Node getRoot () {
         return root;
     }
 
+    public void setLevel (LevelState levelState) {
+        try {
+            // Jank code to properly size engine runner pane to place in view
+            // because JavaFX is horrible with sizing
+            // require button to fill actual size of borderpane to then be bound to runner pane size
+            sizedButton.setStyle("-fx-background-color: transparent;");
+            Engine engine = new Engine(myMainModel, levelState);
+            ScrollablePane pane = engine.getScene();
+            pane.bindSize(sizedButton.widthProperty(), sizedButton.heightProperty());
+            engine.play();
+            root.getChildren().add(pane);
+        }
+        catch (ClassNotFoundException | JSONException | IOException e) {
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
+    }
+
     @Override
     protected void init () {
-    
+        // nothing to do until level is set
     }
 
     @Override
     public void update () {
-
+        // do nothing for now
     }
 
 }

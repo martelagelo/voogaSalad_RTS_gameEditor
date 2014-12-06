@@ -1,7 +1,6 @@
 package engine.visuals;
 
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 
@@ -16,7 +15,9 @@ public class ScrollableBackground extends Pane
     private double myXScrollSpeed, myYScrollSpeed;
     private double myXBoundary, myYBoundary;
 
-    private double myWidth, myHeight;
+    // private double myWidth, myHeight;
+
+    ScrollablePane myPane;
 
     /**
      * Create the scrollable background
@@ -26,13 +27,11 @@ public class ScrollableBackground extends Pane
      * @param xBoundary the maximum X value that can be scrolled to
      * @param yBoundary the maximum Y value that can be scrolled to
      */
-    public ScrollableBackground (double screenWidth,
-                                 double screenHeight,
-                                 double xBoundary,
-                                 double yBoundary)
+    public ScrollableBackground (double xBoundary, double yBoundary, ScrollablePane pane)
     {
-        this.myWidth = screenWidth;
-        this.myHeight = screenHeight;
+        this.prefWidthProperty().bind(pane.prefWidthProperty());
+        this.prefHeightProperty().bind(pane.prefHeightProperty());
+        myPane = pane;
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
         this.setMinSize(xBoundary, yBoundary);
@@ -64,10 +63,10 @@ public class ScrollableBackground extends Pane
      */
     public void update () {
         if ((getTranslateX() >= 0 && myXScrollSpeed < 0) ||
-            (-getTranslateX() >= (myXBoundary - myWidth) && myXScrollSpeed > 0))
+            (-getTranslateX() >= (myXBoundary - this.getPrefWidth()) && myXScrollSpeed > 0))
             setXScrollSpeed(0);
         if ((getTranslateY() >= 0 && myYScrollSpeed < 0) ||
-            (-getTranslateY() >= (myYBoundary - myHeight) && myYScrollSpeed > 0))
+            (-getTranslateY() >= (myYBoundary - this.getPrefHeight()) && myYScrollSpeed > 0))
             setYScrollSpeed(0);
         setTranslateX(getTranslateX() - myXScrollSpeed);
         setTranslateY(getTranslateY() - myYScrollSpeed);
@@ -78,8 +77,10 @@ public class ScrollableBackground extends Pane
      * Undo scrolling if we're going out of bounds
      */
     private void retractOutOfBoundsScroll () {
-        if (-getTranslateX() >= myXBoundary - myWidth) setTranslateX(-(myXBoundary - myWidth));
-        if (-getTranslateY() >= myYBoundary - myHeight) setTranslateY(-(myYBoundary - myHeight));
+        if (-getTranslateX() >= myXBoundary - this.getPrefWidth())
+            setTranslateX(-(myXBoundary - this.getPrefWidth()));
+        if (-getTranslateY() >= myYBoundary - this.getPrefHeight())
+            setTranslateY(-(myYBoundary - this.getPrefHeight()));
         if (getTranslateX() >= 0) setTranslateX(0);
         if (getTranslateY() >= 0) setTranslateY(0);
     }

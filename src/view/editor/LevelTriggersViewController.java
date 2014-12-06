@@ -1,10 +1,9 @@
 package view.editor;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -98,14 +97,7 @@ public class LevelTriggersViewController implements GUIController {
             public ListCell<String> call (ListView<String> arg0) {
                 return new TriggerListCell();
             }
-        });
-        levelTriggers.getSelectionModel().selectedIndexProperty()
-                .addListener(new ChangeListener<Number>() {
-                    @Override
-                    public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                                         Number newValue) {
-                    }
-                });
+        });        
     }
 
     /**
@@ -135,7 +127,7 @@ public class LevelTriggersViewController implements GUIController {
     public void updateTriggerList (List<TriggerPair> triggers) {
         myTriggerList.clear();
         triggers.forEach( (trigger) -> myTriggerList.add(trigger.myActionType + "\n" +
-                                                         trigger.myAction));
+                                                         trigger.myAction + "\n" + Arrays.toString(trigger.myParams)));
     }
 
     /**

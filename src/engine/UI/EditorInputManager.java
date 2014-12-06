@@ -38,7 +38,7 @@ public class EditorInputManager implements InputManager {
                                       double mapTranslateY,
                                       SelectionBox b) {
         Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getSceneX(), mapTranslateY + e.getSceneY());
+                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
 
         // I believe this selects units
@@ -50,7 +50,7 @@ public class EditorInputManager implements InputManager {
             // if nothing then try to select units
         }
 
-        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
@@ -59,9 +59,9 @@ public class EditorInputManager implements InputManager {
                                         double mapTranslateY,
                                         SelectionBox b) {
         Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getSceneX(), mapTranslateY + e.getSceneY());
+                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
 
-        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override

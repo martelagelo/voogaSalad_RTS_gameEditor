@@ -3,6 +3,7 @@ package engine.stateManaging;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -11,9 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-import model.state.LevelState;
 import model.state.gameelement.StateTags;
-import engine.UI.AIManager;
+import engine.UI.ParticipantManager;
 import engine.computers.Computer;
 import engine.computers.boundsComputers.CollisionComputer;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
@@ -25,14 +25,13 @@ import engine.visuals.VisualManager;
 /**
  * The main loop for running the game, checking for collisions, and updating game entities
  *
- * @author Michael D., John, Steve, Zach
+ * @author Michael D., John L., Steve, Zach
  **/
-public class GameLoop {
+public class GameLoop extends Observable{
     public static final Double framesPerSecond = 60.0;
-    private String myCampaignName;
     private Level myCurrentLevel;
     private GameElementManager myManager;
-    private AIManager myAiManager;
+    private ParticipantManager myParticipantManager;
 
     private VisualManager myVisualManager;
     private List<Line> unitPaths;
@@ -48,13 +47,11 @@ public class GameLoop {
         }
     };
 
-    public GameLoop (String campaignName,
-                     Level level,
+    public GameLoop (Level level,
                      VisualManager visualManager,
-                     GameElementManager elementManager, AIManager aiManager) {
+                     GameElementManager elementManager, ParticipantManager participantManager) {
         myVisualManager = visualManager;
-        myCampaignName = campaignName;
-        myAiManager = aiManager;
+        myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
         unitPaths = new ArrayList<Line>();
@@ -89,7 +86,7 @@ public class GameLoop {
         // Clears all path lines from the GUI
         clearLinesFromRoot();
         // Adds needed path lines to the GUI
-        // addPathsToRoot();
+         addPathsToRoot();
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -119,9 +116,16 @@ public class GameLoop {
         }
 
         myVisualManager.update(myCurrentLevel.getUnits());
-        myAiManager.update(myCurrentLevel.getUnits());
+        myParticipantManager.update(myCurrentLevel.getUnits());
+
+        // TODO: for testing, remove
+        myParticipantManager.adjustParticipantNumericalAttribute(1, "Resources", 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
+        if(levelEndState!=0){
+            setChanged();
+            this.notifyObservers(levelEndState);
+        }
     }
 
     private void addPathsToRoot () {
@@ -169,14 +173,4 @@ public class GameLoop {
         timeline.stop();
     }
 
-    /**
-     * Indicate if this level is the current levels
-     *
-     * @param level the levelState of the level in question
-     * @return a boolean indicating if the level is the current level
-     */
-    public boolean isCurrentLevel (LevelState level, String campaignName) {
-        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName
-                .equals(campaignName));
-    }
 }

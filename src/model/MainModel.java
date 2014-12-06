@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Optional;
-
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
@@ -23,11 +22,14 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.GameSaveLoadMediator;
+import util.JSONableSet;
+import util.SaveLoadUtility;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import view.splash.SplashScreen;
 
 /**
  * Main class for the model of the game
@@ -47,8 +49,16 @@ public class MainModel extends Observable {
 
     public MainModel () {
         try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            System.out.println("Generating Main Model...: " + dateFormat.format(date));
             mySaveLoadMediator = new GameSaveLoadMediator();
+            date = new Date();
+            System.out.println("Generated GameSaveLoadMediator...: " + dateFormat.format(date));
+
             mySpriteImageGenerator = new SpriteImageGenerator();
+            date = new Date();
+            System.out.println("Generated SpriteImageContainer...: " + dateFormat.format(date));
             myModifiedContainer = new ModifiedContainer();
         } catch (SaveLoadException e) {
             System.out.println(mySpriteImageGenerator == null);
@@ -86,16 +96,18 @@ public class MainModel extends Observable {
     }
 
     public void saveGame (GameState game) {
+        
         try {
-            // TODO: Save location
             String location = mySaveLoadMediator.saveGame(game, game.getName());
+            JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class, 
+                    SplashScreen.EXISTING_GAMES);
+            existingGames.add(game.getName());
+            SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
 
         } catch (SaveLoadException e) {
-
-            // TODO: eliminate stack trace printing
             e.printStackTrace();
-            // throw new RuntimeException(e);
-        }
+        }                
+        
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
@@ -348,12 +360,14 @@ public class MainModel extends Observable {
         System.out.println("Looking...: " + dateFormat.format(date));
         SpriteImageContainer matchingContainer = mySpriteImageGenerator
                 .fetchImageContainer(imageTag);
+        date = new Date();
         System.out.println("Found...: " + dateFormat.format(date));
         ImageView newImageView = new ImageView(matchingContainer.getSpritesheet().getImage());
         ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE")
                 .getImage());
         SpriteImageContainer spriteContainer = new SpriteImageContainer(newImageView,
                 newColorMaskImageView);
+        date = new Date();
         System.out.println("Created copy...: " + dateFormat.format(date));
         
         return spriteContainer;

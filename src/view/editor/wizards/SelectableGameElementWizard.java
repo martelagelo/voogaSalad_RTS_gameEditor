@@ -31,7 +31,7 @@ import view.gui.GUIPanePath;
 public class SelectableGameElementWizard extends Wizard {
 
     private final static String NAME_KEY = "Name";
-    private final static String NEW_TRIGGER_KEY = "NewTrigger";
+    private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
@@ -75,7 +75,7 @@ public class SelectableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(GUIPanePath.TRIGGER_WIZARD, existingTriggers, new ArrayList<String>());
+        launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, new ArrayList<String>());
     }
 
     /**
@@ -105,7 +105,7 @@ public class SelectableGameElementWizard extends Wizard {
     }
 
     private void launchNestedWizard (GUIPanePath path, VBox existing, List<String> globalAttrs) {
-        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(300, 300));
+        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(500, 500));
         for (String atr : globalAttrs) {
             System.out.println(atr);
         }
@@ -215,7 +215,7 @@ public class SelectableGameElementWizard extends Wizard {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             name.promptTextProperty().bind(util.getStringProperty(NAME_KEY));
-            trigger.textProperty().bind(util.getStringProperty(NEW_TRIGGER_KEY));
+            trigger.textProperty().bind(util.getStringProperty(NEW_ACTION_KEY));
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));

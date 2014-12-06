@@ -64,6 +64,7 @@ public class Visualizer implements Updatable, Displayable {
         getNode().setTranslateX(-myAnimator.getViewportSize().getWidth() / 2);
         getNode().setTranslateY(-myAnimator.getViewportSize().getHeight() / 2);
         myAnimator.setAnimation(new NullAnimationSequence());
+        myAnimator.update();
     }
 
     private void updateNodeLocation() {

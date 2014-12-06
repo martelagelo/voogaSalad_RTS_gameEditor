@@ -48,8 +48,27 @@ public enum ActionOptions {
     CREATE_OBJECT_ACTION(
                          "Create Object",
                          "CreateObjectAction",
-                         "Create a # at my spawn location.",
-                         ActionParameters.STRING);
+                         "Create a # at my spawn location with a cooldown timer named # with a value of # frames.",
+                         ActionParameters.STRING,ActionParameters.STRING,ActionParameters.NUMBER),
+    PLAYER_ATTRIBUTE_CONDITION(
+                               "Player Stats Check",
+                               "PlayerStatsCheckAction",
+                               "If #(my/another player's) attribute # is # #, make the attribute # # #",
+                               ActionParameters.STRING,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER),
+    OBJECT_LOCATION_DETECTION(
+                              "Object Location Check",
+                              "ObjectLocationCheckAction",
+                              "If #(my/another player's) object of type # is at the location #,#",
+                              ActionParameters.STRING,
+                              ActionParameters.STRING,
+                              ActionParameters.NUMBER,
+                              ActionParameters.NUMBER);
 
     private String myClassName;
     private String myDisplayName;

@@ -1,9 +1,8 @@
 package engine.visuals;
 
-import engine.UI.InputManager;
-import engine.UI.RunnerInputManager;
 import java.io.IOException;
 import java.util.function.Consumer;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -11,6 +10,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import engine.UI.InputManager;
+import engine.UI.RunnerInputManager;
 
 
 /**
@@ -25,13 +26,14 @@ public class ScrollablePane extends Pane {
     public static final double FAST_SCROLL_BOUNDARY = 75;
     public static final double FAST_SPEED = 15;
     public static final double SLOW_SPEED = 7;
-    public static final double FIELD_WIDTH = 2000;
-    public static final double FIELD_HEIGHT = 2000;
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
     private InputManager myInputManager;
     private Group root;
+    
+    private double myMapWidth;
+    private double myMapHeight;
 
     /**
      * Creates a new ScrollableScene for the map.
@@ -42,15 +44,11 @@ public class ScrollablePane extends Pane {
      * @param height the height of the map (ideally larger than the screen height)
      * @throws IOException
      */
-    public ScrollablePane (Group root, double width, double height) {
+    public ScrollablePane (Group root, double fieldWidth, double fieldHeight) {
         // super(root, width, height);
-        this.setWidth(width);
-        this.setHeight(height);
-        this.setMinWidth(width);
-        this.setMinHeight(height);
-        this.setMaxWidth(width);
-        this.setMaxHeight(height);
-        // myInputManager = new NullInputManager();
+        setStyle("-fx-border-color: red;");
+        this.myMapWidth = fieldWidth;
+        this.myMapHeight = fieldHeight;
         this.root = root;
         Pane stackPane = new Pane();
         BorderPane guiBP = null;
@@ -65,15 +63,20 @@ public class ScrollablePane extends Pane {
             e.printStackTrace();
         }
         this.getChildren().add(root);
-        myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
+        myBackground = new ScrollableBackground(fieldWidth, fieldHeight, this);
         mySelectionBox = new SelectionBox();
         guiBP.setCenter(myBackground);
-        guiBP.setMinHeight(height);
-        guiBP.setMinWidth(width);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
         root.getChildren().add(stackPane);
         initializeHandlers();
+    }
+    
+    public void bindSize(ReadOnlyDoubleProperty widthProperty, ReadOnlyDoubleProperty heightProperty){
+        this.prefHeightProperty().bind(heightProperty);
+        this.prefWidthProperty().bind(widthProperty);
+        this.setWidth(widthProperty.doubleValue());
+        this.setHeight(heightProperty.doubleValue());
     }
 
     /**
@@ -147,8 +150,8 @@ public class ScrollablePane extends Pane {
     }
 
     public void mouseMoved (MouseEvent event) {
-        double mouseX = event.getSceneX();
-        double mouseY = event.getSceneY();
+        double mouseX = event.getX();
+        double mouseY = event.getY();
 
         // doesn't make sense to route this through the inputManager, since it would just go
         // right back here again
@@ -194,5 +197,13 @@ public class ScrollablePane extends Pane {
     public void attachInputManager (RunnerInputManager inputManager) {
         myInputManager = inputManager;
 
+    }
+    
+    public double getFieldWidth(){
+        return myMapWidth;
+    }
+    
+    public double getFieldHeight(){
+        return myMapHeight;
     }
 }

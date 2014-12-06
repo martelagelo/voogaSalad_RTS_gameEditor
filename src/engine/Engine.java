@@ -6,11 +6,9 @@ import java.util.Observer;
 import javafx.scene.Group;
 import model.MainModel;
 import model.exceptions.DescribableStateException;
-import model.state.CampaignState;
 import model.state.LevelState;
 import org.json.JSONException;
-import application.ShittyMain;
-import engine.UI.AIManager;
+import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
 import engine.elementFactories.GameElementFactory;
@@ -22,7 +20,6 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.HumanParticipant;
-import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
 
@@ -40,27 +37,27 @@ public class Engine extends Observable implements Observer {
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
-    private CampaignState myCampaignState;
 
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
     private RunnerInputManager myInputManager;
-    private AIManager myAiManager;
+    private ParticipantManager myParticipantManager;
 
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
     private ActionFactory myEvaluatableFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private Participant myUser;
+    private HumanParticipant myUser;
 
-    public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
+    private boolean gameWon = false;
+
+    public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
-        myCampaignState = campaignState;
         myLevelState = levelState;
         // TODO fix this so it isn't null
-        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null);
+        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
         myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
         myElementFactory =
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
@@ -81,27 +78,31 @@ public class Engine extends Observable implements Observer {
     }
 
     private void instantiateManagers () {
-        // TODO hard-coding the visual representation for now, should remove
-        // this dependency
-        myVisualManager =
-                new VisualManager(new Group(), ShittyMain.shittyWidth,
-                                  0.9 * ShittyMain.screenSize.getHeight());
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
+        myEvaluatableFactory.setParticipantManager(myParticipantManager);
         // The next level needs to then be created
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-
-        myAiManager = new AIManager(myElementManager);
         
+        myVisualManager =
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight());
+
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
+
         myGameLoop =
-                new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
-                             myElementManager, myAiManager);
+                new GameLoop(nextLevel, myVisualManager,
+                             myElementManager, myParticipantManager);
+        // to notify engine when level is finished
+        myGameLoop.addObserver(this);
+
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
+        myVisualManager.attachParticipantManager(myParticipantManager);
     }
 
     public void play () {
@@ -114,8 +115,11 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        // TODO: decide if we need Engine to be observer still
-        // TODO utilize or delete the inputs to this method
+        if (observable instanceof GameLoop) {
+            gameWon = ((int) arg) > 0;
+            this.pause();
+            System.out.println("Game is over! \n   Game won? " + gameWon);
+        }
     }
 
     public ScrollablePane getScene () {

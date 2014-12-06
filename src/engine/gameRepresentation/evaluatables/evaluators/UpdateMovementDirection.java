@@ -23,10 +23,10 @@ public class UpdateMovementDirection<A, B> extends Evaluator<A, B, Boolean> {
     public Boolean evaluate (GameElement element1, GameElement element2) {
         double speed = element1.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
         double deltaX =
-                element1.getNumericalAttribute(StateTags.X_GOAL_POSITION).doubleValue() -
+                element1.getNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION).doubleValue() -
                         element1.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
         double deltaY =
-                element1.getNumericalAttribute(StateTags.Y_GOAL_POSITION).doubleValue() -
+                element1.getNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION).doubleValue() -
                         element1.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
         // Truncate the x and y differences if they're less than a fraction of the element's speed
         deltaX = deltaX > speed || deltaX<-speed ? deltaX : 0;

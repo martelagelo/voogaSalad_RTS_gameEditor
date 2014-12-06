@@ -1,5 +1,6 @@
 package engine.gameRepresentation.evaluatables.actions;
 
+import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
@@ -21,14 +22,21 @@ import engine.stateManaging.GameElementManager;
  */
 public class CheckAttributeSetAttributeAction extends Action {
 
-    public CheckAttributeSetAttributeAction (String id, EvaluatorFactory factory,GameElementManager manager, String[] args) {
-        super(id, factory,manager, args);
+    public CheckAttributeSetAttributeAction (String id,
+                                             EvaluatorFactory factory,
+                                             GameElementManager manager,
+                                             ParticipantManager participantManager,
+                                             String[] args) {
+        super(id, factory, manager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,GameElementManager manager)
-                                                                                       throws ClassNotFoundException,
-                                                                                       EvaluatorCreationException {
+    protected Evaluatable<?> initializeAction (String[] args,
+                                               EvaluatorFactory factory,
+                                               GameElementManager manager,
+                                               ParticipantManager participantManager)
+                                                                                     throws ClassNotFoundException,
+                                                                                     EvaluatorCreationException {
         Evaluatable<?> attr1Param =
                 new NumericAttributeParameter("", args[0], null, new ActorObjectIdentifier());
         Evaluatable<?> desiredValueParam = new NumberParameter("", Double.valueOf(args[2]));

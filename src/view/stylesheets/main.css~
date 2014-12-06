@@ -1,0 +1,99 @@
+/* 
+    Document   : Main
+    Created on : November 23rd, 2014
+    Author     : Joshua Miller
+    Description: Main theme
+*/
+
+.list-view {
+    -fx-background-color: #000000;
+    -fx-background: #000000;
+    -fx-color: #6BB8F6;
+}
+
+.grid, #splash, #editorRoot, #myTreeView, #menuBar, #leftPane  {
+    -fx-background-color: #000000;
+    -fx-background: #000000;
+    -fx-color: #6BB8F6;
+}
+
+.menu .label, .menu-item {
+    -fx-text-fill: #6BB8F6;
+}
+
+.tab-pane .tab, .tab-pane .tab:selected {
+    -fx-background-color: #000000;
+}
+
+.text-area .scroll-pane .content {
+    -fx-background-color: #45433e;
+    -fx-text-fill: #6BB8F6;
+}
+
+.text-area .scroll-pane .content {
+    -fx-background-color: #45433e;
+}
+
+.text-area {
+    -fx-text-fill: #6BB8F6;
+}
+
+#content {
+    -fx-background-color: #45433e;
+    -fx-text-fill: #6BB8F6;
+}
+
+.text-field {
+    -fx-background-color: #45433e;
+    -fx-text-fill: #6BB8F6;
+}
+
+.titled-pane:focused > .title 
+{
+     -fx-color: #6BB8F6;
+}
+
+.titled-pane:focused > .title 
+{
+     -fx-color: #6BB8F6;
+}
+
+.titled-pane {
+   -fx-text-fill: white;
+}
+
+.tab .tab-label { 
+    -fx-text-fill: #6BB8F6;
+    -fx-font-weight: bold;
+}
+
+.label .content {
+   -fx-background-color: black;
+   -fx-text-fill: white;
+}
+
+#duvall {
+   -fx-text-fill: white;
+   -fx-font-family: "Courier New";
+   -fx-font-weight: bolder;
+   -fx-font-size: 0.25em;
+   -fx-line-spacing: -2.5;
+}
+
+.tab:selected .tab-label { 
+   -fx-alignment: CENTER;
+   -fx-text-fill: #6BB8F6;
+}
+
+.tree-cell {
+   -fx-background-color: #000000;
+   -fx-background: #000000;
+}
+
+#spritesheet, #imageScroll, #rightPane  {
+   -fx-background-color: white;
+}
+
+.image, .image-view{
+   -fx-background-color: white;
+}
