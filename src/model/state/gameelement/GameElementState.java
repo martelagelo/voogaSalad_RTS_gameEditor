@@ -59,17 +59,6 @@ public class GameElementState implements JSONable, Serializable {
 	public GameElementState() {
 		attributes = new AttributeContainer();
 		myActions = new HashMap<String, List<ActionWrapper>>();
-		AttributeDisplayerStates = new ArrayList<AttributeDisplayerState>();
-	}
-
-	/**
-	 * Adds AttributeDisplayStates to the list of displayerStates
-	 * 
-	 * @param ADS
-	 *            An AttributeDisplayerState
-	 */
-	public void addAttributeDisplayerState(AttributeDisplayerState ADS) {
-		this.AttributeDisplayerStates.add(ADS);
 	}
 
 	/**
