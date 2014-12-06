@@ -15,7 +15,7 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
     // This was not made public as no other classes should depend on any values declared within this
     // evaluator
-    private final static double RANDOM_AMOUNT = 100;
+    private final static double RANDOM_AMOUNT = 50;
     private final static double MIN_AMOUNT = 25;
 
     public RandomWaypoint (String id,
