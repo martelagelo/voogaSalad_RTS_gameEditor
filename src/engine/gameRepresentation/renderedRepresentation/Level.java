@@ -55,6 +55,14 @@ public class Level {
     public LevelState getLevelState () {
         return myState;
     }
+    
+    public double getMapWidth(){
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).doubleValue();
+    }
+    
+    public double getMapHeight(){
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).doubleValue();
+    }
 
     public String getName () {
         return myState.getName();

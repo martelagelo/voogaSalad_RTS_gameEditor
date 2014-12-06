@@ -3,6 +3,7 @@ package application;
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -50,16 +52,19 @@ public class ShittyMain extends Application {
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
+        archerState.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
 
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
+        archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
 
         SelectableGameElementState archerState2 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 100, 2);
         archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState2.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
 
         SelectableGameElementState archerState3 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
@@ -69,6 +74,7 @@ public class ShittyMain extends Application {
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
         archerState3.addAction(new ActionWrapper(ActionType.COLLISION.toString(), ActionOptions.CREATE_OBJECT_ACTION
                 .getClassString(), "archer","ArcherTimer","500"));
+        archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);

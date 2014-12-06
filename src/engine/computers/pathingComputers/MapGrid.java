@@ -13,6 +13,7 @@ public class MapGrid {
     private Location[][] locationGrid;
 
     public MapGrid (Number mapWidth, Number mapHeight) {
+        System.out.println("Width: "+mapWidth+", mapHeight: "+mapHeight);
         int numRows = (int) Math.ceil(mapWidth.doubleValue() / TILE_WIDTH);
         int numColumns = (int) Math.ceil(mapHeight.doubleValue() / TILE_HEIGHT);
         locationGrid = new Location[numRows][numColumns];

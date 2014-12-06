@@ -2,11 +2,9 @@ package engine.visuals;
 
 import java.util.List;
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -31,8 +29,9 @@ public class MiniMap {
     private static final double MINIMIAP_OPACITY = 0.8;
     private static final double MINIMAP_WIDTH = 320;
     private static final double MINIMAP_HEIGHT = 160;
-    private static final double X_SCALE = ScrollablePane.FIELD_WIDTH / MINIMAP_WIDTH;
-    private static final double Y_SCALE = ScrollablePane.FIELD_HEIGHT / MINIMAP_HEIGHT;
+    
+    private double xScale;
+    private double yScale;
 
     private static NumberBinding xPos;
     private static NumberBinding yPos;
@@ -57,6 +56,8 @@ public class MiniMap {
         myGraphicsContext = myDisplay.getGraphicsContext2D();
         initializeDisplay();
         initializeGraphicsContext();
+        xScale = SS.getFieldWidth() / MINIMAP_WIDTH;
+        yScale = SS.getFieldHeight() / MINIMAP_HEIGHT;
     }
 
     /**
@@ -82,9 +83,9 @@ public class MiniMap {
         double YPos = -1 * myScene.getScrollingBackground().getTranslateY();
         myGraphicsContext.setLineWidth(CONTEXT_RECT_LINE_WIDTH);
         myGraphicsContext.setStroke(Color.BLUE);
-        myGraphicsContext.strokeRoundRect(XPos / X_SCALE, YPos / Y_SCALE,
-                                          myScene.getWidth() / X_SCALE, myScene.getHeight() /
-                                                                        Y_SCALE,
+        myGraphicsContext.strokeRoundRect(XPos / xScale, YPos / yScale,
+                                          myScene.getWidth() / xScale, myScene.getHeight() /
+                                                                        yScale,
                                           CONTEXT_RECT_ARC_WIDTH, CONTEXT_RECT_ARC_WIDTH);
     }
 
@@ -108,13 +109,13 @@ public class MiniMap {
 
     private void setUnitShape (SelectableGameElement SGE) {
         if (SGE.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0) {
-            myGraphicsContext.fillRect(SGE.getPosition().getX() / X_SCALE, SGE
-                    .getPosition().getY() / Y_SCALE,
+            myGraphicsContext.fillRect(SGE.getPosition().getX() / xScale, SGE
+                    .getPosition().getY() / yScale,
                                        MINIMAP_BUILDING_DIMENSION, MINIMAP_BUILDING_DIMENSION);
         }
         else {
-            myGraphicsContext.fillOval(SGE.getPosition().getX() / X_SCALE, SGE
-                    .getPosition().getY() / Y_SCALE, MINIMAP_UNIT_DIAMETER,
+            myGraphicsContext.fillOval(SGE.getPosition().getX() / xScale, SGE
+                    .getPosition().getY() / yScale, MINIMAP_UNIT_DIAMETER,
                                        MINIMAP_UNIT_DIAMETER);
         }
     }

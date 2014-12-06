@@ -26,13 +26,14 @@ public class ScrollablePane extends Pane {
     public static final double FAST_SCROLL_BOUNDARY = 75;
     public static final double FAST_SPEED = 15;
     public static final double SLOW_SPEED = 7;
-    public static final double FIELD_WIDTH = 2000;
-    public static final double FIELD_HEIGHT = 2000;
 
     private ScrollableBackground myBackground;
     private SelectionBox mySelectionBox;
     private InputManager myInputManager;
     private Group root;
+    
+    private double myMapWidth;
+    private double myMapHeight;
 
     /**
      * Creates a new ScrollableScene for the map.
@@ -43,12 +44,11 @@ public class ScrollablePane extends Pane {
      * @param height the height of the map (ideally larger than the screen height)
      * @throws IOException
      */
-    public ScrollablePane (Group root, double width, double height) {
+    public ScrollablePane (Group root, double fieldWidth, double fieldHeight) {
         // super(root, width, height);
         setStyle("-fx-border-color: red;");
-        this.setWidth(width);
-        this.setHeight(height);
-        // myInputManager = new NullInputManager();
+        this.myMapWidth = fieldWidth;
+        this.myMapHeight = fieldHeight;
         this.root = root;
         Pane stackPane = new Pane();
         BorderPane guiBP = null;
@@ -63,11 +63,9 @@ public class ScrollablePane extends Pane {
             e.printStackTrace();
         }
         this.getChildren().add(root);
-        myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT, this);
+        myBackground = new ScrollableBackground(fieldWidth, fieldHeight, this);
         mySelectionBox = new SelectionBox();
         guiBP.setCenter(myBackground);
-        // guiBP.setMinHeight(height);
-        // guiBP.setMinWidth(width);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
         root.getChildren().add(stackPane);
@@ -199,5 +197,13 @@ public class ScrollablePane extends Pane {
     public void attachInputManager (RunnerInputManager inputManager) {
         myInputManager = inputManager;
 
+    }
+    
+    public double getFieldWidth(){
+        return myMapWidth;
+    }
+    
+    public double getFieldHeight(){
+        return myMapHeight;
     }
 }
