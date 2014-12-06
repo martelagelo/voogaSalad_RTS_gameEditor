@@ -1,9 +1,10 @@
 package engine.visuals;
 
-import engine.UI.RunnerInputManager;
-import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import java.util.List;
 import javafx.scene.Group;
+import engine.UI.ParticipantManager;
+import engine.UI.RunnerInputManager;
+import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
 
 /**
@@ -15,10 +16,12 @@ import javafx.scene.Group;
  *
  */
 public class VisualManager {
+    private StatisticsBox myStatisticsBox;
     private ScrollablePane scene;
     private ScrollableBackground background;
     private MiniMap myMiniMap;
     private Group root;
+    private ParticipantManager myParticipantManager;
 
     /**
      * Creates a new VisualManager. One visual manager should be created for every Scene (map)
@@ -99,6 +102,12 @@ public class VisualManager {
 
     public void attachInputManager (RunnerInputManager myInputManager) {
         scene.attachInputManager(myInputManager);
+    }
 
+    public void attachParticipantManager (ParticipantManager participantManager) {
+        myParticipantManager = participantManager;
+        // TODO: programmatically determine position
+        myStatisticsBox = new StatisticsBox(30, 10, participantManager);
+        scene.addToScene(new Group(myStatisticsBox));
     }
 }
