@@ -4,11 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+
+
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
@@ -53,14 +62,14 @@ public class Animator implements Updatable {
         myImages = images;
         myState = state;
         attributesOfInterest = attributes;
-        Image spritesheet = myImages.getSpritesheet();
-        mySpritesheetBounds = getImageBounds(spritesheet);
-        mySprite = new ImageView(spritesheet);
+        mySprite = myImages.getSpritesheet();
+        mySpritesheetBounds = getImageBounds(mySprite.getImage());
+        // mySprite = new ImageView(spritesheet);
         String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-        mySpriteTeamOverlay = new ImageView(myImages.getTeamColorSheet(teamColor));
+        mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         mySpriteDisplay = new Group();
-        mySpriteDisplay.getChildren().add(mySprite);
         mySpriteDisplay.getChildren().add(mySpriteTeamOverlay);
+        mySpriteDisplay.getChildren().add(mySprite);
         currentDirection = new ArrayList<>();
         currentDirection.add(AnimationTag.FORWARD);
         myCurrentAnimation = new NullAnimationSequence();
