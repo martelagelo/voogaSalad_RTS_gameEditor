@@ -47,11 +47,6 @@ public class ScrollablePane extends Pane {
         // setStyle("-fx-border-color: red;");
         this.setWidth(width);
         this.setHeight(height);
-        this.setMinWidth(width);
-        this.setMinHeight(height);
-        
-        this.setMaxWidth(width);
-        this.setMaxHeight(height);
         // myInputManager = new NullInputManager();
         this.root = root;
         Pane stackPane = new Pane();
@@ -70,8 +65,8 @@ public class ScrollablePane extends Pane {
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         guiBP.setCenter(myBackground);
-        //guiBP.setMinHeight(height);
-        //guiBP.setMinWidth(width);
+        // guiBP.setMinHeight(height);
+        // guiBP.setMinWidth(width);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
         root.getChildren().add(stackPane);
