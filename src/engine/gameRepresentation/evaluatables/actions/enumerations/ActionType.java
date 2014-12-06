@@ -3,7 +3,7 @@ package engine.gameRepresentation.evaluatables.actions.enumerations;
 /**
  * An enumeration for the types of actions available e.g. collision, internal, vision
  * 
- * @author Zach
+ * @author Zach, Stanley
  *
  */
 public enum ActionType {

@@ -20,7 +20,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  * an
  * update method to update the element due to its internal state.
  *
- * @author Jonathan, Nishad, Rahul, Steve, Zach
+ * @author Jonathan, Nishad, Rahul, Steve, Zach, Stanley
  *
  */
 public class GameElement {
@@ -56,12 +56,6 @@ public class GameElement {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
         }
-//        for (String key : actionTypes.keySet()) {
-//            String type = actionTypes.getString(key);
-//            if (!myActionLists.containsKey(type)) {
-//                myActionLists.put(type, new CopyOnWriteArrayList<>());
-//            }
-//        }
         
         for (ActionType key : ActionType.values()) {
             String type = key.toString();
