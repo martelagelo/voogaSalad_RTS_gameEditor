@@ -96,6 +96,10 @@ public class GameElementState implements JSONable, Serializable {
     	return myTypes.contains(typeString);
     }
     
+    public void deleteTypes(String typeString) {
+    	myTypes.clear();
+    }
+    
     /**
      * Add a string condition-action pair to the game element state
      * 

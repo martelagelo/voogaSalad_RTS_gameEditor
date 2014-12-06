@@ -680,7 +680,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -1340,7 +1341,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -2017,7 +2019,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             }
           ],
           "myGoals": [
@@ -2047,7 +2050,8 @@
                   }
                 ],
                 "myTextualAttributes": []
-              }
+              },
+              "myTypes": []
             }
           ],
           "myName": "testLevel",
@@ -2794,7 +2798,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -3454,7 +3459,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -4114,7 +4120,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -4791,7 +4798,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       }
     ]
   },

@@ -135,5 +135,6 @@
         "myName": "currentAction"
       }
     ]
-  }
+  },
+  "myTypes": []
 }
