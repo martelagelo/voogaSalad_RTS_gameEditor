@@ -15,7 +15,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 
     private static final long serialVersionUID = -4791954709522087485L;
     public String displayerTag;
-    public String ParameterTag;
+    public String parameterTag;
     public double minAttributeValue;
     public double maxAttributeValue;
     public String myTextValue;
@@ -25,7 +25,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
                                     double minAttributeValue,
                                     double maxAttributeValue) {
         this.displayerTag = displayerTag;
-        this.ParameterTag = numericParameterTag;
+        this.parameterTag = numericParameterTag;
         this.minAttributeValue = minAttributeValue;
         this.maxAttributeValue = maxAttributeValue;
 
@@ -33,7 +33,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
     
     public AttributeDisplayerState (String displayerTag, String textualParameterTag, String value) {
     	this.displayerTag = displayerTag;
-    	this.ParameterTag = textualParameterTag;
+    	this.parameterTag = textualParameterTag;
     	this.myTextValue = value;
     }
 

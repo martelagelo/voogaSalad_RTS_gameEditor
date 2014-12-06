@@ -59,7 +59,7 @@ public class AttributeDisplayerFactory {
 			displayer = (AttributeDisplayer) c.getDeclaredConstructor(
 					AttributeContainer.class, String.class, double.class,
 					double.class).newInstance(attachee,
-					attributeDisplayerState.ParameterTag,
+					attributeDisplayerState.parameterTag,
 					attributeDisplayerState.minAttributeValue,
 					attributeDisplayerState.maxAttributeValue);
 		} catch (InstantiationException | IllegalAccessException
