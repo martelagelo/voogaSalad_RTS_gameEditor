@@ -4,6 +4,7 @@ import java.util.Scanner;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +14,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import model.exceptions.SaveLoadException;
+import util.JSONableList;
+import util.SaveLoadUtility;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
@@ -38,10 +42,11 @@ public class SplashScreen extends GUIScreen {
     private static final String NO_GAME_SELECT_ERROR_KEY = "NoGameSelectedError";
 
     private static final String DUVALL_PATH = "resources/duvall.txt";
+    public static final String EXISTING_GAMES =
+            "src/resources/properties/view/existingGames.json";
     // TODO make longer to scroll, 1 for now for the sake of testing
     private static final Integer LOAD_DURATION = 1;
 
-    // TODO Probably get rid of this
     @FXML
     private GridPane splash;
     @FXML
@@ -64,60 +69,45 @@ public class SplashScreen extends GUIScreen {
     }
 
     @Override
-    public void init () {
-        // TODO: when saving a game, should specify its name to be used in splash screen rather than
-        // using file folder name
-
-
-        // TODO: we need a better way of getting the current list of games
-        // probably from the model or something
-
-        // File folder = new File(GAMES_DIRECTORY);
-        // List<File> files = Arrays.asList(folder.listFiles());
-        // List<String> gameNames = files
-        // .stream()
-        // .filter(f -> f.isDirectory())
-        // .map(f -> f.getName())
-        // .collect(Collectors.toList());
-        // gameDropDown.setItems(FXCollections.observableArrayList(gameNames));
-
-
+    public void init () {        
+        try {
+            JSONableList<String> games = SaveLoadUtility.loadResource(JSONableList.class, 
+                    EXISTING_GAMES);
+            gameDropDown.setItems(FXCollections.observableList(games));
+        }
+        catch (SaveLoadException e) {
+            DialogBoxUtility.createMessageDialog(e.getMessage());
+        }
+                  
         setUpButtons();
         drawTitle();
     }
 
     private void setUpButtons () {
         newGameButton.setOnAction(e -> {
-            String gameName;
             try {
-                gameName =
+                String gameName =
                         MultiLanguageUtility.getInstance().getStringProperty(DEFAULT_NEW_GAME_KEY)
                                 .getValue();
+                myMainModel.newGame(gameName);
+                switchScreen(ViewScreenPath.EDITOR);
             }
             catch (Exception e1) {
-                // Should never happen
-                gameName = "<New Game>";
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
+                DialogBoxUtility.createMessageDialog(e1.getMessage());
             }
-            myMainModel.newGame(gameName);
-            switchScreen(ViewScreenPath.EDITOR);
         });
-        // TODO we need to link this up with save load in MainView and MainModel
+
         launchEditorButton.setOnAction(e -> {
             if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
                 try {
                     myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
+                    switchScreen(ViewScreenPath.EDITOR);
                 }
                 catch (Exception e1) {
-                    // TODO: handle exception and display to view
-                    // TODO Auto-generated catch block
-                e1.printStackTrace();
+                    DialogBoxUtility.createMessageDialog(e1.getMessage());
+                }
             }
-            switchScreen(ViewScreenPath.EDITOR);
-        }
                 else {
-                    // TODO: ERROR POPUP ON SPLASH SCREEN, nishad... animation controller thingy
                     try {
                         DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
                                 .getStringProperty(NO_GAME_SELECT_ERROR_KEY).getValue());
@@ -126,14 +116,11 @@ public class SplashScreen extends GUIScreen {
                         e1.printStackTrace();
                     }
                 }
-
             });
 
-        // TODO Change to ViewScreen.RUNNER, also fill in String game (2nd argument)
         launchRunnerButton.setOnAction(e -> {
-            // TODO Load a game
-                switchScreen(ViewScreenPath.RUNNER);
-            });
+            switchScreen(ViewScreenPath.RUNNER);
+        });
         attachStringProperties();
     }
 
@@ -166,7 +153,7 @@ public class SplashScreen extends GUIScreen {
             gameDropDown.promptTextProperty().bind(util.getStringProperty(CHOOSE_GAME_KEY));
         }
         catch (LanguageException e) {
-            // TODO error handling
+            DialogBoxUtility.createMessageDialog(e.getMessage());
         }
 
     }
