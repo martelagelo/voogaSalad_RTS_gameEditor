@@ -22,7 +22,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
 
     private Map<String, Map<String, String>> myAllAbilityRepresentations;
     private Map<String, String> myCurrentAbilityRepresentation;
-    private double[] myisionBounds;
+    private double[] myVisionBounds;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition, null);
