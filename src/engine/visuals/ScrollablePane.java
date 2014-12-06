@@ -68,8 +68,8 @@ public class ScrollablePane extends Pane {
         myBackground = new ScrollableBackground(width, height, FIELD_WIDTH, FIELD_HEIGHT);
         mySelectionBox = new SelectionBox();
         guiBP.setCenter(myBackground);
-        guiBP.setMinHeight(height);
-        guiBP.setMinWidth(width);
+        //guiBP.setMinHeight(height);
+        //guiBP.setMinWidth(width);
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox(), guiBP);
         root.getChildren().add(stackPane);

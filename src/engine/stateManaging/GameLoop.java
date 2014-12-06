@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-import model.state.LevelState;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
 import engine.computers.Computer;
@@ -29,7 +28,6 @@ import engine.visuals.VisualManager;
  **/
 public class GameLoop {
     public static final Double framesPerSecond = 60.0;
-    private String myCampaignName;
     private Level myCurrentLevel;
     private GameElementManager myManager;
     private ParticipantManager myParticipantManager;
@@ -48,12 +46,10 @@ public class GameLoop {
         }
     };
 
-    public GameLoop (String campaignName,
-                     Level level,
+    public GameLoop (Level level,
                      VisualManager visualManager,
                      GameElementManager elementManager, ParticipantManager participantManager) {
         myVisualManager = visualManager;
-        myCampaignName = campaignName;
         myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
@@ -120,10 +116,10 @@ public class GameLoop {
 
         myVisualManager.update(myCurrentLevel.getUnits());
         myParticipantManager.update(myCurrentLevel.getUnits());
-        
-        //TODO: for testing, remove
+
+        // TODO: for testing, remove
         myParticipantManager.adjustParticipantNumericalAttribute(1, "Resources", 0.5);
-        
+
         int levelEndState = myCurrentLevel.evaluateGoals();
     }
 
@@ -172,14 +168,4 @@ public class GameLoop {
         timeline.stop();
     }
 
-    /**
-     * Indicate if this level is the current levels
-     *
-     * @param level the levelState of the level in question
-     * @return a boolean indicating if the level is the current level
-     */
-    public boolean isCurrentLevel (LevelState level, String campaignName) {
-        return (level.getName().equals(myCurrentLevel.getName()) && myCampaignName
-                .equals(campaignName));
-    }
 }

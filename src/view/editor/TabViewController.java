@@ -63,6 +63,8 @@ public class TabViewController extends GUIContainer {
     public void setLevel (String campaign, String level) throws LevelNotFoundException,
                                                         CampaignNotFoundException {
         myLevel = myMainModel.getLevel(campaign, level);
+        attachChildContainers(gameRunnerPaneController);
+        gameRunnerPaneController.setLevel(myLevel);
     }
 
     @Override

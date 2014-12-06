@@ -35,18 +35,12 @@ public class ShittyMain extends Application {
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
             Scene s = new Scene(g, shittyWidth, 0.9 * screenSize.getHeight());
-            s.getStylesheets()
-                    .add(this.getClass().getClassLoader()
-                            .getResource("engine/visuals/stylesheets/engine.style.css")
-                            .toExternalForm());
-            // //System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
         }
         catch (Exception e) {
             e.printStackTrace();
-            // //System.out.println("what did you expect this is shit");
         }
     }
 
@@ -80,9 +74,9 @@ public class ShittyMain extends Application {
         // List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         LevelState levelState = new LevelState("testLevel");
-//        for (DrawableGameElementState s : grassTerrain) {
-//            levelState.addTerrain(s);
-//        }
+        // for (DrawableGameElementState s : grassTerrain) {
+        // levelState.addTerrain(s);
+        // }
         levelState.addUnit(archerState);
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
@@ -91,7 +85,7 @@ public class ShittyMain extends Application {
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
 
         levelState.addGoal(createGoal());
-        
+
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
 
@@ -106,8 +100,7 @@ public class ShittyMain extends Application {
         model.getGameUniverse().addSelectableGameElementState(archerState2);
         model.getGameUniverse().addSelectableGameElementState(archerState3);
         Engine engine =
-                new Engine(model, model.getCampaign("testCampaign"), model.getLevel("testCampaign",
-                                                                                    "testLevel"));
+                new Engine(model, model.getLevel("testCampaign", "testLevel"));
         return engine;
     }
 

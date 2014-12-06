@@ -6,7 +6,6 @@ import java.util.Observer;
 import javafx.scene.Group;
 import model.MainModel;
 import model.exceptions.DescribableStateException;
-import model.state.CampaignState;
 import model.state.LevelState;
 import org.json.JSONException;
 import application.ShittyMain;
@@ -22,7 +21,6 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.HumanParticipant;
-import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
 
@@ -40,7 +38,6 @@ public class Engine extends Observable implements Observer {
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
-    private CampaignState myCampaignState;
 
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
@@ -54,10 +51,9 @@ public class Engine extends Observable implements Observer {
 
     private HumanParticipant myUser;
 
-    public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
+    public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
-        myCampaignState = campaignState;
         myLevelState = levelState;
         // TODO fix this so it isn't null
         myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null);
@@ -97,7 +93,7 @@ public class Engine extends Observable implements Observer {
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
         
         myGameLoop =
-                new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
+                new GameLoop(nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
