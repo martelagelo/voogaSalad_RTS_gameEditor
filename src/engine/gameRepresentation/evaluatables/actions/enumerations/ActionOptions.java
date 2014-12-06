@@ -73,12 +73,14 @@ public enum ActionOptions {
                               ActionParameters.NUMBER),
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
-                                         "CheckAttributeCreateAction",
-                                         "If my attribute # value # # then create object #",
+                                         "CheckAttributeCreateObjectAction",
+                                         "If my attribute # value # # then create object # with a spawn cooldown timer named # with cooldown # frames",
                                          ActionParameters.ATTR,
                                          ActionParameters.NN_EVAL,
                                          ActionParameters.NUMBER,
-                                         ActionParameters.STRING);
+                                         ActionParameters.STRING,
+                                         ActionParameters.STRING,
+                                         ActionParameters.NUMBER);
 
     private String myClassName;
     private String myDisplayName;

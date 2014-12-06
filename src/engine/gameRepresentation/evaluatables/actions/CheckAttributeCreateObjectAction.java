@@ -23,13 +23,15 @@ import engine.stateManaging.GameElementManager;
  * @author Zach
  *
  */
-public class CheckAttributeCreateAction extends Action {
+public class CheckAttributeCreateObjectAction extends Action {
+    String myTimerName;
+    long myTimerAmount;
 
-    public CheckAttributeCreateAction (String id,
-                                       EvaluatorFactory factory,
-                                       GameElementManager elementManager,
-                                       ParticipantManager participantManager,
-                                       String[] args) {
+    public CheckAttributeCreateObjectAction (String id,
+                                             EvaluatorFactory factory,
+                                             GameElementManager elementManager,
+                                             ParticipantManager participantManager,
+                                             String[] args) {
         super(id, factory, elementManager, participantManager, args);
     }
 
@@ -40,6 +42,8 @@ public class CheckAttributeCreateAction extends Action {
                                                ParticipantManager participantManager)
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
+        myTimerName = args[4];
+        myTimerAmount = Long.valueOf(args[5]);
         Evaluatable<?> parameterEvaluator =
                 new NumericAttributeParameter("", args[0], elementManager,
                                               new ActorObjectIdentifier());
@@ -55,8 +59,11 @@ public class CheckAttributeCreateAction extends Action {
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
-        action.evaluate(elements);
+        if (elements.getActor().getTimer(myTimerName) <= 0) {
+            action.evaluate(elements);
+            elements.getActor().setTimer(myTimerName, myTimerAmount);
+        }
+
         return true;
     }
-
 }
