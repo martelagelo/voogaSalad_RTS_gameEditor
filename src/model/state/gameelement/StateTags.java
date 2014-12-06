@@ -36,5 +36,6 @@ public class StateTags {
     public static final String X_SPAWN_OFFSET = "XSpawnOffset";
     public static final String Y_SPAWN_OFFSET = "YSpawnOffset";
     public static final String SUPPORTS_RANGED_ATTACK = "SupportsRange";
+    public static final String LAST_BUTTON_CLICKED_ID = "lastButtonID";
 
 }
