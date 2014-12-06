@@ -11,35 +11,35 @@
     40.0
   ],
   "myActions": {
-    "collision": [
+    "Collision": [
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "NotCollision",
           "RandomWaypoint"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       },
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "Collision",
           "Attack"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       },
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "Collision",
           "MoveBack"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       }
     ],
-    "InternalActions": [
+    "Internal": [
       {
-        "myActionName": "CheckAttributeSetAttributeAction",
+        "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
         "myParameters": [
           "health",
           "LessThanEqual",
@@ -48,28 +48,28 @@
           "EqualsAssignment",
           "1"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "UpdateMovementDirection"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "MovePlayer"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "HeadingUpdate"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       }
     ]
   },
