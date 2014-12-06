@@ -61,7 +61,7 @@ public class GameElement {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
             }
         }
-
+// In createactionlists have it go through all the enum
     }
 
     /**

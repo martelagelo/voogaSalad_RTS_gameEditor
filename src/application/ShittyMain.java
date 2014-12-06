@@ -18,6 +18,7 @@ import util.SaveLoadUtility;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -114,7 +115,7 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL.toString(), ActionOptions.PLAYER_ATTRIBUTE_CONDITION
                 .getClassString(), "my", "Resources", "GreaterThanEqual", "500", "Won",
                                         "EqualsAssignment", "1"));
         // archerState
@@ -145,36 +146,36 @@ public class ShittyMain extends Application {
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
         archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
         // Choose a random temporary waypoint if we collide with anything
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(), ActionOptions.OBJECT_CONDITION_ACTION
                 .getClassString(),
                                                 "NotCollision", "RandomWaypoint"));
         // On collision, attack an enemy
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(), ActionOptions.OBJECT_CONDITION_ACTION
                 .getClassString(), "Collision", "Attack"));
         // Move back if we collide with anything
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(), ActionOptions.OBJECT_CONDITION_ACTION
                 .getClassString(),
                                                 "Collision", "MoveBack"));
         // Check to see if our health is <0. If so, die.
         archerState
-                .addAction(new ActionWrapper("InternalActions",
+                .addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
                                                      .getClassString(), StateTags.HEALTH,
                                              "LessThanEqual",
                                              "0",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
-        archerState.addAction(new ActionWrapper("InternalActions",
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION
                                                         .getClassString(),
                                                 "UpdateMovementDirection"));
         // This one moves the player
-        archerState.addAction(new ActionWrapper("InternalActions",
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION
                                                         .getClassString(),
                                                 "MovePlayer"));
         // This one can be used for pathing
-        archerState.addAction(new ActionWrapper("InternalActions",
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION
                                                         .getClassString(),
                                                 "HeadingUpdate"));

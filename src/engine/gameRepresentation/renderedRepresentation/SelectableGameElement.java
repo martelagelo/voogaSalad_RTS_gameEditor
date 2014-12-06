@@ -11,6 +11,7 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.ElementPair;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
 
 
@@ -98,11 +99,11 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", "vision");
+        updateSelfDueToInteractingElementsSubset("visible", ActionType.VISION.toString());
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", "collision");
+        updateSelfDueToInteractingElementsSubset("colliding", ActionType.COLLISION.toString());
     }
 
     private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {
