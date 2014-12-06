@@ -26,6 +26,7 @@ import engine.visuals.elementVisuals.Visualizer;
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState selectableState;
+
     private Map<InteractingElementType, Set<DrawableGameElement>> myInteractingElements;
     // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
@@ -129,6 +130,7 @@ public class SelectableGameElement extends DrawableGameElement {
              // By default, only evaluate one single collision action per game loop refresh
             }
         });
+
         myInteractingElements.get(elementType).clear();
         // After we've acted on the elements, clear the list
 
