@@ -53,7 +53,6 @@ public class SelectableGameElement extends DrawableGameElement {
                 myInteractingElements.put(type, new HashSet<>());
             }
         }
-        
 
     }
 
@@ -61,7 +60,8 @@ public class SelectableGameElement extends DrawableGameElement {
         return getTextualAttribute(StateTags.TYPE);
     }
 
-    public void addInteractingElement (InteractingElementType elementType, DrawableGameElement element) {
+    public void addInteractingElement (InteractingElementType elementType,
+                                       DrawableGameElement element) {
         Set<DrawableGameElement> elements = new HashSet<>();
         Set<DrawableGameElement> oldElements = myInteractingElements.get(elementType);
         if (oldElements != null) {
@@ -117,17 +117,19 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset(InteractingElementType.COLLIDING, ActionType.COLLISION);
+        updateSelfDueToInteractingElementsSubset(InteractingElementType.COLLIDING,
+                                                 ActionType.COLLISION);
     }
 
-    private void updateSelfDueToInteractingElementsSubset (InteractingElementType elementType, ActionType actionType) {
+    private void updateSelfDueToInteractingElementsSubset (InteractingElementType elementType,
+                                                           ActionType actionType) {
         // TODO: string literals still exist
         Set<DrawableGameElement> elementsOfInterest = myInteractingElements.get(elementType);
         getActionsOfType(actionType).forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
-                if ((Boolean) action.evaluate(elements)) { return; } 
-             // By default, only evaluate one single collision action per game loop refresh
+                if ((Boolean) action.evaluate(elements)) { return; }
+                // By default, only evaluate one single collision action per game loop refresh
             }
         });
 
@@ -139,9 +141,19 @@ public class SelectableGameElement extends DrawableGameElement {
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
         function.accept(selectableState);
     }
-    
-    public void executeAllButtonActions(){
-        this.executeAllActions(ActionType.BUTTON,new ElementPair(this,this));
+
+    public void executeAllButtonActions () {
+        this.executeAllActions(ActionType.BUTTON, new ElementPair(this, this));
+    }
+
+    public Map<Integer, String> getAbilityDescriptionMap (int numAttributes) {
+        Map<Integer, String> descriptionMap = new HashMap<>();
+        for (int i = 1; i <= numAttributes; i++) {
+            String description = this.getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + i);
+            descriptionMap.put(i, description);
+        }
+
+        return descriptionMap;
     }
 
 }
