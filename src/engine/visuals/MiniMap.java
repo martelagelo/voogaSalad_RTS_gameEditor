@@ -1,6 +1,12 @@
 package engine.visuals;
 
 import java.util.List;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.binding.NumberBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -27,8 +33,9 @@ public class MiniMap {
     private static final double MINIMAP_HEIGHT = 160;
     private static final double X_SCALE = ScrollablePane.FIELD_WIDTH / MINIMAP_WIDTH;
     private static final double Y_SCALE = ScrollablePane.FIELD_HEIGHT / MINIMAP_HEIGHT;
-    private static double MINIMAP_XPOS;
-    private static double MINIMAP_YPOS;
+
+    private static NumberBinding xPos;
+    private static NumberBinding yPos;
 
     private ScrollablePane myScene;
     private Canvas myDisplay;
@@ -38,8 +45,13 @@ public class MiniMap {
      * Constructor for the MiniMap
      */
     public MiniMap (ScrollablePane SS) {
-        MINIMAP_XPOS = SS.getWidth() - MINIMAP_WIDTH - ScrollablePane.FAST_SCROLL_BOUNDARY / 2;
-        MINIMAP_YPOS = SS.getHeight() - MINIMAP_HEIGHT - ScrollablePane.FAST_SCROLL_BOUNDARY / 4;
+        DoubleProperty xDelta =
+                new SimpleDoubleProperty(MINIMAP_WIDTH + ScrollablePane.FAST_SCROLL_BOUNDARY / 2);
+        DoubleProperty yDelta =
+                new SimpleDoubleProperty(MINIMAP_HEIGHT + ScrollablePane.FAST_SCROLL_BOUNDARY / 4);
+        xPos = Bindings.subtract(SS.prefWidthProperty(), xDelta);
+        yPos = Bindings.subtract(SS.prefHeightProperty(), yDelta);
+
         myScene = SS;
         myDisplay = new Canvas();
         myGraphicsContext = myDisplay.getGraphicsContext2D();
@@ -108,8 +120,8 @@ public class MiniMap {
     }
 
     private void initializeDisplay () {
-        myDisplay.setLayoutX(MINIMAP_XPOS);
-        myDisplay.setLayoutY(MINIMAP_YPOS);
+        myDisplay.layoutXProperty().bind(xPos);
+        myDisplay.layoutYProperty().bind(yPos);
         myDisplay.setWidth(MINIMAP_WIDTH);
         myDisplay.setHeight(MINIMAP_HEIGHT);
         myDisplay.setOpacity(MINIMIAP_OPACITY);

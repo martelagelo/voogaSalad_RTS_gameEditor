@@ -30,7 +30,7 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
 public class DrawableGameElement extends GameElement implements Displayable, Boundable {
 
     // TODO: remove this factory ...
-    private AttributeDisplayerFactory myWidgetFactory;
+    //private AttributeDisplayerFactory myWidgetFactory;
 
     private DrawableGameElementState drawableState;
     private Visualizer myVisualizer;
@@ -51,7 +51,7 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
         super(state, actionTypes);
         drawableState = state;
         myVisualizer = visualizer;
-        myWidgetFactory = new AttributeDisplayerFactory();
+        //myWidgetFactory = new AttributeDisplayerFactory();
         waypoints = new LinkedList<>();
         myVisualizer.initializeDisplay();
 
@@ -60,9 +60,9 @@ public class DrawableGameElement extends GameElement implements Displayable, Bou
 //                new AttributeBarDisplayer(drawableState.attributes, StateTags.HEALTH, 0, 500);
 //        myVisualizer.addWidget(healthBar);
 
-        myAttributeDisplayerState =
-                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
-        myVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(this.myAttributeDisplayerState, drawableState.attributes));
+//        myAttributeDisplayerState =
+//                new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
+//        myVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(this.myAttributeDisplayerState, drawableState.attributes));
     }
 
     @Override

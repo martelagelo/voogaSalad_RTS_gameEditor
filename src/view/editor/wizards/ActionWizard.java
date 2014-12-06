@@ -7,9 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import engine.actions.enumerations.ActionOptions;
-import engine.actions.enumerations.ActionParameters;
-import engine.actions.enumerations.ActionType;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**

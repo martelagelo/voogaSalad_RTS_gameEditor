@@ -35,7 +35,7 @@ import view.gui.GUIPanePath;
 public class DrawableGameElementWizard extends Wizard {
 
     private final static String NAME_KEY = "Name";
-    private final static String NEW_TRIGGER_KEY = "NewTrigger";
+    private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
     private final static String ADD_ANIMATION_KEY = "AddAnimation";
@@ -96,8 +96,8 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(GUIPanePath.TRIGGER_WIZARD, existingTriggers, new ArrayList<String>(),
-                           new Dimension(300, 300));
+        launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, new ArrayList<String>(),
+                           new Dimension(400, 600));
     }
 
     /**
@@ -154,8 +154,9 @@ public class DrawableGameElementWizard extends Wizard {
             addWizardData(data);
             HBox newElement = new HBox();
             Button edit = new Button();
+            //TODO: Fix the text that goes into the button           
             edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs));
+            edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs, dim));
             newElement.getChildren().add(edit);
 
             Button delete = new Button();
@@ -175,8 +176,9 @@ public class DrawableGameElementWizard extends Wizard {
     private void launchEditWizard (GUIPanePath path,
                                    WizardData oldData,
                                    Button button,
-                                   List<String> globalAttrs) {
-        Wizard wiz = WizardUtility.loadWizard(path, new Dimension(300, 300));
+                                   List<String> globalAttrs, Dimension dim) {
+        Wizard wiz = WizardUtility.loadWizard(path, dim);
+        wiz.loadGlobalValues(globalAttrs);
         wiz.launchForEdit(oldData);
         Consumer<WizardData> bc = (data) -> {
             removeWizardData(oldData);
@@ -242,9 +244,7 @@ public class DrawableGameElementWizard extends Wizard {
         createSliderListeners();
         createTextFieldListeners();
         imagePath = "";
-        attachTextProperties();
-        errorMessage.setFill(Paint.valueOf("white"));
-        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
+        errorMessage.setFill(Paint.valueOf("white"));        
     }
 
     /**
@@ -254,11 +254,10 @@ public class DrawableGameElementWizard extends Wizard {
      */
     @Override
     protected void attachTextProperties () {
-        super.attachTextProperties();
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             name.promptTextProperty().bind(util.getStringProperty(NAME_KEY));
-            trigger.textProperty().bind(util.getStringProperty(NEW_TRIGGER_KEY));
+            trigger.textProperty().bind(util.getStringProperty(NEW_ACTION_KEY));
             stringAttribute.textProperty().bind(util.getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
             numberAttribute.textProperty().bind(util.getStringProperty(NEW_NUMBER_ATTRIBUTE_KEY));
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
@@ -309,6 +308,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public void updateData () {
+        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());

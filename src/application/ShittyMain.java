@@ -26,7 +26,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 public class ShittyMain extends Application {
 
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int shittyWidth = 1279;
+    public static final int shittyWidth = 1000;
 
     @Override
     public void start (Stage primaryStage) {
@@ -36,18 +36,12 @@ public class ShittyMain extends Application {
             ScrollablePane pane = engine.getScene();
             g.getChildren().add(pane);
             Scene s = new Scene(g, shittyWidth, 0.9 * screenSize.getHeight());
-            s.getStylesheets()
-                    .add(this.getClass().getClassLoader()
-                            .getResource("engine/visuals/stylesheets/engine.style.css")
-                            .toExternalForm());
-            // //System.out.println(s.getStylesheets());
             primaryStage.setScene(s);
             primaryStage.show();
             engine.play();
         }
         catch (Exception e) {
             e.printStackTrace();
-            // //System.out.println("what did you expect this is shit");
         }
     }
 
@@ -74,7 +68,7 @@ public class ShittyMain extends Application {
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
         archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
-                .getClassString(), "archer"));
+                .getClassString(), "archer","ArcherTimer","500"));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -85,12 +79,11 @@ public class ShittyMain extends Application {
         // levelState.addTerrain(s);
         // }
         levelState.addUnit(archerState);
-        levelState.addUnit(archerState1);
+        //levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
-
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
@@ -106,9 +99,11 @@ public class ShittyMain extends Application {
         model.getGameUniverse().addSelectableGameElementState(archerState1);
         model.getGameUniverse().addSelectableGameElementState(archerState2);
         model.getGameUniverse().addSelectableGameElementState(archerState3);
+        model.saveGame();
+        MainModel model2 = new MainModel();
+        model2.loadGame("testGame");
         Engine engine =
-                new Engine(model, model.getCampaign("testCampaign"), model.getLevel("testCampaign",
-                                                                                    "testLevel"));
+                new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
         return engine;
     }
 
@@ -116,17 +111,8 @@ public class ShittyMain extends Application {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
-                .getClassString(), "my", "Resources", "GreaterThanEqual", "500", "Won",
+                .getClassString(), "my", "Resources", "GreaterThanEqual", "10000", "Won",
                                         "EqualsAssignment", "1"));
-        // archerState
-        // .addAction(new ActionWrapper("InternalActions",
-        // ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
-        // .getClassString(), StateTags.HEALTH,
-        // "LessThanEqual",
-        // "0",
-        // StateTags.IS_DEAD, "EqualsAssignment", "1"));
-        // ges.addAction(new ActionWrapper("InternalActions", ActionOptions.OBJECT_CONDITION_ACTION
-        // , parameters));
         return ges;
     }
 

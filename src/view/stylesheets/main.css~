@@ -53,7 +53,7 @@
      -fx-color: #6BB8F6;
 }
 
-.titled-pane > .title 
+.titled-pane:focused > .title 
 {
      -fx-color: #6BB8F6;
 }

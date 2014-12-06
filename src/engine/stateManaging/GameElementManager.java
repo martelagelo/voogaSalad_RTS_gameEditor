@@ -136,10 +136,21 @@ public class GameElementManager {
         }
     }
 
-    public void setSelectedUnitWaypoints (Point2D click, boolean queueCommand, Participant u) {
-        for (SelectableGameElement e : myLevel.getUnits().stream()
-                .filter(e -> e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1)
-                .collect(Collectors.toList())) {
+    public void setSelectedUnitCommand (Point2D click, boolean queueCommand, Participant u) {
+        // check to see if a unit was right-clicked on
+        if (filterSelectedUnits().stream()
+                .filter(e -> u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).intValue())).count() > 0) {
+            for (SelectableGameElement e : myLevel.getUnits()) {
+                double[] cornerBounds = e.findGlobalBounds();
+                if (new Polygon(cornerBounds).contains(click)) {
+                    issueOrderToSelectedUnits(e);
+                    return;
+                }
+            }
+        }
+        
+        // if location is clicked on instead, tell all selected units to go there
+        for (SelectableGameElement e : filterSelectedUnits()) {
             if (!checkOnTeam(e, u)) continue;
             if (queueCommand) {
                 // TODO: either implement this and allow for having headings be a linked-list, or
@@ -157,10 +168,17 @@ public class GameElementManager {
         }
     }
 
+    private void issueOrderToSelectedUnits (SelectableGameElement e) {
+        System.out.println(e.getPosition().getX()+", "+e.getPosition().getY());
+        
+    }
+
     private List<SelectableGameElement> filterSelectedUnits () {
-        return myLevel.getUnits().stream().filter(unit -> {
-            return unit.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1;
-        }).collect(Collectors.toList());
+        return myLevel
+                .getUnits()
+                .stream()
+                .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1)
+                .collect(Collectors.toList());
     }
 
     /**
