@@ -64,7 +64,7 @@ public class TabViewController extends GUIContainer {
                 };
         return consumer;
     }
-    
+
     private void addNumberAttributes (Wizard wiz) {
         List<String> numberAttrs = myMainModel.getGameUniverse().
                 getNumericalAttributes().stream().map(atr -> atr.getName())
@@ -77,10 +77,15 @@ public class TabViewController extends GUIContainer {
         myLevel = myMainModel.getLevel(campaign, level);
         attachChildContainers(gameRunnerPaneController);
         gameRunnerPaneController.setLevel(myLevel);
+        gameRunnerPaneController.setOnDone(e -> restartLevel());
+    }
+
+    private void restartLevel () {
+        gameRunnerPaneController.setLevel(myLevel);
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         updateLevelTriggersView();
     }
 
@@ -119,7 +124,7 @@ public class TabViewController extends GUIContainer {
     public void init () {
         levelTriggerController.setButtonAction(launchNestedWizard());
         levelTriggerController.setSelectedAction(modifyGoals());
-        levelTriggerController.setDeleteAction(deleteGoal());        
+        levelTriggerController.setDeleteAction(deleteGoal());
     }
 
     private BiConsumer<Integer, String> modifyGoals () {
@@ -148,9 +153,12 @@ public class TabViewController extends GUIContainer {
                                                 .split(",");
                                 ActionWrapper wrapper =
                                         new ActionWrapper(
-                                                          ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)),
+                                                          ActionType
+                                                                  .valueOf(data
+                                                                          .getValueByKey(WizardDataType.ACTIONTYPE)),
                                                           ActionOptions
-                                                                  .valueOf(data.getValueByKey(WizardDataType.ACTION)),
+                                                                  .valueOf(data
+                                                                          .getValueByKey(WizardDataType.ACTION)),
                                                           params);
                                 actionValue.add(wrapper);
                                 actions.put(ActionType

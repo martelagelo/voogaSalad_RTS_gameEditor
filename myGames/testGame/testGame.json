@@ -2003,7 +2003,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "10000",
+                      "200",
                       "Won",
                       "EqualsAssignment",
                       "1"

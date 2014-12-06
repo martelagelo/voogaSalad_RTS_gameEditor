@@ -4,15 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import model.exceptions.CampaignNotFoundException;
-import model.exceptions.LevelNotFoundException;
-import model.state.LevelState;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import model.exceptions.CampaignNotFoundException;
+import model.exceptions.LevelNotFoundException;
+import model.state.LevelState;
+import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.gui.GUIScreen;
 
@@ -24,6 +26,8 @@ import view.gui.GUIScreen;
  *
  */
 public class RunnerScreen extends GUIScreen {
+
+    private static final String LOAD_LEVEL_ERROR_KEY = "LoadLevelError";
 
     @FXML
     private BorderPane root;
@@ -44,6 +48,8 @@ public class RunnerScreen extends GUIScreen {
     @FXML
     private RunnerMenuBarController runnerMenuBarController;
 
+    private LevelState myLevel;
+
     @Override
     public Node getRoot () {
         return root;
@@ -51,30 +57,38 @@ public class RunnerScreen extends GUIScreen {
 
     @Override
     protected void init () {
+        runnerMenuBarController.attachScreen(this);
         // sizedButton used for sizing other panes and as background in stackpane
-        sizedButton.setStyle("-fx-background-color: black;");
+        sizedButton.setStyle("-fx-background-color: white;");
         sizedButton.disarm();
         attachChildContainers(runnerMenuBarController, gameRunnerController);
-        runnerMenuBarController.attachScreen(this);
         gameRunner.prefHeightProperty().bind(sizedButton.heightProperty());
         gameRunner.prefHeightProperty().bind(sizedButton.heightProperty());
         levelChooser.prefHeightProperty().bind(sizedButton.heightProperty());
         levelChooser.prefHeightProperty().bind(sizedButton.heightProperty());
-        levelChooserController.setOnSubmit((String campaign, String level)->playLevel(campaign, level));
+        levelChooserController.setOnSubmit( (String campaign, String level) -> playLevel(campaign,
+                                                                                         level));
+        gameRunnerController.setOnDone(e -> setFront(levelChooser));
         setFront(levelChooser);
     }
-    
-    private void playLevel(String campaign, String level) {
+
+    private void playLevel (String campaign, String level) {
         try {
-            LevelState levelState = myMainModel.getLevel(campaign, level);
-            gameRunnerController.setLevel(levelState);
+            myLevel = myMainModel.getLevel(campaign, level);
+            gameRunnerController.setLevel(myLevel);
+            gameRunnerController.addObserver(this);
             setFront(gameRunner);
         }
         catch (LevelNotFoundException | CampaignNotFoundException e) {
-            // TODO multilanguage
-            DialogBoxUtility.createMessageDialog("Failed to load level");
+            try {
+                DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+                        .getStringProperty(LOAD_LEVEL_ERROR_KEY).getValue());
+            }
+            catch (LanguagePropertyNotFoundException e1) {
+                DialogBoxUtility.createMessageDialog(e1.toString());
+            }
         }
-        
+
     }
 
     private void setFront (Node child) {
@@ -100,7 +114,7 @@ public class RunnerScreen extends GUIScreen {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         updateLevelChooser();
     }
 

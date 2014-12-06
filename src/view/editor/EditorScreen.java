@@ -141,7 +141,7 @@ public class EditorScreen extends GUIScreen {
             tabController.setLevel(campaign, level);
             // TODO: Jonathan fix "current level" for the accordion pane
             levelElementAccordionController.setLevel(campaign, level);
-            tabController.update();
+            tabController.modelUpdate();
         }
         catch (LevelNotFoundException | CampaignNotFoundException e) {
             // Should not happen
@@ -178,7 +178,7 @@ public class EditorScreen extends GUIScreen {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         updateProjectExplorer();
         updateTabTexts();
         updateInfoBox(projectExplorerController.getSelectedHierarchy());

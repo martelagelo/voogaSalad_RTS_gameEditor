@@ -241,7 +241,7 @@ public class ElementAccordionController extends GUIContainer {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         List<ImageElementPair> selectableStates =
                 myMainModel.getGameUniverse().getSelectableGameElementStates().stream()
                         .map( (element) -> {

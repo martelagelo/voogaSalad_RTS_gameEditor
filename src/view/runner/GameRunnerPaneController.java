@@ -1,11 +1,17 @@
 package view.runner;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import model.state.LevelState;
+import model.state.gameelement.AttributeContainer;
 import org.json.JSONException;
 import view.dialog.DialogBoxUtility;
 import view.gui.GUIContainer;
@@ -23,13 +29,21 @@ import engine.visuals.ScrollablePane;
 public class GameRunnerPaneController extends GUIContainer {
 
     @FXML
-    private StackPane root;
+    private StackPane stackPane;
     @FXML
     private Button sizedButton;
-
+    @FXML
+    private BorderPane runnerPane;
+    @FXML
+    private BorderPane gameEnd;
+    @FXML
+    private GameEndController gameEndController;
+    
+    private LevelState myLevel;
+    
     @Override
     public Node getRoot () {
-        return root;
+        return stackPane;
     }
 
     public void setLevel (LevelState levelState) {
@@ -37,26 +51,53 @@ public class GameRunnerPaneController extends GUIContainer {
             // Jank code to properly size engine runner pane to place in view
             // because JavaFX is horrible with sizing
             // require button to fill actual size of borderpane to then be bound to runner pane size
-            sizedButton.setStyle("-fx-background-color: transparent;");
+            sizedButton.setStyle("-fx-background-color: red;");
+            myLevel = levelState;
             Engine engine = new Engine(myMainModel, levelState);
             ScrollablePane pane = engine.getScene();
             pane.bindSize(sizedButton.widthProperty(), sizedButton.heightProperty());
             engine.play();
-            root.getChildren().add(pane);
+            engine.addObserver(this);
+            runnerPane.setCenter(pane);
+            setFront(runnerPane);
         }
         catch (ClassNotFoundException | JSONException | IOException e) {
             DialogBoxUtility.createMessageDialog(e.toString());
         }
     }
 
+    public void setOnDone(EventHandler<ActionEvent> event) {
+        gameEndController.setOnDone(event);
+    }
+    
+    private void setFront (Node child) {
+        stackPane.getChildren().remove(sizedButton);
+        stackPane.getChildren().add(sizedButton);
+        stackPane.getChildren().remove(child);
+        stackPane.getChildren().add(child);
+    }
+    
     @Override
     protected void init () {
         // nothing to do until level is set
     }
 
     @Override
-    public void update () {
-        // do nothing for now
+    public void modelUpdate () {
+        // do nothing
+    }
+
+    @Override
+    public void engineUpdate (AttributeContainer attributes) {
+        List<String> attributesToShow =
+                attributes
+                        .getNumericalAttributes()
+                        .stream()
+                        .map( (attribute) -> String.format("%s: %s", attribute.getName(),
+                                                           attribute.getData()))
+                        .collect(Collectors.toList());
+        gameEndController.updateGameEndView(myLevel.getName(), attributesToShow);
+        setFront(gameEnd);
     }
 
 }
