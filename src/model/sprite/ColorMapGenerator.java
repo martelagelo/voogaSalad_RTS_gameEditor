@@ -12,6 +12,7 @@ import model.exceptions.SaveLoadException;
 import util.ResourceBundleRetriever;
 
 public class ColorMapGenerator {
+    private static final String COLOR_MASKS_LOCATION = "resources/gameelementresources/colormasks.properties";
     private static final int RGB_LENGTH = 3;
     private ResourceBundle myBundle;
     private ResourceBundleRetriever myBundleRetriever;
@@ -22,7 +23,7 @@ public class ColorMapGenerator {
         myBundleRetriever = new ResourceBundleRetriever();
         try {
             //TODO: save the location outside of source
-            myBundle = myBundleRetriever.getBundle(new File("src/model/sprite/colors.properties"));
+            myBundle = myBundleRetriever.getBundle(new File(COLOR_MASKS_LOCATION));
             populateColorMaskMap();
         } catch (MalformedURLException e) {
             throw new SaveLoadException("Unable to load resources", e);
