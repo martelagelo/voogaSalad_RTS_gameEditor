@@ -5,16 +5,18 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 
+
 /**
  * Spawn a selectable element at the location of the game element with the given x and y positions
+ * 
  * @author Zach
  *
  */
 public class SpawnSelectableElement<A, B> extends Evaluator<A, B, Boolean> {
 
     public SpawnSelectableElement (String id,
-                        Evaluatable<A> parameter1,
-                        Evaluatable<B> parameter2) {
+                                   Evaluatable<A> parameter1,
+                                   Evaluatable<B> parameter2) {
         super(Boolean.class, id, "Spawn Element", parameter1, parameter2);
     }
 
@@ -29,8 +31,8 @@ public class SpawnSelectableElement<A, B> extends Evaluator<A, B, Boolean> {
                                                  element.getNumericalAttribute(StateTags.Y_POSITION)
                                                          .doubleValue() +
                                                          element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET)
-                                                                 .doubleValue());
+                                                                 .doubleValue(),element.getNumericalAttribute(StateTags.TEAM_ID).doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR));
+        
         return true;
     }
-
 }
