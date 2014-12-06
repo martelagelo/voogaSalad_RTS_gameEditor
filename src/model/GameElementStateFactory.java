@@ -10,7 +10,6 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardType;
@@ -37,8 +36,34 @@ public class GameElementStateFactory {
 
     public static DrawableGameElementState createDrawableGameElementState (WizardData data) {
         DrawableGameElementState state = (DrawableGameElementState)
-                addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);
+                addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);        
 
+        return (DrawableGameElementState) addVisuals(data, state);
+    }
+
+    public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
+        SelectableGameElementState state = (SelectableGameElementState)
+                addEssentials(new SelectableGameElementState(0.0, 0.0), data);
+        return (SelectableGameElementState) addVisuals(data, state);
+    }
+
+    public static GameElementState createGoal (WizardData data) {
+        GameElementState goal = new GameElementState();
+        goal.addAction(createActionWrapper(data));
+        return goal;
+    }
+
+    private static ActionWrapper createActionWrapper (WizardData data) {
+        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
+        ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
+                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
+                                                  params);
+        return wrapper;
+    }
+
+    private static DrawableGameElementState addVisuals (WizardData data,
+                                                        DrawableGameElementState state) {
+        
         Dimension dim = new Dimension(Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_X)),
                                       Integer.parseInt(data.getValueByKey(WizardDataType.FRAME_Y)));
 
@@ -49,7 +74,11 @@ public class GameElementStateFactory {
                                           .split(","))
                             .stream().map(tag -> AnimationTag.valueOf(tag))
                             .collect(Collectors.toList());
-            AnimationSequence sequence = new AnimationSequence(tags, 0, 0);
+            int start = Integer.parseInt(animationData.getValueByKey(WizardDataType.START_FRAME));
+            int stop = Integer.parseInt(animationData.getValueByKey(WizardDataType.STOP_FRAME)) + 1;
+            boolean repeats = Boolean.parseBoolean(animationData.getValueByKey(WizardDataType.ANIMATION_REPEAT));
+            double slowness = Double.parseDouble(animationData.getValueByKey(WizardDataType.SLOWNESS_MULTIPLIER));
+            AnimationSequence sequence = new AnimationSequence(tags, start, stop, repeats, slowness);
             sequences.add(sequence);
         }
         AnimatorState anim =
@@ -68,38 +97,17 @@ public class GameElementStateFactory {
             myBounds[i] = Double.parseDouble(points[i]);
         }
         state.setBounds(myBounds);
-
-        return state;
-    }
-
-    public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
-        SelectableGameElementState state = (SelectableGameElementState)
-                addEssentials(new SelectableGameElementState(0.0, 0.0), data);
-        return (SelectableGameElementState) addVisuals(data, state);
-    }
-
-    public static GameElementState createGoal (WizardData data) {
-        GameElementState goal = new GameElementState();
-        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
-        ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
-                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
-                                                  params);
-        goal.addAction(wrapper);
-        return goal;
-    }
-
-    private static DrawableGameElementState addVisuals (WizardData data,
-                                                        DrawableGameElementState state) {
-        try {
-            AnimatorState anim =
-                    SaveLoadUtility.loadResource(AnimatorState.class,
-                                                 data.getValueByKey(WizardDataType.ANIMATOR_STATE));
-            state.myAnimatorState = anim;
-        }
-        catch (Exception e) {
-            System.out.println("unable to load json into animator state object");
-            e.printStackTrace();
-        }
+        
+//        try {
+//            AnimatorState anim =
+//                    SaveLoadUtility.loadResource(AnimatorState.class,
+//                                                 data.getValueByKey(WizardDataType.ANIMATOR_STATE));
+//            state.myAnimatorState = anim;
+//        }
+//        catch (Exception e) {
+//            System.out.println("unable to load json into animator state object");
+//            e.printStackTrace();
+//        }
 
         return state;
     }
@@ -117,13 +125,9 @@ public class GameElementStateFactory {
                    state.attributes.setNumericalAttribute(key, Double.parseDouble(value)),
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
-        //TODO: clean this up into the consumer
-        for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {
-            String[] params = wiz.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
-            ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
-                                                      ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
-                                                      params);
-            state.addAction(wrapper);            
+
+        for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {            
+            state.addAction(createActionWrapper(wiz));            
         }        
         return state;
     }

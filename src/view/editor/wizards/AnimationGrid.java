@@ -35,29 +35,24 @@ public class AnimationGrid extends Grid {
     }
 
     public void setStart (int frameIndex) throws IndexOutOfBoundsException {
-        if (frameIndex >= frameCols.size() * frameCols.get(0).size()) { 
-            throw new IndexOutOfBoundsException("lalala"); }
         selectFrame(frameIndex, START_COLOR);
         start = frameIndex;
     }
 
     public void setStop (int frameIndex) throws IndexOutOfBoundsException {
-        if (frameIndex <= start) { throw new IndexOutOfBoundsException(INVALID_STOP_MESSAGE); }
+        if (frameIndex < start) { throw new IndexOutOfBoundsException(INVALID_STOP_MESSAGE); }
         selectFrame(frameIndex, STOP_COLOR);
     }
 
     private void selectFrame (int frameIndex, String color) throws IndexOutOfBoundsException {
-        int size = Math.max(frameCols.size() * frameCols.get(0).size(), 
-                frameCols.size() + frameCols.get(0).size());
+        int size = frameCols.size() * frameCols.get(0).size() - 1;
         if (frameIndex < 0 || frameIndex > size) { 
             throw new IndexOutOfBoundsException(INVALID_FRAME_MESSAGE); 
         }
         resetExistingFill(color, null);
-        if (frameIndex < size) {
-            int col = frameIndex / frameCols.get(0).size();
-            int row = frameIndex % frameCols.get(0).size();
-            selectFrame(row, col, Paint.valueOf(color));
-        }
+        int col = frameIndex / frameCols.get(0).size();
+        int row = frameIndex % frameCols.get(0).size();
+        selectFrame(row, col, Paint.valueOf(color));
     }
 
     @Override

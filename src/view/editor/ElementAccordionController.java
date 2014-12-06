@@ -21,7 +21,6 @@ import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.DrawableGameElementWizard;
-import view.editor.wizards.SelectableGameElementWizard;
 import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -91,19 +90,35 @@ public class ElementAccordionController extends GUIContainer {
             DialogBoxUtility.createMessageDialog("TODO remove shit");
             // myMainModel.removeSelectableGameElement(elementName);
             });
-        terrainTitledPaneController.setAddToLevelConsumer(setTerrain());
+        terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(elementAccordion.getPanes().size() - 1));
     }
 
-    private Consumer<String> setTerrain () {
+    private Consumer<String> addTerrainToLevel () {
         return (String elementName) -> {
             if (myLevel != null) {
-                myMainModel.setTerrain(myLevel, elementName);
-            }
-            else {
-                System.out.println("No level currently selected");
+                Wizard wiz =
+                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
+                                                                                            300));
+                Consumer<WizardData> cons =
+                        (data) -> {
+                            try {
+                                myMainModel
+                                        .addTerrainToLevel(myLevel,
+                                                        elementName,
+                                                        Double.parseDouble(data
+                                                                .getValueByKey(WizardDataType.X_POSITION)),
+                                                        Double.parseDouble(data
+                                                                .getValueByKey(WizardDataType.Y_POSITION)));
+                                wiz.closeStage();
+                            }
+                            catch (Exception e) {
+                                wiz.displayErrorMessage(e.getMessage());
+                            }
+                        };
+                wiz.setSubmit(cons);
             }
         };
     }
