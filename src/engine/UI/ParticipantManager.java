@@ -92,8 +92,7 @@ public class ParticipantManager {
                             .doubleValue())).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
-                    e.addWaypoint(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
-                                  r.nextDouble() * ScrollablePane.FIELD_HEIGHT);
+                    e.addWaypoint(e.getPosition().getX()*r.nextDouble()*2, e.getPosition().getY()*r.nextDouble()*2);
                 }
 
             }

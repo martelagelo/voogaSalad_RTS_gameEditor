@@ -14,11 +14,11 @@ import util.JSONable;
 public class AttributeDisplayerState implements JSONable, Serializable {
 
 	private static final long serialVersionUID = -4791954709522087485L;
-	public String displayerTag;
-	public String parameterTag;
-	public double minAttributeValue;
-	public double maxAttributeValue;
-	public String myTextValue;
+	public String displayerTag;					//The the string describing the class needed to create a widget. Created with enum.
+	public String parameterTag;					//The StateTag of the attribute or the name of the attribute
+	public double minAttributeValue;			//for a numerical attribute: The minimum value 
+	public double maxAttributeValue;			//for a numerical attribute: The maximum value
+	public String myTextValue;					//for a textual attribute: The value
 
 	public AttributeDisplayerState(String displayerTag,
 			String numericParameterTag, double minAttributeValue,

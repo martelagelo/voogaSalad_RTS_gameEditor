@@ -15,8 +15,8 @@ public class ScrollableBackground extends Pane
     private double myXScrollSpeed, myYScrollSpeed;
     private double myXBoundary, myYBoundary;
 
-//    private double myWidth, myHeight;
-    
+    // private double myWidth, myHeight;
+
     ScrollablePane myPane;
 
     /**
@@ -27,16 +27,11 @@ public class ScrollableBackground extends Pane
      * @param xBoundary the maximum X value that can be scrolled to
      * @param yBoundary the maximum Y value that can be scrolled to
      */
-    public ScrollableBackground (double screenWidth,
-                                 double screenHeight,
-                                 double xBoundary,
-                                 double yBoundary, ScrollablePane pane)
+    public ScrollableBackground (double xBoundary, double yBoundary, ScrollablePane pane)
     {
         this.prefWidthProperty().bind(pane.prefWidthProperty());
         this.prefHeightProperty().bind(pane.prefHeightProperty());
         myPane = pane;
-//        this.myWidth = pane.getWidth();
-//        this.myHeight = pane.getHeight();
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
         this.setMinSize(xBoundary, yBoundary);
@@ -82,8 +77,10 @@ public class ScrollableBackground extends Pane
      * Undo scrolling if we're going out of bounds
      */
     private void retractOutOfBoundsScroll () {
-        if (-getTranslateX() >= myXBoundary - this.getPrefWidth()) setTranslateX(-(myXBoundary - this.getPrefWidth()));
-        if (-getTranslateY() >= myYBoundary - this.getPrefHeight()) setTranslateY(-(myYBoundary - this.getPrefHeight()));
+        if (-getTranslateX() >= myXBoundary - this.getPrefWidth())
+            setTranslateX(-(myXBoundary - this.getPrefWidth()));
+        if (-getTranslateY() >= myYBoundary - this.getPrefHeight())
+            setTranslateY(-(myYBoundary - this.getPrefHeight()));
         if (getTranslateX() >= 0) setTranslateX(0);
         if (getTranslateY() >= 0) setTranslateY(0);
     }
