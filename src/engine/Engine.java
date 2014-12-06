@@ -22,7 +22,6 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.HumanParticipant;
-import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
 
@@ -60,7 +59,7 @@ public class Engine extends Observable implements Observer {
         myCampaignState = campaignState;
         myLevelState = levelState;
         // TODO fix this so it isn't null
-        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null);
+        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
         myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
         myElementFactory =
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
@@ -95,6 +94,7 @@ public class Engine extends Observable implements Observer {
         myElementManager.setLevel(nextLevel);
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
+        myEvaluatableFactory.setParticipantManager(myParticipantManager);
         
         myGameLoop =
                 new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
