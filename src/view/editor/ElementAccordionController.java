@@ -145,9 +145,9 @@ public class ElementAccordionController extends GUIContainer {
     private Consumer<Consumer<WizardData>> openSelectableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
-                    SelectableGameElementWizard wiz =
-                            (SelectableGameElementWizard)
-                            WizardUtility.loadWizard(GUIPanePath.SELECTABLE_GAME_ELEMENT_WIZARD,
+                    DrawableGameElementWizard wiz =
+                            (DrawableGameElementWizard)
+                            WizardUtility.loadWizard(GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
                                                      new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
@@ -211,21 +211,6 @@ public class ElementAccordionController extends GUIContainer {
         return consumer;
     }
 
-    private void addNumberAttributes (SelectableGameElementWizard wiz) {
-        List<String> numberAttrs = myMainModel.getGameUniverse().
-                getNumericalAttributes().stream().map(atr -> atr.getName())
-                .collect(Collectors.toList());
-        wiz.attachNumberAttributes(numberAttrs);
-    }
-
-    private void addStringAttributes (SelectableGameElementWizard wiz) {
-        List<String> stringAttrs = myMainModel.getGameUniverse().
-                getStringAttributes().stream().map(atr -> atr.getName())
-                .collect(Collectors.toList());
-        wiz.attachStringAttributes(stringAttrs);
-    }
-
-    // TODO: clean up this duplicated code
     private void addNumberAttributes (DrawableGameElementWizard wiz) {
         List<String> numberAttrs = myMainModel.getGameUniverse().
                 getNumericalAttributes().stream().map(atr -> atr.getName())
