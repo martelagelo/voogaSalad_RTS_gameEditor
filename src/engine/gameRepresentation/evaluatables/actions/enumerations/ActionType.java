@@ -1,5 +1,9 @@
 package engine.gameRepresentation.evaluatables.actions.enumerations;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * An enumeration for the types of actions available e.g. collision, internal, vision
  * 
@@ -30,5 +34,13 @@ public enum ActionType {
     public String toString () {
         return myString;
     }
-    
+
+    public static ActionType getEnumFromValue (String value) {
+        List<ActionType> matchingEnums =  Arrays.asList(ActionType.values()).stream()
+                .filter(type -> type.toString().equals(value))
+                .collect(Collectors.toList());
+        // TODO: make null enum to return
+        return matchingEnums.size()==0 ? ActionType.BUTTON : matchingEnums.get(0);
+    }
+
 }
