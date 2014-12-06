@@ -19,7 +19,7 @@
           "myTerrains": [],
           "myUnits": [
             {
-              "attributeDisplayerStates": [],
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -667,7 +667,7 @@
               }
             },
             {
-              "attributeDisplayerStates": [],
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1311,7 +1311,7 @@
               }
             },
             {
-              "attributeDisplayerStates": [],
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1955,7 +1955,7 @@
               }
             },
             {
-              "attributeDisplayerStates": [],
+              "AttributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -2616,7 +2616,23 @@
           ],
           "myGoals": [
             {
-              "myActions": {},
+              "myActions": {
+                "InternalActions": [
+                  {
+                    "myActionName": "PlayerStatsCheckAction",
+                    "myParameters": [
+                      "my",
+                      "Resources",
+                      "GreaterThanEqual",
+                      "500",
+                      "Won",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "InternalActions"
+                  }
+                ]
+              },
               "attributes": {
                 "myNumericalAttributes": [
                   {

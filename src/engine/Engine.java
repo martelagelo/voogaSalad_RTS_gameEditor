@@ -52,7 +52,7 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
-    
+
     private boolean gameWon = false;
 
     public Engine (MainModel mainModel, CampaignState campaignState, LevelState levelState)
@@ -90,20 +90,19 @@ public class Engine extends Observable implements Observer {
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
+        myEvaluatableFactory.setParticipantManager(myParticipantManager);
         // The next level needs to then be created
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
 
-        myParticipantManager = new ParticipantManager(myUser, myElementManager);
-        myEvaluatableFactory.setParticipantManager(myParticipantManager);
-        
         myGameLoop =
                 new GameLoop(myCampaignState.getName(), nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);
         // to notify engine when level is finished
         myGameLoop.addObserver(this);
-        
+
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
@@ -120,10 +119,10 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        if(observable instanceof GameLoop){
+        if (observable instanceof GameLoop) {
             gameWon = ((int) arg) > 0;
             this.pause();
-            System.out.println("Game is over! \n   Game won? "+gameWon);
+            System.out.println("Game is over! \n   Game won? " + gameWon);
         }
     }
 
