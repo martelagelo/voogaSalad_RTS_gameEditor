@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -16,7 +15,7 @@ import model.state.LevelState;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
-import view.gui.GUIScreen;
+import view.gui.StackPaneGUIScreen;
 
 
 /**
@@ -25,16 +24,12 @@ import view.gui.GUIScreen;
  * @author Jonathan Tseng
  *
  */
-public class RunnerScreen extends GUIScreen {
+public class RunnerScreen extends StackPaneGUIScreen {
 
     private static final String LOAD_LEVEL_ERROR_KEY = "LoadLevelError";
 
     @FXML
     private BorderPane root;
-    @FXML
-    private StackPane stackPane;
-    @FXML
-    private Button sizedButton;
     @FXML
     private StackPane gameRunner;
     @FXML
@@ -62,10 +57,8 @@ public class RunnerScreen extends GUIScreen {
         sizedButton.setStyle("-fx-background-color: white;");
         sizedButton.disarm();
         attachChildContainers(runnerMenuBarController, gameRunnerController);
-        gameRunner.prefHeightProperty().bind(sizedButton.heightProperty());
-        gameRunner.prefHeightProperty().bind(sizedButton.heightProperty());
-        levelChooser.prefHeightProperty().bind(sizedButton.heightProperty());
-        levelChooser.prefHeightProperty().bind(sizedButton.heightProperty());
+        bindPaneSize(gameRunner);
+        bindPaneSize(levelChooser);
         levelChooserController.setOnSubmit( (String campaign, String level) -> playLevel(campaign,
                                                                                          level));
         gameRunnerController.setOnDone(e -> setFront(levelChooser));
@@ -89,13 +82,6 @@ public class RunnerScreen extends GUIScreen {
             }
         }
 
-    }
-
-    private void setFront (Node child) {
-        stackPane.getChildren().remove(sizedButton);
-        stackPane.getChildren().add(sizedButton);
-        stackPane.getChildren().remove(child);
-        stackPane.getChildren().add(child);
     }
 
     private void updateLevelChooser () {

@@ -15,6 +15,7 @@ import model.state.gameelement.AttributeContainer;
 import org.json.JSONException;
 import view.dialog.DialogBoxUtility;
 import view.gui.GUIContainer;
+import view.gui.StackPaneGUIContainer;
 import engine.Engine;
 import engine.visuals.ScrollablePane;
 
@@ -26,10 +27,8 @@ import engine.visuals.ScrollablePane;
  * @author Jonathan Tseng
  *
  */
-public class GameRunnerPaneController extends GUIContainer {
+public class GameRunnerPaneController extends StackPaneGUIContainer {
 
-    @FXML
-    private StackPane stackPane;
     @FXML
     private Button sizedButton;
     @FXML
@@ -55,7 +54,7 @@ public class GameRunnerPaneController extends GUIContainer {
             myLevel = levelState;
             Engine engine = new Engine(myMainModel, levelState);
             ScrollablePane pane = engine.getScene();
-            pane.bindSize(sizedButton.widthProperty(), sizedButton.heightProperty());
+            bindPaneSize(pane);
             engine.play();
             engine.addObserver(this);
             runnerPane.setCenter(pane);
@@ -68,13 +67,6 @@ public class GameRunnerPaneController extends GUIContainer {
 
     public void setOnDone(EventHandler<ActionEvent> event) {
         gameEndController.setOnDone(event);
-    }
-    
-    private void setFront (Node child) {
-        stackPane.getChildren().remove(sizedButton);
-        stackPane.getChildren().add(sizedButton);
-        stackPane.getChildren().remove(child);
-        stackPane.getChildren().add(child);
     }
     
     @Override
