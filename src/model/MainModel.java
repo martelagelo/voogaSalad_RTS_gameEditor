@@ -200,18 +200,11 @@ public class MainModel extends Observable {
      * 
      * @param data
      */
-    public void createDrawableGameElementState (WizardData data) {
-        try {
-            String actualSaveLocation = mySaveLoadMediator.saveImage(data);
-            data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
+    public void createDrawableGameElementState (WizardData data) {       
             DrawableGameElementState gameElement = GameElementStateFactory
                     .createDrawableGameElementState(data);
             myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
             updateObservers();
-        } catch (SaveLoadException e) {
-            // TODO remove
-            e.printStackTrace();
-        }
     }
 
     /**
