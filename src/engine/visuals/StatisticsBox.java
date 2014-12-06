@@ -20,7 +20,7 @@ public class StatisticsBox extends VBox{
         HBox resourcesBox = new HBox();
         
         Text t = new Text();
-        t.setFill(Color.BLACK);
+        t.setFill(Color.WHITE);
         t.textProperty().bind(manager.getPlayerResourceProperty());
         
         resourcesBox.getChildren().add(t);

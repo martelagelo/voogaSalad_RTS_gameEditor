@@ -11,6 +11,7 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.ElementPair;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
 
 
@@ -19,7 +20,7 @@ import engine.visuals.elementVisuals.Visualizer;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach, Stanley
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
@@ -27,15 +28,24 @@ public class SelectableGameElement extends DrawableGameElement {
     private SelectableGameElementState selectableState;
     private Map<String, Set<DrawableGameElement>> myInteractingElements;
     private ResourceBundle myInteractingElementTypes;
+    // The element that is currently being focused on by the element
+    private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle actionTypes,
                                   ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
-        super(element, actionTypes, visualizer);
+        super(element, visualizer);
         myInteractingElementTypes = interactingElementTypes;
         initializeInteractingElementLists();
 
+    }
+
+    public void setFocusedElement (SelectableGameElement element) {
+        myFocusedElement = element;
+    }
+
+    public void clearFocusedElement () {
+        myFocusedElement = null;
     }
 
     private void initializeInteractingElementLists () {
@@ -82,6 +92,9 @@ public class SelectableGameElement extends DrawableGameElement {
     @Override
     public void update () {
         updateSelfDueToCollisions();
+        if (myFocusedElement != null) {
+            updateSelfDueToFocusedElement();
+        }
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         // System.out.println("Updating selectable game element: " + teamColor);
@@ -90,19 +103,23 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     private void updateSelfDueToCurrentObjective () {
-        executeAllActions(actionTypes.getString("objective"));
+        executeAllActions(ActionType.OBJECTIVE.toString());
+    }
+
+    private void updateSelfDueToFocusedElement () {
+        executeAllActions(ActionType.FOCUSED.toString(), new ElementPair(this, myFocusedElement));
     }
 
     public void updateSelfDueToSelection () {
-        executeAllActions(actionTypes.getString("selection"));
+        executeAllActions(ActionType.SELECTION.toString());
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", "vision");
+        updateSelfDueToInteractingElementsSubset("visible", ActionType.VISION.toString());
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", "collision");
+        updateSelfDueToInteractingElementsSubset("colliding", ActionType.COLLISION.toString());
     }
 
     private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {

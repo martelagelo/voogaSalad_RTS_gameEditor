@@ -40,6 +40,6 @@ public interface InputManager {
 
     public abstract void keyPressed (KeyEvent e);
 
-    public abstract void screenButtonClicked (String imagePath, int index);
+    public abstract void screenButtonClicked (int buttonID);
 
 }

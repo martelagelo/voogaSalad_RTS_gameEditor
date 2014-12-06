@@ -20,6 +20,7 @@ public class VisualManager {
     private ScrollablePane scene;
     private ScrollableBackground background;
     private MiniMap myMiniMap;
+    private AbilityMatrix myAbilityMatrix;
     private Group root;
     private ParticipantManager myParticipantManager;
 
@@ -39,6 +40,8 @@ public class VisualManager {
         myMiniMap = new MiniMap(scene);
         scene.addToScene(new Group(myMiniMap.getDisplay()));
         root = gameObjectVisuals;
+        myAbilityMatrix = new AbilityMatrix(scene.widthProperty(), scene.heightProperty());
+        scene.addToScene(new Group(myAbilityMatrix.getNode()));
     }
 
     /**
@@ -100,8 +103,10 @@ public class VisualManager {
         return background;
     }
 
-    public void attachInputManager (RunnerInputManager myInputManager) {
-        scene.attachInputManager(myInputManager);
+    public void attachInputManager (RunnerInputManager inputManager) {
+        scene.attachInputManager(inputManager);
+        myAbilityMatrix.attachInputManager(inputManager);
+        
     }
 
     public void attachParticipantManager (ParticipantManager participantManager) {
