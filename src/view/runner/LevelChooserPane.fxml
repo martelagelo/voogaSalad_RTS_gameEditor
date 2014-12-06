@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:id="root" fx:controller="view.runner.LevelChooserController">
+	<center>
+		<VBox alignment="CENTER" spacing="15.0" BorderPane.alignment="CENTER">
+			<ComboBox fx:id="campaignDropDown" prefWidth="250" />
+			<ComboBox fx:id="levelDropDown" prefWidth="250" />
+			<Button fx:id="submitButton" prefWidth="250" />
+		</VBox>
+	</center>
+</BorderPane>

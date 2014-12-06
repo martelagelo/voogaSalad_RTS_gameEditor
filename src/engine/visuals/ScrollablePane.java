@@ -44,7 +44,7 @@ public class ScrollablePane extends Pane {
      */
     public ScrollablePane (Group root, double width, double height) {
         // super(root, width, height);
-        // setStyle("-fx-border-color: red;");
+        setStyle("-fx-border-color: red;");
         this.setWidth(width);
         this.setHeight(height);
         // myInputManager = new NullInputManager();

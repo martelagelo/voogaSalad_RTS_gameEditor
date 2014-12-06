@@ -69,16 +69,16 @@ public class SplashScreen extends GUIScreen {
     }
 
     @Override
-    public void init () {        
+    public void init () {
         try {
-            JSONableList<String> games = SaveLoadUtility.loadResource(JSONableList.class, 
-                    EXISTING_GAMES);
+            JSONableList<String> games = SaveLoadUtility.loadResource(JSONableList.class,
+                                                                      EXISTING_GAMES);
             gameDropDown.setItems(FXCollections.observableList(games));
         }
         catch (SaveLoadException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
         }
-                  
+
         setUpButtons();
         drawTitle();
     }
@@ -97,31 +97,31 @@ public class SplashScreen extends GUIScreen {
             }
         });
 
-        launchEditorButton.setOnAction(e -> {
-            if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
-                try {
-                    myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
-                    switchScreen(ViewScreenPath.EDITOR);
-                }
-                catch (Exception e1) {
-                    DialogBoxUtility.createMessageDialog(e1.getMessage());
-                }
-            }
-                else {
-                    try {
-                        DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-                                .getStringProperty(NO_GAME_SELECT_ERROR_KEY).getValue());
-                    }
-                    catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
-                }
-            });
+        launchEditorButton.setOnAction(e -> loadGameAndSwitchScreen(ViewScreenPath.EDITOR));
 
-        launchRunnerButton.setOnAction(e -> {
-            switchScreen(ViewScreenPath.RUNNER);
-        });
+        launchRunnerButton.setOnAction(e -> loadGameAndSwitchScreen(ViewScreenPath.RUNNER));
         attachStringProperties();
+    }
+
+    private void loadGameAndSwitchScreen (ViewScreenPath path) {
+        if (gameDropDown.getSelectionModel().getSelectedItem() != null) {
+            try {
+                myMainModel.loadGame(gameDropDown.getSelectionModel().getSelectedItem());
+                switchScreen(path);
+            }
+            catch (Exception e1) {
+                DialogBoxUtility.createMessageDialog(e1.getMessage());
+            }
+        }
+        else {
+            try {
+                DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+                        .getStringProperty(NO_GAME_SELECT_ERROR_KEY).getValue());
+            }
+            catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     private void drawTitle () {
