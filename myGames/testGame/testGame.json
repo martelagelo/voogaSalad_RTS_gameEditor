@@ -19,7 +19,14 @@
           "myTerrains": [],
           "myUnits": [
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -667,7 +674,14 @@
               }
             },
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1311,7 +1325,14 @@
               }
             },
             {
-              "AttributeDisplayerStates": [],
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "attributeBar",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -2085,7 +2106,14 @@
     "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -2733,7 +2761,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -3377,7 +3412,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {
@@ -4021,7 +4063,14 @@
         }
       },
       {
-        "AttributeDisplayerStates": [],
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "attributeBar",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "viewportSize": {

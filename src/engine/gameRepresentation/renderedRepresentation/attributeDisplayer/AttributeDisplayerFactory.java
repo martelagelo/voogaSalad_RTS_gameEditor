@@ -45,9 +45,15 @@ public class AttributeDisplayerFactory {
 					+ myAttributeDisplayerBundle
 							.getString(attributeDisplayerState.displayerTag));
 		} catch (ClassNotFoundException e) {
-			//fail silently
+			// fail silently
 		}
-		return createNumericalAttributeDisplayer(c,attributeDisplayerState, attachee);
+		if (attributeDisplayerState.myTextValue != null) {
+			return createTextualAttributeDisplayer(c, attributeDisplayerState,
+					attachee);
+		} else {
+			return createNumericalAttributeDisplayer(c,
+					attributeDisplayerState, attachee);
+		}
 
 	}
 
@@ -65,7 +71,25 @@ public class AttributeDisplayerFactory {
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
-			//fail silently
+			// fail silently
+		}
+		return displayer;
+	}
+
+	private AttributeDisplayer createTextualAttributeDisplayer(Class c,
+			AttributeDisplayerState attributeDisplayerState,
+			AttributeContainer attachee) {
+		AttributeDisplayer displayer = null;
+		try {
+			displayer = (AttributeDisplayer) c.getDeclaredConstructor(
+					AttributeContainer.class, String.class, String.class)
+					.newInstance(attachee,
+							attributeDisplayerState.parameterTag,
+							attributeDisplayerState.myTextValue);
+		} catch (InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			// fail silently
 		}
 		return displayer;
 	}

@@ -20,30 +20,23 @@ public class VisualizerFactory {
 
 	public VisualizerFactory(AnimatorFactory animatorFactory) {
 		myAnimatorFactory = animatorFactory;
+		myWidgetFactory = new AttributeDisplayerFactory();
 	}
 
 	public Visualizer createVisualizer(DrawableGameElementState elementState) {
 		Animator animator = myAnimatorFactory.createAnimator(elementState);
-		//TODO move this up. This shouldn't be remade each time
-		myWidgetFactory = new AttributeDisplayerFactory();
 
 		Visualizer newVisualizer = new Visualizer(animator,
 				elementState.attributes);
-//		for (Attribute<Number> a : elementState.getAttributeContainer()
-//				.getNumericalAttributes()) {
-//			AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState(
-//					"attributeBar", a.getName(), 0, a.getData().doubleValue());
-//			newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(
-//					myAttributeDisplayerState,
-//					elementState.getAttributeContainer()));
-//		}
-		// TODO: make widgets from Textual Attributes
-//		 for(Attribute<String> a: elementState.getAttributeContainer().getTextualAttributes()) {
-//		 AttributeDisplayerState myAttributeDisplayerState =
-//		 new AttributeDisplayerState("attributeBar", a.getName(), a.getData());
-//		 newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,
-//		 elementState.getAttributeContainer()));
-//		 }
+		
+		//FOR TESTING
+//		AttributeDisplayerState myAttributeDisplayerState = new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
+//		newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,elementState.attributes));
+		
+		for(AttributeDisplayerState ADS: elementState.AttributeDisplayerStates) {
+			newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(ADS,elementState.attributes));
+		}
+		
 		return newVisualizer;
 	}
 }

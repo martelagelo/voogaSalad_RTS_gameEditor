@@ -13,7 +13,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  * This GameElement is drawable but not necessarily selectable - examples
  * include terrain. These elements must have a bounding box.
  *
- * @author Steve, Jonathan, Rahul, Zach
+ * @author Steve, Jonathan, Rahul, Zach, Michael D.
  *
  */
 public class DrawableGameElementState extends GameElementState implements
