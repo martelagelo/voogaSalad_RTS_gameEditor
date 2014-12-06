@@ -170,7 +170,6 @@ public class GameElementManager {
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        System.out.println(e.getPosition().getX() + ", " + e.getPosition().getY());
         filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
 
     }
@@ -196,7 +195,6 @@ public class GameElementManager {
 
     public void notifyButtonClicked (int buttonID, Participant u) {
         for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
-            System.out.println(e.getNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID));
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
             e.executeAllButtonActions();
         }

@@ -38,5 +38,6 @@ public class StateTags {
     public static final String SUPPORTS_RANGED_ATTACK = "SupportsRange";
     public static final String LAST_BUTTON_CLICKED_ID = "lastButtonID";
     public static final String ATTRIBUTE_DESCRIPTION = "AttributeDescription";
+    public static final String RESOURCES = "Resources";
 
 }

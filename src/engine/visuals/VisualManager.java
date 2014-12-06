@@ -68,16 +68,17 @@ public class VisualManager {
         scene.update();
         myMiniMap.updateMiniMap(list);
         SelectableGameElement e = findFirstSelectedElement(list, myParticipantManager.getUser());
-        Map<Integer, String> map = e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES) : new HashMap<>();
+        Map<Integer, String> map =
+                e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES)
+                         : new HashMap<>();
         myAbilityMatrix.updateGridImages(map);
     }
 
-    private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list, Participant user) {
-        for(SelectableGameElement e : list){
-            if(user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())){
-                if(e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1){
-                    return e;
-                }
+    private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
+                                                            Participant user) {
+        for (SelectableGameElement e : list) {
+            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+                if (e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1) { return e; }
             }
         }
         return null;
@@ -124,7 +125,7 @@ public class VisualManager {
     public void attachInputManager (RunnerInputManager inputManager) {
         scene.attachInputManager(inputManager);
         myAbilityMatrix.attachInputManager(inputManager);
-        
+
     }
 
     public void attachParticipantManager (ParticipantManager participantManager) {

@@ -97,7 +97,6 @@ public class RunnerInputManager implements InputManager {
 
     @Override
     public void screenButtonClicked (int buttonID) {
-        System.out.println("button clicked, id: "+buttonID);
         myElementManager.notifyButtonClicked(buttonID, myUser);
     }
 

@@ -101,7 +101,6 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                System.out.println(entry.getKey());
                 element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
             });
         }
