@@ -99,8 +99,11 @@ public class ShittyMain extends Application {
         model.getGameUniverse().addSelectableGameElementState(archerState1);
         model.getGameUniverse().addSelectableGameElementState(archerState2);
         model.getGameUniverse().addSelectableGameElementState(archerState3);
+        model.saveGame();
+        MainModel model2 = new MainModel();
+        model2.loadGame("testGame");
         Engine engine =
-                new Engine(model, model.getLevel("testCampaign", "testLevel"));
+                new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
         return engine;
     }
 
