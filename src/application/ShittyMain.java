@@ -189,6 +189,13 @@ public class ShittyMain extends Application {
         archerState.addAction(new ActionWrapper(ActionType.FOCUSED.toString(),
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION
                                                         .getClassString(), "Follow"));
+        archerState.addAction(new ActionWrapper(ActionType.BUTTON.toString(),
+                                                ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION
+                                                        .getClassString(),
+                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
+                                                "archer", "ArcherSpawnCooldown", "200"));
+        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
         archerState.setBounds(bounds);
         // TESTING SAVING SGES

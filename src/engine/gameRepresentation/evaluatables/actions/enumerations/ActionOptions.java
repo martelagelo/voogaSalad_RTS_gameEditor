@@ -49,7 +49,9 @@ public enum ActionOptions {
                          "Create Object",
                          "CreateObjectAction",
                          "Create a # at my spawn location with a cooldown timer named # with a value of # frames.",
-                         ActionParameters.STRING,ActionParameters.STRING,ActionParameters.NUMBER),
+                         ActionParameters.STRING,
+                         ActionParameters.STRING,
+                         ActionParameters.NUMBER),
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",
@@ -68,7 +70,17 @@ public enum ActionOptions {
                               ActionParameters.STRING,
                               ActionParameters.STRING,
                               ActionParameters.NUMBER,
-                              ActionParameters.NUMBER);
+                              ActionParameters.NUMBER),
+    CHECK_CONDITION_CREATE_OBJECT_ACTION(
+                                         "Check attribute create object",
+                                         "CheckAttributeCreateObjectAction",
+                                         "If my attribute # value # # then create object # with a spawn cooldown timer named # with cooldown # frames",
+                                         ActionParameters.ATTR,
+                                         ActionParameters.NN_EVAL,
+                                         ActionParameters.NUMBER,
+                                         ActionParameters.STRING,
+                                         ActionParameters.STRING,
+                                         ActionParameters.NUMBER);
 
     private String myClassName;
     private String myDisplayName;

@@ -1,7 +1,5 @@
 package model.state.gameelement;
 
-import java.io.Serializable;
-import java.util.Map;
 import model.state.gameelement.traits.Sighted;
 
 
@@ -20,9 +18,7 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
      */
     private static final long serialVersionUID = 778064050257391179L;
 
-    private Map<String, Map<String, String>> myAllAbilityRepresentations;
-    private Map<String, String> myCurrentAbilityRepresentation;
-    private double[] myisionBounds;
+    private double[] myVisionBounds;
 
     public SelectableGameElementState (Number xPosition, Number yPosition) {
         super(xPosition, yPosition, null);
@@ -36,13 +32,6 @@ public class SelectableGameElementState extends DrawableGameElementState impleme
     }
     public void setVisionBounds(double[] bounds){
         //TODO implement this
-    }
-
-    /**
-     * @return the useable abilities of the selectable game element
-     */
-    public Map<String, String> getCurrentInteractionInformation () {
-        return myCurrentAbilityRepresentation;
     }
 
 }

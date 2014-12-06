@@ -145,15 +145,16 @@ public class SpriteSheetCreationUtility {
                 String filePathForSpritesheet =
                         resourcePath + "units/spritesheets/" + unitName + ".png";
                 ImageIO.write(finalSpritesheetColorRemoved, "PNG", new File(filePathForSpritesheet));
-//                List<Integer> huesForMutation = new ArrayList<>();
-//                huesForMutation.add(0);
+                List<Integer> huesForMutation = new ArrayList<>();
+                huesForMutation.add(0);
 //                huesForMutation.add(25);
 //                huesForMutation.add(56);
 //                huesForMutation.add(104);
 //                huesForMutation.add(181);
 //                huesForMutation.add(241);
 //                huesForMutation.add(306);
-//                List<String> colorNames = new ArrayList<>();
+                List<String> colorNames = new ArrayList<>();
+                colorNames.add("");
 //                colorNames.add("RED");
 //                colorNames.add("ORANGE");
 //                colorNames.add("YELLOW");
@@ -161,16 +162,16 @@ public class SpriteSheetCreationUtility {
 //                colorNames.add("TEAL");
 //                colorNames.add("BLUE");
 //                colorNames.add("PURPLE");
-//                for (int i = 0; i < huesForMutation.size(); i++) {
-//                    int hue = huesForMutation.get(i);
-//                    String color = colorNames.get(i);
-//
-//                    extractor.mutateColorMask(hue);
-//                    BufferedImage teamColorMask = extractor.mutatedMask;
-//                    ImageIO.write(teamColorMask, "PNG", new File(resourcePath +
-//                                                                 "units/colormasks/" + unitName +
-//                                                                 "_" + color + ".png"));
-//                }
+                for (int i = 0; i < huesForMutation.size(); i++) {
+                    int hue = huesForMutation.get(i);
+                    String color = colorNames.get(i);
+
+                    extractor.mutateColorMask(hue);
+                    BufferedImage teamColorMask = extractor.mutatedMask;
+                    ImageIO.write(teamColorMask, "PNG", new File(resourcePath +
+                                                                 "units/colormasks/" + unitName +
+                                                                 /*"_" +*/ color + ".png"));
+                }
                 int numRows = finalSpritesheetColorRemoved.getHeight() / frameHeight;
                 Set<AnimationSequence> animations = new HashSet<>();
                 int currentFrame = 0;

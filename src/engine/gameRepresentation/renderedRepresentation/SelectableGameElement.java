@@ -132,19 +132,17 @@ public class SelectableGameElement extends DrawableGameElement {
                                                                      // per game loop refresh
             }
         });
-        myInteractingElements.get(ElementTypeEnums.valueOf(elementType).toString()).clear();// After
-                                                                                            // we've
-                                                                                            // acted
-                                                                                            // on
-                                                                                            // the
-                                                                                            // elements,
-                                                                                            // clear
-                                                                                            // the
-                                                                                            // list
+        myInteractingElements.get(ElementTypeEnums.valueOf(elementType).toString()).clear();
+        // After we've acted on the elements, clear the list
+
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
         function.accept(selectableState);
+    }
+    
+    public void executeAllButtonActions(){
+        this.executeAllActions(ActionType.BUTTON.toString(),new ElementPair(this,this));
     }
 
 }

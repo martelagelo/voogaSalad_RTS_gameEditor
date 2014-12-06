@@ -22,7 +22,7 @@ public class Equals<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     protected Boolean evaluate (Number num1, Number num2) {
-        return num1 == num2;
+        return num1.equals(num2);
     }
 
 }

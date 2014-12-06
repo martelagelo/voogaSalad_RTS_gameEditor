@@ -2,6 +2,8 @@ package model;
 
 import java.util.Observable;
 import java.util.Optional;
+
+import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelExistsException;
@@ -50,6 +52,7 @@ public class MainModel extends Observable {
             myModifiedContainer = new ModifiedContainer();
         } catch (SaveLoadException e) {
             System.out.println(mySpriteImageGenerator == null);
+            // TODO: Display error in View
             e.printStackTrace();
         }
     }
@@ -84,18 +87,17 @@ public class MainModel extends Observable {
     }
 
     public void saveGame (GameState game) {
-        
+
         try {
-            String location = mySaveLoadMediator.saveGame(game, game.getName());
-            JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class, 
+            JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class,
                     SplashScreen.EXISTING_GAMES);
             existingGames.add(game.getName());
             SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
 
         } catch (SaveLoadException e) {
             e.printStackTrace();
-        }                
-        
+        }
+
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
@@ -343,7 +345,13 @@ public class MainModel extends Observable {
      * @throws Exception
      */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
-        return mySpriteImageGenerator.fetchImageContainer(imageTag);
+        SpriteImageContainer matchingContainer = mySpriteImageGenerator
+                .fetchImageContainer(imageTag);
+        ImageView newImageView = new ImageView(matchingContainer.getSpritesheet().getImage());
+        ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE")
+                .getImage());
+        SpriteImageContainer spriteContainer = new SpriteImageContainer(newImageView,
+                newColorMaskImageView);
+        return spriteContainer;
     }
-
 }

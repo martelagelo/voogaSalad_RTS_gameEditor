@@ -548,6 +548,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CheckAttributeCreateObjectAction",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "Button"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
@@ -628,14 +642,6 @@
                   {
                     "myData": 50,
                     "myName": "ReloadTime"
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
                   },
                   {
                     "myData": 200.0,
@@ -662,8 +668,24 @@
                     "myName": "movementSpeed"
                   },
                   {
+                    "myData": 100,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
                     "myData": 200.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -680,7 +702,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -1212,6 +1235,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CheckAttributeCreateObjectAction",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "Button"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
@@ -1294,14 +1331,6 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": 100.0,
                     "myName": "yPosition"
                   },
@@ -1326,8 +1355,24 @@
                     "myName": "movementSpeed"
                   },
                   {
+                    "myData": 100,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
                     "myData": 100.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -1340,7 +1385,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             },
             {
               "AttributeDisplayerStates": [
@@ -1872,6 +1918,20 @@
                 40.0
               ],
               "myActions": {
+                "Button": [
+                  {
+                    "myActionName": "CheckAttributeCreateObjectAction",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "ArcherSpawnCooldown",
+                      "200"
+                    ],
+                    "myActionType": "Button"
+                  }
+                ],
                 "Collision": [
                   {
                     "myActionName": "ObjectConditionAction",
@@ -2017,7 +2077,8 @@
                     "myName": "teamColor"
                   }
                 ]
-              }
+              },
+              "myTypes": []
             }
           ],
           "myGoals": [
@@ -2047,7 +2108,8 @@
                   }
                 ],
                 "myTextualAttributes": []
-              }
+              },
+              "myTypes": []
             }
           ],
           "myName": "testLevel",
@@ -2069,14 +2131,6 @@
       {
         "myData": 50,
         "myName": "ReloadTime"
-      },
-      {
-        "myData": 75,
-        "myName": "attack"
-      },
-      {
-        "myData": 1,
-        "myName": "teamID"
       },
       {
         "myData": 200.0,
@@ -2103,15 +2157,23 @@
         "myName": "movementSpeed"
       },
       {
+        "myData": 100,
+        "myName": "XSpawnOffset"
+      },
+      {
         "myData": 200.0,
         "myName": "yTempGoalPosition"
       },
       {
-        "myData": 500,
-        "myName": "XSpawnOffset"
+        "myData": 75,
+        "myName": "attack"
       },
       {
-        "myData": 500,
+        "myData": 1,
+        "myName": "teamID"
+      },
+      {
+        "myData": 100,
         "myName": "YSpawnOffset"
       }
     ],
@@ -2662,6 +2724,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CheckAttributeCreateObjectAction",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "Button"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "ObjectConditionAction",
@@ -2744,14 +2820,6 @@
               "myName": "ReloadTime"
             },
             {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
               "myData": 200.0,
               "myName": "yPosition"
             },
@@ -2776,8 +2844,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 200.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 1,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -2794,7 +2878,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -3326,6 +3411,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CheckAttributeCreateObjectAction",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "Button"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "ObjectConditionAction",
@@ -3406,14 +3505,6 @@
             {
               "myData": 50,
               "myName": "ReloadTime"
-            },
-            {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
             },
             {
               "myData": 400.0,
@@ -3440,8 +3531,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 400.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 1,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -3454,7 +3561,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -3986,6 +4094,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CheckAttributeCreateObjectAction",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "Button"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "ObjectConditionAction",
@@ -4066,14 +4188,6 @@
             {
               "myData": 50,
               "myName": "ReloadTime"
-            },
-            {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 2,
-              "myName": "teamID"
             },
             {
               "myData": 100.0,
@@ -4100,8 +4214,24 @@
               "myName": "movementSpeed"
             },
             {
+              "myData": 100,
+              "myName": "XSpawnOffset"
+            },
+            {
               "myData": 100.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 2,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100,
+              "myName": "YSpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -4114,7 +4244,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       },
       {
         "AttributeDisplayerStates": [
@@ -4646,6 +4777,20 @@
           40.0
         ],
         "myActions": {
+          "Button": [
+            {
+              "myActionName": "CheckAttributeCreateObjectAction",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "ArcherSpawnCooldown",
+                "200"
+              ],
+              "myActionType": "Button"
+            }
+          ],
           "Collision": [
             {
               "myActionName": "ObjectConditionAction",
@@ -4791,7 +4936,8 @@
               "myName": "teamColor"
             }
           ]
-        }
+        },
+        "myTypes": []
       }
     ]
   },

@@ -31,7 +31,6 @@ import com.google.gson.JsonSyntaxException;
 public class SaveLoadUtility {
     private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
     public static String FILE_SEPARATOR = System.getProperty("file.separator");
-    private static DefaultResourcePopulation myDefaultResource = new DefaultResourcePopulation();
     private static Gson myGson = new Gson();
 
     /**
@@ -71,13 +70,7 @@ public class SaveLoadUtility {
      */
 
     public static String save (JSONable jsonableClass, String filePath) throws SaveLoadException {
-        filePath = preProcess(filePath);
-        try {
-            myDefaultResource.setDefaults((topLevelDirectory(filePath)));
-        } catch (SaveLoadException e) {
-            throw new SaveLoadException(e.getMessage(), e);
-        }
-
+        filePath = preProcess(filePath);     
         FileWriter writer;
         File file = null;
         try {
