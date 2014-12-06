@@ -694,16 +694,16 @@
                     "myName": "name"
                   },
                   {
+                    "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+                    "myName": "AttributeDescription1"
+                  },
+                  {
                     "myData": "STANDING",
                     "myName": "currentAction"
                   },
                   {
                     "myData": "BLUE",
                     "myName": "teamColor"
-                  },
-                  {
-                  	"myData": "resources/img/graphics/buttons/buildings/0001.bmp",
-                  	"myName": "AttributeDescription1"
                   }
                 ]
               },
@@ -2187,6 +2187,10 @@
         "myName": "name"
       },
       {
+        "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+        "myName": "AttributeDescription1"
+      },
+      {
         "myData": "STANDING",
         "myName": "currentAction"
       },
@@ -2872,6 +2876,10 @@
             {
               "myData": "archer",
               "myName": "name"
+            },
+            {
+              "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+              "myName": "AttributeDescription1"
             },
             {
               "myData": "STANDING",

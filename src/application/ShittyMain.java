@@ -199,7 +199,7 @@ public class ShittyMain extends Application {
         AnimatorState archerAnimations =
                 SaveLoadUtility
                         .loadResource(AnimatorState.class,
-                                      "resources/gameelementresources/animatorstate/berserker.json");
+                                      "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
         // TESTING LOADING SGES
         SelectableGameElementState sges =
