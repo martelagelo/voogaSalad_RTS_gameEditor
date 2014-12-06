@@ -16,17 +16,12 @@ public class ParticipantValueParameter extends Parameter<Number> {
     private List<Participant> myParticipants;
     private String myAttributeTag;
 
-    public ParticipantValueParameter (List<Participant> participants,
-                                      String attributeName,
-                                      String id) {
+    public ParticipantValueParameter (String id,List<Participant> participants,
+                                      String attributeName) {
         super(Number.class, id);
         myParticipants = participants;
         myAttributeTag = attributeName;
 
-    }
-
-    public ParticipantValueParameter (Participant participant, String attributeName, String id) {
-        this(Arrays.asList(participant), attributeName, id);
     }
 
     /**

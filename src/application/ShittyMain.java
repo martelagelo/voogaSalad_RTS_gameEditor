@@ -80,9 +80,9 @@ public class ShittyMain extends Application {
         // List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
         LevelState levelState = new LevelState("testLevel");
-//        for (DrawableGameElementState s : grassTerrain) {
-//            levelState.addTerrain(s);
-//        }
+        // for (DrawableGameElementState s : grassTerrain) {
+        // levelState.addTerrain(s);
+        // }
         levelState.addUnit(archerState);
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
@@ -91,7 +91,7 @@ public class ShittyMain extends Application {
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
 
         levelState.addGoal(createGoal());
-        
+
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
 
@@ -114,6 +114,9 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
+        ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
+                .getClassString(), "my", "Resources", "GreaterThanEqual", "500", "Won",
+                                        "EqualsAssignment", "1"));
         // archerState
         // .addAction(new ActionWrapper("InternalActions",
         // ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
