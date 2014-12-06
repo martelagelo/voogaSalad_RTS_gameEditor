@@ -1,5 +1,9 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
+import java.io.Serializable;
+import util.JSONable;
+
+
 /**
  * A wrapper for all the savable information needed to represent an attribute displayer.
  * This is just a data wrapper and as such all of its instance variables are public.
@@ -7,7 +11,9 @@ package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
  * @author Zach
  *
  */
-public class AttributeDisplayerState {
+public class AttributeDisplayerState implements JSONable, Serializable {
+
+    private static final long serialVersionUID = -4791954709522087485L;
     public String displayerTag;
     public String numericParameterTag;
     public double minAttributeValue;

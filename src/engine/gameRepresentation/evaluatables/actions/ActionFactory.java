@@ -39,6 +39,11 @@ public class ActionFactory {
         myGameElementManager = manager;
     }
 
+    /**
+     * Set the participant manager to be a given manager
+     * 
+     * @param manager
+     */
     public void setParticipantManager (ParticipantManager manager) {
         myParticipantManager = manager;
     }
@@ -61,9 +66,11 @@ public class ActionFactory {
         try {
             Constructor<Evaluatable<?>> constructor =
                     evaluatableClass.getConstructor(String.class, EvaluatorFactory.class,
-                                                    GameElementManager.class, String[].class);
-            return constructor.newInstance(wrapper.getActionClassName(), myEvaluatorFactory,
-                                           myGameElementManager, wrapper.getParameters());
+                                                    GameElementManager.class,
+                                                    ParticipantManager.class, String[].class);
+            return constructor.newInstance(actionClassName, myEvaluatorFactory,
+                                           myGameElementManager, myParticipantManager,
+                                           actionParams);
         }
         catch (NoSuchMethodException | SecurityException | InstantiationException
                 | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {

@@ -1,8 +1,7 @@
 package engine.users;
 
-import java.util.HashMap;
-import java.util.Map;
 import model.state.gameelement.AttributeContainer;
+import model.state.gameelement.StateTags;
 
 
 /**
@@ -23,6 +22,7 @@ public abstract class Participant {
         myPlayerID = playerID;
         myName = name;
         attributes = new AttributeContainer();
+        attributes.setNumericalAttribute(StateTags.TEAM_ID, playerID);
     }
 
     /**
@@ -43,13 +43,14 @@ public abstract class Participant {
         return isAI;
     }
 
-    public AttributeContainer getAttributes(){
+    public AttributeContainer getAttributes () {
         return attributes;
     }
 
     /**
-     * checks whether the team ID passed into this one is the 
+     * checks whether the team ID passed into this one is the
      * same as this Participant's team ID
+     * 
      * @param otherTeamID
      * @return true if the team IDs are the same
      */

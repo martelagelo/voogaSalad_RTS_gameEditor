@@ -667,7 +667,11 @@
               }
             },
             {
+<<<<<<< HEAD
               "AttributeDisplayerStates": [],
+=======
+              "attributeDisplayerStates": [],
+>>>>>>> a5b31ab0eaba60e7fb12bb12d523da2f2331d2ba
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1311,7 +1315,11 @@
               }
             },
             {
+<<<<<<< HEAD
               "AttributeDisplayerStates": [],
+=======
+              "attributeDisplayerStates": [],
+>>>>>>> a5b31ab0eaba60e7fb12bb12d523da2f2331d2ba
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
@@ -1955,7 +1963,11 @@
               }
             },
             {
+<<<<<<< HEAD
               "AttributeDisplayerStates": [],
+=======
+              "attributeDisplayerStates": [],
+>>>>>>> a5b31ab0eaba60e7fb12bb12d523da2f2331d2ba
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "viewportSize": {
