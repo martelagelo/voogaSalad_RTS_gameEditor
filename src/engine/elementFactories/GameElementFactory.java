@@ -6,6 +6,7 @@ import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.actions.ActionFactory;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
@@ -63,14 +64,20 @@ public class GameElementFactory {
 
     public DrawableGameElement createDrawableGameElement (DrawableGameElementState state) {
         DrawableGameElement element =
-                new DrawableGameElement(state, 
+                new DrawableGameElement(state,
                                         generateVisualizer(state));
         generateActions(element, state);
         return element;
     }
 
-    public SelectableGameElement createSelectableGameElement (String elementType, double x, double y) {
+    public SelectableGameElement createSelectableGameElement (String elementType,
+                                                              double x,
+                                                              double y,
+                                                              double teamID,
+                                                              String color) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
+        state.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
+        state.attributes.setTextualAttribute(StateTags.TEAM_COLOR, color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
         return newElement;
@@ -101,7 +108,6 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                System.out.println(entry.getKey());
                 element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
             });
         }

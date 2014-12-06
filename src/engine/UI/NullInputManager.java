@@ -54,7 +54,7 @@ public class NullInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // do nothing
-        //System.out.println("Null Input Manager");
+        System.out.println("Null Input Manager");
     }
 
     @Override

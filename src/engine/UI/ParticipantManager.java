@@ -65,7 +65,7 @@ public class ParticipantManager {
      */
     public void update (List<SelectableGameElement> allUnits) {
 
-        player1Resources.set(humanUser.getAttributes().getNumericalAttribute("Resources")
+        player1Resources.set(humanUser.getAttributes().getNumericalAttribute(StateTags.RESOURCES)
                 .intValue() +
                              "");
 
@@ -92,7 +92,8 @@ public class ParticipantManager {
                             .doubleValue())).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
-                    e.addWaypoint(e.getPosition().getX()*r.nextDouble()*2, e.getPosition().getY()*r.nextDouble()*2);
+                    e.addWaypoint(e.getPosition().getX() * r.nextDouble() * 2, e.getPosition()
+                            .getY() * r.nextDouble() * 2);
                 }
 
             }

@@ -700,6 +700,10 @@
                   {
                     "myData": "BLUE",
                     "myName": "teamColor"
+                  },
+                  {
+                  	"myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+                  	"myName": "AttributeDescription1"
                   }
                 ]
               },
