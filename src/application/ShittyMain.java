@@ -18,6 +18,7 @@ import util.SaveLoadUtility;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -66,8 +67,8 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
-        archerState3.addAction(new ActionWrapper("collision", ActionOptions.CREATE_OBJECT_ACTION
-                .getClassString(), "archer","ArcherTimer","500"));
+        archerState3.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.CREATE_OBJECT_ACTION, 
+                                                 "archer","ArcherTimer","500"));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -109,8 +110,7 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper("InternalActions", ActionOptions.PLAYER_ATTRIBUTE_CONDITION
-                .getClassString(), "my", "Resources", "GreaterThanEqual", "10000", "Won",
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my", "Resources", "GreaterThanEqual", "10000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }
@@ -131,38 +131,32 @@ public class ShittyMain extends Application {
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
         archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
         // Choose a random temporary waypoint if we collide with anything
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
-                .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "NotCollision", "RandomWaypoint"));
         // On collision, attack an enemy
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
-                .getClassString(), "Collision", "Attack"));
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION, 
+                                                "Collision", "Attack"));
         // Move back if we collide with anything
-        archerState.addAction(new ActionWrapper("collision", ActionOptions.OBJECT_CONDITION_ACTION
-                .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "Collision", "MoveBack"));
         // Check to see if our health is <0. If so, die.
         archerState
-                .addAction(new ActionWrapper("InternalActions",
-                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
-                                                     .getClassString(), StateTags.HEALTH,
+                .addAction(new ActionWrapper(ActionType.INTERNAL,
+                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, StateTags.HEALTH,
                                              "LessThanEqual",
                                              "0",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
-        archerState.addAction(new ActionWrapper("InternalActions",
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "UpdateMovementDirection"));
         // This one moves the player
-        archerState.addAction(new ActionWrapper("InternalActions",
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "MovePlayer"));
         // This one can be used for pathing
-        archerState.addAction(new ActionWrapper("InternalActions",
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "HeadingUpdate"));
 
         archerState.setBounds(bounds);

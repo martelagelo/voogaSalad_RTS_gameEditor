@@ -16,6 +16,7 @@ import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardType;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.Dimension;
 import engine.visuals.elementVisuals.animations.AnimationSequence;
 import engine.visuals.elementVisuals.animations.AnimationTag;
@@ -80,8 +81,8 @@ public class GameElementStateFactory {
     public static GameElementState createGoal (WizardData data) {
         GameElementState goal = new GameElementState();
         String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
-        ActionWrapper wrapper = new ActionWrapper(data.getValueByKey(WizardDataType.ACTIONTYPE), 
-                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)).name(), 
+        ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
+                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
                                                   params);
         goal.addAction(wrapper);
         return goal;
@@ -119,9 +120,9 @@ public class GameElementStateFactory {
         //TODO: clean this up into the consumer
         for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {
             String[] params = wiz.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
-            ActionWrapper wrapper = new ActionWrapper(wiz.getValueByKey(WizardDataType.ACTIONTYPE), 
-                                           ActionOptions.valueOf(wiz.getValueByKey(WizardDataType.ACTION)).getClassString(), 
-                                           params);
+            ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
+                                                      ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
+                                                      params);
             state.addAction(wrapper);            
         }        
         return state;

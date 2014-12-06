@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -54,6 +55,7 @@ public class TabViewController extends GUIContainer {
                     Wizard wiz =
                             WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(400,
                                                                                               600));
+                    addNumberAttributes(wiz);
                     Consumer<WizardData> bc = (data) -> {
                         myMainModel.createGoal(myLevel, data);
                         wiz.closeStage();
@@ -61,6 +63,13 @@ public class TabViewController extends GUIContainer {
                     wiz.setSubmit(bc);
                 };
         return consumer;
+    }
+    
+    private void addNumberAttributes (Wizard wiz) {
+        List<String> numberAttrs = myMainModel.getGameUniverse().
+                getNumericalAttributes().stream().map(atr -> atr.getName())
+                .collect(Collectors.toList());
+        wiz.loadGlobalValues(numberAttrs);
     }
 
     public void setLevel (String campaign, String level) throws LevelNotFoundException,
@@ -139,10 +148,9 @@ public class TabViewController extends GUIContainer {
                                                 .split(",");
                                 ActionWrapper wrapper =
                                         new ActionWrapper(
-                                                          data.getValueByKey(WizardDataType.ACTIONTYPE),
+                                                          ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)),
                                                           ActionOptions
-                                                                  .valueOf(data.getValueByKey(WizardDataType.ACTION))
-                                                                  .name(),
+                                                                  .valueOf(data.getValueByKey(WizardDataType.ACTION)),
                                                           params);
                                 actionValue.add(wrapper);
                                 actions.put(ActionType

@@ -53,8 +53,8 @@ public enum ActionOptions {
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",
-                               "If #(my/another player's) attribute # is # #, make the attribute # # #",
-                               ActionParameters.STRING,
+                               "If # attribute # is # #, make the attribute # # #",
+                               ActionParameters.PLAYER_TYPE,
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER,
@@ -64,8 +64,8 @@ public enum ActionOptions {
     OBJECT_LOCATION_DETECTION(
                               "Object Location Check",
                               "ObjectLocationCheckAction",
-                              "If #(my/another player's) object of type # is at the location #,#",
-                              ActionParameters.STRING,
+                              "If # object of type # is at the location #,#",
+                              ActionParameters.PLAYER_TYPE,
                               ActionParameters.STRING,
                               ActionParameters.NUMBER,
                               ActionParameters.NUMBER);

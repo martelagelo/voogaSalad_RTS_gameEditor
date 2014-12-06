@@ -96,7 +96,7 @@ public class DrawableGameElementWizard extends Wizard {
      * 
      */
     private void launchTriggerEditor () {
-        launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, new ArrayList<String>(),
+        launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, myGlobalNumberAttributes,
                            new Dimension(400, 600));
     }
 
