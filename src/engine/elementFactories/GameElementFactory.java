@@ -1,6 +1,5 @@
 package engine.elementFactories;
 
-import java.util.ResourceBundle;
 import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -31,15 +30,12 @@ public class GameElementFactory {
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private ResourceBundle interactingElementTypes;
-
     public GameElementFactory (GameUniverse universe,
                                ActionFactory actionFactory,
                                VisualizerFactory visualizerFactory) {
         myUniverse = universe;
         myActionFactory = actionFactory;
         myVisualizerFactory = visualizerFactory;
-        interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
     public GameElement createGameElement (String elementType, double x, double y) {
@@ -85,8 +81,7 @@ public class GameElementFactory {
 
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
-                new SelectableGameElement(state,
-                                          interactingElementTypes, generateVisualizer(state));
+                new SelectableGameElement(state,generateVisualizer(state));
         generateActions(element, state);
         return element;
     }
