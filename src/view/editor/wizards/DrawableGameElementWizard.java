@@ -269,6 +269,9 @@ public class DrawableGameElementWizard extends Wizard {
 
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                                                 new FileChooser.ExtensionFilter("JPG", ".jpg"));
+        fileChooser.setInitialDirectory(new File("resources"));
         File file = fileChooser.showOpenDialog(new Stage());        
         return file;
     }
@@ -312,7 +315,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.getChildren().add(animationGrid);
             spritesheet.toFront();
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException | NullPointerException e) {
             displayErrorMessage("Unable to Load Image");
         }
     }
