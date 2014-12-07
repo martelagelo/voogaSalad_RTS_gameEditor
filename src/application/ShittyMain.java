@@ -82,10 +82,12 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
+
         // archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
-        // ActionOptions.INCRIMENT_DECRIMENT_ACTION,
+        // ActionOptions.INCREMENT_DECREMENT_ACTION,
         // "archerman", StateTags.HEALTH, StateTags.ATTACK,
         // "50", StateTags.HEALTH, "LeechTimer", "100"));
+
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
         archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",

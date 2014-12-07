@@ -2,12 +2,15 @@ package util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 import javafx.scene.image.Image;
 import model.exceptions.SaveLoadException;
+import model.sprite.SpriteImageGenerator;
 import model.state.GameState;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
  * This class mediates between the Model and the SaveLoadUtility. Using the
@@ -79,4 +82,14 @@ public class GameSaveLoadMediator {
         return SaveLoadUtility.loadImage(filePath);
 
     }
+    
+    public void loadSpritesAndMasks(Set<AnimatorState> animatorStates) throws SaveLoadException {
+            SpriteImageGenerator.loadSpriteImageContainers(animatorStates);
+       
+    }
+    
+    
+    
+    
+    
 }
