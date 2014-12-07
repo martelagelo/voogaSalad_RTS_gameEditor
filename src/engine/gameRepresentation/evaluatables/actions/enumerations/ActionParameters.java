@@ -13,6 +13,7 @@ public enum ActionParameters {
     // Element element evaluators
     EE_EVAL(
             "SetFocused",
+            "Bounce",
             "Attack",
             "Collision",
             "NotCollision",

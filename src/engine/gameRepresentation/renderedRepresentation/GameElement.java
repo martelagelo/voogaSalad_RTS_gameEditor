@@ -207,6 +207,7 @@ public class GameElement {
      * @param timerValue its value
      */
     public void setTimer (String timerName, long timerValue) {
+        setNumericalAttribute(timerName,0);
         myTimers.put(timerName, timerValue);
     }
 
