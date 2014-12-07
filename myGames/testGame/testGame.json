@@ -7,11 +7,11 @@
             "myNumericalAttributes": [
               {
                 "myData": 2000,
-                "myName": "LevelHeight"
+                "myName": "levelWidth"
               },
               {
                 "myData": 2000,
-                "myName": "LevelWidth"
+                "myName": "levelHeight"
               }
             ],
             "myTextualAttributes": []
@@ -21,7 +21,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "ORE",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 1000.0
@@ -557,7 +557,7 @@
                   },
                   {
                     "myData": 50,
-                    "myName": "ReloadTime"
+                    "myName": "reloadTime"
                   },
                   {
                     "myData": 1000,
@@ -591,7 +591,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -1119,6 +1119,49 @@
                 40.0
               ],
               "myActions": {
+<<<<<<< HEAD
+=======
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "INCREMENT_DECREMENT_ACTION",
+                    "myParameters": [
+                      "gold",
+                      "ORE",
+                      "goodness",
+                      "0",
+                      "resources",
+                      "MiningTimer",
+                      "100"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+>>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1126,7 +1169,7 @@
                       "health",
                       "LessThanEqual",
                       "0",
-                      "IsDead",
+                      "isDead",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -1163,6 +1206,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "FOCUSED": [
                   {
@@ -1203,6 +1247,8 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+=======
+>>>>>>> master
                 ]
               },
               "attributes": {
@@ -1213,7 +1259,11 @@
                   },
                   {
                     "myData": 50,
-                    "myName": "ReloadTime"
+                    "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 10.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
                     "myData": 75,
@@ -1224,16 +1274,8 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 10.0,
-                    "myName": "xHeading"
-                  },
-                  {
                     "myData": 100.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 10.0,
-                    "myName": "xTempPosition"
+                    "myName": "yGoalPosition"
                   },
                   {
                     "myData": 500,
@@ -1242,6 +1284,10 @@
                   {
                     "myData": 3,
                     "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 10.0,
+                    "myName": "xGoalPosition"
                   },
                   {
                     "myData": 100.0,
@@ -1274,10 +1320,16 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
+                },
+                {
+                  "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+                  "parameterTag": "isSelected",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 1.0
                 }
               ],
               "myAnimatorState": {
@@ -1802,6 +1854,60 @@
                 40.0
               ],
               "myActions": {
+<<<<<<< HEAD
+=======
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "Attack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+>>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1809,7 +1915,7 @@
                       "health",
                       "LessThanEqual",
                       "0",
-                      "IsDead",
+                      "isDead",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -1836,6 +1942,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "FOCUSED": [
                   {
@@ -1887,6 +1994,8 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+=======
+>>>>>>> master
                 ]
               },
               "attributes": {
@@ -1897,31 +2006,31 @@
                   },
                   {
                     "myData": 50,
-                    "myName": "ReloadTime"
+                    "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
+                    "myData": 100,
+                    "myName": "xSpawnOffset"
+                  },
+                  {
                     "myData": 200.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 100.0,
-                    "myName": "xHeading"
+                    "myData": 100,
+                    "myName": "ySpawnOffset"
                   },
                   {
                     "myData": 200.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 100.0,
-                    "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 100,
-                    "myName": "YSpawnOffset"
+                    "myName": "yGoalPosition"
                   },
                   {
                     "myData": 500,
@@ -1932,8 +2041,8 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 100,
-                    "myName": "XSpawnOffset"
+                    "myData": 100.0,
+                    "myName": "xGoalPosition"
                   },
                   {
                     "myData": 200.0,
@@ -1942,12 +2051,12 @@
                 ],
                 "myTextualAttributes": [
                   {
-                    "myData": "archer",
-                    "myName": "name"
+                    "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+                    "myName": "attributeDescription1"
                   },
                   {
-                    "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
-                    "myName": "AttributeDescription1"
+                    "myData": "archer",
+                    "myName": "name"
                   },
                   {
                     "myData": "STANDING",
@@ -1967,7 +2076,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -2495,6 +2604,60 @@
                 40.0
               ],
               "myActions": {
+<<<<<<< HEAD
+=======
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "Attack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+>>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -2502,7 +2665,7 @@
                       "health",
                       "LessThanEqual",
                       "0",
-                      "IsDead",
+                      "isDead",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -2529,6 +2692,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "FOCUSED": [
                   {
@@ -2580,6 +2744,8 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+=======
+>>>>>>> master
                 ]
               },
               "attributes": {
@@ -2590,31 +2756,31 @@
                   },
                   {
                     "myData": 50,
-                    "myName": "ReloadTime"
+                    "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
+                    "myData": 100,
+                    "myName": "xSpawnOffset"
+                  },
+                  {
                     "myData": 400.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 200.0,
-                    "myName": "xHeading"
+                    "myData": 100,
+                    "myName": "ySpawnOffset"
                   },
                   {
                     "myData": 400.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 200.0,
-                    "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 100,
-                    "myName": "YSpawnOffset"
+                    "myName": "yGoalPosition"
                   },
                   {
                     "myData": 500,
@@ -2625,8 +2791,8 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 100,
-                    "myName": "XSpawnOffset"
+                    "myData": 200.0,
+                    "myName": "xGoalPosition"
                   },
                   {
                     "myData": 400.0,
@@ -2651,7 +2817,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 1000.0
@@ -3179,6 +3345,60 @@
                 40.0
               ],
               "myActions": {
+<<<<<<< HEAD
+=======
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "Attack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+>>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3186,7 +3406,7 @@
                       "health",
                       "LessThanEqual",
                       "0",
-                      "IsDead",
+                      "isDead",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -3224,6 +3444,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "FOCUSED": [
                   {
@@ -3275,6 +3496,8 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+=======
+>>>>>>> master
                 ]
               },
               "attributes": {
@@ -3284,28 +3507,20 @@
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 50,
-                    "myName": "ReloadTime"
-                  },
-                  {
                     "myData": 1000,
                     "myName": "MAX_HEALTH"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "xSpawnOffset"
                   },
                   {
                     "myData": 100.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xHeading"
-                  },
-                  {
                     "myData": 100.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xTempPosition"
+                    "myName": "yGoalPosition"
                   },
                   {
                     "myData": 100,
@@ -3316,12 +3531,20 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 100,
-                    "myName": "XSpawnOffset"
+                    "myData": 400.0,
+                    "myName": "xGoalPosition"
                   },
                   {
                     "myData": 100.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
                     "myData": 75,
@@ -3329,7 +3552,7 @@
                   },
                   {
                     "myData": 100,
-                    "myName": "YSpawnOffset"
+                    "myName": "ySpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -3350,7 +3573,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "AttributeBarDisplayer",
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -3878,6 +4101,60 @@
                 40.0
               ],
               "myActions": {
+<<<<<<< HEAD
+=======
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "Attack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+>>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3885,7 +4162,7 @@
                       "health",
                       "LessThanEqual",
                       "0",
-                      "IsDead",
+                      "isDead",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -3912,6 +4189,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "FOCUSED": [
                   {
@@ -3963,6 +4241,8 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+=======
+>>>>>>> master
                 ]
               },
               "attributes": {
@@ -3973,31 +4253,31 @@
                   },
                   {
                     "myData": 50,
-                    "myName": "ReloadTime"
+                    "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
+                    "myData": 500,
+                    "myName": "xSpawnOffset"
+                  },
+                  {
                     "myData": 300.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 400.0,
-                    "myName": "xHeading"
+                    "myData": 500,
+                    "myName": "ySpawnOffset"
                   },
                   {
                     "myData": 300.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "YSpawnOffset"
+                    "myName": "yGoalPosition"
                   },
                   {
                     "myData": 500,
@@ -4008,8 +4288,8 @@
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 500,
-                    "myName": "XSpawnOffset"
+                    "myData": 400.0,
+                    "myName": "xGoalPosition"
                   },
                   {
                     "myData": 300.0,
@@ -4106,7 +4386,7 @@
       },
       {
         "myData": 50,
-        "myName": "ReloadTime"
+        "myName": "reloadTime"
       },
       {
         "myData": 1000,
@@ -4121,24 +4401,24 @@
         "myName": "movementSpeed"
       },
       {
+        "myData": 10.0,
+        "myName": "xTempGoalPosition"
+      },
+      {
         "myData": 75,
         "myName": "attack"
       },
       {
-        "myData": 10.0,
-        "myName": "xHeading"
-      },
-      {
         "myData": 100.0,
-        "myName": "yHeading"
-      },
-      {
-        "myData": 10.0,
-        "myName": "xTempPosition"
+        "myName": "yGoalPosition"
       },
       {
         "myData": 500,
         "myName": "health"
+      },
+      {
+        "myData": 10.0,
+        "myName": "xGoalPosition"
       },
       {
         "myData": 100.0,
@@ -4150,11 +4430,11 @@
       },
       {
         "myData": 100,
-        "myName": "YSpawnOffset"
+        "myName": "xSpawnOffset"
       },
       {
         "myData": 100,
-        "myName": "XSpawnOffset"
+        "myName": "ySpawnOffset"
       },
       {
         "myData": 1000,
@@ -4176,7 +4456,7 @@
       },
       {
         "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
-        "myName": "AttributeDescription1"
+        "myName": "attributeDescription1"
       }
     ],
     "myGameElementStates": [],
@@ -4185,7 +4465,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "ORE",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
@@ -4721,7 +5001,7 @@
             },
             {
               "myData": 50,
-              "myName": "ReloadTime"
+              "myName": "reloadTime"
             },
             {
               "myData": 1000,
@@ -4755,7 +5035,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -5269,6 +5549,61 @@
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
+<<<<<<< HEAD
+=======
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          40.0,
+          0.0,
+          40.0,
+          40.0,
+          0.0,
+          40.0
+        ],
+        "myActions": {
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "INCREMENT_DECREMENT_ACTION",
+              "myParameters": [
+                "gold",
+                "ORE",
+                "goodness",
+                "0",
+                "resources",
+                "MiningTimer",
+                "100"
+              ],
+              "myActionType": "COLLISION"
+>>>>>>> master
             }
           ]
         },
@@ -5290,7 +5625,7 @@
                 "health",
                 "LessThanEqual",
                 "0",
-                "IsDead",
+                "isDead",
                 "EqualsAssignment",
                 "1"
               ],
@@ -5327,6 +5662,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "FOCUSED": [
             {
@@ -5367,6 +5703,8 @@
               ],
               "myActionType": "COLLISION"
             }
+=======
+>>>>>>> master
           ]
         },
         "attributes": {
@@ -5377,7 +5715,11 @@
             },
             {
               "myData": 50,
-              "myName": "ReloadTime"
+              "myName": "reloadTime"
+            },
+            {
+              "myData": 10.0,
+              "myName": "xTempGoalPosition"
             },
             {
               "myData": 75,
@@ -5388,16 +5730,8 @@
               "myName": "yPosition"
             },
             {
-              "myData": 10.0,
-              "myName": "xHeading"
-            },
-            {
               "myData": 100.0,
-              "myName": "yHeading"
-            },
-            {
-              "myData": 10.0,
-              "myName": "xTempPosition"
+              "myName": "yGoalPosition"
             },
             {
               "myData": 500,
@@ -5406,6 +5740,10 @@
             {
               "myData": 3,
               "myName": "movementSpeed"
+            },
+            {
+              "myData": 10.0,
+              "myName": "xGoalPosition"
             },
             {
               "myData": 100.0,
@@ -5438,10 +5776,16 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
+          },
+          {
+            "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+            "parameterTag": "isSelected",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 1.0
           }
         ],
         "myAnimatorState": {
@@ -5966,6 +6310,60 @@
           40.0
         ],
         "myActions": {
+<<<<<<< HEAD
+=======
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "Attack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+>>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -5973,7 +6371,7 @@
                 "health",
                 "LessThanEqual",
                 "0",
-                "IsDead",
+                "isDead",
                 "EqualsAssignment",
                 "1"
               ],
@@ -6000,6 +6398,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "FOCUSED": [
             {
@@ -6051,6 +6450,8 @@
               ],
               "myActionType": "COLLISION"
             }
+=======
+>>>>>>> master
           ]
         },
         "attributes": {
@@ -6061,31 +6462,31 @@
             },
             {
               "myData": 50,
-              "myName": "ReloadTime"
+              "myName": "reloadTime"
+            },
+            {
+              "myData": 100.0,
+              "myName": "xTempGoalPosition"
             },
             {
               "myData": 75,
               "myName": "attack"
             },
             {
+              "myData": 100,
+              "myName": "xSpawnOffset"
+            },
+            {
               "myData": 200.0,
               "myName": "yPosition"
             },
             {
-              "myData": 100.0,
-              "myName": "xHeading"
+              "myData": 100,
+              "myName": "ySpawnOffset"
             },
             {
               "myData": 200.0,
-              "myName": "yHeading"
-            },
-            {
-              "myData": 100.0,
-              "myName": "xTempPosition"
-            },
-            {
-              "myData": 100,
-              "myName": "YSpawnOffset"
+              "myName": "yGoalPosition"
             },
             {
               "myData": 500,
@@ -6096,8 +6497,8 @@
               "myName": "movementSpeed"
             },
             {
-              "myData": 100,
-              "myName": "XSpawnOffset"
+              "myData": 100.0,
+              "myName": "xGoalPosition"
             },
             {
               "myData": 200.0,
@@ -6106,12 +6507,12 @@
           ],
           "myTextualAttributes": [
             {
-              "myData": "archer",
-              "myName": "name"
+              "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+              "myName": "attributeDescription1"
             },
             {
-              "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
-              "myName": "AttributeDescription1"
+              "myData": "archer",
+              "myName": "name"
             },
             {
               "myData": "STANDING",
@@ -6131,7 +6532,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -6659,6 +7060,60 @@
           40.0
         ],
         "myActions": {
+<<<<<<< HEAD
+=======
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "Attack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+>>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -6666,7 +7121,7 @@
                 "health",
                 "LessThanEqual",
                 "0",
-                "IsDead",
+                "isDead",
                 "EqualsAssignment",
                 "1"
               ],
@@ -6693,6 +7148,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "FOCUSED": [
             {
@@ -6744,6 +7200,8 @@
               ],
               "myActionType": "COLLISION"
             }
+=======
+>>>>>>> master
           ]
         },
         "attributes": {
@@ -6754,31 +7212,31 @@
             },
             {
               "myData": 50,
-              "myName": "ReloadTime"
+              "myName": "reloadTime"
+            },
+            {
+              "myData": 200.0,
+              "myName": "xTempGoalPosition"
             },
             {
               "myData": 75,
               "myName": "attack"
             },
             {
+              "myData": 100,
+              "myName": "xSpawnOffset"
+            },
+            {
               "myData": 400.0,
               "myName": "yPosition"
             },
             {
-              "myData": 200.0,
-              "myName": "xHeading"
+              "myData": 100,
+              "myName": "ySpawnOffset"
             },
             {
               "myData": 400.0,
-              "myName": "yHeading"
-            },
-            {
-              "myData": 200.0,
-              "myName": "xTempPosition"
-            },
-            {
-              "myData": 100,
-              "myName": "YSpawnOffset"
+              "myName": "yGoalPosition"
             },
             {
               "myData": 500,
@@ -6789,8 +7247,8 @@
               "myName": "movementSpeed"
             },
             {
-              "myData": 100,
-              "myName": "XSpawnOffset"
+              "myData": 200.0,
+              "myName": "xGoalPosition"
             },
             {
               "myData": 400.0,
@@ -6815,7 +7273,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
@@ -7343,6 +7801,60 @@
           40.0
         ],
         "myActions": {
+<<<<<<< HEAD
+=======
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "Attack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+>>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -7350,7 +7862,7 @@
                 "health",
                 "LessThanEqual",
                 "0",
-                "IsDead",
+                "isDead",
                 "EqualsAssignment",
                 "1"
               ],
@@ -7388,6 +7900,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "FOCUSED": [
             {
@@ -7439,6 +7952,8 @@
               ],
               "myActionType": "COLLISION"
             }
+=======
+>>>>>>> master
           ]
         },
         "attributes": {
@@ -7448,28 +7963,20 @@
               "myName": "xPosition"
             },
             {
-              "myData": 50,
-              "myName": "ReloadTime"
-            },
-            {
               "myData": 1000,
               "myName": "MAX_HEALTH"
+            },
+            {
+              "myData": 100,
+              "myName": "xSpawnOffset"
             },
             {
               "myData": 100.0,
               "myName": "yPosition"
             },
             {
-              "myData": 400.0,
-              "myName": "xHeading"
-            },
-            {
               "myData": 100.0,
-              "myName": "yHeading"
-            },
-            {
-              "myData": 400.0,
-              "myName": "xTempPosition"
+              "myName": "yGoalPosition"
             },
             {
               "myData": 100,
@@ -7480,12 +7987,20 @@
               "myName": "movementSpeed"
             },
             {
-              "myData": 100,
-              "myName": "XSpawnOffset"
+              "myData": 400.0,
+              "myName": "xGoalPosition"
             },
             {
               "myData": 100.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 50,
+              "myName": "reloadTime"
+            },
+            {
+              "myData": 400.0,
+              "myName": "xTempGoalPosition"
             },
             {
               "myData": 75,
@@ -7493,7 +8008,7 @@
             },
             {
               "myData": 100,
-              "myName": "YSpawnOffset"
+              "myName": "ySpawnOffset"
             }
           ],
           "myTextualAttributes": [
@@ -7514,7 +8029,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "AttributeBarDisplayer",
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -8042,6 +8557,60 @@
           40.0
         ],
         "myActions": {
+<<<<<<< HEAD
+=======
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "Attack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+>>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -8049,7 +8618,7 @@
                 "health",
                 "LessThanEqual",
                 "0",
-                "IsDead",
+                "isDead",
                 "EqualsAssignment",
                 "1"
               ],
@@ -8076,6 +8645,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "FOCUSED": [
             {
@@ -8127,6 +8697,8 @@
               ],
               "myActionType": "COLLISION"
             }
+=======
+>>>>>>> master
           ]
         },
         "attributes": {
@@ -8137,31 +8709,31 @@
             },
             {
               "myData": 50,
-              "myName": "ReloadTime"
+              "myName": "reloadTime"
+            },
+            {
+              "myData": 400.0,
+              "myName": "xTempGoalPosition"
             },
             {
               "myData": 75,
               "myName": "attack"
             },
             {
+              "myData": 500,
+              "myName": "xSpawnOffset"
+            },
+            {
               "myData": 300.0,
               "myName": "yPosition"
             },
             {
-              "myData": 400.0,
-              "myName": "xHeading"
+              "myData": 500,
+              "myName": "ySpawnOffset"
             },
             {
               "myData": 300.0,
-              "myName": "yHeading"
-            },
-            {
-              "myData": 400.0,
-              "myName": "xTempPosition"
-            },
-            {
-              "myData": 500,
-              "myName": "YSpawnOffset"
+              "myName": "yGoalPosition"
             },
             {
               "myData": 500,
@@ -8172,8 +8744,8 @@
               "myName": "movementSpeed"
             },
             {
-              "myData": 500,
-              "myName": "XSpawnOffset"
+              "myData": 400.0,
+              "myName": "xGoalPosition"
             },
             {
               "myData": 300.0,

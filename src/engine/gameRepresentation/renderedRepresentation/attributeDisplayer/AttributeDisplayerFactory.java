@@ -29,11 +29,14 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
+			System.out.println("TAG: " + attributeDisplayerState.displayerTag);
 		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
-					+ attributeDisplayerState.displayerTag);
+					+ attributeDisplayerState.displayerTag.getValue());
+		    //System.out.print(attributeDisplayerState.displayerTag);
+		    System.out.print("llololol");
 		} catch (ClassNotFoundException e) {
 			// fail silently
-			//e.printStackTrace();
+		    e.printStackTrace();
 		}
 		if (attributeDisplayerState.myTextValue != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
@@ -60,7 +63,7 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
 		return displayer;
 	}
@@ -79,6 +82,7 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
+		    e.printStackTrace();
 		}
 		return displayer;
 	}
