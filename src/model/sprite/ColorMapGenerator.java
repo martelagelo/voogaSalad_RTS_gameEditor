@@ -12,7 +12,7 @@ import model.exceptions.SaveLoadException;
 import util.ResourceBundleRetriever;
 
 public class ColorMapGenerator {
-    private String myColorMaskName = "colormaskschaboi.properties";
+    private String myColorMaskName = "colormasks.properties";
     private static final int RGB_LENGTH = 3;
     private ResourceBundle myBundle;
     private ResourceBundleRetriever myBundleRetriever;
