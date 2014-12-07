@@ -24,13 +24,14 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  *
  */
 public class GameSaveLoadMediator {
-    public static final String GAME_ELEMENT_RESOURCES = "gameelementresources/";
+    public static final String GAME_ELEMENT_RESOURCES = "gameelementresources";
     public static final String WILDCARD = "*";
     public static final String ANIMATOR_STATE = "animatorstate";
     public static final String GAME_DIRECTORY = "myGames";
     public static final String RESOURCES = "resources";
     public static final String PNG_EXT = ".png";
     public static final String JSON_EXT = ".json";
+    public static final String PATH_DELIMITER = "/";
 
     /**
      * 
@@ -74,8 +75,8 @@ public class GameSaveLoadMediator {
     private String processImagePath (String localLocation, GameElementImageType imageType,
             GameElementImageType stateType) {
         String imageName = getImageName(localLocation);
-        String saveLocation = GAME_ELEMENT_RESOURCES + stateType.getFolderName() + File.separator
-                + imageType.getFolderName() + File.separator + imageName;
+        String saveLocation = GAME_ELEMENT_RESOURCES + PATH_DELIMITER + stateType.getFolderName()
+                + PATH_DELIMITER + imageType.getFolderName() + PATH_DELIMITER + imageName;
         return saveLocation;
     }
 
@@ -93,7 +94,6 @@ public class GameSaveLoadMediator {
     public String saveColorMask (WizardData data, GameElementImageType elementType)
             throws SaveLoadException {
         String currentLocation = data.getValueByKey(WizardDataType.COLOR_MASK);
-        String imageName = getImageName(currentLocation);
         String destinationLocation = processImagePath(currentLocation,
                 GameElementImageType.Colormask, elementType);
         return SaveLoadUtility.saveImage(currentLocation, destinationLocation);
@@ -101,7 +101,7 @@ public class GameSaveLoadMediator {
     }
 
     private String getGameLocation (String name) {
-        return GAME_DIRECTORY + File.separator + name + File.separator + name + JSON_EXT;
+        return GAME_DIRECTORY + PATH_DELIMITER + name + PATH_DELIMITER + name + JSON_EXT;
     }
 
     /**
