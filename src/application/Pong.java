@@ -69,6 +69,7 @@ public class Pong extends Application {
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "SetFocused"));
+        enemyPaddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 3);
         // enemyPaddle.addAction(new
         // ActionWrapper(ActionType.INTERNAL,ActionOptions.OBJECT_CONDITION_ACTION));
 
@@ -130,7 +131,7 @@ public class Pong extends Application {
                                          ActionOptions.PERFORM_CALCULATION_ON_VALUE,
                                          "MultiplicationAssignment", "-1", StateTags.Y_VELOCITY));
         //TODO make this work
-        //ball.addAction(new ActionWrapper(ActionType.COLLISION,ActionOptions.PERFORM_CALCULATION_ON_VALUE,"MultiplicationAssignment","1.2",StateTags.Y_VELOCITY));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,ActionOptions.PERFORM_CALCULATION_ON_VALUE,"MultiplicationAssignment","1.2",StateTags.Y_VELOCITY));
         AnimatorState ballAnimations;
         // This one moves the player
         ball.addAction(new ActionWrapper(ActionType.INTERNAL,
