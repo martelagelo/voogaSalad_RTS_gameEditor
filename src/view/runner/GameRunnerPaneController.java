@@ -53,6 +53,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
             sizedButton.setStyle("-fx-background-color: red;");
             myLevel = levelState;
             Engine engine = new Engine(myMainModel, levelState);
+            engine.setAnimationEnabled(false);
             ScrollablePane pane = engine.getScene();
             bindPaneSize(pane);
             engine.play();

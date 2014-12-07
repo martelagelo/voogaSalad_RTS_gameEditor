@@ -1,13 +1,9 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
-import engine.gameRepresentation.renderedRepresentation.GameElement;
-import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
-
 import java.lang.reflect.InvocationTargetException;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-
 import model.state.gameelement.AttributeContainer;
+import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
 /**
  * A class that uses the factory pattern to create attribute displayers given
@@ -57,7 +53,7 @@ public class AttributeDisplayerFactory {
 
 	}
 
-	private AttributeDisplayer createNumericalAttributeDisplayer(Class c,
+	private AttributeDisplayer createNumericalAttributeDisplayer(Class<?> c,
 			AttributeDisplayerState attributeDisplayerState,
 			AttributeContainer attachee) {
 		AttributeDisplayer displayer = null;
@@ -76,7 +72,7 @@ public class AttributeDisplayerFactory {
 		return displayer;
 	}
 
-	private AttributeDisplayer createTextualAttributeDisplayer(Class c,
+	private AttributeDisplayer createTextualAttributeDisplayer(Class<?> c,
 			AttributeDisplayerState attributeDisplayerState,
 			AttributeContainer attachee) {
 		AttributeDisplayer displayer = null;

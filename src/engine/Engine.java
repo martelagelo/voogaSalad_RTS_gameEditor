@@ -76,6 +76,10 @@ public class Engine extends Observable implements Observer {
         // TODO: get next level and next campaign state in model (also write method in model)
         instantiateManagers();
     }
+    
+    public void setAnimationEnabled(boolean b){
+        myVisualizerFactory.setAnimationEnabled(b);
+    }
 
     private void instantiateManagers () {
         myElementManager = new GameElementManager(myElementFactory);
