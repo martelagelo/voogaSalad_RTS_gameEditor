@@ -13,11 +13,15 @@ import model.state.gameelement.AttributeContainer;
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.
  * 
- * @author Zach, Stanley
+ * @author Zach
  *
  */
 public class AttributeDisplayerFactory {
 	public final static String ATTRIBUTE_CLASS_LOCATIONS = "engine.visuals.elementVisuals.widgets.attributeDisplays.";
+
+
+	public AttributeDisplayerFactory() {
+	}
 
 	/**
 	 * Create an attribute displayer.
@@ -33,8 +37,11 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
+		    System.out.println(attributeDisplayerState.displayerTag);
+		    System.out.println(ATTRIBUTE_CLASS_LOCATIONS + attributeDisplayerState.displayerTag);
 			c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
-					+ AttributeDisplayerEnums.valueOf(attributeDisplayerState.displayerTag));
+					+ attributeDisplayerState.displayerTag);
+			System.out.println(c.toString());
 		} catch (ClassNotFoundException e) {
 			// fail silently
 		}

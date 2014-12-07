@@ -21,7 +21,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "attributeBar",
+                  "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -718,7 +718,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "attributeBar",
+                  "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -1406,7 +1406,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "attributeBar",
+                  "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -2212,7 +2212,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "attributeBar",
+            "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -2909,7 +2909,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "attributeBar",
+            "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -3597,7 +3597,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "attributeBar",
+            "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -4285,7 +4285,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "attributeBar",
+            "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
