@@ -1,0 +1,420 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 400.0,
+                "myName": "LevelHeight"
+              },
+              {
+                "myData": 400.0,
+                "myName": "LevelWidth"
+              }
+            ],
+            "myTextualAttributes": []
+          },
+          "myTerrains": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 50
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 100.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "farm",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
+          "myUnits": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "testSpritesheet/archer.png",
+                "colorMaskTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/units/colormasks/archer.png",
+                "viewportSize": {
+                  "myWidth": 138,
+                  "myHeight": 103
+                },
+                "numRows": 40,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0
+              ],
+              "myActions": {
+                "Internal": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "IsDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "GreaterThan",
+                      "-500",
+                      "health",
+                      "SubtractionAssignment",
+                      "5"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 200.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50.0,
+                    "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 75.0,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 1.0,
+                    "myName": "teamID"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "YSpawnOffset"
+                  },
+                  {
+                    "myData": 500.0,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2.0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "XSpawnOffset"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "archer",
+                    "myName": "name"
+                  },
+                  {
+                    "myData": "BLUE",
+                    "myName": "teamColor"
+                  },
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
+          "myGoals": [],
+          "myName": "level",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "campaign",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 50.0,
+        "myName": "ReloadTime"
+      },
+      {
+        "myData": 75.0,
+        "myName": "attack"
+      },
+      {
+        "myData": 1.0,
+        "myName": "teamID"
+      },
+      {
+        "myData": 100.0,
+        "myName": "YSpawnOffset"
+      },
+      {
+        "myData": 500.0,
+        "myName": "health"
+      },
+      {
+        "myData": 2.0,
+        "myName": "movementSpeed"
+      },
+      {
+        "myData": 100.0,
+        "myName": "XSpawnOffset"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "farm",
+        "myName": "name"
+      },
+      {
+        "myData": "BLUE",
+        "myName": "teamColor"
+      },
+      {
+        "myData": "STANDING",
+        "myName": "currentAction"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 50
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "farm",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ],
+    "mySelectableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "testSpritesheet/archer.png",
+          "colorMaskTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/units/colormasks/archer.png",
+          "viewportSize": {
+            "myWidth": 138,
+            "myHeight": 103
+          },
+          "numRows": 40,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0
+        ],
+        "myActions": {
+          "Internal": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "GreaterThan",
+                "-500",
+                "health",
+                "SubtractionAssignment",
+                "5"
+              ],
+              "myActionType": "INTERNAL"
+            }
+          ]
+        },
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 50.0,
+              "myName": "ReloadTime"
+            },
+            {
+              "myData": 75.0,
+              "myName": "attack"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 1.0,
+              "myName": "teamID"
+            },
+            {
+              "myData": 100.0,
+              "myName": "YSpawnOffset"
+            },
+            {
+              "myData": 500.0,
+              "myName": "health"
+            },
+            {
+              "myData": 2.0,
+              "myName": "movementSpeed"
+            },
+            {
+              "myData": 100.0,
+              "myName": "XSpawnOffset"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "archer",
+              "myName": "name"
+            },
+            {
+              "myData": "BLUE",
+              "myName": "teamColor"
+            },
+            {
+              "myData": "STANDING",
+              "myName": "currentAction"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ]
+  },
+  "myName": "game",
+  "myDescription": "",
+  "myHashingPrime": 31
+}

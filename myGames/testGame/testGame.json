@@ -707,7 +707,10 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer",
+                "archerman"
+              ]
             },
             {
               "AttributeDisplayerStates": [
@@ -1390,7 +1393,9 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer"
+              ]
             },
             {
               "AttributeDisplayerStates": [
@@ -1960,15 +1965,6 @@
                       "MoveBack"
                     ],
                     "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "archer",
-                      "ArcherTimer",
-                      "500"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ],
                 "Internal": [
@@ -2082,7 +2078,9 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer"
+              ]
             }
           ],
           "myGoals": [
@@ -2891,7 +2889,10 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer",
+          "archerman"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -3574,7 +3575,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -4257,7 +4260,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -4827,15 +4832,6 @@
                 "MoveBack"
               ],
               "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "archer",
-                "ArcherTimer",
-                "500"
-              ],
-              "myActionType": "COLLISION"
             }
           ],
           "Internal": [
@@ -4949,7 +4945,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       }
     ]
   },

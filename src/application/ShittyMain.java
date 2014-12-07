@@ -65,6 +65,7 @@ public class ShittyMain extends Application {
         archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
                                                                             500));
+        archerState.addType("archerman");
 
         SelectableGameElementState archerState2 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 100, 2);
@@ -81,10 +82,12 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
-
-        archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
-                                                 ActionOptions.CREATE_OBJECT_ACTION,
-                                                 "archer", "ArcherTimer", "500"));
+//        archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
+//                                                 ActionOptions.INCREMENT_DECREMENT_ACTION,
+//                                                 "archerman", StateTags.HEALTH, StateTags.ATTACK,
+//                                                 "50", StateTags.HEALTH, "LeechTimer", "100"));
+        // archerState3.addAction(new
+        // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
         archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
                                                                             500));
@@ -151,6 +154,7 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
         archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
+        archerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
         archerState.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.OBJECT_CONDITION_ACTION,

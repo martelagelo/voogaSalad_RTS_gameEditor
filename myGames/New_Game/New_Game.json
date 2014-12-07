@@ -1,0 +1,158 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 400.0,
+                "myName": "LevelHeight"
+              },
+              {
+                "myData": 400.0,
+                "myName": "LevelWidth"
+              }
+            ],
+            "myTextualAttributes": []
+          },
+          "myTerrains": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+                "colorMaskTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+                "viewportSize": {
+                  "myWidth": 96,
+                  "myHeight": 48
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 100.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "farm",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
+          "myUnits": [],
+          "myGoals": [],
+          "myName": "level",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "campaign",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "farm",
+        "myName": "name"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+          "colorMaskTag": "/Users/macbook/Documents/Duke/Fall 2014/CS 308/Code/voogasalad_TheException/resourcesold/gameelementresources/terrain/farm0.png",
+          "viewportSize": {
+            "myWidth": 96,
+            "myHeight": 48
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "farm",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ],
+    "mySelectableGameElementStates": []
+  },
+  "myName": "New Game",
+  "myDescription": "",
+  "myHashingPrime": 31
+}
