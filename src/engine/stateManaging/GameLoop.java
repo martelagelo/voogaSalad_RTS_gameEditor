@@ -69,7 +69,8 @@ public class GameLoop extends Observable {
      * Update the states of all prominent elements and aspects of the game
      */
     private void updateRunner () {
-        myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
+    	//For waypoint creation. Can Delete if we dont want the capability
+        //myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();

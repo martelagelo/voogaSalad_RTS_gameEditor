@@ -9,7 +9,7 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.
  * 
- * @author Zach, Stanley
+ * @author Zach, Michael D., Stanley
  *
  */
 public class AttributeDisplayerFactory {
@@ -29,12 +29,10 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
-			System.out.println("TAG: " + attributeDisplayerState.displayerTag);
 		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
 					+ attributeDisplayerState.displayerTag);
 		} catch (ClassNotFoundException e) {
 			// fail silently
-			//e.printStackTrace();
 		}
 		if (attributeDisplayerState.myTextValue != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
@@ -61,7 +59,6 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
-			e.printStackTrace();
 		}
 		return displayer;
 	}

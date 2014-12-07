@@ -37,8 +37,8 @@ public class HeadingUpdate<A, B> extends Evaluator<A, B, Boolean> {
         // If we're at our goal, set our goal to our next goal
         if (Math.abs(xPos - xGoal) <= speed && Math.abs(yPos - yGoal) <= speed) {
             Location waypoint = element.getNextWaypoint();
-            element.setNumericalAttribute(StateTags.X_GOAL_POSITION, waypoint.myX);
-            element.setNumericalAttribute(StateTags.Y_GOAL_POSITION, waypoint.myY);
+            element.setNumericalAttribute(StateTags.X_GOAL_POSITION, waypoint.getX());
+            element.setNumericalAttribute(StateTags.Y_GOAL_POSITION, waypoint.getY());
         }
         // If we're at our temp goal, set our temp goal to our goal
         if (Math.abs(xPos - tempXGoal) <= speed && Math.abs(yPos - tempYGoal) <= speed) {
