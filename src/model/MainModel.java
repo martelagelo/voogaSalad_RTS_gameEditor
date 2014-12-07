@@ -208,8 +208,8 @@ public class MainModel extends Observable {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim());
         if (width.doubleValue() > 0 && height.doubleValue() > 0) {
-            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
-            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
+            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), width);
+            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), height);
         } else {
             throw new Exception("invalid size of level");
         }
@@ -334,8 +334,8 @@ public class MainModel extends Observable {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
             SelectableGameElementState unit = getGameUniverse().getSelectableGameElementState(
                     elementName);
-            unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
-            unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+            unit.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
+            unit.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
             myModifiedContainer.getRecentlyAddedUnits().add(unit);
             levelState.addUnit(unit);
         } else {
@@ -345,14 +345,14 @@ public class MainModel extends Observable {
     }
 
     public void setTerrain (LevelState levelState, String terrainName) {
-        int width = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).intValue();
-        int height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
+        int width = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue()).intValue();
+        int height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue()).intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(
                         terrainName);
-                terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
-                terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
+                terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), i);
+                terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), j);
                 myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
                 levelState.addTerrain(terrain);
             }
@@ -364,8 +364,8 @@ public class MainModel extends Observable {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
             DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(
                     elementName);
-            terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
-            terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
+            terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
+            terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
             myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
             levelState.addTerrain(terrain);
         } else {
@@ -374,8 +374,8 @@ public class MainModel extends Observable {
     }
 
     private boolean areCoordinatesValid (LevelState levelState, Double x, Double y) {
-        Number width = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH);
-        Number height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT);
+        Number width = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
+        Number height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
         return (x >= 0 && width.doubleValue() > x && y >= 0 && height.doubleValue() > y);
     }
 

@@ -40,12 +40,12 @@ public class PathingComputer {
 	}
     
     private boolean pointsAreColinear(Location first, Location second, Location third){
-		double x0 = first.myX;
-		double y0 = first.myY;
-		double x1 = second.myX;
-		double y1 = second.myY;
-		double x2 = third.myX;
-		double y2 = third.myY;
+		double x0 = first.getX();
+		double y0 = first.getY();
+		double x1 = second.getX();
+		double y1 = second.getY();
+		double x2 = third.getX();
+		double y2 = third.getY();
 		
 		return Math.ulp((y1 - y0) - (y2 - y0)/(x2 - x0)*(x1-x0))<10;
     }
@@ -67,8 +67,8 @@ public class PathingComputer {
     private double determineHeuristic (Location location) {
         double bestHeuristic = Double.MAX_VALUE;
         for(Location goal : goals){
-            double dX = Math.abs(location.myX - goal.myX);
-            double dY = Math.abs(location.myY - goal.myY);
+            double dX = Math.abs(location.getX() - goal.getX());
+            double dY = Math.abs(location.getY() - goal.getY());
             double tempHeuristic = (dX + dY) + (Math.sqrt(2) - 2) * Math.min(dX, dY);
             if(tempHeuristic<bestHeuristic){
                 bestHeuristic = tempHeuristic;
@@ -86,9 +86,9 @@ public class PathingComputer {
      * @return
      */
     private double determinePathLength (Location from, Location to) {
-        double dX = Math.abs(from.myX - to.myX);
-        double dY = Math.abs(from.myY - to.myY);
-        return from.movementSpeedScalingFactor*((dX + dY) + (Math.sqrt(2) - 2) * Math.min(dX, dY));
+        double dX = Math.abs(from.getX() - to.getX());
+        double dY = Math.abs(from.getY() - to.getY());
+        return from.getMovementSpeed()*((dX + dY) + (Math.sqrt(2) - 2) * Math.min(dX, dY));
     }
     
     public double determineCost (Location from, Location to){

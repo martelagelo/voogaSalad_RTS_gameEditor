@@ -75,7 +75,7 @@ public class GameElementStateFactory {
     }
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.attributes.setTextualAttribute(StateTags.NAME,
+        state.attributes.setTextualAttribute(StateTags.NAME.getValue(),
                                              data.getValueByKey(WizardDataType.NAME));
 
         addToState( (String key, String value) ->

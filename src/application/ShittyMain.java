@@ -20,7 +20,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -50,16 +50,16 @@ public class ShittyMain extends Application {
     private Engine hardCodeAGame () throws Exception {
         SelectableGameElementState minerState =
                 createMiner(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 10, 100, 1);
-        minerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        minerState.attributes.setTextualAttribute(StateTags.NAME, "miner");
+        minerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        minerState.attributes.setTextualAttribute(StateTags.NAME.getValue(), "miner");
         minerState
-        .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                StateTags.HEALTH, 0, 500));
+        .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                StateTags.HEALTH.getValue(), 0, 500));
         minerState.attributes.setNumericalAttribute("goodness", 100);
         
         
         SelectableGameElementState resource = createResource(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 300, 300, 1);
-        resource.attributes.setTextualAttribute(StateTags.NAME, "resource1");
+        resource.attributes.setTextualAttribute(StateTags.NAME.getValue(), "resource1");
         resource.attributes.setNumericalAttribute("ORE", 1000);
         resource.addType("gold");
         
@@ -70,51 +70,55 @@ public class ShittyMain extends Application {
                                                "gold", "ORE", "goodness",
                                                "0", "resources", "MiningTimer", "100"));
         minerState.addAction(new ActionWrapper(ActionType.INTERNAL,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer","resources","my","Resources"));
-        resource.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer, "ORE", 0, 1000));
+        resource.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER, "ORE", 0, 1000));
         
         
         
         SelectableGameElementState archerState =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
-        archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
+        archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        archerState.attributes.setTextualAttribute(StateTags.NAME.getValue(), "archer");
         archerState
-                .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                        StateTags.HEALTH, 0, 500));
-        //archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeArrowDisplayer, StateTags.IS_SELECTED, 0, 1));
+                .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                        StateTags.HEALTH.getValue(), 0, 500));
+
+
+        archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER, StateTags.IS_SELECTED.getValue(), 0, 1));
 
         archerState.attributes
-                .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,
+                .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1,
                                      "resources/img/graphics/buttons/buildings/0001.bmp");
 
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
 
-        archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+        archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                            StateTags.HEALTH.getValue(), 0,
                                                                             500));
         archerState.addType("archerman");
 
         SelectableGameElementState archerState2 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 100, 2);
-        archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
-        archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
-        archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "RED");
+        archerState2.attributes.setNumericalAttribute(StateTags.HEALTH.getValue(), 100);
+        archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 0);
 
         archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
-        archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+        archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                            StateTags.HEALTH.getValue(), 0,
                                                                             1000));
         archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
-                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
+                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH.getValue(),StateTags.ATTACK.getValue(),"MAX_HEALTH","50","Random Timer"));
 
         SelectableGameElementState archerState3 =
+
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 2);
-        archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
+        archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");
+
         // Make the third archer spawn archers on collision 
-        archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
-        archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
+        archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), 500);
+        archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), 500);
 
         // archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
         // ActionOptions.INCREMENT_DECREMENT_ACTION,
@@ -123,8 +127,8 @@ public class ShittyMain extends Application {
 
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
-        archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+        archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                            StateTags.HEALTH.getValue(), 0,
                                                                             500));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
@@ -141,8 +145,8 @@ public class ShittyMain extends Application {
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
-        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
-        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 2000);
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 2000);
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
@@ -186,11 +190,11 @@ public class ShittyMain extends Application {
     private SelectableGameElementState createResource(double[] bounds, double x, double y, int teamID) throws Exception{
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
 //        archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
-        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
-        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
-        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), 50);
+        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 0);
         archerState.addType("resource");
 
         archerState.setBounds(bounds);
@@ -214,17 +218,17 @@ public class ShittyMain extends Application {
     private SelectableGameElementState createMiner (double[] bounds, double x, double y, int teamID) throws Exception{
         SelectableGameElementState minerState = new SelectableGameElementState(x, y);
 //        minerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
-        minerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
-        minerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        minerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
-        minerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
-        minerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
-        minerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
-        minerState.attributes.setNumericalAttribute(StateTags.HEALTH, 500);
-        minerState.attributes.setNumericalAttribute(StateTags.ATTACK, 75);
-        minerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
-        minerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
-        minerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 3);
+        minerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        minerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        minerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        minerState.attributes.setNumericalAttribute(StateTags.HEALTH.getValue(), 500);
+        minerState.attributes.setNumericalAttribute(StateTags.ATTACK.getValue(), 75);
+        minerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), 50);
+        minerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        minerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 3);
         minerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
         minerState.addAction(new ActionWrapper(ActionType.COLLISION,
@@ -238,10 +242,10 @@ public class ShittyMain extends Application {
         minerState
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
-                                             StateTags.HEALTH,
+                                             StateTags.HEALTH.getValue(),
                                              "LessThanEqual",
                                              "0",
-                                             StateTags.IS_DEAD, "EqualsAssignment", "1"));
+                                             StateTags.IS_DEAD.getValue(), "EqualsAssignment", "1"));
         // Update player direction
         minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
@@ -279,17 +283,17 @@ public class ShittyMain extends Application {
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)
                                                                                                      throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.HEALTH, 500);
-        archerState.attributes.setNumericalAttribute(StateTags.ATTACK, 75);
-        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
-        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
-        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.HEALTH.getValue(), 500);
+        archerState.attributes.setNumericalAttribute(StateTags.ATTACK.getValue(), 75);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), 50);
+        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
         archerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
         archerState.addAction(new ActionWrapper(ActionType.COLLISION,
@@ -307,10 +311,10 @@ public class ShittyMain extends Application {
         archerState
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
-                                             StateTags.HEALTH,
+                                             StateTags.HEALTH.getValue(),
                                              "LessThanEqual",
                                              "0",
-                                             StateTags.IS_DEAD, "EqualsAssignment", "1"));
+                                             StateTags.IS_DEAD.getValue(), "EqualsAssignment", "1"));
         // Update player direction
         archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
@@ -328,11 +332,11 @@ public class ShittyMain extends Application {
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION, "Follow"));
         archerState.addAction(new ActionWrapper(ActionType.BUTTON,
                                                 ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
-                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
-                                                "archer", StateTags.HEALTH, "Resources",
+                                                StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals", "1",
+                                                "archer", StateTags.HEALTH.getValue(), "Resources",
                                                 "ArcherSpawnCooldown", "1000"));
-        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
+        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), 100);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), 100);
 
         archerState.setBounds(bounds);
 

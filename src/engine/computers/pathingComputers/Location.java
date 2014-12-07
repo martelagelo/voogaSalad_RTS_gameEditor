@@ -2,15 +2,15 @@ package engine.computers.pathingComputers;
 /**
  * Simple Point2D clone for use in pathing calculations.
  * 
- * @author Steve
+ * @author Steve, Michael D.
  * @param <T>
  *
  */
 public class Location implements Comparable<Location>{
-    public double myX;
-    public double myY;
-    public double movementSpeedScalingFactor = 1;
-    public double priority;
+    private double myX;
+    private double myY;
+    private double movementSpeedScalingFactor = 1;
+    private double myPriority;
     
     public Location(double x, double y){
         myX = x;
@@ -18,7 +18,7 @@ public class Location implements Comparable<Location>{
     }
     
     public void setPriority(double priority){
-        this.priority = priority;
+        this.myPriority = priority;
     }
     
     @Override
@@ -42,6 +42,22 @@ public class Location implements Comparable<Location>{
 
     @Override
     public int compareTo (Location arg0) {
-        return (int) (this.priority - arg0.priority);
+        return (int) (this.myPriority - arg0.myPriority);
+    }
+    
+    public double getX() {
+    	return myX;
+    }
+    
+    public double getY() {
+    	return myY;
+    }
+    
+    public double getPriority() {
+    	return myPriority;
+    }
+    
+    public double getMovementSpeed() {
+    	return movementSpeedScalingFactor;
     }
 }

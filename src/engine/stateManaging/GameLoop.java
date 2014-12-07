@@ -69,14 +69,15 @@ public class GameLoop extends Observable {
      * Update the states of all prominent elements and aspects of the game
      */
     private void updateRunner () {
-        myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
+    	//For waypoint creation. Can Delete if we dont want the capability
+        //myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
         List<SelectableGameElement> elementsToRemove = new ArrayList<>();
         while (iter.hasNext()) {
             SelectableGameElement selectableElement = iter.next();
-            if (selectableElement.getNumericalAttribute(StateTags.IS_DEAD).doubleValue() == 1) {
+            if (selectableElement.getNumericalAttribute(StateTags.IS_DEAD.getValue()).doubleValue() == 1) {
                 elementsToRemove.add(selectableElement);
             }
         }
@@ -102,6 +103,8 @@ public class GameLoop extends Observable {
         myParticipantManager.update(myCurrentLevel.getUnits());
 
         // TODO: for testing, remove
+
+        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES.getValue(), 0.5);
 //        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();

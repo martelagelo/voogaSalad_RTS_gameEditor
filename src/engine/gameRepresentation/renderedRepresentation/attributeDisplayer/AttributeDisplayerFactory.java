@@ -9,7 +9,7 @@ import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplaye
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.
  * 
- * @author Zach, Stanley
+ * @author Zach, Michael D., Stanley
  *
  */
 public class AttributeDisplayerFactory {
@@ -29,13 +29,12 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
-		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
-					+ attributeDisplayerState.displayerTag);
+			c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
+					+ attributeDisplayerState.getDisplayerTag().getValue());
 		} catch (ClassNotFoundException e) {
 			// fail silently
-			//e.printStackTrace();
 		}
-		if (attributeDisplayerState.myTextValue != null) {
+		if (attributeDisplayerState.getTextValue() != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
 					attachee);
 		} else {
@@ -53,14 +52,13 @@ public class AttributeDisplayerFactory {
 			displayer = (AttributeDisplayer) c.getDeclaredConstructor(
 					AttributeContainer.class, String.class, double.class,
 					double.class).newInstance(attachee,
-					attributeDisplayerState.parameterTag,
-					attributeDisplayerState.minAttributeValue,
-					attributeDisplayerState.maxAttributeValue);
+					attributeDisplayerState.getParameterTag(),
+					attributeDisplayerState.getMinValue(),
+					attributeDisplayerState.getMaxValue());
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
-			e.printStackTrace();
 		}
 		return displayer;
 	}
@@ -73,8 +71,8 @@ public class AttributeDisplayerFactory {
 			displayer = (AttributeDisplayer) c.getDeclaredConstructor(
 					AttributeContainer.class, String.class, String.class)
 					.newInstance(attachee,
-							attributeDisplayerState.parameterTag,
-							attributeDisplayerState.myTextValue);
+							attributeDisplayerState.getParameterTag(),
+							attributeDisplayerState.getTextValue());
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
