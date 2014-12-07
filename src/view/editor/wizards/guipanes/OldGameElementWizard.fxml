@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+
+<SplitPane fx:id="root"
+	fx:controller="view.editor.wizards.SelectableGameElementWizard" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<ScrollPane fx:id="leftPane">
+			<VBox>
+				<TextField fx:id="name" />
+				<Button fx:id="trigger" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<VBox fx:id="existingTriggers">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</VBox>
+				<Button fx:id="stringAttribute" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<VBox fx:id="existingStringAttributes">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</VBox>
+				<Button fx:id="numberAttribute" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<VBox fx:id="existingNumberAttributes">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</VBox>
+
+				<Button fx:id="image" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="animation" defaultButton="true" text="Load Animation JSON">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="save" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Text fx:id="errorMessage" />
+			</VBox>
+		</ScrollPane>
+
+		<ScrollPane fx:id="imageScroll">
+			<Group fx:id="spritesheet" />
+		</ScrollPane>
+	</items>
+</SplitPane>

@@ -37,6 +37,12 @@
 						</maxWidth>
 					</Button>
 					<VBox fx:id="existingNumberAttributes" />
+					<Button fx:id="widget" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
+					<VBox fx:id="existingWidgets" />
 					<Button fx:id="image" defaultButton="true">
 						<maxWidth>
 							<Double fx:constant="MAX_VALUE" />
