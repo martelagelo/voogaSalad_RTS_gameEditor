@@ -12,7 +12,7 @@ import model.exceptions.SaveLoadException;
 import util.ResourceBundleRetriever;
 
 public class ColorMapGenerator {
-    private String myColorMaskName = "colormasks.properties";
+    private String myColorMaskName = "colormaskschaboi.properties";
     private static final int RGB_LENGTH = 3;
     private ResourceBundle myBundle;
     private ResourceBundleRetriever myBundleRetriever;
@@ -21,13 +21,9 @@ public class ColorMapGenerator {
     public ColorMapGenerator () throws SaveLoadException {
         myColorMap = new HashMap<>();
         myBundleRetriever = new ResourceBundleRetriever();
-        try {
             // TODO: save the location outside of source
             myBundle = myBundleRetriever.getBundle(new File(
                     SpriteImageGenerator.RESOURCES_PROPERTIES_LOCATION + myColorMaskName));        
-        } catch (MalformedURLException e) {
-            throw new SaveLoadException("Unable to load resources", e);
-        }
     }
 
     public void populateColorMaskMap () throws SaveLoadException {

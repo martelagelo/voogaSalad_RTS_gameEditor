@@ -51,16 +51,10 @@ public class MainModel extends Observable {
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
-    public MainModel () {
-        try {
-            mySaveLoadMediator = new GameSaveLoadMediator();
-            mySpriteImageGenerator = new SpriteImageGenerator();
-            myModifiedContainer = new ModifiedContainer();
-        } catch (SaveLoadException e) {
-            System.out.println(mySpriteImageGenerator == null);
-            // TODO: Display error in View
-            e.printStackTrace();
-        }
+    public MainModel () throws SaveLoadException {
+        mySaveLoadMediator = new GameSaveLoadMediator();
+        mySpriteImageGenerator = new SpriteImageGenerator();
+        myModifiedContainer = new ModifiedContainer();
     }
 
     public void newGame (String gameName) {
@@ -80,10 +74,9 @@ public class MainModel extends Observable {
         try {
             // TODO: insert Save Load code here and instantiate myGameState
             myGameState = mySaveLoadMediator.loadGame(game);
-        }
-        catch (SaveLoadException e) {
-             DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-             .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+        } catch (SaveLoadException e) {
+            DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+                    .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
 
         loadSpritesAndMasks();
@@ -96,7 +89,7 @@ public class MainModel extends Observable {
                 .getDrawableGameElementStates();
         Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
                 .getSelectableGameElementStates();
-        
+
         Set<AnimatorState> animatorStates = new HashSet<>();
         for (DrawableGameElementState dges : drawableStates) {
             animatorStates.add(dges.myAnimatorState);
@@ -256,7 +249,8 @@ public class MainModel extends Observable {
     }
 
     public void removeDrawableGameElement (String elementName) throws ElementInUseException {
-        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
+        if (elementIsInUse(elementName))
+            throw new ElementInUseException(elementName);
         Optional<DrawableGameElementState> option = getGameUniverse()
                 .getDrawableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -267,7 +261,8 @@ public class MainModel extends Observable {
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
-        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
+        if (elementIsInUse(elementName))
+            throw new ElementInUseException(elementName);
         Optional<SelectableGameElementState> option = getGameUniverse()
                 .getSelectableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -280,11 +275,11 @@ public class MainModel extends Observable {
     private boolean elementIsInUse (String elementName) {
         List<GameElementState> allStates = new ArrayList<>();
         myGameState.getCampaigns().forEach((campaign -> {
-            campaign.getLevels().forEach((level)->{
-                allStates.addAll(level.getTerrain().stream().filter((terrain)->{
+            campaign.getLevels().forEach( (level) -> {
+                allStates.addAll(level.getTerrain().stream().filter( (terrain) -> {
                     return terrain.getName().equals(elementName);
                 }).collect(Collectors.toList()));
-                allStates.addAll(level.getUnits().stream().filter((unit)->{
+                allStates.addAll(level.getUnits().stream().filter( (unit) -> {
                     return unit.getName().equals(elementName);
                 }).collect(Collectors.toList()));
             });
