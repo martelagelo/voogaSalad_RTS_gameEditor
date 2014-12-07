@@ -707,7 +707,10 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer",
+                "archerman"
+              ]
             },
             {
               "AttributeDisplayerStates": [
@@ -1390,7 +1393,9 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer"
+              ]
             },
             {
               "AttributeDisplayerStates": [
@@ -1962,11 +1967,15 @@
                     "myActionType": "COLLISION"
                   },
                   {
-                    "myActionName": "CREATE_OBJECT_ACTION",
+                    "myActionName": "INCREMENT_DECREMENT_ACTION",
                     "myParameters": [
-                      "archer",
-                      "ArcherTimer",
-                      "500"
+                      "archerman",
+                      "health",
+                      "attack",
+                      "50",
+                      "health",
+                      "LeechTimer",
+                      "100"
                     ],
                     "myActionType": "COLLISION"
                   }
@@ -2082,7 +2091,9 @@
                   }
                 ]
               },
-              "myTypes": []
+              "myTypes": [
+                "archer"
+              ]
             }
           ],
           "myGoals": [
@@ -2095,7 +2106,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "200",
+                      "20000",
                       "Won",
                       "EqualsAssignment",
                       "1"
@@ -2891,7 +2902,10 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer",
+          "archerman"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -3574,7 +3588,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -4257,7 +4273,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       },
       {
         "AttributeDisplayerStates": [
@@ -4829,11 +4847,15 @@
               "myActionType": "COLLISION"
             },
             {
-              "myActionName": "CREATE_OBJECT_ACTION",
+              "myActionName": "INCREMENT_DECREMENT_ACTION",
               "myParameters": [
-                "archer",
-                "ArcherTimer",
-                "500"
+                "archerman",
+                "health",
+                "attack",
+                "50",
+                "health",
+                "LeechTimer",
+                "100"
               ],
               "myActionType": "COLLISION"
             }
@@ -4949,7 +4971,9 @@
             }
           ]
         },
-        "myTypes": []
+        "myTypes": [
+          "archer"
+        ]
       }
     ]
   },

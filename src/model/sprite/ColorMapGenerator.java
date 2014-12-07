@@ -29,7 +29,6 @@ public class ColorMapGenerator {
         } catch (MalformedURLException e) {
             throw new SaveLoadException("Unable to load resources", e);
         }
-
     }
 
     private void populateColorMaskMap () throws SaveLoadException {

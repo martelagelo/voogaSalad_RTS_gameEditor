@@ -87,9 +87,9 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-        
+        String backgroundURI = "resources/img/graphics/terrain/grass/GrassTile.jpg";
         myVisualManager =
-                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight());
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundURI);
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
 
