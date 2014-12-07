@@ -1,5 +1,9 @@
 package model.state.gameelement;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 
 /**
  * An enumeration to allow for the important tags of states.
@@ -9,13 +13,13 @@ package model.state.gameelement;
  */
 // TODO move this into a config file or equivalent, UPDATE COMMENTS
 public enum StateTags {
-    
+
     NAME(StateType.STRING, "name"),
     TYPE(StateType.STRING, "type"),
     TEAM_COLOR(StateType.STRING, "teamColor"),
     CURRENT_ACTION(StateType.STRING, "currentAction"), // TODO: attack, die, decay, gather??
     ATTRIBUTE_DESCRIPTION(StateType.STRING, "attributeDescription"),
-    
+
     X_POSITION(StateType.NUMBER, "xPosition"),
     Y_POSITION(StateType.NUMBER, "yPosition"),
     X_VELOCITY(StateType.NUMBER, "xVelocity"),
@@ -39,32 +43,47 @@ public enum StateTags {
     SUPPORTS_RANGED_ATTACK(StateType.NUMBER, "supportsRangedAttack"),
     LAST_BUTTON_CLICKED_ID(StateType.NUMBER, "lastButtonID"),
     RESOURCES(StateType.NUMBER, "resources");
-    
+
     private StateType myType;
     private String myValue;
-    
+
     private StateTags (StateType type, String value) {
         myType = type;
         myValue = value;
     }
-    
-    public StateType getType() {
+
+    public StateType getType () {
         return myType;
     }
-    
-    public String getValue(){
+
+    public String getValue () {
         return myValue;
     }
 
     public enum StateType {
         STRING, NUMBER
     }
-    
-    
 
-    
-    
+    private static Set<StateTags> getAttributes () {
+        return Arrays.asList(StateTags.values())
+                .stream().collect(Collectors.toSet());
+    }
 
+    public static Set<String> getAllAttributes () {
+        return getAttributes().stream().map(tag -> tag.getValue()).collect(Collectors.toSet());
+    }
+
+    private static Set<String> filterByType (StateType type) {
+        return getAttributes().stream().filter(tag -> tag.getType().equals(type))
+                .map(tag -> tag.getValue()).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getAllNumericalAttributes () {
+        return filterByType(StateType.NUMBER);
+    }
+
+    public static Set<String> getAllTextualAttributes () {
+        return filterByType(StateType.STRING);
+    }
 
 }
-

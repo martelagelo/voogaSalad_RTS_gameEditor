@@ -1,11 +1,9 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -86,9 +84,7 @@ public class ActionWizard extends Wizard {
         actionChoice.valueProperty()
                 .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
         dropdowns = new ArrayList<>();
-        attributes = Arrays.asList(StateTags.values())
-                .stream().map(tag -> tag.getValue())
-                .collect(Collectors.toSet());
+        attributes = StateTags.getAllAttributes();
         numberDropdowns = new ArrayList<>();
     }
 
@@ -106,14 +102,14 @@ public class ActionWizard extends Wizard {
                 cb.setItems(FXCollections.observableArrayList(
                         actionParameters.get(parameterIndex).getOptions()
                         ));
-                cb.setPromptText(actionParameters.get(parameterIndex).name());
-                cb.setEditable(cb.getItems().size() == 0);
+                cb.setPromptText(actionParameters.get(parameterIndex).name());                
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
                     cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
-                }
+                }                
                 else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
                     numberDropdowns.add(cb);
                 }
+                cb.setEditable(cb.getItems().size() == 0);
                 parameterIndex++;
                 dropdowns.add(cb);
                 options.getChildren().add(cb);
