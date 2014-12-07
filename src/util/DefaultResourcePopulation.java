@@ -3,9 +3,9 @@ package util;
 import java.io.File;
 import java.io.IOException;
 
-import model.exceptions.SaveLoadException;
-
 import org.apache.commons.io.FileUtils;
+
+import util.exceptions.SaveLoadException;
 
 /**
  * Class to perform copying of default library resources to game
