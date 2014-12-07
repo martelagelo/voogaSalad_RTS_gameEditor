@@ -3,8 +3,11 @@ package model.state.gameelement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import util.JSONable;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 
@@ -14,15 +17,16 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
  * representation. Examples include triggers and goals. States are essentially
  * data-wrapping objects and as such have no internal logic.
  * 
- * @author Steve, Jonathan, Rahul, Nishad, Zach
+ * @author Steve, Jonathan, Rahul, Nishad, Zach, Michael D.
  *
  */
 
-public  class  GameElementState  implements  JSONable , Serializable {
+public class GameElementState implements JSONable, Serializable {
     /**
      * 
      */
-    private  static  final  long serialVersionUID =  6832117170246376287L ;
+
+    private static final long serialVersionUID = 6832117170246376287L;
 
     /**
      * The actions for a given game element state will be stored in a map of
@@ -44,38 +48,62 @@ public  class  GameElementState  implements  JSONable , Serializable {
      */
     public AttributeContainer attributes;
 
+    public Set<String> myTypes;
+
     /**
      * Initialize the game element state and its internal data structures.
      */
-    public  GameElementState () {
+    public GameElementState () {
         attributes = new AttributeContainer();
         myActions = new HashMap<String, List<ActionWrapper>>();
+        myTypes = new HashSet<String>();
     }
 
     /**
      * @return the name of the element, if it has been set
      */
-    public  String  getName () {
+    public String getName () {
         return attributes.getTextualAttribute(StateTags.NAME);
     }
 
     /**
-     *
-     * @return the type of the element, if it has been set
+     * Adds a type to a set of types
+     * 
+     * @param type The new type
      */
-    public String getType () {
-        return attributes.getTextualAttribute(StateTags.TYPE);
+    public void addType (String type) {
+        myTypes.add(type);
+    }
+
+    /**
+     * @return A list of the types
+     */
+    public List<String> getTypes () {
+        return new ArrayList<String>(myTypes);
+    }
+
+    /**
+     * 
+     * @param typeString The type we want to check
+     * @return True if the type set contains typeString
+     */
+    public boolean isType (String typeString) {
+        return myTypes.contains(typeString);
+    }
+
+    public void deleteTypes (String typeString) {
+        myTypes.remove(typeString);
     }
 
     /**
      * Add a string condition-action pair to the game element state
      * 
      * param actionType
-     *        the type of the action being added
+     * the type of the action being added
      * param actionString
-     *        a Vscript string representation of the action
+     * a Vscript string representation of the action
      */
-    public  void  addAction ( ActionWrapper  action ) {
+    public void addAction (ActionWrapper action) {
         if (!myActions.containsKey(action.getActionType())) {
             myActions.put(action.getActionType(), new ArrayList<>());
         }
@@ -83,9 +111,10 @@ public  class  GameElementState  implements  JSONable , Serializable {
     }
 
     /**
-     * Grabs all actions for use in evaluatable factory. Exposing the collection is in this case
-     * necessary for use by the factory as the element states are essentially data wrappers that are
-     * only used in the creation of objects by the factory
+     * Grabs all actions for use in evaluatable factory. Exposing the collection
+     * is in this case necessary for use by the factory as the element states
+     * are essentially data wrappers that are only used in the creation of
+     * objects by the factory
      * 
      * @return
      */

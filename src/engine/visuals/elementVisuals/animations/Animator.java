@@ -3,17 +3,23 @@ package engine.visuals.elementVisuals.animations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Updatable;
 import engine.visuals.Dimension;
+
 
 /**
  * An animation player that allows for the playing of animations using a given
@@ -41,26 +47,26 @@ public class Animator implements Updatable {
      * Initialize the player
      *
      * @param spriteSheet
-     *            the image containing the spritesheet
+     *        the image containing the spritesheet
      * @param tileSize
-     *            a point2D containing the width(x) and height(y) of each frame
-     *            in the spritesheet
+     *        a point2D containing the width(x) and height(y) of each frame
+     *        in the spritesheet
      * @param numCols
-     *            the number of columns across the spritesheet goes before
-     *            moving to the next row
+     *        the number of columns across the spritesheet goes before
+     *        moving to the next row
      */
     public Animator (SpriteImageContainer images, AnimatorState state, AttributeContainer attributes) {
         myImages = images;
         myState = state;
         attributesOfInterest = attributes;
-        Image spritesheet = myImages.getSpritesheet();
-        mySpritesheetBounds = getImageBounds(spritesheet);
-        mySprite = new ImageView(spritesheet);
+        mySprite = myImages.getSpritesheet();
+        mySpritesheetBounds = getImageBounds(mySprite.getImage());
+        // mySprite = new ImageView(spritesheet);
         String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
-        mySpriteTeamOverlay = new ImageView(myImages.getTeamColorSheet(teamColor));
+        mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         mySpriteDisplay = new Group();
-        mySpriteDisplay.getChildren().add(mySprite);
         mySpriteDisplay.getChildren().add(mySpriteTeamOverlay);
+        mySpriteDisplay.getChildren().add(mySprite);
         currentDirection = new ArrayList<>();
         currentDirection.add(AnimationTag.FORWARD);
         myCurrentAnimation = new NullAnimationSequence();
@@ -88,9 +94,7 @@ public class Animator implements Updatable {
         determineCorrectAnimation();
         myCurrentAnimation.update();
         Rectangle2D viewport = getViewport(myCurrentAnimation.getFrame());
-        if (!mySpritesheetBounds.contains(viewport)){
-            return false;
-    	}
+        if (!mySpritesheetBounds.contains(viewport)) { return false; }
         mySprite.setViewport(viewport);
         mySpriteTeamOverlay.setViewport(viewport);
         return true;
@@ -113,7 +117,7 @@ public class Animator implements Updatable {
                 .doubleValue();
         double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY)
                 .doubleValue();
-        
+
         if (xVelocity != 0.0 || yVelocity != 0.0) {
             currentDirection.clear();
             if (yVelocity != 0.0) {
@@ -139,14 +143,18 @@ public class Animator implements Updatable {
 
         if (velocity != 0) {
             return AnimationTag.MOVE;
-        } else {
+        }
+        else {
             if (isDecaying) {
                 return AnimationTag.DECAY;
-            } else if (isDying) {
+            }
+            else if (isDying) {
                 return AnimationTag.DIE;
-            } else if (isAttacking) {
+            }
+            else if (isAttacking) {
                 return AnimationTag.ATTACK;
-            } else {
+            }
+            else {
                 return AnimationTag.STAND;
             }
         }
@@ -159,12 +167,14 @@ public class Animator implements Updatable {
     private Rectangle2D getViewport (int frameNumber) {
         int colNumber = frameNumber / myState.getNumRows();
         int rowNumber = frameNumber % myState.getNumRows();
-        return new Rectangle2D(colNumber * myState.getViewportSize().getWidth(), rowNumber
-                * myState.getViewportSize().getHeight(), myState.getViewportSize().getWidth(),
-                myState.getViewportSize().getHeight());
+        return new Rectangle2D(colNumber * myState.getViewportSize().getWidth(),
+                               rowNumber
+                                       * myState.getViewportSize().getHeight(), myState
+                                       .getViewportSize().getWidth(),
+                               myState.getViewportSize().getHeight());
     }
-    
-    public Dimension getViewportSize(){
-    	return myState.getViewportSize();
+
+    public Dimension getViewportSize () {
+        return myState.getViewportSize();
     }
 }

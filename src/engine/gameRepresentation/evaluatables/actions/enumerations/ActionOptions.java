@@ -48,8 +48,57 @@ public enum ActionOptions {
     CREATE_OBJECT_ACTION(
                          "Create Object",
                          "CreateObjectAction",
-                         "Create a # at my spawn location.",
-                         ActionParameters.STRING);
+                         "Create a # at my spawn location with a cooldown timer named # with a value of # frames.",
+                         ActionParameters.STRING,
+                         ActionParameters.STRING,
+                         ActionParameters.NUMBER),
+    PLAYER_ATTRIBUTE_CONDITION(
+                               "Player Stats Check",
+                               "PlayerStatsCheckAction",
+                               "If # attribute # is # #, make the attribute # # #",
+                               ActionParameters.PLAYER_TYPE,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER,
+                               ActionParameters.ATTR,
+                               ActionParameters.NN_EVAL,
+                               ActionParameters.NUMBER),
+    // TODO make this use the type evaluator
+    OBJECT_LOCATION_DETECTION(
+                              "Object Location Check",
+                              "ObjectLocationCheckAction",
+                              "If # object of type # is at the location #,#",
+                              ActionParameters.PLAYER_TYPE,
+                              ActionParameters.STRING,
+                              ActionParameters.NUMBER,
+                              ActionParameters.NUMBER),
+    CHECK_CONDITION_CREATE_OBJECT_ACTION(
+                                         "Check attribute create object",
+                                         "CheckAttributeCreateObjectAction",
+                                         "If my attribute # value # # then create object # with a spawn cooldown timer named # with cooldown # frames",
+                                         ActionParameters.ATTR,
+                                         ActionParameters.NN_EVAL,
+                                         ActionParameters.NUMBER,
+                                         ActionParameters.STRING,
+                                         ActionParameters.STRING,
+                                         ActionParameters.NUMBER),
+    INCRIMENT_DECRIMENT_ACTION(
+                               "Decriment object's attribute and add it to mine",
+                               "DecrimentIncrimentAttributeAction",
+                               "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to my # with a cooldown timer named # with a value of # frames.",
+                               ActionParameters.STRING,
+                               ActionParameters.ATTR,
+                               ActionParameters.ATTR,
+                               ActionParameters.NUMBER,
+                               ActionParameters.STRING,
+                               ActionParameters.NUMBER),
+    ATTRIBUTE_INTERACTION_ACTION("Change an attribute of the player based on my attribute",
+                                 "PlayerAttributeInteractionAction",
+                                 "# my # attribute to #(my/another player's) # attribute",
+                                 ActionParameters.NN_EVAL,
+                                 ActionParameters.ATTR,
+                                 ActionParameters.STRING,
+                                 ActionParameters.ATTR);
 
     private String myClassName;
     private String myDisplayName;

@@ -1,6 +1,7 @@
 package engine.computers.boundsComputers;
 
 import engine.computers.Computer;
+import engine.computers.objectClassifications.InteractingElementType;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.evaluators.Collision;
 import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
@@ -62,7 +63,7 @@ public class CollisionComputer extends
         if (listToAdd.size() > 0) {
         }
         ((SelectableGameElement) primaryObject)
-                .addInteractingElements("colliding", listToAdd.stream()
+                .addInteractingElements(InteractingElementType.COLLIDING, listToAdd.stream()
                         .map(element -> (DrawableGameElement) element)
                         .collect(Collectors.toList()));
     }

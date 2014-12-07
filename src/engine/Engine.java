@@ -8,7 +8,6 @@ import model.MainModel;
 import model.exceptions.DescribableStateException;
 import model.state.LevelState;
 import org.json.JSONException;
-import application.ShittyMain;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
@@ -51,12 +50,14 @@ public class Engine extends Observable implements Observer {
 
     private HumanParticipant myUser;
 
+    private boolean gameWon = false;
+
     public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
         myLevelState = levelState;
         // TODO fix this so it isn't null
-        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null);
+        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
         myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
         myElementFactory =
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
@@ -77,24 +78,27 @@ public class Engine extends Observable implements Observer {
     }
 
     private void instantiateManagers () {
-        // TODO hard-coding the visual representation for now, should remove
-        // this dependency
-        myVisualManager =
-                new VisualManager(new Group(), ShittyMain.shittyWidth,
-                                  ShittyMain.shittyWidth);
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
+        myParticipantManager = new ParticipantManager(myUser, myElementManager);
+        myEvaluatableFactory.setParticipantManager(myParticipantManager);
         // The next level needs to then be created
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
+        
+        myVisualManager =
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight());
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
 
         myGameLoop =
                 new GameLoop(nextLevel, myVisualManager,
                              myElementManager, myParticipantManager);
+        // to notify engine when level is finished
+        myGameLoop.addObserver(this);
+
         nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
         myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
         myVisualManager.attachInputManager(myInputManager);
@@ -111,10 +115,25 @@ public class Engine extends Observable implements Observer {
 
     @Override
     public void update (Observable observable, Object arg) {
-        // TODO: decide if we need Engine to be observer still
-        // TODO utilize or delete the inputs to this method
+        if (observable instanceof GameLoop) {
+            gameWon = ((int) arg) > 0;
+            this.pause();
+            System.out.println("Game is over! \n   Game won? " + gameWon);
+            // TODO:something with this... display it?
+            myUser.getAttributes();
+            updateObservers();
+        }
     }
 
+    /**
+     * called only when game is won
+     */
+    private void updateObservers () {
+        setChanged();
+        notifyObservers(myUser.getAttributes());
+        clearChanged();
+    }
+    
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }

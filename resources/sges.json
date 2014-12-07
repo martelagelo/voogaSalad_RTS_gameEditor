@@ -1,4 +1,5 @@
 {
+  "AttributeDisplayerStates": [],
   "myBounds": [
     0.0,
     0.0,
@@ -10,35 +11,49 @@
     40.0
   ],
   "myActions": {
-    "collision": [
+    "Button": [
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+        "myParameters": [
+          "lastButtonID",
+          "Equals",
+          "1",
+          "archer",
+          "ArcherSpawnCooldown",
+          "200"
+        ],
+        "myActionType": "BUTTON"
+      }
+    ],
+    "Collision": [
+      {
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "NotCollision",
           "RandomWaypoint"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       },
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "Collision",
           "Attack"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       },
       {
-        "myActionName": "ObjectConditionAction",
+        "myActionName": "OBJECT_CONDITION_ACTION",
         "myParameters": [
           "Collision",
           "MoveBack"
         ],
-        "myActionType": "collision"
+        "myActionType": "COLLISION"
       }
     ],
-    "InternalActions": [
+    "Internal": [
       {
-        "myActionName": "CheckAttributeSetAttributeAction",
+        "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
         "myParameters": [
           "health",
           "LessThanEqual",
@@ -47,28 +62,37 @@
           "EqualsAssignment",
           "1"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "UpdateMovementDirection"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "MovePlayer"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
       },
       {
-        "myActionName": "ActOnObjectsAction",
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
         "myParameters": [
           "HeadingUpdate"
         ],
-        "myActionType": "InternalActions"
+        "myActionType": "INTERNAL"
+      }
+    ],
+    "Focused Element": [
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "Follow"
+        ],
+        "myActionType": "FOCUSED"
       }
     ]
   },
@@ -81,14 +105,6 @@
       {
         "myData": 50,
         "myName": "ReloadTime"
-      },
-      {
-        "myData": 75,
-        "myName": "attack"
-      },
-      {
-        "myData": 1,
-        "myName": "teamID"
       },
       {
         "myData": 300.0,
@@ -115,8 +131,24 @@
         "myName": "movementSpeed"
       },
       {
+        "myData": 100,
+        "myName": "XSpawnOffset"
+      },
+      {
         "myData": 300.0,
         "myName": "yTempGoalPosition"
+      },
+      {
+        "myData": 75,
+        "myName": "attack"
+      },
+      {
+        "myData": 1,
+        "myName": "teamID"
+      },
+      {
+        "myData": 100,
+        "myName": "YSpawnOffset"
       }
     ],
     "myTextualAttributes": [
@@ -125,5 +157,6 @@
         "myName": "currentAction"
       }
     ]
-  }
+  },
+  "myTypes": []
 }

@@ -1,10 +1,14 @@
 package engine.visuals;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.scene.Group;
+import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
+import engine.users.Participant;
 
 
 /**
@@ -20,6 +24,7 @@ public class VisualManager {
     private ScrollablePane scene;
     private ScrollableBackground background;
     private MiniMap myMiniMap;
+    private AbilityMatrix myAbilityMatrix;
     private Group root;
     private ParticipantManager myParticipantManager;
 
@@ -28,17 +33,19 @@ public class VisualManager {
      * 
      * @param gameObjectVisuals the group for initial objects on the map. If no objects yet exist,
      *        add an empty new Group()
-     * @param screenWidth the width of the screen to create
-     * @param screenHeight the height of the screen to create
+     * @param fieldWidth the width of the map to create
+     * @param fieldHeight the height of the map to create
      */
     public VisualManager (Group gameObjectVisuals,
-                          double screenWidth,
-                          double screenHeight) {
-        scene = new ScrollablePane(gameObjectVisuals, screenWidth, screenHeight);
+                          double fieldWidth,
+                          double fieldHeight) {
+        scene = new ScrollablePane(gameObjectVisuals, fieldWidth, fieldHeight);
         background = scene.getScrollingBackground();
         myMiniMap = new MiniMap(scene);
         scene.addToScene(new Group(myMiniMap.getDisplay()));
         root = gameObjectVisuals;
+        myAbilityMatrix = new AbilityMatrix(scene.widthProperty(), scene.heightProperty());
+        scene.addToScene(new Group(myAbilityMatrix.getNode()));
     }
 
     /**
@@ -60,6 +67,21 @@ public class VisualManager {
         // map
         scene.update();
         myMiniMap.updateMiniMap(list);
+        SelectableGameElement e = findFirstSelectedElement(list, myParticipantManager.getUser());
+        Map<Integer, String> map =
+                e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES)
+                         : new HashMap<>();
+        myAbilityMatrix.updateGridImages(map);
+    }
+
+    private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
+                                                            Participant user) {
+        for (SelectableGameElement e : list) {
+            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+                if (e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1) { return e; }
+            }
+        }
+        return null;
     }
 
     /**
@@ -100,8 +122,10 @@ public class VisualManager {
         return background;
     }
 
-    public void attachInputManager (RunnerInputManager myInputManager) {
-        scene.attachInputManager(myInputManager);
+    public void attachInputManager (RunnerInputManager inputManager) {
+        scene.attachInputManager(inputManager);
+        myAbilityMatrix.attachInputManager(inputManager);
+
     }
 
     public void attachParticipantManager (ParticipantManager participantManager) {

@@ -40,6 +40,24 @@ public class ParticipantManager {
     }
 
     /**
+     * Get the current manager's users
+     * 
+     * @return
+     */
+    public Participant getUser () {
+        return humanUser;
+    }
+
+    /**
+     * Get the current manager's AI
+     * 
+     * @return
+     */
+    public List<Participant> getAI () {
+        return new ArrayList<>(myAIUsers);
+    }
+
+    /**
      * Determines AI actions to take on each frame. Functions as a finite state machine
      * in that each action the AI takes is based on the current situation of the game
      * 
@@ -47,7 +65,7 @@ public class ParticipantManager {
      */
     public void update (List<SelectableGameElement> allUnits) {
 
-        player1Resources.set(humanUser.getAttributes().getNumericalAttribute("Resources")
+        player1Resources.set(humanUser.getAttributes().getNumericalAttribute(StateTags.RESOURCES)
                 .intValue() +
                              "");
 
@@ -60,7 +78,7 @@ public class ParticipantManager {
             boolean containsID =
                     myAIUsers.stream().filter(e -> e.checkSameTeam(ID))
                             .collect(Collectors.toList()).size() > 0;
-            if (!containsID && ID!=1) {
+            if (!containsID && ID != 1) {
                 myAIUsers.add(new AIParticipant(ID, "AI" + ID));
             }
         }
@@ -74,8 +92,8 @@ public class ParticipantManager {
                             .doubleValue())).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
-                    e.addWaypoint(r.nextDouble() * ScrollablePane.FIELD_WIDTH,
-                                 r.nextDouble() * ScrollablePane.FIELD_HEIGHT);
+                    e.addWaypoint(e.getPosition().getX() * r.nextDouble() * 2, e.getPosition()
+                            .getY() * r.nextDouble() * 2);
                 }
 
             }

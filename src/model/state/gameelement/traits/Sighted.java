@@ -12,4 +12,10 @@ public interface Sighted {
      */
     public double[] getVisionBounds ();
 
+    /**
+     * Sets the vision bounds of the sighted object
+     * 
+     * @param bounds a double array of a polygon outline
+     */
+    public void setVisionBounds (double[] bounds);
 }

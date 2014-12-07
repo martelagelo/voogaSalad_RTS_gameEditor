@@ -50,7 +50,7 @@ public class RunnerInputManager implements InputManager {
     	
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
-        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
@@ -74,6 +74,15 @@ public class RunnerInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // TODO: implement and pass key presses to GameElementManager
+        String c = e.getCharacter();
+        System.out.println("key pressed: "+c);
+        if("p".equals(c)){
+            myGameLoop.pause();
+        }
+        if("o".equals(c)){
+            myGameLoop.play();
+        }
+        
     }
 
     @Override
@@ -87,9 +96,8 @@ public class RunnerInputManager implements InputManager {
     }
 
     @Override
-    public void screenButtonClicked (String imagePath, int index) {
-        // TODO: implement once buttons are created and call this from ScrollablePane
-        // will manage abilities and menu button clicks
+    public void screenButtonClicked (int buttonID) {
+        myElementManager.notifyButtonClicked(buttonID, myUser);
     }
 
 }

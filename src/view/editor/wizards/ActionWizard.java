@@ -1,7 +1,10 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -33,6 +36,9 @@ public class ActionWizard extends Wizard {
     private VBox options;
 
     private List<ComboBox<String>> dropdowns;
+    
+    private List<String> attributes;
+    private List<ComboBox<String>> numberDropdowns; 
 
     @Override
     public boolean checkCanSave () {
@@ -46,6 +52,11 @@ public class ActionWizard extends Wizard {
         for (ComboBox<String> box : dropdowns) {
             if (box.getSelectionModel().getSelectedItem() == null ||
                 box.valueProperty().getValue() == null) { return false; }
+        }
+        for (ComboBox<String> numberInput: numberDropdowns) {
+            if (!Pattern.matches(NUM_REGEX, numberInput.getSelectionModel().getSelectedItem())) {
+                return false;
+            }
         }
         return true;
     }
@@ -75,6 +86,8 @@ public class ActionWizard extends Wizard {
         actionChoice.valueProperty()
                 .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
         dropdowns = new ArrayList<>();
+        attributes = new ArrayList<>();
+        numberDropdowns = new ArrayList<>();
     }
 
     private void buildOptionedString (ActionOptions actionOption) {
@@ -84,6 +97,7 @@ public class ActionWizard extends Wizard {
         List<ActionParameters> actionParameters = actionOption.getOperators();
         options.getChildren().clear();
         dropdowns.clear();
+        numberDropdowns.clear();
         for (String s : splitOnOptions) {
             if (s.equals(EE_DELIMITER)) {
                 ComboBox<String> cb = new ComboBox<String>();
@@ -92,6 +106,12 @@ public class ActionWizard extends Wizard {
                         ));
                 cb.setPromptText(actionParameters.get(parameterIndex).name());
                 cb.setEditable(cb.getItems().size() == 0);
+                if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
+                    cb.setItems(FXCollections.observableList(attributes));
+                }
+                else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
+                    numberDropdowns.add(cb);                    
+                }
                 parameterIndex++;
                 dropdowns.add(cb);
                 options.getChildren().add(cb);
@@ -106,10 +126,14 @@ public class ActionWizard extends Wizard {
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        actionType.getSelectionModel().select(ActionType.valueOf(oldValues
-                .getValueByKey(WizardDataType.ACTIONTYPE)));
-        actionChoice.getSelectionModel().select(ActionOptions.valueOf(oldValues
-                .getValueByKey(WizardDataType.ACTION)));
+        actionType.getSelectionModel().select(Arrays.asList(ActionType.values()).stream()
+                                .filter(type -> type.toString().equals(oldValues.
+                                        getValueByKey(WizardDataType.ACTIONTYPE)))
+                                .collect(Collectors.toList()).get(0));
+        actionChoice.getSelectionModel().select(Arrays.asList(ActionOptions.values()).stream()
+                                              .filter(type -> type.getClassString().equals(oldValues.
+                                                      getValueByKey(WizardDataType.ACTION)))
+                                              .collect(Collectors.toList()).get(0));
         String[] params = oldValues.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
         for (int i = 0; i < dropdowns.size(); i++) {
             dropdowns.get(i).getSelectionModel().select(params[i]);
@@ -118,6 +142,6 @@ public class ActionWizard extends Wizard {
 
     @Override
     public void loadGlobalValues (List<String> values) {
-        // do nothing
+        attributes.addAll(values);
     }
 }

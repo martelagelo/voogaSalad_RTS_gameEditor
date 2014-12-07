@@ -54,7 +54,7 @@ public class NullInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // do nothing
-        //System.out.println("Null Input Manager");
+        System.out.println("Null Input Manager");
     }
 
     @Override
@@ -70,7 +70,7 @@ public class NullInputManager implements InputManager {
     }
 
     @Override
-    public void screenButtonClicked (String imagePath, int index) {
+    public void screenButtonClicked (int buttonID) {
         // do nothing
         //System.out.println("Null Input Manager");
     }

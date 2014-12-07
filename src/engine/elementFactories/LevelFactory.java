@@ -62,7 +62,7 @@ public class LevelFactory {
                                           Number levelWidth,
                                           List<DrawableGameElement> terrain,
                                           List<SelectableGameElement> units) {
-        MapGrid newGrid = new MapGrid(levelHeight, levelWidth);
+        MapGrid newGrid = new MapGrid(levelWidth, levelHeight);
         updateGridForObstacles(terrain, units, newGrid);
         return newGrid;
     }

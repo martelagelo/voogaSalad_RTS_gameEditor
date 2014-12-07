@@ -1,5 +1,6 @@
 package view.splash;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -15,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import model.exceptions.SaveLoadException;
-import util.JSONableList;
+import util.JSONableSet;
 import util.SaveLoadUtility;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
@@ -71,9 +72,9 @@ public class SplashScreen extends GUIScreen {
     @Override
     public void init () {
         try {
-            JSONableList<String> games = SaveLoadUtility.loadResource(JSONableList.class,
+            JSONableSet<String> games = SaveLoadUtility.loadResource(JSONableSet.class,
                                                                       EXISTING_GAMES);
-            gameDropDown.setItems(FXCollections.observableList(games));
+            gameDropDown.setItems(FXCollections.observableList(new ArrayList<>(games)));
         }
         catch (SaveLoadException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
@@ -159,7 +160,7 @@ public class SplashScreen extends GUIScreen {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         // Splash Screen has no need to update
     }
 

@@ -3,6 +3,7 @@ package engine.stateManaging;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -24,9 +25,9 @@ import engine.visuals.VisualManager;
 /**
  * The main loop for running the game, checking for collisions, and updating game entities
  *
- * @author Michael D., John, Steve, Zach
+ * @author Michael D., John L., Steve, Zach
  **/
-public class GameLoop {
+public class GameLoop extends Observable{
     public static final Double framesPerSecond = 60.0;
     private Level myCurrentLevel;
     private GameElementManager myManager;
@@ -85,7 +86,7 @@ public class GameLoop {
         // Clears all path lines from the GUI
         clearLinesFromRoot();
         // Adds needed path lines to the GUI
-        // addPathsToRoot();
+         addPathsToRoot();
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -118,9 +119,13 @@ public class GameLoop {
         myParticipantManager.update(myCurrentLevel.getUnits());
 
         // TODO: for testing, remove
-        myParticipantManager.adjustParticipantNumericalAttribute(1, "Resources", 0.5);
+        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
+        if(levelEndState!=0){
+            setChanged();
+            this.notifyObservers(levelEndState);
+        }
     }
 
     private void addPathsToRoot () {

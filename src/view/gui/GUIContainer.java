@@ -5,8 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import model.MainModel;
 import javafx.fxml.FXML;
+import model.MainModel;
+import model.state.gameelement.AttributeContainer;
+
 
 /**
  * Superclass for any GUI pane that holds sub guipanes and needs to delegate
@@ -16,7 +18,7 @@ import javafx.fxml.FXML;
  * @author Jonathan Tseng
  *
  */
-public abstract class GUIContainer implements Observer, GUIController {
+public abstract class GUIContainer extends Observable implements Observer, GUIController {
 
     protected MainModel myMainModel;
     private List<GUIContainer> myChildContainers;
@@ -37,7 +39,7 @@ public abstract class GUIContainer implements Observer, GUIController {
         });
     }
 
-    protected void attachChildContainers (GUIContainer... children) {
+    protected void attachChildContainers (GUIContainer ... children) {
         myChildContainers.addAll(new ArrayList<>(Arrays.asList(children)));
         myChildContainers.forEach( (child) -> {
             child.setModel(myMainModel);
@@ -50,10 +52,19 @@ public abstract class GUIContainer implements Observer, GUIController {
 
     @Override
     public final void update (Observable o, Object arg) {
-        update();
+        if (o instanceof MainModel) {
+            modelUpdate();
+        }
+        else { // o instanceof Engine
+            engineUpdate((AttributeContainer) arg);
+        }
         myChildContainers.forEach( (child) -> child.update(o, arg));
     }
 
-    public abstract void update ();
+    public void engineUpdate (AttributeContainer attributes) {
+        // default implementation: do nothing
+    }
+
+    public abstract void modelUpdate ();
 
 }

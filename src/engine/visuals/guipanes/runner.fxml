@@ -14,7 +14,7 @@
 	minHeight="750" maxHeight="750">
 	<bottom>
 		<HBox>
-				<GridPane fx:id="buttonTray" alignment="center" hgap="0" vgap="0" minWidth="341">
+				<GridPane fx:id="buttonTray" alignment="center" hgap="0" vgap="0" minWidth="341" xmlns:fx="http://javafx.com/fxml">
 					<Button GridPane.rowIndex="0" GridPane.columnIndex="0">
            			</Button>
            			<Button GridPane.rowIndex="1" GridPane.columnIndex="0">

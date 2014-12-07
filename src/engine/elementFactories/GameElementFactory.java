@@ -1,6 +1,7 @@
 package engine.elementFactories;
 
-import java.util.ResourceBundle;
+import java.util.List;
+import java.util.Map.Entry;
 import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -8,6 +9,8 @@ import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.actions.ActionFactory;
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
 import engine.gameRepresentation.renderedRepresentation.DrawableGameElement;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
@@ -19,12 +22,11 @@ import engine.visuals.elementVisuals.Visualizer;
  * Factory that takes in GameElementStates and generates their JavaFX representations as well as
  * their Evaluatables, then packs it all into the rendered wrapper used in the engine.
  * 
- * @author Steve
+ * @author Steve, Stanley
  *
  */
 public class GameElementFactory {
 
-    public static final String ACTION_TYPE_LOCATION = "resources.properties.engine.ActionTypes";
     public static final String INTERACTING_ELEMENT_TYPE_LOCATION =
             "resources.properties.engine.InteractingElementTypes";
 
@@ -32,17 +34,12 @@ public class GameElementFactory {
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
 
-    private ResourceBundle actionTypes;
-    private ResourceBundle interactingElementTypes;
-
     public GameElementFactory (GameUniverse universe,
                                ActionFactory actionFactory,
                                VisualizerFactory visualizerFactory) {
         myUniverse = universe;
         myActionFactory = actionFactory;
         myVisualizerFactory = visualizerFactory;
-        actionTypes = ResourceBundle.getBundle(ACTION_TYPE_LOCATION);
-        interactingElementTypes = ResourceBundle.getBundle(INTERACTING_ELEMENT_TYPE_LOCATION);
     }
 
     public GameElement createGameElement (String elementType, double x, double y) {
@@ -53,7 +50,7 @@ public class GameElementFactory {
     }
 
     public GameElement createGameElement (GameElementState state) {
-        GameElement element = new GameElement(state, actionTypes);
+        GameElement element = new GameElement(state);
         generateActions(element, state);
         return element;
     }
@@ -67,14 +64,20 @@ public class GameElementFactory {
 
     public DrawableGameElement createDrawableGameElement (DrawableGameElementState state) {
         DrawableGameElement element =
-                new DrawableGameElement(state, actionTypes,
+                new DrawableGameElement(state,
                                         generateVisualizer(state));
         generateActions(element, state);
         return element;
     }
 
-    public SelectableGameElement createSelectableGameElement (String elementType, double x, double y) {
+    public SelectableGameElement createSelectableGameElement (String elementType,
+                                                              double x,
+                                                              double y,
+                                                              double teamID,
+                                                              String color) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
+        state.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
+        state.attributes.setTextualAttribute(StateTags.TEAM_COLOR, color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
         return newElement;
@@ -82,8 +85,7 @@ public class GameElementFactory {
 
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
         SelectableGameElement element =
-                new SelectableGameElement(state, actionTypes,
-                                          interactingElementTypes, generateVisualizer(state));
+                new SelectableGameElement(state,generateVisualizer(state));
         generateActions(element, state);
         return element;
     }
@@ -96,8 +98,8 @@ public class GameElementFactory {
      * @param state the game element's state
      */
     private void generateActions (GameElement element, GameElementState state) {
-        for (String key : state.getActions().keySet()) {
-            state.getActions().get(key).forEach(actionWrapper -> {
+        for (Entry<String,List<ActionWrapper>> entry : state.getActions().entrySet()) {
+            entry.getValue().forEach(actionWrapper -> {
                 Evaluatable<?> action;
                 try {
                     action = myActionFactory.createAction(actionWrapper);
@@ -106,7 +108,7 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                element.addAction(key, action);
+                element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
             });
         }
     }

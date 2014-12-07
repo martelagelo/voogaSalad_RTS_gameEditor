@@ -50,7 +50,7 @@ public class EditorInputManager implements InputManager {
             // if nothing then try to select units
         }
 
-        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class EditorInputManager implements InputManager {
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
 
-        myElementManager.setSelectedUnitWaypoints(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
@@ -83,6 +83,7 @@ public class EditorInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // TODO: key presses
+        System.out.println("key pressed editor");
         if (e.getCode() == KeyCode.BACK_SPACE) {
             // TODO Delete selected elements from level
         }
@@ -99,7 +100,7 @@ public class EditorInputManager implements InputManager {
     }
 
     @Override
-    public void screenButtonClicked (String imagePath, int index) {
+    public void screenButtonClicked (int buttonID) {
         // TODO decide if we want this to do anything in the editor... maybe not
     }
 

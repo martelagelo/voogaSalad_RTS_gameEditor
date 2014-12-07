@@ -1,11 +1,13 @@
 package engine.gameRepresentation.evaluatables.actions;
 
+import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
 import engine.stateManaging.GameElementManager;
+import engine.users.Participant;
 
 
 /**
@@ -30,11 +32,11 @@ public abstract class Action extends Evaluatable<Boolean> {
      */
     public Action (String id,
                    EvaluatorFactory factory,
-                   GameElementManager elementManager,
+                   GameElementManager elementManager, ParticipantManager participantManager,
                    String[] args) {
         super(Boolean.class, id);
         try {
-            myAction = initializeAction(args, factory, elementManager);
+            myAction = initializeAction(args, factory, elementManager, participantManager);
         }
         catch (ClassNotFoundException | EvaluatorCreationException e) {
             e.printStackTrace();
@@ -51,9 +53,10 @@ public abstract class Action extends Evaluatable<Boolean> {
      */
     protected abstract Evaluatable<?> initializeAction (String[] args,
                                                         EvaluatorFactory factory,
-                                                        GameElementManager elementManager)
-                                                                                          throws ClassNotFoundException,
-                                                                                          EvaluatorCreationException;
+                                                        GameElementManager elementManager,
+                                                        ParticipantManager participantManager)
+                                                                                              throws ClassNotFoundException,
+                                                                                              EvaluatorCreationException;
 
     @Override
     public Boolean evaluate (ElementPair elements) {

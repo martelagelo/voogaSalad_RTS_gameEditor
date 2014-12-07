@@ -55,6 +55,14 @@ public class Level {
     public LevelState getLevelState () {
         return myState;
     }
+    
+    public double getMapWidth(){
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).doubleValue();
+    }
+    
+    public double getMapHeight(){
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).doubleValue();
+    }
 
     public String getName () {
         return myState.getName();
@@ -178,23 +186,12 @@ public class Level {
         int won = 0;
         int lost = 0;
         for (GameElement goal : getGoals()) {
-            Iterator<Evaluatable<?>> goals = goal.getActionsOfType("Goal");
-            while (goals.hasNext()) {
-                goals.next().evaluate();
-            }
+           goal.update();
             // iterate through the goals
             // evaluating all of these goals will set the internal values of "won" or "lost"
-            if (goal.getNumericalAttribute("Won").doubleValue() == 1) won = 1;
-            if (goal.getNumericalAttribute("Lost").doubleValue() == 1) lost = 1;
+            if (goal.getNumericalAttribute("Won").doubleValue() == 1.0) won = 1;
+            if (goal.getNumericalAttribute("Lost").doubleValue() == 1.0) lost = 1;
         }
-        // TODO: temporary, replace with the iterator method above
-        won = this.myUnits.stream()
-                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() != 1)
-                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
-
-        lost = this.myUnits.stream()
-                .filter(e -> e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue() == 1)
-                .collect(Collectors.toList()).size() <= 0 ? 1 : 0;
 
         return won - 2 * lost;
     }

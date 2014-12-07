@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Consumer;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
+import engine.computers.objectClassifications.InteractingElementType;
 import engine.gameRepresentation.evaluatables.ElementPair;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
 
 
@@ -19,29 +20,35 @@ import engine.visuals.elementVisuals.Visualizer;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach
+ * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach, Stanley
  *
  */
 public class SelectableGameElement extends DrawableGameElement {
 
     private SelectableGameElementState selectableState;
-    private Map<String, Set<DrawableGameElement>> myInteractingElements;
-    private ResourceBundle myInteractingElementTypes;
+
+    private Map<InteractingElementType, Set<DrawableGameElement>> myInteractingElements;
+    // The element that is currently being focused on by the element
+    private SelectableGameElement myFocusedElement;
 
     public SelectableGameElement (DrawableGameElementState element,
-                                  ResourceBundle actionTypes,
-                                  ResourceBundle interactingElementTypes,
                                   Visualizer visualizer) {
-        super(element, actionTypes, visualizer);
-        myInteractingElementTypes = interactingElementTypes;
+        super(element, visualizer);
         initializeInteractingElementLists();
 
     }
 
+    public void setFocusedElement (SelectableGameElement element) {
+        myFocusedElement = element;
+    }
+
+    public void clearFocusedElement () {
+        myFocusedElement = null;
+    }
+
     private void initializeInteractingElementLists () {
         myInteractingElements = new HashMap<>();
-        for (String key : myInteractingElementTypes.keySet()) {
-            String type = myInteractingElementTypes.getString(key);
+        for (InteractingElementType type : InteractingElementType.values()) {
             if (!myInteractingElements.containsKey(type)) {
                 myInteractingElements.put(type, new HashSet<>());
             }
@@ -53,7 +60,8 @@ public class SelectableGameElement extends DrawableGameElement {
         return getTextualAttribute(StateTags.TYPE);
     }
 
-    public void addInteractingElement (String elementType, DrawableGameElement element) {
+    public void addInteractingElement (InteractingElementType elementType,
+                                       DrawableGameElement element) {
         Set<DrawableGameElement> elements = new HashSet<>();
         Set<DrawableGameElement> oldElements = myInteractingElements.get(elementType);
         if (oldElements != null) {
@@ -63,10 +71,10 @@ public class SelectableGameElement extends DrawableGameElement {
         myInteractingElements.put(elementType, elements);
     }
 
-    public void addInteractingElements (String interactingElementType,
+    public void addInteractingElements (InteractingElementType interactingElementType,
                                         List<DrawableGameElement> interactingElements) {
         for (DrawableGameElement element : interactingElements) {
-            addInteractingElement(myInteractingElementTypes.getString(interactingElementType),
+            addInteractingElement(interactingElementType,
                                   element);
         }
     }
@@ -81,55 +89,71 @@ public class SelectableGameElement extends DrawableGameElement {
 
     @Override
     public void update () {
+        updateSelfDueToCollisions();
+        if (myFocusedElement != null) {
+            updateSelfDueToFocusedElement();
+        }
         super.update();
         String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
         // System.out.println("Updating selectable game element: " + teamColor);
-        updateSelfDueToCollisions();
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
     }
 
     private void updateSelfDueToCurrentObjective () {
-        executeAllActions(actionTypes.getString("objective"));
+        executeAllActions(ActionType.OBJECTIVE);
+    }
+
+    private void updateSelfDueToFocusedElement () {
+        executeAllActions(ActionType.FOCUSED, new ElementPair(this, myFocusedElement));
     }
 
     public void updateSelfDueToSelection () {
-        executeAllActions(actionTypes.getString("selection"));
+        executeAllActions(ActionType.SELECTION);
     }
 
     private void updateSelfDueToVisions () {
-        updateSelfDueToInteractingElementsSubset("visible", "vision");
+        updateSelfDueToInteractingElementsSubset(InteractingElementType.VISIBLE, ActionType.VISION);
     }
 
     private void updateSelfDueToCollisions () {
-        updateSelfDueToInteractingElementsSubset("colliding", "collision");
+        updateSelfDueToInteractingElementsSubset(InteractingElementType.COLLIDING,
+                                                 ActionType.COLLISION);
     }
 
-    private void updateSelfDueToInteractingElementsSubset (String elementType, String actionType) {
+    private void updateSelfDueToInteractingElementsSubset (InteractingElementType elementType,
+                                                           ActionType actionType) {
         // TODO: string literals still exist
-        Set<DrawableGameElement> elementsOfInterest =
-                myInteractingElements.get(myInteractingElementTypes.getString(elementType));
+        Set<DrawableGameElement> elementsOfInterest = myInteractingElements.get(elementType);
         getActionsOfType(actionType).forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
-                if ((Boolean) action.evaluate(elements)) { return; } // By default, only evaluate
-                                                                     // one single collision action
-                                                                     // per game loop refresh
+                if ((Boolean) action.evaluate(elements)) { return; }
+                // By default, only evaluate one single collision action per game loop refresh
             }
         });
-        myInteractingElements.get(myInteractingElementTypes.getString(elementType)).clear();// After
-                                                                                            // we've
-                                                                                            // acted
-                                                                                            // on
-                                                                                            // the
-                                                                                            // elements,
-                                                                                            // clear
-                                                                                            // the
-                                                                                            // list
+
+        myInteractingElements.get(elementType).clear();
+        // After we've acted on the elements, clear the list
+
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
         function.accept(selectableState);
+    }
+
+    public void executeAllButtonActions () {
+        this.executeAllActions(ActionType.BUTTON, new ElementPair(this, this));
+    }
+
+    public Map<Integer, String> getAbilityDescriptionMap (int numAttributes) {
+        Map<Integer, String> descriptionMap = new HashMap<>();
+        for (int i = 1; i <= numAttributes; i++) {
+            String description = this.getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + i);
+            descriptionMap.put(i, description);
+        }
+
+        return descriptionMap;
     }
 
 }

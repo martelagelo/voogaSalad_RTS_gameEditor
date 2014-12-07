@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import com.sun.javafx.geom.Point2D;
 
 
 /**
@@ -24,9 +25,6 @@ public class PathingComputer {
 
     public List<Location> findPath (Location from, Location to) {
         List<Location> rawPath = computePath(from,to);
-        System.out.println("8===D");
-        System.out.println(rawPath);
-        System.out.println(optimizePath(rawPath));
     	return optimizePath(rawPath);
     }
 
@@ -49,7 +47,7 @@ public class PathingComputer {
 		double x2 = third.myX;
 		double y2 = third.myY;
 		
-		return Math.ulp((y1 - y0) - (y2 - y0)/(x2 - x0)*(x1-x0))<5;
+		return Math.ulp((y1 - y0) - (y2 - y0)/(x2 - x0)*(x1-x0))<10;
     }
 
 	private PriorityQueue<Location> frontierLocations;
