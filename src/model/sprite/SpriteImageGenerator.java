@@ -1,7 +1,6 @@
 package model.sprite;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.net.MalformedURLException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -9,18 +8,15 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import model.exceptions.SaveLoadException;
-
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-
-import util.GameElementType;
-import util.GameSaveLoadMediator;
 import util.ResourceBundleRetriever;
-import util.SaveLoadUtility;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
+/**
+ * 
+ * @author Rahul
+ *
+ */
 public class SpriteImageGenerator {
     private ResourceBundleRetriever myBundleRetriever;
     private ResourceBundle myBundle;
@@ -33,6 +29,7 @@ public class SpriteImageGenerator {
     public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
         myColorMapGenerator = new ColorMapGenerator();
+       
         try {
             myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
                     + resourceFile));
@@ -41,10 +38,16 @@ public class SpriteImageGenerator {
         }
         myResourceMapping = new HashMap<>();
         myCachedContainer = new HashMap<>();
-        populateMap();
+        populateColorMaskMap();
+        populateResourceMap();
     }
 
-    public void populateMap () {
+    private void populateColorMaskMap () throws SaveLoadException {
+        myColorMapGenerator.populateColorMaskMap();
+        
+    }
+
+    private void populateResourceMap () {
         Enumeration<String> keys = myBundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
@@ -53,15 +56,26 @@ public class SpriteImageGenerator {
         }
     }
 
+    /**
+     * 
+     * @param animatorStates
+     * @return
+     * @throws SaveLoadException
+     */
     public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
             Set<AnimatorState> animatorStates) throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
-            myCachedContainer.put(state.getImageTag(),
-                    new SpriteImageContainer(state.getImageTag()));
+            myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
+                    state.getImageTag(), state.getColorMaskTag()));
         }
         return myCachedContainer;
     }
 
+    /**
+     * 
+     * @param imageTag
+     * @return
+     */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
         return myCachedContainer.get(imageTag);
     }

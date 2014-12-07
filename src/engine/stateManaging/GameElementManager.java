@@ -53,7 +53,7 @@ public class GameElementManager {
      */
     public List<GameElement> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
-                .filter(o -> o.getType().equals(typeName)).map(o -> o)
+                .filter(o -> o.isType(typeName)).map(o -> o)
                 .collect(Collectors.toList());
     }
 
@@ -110,12 +110,6 @@ public class GameElementManager {
                     break;
                 }
             }
-        }
-    }
-
-    private void deselectAllElements () {
-        for (SelectableGameElement e : myLevel.getUnits()) {
-            e.deselect();
         }
     }
 

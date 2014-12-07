@@ -1,6 +1,7 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class BoundsWizard extends Wizard {
                                                  .getStringProperty(ADD_POINT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
 
         addPoint.setOnAction(e -> addXYPair("", ""));
@@ -63,7 +64,7 @@ public class BoundsWizard extends Wizard {
             yField.promptTextProperty().bind(MultiLanguageUtility.getInstance().getStringProperty(Y_COR_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
         yField.setText(y);
         yCoordinates.add(yField);

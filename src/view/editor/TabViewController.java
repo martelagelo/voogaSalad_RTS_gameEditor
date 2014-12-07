@@ -109,11 +109,11 @@ public class TabViewController extends GUIContainer {
     }
 
     public class TriggerPair {
-        public String myActionType;
+        public ActionType myActionType;
         public String myAction;
         public String[] myParams;
 
-        public TriggerPair (String actionType, String action, String[] params) {
+        public TriggerPair (ActionType actionType, String action, String[] params) {
             myActionType = actionType;
             myAction = action;
             myParams = params;
@@ -144,7 +144,7 @@ public class TabViewController extends GUIContainer {
                     wiz.launchForEdit(oldData);
                     Consumer<WizardData> bc =
                             (data) -> {
-                                Map<String, List<ActionWrapper>> actions =
+                                Map<ActionType, List<ActionWrapper>> actions =
                                         myLevel.getGoals().get(position).getActions();
                                 actions.clear();
                                 List<ActionWrapper> actionValue = new ArrayList<>();
@@ -163,7 +163,7 @@ public class TabViewController extends GUIContainer {
                                 actionValue.add(wrapper);
                                 actions.put(ActionType
                                         .valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE))
-                                        .name(), actionValue);
+                                        , actionValue);
                                 updateLevelTriggersView();
                                 wiz.closeStage();
                             };
