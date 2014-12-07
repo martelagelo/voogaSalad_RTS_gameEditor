@@ -1,5 +1,6 @@
 package view.runner;
 
+import java.util.Arrays;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -62,7 +63,7 @@ public class GameEndController implements GUIController {
                                                    .getStringProperty(DONE_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
     }
 

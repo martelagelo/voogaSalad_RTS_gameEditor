@@ -15,6 +15,7 @@ import engine.visuals.elementVisuals.animations.AnimationTag;
  */
 // TODO: refector Grids into hierarchy
 public class DirectionGrid extends Grid {
+	
     private static final String SELECTED_COLOR = "red";
     private static final Paint FILL_COLOR = Paint.valueOf("white");
     private List<AnimationTag> directions;

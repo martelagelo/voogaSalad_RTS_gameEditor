@@ -98,7 +98,7 @@ public class GameElementFactory {
      * @param state the game element's state
      */
     private void generateActions (GameElement element, GameElementState state) {
-        for (Entry<String,List<ActionWrapper>> entry : state.getActions().entrySet()) {
+        for (Entry<ActionType, List<ActionWrapper>> entry : state.getActions().entrySet()) {
             entry.getValue().forEach(actionWrapper -> {
                 Evaluatable<?> action;
                 try {
@@ -108,7 +108,7 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
+                element.addAction(entry.getKey(), action);
             });
         }
     }
