@@ -1,7 +1,13 @@
 package engine.visuals;
 
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
+import model.exceptions.SaveLoadException;
+import util.SaveLoadUtility;
 
 
 /**
@@ -27,7 +33,7 @@ public class ScrollableBackground extends Pane
      * @param xBoundary the maximum X value that can be scrolled to
      * @param yBoundary the maximum Y value that can be scrolled to
      */
-    public ScrollableBackground (double xBoundary, double yBoundary, ScrollablePane pane)
+    public ScrollableBackground (double xBoundary, double yBoundary, ScrollablePane pane, String backgroundURI)
     {
         this.prefWidthProperty().bind(pane.prefWidthProperty());
         this.prefHeightProperty().bind(pane.prefHeightProperty());
@@ -35,9 +41,28 @@ public class ScrollableBackground extends Pane
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
         this.setMinSize(xBoundary, yBoundary);
+        
+        tileBackground(backgroundURI);
 
         setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
 
+    }
+
+    public void tileBackground (String backgroundURI) {
+        Image im = null;
+        ImageView iv = null;
+        try {
+            im = SaveLoadUtility.loadImage(backgroundURI);
+            iv = new ImageView(im);
+            iv.setScaleX(3);
+            iv.setScaleY(3);
+            
+        }
+        catch (SaveLoadException e) {
+        }
+        if (im != null) {
+            this.setBackground(new Background(new BackgroundImage(im, null, null, null, null)));
+        }
     }
 
     /**

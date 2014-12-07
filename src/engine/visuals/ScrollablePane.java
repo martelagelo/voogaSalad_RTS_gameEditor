@@ -45,7 +45,7 @@ public class ScrollablePane extends Pane {
      * @param height the height of the map (ideally larger than the screen height)
      * @throws IOException
      */
-    public ScrollablePane (Group root, double fieldWidth, double fieldHeight) {
+    public ScrollablePane (Group root, double fieldWidth, double fieldHeight, String backgroundURI) {
         // super(root, width, height);
         setStyle("-fx-border-color: red;");
         this.myMapWidth = fieldWidth;
@@ -54,7 +54,7 @@ public class ScrollablePane extends Pane {
         Pane stackPane = new Pane();
         
         this.getChildren().add(root);
-        myBackground = new ScrollableBackground(fieldWidth, fieldHeight, this);
+        myBackground = new ScrollableBackground(fieldWidth, fieldHeight, this, backgroundURI);
         mySelectionBox = new SelectionBox();
         BorderPane.setAlignment(myBackground, Pos.CENTER);
         stackPane.getChildren().addAll(myBackground, mySelectionBox.getBox());
@@ -204,5 +204,9 @@ public class ScrollablePane extends Pane {
     
     public double getFieldHeight(){
         return myMapHeight;
+    }
+
+    public void changeBackground (String backgroundURI) {
+        myBackground.tileBackground(backgroundURI);
     }
 }
