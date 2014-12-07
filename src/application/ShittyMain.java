@@ -198,19 +198,19 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
         archerState.setBounds(bounds);
-        // TESTING SAVING SGES
-        SaveLoadUtility.save(archerState, "resources/sges.json");
-        AnimatorState archerAnimations =
-                SaveLoadUtility
-                        .loadResource(AnimatorState.class,
-                                      "resources/gameelementresources/animatorstate/archer.json");
-        archerState.myAnimatorState = archerAnimations;
-        // TESTING LOADING SGES
-        SelectableGameElementState sges =
-                SaveLoadUtility.loadResource(
-                                             SelectableGameElementState.class,
-                                             "resources/sges.json");
-        Map<String, List<ActionWrapper>> map = sges.getActions();
+//        // TESTING SAVING SGES
+//        SaveLoadUtility.save(archerState, "resources/sges.json");
+//        AnimatorState archerAnimations =
+//                SaveLoadUtility
+//                        .loadResource(AnimatorState.class,
+//                                      "resources/gameelementresources/animatorstate/archer.json");
+//        archerState.myAnimatorState = archerAnimations;
+//        // TESTING LOADING SGES
+//        SelectableGameElementState sges =
+//                SaveLoadUtility.loadResource(
+//                                             SelectableGameElementState.class,
+//                                             "resources/sges.json");
+//        Map<ActionType, List<ActionWrapper>> map = sges.getActions();
 
         return archerState;
     }
