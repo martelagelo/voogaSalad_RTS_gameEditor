@@ -183,7 +183,7 @@ public class ShittyMain extends Application {
         Engine engine =
                 new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
 
-        engine.setAnimationEnabled(true);
+        engine.setAnimationEnabled(false);
 
         return engine;
     }
@@ -292,10 +292,10 @@ public class ShittyMain extends Application {
         // Check to see if our health is <0. If so, die.
         minerState
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
-                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
                                              StateTags.HEALTH,
                                              "LessThanEqual",
-                                             "0",
+                                             "0", "me",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
         minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -362,9 +362,10 @@ public class ShittyMain extends Application {
         archerState
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                             "me",
                                              StateTags.HEALTH,
                                              "LessThanEqual",
-                                             "0",
+                                             "0", "me",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
         archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -393,8 +394,8 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
         archerState.addAction(new ActionWrapper(ActionType.BUTTON,
-                                                ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
-                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "2",
+                                                ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
+                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "2", "me",
                                                 StateTags.ATTACK, "AdditionAssignment", "1000"));
 
         

@@ -1745,9 +1745,11 @@
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "health",
                       "LessThanEqual",
                       "0",
+                      "me",
                       "IsDead",
                       "EqualsAssignment",
                       "1"
@@ -2419,41 +2421,15 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "cost",
-                      "Resources",
-                      "1",
-                      "300"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "2",
-                      "attack",
-                      "AdditionAssignment",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "health",
                       "LessThanEqual",
                       "0",
+                      "me",
                       "IsDead",
                       "EqualsAssignment",
                       "1"
@@ -2480,6 +2456,36 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "cost",
+                      "Resources",
+                      "1",
+                      "300"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "2",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -3132,41 +3138,15 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "cost",
-                      "Resources",
-                      "1",
-                      "300"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "2",
-                      "attack",
-                      "AdditionAssignment",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "health",
                       "LessThanEqual",
                       "0",
+                      "me",
                       "IsDead",
                       "EqualsAssignment",
                       "1"
@@ -3193,6 +3173,36 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "cost",
+                      "Resources",
+                      "1",
+                      "300"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "2",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -3836,41 +3846,15 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "cost",
-                      "Resources",
-                      "1",
-                      "300"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "2",
-                      "attack",
-                      "AdditionAssignment",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "health",
                       "LessThanEqual",
                       "0",
+                      "me",
                       "IsDead",
                       "EqualsAssignment",
                       "1"
@@ -3897,6 +3881,36 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "cost",
+                      "Resources",
+                      "1",
+                      "300"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "2",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -4544,41 +4558,15 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "cost",
-                      "Resources",
-                      "1",
-                      "300"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "2",
-                      "attack",
-                      "AdditionAssignment",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "health",
                       "LessThanEqual",
                       "0",
+                      "me",
                       "IsDead",
                       "EqualsAssignment",
                       "1"
@@ -4605,6 +4593,36 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "cost",
+                      "Resources",
+                      "1",
+                      "300"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "2",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -6551,9 +6569,11 @@
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
+                "me",
                 "health",
                 "LessThanEqual",
                 "0",
+                "me",
                 "IsDead",
                 "EqualsAssignment",
                 "1"
@@ -7225,41 +7245,15 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "cost",
-                "Resources",
-                "1",
-                "300"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "2",
-                "attack",
-                "AdditionAssignment",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
+                "me",
                 "health",
                 "LessThanEqual",
                 "0",
+                "me",
                 "IsDead",
                 "EqualsAssignment",
                 "1"
@@ -7286,6 +7280,36 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "cost",
+                "Resources",
+                "1",
+                "300"
+              ],
+              "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "me",
+                "lastButtonID",
+                "Equals",
+                "2",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -7938,41 +7962,15 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "cost",
-                "Resources",
-                "1",
-                "300"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "2",
-                "attack",
-                "AdditionAssignment",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
+                "me",
                 "health",
                 "LessThanEqual",
                 "0",
+                "me",
                 "IsDead",
                 "EqualsAssignment",
                 "1"
@@ -7999,6 +7997,36 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "cost",
+                "Resources",
+                "1",
+                "300"
+              ],
+              "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "me",
+                "lastButtonID",
+                "Equals",
+                "2",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -8642,41 +8670,15 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "cost",
-                "Resources",
-                "1",
-                "300"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "2",
-                "attack",
-                "AdditionAssignment",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
+                "me",
                 "health",
                 "LessThanEqual",
                 "0",
+                "me",
                 "IsDead",
                 "EqualsAssignment",
                 "1"
@@ -8703,6 +8705,36 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "cost",
+                "Resources",
+                "1",
+                "300"
+              ],
+              "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "me",
+                "lastButtonID",
+                "Equals",
+                "2",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -9350,41 +9382,15 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "cost",
-                "Resources",
-                "1",
-                "300"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "2",
-                "attack",
-                "AdditionAssignment",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
+                "me",
                 "health",
                 "LessThanEqual",
                 "0",
+                "me",
                 "IsDead",
                 "EqualsAssignment",
                 "1"
@@ -9411,6 +9417,36 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "cost",
+                "Resources",
+                "1",
+                "300"
+              ],
+              "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "me",
+                "lastButtonID",
+                "Equals",
+                "2",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
