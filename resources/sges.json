@@ -13,7 +13,7 @@
   "myActions": {
     "Button": [
       {
-        "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+        "myActionName": "CheckAttributeCreateObjectAction",
         "myParameters": [
           "lastButtonID",
           "Equals",
@@ -22,38 +22,38 @@
           "ArcherSpawnCooldown",
           "200"
         ],
-        "myActionType": "BUTTON"
+        "myActionType": "Button"
       }
     ],
     "Collision": [
       {
-        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myActionName": "ObjectConditionAction",
         "myParameters": [
           "NotCollision",
           "RandomWaypoint"
         ],
-        "myActionType": "COLLISION"
+        "myActionType": "Collision"
       },
       {
-        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myActionName": "ObjectConditionAction",
         "myParameters": [
           "Collision",
           "Attack"
         ],
-        "myActionType": "COLLISION"
+        "myActionType": "Collision"
       },
       {
-        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myActionName": "ObjectConditionAction",
         "myParameters": [
           "Collision",
           "MoveBack"
         ],
-        "myActionType": "COLLISION"
+        "myActionType": "Collision"
       }
     ],
     "Internal": [
       {
-        "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+        "myActionName": "CheckAttributeSetAttributeAction",
         "myParameters": [
           "health",
           "LessThanEqual",
@@ -62,37 +62,37 @@
           "EqualsAssignment",
           "1"
         ],
-        "myActionType": "INTERNAL"
+        "myActionType": "Internal"
       },
       {
-        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myActionName": "ActOnObjectsAction",
         "myParameters": [
           "UpdateMovementDirection"
         ],
-        "myActionType": "INTERNAL"
+        "myActionType": "Internal"
       },
       {
-        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myActionName": "ActOnObjectsAction",
         "myParameters": [
           "MovePlayer"
         ],
-        "myActionType": "INTERNAL"
+        "myActionType": "Internal"
       },
       {
-        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myActionName": "ActOnObjectsAction",
         "myParameters": [
           "HeadingUpdate"
         ],
-        "myActionType": "INTERNAL"
+        "myActionType": "Internal"
       }
     ],
     "Focused Element": [
       {
-        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myActionName": "ActOnObjectsAction",
         "myParameters": [
           "Follow"
         ],
-        "myActionType": "FOCUSED"
+        "myActionType": "Focused Element"
       }
     ]
   },
