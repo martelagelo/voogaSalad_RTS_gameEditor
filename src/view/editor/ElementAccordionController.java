@@ -93,13 +93,19 @@ public class ElementAccordionController extends GUIContainer {
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(elementAccordion.getPanes().size() - 1));
-        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorSelectElement(s));
-        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorSelectElement(s));
+        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
+        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
     }
 
-    private void editorSelectElement (String selection) {
+    private void editorChooseDrawableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
-            myMainModel.setEditorSelected(selection);
+            myMainModel.setEditorDrawableChosen(selection);
+        }
+    }
+    
+    private void editorChooseSelectableElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorSelectableChosen(selection);
         }
     }
     

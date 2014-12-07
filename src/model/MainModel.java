@@ -47,13 +47,14 @@ public class MainModel extends Observable {
     private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
 
     private GameState myGameState;
-    private String myEditorSelectedElement;
+    private String myEditorChosenElement;
+    private boolean myEditorChosenIsSelectable;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
     public MainModel () {
-        myEditorSelectedElement = "";
+        myEditorChosenElement = "";
         try {
             mySaveLoadMediator = new GameSaveLoadMediator();
             mySpriteImageGenerator = new SpriteImageGenerator();
@@ -172,31 +173,33 @@ public class MainModel extends Observable {
         return myGameState.getCampaign(campaignName);
     }
 
-    /**
-     * called by editor when user selects new element from accordion pane
-     * 
-     * @param element
-     */
-    public void setEditorSelected (String elementName) {
-        myEditorSelectedElement = elementName;
+    public void setEditorDrawableChosen (String elementName) {
+        setEditorSelected(elementName, false);
     }
 
-    //TODO
-    public void setEditorDrawableSelected (String elementName) {
-        myEditorSelectedElement = elementName;
-    }
-    //TODO
-
-    public void setEditorSelectableSelected (String elementName) {
-        
+    public void setEditorSelectableChosen (String elementName) {
+        setEditorSelected(elementName, true);
     }
 
+    public void clearEditorChosen() {
+        myEditorChosenElement = "";
+    }
+    
+    private void setEditorSelected(String elementName, boolean isSelectable) {
+        myEditorChosenElement = elementName;
+        myEditorChosenIsSelectable = isSelectable;
+    }
+    
     /**
      * called by engine when registers click and needs what the editor has
      * selected to place on the map
      */
     public String getEditorSelected () {
-        return myEditorSelectedElement;
+        return myEditorChosenElement;
+    }
+    
+    public boolean isEditorChosenElementSelectable() {
+        return myEditorChosenIsSelectable;
     }
 
     /**

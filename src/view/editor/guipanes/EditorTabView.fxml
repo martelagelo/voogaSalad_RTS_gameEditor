@@ -12,7 +12,7 @@
 			fx:id="gameRunnerPane" />
 	</center>
 	<right>
-		<VBox alignment="CENTER" spacing="25.0">
+		<VBox alignment="CENTER" spacing="25.0" fx:id="vbox">
 			<Button fx:id="resetButton">
 				<maxWidth>
 					<Double fx:constant="MAX_VALUE" />

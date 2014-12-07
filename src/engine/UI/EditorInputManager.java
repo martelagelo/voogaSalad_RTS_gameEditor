@@ -40,10 +40,17 @@ public class EditorInputManager extends InputManager {
             myElementManager.selectAnySingleUnit(mapPoint2d, myUser);
         }
         else {
-            myElementManager.addSelectableGameElementToLevel(myMainModel.getEditorSelected(),
-                                                             mapPoint2d.getX(), mapPoint2d.getY(),
-                                                             myUser.getTeamColor());
-            myMainModel.setEditorSelected("");
+            if (myMainModel.isEditorChosenElementSelectable()) {
+                myElementManager.addSelectableGameElementToLevel(element,
+                                                                 mapPoint2d.getX(),
+                                                                 mapPoint2d.getY(),
+                                                                 myUser.getTeamColor());
+            }
+            else {
+                myElementManager.addDrawableGameElementToLevel(element, mapPoint2d.getX(),
+                                                               mapPoint2d.getY());
+            }
+            myMainModel.clearEditorChosen();
         }
     }
 

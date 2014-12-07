@@ -62,6 +62,8 @@ public class TabViewController extends GUIContainer {
     private Button resetButton;
     @FXML
     private ToggleButton controllerToggle;
+    @FXML
+    private VBox vbox;
 
     private LevelState myLevel;
 
@@ -157,6 +159,7 @@ public class TabViewController extends GUIContainer {
         }
         initToggle();
         controllerToggle.setSelected(false);
+        resetButton.setOnAction(e -> startLevel());
     }
 
     private void initToggle () {
