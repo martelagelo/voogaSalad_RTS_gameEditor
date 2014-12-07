@@ -13,7 +13,7 @@ import model.state.gameelement.AttributeContainer;
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.
  * 
- * @author Zach
+ * @author Zach, Stanley
  *
  */
 public class AttributeDisplayerFactory {
