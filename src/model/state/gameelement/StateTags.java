@@ -27,7 +27,7 @@ public enum StateTags {
     Y_GOAL_POSITION(StateType.NUMBER, "yGoalPosition"),
     X_TEMP_GOAL_POSITION(StateType.NUMBER, "xTempGoalPosition"),
     Y_TEMP_GOAL_POSITION(StateType.NUMBER, "yTempGoalPosition"),
-    RANDOM_MOVEMENT_STRING(StateType.NUMBER, "randomMovementString"), //rename to flag
+    RANDOM_MOVEMENT_FLAG(StateType.NUMBER, "randomMovementFlag"),
     MOVEMENT_SPEED(StateType.NUMBER, "movementSpeed"),
     BLOCKING(StateType.NUMBER, "blocking"),
     IS_SELECTED(StateType.NUMBER, "isSelected"),

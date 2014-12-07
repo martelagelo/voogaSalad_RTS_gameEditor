@@ -22,7 +22,7 @@
               "AttributeDisplayerStates": [
                 {
                   "displayerTag": "AttributeBarDisplayer",
-                  "parameterTag": "HEALTH",
+                  "parameterTag": "xPosition",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
                 }
@@ -549,22 +549,6 @@
                 40.0
               ],
               "myActions": {
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -600,6 +584,15 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -626,13 +619,20 @@
                     "myActionType": "COLLISION"
                   }
                 ],
-                "FOCUSED": [
+                "BUTTON": [
                   {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "Follow"
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
                     ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -715,7 +715,7 @@
               "AttributeDisplayerStates": [
                 {
                   "displayerTag": "AttributeBarDisplayer",
-                  "parameterTag": "HEALTH",
+                  "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
                 }
@@ -1242,22 +1242,6 @@
                 40.0
               ],
               "myActions": {
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1293,6 +1277,15 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -1319,13 +1312,20 @@
                     "myActionType": "COLLISION"
                   }
                 ],
-                "FOCUSED": [
+                "BUTTON": [
                   {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "Follow"
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
                     ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -1399,7 +1399,7 @@
               "AttributeDisplayerStates": [
                 {
                   "displayerTag": "AttributeBarDisplayer",
-                  "parameterTag": "HEALTH",
+                  "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 1000.0
                 }
@@ -1926,22 +1926,6 @@
                 40.0
               ],
               "myActions": {
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1988,6 +1972,15 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2014,13 +2007,20 @@
                     "myActionType": "COLLISION"
                   }
                 ],
-                "FOCUSED": [
+                "BUTTON": [
                   {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "Follow"
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
                     ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -2098,7 +2098,7 @@
               "AttributeDisplayerStates": [
                 {
                   "displayerTag": "AttributeBarDisplayer",
-                  "parameterTag": "HEALTH",
+                  "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
                 }
@@ -2625,22 +2625,6 @@
                 40.0
               ],
               "myActions": {
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -2676,6 +2660,15 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2702,13 +2695,20 @@
                     "myActionType": "COLLISION"
                   }
                 ],
-                "FOCUSED": [
+                "BUTTON": [
                   {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "Follow"
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
                     ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -2914,7 +2914,7 @@
         "AttributeDisplayerStates": [
           {
             "displayerTag": "AttributeBarDisplayer",
-            "parameterTag": "HEALTH",
+            "parameterTag": "xPosition",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
           }
@@ -3441,22 +3441,6 @@
           40.0
         ],
         "myActions": {
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3492,6 +3476,15 @@
               "myActionType": "INTERNAL"
             }
           ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3518,13 +3511,20 @@
               "myActionType": "COLLISION"
             }
           ],
-          "FOCUSED": [
+          "BUTTON": [
             {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
               "myParameters": [
-                "Follow"
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
               ],
-              "myActionType": "FOCUSED"
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -3607,7 +3607,7 @@
         "AttributeDisplayerStates": [
           {
             "displayerTag": "AttributeBarDisplayer",
-            "parameterTag": "HEALTH",
+            "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
           }
@@ -4134,22 +4134,6 @@
           40.0
         ],
         "myActions": {
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -4185,6 +4169,15 @@
               "myActionType": "INTERNAL"
             }
           ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -4211,13 +4204,20 @@
               "myActionType": "COLLISION"
             }
           ],
-          "FOCUSED": [
+          "BUTTON": [
             {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
               "myParameters": [
-                "Follow"
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
               ],
-              "myActionType": "FOCUSED"
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -4291,7 +4291,7 @@
         "AttributeDisplayerStates": [
           {
             "displayerTag": "AttributeBarDisplayer",
-            "parameterTag": "HEALTH",
+            "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
           }
@@ -4818,22 +4818,6 @@
           40.0
         ],
         "myActions": {
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -4880,6 +4864,15 @@
               "myActionType": "INTERNAL"
             }
           ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -4906,13 +4899,20 @@
               "myActionType": "COLLISION"
             }
           ],
-          "FOCUSED": [
+          "BUTTON": [
             {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
               "myParameters": [
-                "Follow"
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
               ],
-              "myActionType": "FOCUSED"
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -4990,7 +4990,7 @@
         "AttributeDisplayerStates": [
           {
             "displayerTag": "AttributeBarDisplayer",
-            "parameterTag": "HEALTH",
+            "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
           }
@@ -5517,22 +5517,6 @@
           40.0
         ],
         "myActions": {
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -5568,6 +5552,15 @@
               "myActionType": "INTERNAL"
             }
           ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -5594,13 +5587,20 @@
               "myActionType": "COLLISION"
             }
           ],
-          "FOCUSED": [
+          "BUTTON": [
             {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
               "myParameters": [
-                "Follow"
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
               ],
-              "myActionType": "FOCUSED"
+              "myActionType": "BUTTON"
             }
           ]
         },
