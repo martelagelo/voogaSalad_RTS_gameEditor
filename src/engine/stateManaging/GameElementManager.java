@@ -27,6 +27,8 @@ public class GameElementManager {
     private GameElementFactory myFactory;
     private PathingComputer pathingComputer;
 
+    private DrawableGameElement selectedElement;
+
     public GameElementManager (GameElementFactory factory) {
         myFactory = factory;
     }
@@ -75,6 +77,36 @@ public class GameElementManager {
                 .createSelectableGameElement(typeName, x, y, team, color);
         myLevel.addElement(newElement);
         return newElement;
+    }
+
+    public void selectAnySingleUnit (Point2D clickLoc, Participant u) {
+        selectedElement = null;
+        deselectAllElements();
+        List<DrawableGameElement> units = myLevel.getUnits().stream().map((unit)->{
+            return (DrawableGameElement) unit;
+        }).collect(Collectors.toList());
+        selectUnit(units, clickLoc);
+        selectUnit(myLevel.getTerrain(), clickLoc);
+    }
+
+    private void selectUnit (List<DrawableGameElement> elements, Point2D clickLoc) {
+        for (DrawableGameElement e : elements) {
+            double[] cornerBounds = e.findGlobalBounds();
+            if (new Polygon(cornerBounds).contains(clickLoc)) {
+                selectedElement = e;
+                return;
+            }
+        }
+    }
+
+    public void moveSelectedUnit (Point2D mapPoint2d, Participant user) {
+        if (selectedElement == null) return;
+        selectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
+    }
+    
+    public void deleteSelectedUnit() {
+        if (selectedElement == null) return;
+        myLevel.removeElement(selectedElement);
     }
 
     /**
@@ -174,7 +206,8 @@ public class GameElementManager {
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
+                .forEach(unit -> unit.setFocusedElement(e));
 
     }
 
@@ -199,7 +232,8 @@ public class GameElementManager {
     }
 
     public void notifyButtonClicked (int buttonID, Participant u) {
-        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
+        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()),
+                                                            u)) {
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
             e.executeAllButtonActions();
         }

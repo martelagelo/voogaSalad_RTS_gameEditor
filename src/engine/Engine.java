@@ -82,6 +82,7 @@ public class Engine extends Observable implements Observer {
                                                                         Participant.class)
                         .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
         myInputManager = inputManager;
+        myVisualManager.attachInputManager(myInputManager);
     }
 
     // TODO Should just be a call for "get next level" from main model rather than
@@ -132,7 +133,7 @@ public class Engine extends Observable implements Observer {
     @Override
     public void update (Observable observable, Object arg) {
         if (observable instanceof GameLoop) {
-            this.pause();
+            myGameLoop.stop();
             myUser.getAttributes();
             updateObservers();
         }

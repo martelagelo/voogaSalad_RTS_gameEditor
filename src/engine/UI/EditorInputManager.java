@@ -3,7 +3,6 @@ package engine.UI;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.MainModel;
 import engine.stateManaging.GameElementManager;
@@ -25,6 +24,7 @@ public class EditorInputManager extends InputManager {
                                GameElementManager gameElementManager,
                                GameLoop gameLoop, Participant user) {
         super(model, gameElementManager, gameLoop, user);
+        gameLoop.setEditorLoop();
     }
 
     @Override
@@ -34,18 +34,17 @@ public class EditorInputManager extends InputManager {
                                       SelectionBox b) {
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
-        myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
-
-        // I believe this selects units
-        // I'll probably have to refactor this to be done somewhere else
-        if (e.getButton() == MouseButton.PRIMARY) {
-            // TODO try to add elements to the thing based on thing selected in editor
-            // if terrain then switch out terrain
-            // if unit then add unit to graph
-            // if nothing then try to select units
+        String element = myMainModel.getEditorSelected();
+        if (element == null || element.isEmpty()) {
+            myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
+            myElementManager.selectAnySingleUnit(mapPoint2d, myUser);
         }
-
-        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
+        else {
+            myElementManager.addSelectableGameElementToLevel(myMainModel.getEditorSelected(),
+                                                             mapPoint2d.getX(), mapPoint2d.getY(),
+                                                             myUser.getTeamID(), "BLUE");
+            myMainModel.setEditorSelected("");
+        }
     }
 
     @Override
@@ -55,8 +54,7 @@ public class EditorInputManager extends InputManager {
                                         SelectionBox b) {
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
-
-        myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
+        myElementManager.moveSelectedUnit(mapPoint2d, myUser);
     }
 
     @Override
@@ -64,7 +62,7 @@ public class EditorInputManager extends InputManager {
                                              double mapTranslateX,
                                              double mapTranslateY,
                                              SelectionBox b) {
-        // Probably also do nothing since no selection box
+        // do nothing
     }
 
     @Override
@@ -72,15 +70,13 @@ public class EditorInputManager extends InputManager {
                                                double mapTranslateX,
                                                double mapTranslateY,
                                                SelectionBox b) {
-        // Probably also do nothing since no selection box
+        // do nothing
     }
 
     @Override
     public void keyPressed (KeyEvent e) {
-        // TODO: key presses
-        System.out.println("key pressed editor");
         if (e.getCode() == KeyCode.BACK_SPACE) {
-            // TODO Delete selected elements from level
+            myElementManager.deleteSelectedUnit();
         }
     }
 

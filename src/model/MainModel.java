@@ -35,6 +35,7 @@ import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
+
 /**
  * Main class for the model of the game
  * 
@@ -46,12 +47,13 @@ public class MainModel extends Observable {
     private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
 
     private GameState myGameState;
-    private GameElementState myEditorSelectedElement;
+    private String myEditorSelectedElement;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
     public MainModel () {
+        myEditorSelectedElement = "";
         try {
             mySaveLoadMediator = new GameSaveLoadMediator();
             mySpriteImageGenerator = new SpriteImageGenerator();
@@ -82,8 +84,8 @@ public class MainModel extends Observable {
             myGameState = mySaveLoadMediator.loadGame(game);
         }
         catch (SaveLoadException e) {
-             DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-             .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+            DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+                    .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
 
         loadSpritesAndMasks();
@@ -96,7 +98,7 @@ public class MainModel extends Observable {
                 .getDrawableGameElementStates();
         Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
                 .getSelectableGameElementStates();
-        
+
         Set<AnimatorState> animatorStates = new HashSet<>();
         for (DrawableGameElementState dges : drawableStates) {
             animatorStates.add(dges.myAnimatorState);
@@ -106,7 +108,8 @@ public class MainModel extends Observable {
         }
         try {
             mySaveLoadMediator.loadSpritesAndMasks(animatorStates);
-        } catch (SaveLoadException e) {
+        }
+        catch (SaveLoadException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }
@@ -117,19 +120,22 @@ public class MainModel extends Observable {
 
     public void saveGame (GameState game) {
         try {
-            JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class,
-                    SplashScreen.EXISTING_GAMES);
+            JSONableSet<String> existingGames =
+                    SaveLoadUtility.loadResource(JSONableSet.class,
+                                                 SplashScreen.EXISTING_GAMES);
             existingGames.add(game.getName());
             SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
             mySaveLoadMediator.saveGame(game, game.getName());
-        } catch (SaveLoadException e) {
+        }
+        catch (SaveLoadException e) {
             e.printStackTrace();
         }
 
     }
 
     public void updateDescribableState (String[] selection, String name, String description)
-            throws CampaignNotFoundException, LevelNotFoundException {
+                                                                                            throws CampaignNotFoundException,
+                                                                                            LevelNotFoundException {
         DescribableState state = getDescribableState(selection);
         state.updateName(name);
         state.updateDescription(description);
@@ -137,14 +143,17 @@ public class MainModel extends Observable {
     }
 
     public DescribableState getDescribableState (String[] selection)
-            throws CampaignNotFoundException, LevelNotFoundException {
+                                                                    throws CampaignNotFoundException,
+                                                                    LevelNotFoundException {
         if (selection[2].isEmpty()) {
             if (selection[1].isEmpty()) {
                 return myGameState;
-            } else {
+            }
+            else {
                 return myGameState.getCampaign(selection[1]);
             }
-        } else {
+        }
+        else {
             return myGameState.getCampaign(selection[1]).getLevel(selection[2]);
         }
     }
@@ -154,7 +163,8 @@ public class MainModel extends Observable {
     }
 
     public LevelState getLevel (String campaignName, String levelName)
-            throws LevelNotFoundException, CampaignNotFoundException {
+                                                                      throws LevelNotFoundException,
+                                                                      CampaignNotFoundException {
         return getCampaign(campaignName).getLevel(levelName);
     }
 
@@ -168,14 +178,24 @@ public class MainModel extends Observable {
      * @param element
      */
     public void setEditorSelected (String elementName) {
-        updateObservers();
+        myEditorSelectedElement = elementName;
+    }
+
+    //TODO
+    public void setEditorDrawableSelected (String elementName) {
+        myEditorSelectedElement = elementName;
+    }
+    //TODO
+
+    public void setEditorSelectableSelected (String elementName) {
+        
     }
 
     /**
      * called by engine when registers click and needs what the editor has
      * selected to place on the map
      */
-    public GameElementState getEditorSelected () {
+    public String getEditorSelected () {
         return myEditorSelectedElement;
     }
 
@@ -199,13 +219,16 @@ public class MainModel extends Observable {
      * @throws LevelExistsException
      */
     public void createLevel (String levelName, String campaignName, Number width, Number height)
-            throws LevelExistsException, CampaignNotFoundException, Exception {
+                                                                                                throws LevelExistsException,
+                                                                                                CampaignNotFoundException,
+                                                                                                Exception {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim());
         if (width.doubleValue() > 0 && height.doubleValue() > 0) {
             newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, width);
             newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, height);
-        } else {
+        }
+        else {
             throw new Exception("invalid size of level");
         }
         campaignState.addLevel(newLevelState);
@@ -249,7 +272,8 @@ public class MainModel extends Observable {
                     .createSelectableGameElementState(data);
             myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
             updateObservers();
-        } catch (SaveLoadException e) {
+        }
+        catch (SaveLoadException e) {
             // TODO remove
             e.printStackTrace();
         }
@@ -280,11 +304,11 @@ public class MainModel extends Observable {
     private boolean elementIsInUse (String elementName) {
         List<GameElementState> allStates = new ArrayList<>();
         myGameState.getCampaigns().forEach((campaign -> {
-            campaign.getLevels().forEach((level)->{
-                allStates.addAll(level.getTerrain().stream().filter((terrain)->{
+            campaign.getLevels().forEach( (level) -> {
+                allStates.addAll(level.getTerrain().stream().filter( (terrain) -> {
                     return terrain.getName().equals(elementName);
                 }).collect(Collectors.toList()));
-                allStates.addAll(level.getUnits().stream().filter((unit)->{
+                allStates.addAll(level.getUnits().stream().filter( (unit) -> {
                     return unit.getName().equals(elementName);
                 }).collect(Collectors.toList()));
             });
@@ -307,15 +331,17 @@ public class MainModel extends Observable {
     }
 
     public void addUnitToLevel (LevelState levelState, String elementName, Double xValue,
-            Double yValue) throws Exception {
+                                Double yValue) throws Exception {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
-            SelectableGameElementState unit = getGameUniverse().getSelectableGameElementState(
-                    elementName);
+            SelectableGameElementState unit =
+                    getGameUniverse().getSelectableGameElementState(
+                                                                    elementName);
             unit.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
             unit.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
             myModifiedContainer.getRecentlyAddedUnits().add(unit);
             levelState.addUnit(unit);
-        } else {
+        }
+        else {
             throw new Exception("location not within level grid bounds");
         }
 
@@ -326,8 +352,9 @@ public class MainModel extends Observable {
         int height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(
-                        terrainName);
+                DrawableGameElementState terrain =
+                        getGameUniverse().getDrawableGameElementState(
+                                                                      terrainName);
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, j);
                 myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
@@ -337,15 +364,17 @@ public class MainModel extends Observable {
     }
 
     public void addTerrainToLevel (LevelState levelState, String elementName, Double xValue,
-            Double yValue) throws Exception {
+                                   Double yValue) throws Exception {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
-            DrawableGameElementState terrain = getGameUniverse().getDrawableGameElementState(
-                    elementName);
+            DrawableGameElementState terrain =
+                    getGameUniverse().getDrawableGameElementState(
+                                                                  elementName);
             terrain.attributes.setNumericalAttribute(StateTags.X_POSITION, xValue);
             terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION, yValue);
             myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
             levelState.addTerrain(terrain);
-        } else {
+        }
+        else {
             throw new Exception("location not within level grid bounds");
         }
     }
@@ -389,7 +418,7 @@ public class MainModel extends Observable {
         ImageView newColorMaskImageView = new ImageView(matchingContainer.getColorMask("BLUE")
                 .getImage());
         SpriteImageContainer spriteContainer = new SpriteImageContainer(newImageView,
-                newColorMaskImageView);
+                                                                        newColorMaskImageView);
         return spriteContainer;
     }
 }

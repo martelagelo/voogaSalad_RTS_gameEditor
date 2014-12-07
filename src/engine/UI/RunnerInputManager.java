@@ -24,6 +24,7 @@ public class RunnerInputManager extends InputManager {
                                GameElementManager gameElementManager,
                                GameLoop gameLoop, Participant user) {
         super(model, gameElementManager, gameLoop, user);
+        gameLoop.setRunnerLoop();
     }
 
     @Override

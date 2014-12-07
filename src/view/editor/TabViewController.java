@@ -94,10 +94,12 @@ public class TabViewController extends GUIContainer {
         attachChildContainers(gameRunnerPaneController);
         startLevel();
         gameRunnerPaneController.setOnDone(e -> startLevel());
+        controllerToggle.setSelected(true);
     }
 
     private void startLevel () {
         gameRunnerPaneController.setLevel(myLevel);
+        controllerToggle.setSelected(true);
     }
 
     @Override
@@ -149,7 +151,7 @@ public class TabViewController extends GUIContainer {
             DialogBoxUtility.createMessageDialog(e1.toString());
         }
         initToggle();
-        controllerToggle.setSelected(true);
+        controllerToggle.setSelected(false);
     }
 
     private void initToggle () {

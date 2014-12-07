@@ -58,4 +58,8 @@ public abstract class Participant {
         return myPlayerID == otherTeamID;
     }
 
+    public double getTeamID () {
+        return myPlayerID;
+    }
+
 }

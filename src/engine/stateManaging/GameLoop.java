@@ -41,10 +41,17 @@ public class GameLoop extends Observable {
             new ArrayList<>();
     private Timeline timeline;
 
-    private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
+    private EventHandler<ActionEvent> oneFrameRunner = new EventHandler<ActionEvent>() {
         @Override
         public void handle (ActionEvent evt) {
-            update();
+            updateRunner();
+        }
+    };
+
+    private EventHandler<ActionEvent> oneFrameEditor = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle (ActionEvent evt) {
+            updateEditor();
         }
     };
 
@@ -58,32 +65,13 @@ public class GameLoop extends Observable {
         unitPaths = new ArrayList<Line>();
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
-        startGameLoop();
+        startTimeline();
     }
-
-    /**
-     * Start the game loop
-     */
-    public void startGameLoop () {
-        KeyFrame frame = start(framesPerSecond);
-        startTimeline(frame);
-    }
-
-    /**
-     * Create a keyframe with the given framerate
-     *
-     * @param framesPerSecond the number of frames per second of the keyframe
-     * @return the keyframe
-     */
-    private KeyFrame start (Double framesPerSecond) {
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
-        return frame;
-    }
-
+    
     /**
      * Update the states of all prominent elements and aspects of the game
      */
-    private void update () {
+    private void updateRunner () {
         // Clears all path lines from the GUI
         clearLinesFromRoot();
         // Adds needed path lines to the GUI
@@ -129,6 +117,18 @@ public class GameLoop extends Observable {
         }
     }
 
+    /**
+     * Update the states of all prominent elements and aspects of the game
+     */
+    private void updateEditor () {
+        Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
+        while (iter.hasNext()) {
+            SelectableGameElement selectableElement = iter.next();
+            selectableElement.update();
+        }
+        myVisualManager.update(myCurrentLevel.getUnits());
+    }
+
     private void addPathsToRoot () {
         for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
             // unitPaths.addAll(SGE.getLines());
@@ -146,13 +146,27 @@ public class GameLoop extends Observable {
      *
      * @param frame the keyframe for the timeline
      */
-    private void startTimeline (KeyFrame frame) {
+    private void startTimeline () {
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().clear();
-        timeline.getKeyFrames().add(frame);
+        setRunnerLoop();
         timeline.playFromStart();
     }
 
+    public void setEditorLoop() {
+        setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameEditor));
+    }
+    
+    public void setRunnerLoop() {
+        setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameRunner));
+    }
+    
+    private void setLoop(KeyFrame frame) {
+        timeline.stop();
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.play();
+    }
+    
     /**
      * Play the game
      */
@@ -161,7 +175,7 @@ public class GameLoop extends Observable {
     }
 
     /**
-     * Pause the game
+     * Toggle Pause the game
      */
     public void pause () {
         if (timeline.getStatus().equals(Status.PAUSED)) {

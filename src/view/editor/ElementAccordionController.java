@@ -70,16 +70,7 @@ public class ElementAccordionController extends GUIContainer {
                 }
             });
         });
-        try {
-            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(TERRAIN_KEY));
-            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(UNIT_KEY));
-        }
-        catch (LanguagePropertyNotFoundException e) {
-            // Should never happen
-            DialogBoxUtility.createMessageDialog(e.toString());
-        }
+        attachTextProperties();
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
@@ -102,6 +93,27 @@ public class ElementAccordionController extends GUIContainer {
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(elementAccordion.getPanes().size() - 1));
+        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorSelectElement(s));
+        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorSelectElement(s));
+    }
+
+    private void editorSelectElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorSelected(selection);
+        }
+    }
+
+    private void attachTextProperties () {
+        try {
+            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(TERRAIN_KEY));
+            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(UNIT_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            // Should never happen
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
     }
 
     private Consumer<String> addTerrainToLevel () {
