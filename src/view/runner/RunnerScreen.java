@@ -1,5 +1,6 @@
 package view.runner;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +79,7 @@ public class RunnerScreen extends StackPaneGUIScreen {
                         .getStringProperty(LOAD_LEVEL_ERROR_KEY).getValue());
             }
             catch (LanguagePropertyNotFoundException e1) {
-                DialogBoxUtility.createMessageDialog(e1.toString());
+                DialogBoxUtility.createMessageDialog(Arrays.toString(e1.getStackTrace()));
             }
         }
 
