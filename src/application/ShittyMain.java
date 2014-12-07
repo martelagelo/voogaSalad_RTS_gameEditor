@@ -157,7 +157,7 @@ public class ShittyMain extends Application {
         Engine engine =
                 new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
         
-        engine.setAnimationEnabled(false);
+        engine.setAnimationEnabled(true);
         
         return engine;
     }
@@ -332,11 +332,11 @@ public class ShittyMain extends Application {
                                       "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
         // TESTING LOADING SGES
-        SelectableGameElementState sges =
-                SaveLoadUtility.loadResource(
-                                             SelectableGameElementState.class,
-                                             "resources/sges.json");
-        Map<String, List<ActionWrapper>> map = sges.getActions();
+//        SelectableGameElementState sges =
+//                SaveLoadUtility.loadResource(
+//                                             SelectableGameElementState.class,
+//                                             "resources/sges.json");
+//        Map<String, List<ActionWrapper>> map = sges.getActions();
 
         return archerState;
     }

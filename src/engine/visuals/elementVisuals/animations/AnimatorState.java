@@ -1,11 +1,12 @@
 package engine.visuals.elementVisuals.animations;
 
-import engine.visuals.Dimension;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import util.JSONable;
+import engine.visuals.Dimension;
 
 /**
  * A data wrapper object used to group the pertinent information for a
@@ -44,6 +45,10 @@ public class AnimatorState implements JSONable, Serializable {
         this.viewportSize = frameDimensions;
         this.numRows = numRows;
         this.animationSequences = animationSequenceList;
+        if(animationSequences == null){
+            animationSequences = new HashSet<>();
+            animationSequences.add(new NullAnimationSequence());
+        }
     }
 
     public void addAnimationSequence (AnimationSequence seq) {

@@ -22,7 +22,7 @@ public class VisualizerFactory {
     SimpleBooleanProperty enabled;
 
     public VisualizerFactory (AnimatorFactory animatorFactory) {
-        enabled = new SimpleBooleanProperty(true);
+        enabled = new SimpleBooleanProperty(false);
         myAnimatorFactory = animatorFactory;
         myWidgetFactory = new AttributeDisplayerFactory();
     }
@@ -32,7 +32,7 @@ public class VisualizerFactory {
     }
 
     public Visualizer createVisualizer (DrawableGameElementState elementState) {
-        Animator animator = myAnimatorFactory.createAnimator(elementState);
+        Animator animator = myAnimatorFactory.createAnimator(elementState, enabled);
 
         Visualizer newVisualizer = new Visualizer(animator,
                                                   elementState.attributes);

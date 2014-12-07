@@ -20,7 +20,7 @@ import model.exceptions.SaveLoadException;
 public class SpriteImageContainer {
     private ImageView mySpritesheet;
     private ImageView myColorMask;
-
+    
     public SpriteImageContainer (ImageView spritesheet, ImageView colorMask) {
         mySpritesheet = spritesheet;
         myColorMask = colorMask;
@@ -44,6 +44,7 @@ public class SpriteImageContainer {
     }
 
     public ImageView getColorMask (String color) {
+        if(myColorMask.getImage() == null) return new ImageView();
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome,
