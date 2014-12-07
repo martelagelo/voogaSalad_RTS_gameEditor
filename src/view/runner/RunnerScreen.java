@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.MenuBar;
@@ -12,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
+import model.state.LevelIdentifier;
 import model.state.LevelState;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
@@ -59,15 +61,14 @@ public class RunnerScreen extends StackPaneGUIScreen {
         attachChildContainers(runnerMenuBarController, gameRunnerController);
         bindPaneSize(gameRunner);
         bindPaneSize(levelChooser);
-        levelChooserController.setOnSubmit( (String campaign, String level) -> playLevel(campaign,
-                                                                                         level));
+        levelChooserController.setOnSubmit( (LevelIdentifier levelID) -> playLevel(levelID));
         gameRunnerController.setOnDone(e -> setFront(levelChooser));
         setFront(levelChooser);
     }
 
-    private void playLevel (String campaign, String level) {
+    private void playLevel (LevelIdentifier levelID) {
         try {
-            myLevel = myMainModel.getLevel(campaign, level);
+            myLevel = myMainModel.getLevel(levelID);
             gameRunnerController.setLevel(myLevel);
             gameRunnerController.addObserver(this);
             setFront(gameRunner);

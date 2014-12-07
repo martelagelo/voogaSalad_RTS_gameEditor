@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
+import model.state.LevelIdentifier;
 import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -54,9 +56,9 @@ public class ElementAccordionController extends GUIContainer {
 
     private LevelState myLevel;
 
-    public void setLevel (String campaign, String level) throws LevelNotFoundException,
+    public void setLevel (LevelIdentifier levelID) throws LevelNotFoundException,
                                                         CampaignNotFoundException {
-        myLevel = myMainModel.getLevel(campaign, level);
+        myLevel = myMainModel.getLevel(levelID);
     }
 
     @Override

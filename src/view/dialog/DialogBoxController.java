@@ -21,7 +21,7 @@ import view.gui.GUIController;
 public class DialogBoxController implements GUIController {
 
     @FXML
-    private VBox root;
+    private VBox dialogRoot;
     @FXML
     private Label dialogMessageLabel;
     @FXML
@@ -41,7 +41,7 @@ public class DialogBoxController implements GUIController {
 
     @Override
     public Node getRoot () {
-        return root;
+        return dialogRoot;
     }
 
     @Override

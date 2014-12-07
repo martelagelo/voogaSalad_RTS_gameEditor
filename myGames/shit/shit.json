@@ -1,0 +1,266 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 500.0,
+                "myName": "levelWidth"
+              },
+              {
+                "myData": 500.0,
+                "myName": "levelHeight"
+              }
+            ],
+            "myTextualAttributes": []
+          },
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [],
+          "myName": "shit",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "shit",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 2.0,
+        "myName": "movementSpeed"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "dsfj",
+        "myName": "name"
+      },
+      {
+        "myData": "BLUE",
+        "myName": "teamColor"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/farm0.png",
+          "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+          "viewportSize": {
+            "myWidth": 96,
+            "myHeight": 48
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "lksjdf",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ],
+    "mySelectableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/gold5.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/default.png",
+          "viewportSize": {
+            "myWidth": 88,
+            "myHeight": 54
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 2,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "myActions": {
+          "INTERNAL": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            }
+          ]
+        },
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 2.0,
+              "myName": "movementSpeed"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "dsfj",
+              "myName": "name"
+            },
+            {
+              "myData": "BLUE",
+              "myName": "teamColor"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/farm0.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/default.png",
+          "viewportSize": {
+            "myWidth": 96,
+            "myHeight": 48
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "shit",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ]
+  },
+  "myName": "shit",
+  "myDescription": "",
+  "myHashingPrime": 31
+}
