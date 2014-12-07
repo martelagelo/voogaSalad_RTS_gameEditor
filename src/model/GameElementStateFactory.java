@@ -59,16 +59,19 @@ public class GameElementStateFactory {
         return state;
     }
 
-    private static double[] createBounds (WizardData data) {
-        String bounds =
-                data.getWizardDataByType(WizardType.BOUNDS).get(0)
-                        .getValueByKey(WizardDataType.BOUND_VALUES);
-        String[] points = bounds.split(",");
-        double[] myBounds = new double[points.length];
-        for (int i = 0; i < points.length; i++) {
-            myBounds[i] = Double.parseDouble(points[i]);
+    private static double[] createBounds (WizardData data) {        
+        if (data.getWizardDataByType(WizardType.BOUNDS).size() > 0) {
+            String bounds =
+                    data.getWizardDataByType(WizardType.BOUNDS).get(0)
+                            .getValueByKey(WizardDataType.BOUND_VALUES);
+            String[] points = bounds.split(",");
+            double[] myBounds = new double[points.length];
+            for (int i = 0; i < points.length; i++) {
+                myBounds[i] = Double.parseDouble(points[i]);
+            }
+            return myBounds;
         }
-        return myBounds;
+        return new double[8];
     }
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {

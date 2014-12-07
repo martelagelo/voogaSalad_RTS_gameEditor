@@ -85,7 +85,7 @@ public class LevelTriggersViewController implements GUIController {
                                                       .getStringProperty(DELETE_SELECTED_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
     }
 

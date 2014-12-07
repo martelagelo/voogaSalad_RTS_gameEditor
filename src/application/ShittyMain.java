@@ -82,10 +82,12 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
-//        archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
-//                                                 ActionOptions.INCREMENT_DECREMENT_ACTION,
-//                                                 "archerman", StateTags.HEALTH, StateTags.ATTACK,
-//                                                 "50", StateTags.HEALTH, "LeechTimer", "100"));
+
+        // archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
+        // ActionOptions.INCREMENT_DECREMENT_ACTION,
+        // "archerman", StateTags.HEALTH, StateTags.ATTACK,
+        // "50", StateTags.HEALTH, "LeechTimer", "100"));
+
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
         archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
@@ -193,24 +195,28 @@ public class ShittyMain extends Application {
         archerState.addAction(new ActionWrapper(ActionType.BUTTON,
                                                 ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
                                                 StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
-                                                "archer", "ArcherSpawnCooldown", "200"));
+                                                "archer", StateTags.HEALTH, "Resources",
+                                                "ArcherSpawnCooldown", "1000"));
         archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
         archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
         archerState.setBounds(bounds);
-        // TESTING SAVING SGES
-        SaveLoadUtility.save(archerState, "resources/sges.json");
+
         AnimatorState archerAnimations =
                 SaveLoadUtility
                         .loadResource(AnimatorState.class,
                                       "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
-        // TESTING LOADING SGES
-        SelectableGameElementState sges =
-                SaveLoadUtility.loadResource(
-                                             SelectableGameElementState.class,
-                                             "resources/sges.json");
-        Map<String, List<ActionWrapper>> map = sges.getActions();
+        
+        
+//      // TESTING SAVING SGES
+//      SaveLoadUtility.save(archerState, "resources/sges.json");
+//        // TESTING LOADING SGES
+//        SelectableGameElementState sges =
+//                SaveLoadUtility.loadResource(
+//                                             SelectableGameElementState.class,
+//                                             "resources/sges.json");
+//        Map<ActionType, List<ActionWrapper>> map = sges.getActions();
 
         return archerState;
     }

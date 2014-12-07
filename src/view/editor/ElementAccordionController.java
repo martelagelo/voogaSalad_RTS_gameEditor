@@ -38,8 +38,8 @@ import view.gui.GUIPanePath;
  */
 public class ElementAccordionController extends GUIContainer {
 
-    private static final String UNIT_KEY = "Unit";
-    private static final String TERRAIN_KEY = "Terrain";
+    private static final String DRAWABLE_KEY = "Drawable";
+    private static final String SELECTABLE_KEY = "Selectable";
 
     @FXML
     private Accordion elementAccordion;
@@ -70,7 +70,7 @@ public class ElementAccordionController extends GUIContainer {
                 }
             });
         });
-        attachTextProperties();
+        attachStringProperties();
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
@@ -102,13 +102,13 @@ public class ElementAccordionController extends GUIContainer {
             myMainModel.setEditorSelected(selection);
         }
     }
-
-    private void attachTextProperties () {
+    
+    private void attachStringProperties () {
         try {
             terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(TERRAIN_KEY));
+                    .getStringProperty(DRAWABLE_KEY));
             unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(UNIT_KEY));
+                    .getStringProperty(SELECTABLE_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             // Should never happen

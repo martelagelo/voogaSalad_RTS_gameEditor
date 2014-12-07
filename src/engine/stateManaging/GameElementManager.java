@@ -52,7 +52,7 @@ public class GameElementManager {
      */
     public List<GameElement> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
-                .filter(o -> o.getType().equals(typeName)).map(o -> o)
+                .filter(o -> o.isType(typeName)).map(o -> o)
                 .collect(Collectors.toList());
     }
 
@@ -99,6 +99,10 @@ public class GameElementManager {
         }
     }
 
+    private void deselectAllElements() {
+        myLevel.getUnits().forEach((unit)->unit.deselect());
+    }
+    
     public void moveSelectedUnit (Point2D mapPoint2d, Participant user) {
         if (selectedElement == null) return;
         selectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
@@ -139,12 +143,6 @@ public class GameElementManager {
                     break;
                 }
             }
-        }
-    }
-
-    private void deselectAllElements () {
-        for (SelectableGameElement e : myLevel.getUnits()) {
-            e.deselect();
         }
     }
 
