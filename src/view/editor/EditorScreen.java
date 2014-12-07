@@ -1,5 +1,6 @@
 package view.editor;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -145,7 +146,7 @@ public class EditorScreen extends GUIScreen {
         }
         catch (LevelNotFoundException | CampaignNotFoundException e) {
             // Should not happen
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
         tab.setUserData(new CampaignLevelPair(campaign, level));
         tab.setContent((BorderPane) tabController.getRoot());
@@ -223,7 +224,7 @@ public class EditorScreen extends GUIScreen {
             }
             catch (CampaignNotFoundException | LevelNotFoundException e) {
                 // Should never happen
-                DialogBoxUtility.createMessageDialog(e.toString());
+                DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
             }
         }
 

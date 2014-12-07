@@ -1,6 +1,7 @@
 package view.editor;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -78,7 +79,7 @@ public class ElementAccordionController extends GUIContainer {
         }
         catch (LanguagePropertyNotFoundException e) {
             // Should never happen
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());

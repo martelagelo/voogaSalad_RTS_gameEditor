@@ -1,5 +1,6 @@
 package view.editor.wizards;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import javafx.animation.FadeTransition;
@@ -154,7 +155,7 @@ public abstract class Wizard implements GUIController {
                     .getValue());
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
     }
 
