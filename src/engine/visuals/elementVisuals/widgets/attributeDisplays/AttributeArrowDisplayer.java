@@ -28,15 +28,12 @@ public class AttributeArrowDisplayer extends AttributeDisplayer {
 		}
 		ImageView imgView = new ImageView(arrow);
 		group.getChildren().add(imgView);
-		group.setLayoutX(65);
-		group.setLayoutY(-20);
 		return group;
 	}
 
 	@Override
 	protected void updateDisplay(double attributeValue,
 			double attributeMinValue, double attributeMaxValue) {
-		//toggleOpacity();
 		//nothing should happen
 	}
 
