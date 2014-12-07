@@ -104,13 +104,14 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
     protected T evaluate (GameElement item1, ActionRepresentation item2) {
         return null;
     }
+
     /**
      * Evaluate on a game element and an element promise
      */
-    protected T evaluate(GameElement item1, ElementPromise item2){
+    protected T evaluate (GameElement item1, ElementPromise item2) {
         return null;
     }
-   
+
     /**
      * Evaluate the evaluator on the element pair
      *
@@ -155,7 +156,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
         if (type1.equals(GameElement.class) && type2.equals(ActionRepresentation.class)) { return evaluate((GameElement) parameter1Value,
                                                                                                            (ActionRepresentation) parameter2Value); }
         if (type1.equals(GameElement.class) && type2.equals(ElementPromise.class)) { return evaluate((GameElement) parameter1Value,
-                                                                                                    (ElementPromise) parameter2Value); }
+                                                                                                     (ElementPromise) parameter2Value); }
         return evaluate(parameter1Value, parameter2Value);
     }
 
@@ -185,6 +186,26 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
         try {
             myParameter1.setValue(myElementPair,
                                   myParameter1.getType().cast(value));
+            return true;
+        }
+        catch (Exception e) {
+            // parameter could not be set. Do nothing
+            return false;
+        }
+    }
+
+    /**
+     * Set the value for the second parameter. I understant that this code is a large amount of
+     * repeat from above. This had to happen due to javafx generics type erasure.
+     * 
+     * @param value
+     *        the value to set the first parameter to
+     * @return a boolean indicating whether the setting was successful
+     */
+    protected boolean setParameter2Value (Object value) {
+        try {
+            myParameter2.setValue(myElementPair,
+                                  myParameter2.getType().cast(value));
             return true;
         }
         catch (Exception e) {

@@ -46,8 +46,8 @@ public class VisualManager {
      */
     public VisualManager (Group gameObjectVisuals,
                           double fieldWidth,
-                          double fieldHeight) {
-        scene = new ScrollablePane(gameObjectVisuals, fieldWidth, fieldHeight);
+                          double fieldHeight, String backgroundURI) {
+        scene = new ScrollablePane(gameObjectVisuals, fieldWidth, fieldHeight, backgroundURI);
         background = scene.getScrollingBackground();
         myMiniMap = new MiniMap(scene);
         scene.addToScene(new Group(myMiniMap.getDisplay()));
@@ -64,6 +64,10 @@ public class VisualManager {
      */
     public ScrollablePane getScrollingScene () {
         return scene;
+    }
+    
+    public void changeBackground(String backgroundURI){
+        scene.changeBackground(backgroundURI);
     }
 
     /**

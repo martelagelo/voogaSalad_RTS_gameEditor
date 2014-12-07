@@ -1,11 +1,16 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Observable;
 import java.util.Optional;
-
+import java.util.Set;
+import java.util.stream.Collectors;
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
+import model.exceptions.ElementInUseException;
 import model.exceptions.LevelExistsException;
 import model.exceptions.LevelNotFoundException;
 import model.exceptions.SaveLoadException;
@@ -28,6 +33,7 @@ import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
  * Main class for the model of the game
@@ -74,12 +80,35 @@ public class MainModel extends Observable {
         try {
             // TODO: insert Save Load code here and instantiate myGameState
             myGameState = mySaveLoadMediator.loadGame(game);
-        } catch (SaveLoadException e) {
-            // TODO Get rid of stack trace printing
-            DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-                    .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
+        catch (SaveLoadException e) {
+             DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+             .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+        }
+
+        loadSpritesAndMasks();
+
         updateObservers();
+    }
+
+    private void loadSpritesAndMasks () {
+        Set<DrawableGameElementState> drawableStates = myGameState.getGameUniverse()
+                .getDrawableGameElementStates();
+        Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
+                .getSelectableGameElementStates();
+        
+        Set<AnimatorState> animatorStates = new HashSet<>();
+        for (DrawableGameElementState dges : drawableStates) {
+            animatorStates.add(dges.myAnimatorState);
+        }
+        for (SelectableGameElementState dges : selectableStates) {
+            animatorStates.add(dges.myAnimatorState);
+        }
+        try {
+            mySaveLoadMediator.loadSpritesAndMasks(animatorStates);
+        } catch (SaveLoadException e) {
+            DialogBoxUtility.createMessageDialog(e.getMessage());
+        }
     }
 
     public void saveGame () throws RuntimeException {
@@ -87,13 +116,12 @@ public class MainModel extends Observable {
     }
 
     public void saveGame (GameState game) {
-
         try {
             JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class,
                     SplashScreen.EXISTING_GAMES);
             existingGames.add(game.getName());
             SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
-
+            mySaveLoadMediator.saveGame(game, game.getName());
         } catch (SaveLoadException e) {
             e.printStackTrace();
         }
@@ -201,17 +229,10 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElementState (WizardData data) {
-        try {
-            String actualSaveLocation = mySaveLoadMediator.saveImage(data);
-            data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
-            DrawableGameElementState gameElement = GameElementStateFactory
-                    .createDrawableGameElementState(data);
-            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-            updateObservers();
-        } catch (SaveLoadException e) {
-            // TODO remove
-            e.printStackTrace();
-        }
+        DrawableGameElementState gameElement = GameElementStateFactory
+                .createDrawableGameElementState(data);
+        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+        updateObservers();
     }
 
     /**
@@ -234,7 +255,8 @@ public class MainModel extends Observable {
         }
     }
 
-    public void removeDrawableGameElement (String elementName) {
+    public void removeDrawableGameElement (String elementName) throws ElementInUseException {
+        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
         Optional<DrawableGameElementState> option = getGameUniverse()
                 .getDrawableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -244,7 +266,8 @@ public class MainModel extends Observable {
         }
     }
 
-    public void removeSelectableGameElement (String elementName) {
+    public void removeSelectableGameElement (String elementName) throws ElementInUseException {
+        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
         Optional<SelectableGameElementState> option = getGameUniverse()
                 .getSelectableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -252,6 +275,21 @@ public class MainModel extends Observable {
         if (option.isPresent()) {
             getGameUniverse().removeSelectableGameElementState(option.get());
         }
+    }
+
+    private boolean elementIsInUse (String elementName) {
+        List<GameElementState> allStates = new ArrayList<>();
+        myGameState.getCampaigns().forEach((campaign -> {
+            campaign.getLevels().forEach((level)->{
+                allStates.addAll(level.getTerrain().stream().filter((terrain)->{
+                    return terrain.getName().equals(elementName);
+                }).collect(Collectors.toList()));
+                allStates.addAll(level.getUnits().stream().filter((unit)->{
+                    return unit.getName().equals(elementName);
+                }).collect(Collectors.toList()));
+            });
+        }));
+        return allStates.size() > 0;
     }
 
     public void createGoal (LevelState levelState, WizardData data) {

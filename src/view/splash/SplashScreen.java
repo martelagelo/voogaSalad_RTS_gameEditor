@@ -160,7 +160,7 @@ public class SplashScreen extends GUIScreen {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         // Splash Screen has no need to update
     }
 
