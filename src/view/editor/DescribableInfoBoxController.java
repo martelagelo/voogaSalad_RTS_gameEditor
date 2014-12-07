@@ -34,26 +34,6 @@ public class DescribableInfoBoxController implements GUIController {
     @FXML
     private Button submitButton;
 
-    // @FXML
-    // private ImageView iconImageView;
-    // @FXML
-    // private Label iconLabel;
-    // @FXML
-    // private Button iconFileChooserButton;
-
-    // public void setInfo (String name, String description, String iconFilePath, Image icon) {
-    // nameTextField.setText(name);
-    // ;
-    // descriptionTextArea.setText(description);
-    // iconLabel.setText(iconFilePath);
-    // iconImageView.setImage(icon);
-    // }
-
-    // private void initIconFileChoosing () {
-    // iconFileChooserButton.textProperty().bind(myIconButtonText);
-    // iconFileChooserButton.setOnAction(e -> System.out.println("clicked!"));
-    // }
-
     private void initLabelInputSwitching () {
         setEditableToggle(nameTextField);
         setEditableToggle(descriptionTextArea);

@@ -1,5 +1,6 @@
 package model.state;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.state.gameelement.AttributeContainer;
@@ -16,13 +17,20 @@ import model.state.gameelement.SelectableGameElementState;
  * @author Steve, Jonathan, Nishad, Rahul
  *
  */
-public class LevelState extends DescribableState {
+public class LevelState extends DescribableState implements Serializable {
 
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = 846038357373984158L;
     public AttributeContainer attributes;
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
 
+    public LevelState() {
+    }
+    
     public LevelState (String name) {
         super(name);
         attributes = new AttributeContainer();

@@ -21,11 +21,1260 @@
             {
               "AttributeDisplayerStates": [
                 {
-<<<<<<< HEAD
                   "displayerTag": "AttributeBarDisplayer",
-=======
-                  "displayerTag": "attributeBar",
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+                  "parameterTag": "ORE",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 1000.0
+                }
+              ],
+              "myAnimatorState": {
+                "imageTag": "resources/gameelementresources/units/spritesheets/berserker.png",
+                "colorMaskTag": "resources/gameelementresources/units/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 114,
+                  "myHeight": 82
+                },
+                "numRows": 12,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 350,
+                    "myStopFrame": 355,
+                    "myCurrentFrame": 350,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 290,
+                    "myStopFrame": 300,
+                    "myCurrentFrame": 290,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 330,
+                    "myStopFrame": 335,
+                    "myCurrentFrame": 330,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 50,
+                    "myStopFrame": 60,
+                    "myCurrentFrame": 50,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 250,
+                    "myStopFrame": 260,
+                    "myCurrentFrame": 250,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 240,
+                    "myStopFrame": 250,
+                    "myCurrentFrame": 240,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 150,
+                    "myStopFrame": 160,
+                    "myCurrentFrame": 150,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 355,
+                    "myStopFrame": 360,
+                    "myCurrentFrame": 355,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 310,
+                    "myStopFrame": 320,
+                    "myCurrentFrame": 310,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                40.0,
+                0.0,
+                40.0,
+                40.0,
+                0.0,
+                40.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 300.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 1000,
+                    "myName": "ORE"
+                  },
+                  {
+                    "myData": 300.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "movementSpeed"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "resource1",
+                    "myName": "name"
+                  },
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": [
+                "gold",
+                "resource"
+              ]
+            },
+            {
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "AttributeBarDisplayer",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 500.0
+                }
+              ],
+              "myAnimatorState": {
+                "imageTag": "resources/gameelementresources/units/spritesheets/champion.png",
+                "colorMaskTag": "resources/gameelementresources/units/colormasks/champion.png",
+                "viewportSize": {
+                  "myWidth": 106,
+                  "myHeight": 77
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 350,
+                    "myStopFrame": 355,
+                    "myCurrentFrame": 350,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 290,
+                    "myStopFrame": 300,
+                    "myCurrentFrame": 290,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 330,
+                    "myStopFrame": 335,
+                    "myCurrentFrame": 330,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 50,
+                    "myStopFrame": 60,
+                    "myCurrentFrame": 50,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 250,
+                    "myStopFrame": 260,
+                    "myCurrentFrame": 250,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 240,
+                    "myStopFrame": 250,
+                    "myCurrentFrame": 240,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 150,
+                    "myStopFrame": 160,
+                    "myCurrentFrame": 150,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 355,
+                    "myStopFrame": 360,
+                    "myCurrentFrame": 355,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 310,
+                    "myStopFrame": 320,
+                    "myCurrentFrame": 310,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                40.0,
+                0.0,
+                40.0,
+                40.0,
+                0.0,
+                40.0
+              ],
+              "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "INCREMENT_DECREMENT_ACTION",
+                    "myParameters": [
+                      "gold",
+                      "ORE",
+                      "goodness",
+                      "0",
+                      "resources",
+                      "MiningTimer",
+                      "100"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "IsDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ATTRIBUTE_INTERACTION_ACTION",
+                    "myParameters": [
+                      "Transfer",
+                      "resources",
+                      "my",
+                      "Resources"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 10.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 10.0,
+                    "myName": "xHeading"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yHeading"
+                  },
+                  {
+                    "myData": 10.0,
+                    "myName": "xTempPosition"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 3,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "goodness"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "miner",
+                    "myName": "name"
+                  },
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  },
+                  {
+                    "myData": "BLUE",
+                    "myName": "teamColor"
+                  }
+                ]
+              },
+              "myTypes": [
+                "archer"
+              ]
+            },
+            {
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -553,69 +1802,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -641,7 +1827,6 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-<<<<<<< HEAD
                 ],
                 "INTERNAL": [
                   {
@@ -677,18 +1862,37 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
                 ]
               },
               "attributes": {
                 "myNumericalAttributes": [
                   {
-<<<<<<< HEAD
-                    "myData": 200.0,
-=======
                     "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myName": "xPosition"
                   },
                   {
@@ -696,22 +1900,15 @@
                     "myName": "ReloadTime"
                   },
                   {
-<<<<<<< HEAD
-=======
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myData": 200.0,
                     "myName": "yPosition"
                   },
                   {
-<<<<<<< HEAD
-                    "myData": 200.0,
-=======
                     "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myName": "xHeading"
                   },
                   {
@@ -719,12 +1916,6 @@
                     "myName": "yHeading"
                   },
                   {
-<<<<<<< HEAD
-                    "myData": 200.0,
-                    "myName": "xTempPosition"
-                  },
-                  {
-=======
                     "myData": 100.0,
                     "myName": "xTempPosition"
                   },
@@ -733,7 +1924,6 @@
                     "myName": "YSpawnOffset"
                   },
                   {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myData": 500,
                     "myName": "health"
                   },
@@ -748,21 +1938,6 @@
                   {
                     "myData": 200.0,
                     "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 100,
-                    "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                   }
                 ],
                 "myTextualAttributes": [
@@ -792,17 +1967,10 @@
             {
               "AttributeDisplayerStates": [
                 {
-<<<<<<< HEAD
                   "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
-                  "maxAttributeValue": 1000.0
-=======
-                  "displayerTag": "attributeBar",
-                  "parameterTag": "health",
-                  "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                 }
               ],
               "myAnimatorState": {
@@ -1327,8 +2495,32 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "Attack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1364,7 +2556,6 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -1389,7 +2580,605 @@
                     ],
                     "myActionType": "BUTTON"
                   }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 200.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "xHeading"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "yHeading"
+                  },
+                  {
+                    "myData": 200.0,
+                    "myName": "xTempPosition"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "YSpawnOffset"
+                  },
+                  {
+                    "myData": 500,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "XSpawnOffset"
+                  },
+                  {
+                    "myData": 400.0,
+                    "myName": "yTempGoalPosition"
+                  }
                 ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  },
+                  {
+                    "myData": "BLUE",
+                    "myName": "teamColor"
+                  }
+                ]
+              },
+              "myTypes": [
+                "archer"
+              ]
+            },
+            {
+              "AttributeDisplayerStates": [
+                {
+                  "displayerTag": "AttributeBarDisplayer",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 1000.0
+                }
+              ],
+              "myAnimatorState": {
+                "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
+                "colorMaskTag": "resources/gameelementresources/units/colormasks/archer.png",
+                "viewportSize": {
+                  "myWidth": 138,
+                  "myHeight": 103
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 180,
+                    "myStopFrame": 190,
+                    "myCurrentFrame": 180,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 160,
+                    "myStopFrame": 170,
+                    "myCurrentFrame": 160,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 220,
+                    "myStopFrame": 230,
+                    "myCurrentFrame": 220,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 200,
+                    "myStopFrame": 210,
+                    "myCurrentFrame": 200,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 350,
+                    "myStopFrame": 355,
+                    "myCurrentFrame": 350,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 120,
+                    "myStopFrame": 130,
+                    "myCurrentFrame": 120,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 230,
+                    "myStopFrame": 240,
+                    "myCurrentFrame": 230,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 325,
+                    "myStopFrame": 330,
+                    "myCurrentFrame": 325,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 340,
+                    "myStopFrame": 345,
+                    "myCurrentFrame": 340,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 80,
+                    "myStopFrame": 90,
+                    "myCurrentFrame": 80,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 60,
+                    "myStopFrame": 70,
+                    "myCurrentFrame": 60,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 90,
+                    "myStopFrame": 100,
+                    "myCurrentFrame": 90,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 10,
+                    "myStopFrame": 20,
+                    "myCurrentFrame": 10,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 70,
+                    "myStopFrame": 80,
+                    "myCurrentFrame": 70,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 140,
+                    "myStopFrame": 150,
+                    "myCurrentFrame": 140,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 100,
+                    "myStopFrame": 110,
+                    "myCurrentFrame": 100,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 345,
+                    "myStopFrame": 350,
+                    "myCurrentFrame": 345,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 290,
+                    "myStopFrame": 300,
+                    "myCurrentFrame": 290,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 320,
+                    "myStopFrame": 325,
+                    "myCurrentFrame": 320,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 170,
+                    "myStopFrame": 180,
+                    "myCurrentFrame": 170,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 330,
+                    "myStopFrame": 335,
+                    "myCurrentFrame": 330,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 260,
+                    "myStopFrame": 270,
+                    "myCurrentFrame": 260,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 30,
+                    "myStopFrame": 40,
+                    "myCurrentFrame": 30,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 50,
+                    "myStopFrame": 60,
+                    "myCurrentFrame": 50,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 250,
+                    "myStopFrame": 260,
+                    "myCurrentFrame": 250,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 130,
+                    "myStopFrame": 140,
+                    "myCurrentFrame": 130,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 110,
+                    "myStopFrame": 120,
+                    "myCurrentFrame": 110,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 240,
+                    "myStopFrame": 250,
+                    "myCurrentFrame": 240,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 280,
+                    "myStopFrame": 290,
+                    "myCurrentFrame": 280,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 335,
+                    "myStopFrame": 340,
+                    "myCurrentFrame": 335,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 300,
+                    "myStopFrame": 310,
+                    "myCurrentFrame": 300,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 270,
+                    "myStopFrame": 280,
+                    "myCurrentFrame": 270,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 10,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 210,
+                    "myStopFrame": 220,
+                    "myCurrentFrame": 210,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "RIGHT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 20,
+                    "myStopFrame": 30,
+                    "myCurrentFrame": 20,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "LEFT",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 40,
+                    "myStopFrame": 50,
+                    "myCurrentFrame": 40,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "STAND"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 150,
+                    "myStopFrame": 160,
+                    "myCurrentFrame": 150,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "MOVE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 355,
+                    "myStopFrame": 360,
+                    "myCurrentFrame": 355,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DECAY"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 310,
+                    "myStopFrame": 320,
+                    "myCurrentFrame": 310,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "FORWARD",
+                      "RIGHT",
+                      "DIE"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  },
+                  {
+                    "myStartFrame": 190,
+                    "myStopFrame": 200,
+                    "myCurrentFrame": 190,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "BACKWARD",
+                      "LEFT",
+                      "ATTACK"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                40.0,
+                0.0,
+                40.0,
+                40.0,
+                0.0,
+                40.0
+              ],
+              "myActions": {
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -1415,7 +3204,6 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-<<<<<<< HEAD
                 ],
                 "INTERNAL": [
                   {
@@ -1462,688 +3250,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                ]
-              },
-              "attributes": {
-                "myNumericalAttributes": [
-                  {
-<<<<<<< HEAD
-                    "myData": 400.0,
-=======
-                    "myData": 200.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 50,
-                    "myName": "ReloadTime"
-                  },
-                  {
-<<<<<<< HEAD
-                    "myData": 1000,
-                    "myName": "MAX_HEALTH"
-                  },
-                  {
-                    "myData": 100.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "xHeading"
-                  },
-                  {
-                    "myData": 100.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 400.0,
-=======
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 200.0,
-                    "myName": "xHeading"
-                  },
-                  {
-                    "myData": 400.0,
-                    "myName": "yHeading"
-                  },
-                  {
-                    "myData": 200.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                    "myName": "xTempPosition"
-                  },
-                  {
-                    "myData": 100,
-<<<<<<< HEAD
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 0,
-=======
-                    "myName": "YSpawnOffset"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 2,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 100,
-                    "myName": "XSpawnOffset"
-                  },
-                  {
-<<<<<<< HEAD
-                    "myData": 100.0,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 100,
-                    "myName": "YSpawnOffset"
-=======
-                    "myData": 400.0,
-                    "myName": "yTempGoalPosition"
-                  }
-                ],
-                "myTextualAttributes": [
-                  {
-                    "myData": "STANDING",
-                    "myName": "currentAction"
-                  },
-                  {
-                    "myData": "BLUE",
-                    "myName": "teamColor"
-                  }
-                ]
-              },
-              "myTypes": [
-                "archer"
-              ]
-            },
-            {
-              "AttributeDisplayerStates": [
-                {
-                  "displayerTag": "attributeBar",
-                  "parameterTag": "health",
-                  "minAttributeValue": 0.0,
-                  "maxAttributeValue": 500.0
-                }
-              ],
-              "myAnimatorState": {
-                "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
-                "colorMaskTag": "resources/gameelementresources/units/colormasks/archer.png",
-                "viewportSize": {
-                  "myWidth": 138,
-                  "myHeight": 103
-                },
-                "numRows": 10,
-                "animationSequences": [
-                  {
-                    "myStartFrame": 180,
-                    "myStopFrame": 190,
-                    "myCurrentFrame": 180,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 160,
-                    "myStopFrame": 170,
-                    "myCurrentFrame": 160,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 220,
-                    "myStopFrame": 230,
-                    "myCurrentFrame": 220,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 200,
-                    "myStopFrame": 210,
-                    "myCurrentFrame": 200,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 350,
-                    "myStopFrame": 355,
-                    "myCurrentFrame": 350,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 120,
-                    "myStopFrame": 130,
-                    "myCurrentFrame": 120,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 230,
-                    "myStopFrame": 240,
-                    "myCurrentFrame": 230,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 325,
-                    "myStopFrame": 330,
-                    "myCurrentFrame": 325,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 340,
-                    "myStopFrame": 345,
-                    "myCurrentFrame": 340,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 80,
-                    "myStopFrame": 90,
-                    "myCurrentFrame": 80,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 60,
-                    "myStopFrame": 70,
-                    "myCurrentFrame": 60,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 90,
-                    "myStopFrame": 100,
-                    "myCurrentFrame": 90,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 10,
-                    "myStopFrame": 20,
-                    "myCurrentFrame": 10,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 70,
-                    "myStopFrame": 80,
-                    "myCurrentFrame": 70,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "RIGHT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 140,
-                    "myStopFrame": 150,
-                    "myCurrentFrame": 140,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 100,
-                    "myStopFrame": 110,
-                    "myCurrentFrame": 100,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 345,
-                    "myStopFrame": 350,
-                    "myCurrentFrame": 345,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 290,
-                    "myStopFrame": 300,
-                    "myCurrentFrame": 290,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 320,
-                    "myStopFrame": 325,
-                    "myCurrentFrame": 320,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 170,
-                    "myStopFrame": 180,
-                    "myCurrentFrame": 170,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 330,
-                    "myStopFrame": 335,
-                    "myCurrentFrame": 330,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 260,
-                    "myStopFrame": 270,
-                    "myCurrentFrame": 260,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 30,
-                    "myStopFrame": 40,
-                    "myCurrentFrame": 30,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 50,
-                    "myStopFrame": 60,
-                    "myCurrentFrame": 50,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 250,
-                    "myStopFrame": 260,
-                    "myCurrentFrame": 250,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 130,
-                    "myStopFrame": 140,
-                    "myCurrentFrame": 130,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 110,
-                    "myStopFrame": 120,
-                    "myCurrentFrame": 110,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 240,
-                    "myStopFrame": 250,
-                    "myCurrentFrame": 240,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 280,
-                    "myStopFrame": 290,
-                    "myCurrentFrame": 280,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 335,
-                    "myStopFrame": 340,
-                    "myCurrentFrame": 335,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 300,
-                    "myStopFrame": 310,
-                    "myCurrentFrame": 300,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "RIGHT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 270,
-                    "myStopFrame": 280,
-                    "myCurrentFrame": 270,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 10,
-                    "myCurrentFrame": 0,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 210,
-                    "myStopFrame": 220,
-                    "myCurrentFrame": 210,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "RIGHT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 20,
-                    "myStopFrame": 30,
-                    "myCurrentFrame": 20,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "LEFT",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 40,
-                    "myStopFrame": 50,
-                    "myCurrentFrame": 40,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "STAND"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 150,
-                    "myStopFrame": 160,
-                    "myCurrentFrame": 150,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "RIGHT",
-                      "MOVE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 355,
-                    "myStopFrame": 360,
-                    "myCurrentFrame": 355,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "RIGHT",
-                      "DECAY"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 310,
-                    "myStopFrame": 320,
-                    "myCurrentFrame": 310,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "FORWARD",
-                      "RIGHT",
-                      "DIE"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  },
-                  {
-                    "myStartFrame": 190,
-                    "myStopFrame": 200,
-                    "myCurrentFrame": 190,
-                    "myRepeatFlag": true,
-                    "myTags": [
-                      "BACKWARD",
-                      "LEFT",
-                      "ATTACK"
-                    ],
-                    "mySlownessMultiplier": 1.0,
-                    "myFrameCounter": 0
-                  }
-                ]
-              },
-              "myBounds": [
-                0.0,
-                0.0,
-                40.0,
-                0.0,
-                40.0,
-                40.0,
-                0.0,
-                40.0
-              ],
-              "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
                 ],
                 "FOCUSED": [
                   {
@@ -2169,32 +3275,6 @@
                     ],
                     "myActionType": "BUTTON"
                   }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
                 ]
               },
               "attributes": {
@@ -2208,8 +3288,8 @@
                     "myName": "ReloadTime"
                   },
                   {
-                    "myData": 75,
-                    "myName": "attack"
+                    "myData": 1000,
+                    "myName": "MAX_HEALTH"
                   },
                   {
                     "myData": 100.0,
@@ -2229,10 +3309,6 @@
                   },
                   {
                     "myData": 100,
-                    "myName": "YSpawnOffset"
-                  },
-                  {
-                    "myData": 100,
                     "myName": "health"
                   },
                   {
@@ -2246,7 +3322,14 @@
                   {
                     "myData": 100.0,
                     "myName": "yTempGoalPosition"
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+                  },
+                  {
+                    "myData": 75,
+                    "myName": "attack"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "YSpawnOffset"
                   }
                 ],
                 "myTextualAttributes": [
@@ -2267,11 +3350,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-<<<<<<< HEAD
                   "displayerTag": "AttributeBarDisplayer",
-=======
-                  "displayerTag": "attributeBar",
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -2799,69 +3878,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2887,7 +3903,6 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-<<<<<<< HEAD
                 ],
                 "INTERNAL": [
                   {
@@ -2923,8 +3938,31 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
                 ]
               },
               "attributes": {
@@ -2938,13 +3976,10 @@
                     "myName": "ReloadTime"
                   },
                   {
-<<<<<<< HEAD
-=======
                     "myData": 75,
                     "myName": "attack"
                   },
                   {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myData": 300.0,
                     "myName": "yPosition"
                   },
@@ -2962,13 +3997,10 @@
                   },
                   {
                     "myData": 500,
-<<<<<<< HEAD
-=======
                     "myName": "YSpawnOffset"
                   },
                   {
                     "myData": 500,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                     "myName": "health"
                   },
                   {
@@ -2982,21 +4014,6 @@
                   {
                     "myData": 300.0,
                     "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-                  },
-                  {
-                    "myData": 75,
-                    "myName": "attack"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
-                  },
-                  {
-                    "myData": 500,
-                    "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
                   }
                 ],
                 "myTextualAttributes": [
@@ -3031,6 +4048,20 @@
                       "1"
                     ],
                     "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "OBJECT_LOCATION_DETECTION",
+                    "myParameters": [
+                      "my",
+                      "archer",
+                      "50",
+                      "50",
+                      "50",
+                      "Won",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -3059,11 +4090,7 @@
   "myGameUniverse": {
     "myNumericalAttributes": [
       {
-<<<<<<< HEAD
-        "myData": 200.0,
-=======
-        "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+        "myData": 300.0,
         "myName": "xPosition"
       },
       {
@@ -3071,87 +4098,62 @@
         "myName": "ReloadTime"
       },
       {
-<<<<<<< HEAD
-=======
+        "myData": 1000,
+        "myName": "ORE"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 0,
+        "myName": "movementSpeed"
+      },
+      {
         "myData": 75,
         "myName": "attack"
       },
       {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-        "myData": 200.0,
-        "myName": "yPosition"
-      },
-      {
-<<<<<<< HEAD
-        "myData": 200.0,
-=======
-        "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+        "myData": 10.0,
         "myName": "xHeading"
       },
       {
-        "myData": 200.0,
+        "myData": 100.0,
         "myName": "yHeading"
       },
       {
-<<<<<<< HEAD
-        "myData": 200.0,
+        "myData": 10.0,
         "myName": "xTempPosition"
       },
       {
-=======
-        "myData": 100.0,
-        "myName": "xTempPosition"
-      },
-      {
-        "myData": 100,
-        "myName": "YSpawnOffset"
-      },
-      {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
         "myData": 500,
         "myName": "health"
       },
       {
-        "myData": 2,
-        "myName": "movementSpeed"
+        "myData": 100.0,
+        "myName": "yTempGoalPosition"
+      },
+      {
+        "myData": 100,
+        "myName": "goodness"
+      },
+      {
+        "myData": 100,
+        "myName": "YSpawnOffset"
       },
       {
         "myData": 100,
         "myName": "XSpawnOffset"
       },
       {
-        "myData": 200.0,
-        "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-      },
-      {
-        "myData": 75,
-        "myName": "attack"
-      },
-      {
-        "myData": 1,
-        "myName": "teamID"
-      },
-      {
-        "myData": 100,
-        "myName": "YSpawnOffset"
-      },
-      {
         "myData": 1000,
         "myName": "MAX_HEALTH"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
       }
     ],
     "myTextualAttributes": [
       {
-        "myData": "archer",
+        "myData": "resource1",
         "myName": "name"
-      },
-      {
-        "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
-        "myName": "AttributeDescription1"
       },
       {
         "myData": "STANDING",
@@ -3160,6 +4162,10 @@
       {
         "myData": "BLUE",
         "myName": "teamColor"
+      },
+      {
+        "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+        "myName": "AttributeDescription1"
       }
     ],
     "myGameElementStates": [],
@@ -3168,11 +4174,1260 @@
       {
         "AttributeDisplayerStates": [
           {
-<<<<<<< HEAD
             "displayerTag": "AttributeBarDisplayer",
-=======
-            "displayerTag": "attributeBar",
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+            "parameterTag": "ORE",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 1000.0
+          }
+        ],
+        "myAnimatorState": {
+          "imageTag": "resources/gameelementresources/units/spritesheets/berserker.png",
+          "colorMaskTag": "resources/gameelementresources/units/colormasks/berserker.png",
+          "viewportSize": {
+            "myWidth": 114,
+            "myHeight": 82
+          },
+          "numRows": 12,
+          "animationSequences": [
+            {
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 350,
+              "myStopFrame": 355,
+              "myCurrentFrame": 350,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 290,
+              "myStopFrame": 300,
+              "myCurrentFrame": 290,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 330,
+              "myStopFrame": 335,
+              "myCurrentFrame": 330,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 50,
+              "myStopFrame": 60,
+              "myCurrentFrame": 50,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 250,
+              "myStopFrame": 260,
+              "myCurrentFrame": 250,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 240,
+              "myStopFrame": 250,
+              "myCurrentFrame": 240,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 150,
+              "myStopFrame": 160,
+              "myCurrentFrame": 150,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 355,
+              "myStopFrame": 360,
+              "myCurrentFrame": 355,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 310,
+              "myStopFrame": 320,
+              "myCurrentFrame": 310,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          40.0,
+          0.0,
+          40.0,
+          40.0,
+          0.0,
+          40.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 300.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 50,
+              "myName": "ReloadTime"
+            },
+            {
+              "myData": 1000,
+              "myName": "ORE"
+            },
+            {
+              "myData": 300.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 0,
+              "myName": "movementSpeed"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "resource1",
+              "myName": "name"
+            },
+            {
+              "myData": "STANDING",
+              "myName": "currentAction"
+            }
+          ]
+        },
+        "myTypes": [
+          "gold",
+          "resource"
+        ]
+      },
+      {
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "AttributeBarDisplayer",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 500.0
+          }
+        ],
+        "myAnimatorState": {
+          "imageTag": "resources/gameelementresources/units/spritesheets/champion.png",
+          "colorMaskTag": "resources/gameelementresources/units/colormasks/champion.png",
+          "viewportSize": {
+            "myWidth": 106,
+            "myHeight": 77
+          },
+          "numRows": 10,
+          "animationSequences": [
+            {
+              "myStartFrame": 180,
+              "myStopFrame": 190,
+              "myCurrentFrame": 180,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 160,
+              "myStopFrame": 170,
+              "myCurrentFrame": 160,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 220,
+              "myStopFrame": 230,
+              "myCurrentFrame": 220,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 200,
+              "myStopFrame": 210,
+              "myCurrentFrame": 200,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 350,
+              "myStopFrame": 355,
+              "myCurrentFrame": 350,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 120,
+              "myStopFrame": 130,
+              "myCurrentFrame": 120,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 230,
+              "myStopFrame": 240,
+              "myCurrentFrame": 230,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 325,
+              "myStopFrame": 330,
+              "myCurrentFrame": 325,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 340,
+              "myStopFrame": 345,
+              "myCurrentFrame": 340,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 80,
+              "myStopFrame": 90,
+              "myCurrentFrame": 80,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 60,
+              "myStopFrame": 70,
+              "myCurrentFrame": 60,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 90,
+              "myStopFrame": 100,
+              "myCurrentFrame": 90,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 10,
+              "myStopFrame": 20,
+              "myCurrentFrame": 10,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 70,
+              "myStopFrame": 80,
+              "myCurrentFrame": 70,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 140,
+              "myStopFrame": 150,
+              "myCurrentFrame": 140,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 100,
+              "myStopFrame": 110,
+              "myCurrentFrame": 100,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 345,
+              "myStopFrame": 350,
+              "myCurrentFrame": 345,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 290,
+              "myStopFrame": 300,
+              "myCurrentFrame": 290,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 320,
+              "myStopFrame": 325,
+              "myCurrentFrame": 320,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 170,
+              "myStopFrame": 180,
+              "myCurrentFrame": 170,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 330,
+              "myStopFrame": 335,
+              "myCurrentFrame": 330,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 260,
+              "myStopFrame": 270,
+              "myCurrentFrame": 260,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 30,
+              "myStopFrame": 40,
+              "myCurrentFrame": 30,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 50,
+              "myStopFrame": 60,
+              "myCurrentFrame": 50,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 250,
+              "myStopFrame": 260,
+              "myCurrentFrame": 250,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 130,
+              "myStopFrame": 140,
+              "myCurrentFrame": 130,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 110,
+              "myStopFrame": 120,
+              "myCurrentFrame": 110,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 240,
+              "myStopFrame": 250,
+              "myCurrentFrame": 240,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 280,
+              "myStopFrame": 290,
+              "myCurrentFrame": 280,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 335,
+              "myStopFrame": 340,
+              "myCurrentFrame": 335,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 300,
+              "myStopFrame": 310,
+              "myCurrentFrame": 300,
+              "myRepeatFlag": true,
+              "myTags": [
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 270,
+              "myStopFrame": 280,
+              "myCurrentFrame": 270,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 10,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 210,
+              "myStopFrame": 220,
+              "myCurrentFrame": 210,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "RIGHT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 20,
+              "myStopFrame": 30,
+              "myCurrentFrame": 20,
+              "myRepeatFlag": true,
+              "myTags": [
+                "LEFT",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 40,
+              "myStopFrame": 50,
+              "myCurrentFrame": 40,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "STAND"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 150,
+              "myStopFrame": 160,
+              "myCurrentFrame": 150,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "MOVE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 355,
+              "myStopFrame": 360,
+              "myCurrentFrame": 355,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "DECAY"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 310,
+              "myStopFrame": 320,
+              "myCurrentFrame": 310,
+              "myRepeatFlag": true,
+              "myTags": [
+                "FORWARD",
+                "RIGHT",
+                "DIE"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            },
+            {
+              "myStartFrame": 190,
+              "myStopFrame": 200,
+              "myCurrentFrame": 190,
+              "myRepeatFlag": true,
+              "myTags": [
+                "BACKWARD",
+                "LEFT",
+                "ATTACK"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          40.0,
+          0.0,
+          40.0,
+          40.0,
+          0.0,
+          40.0
+        ],
+        "myActions": {
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "INCREMENT_DECREMENT_ACTION",
+              "myParameters": [
+                "gold",
+                "ORE",
+                "goodness",
+                "0",
+                "resources",
+                "MiningTimer",
+                "100"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ATTRIBUTE_INTERACTION_ACTION",
+              "myParameters": [
+                "Transfer",
+                "resources",
+                "my",
+                "Resources"
+              ],
+              "myActionType": "INTERNAL"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ]
+        },
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 10.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 50,
+              "myName": "ReloadTime"
+            },
+            {
+              "myData": 75,
+              "myName": "attack"
+            },
+            {
+              "myData": 100.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 10.0,
+              "myName": "xHeading"
+            },
+            {
+              "myData": 100.0,
+              "myName": "yHeading"
+            },
+            {
+              "myData": 10.0,
+              "myName": "xTempPosition"
+            },
+            {
+              "myData": 500,
+              "myName": "health"
+            },
+            {
+              "myData": 3,
+              "myName": "movementSpeed"
+            },
+            {
+              "myData": 100.0,
+              "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 100,
+              "myName": "goodness"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "miner",
+              "myName": "name"
+            },
+            {
+              "myData": "STANDING",
+              "myName": "currentAction"
+            },
+            {
+              "myData": "BLUE",
+              "myName": "teamColor"
+            }
+          ]
+        },
+        "myTypes": [
+          "archer"
+        ]
+      },
+      {
+        "AttributeDisplayerStates": [
+          {
+            "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -3700,69 +5955,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3788,7 +5980,6 @@
               ],
               "myActionType": "COLLISION"
             }
-<<<<<<< HEAD
           ],
           "INTERNAL": [
             {
@@ -3824,18 +6015,37 @@
               ],
               "myActionType": "INTERNAL"
             }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
           ]
         },
         "attributes": {
           "myNumericalAttributes": [
             {
-<<<<<<< HEAD
-              "myData": 200.0,
-=======
               "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myName": "xPosition"
             },
             {
@@ -3843,22 +6053,15 @@
               "myName": "ReloadTime"
             },
             {
-<<<<<<< HEAD
-=======
               "myData": 75,
               "myName": "attack"
             },
             {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myData": 200.0,
               "myName": "yPosition"
             },
             {
-<<<<<<< HEAD
-              "myData": 200.0,
-=======
               "myData": 100.0,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myName": "xHeading"
             },
             {
@@ -3866,12 +6069,6 @@
               "myName": "yHeading"
             },
             {
-<<<<<<< HEAD
-              "myData": 200.0,
-              "myName": "xTempPosition"
-            },
-            {
-=======
               "myData": 100.0,
               "myName": "xTempPosition"
             },
@@ -3880,7 +6077,6 @@
               "myName": "YSpawnOffset"
             },
             {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myData": 500,
               "myName": "health"
             },
@@ -3895,21 +6091,6 @@
             {
               "myData": 200.0,
               "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-            },
-            {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
-              "myData": 100,
-              "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             }
           ],
           "myTextualAttributes": [
@@ -3939,11 +6120,7 @@
       {
         "AttributeDisplayerStates": [
           {
-<<<<<<< HEAD
             "displayerTag": "AttributeBarDisplayer",
-=======
-            "displayerTag": "attributeBar",
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -4455,7 +6632,6 @@
                 "LEFT",
                 "ATTACK"
               ],
-<<<<<<< HEAD
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
             }
@@ -4472,84 +6648,6 @@
           40.0
         ],
         "myActions": {
-=======
-              "mySlownessMultiplier": 1.0,
-              "myFrameCounter": 0
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0,
-          40.0,
-          0.0,
-          40.0,
-          40.0,
-          0.0,
-          40.0
-        ],
-        "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -4575,7 +6673,6 @@
               ],
               "myActionType": "COLLISION"
             }
-<<<<<<< HEAD
           ],
           "INTERNAL": [
             {
@@ -4611,8 +6708,31 @@
               ],
               "myActionType": "INTERNAL"
             }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
           ]
         },
         "attributes": {
@@ -4626,13 +6746,10 @@
               "myName": "ReloadTime"
             },
             {
-<<<<<<< HEAD
-=======
               "myData": 75,
               "myName": "attack"
             },
             {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myData": 400.0,
               "myName": "yPosition"
             },
@@ -4649,13 +6766,10 @@
               "myName": "xTempPosition"
             },
             {
-<<<<<<< HEAD
-=======
               "myData": 100,
               "myName": "YSpawnOffset"
             },
             {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myData": 500,
               "myName": "health"
             },
@@ -4670,21 +6784,6 @@
             {
               "myData": 400.0,
               "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-            },
-            {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
-              "myData": 100,
-              "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             }
           ],
           "myTextualAttributes": [
@@ -4705,17 +6804,10 @@
       {
         "AttributeDisplayerStates": [
           {
-<<<<<<< HEAD
             "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
-=======
-            "displayerTag": "attributeBar",
-            "parameterTag": "health",
-            "minAttributeValue": 0.0,
-            "maxAttributeValue": 500.0
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
           }
         ],
         "myAnimatorState": {
@@ -5240,69 +7332,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -5328,7 +7357,6 @@
               ],
               "myActionType": "COLLISION"
             }
-<<<<<<< HEAD
           ],
           "INTERNAL": [
             {
@@ -5375,8 +7403,31 @@
               ],
               "myActionType": "INTERNAL"
             }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
           ]
         },
         "attributes": {
@@ -5390,13 +7441,8 @@
               "myName": "ReloadTime"
             },
             {
-<<<<<<< HEAD
               "myData": 1000,
               "myName": "MAX_HEALTH"
-=======
-              "myData": 75,
-              "myName": "attack"
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             },
             {
               "myData": 100.0,
@@ -5416,13 +7462,6 @@
             },
             {
               "myData": 100,
-<<<<<<< HEAD
-=======
-              "myName": "YSpawnOffset"
-            },
-            {
-              "myData": 100,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myName": "health"
             },
             {
@@ -5436,21 +7475,14 @@
             {
               "myData": 100.0,
               "myName": "yTempGoalPosition"
-<<<<<<< HEAD
             },
             {
               "myData": 75,
               "myName": "attack"
             },
             {
-              "myData": 2,
-              "myName": "teamID"
-            },
-            {
               "myData": 100,
               "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             }
           ],
           "myTextualAttributes": [
@@ -5471,11 +7503,7 @@
       {
         "AttributeDisplayerStates": [
           {
-<<<<<<< HEAD
             "displayerTag": "AttributeBarDisplayer",
-=======
-            "displayerTag": "attributeBar",
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -6003,69 +8031,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -6091,7 +8056,6 @@
               ],
               "myActionType": "COLLISION"
             }
-<<<<<<< HEAD
           ],
           "INTERNAL": [
             {
@@ -6127,8 +8091,31 @@
               ],
               "myActionType": "INTERNAL"
             }
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
           ]
         },
         "attributes": {
@@ -6142,13 +8129,10 @@
               "myName": "ReloadTime"
             },
             {
-<<<<<<< HEAD
-=======
               "myData": 75,
               "myName": "attack"
             },
             {
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myData": 300.0,
               "myName": "yPosition"
             },
@@ -6166,13 +8150,10 @@
             },
             {
               "myData": 500,
-<<<<<<< HEAD
-=======
               "myName": "YSpawnOffset"
             },
             {
               "myData": 500,
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
               "myName": "health"
             },
             {
@@ -6186,21 +8167,6 @@
             {
               "myData": 300.0,
               "myName": "yTempGoalPosition"
-<<<<<<< HEAD
-            },
-            {
-              "myData": 75,
-              "myName": "attack"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
-            },
-            {
-              "myData": 500,
-              "myName": "YSpawnOffset"
-=======
->>>>>>> ce3490d658f735e60337d6850f69d375e47082fc
             }
           ],
           "myTextualAttributes": [

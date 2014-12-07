@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -90,7 +91,7 @@ public class GUILoadStyleUtility {
                 myCSSFiles.add(css);
             }
             catch (Exception e) {
-                System.out.println(String.format("Failed to load css: %s", cssFile));
+                DialogBoxUtility.createMessageDialog(e.getMessage());
                 continue;
             }
         }

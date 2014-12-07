@@ -1,5 +1,9 @@
 package engine.UI;
 
+import model.MainModel;
+import engine.stateManaging.GameElementManager;
+import engine.stateManaging.GameLoop;
+import engine.users.Participant;
 import engine.visuals.SelectionBox;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -10,11 +14,18 @@ import javafx.scene.input.MouseEvent;
  * @author John Lorenz, Jonathan Tseng
  *
  */
-public class NullInputManager implements InputManager {
+public class NullInputManager extends InputManager {
 
     //TODO GET RID OF ALL THESE PRINT LINE STATEMENTS
     // CURRENTLY JUST HERE FOR ERROR CHECKING
     
+    public NullInputManager (MainModel model,
+                             GameElementManager gameElementManager,
+                             GameLoop gameLoop,
+                             Participant user) {
+        super(model, gameElementManager, gameLoop, user);
+    }
+
     @Override
     public void primaryClickOccurred (MouseEvent e,
                                double mapTranslateX,

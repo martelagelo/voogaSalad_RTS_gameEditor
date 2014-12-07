@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -107,9 +108,17 @@ public class DrawableGameElementWizard extends Wizard {
      * Launches a TriggerEditorWizard
      * 
      */
-    private void launchTriggerEditor () {
+    private void launchActionEditor () {
         launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, myGlobalNumberAttributes,
-                           new Dimension(400, 600));
+                           getActionConsumer(), new Dimension(400, 600));
+    }
+
+    private BiConsumer<Button, WizardData> getActionConsumer () {
+        BiConsumer<Button, WizardData> consumer = (Button button, WizardData data) -> {
+            String buttonName = data.getValueByKey(WizardDataType.ACTION);
+            button.setText(buttonName);
+        };
+        return consumer;
     }
 
     /**
@@ -119,10 +128,19 @@ public class DrawableGameElementWizard extends Wizard {
     private void launchStringAttributeEditor () {
         launchNestedWizard(GUIPanePath.STRING_ATTRIBUTE_WIZARD, existingStringAttributes,
                            myGlobalStringAttributes, 
-                           new Dimension(
+                           getAttributeConsumer(), new Dimension(
                         		   ATTRIBUTE_WIZARD_WIDTH, 
                         		   ATTRIBUTE_WIZARD_HEIGHT
                         		   ));
+    }
+
+    private BiConsumer<Button, WizardData> getAttributeConsumer () {
+        BiConsumer<Button, WizardData> consumer = (Button button, WizardData data) -> {
+            String buttonName = data.getValueByKey(WizardDataType.ATTRIBUTE) + ": " +
+                    data.getValueByKey(WizardDataType.VALUE);
+            button.setText(buttonName);
+        };
+        return consumer;
     }
 
     /**
@@ -131,7 +149,7 @@ public class DrawableGameElementWizard extends Wizard {
      */
     private void launchNumberAttributeEditor () {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
-                           myGlobalNumberAttributes, new Dimension(
+                           myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
                         		   ATTRIBUTE_WIZARD_WIDTH, 
                         		   ATTRIBUTE_WIZARD_HEIGHT
                         		   ));
@@ -141,14 +159,23 @@ public class DrawableGameElementWizard extends Wizard {
         if (imageView != null) {
             List<String> imageValues = new ArrayList<>();
             imageValues.add(imagePath);
+            imageValues.add(colorMaskPath);
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
-                               imageValues, new Dimension(ANIMATION_WIZARD_WIDTH, ANIMATION_WIZARD_HEIGHT));
+                               imageValues, getAnimationConsumer(), new Dimension(ANIMATION_WIZARD_WIDTH, ANIMATION_WIZARD_HEIGHT));
         }
         else {
             displayErrorMessage("Can't launch due to unspecified image information");
         }
+    }
+
+    private BiConsumer<Button, WizardData> getAnimationConsumer () {
+        BiConsumer<Button, WizardData> consumer = (Button button, WizardData data) -> {
+            String buttonName = data.getValueByKey(WizardDataType.ANIMATION_TAG);
+            button.setText(buttonName);
+        };
+        return consumer;
     }
 
     private void launchBoundsEditor () {
@@ -166,6 +193,7 @@ public class DrawableGameElementWizard extends Wizard {
     private void launchNestedWizard (GUIPanePath path,
                                      VBox existing,
                                      List<String> globalAttrs,
+                                     BiConsumer<Button, WizardData> setTextConsumer,
                                      Dimension dim) {
         Wizard wiz = WizardUtility.loadWizard(path, dim);
         wiz.loadGlobalValues(globalAttrs);
@@ -173,9 +201,9 @@ public class DrawableGameElementWizard extends Wizard {
             addWizardData(data);
             HBox newElement = new HBox();
             Button edit = new Button();
-            // TODO: Fix the text that goes into the button
-                edit.setText((new ArrayList<String>(data.getData().values())).get(0));
-                edit.setOnAction(e -> launchEditWizard(path, data, edit, globalAttrs, dim));
+                setTextConsumer.accept(edit, data);                               
+                edit.setOnAction(e -> launchEditWizard(path, data, edit, setTextConsumer,
+                                                       globalAttrs, dim));
                 edit.setMaxWidth(Double.MAX_VALUE);
                 newElement.getChildren().add(edit);
 
@@ -196,6 +224,7 @@ public class DrawableGameElementWizard extends Wizard {
     private void launchEditWizard (GUIPanePath path,
                                    WizardData oldData,
                                    Button button,
+                                   BiConsumer<Button, WizardData> setTextConsumer, 
                                    List<String> globalAttrs, Dimension dim) {
         Wizard wiz = WizardUtility.loadWizard(path, dim);
         wiz.loadGlobalValues(globalAttrs);
@@ -207,7 +236,7 @@ public class DrawableGameElementWizard extends Wizard {
             for (WizardDataType type : data.getData().keySet()) {
                 oldData.addDataPair(type, data.getValueByKey(type));
             }
-            button.setText((new ArrayList<String>(data.getData().values())).get(0));
+            setTextConsumer.accept(button, data);
             wiz.closeStage();
         };
         wiz.setSubmit(bc);
@@ -224,7 +253,6 @@ public class DrawableGameElementWizard extends Wizard {
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
-        
         return file;
     }
 
@@ -272,15 +300,15 @@ public class DrawableGameElementWizard extends Wizard {
         }
     }
 
-    private void initializeSliders (Image image) {
+    private void initializeSliders (Image image) {        
+        createSliderListeners();
+        createTextFieldListeners();
         frameWidth.setMin(DEFAULT_GRID_MIN);
         frameWidth.setValue(DEFAULT_GRID_VALUE);
         frameWidth.setMax(image.getWidth());
         frameHeight.setMin(DEFAULT_GRID_MIN);
         frameHeight.setValue(DEFAULT_GRID_VALUE);
         frameHeight.setMax(image.getHeight());
-        createSliderListeners();
-        createTextFieldListeners();
     }
 
     /**
@@ -290,7 +318,7 @@ public class DrawableGameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        trigger.setOnAction(e -> launchTriggerEditor());
+        trigger.setOnAction(e -> launchActionEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
         animation.setOnAction(e -> launchAnimationEditor());
@@ -357,8 +385,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null && colorMaskPath != null &&
-               getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0;
+        return !name.getText().isEmpty() && imageView != null;
     }
 
     @Override
@@ -366,7 +393,6 @@ public class DrawableGameElementWizard extends Wizard {
         setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
-        // TODO CLEANUP AND DEAL WITH COLOR MASKS
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
         addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
         addToData(WizardDataType.COLS, Integer.toString(animationGrid.getNumColumns()));

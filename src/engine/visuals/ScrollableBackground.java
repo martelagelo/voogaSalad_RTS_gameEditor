@@ -33,7 +33,10 @@ public class ScrollableBackground extends Pane
      * @param xBoundary the maximum X value that can be scrolled to
      * @param yBoundary the maximum Y value that can be scrolled to
      */
-    public ScrollableBackground (double xBoundary, double yBoundary, ScrollablePane pane, String backgroundURI)
+    public ScrollableBackground (double xBoundary,
+                                 double yBoundary,
+                                 ScrollablePane pane,
+                                 String backgroundURI)
     {
         this.prefWidthProperty().bind(pane.prefWidthProperty());
         this.prefHeightProperty().bind(pane.prefHeightProperty());
@@ -41,10 +44,10 @@ public class ScrollableBackground extends Pane
         this.myXBoundary = xBoundary;
         this.myYBoundary = yBoundary;
         this.setMinSize(xBoundary, yBoundary);
-        
+
         tileBackground(backgroundURI);
 
-        setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
+        // setStyle("-fx-border-color: blue;"); // used for testing to see the edge of the map
 
     }
 
