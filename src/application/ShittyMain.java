@@ -75,7 +75,7 @@ public class ShittyMain extends Application {
                                                                             500));
 
         SelectableGameElementState archerState3 =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 2);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
@@ -134,7 +134,7 @@ public class ShittyMain extends Application {
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "1000", "Won",
+                                        "Resources", "GreaterThanEqual", "100000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }
