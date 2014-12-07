@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="tabPane" fx:controller="view.editor.TabViewController">
@@ -11,6 +12,19 @@
 			fx:id="gameRunnerPane" />
 	</center>
 	<right>
-		<fx:include source="LevelTriggerView.fxml" fx:id="levelTrigger" />
+		<VBox alignment="CENTER" spacing="25.0">
+			<Button fx:id="resetButton">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</Button>
+			<ToggleButton fx:id="controllerToggle">
+				<maxWidth>
+					<Double fx:constant="MAX_VALUE" />
+				</maxWidth>
+			</ToggleButton>
+			<fx:include source="LevelTriggerView.fxml" fx:id="levelTrigger"
+				VBox.vgrow="ALWAYS" />
+		</VBox>
 	</right>
 </BorderPane>

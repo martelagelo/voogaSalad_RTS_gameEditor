@@ -7,7 +7,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.MainModel;
 import engine.stateManaging.GameElementManager;
-import engine.users.EditorParticipant;
+import engine.stateManaging.GameLoop;
 import engine.users.Participant;
 import engine.visuals.SelectionBox;
 
@@ -19,17 +19,12 @@ import engine.visuals.SelectionBox;
  * @author Jonathan Tseng, John L.
  *
  */
-public class EditorInputManager implements InputManager {
+public class EditorInputManager extends InputManager {
 
-    private MainModel myMainModel;
-    // TODO not sure if supposed to talk to elementmanager: yeah, you probably need to -John L
-    private GameElementManager myElementManager;
-    private Participant myUser;
-
-    public EditorInputManager (MainModel mainModel, GameElementManager gameElementManager) {
-        myMainModel = mainModel;
-        myElementManager = gameElementManager;
-        myUser = new EditorParticipant();
+    public EditorInputManager (MainModel model,
+                               GameElementManager gameElementManager,
+                               GameLoop gameLoop, Participant user) {
+        super(model, gameElementManager, gameLoop, user);
     }
 
     @Override

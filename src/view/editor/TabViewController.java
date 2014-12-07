@@ -8,14 +8,20 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
 import model.state.LevelState;
+import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -23,6 +29,8 @@ import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
 import view.runner.GameRunnerPaneController;
+import engine.UI.EditorInputManager;
+import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
@@ -36,6 +44,10 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  */
 public class TabViewController extends GUIContainer {
 
+    private final static String EDITOR_INPUT_KEY = "EditorInput";
+    private final static String RUNNER_INPUT_KEY = "RunnerInput";
+    private final static String RESET_KEY = "Reset";
+
     @FXML
     private VBox levelTrigger;
     @FXML
@@ -46,6 +58,10 @@ public class TabViewController extends GUIContainer {
     private GameRunnerPaneController gameRunnerPaneController;
     @FXML
     private BorderPane tabPane;
+    @FXML
+    private Button resetButton;
+    @FXML
+    private ToggleButton controllerToggle;
 
     private LevelState myLevel;
 
@@ -76,11 +92,11 @@ public class TabViewController extends GUIContainer {
                                                         CampaignNotFoundException {
         myLevel = myMainModel.getLevel(campaign, level);
         attachChildContainers(gameRunnerPaneController);
-        gameRunnerPaneController.setLevel(myLevel);
-        gameRunnerPaneController.setOnDone(e -> restartLevel());
+        startLevel();
+        gameRunnerPaneController.setOnDone(e -> startLevel());
     }
 
-    private void restartLevel () {
+    private void startLevel () {
         gameRunnerPaneController.setLevel(myLevel);
     }
 
@@ -125,6 +141,36 @@ public class TabViewController extends GUIContainer {
         levelTriggerController.setButtonAction(launchNestedWizard());
         levelTriggerController.setSelectedAction(modifyGoals());
         levelTriggerController.setDeleteAction(deleteGoal());
+        try {
+            resetButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(RESET_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e1) {
+            DialogBoxUtility.createMessageDialog(e1.toString());
+        }
+        initToggle();
+        controllerToggle.setSelected(true);
+    }
+
+    private void initToggle () {
+        controllerToggle.selectedProperty().addListener((observable, oldValue, newValue)->{
+            try {
+                ObjectProperty<String> toggleText = (newValue) ?
+                                                       MultiLanguageUtility
+                                                               .getInstance()
+                                                               .getStringProperty(EDITOR_INPUT_KEY)
+                                                       :
+                                                       MultiLanguageUtility
+                                                               .getInstance()
+                                                               .getStringProperty(RUNNER_INPUT_KEY);
+                controllerToggle.textProperty().bind(toggleText);
+                Class<?> inputManager = (newValue) ? EditorInputManager.class : RunnerInputManager.class;
+                gameRunnerPaneController.setInputManager(inputManager);
+            }
+            catch (Exception e1) {
+                // do nothing
+            }            
+        });
     }
 
     private BiConsumer<Integer, String> modifyGoals () {

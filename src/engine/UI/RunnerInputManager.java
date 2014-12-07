@@ -1,6 +1,7 @@
 package engine.UI;
 
 import javafx.geometry.Point2D;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.MainModel;
@@ -9,26 +10,20 @@ import engine.stateManaging.GameLoop;
 import engine.users.Participant;
 import engine.visuals.SelectionBox;
 
+
 /**
  * 
- * Input Manager for the game runner 
+ * Input Manager for the game runner
  * 
  * @author John Lorenz, Jonathan Tseng
  *
  */
-public class RunnerInputManager implements InputManager {
-    private MainModel myMainModel;
-    private GameElementManager myElementManager;
-    private GameLoop myGameLoop;
-    private Participant myUser;
+public class RunnerInputManager extends InputManager {
 
     public RunnerInputManager (MainModel model,
                                GameElementManager gameElementManager,
                                GameLoop gameLoop, Participant user) {
-        myMainModel = model;
-        myElementManager = gameElementManager;
-        myGameLoop = gameLoop;
-        myUser = user;
+        super(model, gameElementManager, gameLoop, user);
     }
 
     @Override
@@ -47,7 +42,7 @@ public class RunnerInputManager implements InputManager {
                                         double mapTranslateX,
                                         double mapTranslateY,
                                         SelectionBox b) {
-    	
+
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
@@ -59,7 +54,7 @@ public class RunnerInputManager implements InputManager {
                                              double mapTranslateY,
                                              SelectionBox b) {
         double[] points = b.clickReleased(e, mapTranslateX, mapTranslateY);
-        if(points[0]!=points[2] && points[1]!=points[3])
+        if (points[0] != points[2] && points[1] != points[3])
             myElementManager.selectUnitsInBounds(points, e.isShiftDown(), myUser);
     }
 
@@ -74,22 +69,17 @@ public class RunnerInputManager implements InputManager {
     @Override
     public void keyPressed (KeyEvent e) {
         // TODO: implement and pass key presses to GameElementManager
-        String c = e.getCharacter();
-        System.out.println("key pressed: "+c);
-        if("p".equals(c)){
+        KeyCode key = e.getCode();
+        if (key.equals(KeyCode.P)) {
             myGameLoop.pause();
         }
-        if("o".equals(c)){
-            myGameLoop.play();
-        }
-        
     }
 
     @Override
     public void primaryDragOccurred (MouseEvent e, SelectionBox b) {
         b.reactToDrag(e);
     }
-    
+
     @Override
     public void secondaryDragOccurred (MouseEvent e, SelectionBox b) {
         // do nothing

@@ -56,7 +56,6 @@ public class MainModel extends Observable {
             myModifiedContainer = new ModifiedContainer();
         }
         catch (SaveLoadException e) {
-            System.out.println(mySpriteImageGenerator == null);
             // TODO: Display error in View
             e.printStackTrace();
         }

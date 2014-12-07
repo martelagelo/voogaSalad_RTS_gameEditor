@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.stream.Collectors;
 import javafx.animation.Animation;
+import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -27,7 +28,7 @@ import engine.visuals.VisualManager;
  *
  * @author Michael D., John L., Steve, Zach
  **/
-public class GameLoop extends Observable{
+public class GameLoop extends Observable {
     public static final Double framesPerSecond = 60.0;
     private Level myCurrentLevel;
     private GameElementManager myManager;
@@ -86,7 +87,7 @@ public class GameLoop extends Observable{
         // Clears all path lines from the GUI
         clearLinesFromRoot();
         // Adds needed path lines to the GUI
-         addPathsToRoot();
+        addPathsToRoot();
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -122,7 +123,7 @@ public class GameLoop extends Observable{
         myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
-        if(levelEndState!=0){
+        if (levelEndState != 0) {
             setChanged();
             this.notifyObservers(levelEndState);
         }
@@ -163,7 +164,12 @@ public class GameLoop extends Observable{
      * Pause the game
      */
     public void pause () {
-        timeline.pause();
+        if (timeline.getStatus().equals(Status.PAUSED)) {
+            timeline.play();
+        }
+        else {
+            timeline.pause();
+        }
     }
 
     /**

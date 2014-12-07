@@ -12,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import engine.UI.InputManager;
-import engine.UI.RunnerInputManager;
 
 
 /**
@@ -84,15 +83,11 @@ public class ScrollablePane extends Pane {
      */
     private void initializeHandlers () {
         this.setOnKeyPressed(new EventHandler<KeyEvent>(){
-
             @Override
             public void handle (KeyEvent event) {
-               System.out.println("blah");
-                
+                myInputManager.keyPressed(event);
             }
-            
         });
-//        setOnKeyTyped(e -> myInputManager.keyPressed(e));
         setOnMousePressed(e -> {
             myBackground.setXScrollSpeed(0);
             myBackground.setYScrollSpeed(0);
@@ -140,6 +135,7 @@ public class ScrollablePane extends Pane {
     private void callCorrectMouseButtonAction (MouseEvent event,
                                                Consumer<MouseEvent> primaryAction,
                                                Consumer<MouseEvent> secondaryAction) {
+        this.requestFocus();
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             primaryAction.accept(event);
         }
@@ -193,7 +189,7 @@ public class ScrollablePane extends Pane {
         root.getChildren().add(g);
     }
 
-    public void attachInputManager (RunnerInputManager inputManager) {
+    public void attachInputManager (InputManager inputManager) {
         myInputManager = inputManager;
 
     }
