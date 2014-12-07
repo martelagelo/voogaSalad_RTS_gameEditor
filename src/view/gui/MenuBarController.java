@@ -81,7 +81,7 @@ public abstract class MenuBarController extends GUIContainer {
     }
 
     @Override
-    public void update () {
+    public void modelUpdate () {
         // nothing to update
     }
 

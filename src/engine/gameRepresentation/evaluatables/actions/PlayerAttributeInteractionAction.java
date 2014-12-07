@@ -47,7 +47,7 @@ public class PlayerAttributeInteractionAction extends Action {
                 new NumericAttributeParameter("", args[1], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> participantValueEvaluator =
-                factory.makeEvaluator(args[0], playerAttr, elementAttr);
+                factory.makeEvaluator(args[0], elementAttr,playerAttr);
         return participantValueEvaluator;
     }
 

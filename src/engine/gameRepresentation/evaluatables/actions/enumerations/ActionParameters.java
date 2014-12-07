@@ -34,6 +34,7 @@ public enum ActionParameters {
             "SubtractionAssignment"),
     // Boolean boolean evaluators
     BB_EVAL("And", "Equals", "Or"),
+    PLAYER_TYPE("my","another player"),
     // Attributes
     ATTR(),
     // Strings
