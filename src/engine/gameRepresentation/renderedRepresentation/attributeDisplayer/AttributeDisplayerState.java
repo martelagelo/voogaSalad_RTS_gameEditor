@@ -9,18 +9,26 @@ import util.JSONable;
  * displayer. This is just a data wrapper and as such all of its instance
  * variables are public.
  * 
- * @author Zach, Stanley
+ * @author Zach, Michael D., Stanley
  *
  */
 public class AttributeDisplayerState implements JSONable, Serializable {
 
 	private static final long serialVersionUID = -4791954709522087485L;
-	public AttributeDisplayerTags displayerTag;					//The the string describing the class needed to create a widget. Created with enum.
-	public String parameterTag;					//The StateTag of the attribute or the name of the attribute
-	public double minAttributeValue;			//for a numerical attribute: The minimum value 
-	public double maxAttributeValue;			//for a numerical attribute: The maximum value
-	public String myTextValue;					//for a textual attribute: The value
+	private AttributeDisplayerTags displayerTag;
+	private String parameterTag;					
+	private double minAttributeValue;			
+	private double maxAttributeValue;			
+	private String myTextValue;					
 
+	/**
+	 * Constructor
+	 * 
+	 * @param displayerTag The reference to a widget's class
+	 * @param numericParameterTag The attribute name
+	 * @param minAttributeValue The max attribute value
+	 * @param maxAttributeValue The min attribute value
+	 */
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
 			String numericParameterTag, double minAttributeValue,
 			double maxAttributeValue) {
@@ -36,6 +44,26 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 		this.displayerTag = displayerTag;
 		this.parameterTag = textualParameterTag;
 		this.myTextValue = value;
+	}
+	
+	public AttributeDisplayerTags getDisplayerTag() {
+		return displayerTag;
+	}
+	
+	public String getParameterTag() {
+		return parameterTag;
+	}
+	
+	public double getMinValue() {
+		return minAttributeValue;
+	}
+	
+	public double getMaxValue() {
+		return maxAttributeValue;
+	}
+	
+	public String getTextValue() {
+		return myTextValue;
 	}
 
 }

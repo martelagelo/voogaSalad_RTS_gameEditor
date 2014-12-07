@@ -36,8 +36,8 @@ public class MapGrid {
      */
     public List<Location> getNeighbors (Location centerLocation) {
         List<Location> neighbors = new ArrayList<Location>();
-        int xPosition = (int) Math.round(centerLocation.myX / TILE_WIDTH);
-        int yPosition = (int) Math.round(centerLocation.myY / TILE_HEIGHT);
+        int xPosition = (int) Math.round(centerLocation.getX() / TILE_WIDTH);
+        int yPosition = (int) Math.round(centerLocation.getY() / TILE_HEIGHT);
         int[] xDelta = { -1, -1, -1, 0, 0, 1, 1, 1 };
         int[] yDelta = { -1, 0, 1, -1, 1, -1, 0, 1 };
 
@@ -65,8 +65,8 @@ public class MapGrid {
      */
     public List<Location> getNeighborsForXYCoordinate (Location XY) {
         List<Location> neighbors = new ArrayList<Location>();
-        int xFloor = (int) Math.floor(XY.myX / TILE_WIDTH);
-        int yFloor = (int) Math.floor(XY.myY / TILE_HEIGHT);
+        int xFloor = (int) Math.floor(XY.getX() / TILE_WIDTH);
+        int yFloor = (int) Math.floor(XY.getY() / TILE_HEIGHT);
         int[] xDelta = { 0, 0, 1, 1 };
         int[] yDelta = { 0, 1, 0, 1 };
         for (int i = 0; i < xDelta.length; i++) {
@@ -116,17 +116,17 @@ public class MapGrid {
                                              BiConsumer<Integer, Integer> alteringFunction) {
         Polygon bound = new Polygon(bounds);
         Location minCorner = new Location(bounds[0], bounds[1]);
-        int xIndexMinBound = (int) (Math.floor(minCorner.myX / TILE_WIDTH) - 1);
-        int yIndexMinBound = (int) (Math.floor(minCorner.myY / TILE_WIDTH) - 1);
+        int xIndexMinBound = (int) (Math.floor(minCorner.getX() / TILE_WIDTH) - 1);
+        int yIndexMinBound = (int) (Math.floor(minCorner.getY() / TILE_WIDTH) - 1);
         Location maxCorner = new Location(bounds[4], bounds[5]);
-        int xIndexMaxBound = (int) (Math.ceil(maxCorner.myX / TILE_WIDTH) + 1);
-        int yIndexMaxBound = (int) (Math.ceil(maxCorner.myY / TILE_WIDTH) + 1);
+        int xIndexMaxBound = (int) (Math.ceil(maxCorner.getX() / TILE_WIDTH) + 1);
+        int yIndexMaxBound = (int) (Math.ceil(maxCorner.getY() / TILE_WIDTH) + 1);
 
         for (int x = xIndexMinBound; x < xIndexMaxBound; x++) {
             for (int y = yIndexMinBound; y < yIndexMaxBound; y++) {
                 Location locationOfInterest = locationGrid[x][y];
                 if (locationOfInterest != null) {
-                    Point2D location = new Point2D(locationOfInterest.myX, locationOfInterest.myY);
+                    Point2D location = new Point2D(locationOfInterest.getX(), locationOfInterest.getY());
                     if (bound.contains(location)) {
                         alteringFunction.accept(x, y);
                     }

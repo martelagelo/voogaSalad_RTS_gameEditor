@@ -25,7 +25,6 @@ import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.Attri
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
-
 public class ShittyMain extends Application {
 
     public static final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
