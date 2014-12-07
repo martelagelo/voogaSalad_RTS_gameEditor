@@ -51,8 +51,7 @@ public class GameElement {
     private void createActionLists () {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
-        }
-        
+        }  
         for (ActionType type : ActionType.values()) {
             if (!myActionLists.containsKey(type)) {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
@@ -231,6 +230,14 @@ public class GameElement {
 
     public void registerAsChild (Consumer<GameElementState> function) {
         function.accept(myState);
+    }
+
+    public boolean isType (String typeString) {
+        return myState.isType(typeString);
+    }
+
+    public List<String> getTypes () {
+        return myState.getTypes();
     }
 
     public void setPosition (double x, double y) {

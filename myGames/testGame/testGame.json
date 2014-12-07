@@ -694,6 +694,10 @@
                     "myName": "name"
                   },
                   {
+                    "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+                    "myName": "AttributeDescription1"
+                  },
+                  {
                     "myData": "STANDING",
                     "myName": "currentAction"
                   },
@@ -2183,6 +2187,10 @@
         "myName": "name"
       },
       {
+        "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+        "myName": "AttributeDescription1"
+      },
+      {
         "myData": "STANDING",
         "myName": "currentAction"
       },
@@ -2868,6 +2876,10 @@
             {
               "myData": "archer",
               "myName": "name"
+            },
+            {
+              "myData": "resources/img/graphics/buttons/buildings/0001.bmp",
+              "myName": "AttributeDescription1"
             },
             {
               "myData": "STANDING",

@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import util.JSONable;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 
@@ -48,7 +47,7 @@ public class GameElementState implements JSONable, Serializable {
      * cost of some "parameter uncertainty" in the engine.
      */
     public AttributeContainer attributes;
-    
+
     public Set<String> myTypes;
 
     /**
@@ -72,34 +71,30 @@ public class GameElementState implements JSONable, Serializable {
      * 
      * @param type The new type
      */
-    public void addType(String type) {
-    	myTypes.add(type);
+    public void addType (String type) {
+        myTypes.add(type);
     }
-    
+
     /**
      * @return A list of the types
      */
-    public List<String> getTypes() {
-    	List<String> types = new ArrayList<String>();
-    	for(String s: myTypes) {
-    	    types.add(s);
-    	}
-    	return types;
+    public List<String> getTypes () {
+        return new ArrayList<String>(myTypes);
     }
-    
+
     /**
      * 
      * @param typeString The type we want to check
      * @return True if the type set contains typeString
      */
-    public boolean isType(String typeString) {
-    	return myTypes.contains(typeString);
+    public boolean isType (String typeString) {
+        return myTypes.contains(typeString);
     }
-    
-    public void deleteTypes(String typeString) {
-    	myTypes.clear();
+
+    public void deleteTypes (String typeString) {
+        myTypes.remove(typeString);
     }
-    
+
     /**
      * Add a string condition-action pair to the game element state
      * 
