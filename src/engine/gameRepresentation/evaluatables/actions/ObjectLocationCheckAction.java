@@ -80,11 +80,9 @@ public class ObjectLocationCheckAction extends Action {
                 if (participant.checkSameTeam(element.getTextualAttribute(StateTags.TEAM_COLOR))) {
                     int curXLocation = element.getNumericalAttribute(StateTags.X_POSITION).intValue();
                     int curYLocation = element.getNumericalAttribute(StateTags.Y_POSITION).intValue();
-                    System.out.println(curXLocation + ", " + curYLocation);
                     double xDelta = Math.abs(xLocation - curXLocation);
                     double yDelta = Math.abs(yLocation - curYLocation);
                     if (xDelta < radius && yDelta < radius) {
-                        System.out.println("win");
                         evaluatorToUse.evaluate(elements);
                         return true;
                     }
