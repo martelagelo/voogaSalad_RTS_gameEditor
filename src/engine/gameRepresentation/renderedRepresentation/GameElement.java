@@ -223,6 +223,8 @@ public class GameElement {
                 entry.setValue(timerValue);
             }
             else {
+                //Set a flag indicating that the timer has completed
+                setNumericalAttribute(entry.getKey(), 1);
                 it.remove();
             }
         }
