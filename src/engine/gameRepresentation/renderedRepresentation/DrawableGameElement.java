@@ -14,12 +14,8 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Boundable;
 import engine.computers.pathingComputers.Location;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerFactory;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.Visualizer;
-import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeBarDisplayer;
-import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
 /**
  * A game element that is capable of being drawn. Combines a game element state

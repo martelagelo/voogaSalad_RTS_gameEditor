@@ -1,5 +1,6 @@
 package engine.elementFactories;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import model.MainModel;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
@@ -15,11 +16,11 @@ public class AnimatorFactory {
         myModel = model;
     }
 
-    public Animator createAnimator (DrawableGameElementState elementState) {
+    public Animator createAnimator (DrawableGameElementState elementState, SimpleBooleanProperty animationEnabled) {
         AttributeContainer attributes = elementState.attributes;
         AnimatorState animatorState = elementState.myAnimatorState;
         SpriteImageContainer images = myModel.fetchImageContainer(animatorState.getImageTag());
-        return new Animator(images, animatorState, attributes);
+        return new Animator(images, animatorState, attributes, animationEnabled);
     }
 
 }

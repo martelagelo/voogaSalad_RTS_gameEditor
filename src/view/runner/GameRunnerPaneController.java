@@ -52,9 +52,11 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
             // Jank code to properly size engine runner pane to place in view
             // because JavaFX is horrible with sizing
             // require button to fill actual size of borderpane to then be bound to runner pane size
+
             myLevel = (LevelState) DeepCopy.deepCopy(levelState);
             myEngine = new Engine(myMainModel, myLevel);
             ScrollablePane pane = myEngine.getScene();
+
             bindPaneSize(pane);
             myEngine.play();
             myEngine.addObserver(this);

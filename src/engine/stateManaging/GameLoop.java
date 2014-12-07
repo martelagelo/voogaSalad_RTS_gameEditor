@@ -102,7 +102,9 @@ public class GameLoop extends Observable {
         myParticipantManager.update(myCurrentLevel.getUnits());
 
         // TODO: for testing, remove
+
         myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES.getValue(), 0.5);
+//        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
         if (levelEndState != 0) {

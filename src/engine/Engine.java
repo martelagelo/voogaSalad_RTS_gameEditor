@@ -37,6 +37,7 @@ import engine.visuals.VisualManager;
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
 
+    private static final String DEFAULT_BACKGROUND_TILE = "resources/img/graphics/terrain/grass/GrassTile.jpg";
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
@@ -94,6 +95,10 @@ public class Engine extends Observable implements Observer {
         // TODO: get next level and next campaign state in model (also write method in model)
         instantiateManagers();
     }
+    
+    public void setAnimationEnabled(boolean b){
+        myVisualizerFactory.setAnimationEnabled(b);
+    }
 
     private void instantiateManagers () {
         myElementManager = new GameElementManager(myElementFactory);
@@ -105,7 +110,7 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-        String backgroundURI = "resources/img/graphics/terrain/grass/GrassTile.jpg";
+        String backgroundURI = DEFAULT_BACKGROUND_TILE;
         myVisualManager =
                 new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundURI);
 
