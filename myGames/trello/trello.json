@@ -16,7 +16,152 @@
             ],
             "myTextualAttributes": []
           },
-          "myTerrains": [],
+          "myTerrains": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/6.png",
+                "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+                "viewportSize": {
+                  "myWidth": 35,
+                  "myHeight": 35
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 351.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 422.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 351.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 422.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 351.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 422.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "sdfsad",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/6.png",
+                "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+                "viewportSize": {
+                  "myWidth": 35,
+                  "myHeight": 35
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 252.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 235.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 252.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 235.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 252.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 235.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "sdfsad",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
           "myUnits": [
             {
               "AttributeDisplayerStates": [],
@@ -81,36 +226,40 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 136.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 136.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 158.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 158.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
                     "myData": 2.0,
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 136.0,
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 374.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 158.0,
+                    "myData": 367.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 374.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 367.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 374.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 367.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
                   },
                   {
                     "myData": 0,
@@ -193,36 +342,40 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 211.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 211.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 212.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 212.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
                     "myData": 2.0,
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 211.0,
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 148.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 212.0,
+                    "myData": 105.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 148.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 105.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 148.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 105.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
                   },
                   {
                     "myData": 0,
@@ -305,36 +458,40 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 310.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 310.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 211.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 211.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
                     "myData": 2.0,
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 310.0,
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 353.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 211.0,
+                    "myData": 150.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 353.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 150.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 353.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 150.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
                   },
                   {
                     "myData": 0,
@@ -417,36 +574,40 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 367.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 367.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 123.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 123.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
                     "myData": 2.0,
                     "myName": "movementSpeed"
                   },
                   {
-                    "myData": 367.0,
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 144.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 123.0,
+                    "myData": 293.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 144.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 293.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 144.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 293.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
                   },
                   {
                     "myData": 0,
@@ -508,7 +669,64 @@
       }
     ],
     "myGameElementStates": [],
-    "myDrawableGameElementStates": [],
+    "myDrawableGameElementStates": [
+      {
+        "AttributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/6.png",
+          "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+          "viewportSize": {
+            "myWidth": 35,
+            "myHeight": 35
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          200.0,
+          200.0,
+          200.0,
+          200.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "sdfsad",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ],
     "mySelectableGameElementStates": [
       {
         "AttributeDisplayerStates": [],
