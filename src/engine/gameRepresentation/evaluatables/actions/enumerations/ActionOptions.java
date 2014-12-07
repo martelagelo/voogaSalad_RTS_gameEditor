@@ -38,10 +38,12 @@ public enum ActionOptions {
     CHECK_ATTR_SET_ATTR_ACTION(
                                "Attribute Action",
                                "CheckAttributeSetAttributeAction",
-                               "If my attribute # 's value is # #, my # should be # to/than #",
+                               "If # attribute # 's value is # #, # # should be # to/than #",
+                               ActionParameters.OBJECT_DESIGNATOR,
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER,
+                               ActionParameters.OBJECT_DESIGNATOR,
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER),

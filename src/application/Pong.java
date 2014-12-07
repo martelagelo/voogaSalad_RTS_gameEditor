@@ -57,18 +57,24 @@ public class Pong extends Application {
         enemyPaddle.addAction(new ActionWrapper(ActionType.FOCUSED,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION, "FollowX"));
         enemyPaddle.addAction(new ActionWrapper(ActionType.INTERNAL,
-                                                ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
-                                                StateTags.Y_VELOCITY, "NotEquals", "0",
+                                                ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
+                                                StateTags.Y_VELOCITY, "NotEquals", "0", "me",
                                                 StateTags.Y_VELOCITY, "EqualsAssignment", "0"));
         SelectableGameElementState ball = createBall(350, 350);
         ball.setBounds(bounds);
+        ball.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                         ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
+                                         StateTags.MOVEMENT_SPEED, "GreaterThan", "8", "me",
+                                         StateTags.MOVEMENT_SPEED, "EqualsAssignment", "8"));
         // This one can be used for pathing
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "HeadingUpdate"));
+        paddle.addAction(new ActionWrapper(ActionType.INTERNAL,ActionOptions.PERFORM_CALCULATION_ON_VALUE,"EqualsAssignment","1",StateTags.IS_SELECTED));
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "SetFocused"));
+        enemyPaddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
         // enemyPaddle.addAction(new
         // ActionWrapper(ActionType.INTERNAL,ActionOptions.OBJECT_CONDITION_ACTION));
 
@@ -126,11 +132,11 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute("teamID", 2);
         ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         ball.addType("ball");
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,ActionOptions.ACT_ON_OBJECTS_ACTION,"Bounce"));
+
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.PERFORM_CALCULATION_ON_VALUE,
-                                         "MultiplicationAssignment", "-1", StateTags.Y_VELOCITY));
-        //TODO make this work
-        //ball.addAction(new ActionWrapper(ActionType.COLLISION,ActionOptions.PERFORM_CALCULATION_ON_VALUE,"MultiplicationAssignment","1.2",StateTags.Y_VELOCITY));
+                                         "MultiplicationAssignment", "1.2", StateTags.MOVEMENT_SPEED));
         AnimatorState ballAnimations;
         // This one moves the player
         ball.addAction(new ActionWrapper(ActionType.INTERNAL,
