@@ -139,7 +139,7 @@ public enum ActionOptions {
                           ActionParameters.ATTR,
                           ActionParameters.NN_EVAL,
                           ActionParameters.ATTR,
-                          ActionParameters.OBJECT_DESIGNATOR,//
+                          ActionParameters.OBJECT_DESIGNATOR,
                           ActionParameters.ATTR,
                           ActionParameters.NN_EVAL,
                           ActionParameters.ATTR,

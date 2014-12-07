@@ -49,6 +49,14 @@ public class Pong extends Application {
         SelectableGameElementState paddle = createPaddle(350, 100, 1);
         paddle.attributes.setNumericalAttribute(StateTags.IS_SELECTED, 1);
         paddle.setBounds(bounds);
+        paddle.addAction(new ActionWrapper(ActionType.BUTTON,
+                                           ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
+                                           StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1", "me",
+                                           StateTags.X_VELOCITY, "EqualsAssignment", "-3"));
+        paddle.addAction(new ActionWrapper(ActionType.BUTTON,
+                                           ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
+                                           StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "2", "me",
+                                           StateTags.X_VELOCITY, "EqualsAssignment", "3"));
         SelectableGameElementState enemyPaddle = createPaddle(350, 700, 2);
         enemyPaddle.setBounds(bounds);
         enemyPaddle.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
@@ -70,11 +78,16 @@ public class Pong extends Application {
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "HeadingUpdate"));
-        paddle.addAction(new ActionWrapper(ActionType.INTERNAL,ActionOptions.PERFORM_CALCULATION_ON_VALUE,"EqualsAssignment","1",StateTags.IS_SELECTED));
+        paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                           ActionOptions.PERFORM_CALCULATION_ON_VALUE,
+                                           "EqualsAssignment", "1", StateTags.IS_SELECTED));
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "SetFocused"));
         enemyPaddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
+      enemyPaddle.addAction(new ActionWrapper(ActionType.INTERNAL,
+         ActionOptions.ACT_ON_OBJECTS_ACTION,
+         "UpdateMovementDirection"));
         // enemyPaddle.addAction(new
         // ActionWrapper(ActionType.INTERNAL,ActionOptions.OBJECT_CONDITION_ACTION));
 
@@ -132,11 +145,13 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute("teamID", 2);
         ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         ball.addType("ball");
-        ball.addAction(new ActionWrapper(ActionType.COLLISION,ActionOptions.ACT_ON_OBJECTS_ACTION,"Bounce"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.ACT_ON_OBJECTS_ACTION,
+                                         "Bounce"));
 
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.PERFORM_CALCULATION_ON_VALUE,
-                                         "MultiplicationAssignment", "1.2", StateTags.MOVEMENT_SPEED));
+                                         "MultiplicationAssignment", "1.2",
+                                         StateTags.MOVEMENT_SPEED));
         AnimatorState ballAnimations;
         // This one moves the player
         ball.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -188,9 +203,9 @@ public class Pong extends Application {
         // "0",
         // StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
-        paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
-                                           ActionOptions.ACT_ON_OBJECTS_ACTION,
-                                           "UpdateMovementDirection"));
+        // paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
+        // ActionOptions.ACT_ON_OBJECTS_ACTION,
+        // "UpdateMovementDirection"));
         // This one moves the player
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
