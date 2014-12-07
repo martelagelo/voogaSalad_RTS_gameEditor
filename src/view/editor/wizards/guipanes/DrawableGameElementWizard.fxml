@@ -14,14 +14,34 @@
 		<AnchorPane fx:id="leftPane">
 			<children>
 				<VBox>
-					<TextField fx:id="name" />
-					<Button fx:id="trigger" defaultButton="true" />
+					<TextField fx:id="name">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</TextField>
+					<Button fx:id="trigger" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<VBox fx:id="existingTriggers" />
-					<Button fx:id="stringAttribute" defaultButton="true" />
+					<Button fx:id="stringAttribute" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<VBox fx:id="existingStringAttributes" />
-					<Button fx:id="numberAttribute" defaultButton="true" />
+					<Button fx:id="numberAttribute" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<VBox fx:id="existingNumberAttributes" />
-					<Button fx:id="image" defaultButton="true" />
+					<Button fx:id="image" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<HBox>
 						<Label fx:id="frameWidthLabel" />
 						<Slider fx:id="frameWidth" />
@@ -32,10 +52,22 @@
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
 					</HBox>
-					<Button fx:id="animation" defaultButton="true" />
+					<Button fx:id="animation" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<VBox fx:id="existingAnimations" />
-					<Button fx:id="setBounds" defaultButton="true" />
-					<Button fx:id="save" defaultButton="true" />
+					<Button fx:id="setBounds" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
+					<Button fx:id="save" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

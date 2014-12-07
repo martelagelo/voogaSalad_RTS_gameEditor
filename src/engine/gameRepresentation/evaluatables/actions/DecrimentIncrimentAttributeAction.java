@@ -70,7 +70,7 @@ public class DecrimentIncrimentAttributeAction extends Action {
         Evaluatable<?> minValue = new NumberParameter("", Double.valueOf(args[3]));
         Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>("", difference, minValue);
         Evaluatable<?> myAttributeToSet =
-                new NumericAttributeParameter("", args[3], elementManager,
+                new NumericAttributeParameter("", args[4], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> setAttributeIfNegative =
                 new SubtractionAssignment<>("", myAttributeToSet, difference);
@@ -105,9 +105,10 @@ public class DecrimentIncrimentAttributeAction extends Action {
                 new And<>("", attributeSetter, parameterSubtraction);
         Evaluator<?, ?, ?> ifTypeAssignment =
                 new IfThen<>("", typeCheckEvaluator, parameterSubtracting);
-        myTimer = args[4];
-        myTimerAmount = Long.valueOf(args[5]);
-        return ifTypeAssignment;
+        myTimer = args[5];
+        System.out.println(myTimer);
+        myTimerAmount = Long.valueOf(args[6]);
+        return parameterSubtracting;
     }
 
     @Override

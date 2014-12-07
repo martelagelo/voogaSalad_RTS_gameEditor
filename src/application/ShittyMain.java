@@ -65,6 +65,7 @@ public class ShittyMain extends Application {
         archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
                                                                             500));
+        archerState1.addType("archerman");
 
         SelectableGameElementState archerState2 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 100, 2);
@@ -81,10 +82,12 @@ public class ShittyMain extends Application {
         // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
-        archerState3.addAction(new ActionWrapper(ActionType.COLLISION.toString(),
-                                                 ActionOptions.CREATE_OBJECT_ACTION
-                                                         .getClassString(), "archer",
-                                                 "ArcherTimer", "500"));
+        archerState3.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                 ActionOptions.INCRIMENT_DECRIMENT_ACTION,
+                                                 "archerman", StateTags.HEALTH, StateTags.ATTACK,
+                                                 "10", StateTags.HEALTH, "LeechTimer", "100"));
+        // archerState3.addAction(new
+        // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
         archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
                                                                             500));
@@ -129,10 +132,9 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
-                                        ActionOptions.PLAYER_ATTRIBUTE_CONDITION
-                                                .getClassString(), "my", "Resources",
-                                        "GreaterThanEqual", "10000", "Won",
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                        ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
+                                        "Resources", "GreaterThanEqual", "20000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }
@@ -152,50 +154,44 @@ public class ShittyMain extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
         archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 2);
+        archerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(),
-                                                ActionOptions.OBJECT_CONDITION_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "NotCollision", "RandomWaypoint"));
         // On collision, attack an enemy
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(),
-                                                ActionOptions.OBJECT_CONDITION_ACTION
-                                                        .getClassString(), "Collision", "Attack"));
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
+                                                "Collision", "Attack"));
         // Move back if we collide with anything
-        archerState.addAction(new ActionWrapper(ActionType.COLLISION.toString(),
-                                                ActionOptions.OBJECT_CONDITION_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                                ActionOptions.OBJECT_CONDITION_ACTION,
                                                 "Collision", "MoveBack"));
         // Check to see if our health is <0. If so, die.
         archerState
-                .addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
-                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION
-                                                     .getClassString(), StateTags.HEALTH,
+                .addAction(new ActionWrapper(ActionType.INTERNAL,
+                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                             StateTags.HEALTH,
                                              "LessThanEqual",
                                              "0",
                                              StateTags.IS_DEAD, "EqualsAssignment", "1"));
         // Update player direction
-        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "UpdateMovementDirection"));
         // This one moves the player
-        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "MovePlayer"));
         // This one can be used for pathing
-        archerState.addAction(new ActionWrapper(ActionType.INTERNAL.toString(),
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "HeadingUpdate"));
         // Make the element so it follows another player when right-clicked on
-        archerState.addAction(new ActionWrapper(ActionType.FOCUSED.toString(),
-                                                ActionOptions.ACT_ON_OBJECTS_ACTION
-                                                        .getClassString(), "Follow"));
-        archerState.addAction(new ActionWrapper(ActionType.BUTTON.toString(),
-                                                ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION
-                                                        .getClassString(),
+        archerState.addAction(new ActionWrapper(ActionType.FOCUSED,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION, "Follow"));
+        archerState.addAction(new ActionWrapper(ActionType.BUTTON,
+                                                ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
                                                 StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
                                                 "archer", "ArcherSpawnCooldown", "200"));
         archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
@@ -207,7 +203,7 @@ public class ShittyMain extends Application {
         AnimatorState archerAnimations =
                 SaveLoadUtility
                         .loadResource(AnimatorState.class,
-                                      "resources/gameelementresources/animatorstate/berserker.json");
+                                      "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
         // TESTING LOADING SGES
         SelectableGameElementState sges =

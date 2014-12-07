@@ -4,11 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.BorderPane?>
 
 <StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="view.runner.GameRunnerPaneController" fx:id="root">
+	fx:controller="view.runner.GameRunnerPaneController" fx:id="stackPane">
 	<children>
-		<Button fx:id="sizedButton" >
+		<Button fx:id="sizedButton">
 			<maxWidth>
 				<Double fx:constant="MAX_VALUE" />
 			</maxWidth>
@@ -16,5 +17,7 @@
 				<Double fx:constant="MAX_VALUE" />
 			</maxHeight>
 		</Button>
+		<BorderPane fx:id="runnerPane" />
+		<fx:include fx:id="gameEnd" source="GameEndPane.fxml" />
 	</children>
 </StackPane>
