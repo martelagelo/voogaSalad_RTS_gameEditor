@@ -128,7 +128,7 @@ public enum ActionOptions {
                           "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
                           "Do: # on both the interacting elements AND " +
                           "Do: Set the timer # (timer name) to the value # (attribute) AND " +
-                          "Do: Perform # on my unit's # attribute on # (my/other) participant's # (attribute)"+
+                          "Do: Perform # # attribute on # (my/other) participant's # (attribute)"+
                           "On a timer named # with a value of # ticks.",
                           ActionParameters.PLAYER_TYPE,
                           ActionParameters.ATTR,
