@@ -99,13 +99,13 @@ public class ElementAccordionController extends GUIContainer {
 
     private void editorChooseDrawableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
-            myMainModel.setEditorDrawableChosen(selection);
+            myMainModel.setEditorChosenDrawable(selection);
         }
     }
     
     private void editorChooseSelectableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
-            myMainModel.setEditorSelectableChosen(selection);
+            myMainModel.setEditorChosenSelectable(selection);
         }
     }
     

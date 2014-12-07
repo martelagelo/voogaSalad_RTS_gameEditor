@@ -48,8 +48,13 @@ public class EditorMenuBarController extends MenuBarController {
     private void initFileMenu () {
         newCampaignMenuItem.setOnAction(e -> onNewCampaignClick());
         newLevelMenuItem.setOnAction(e -> onNewLevelClick());
-        saveMenuItem.setOnAction(e -> myMainModel.saveGame());
+        saveMenuItem.setOnAction(e -> saveGame());
         quitMenuItem.setOnAction(e -> myScreen.switchScreen(ViewScreenPath.SPLASH));
+    }
+    
+    private void saveGame() {
+        ((EditorScreen) myScreen).updateModelToSave();
+        myMainModel.saveGame();
     }
 
     private void onNewLevelClick () {

@@ -47,6 +47,10 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
         return stackPane;
     }
 
+    public LevelState getLevelState() {
+        return myLevel;
+    }
+    
     public void setLevel (LevelState levelState) {
         try {
             // Jank code to properly size engine runner pane to place in view

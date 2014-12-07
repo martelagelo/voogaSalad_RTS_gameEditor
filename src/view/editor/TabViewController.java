@@ -67,6 +67,19 @@ public class TabViewController extends GUIContainer {
 
     private LevelState myLevel;
 
+    public boolean isLevel(String campaign, String level) {
+        try {
+            return (myLevel == myMainModel.getLevel(campaign, level));
+        }
+        catch (LevelNotFoundException | CampaignNotFoundException e) {
+            return false;
+        }
+    }
+    
+    public void updateModelToSave() {
+        myLevel = gameRunnerPaneController.getLevelState();
+    }
+    
     private Consumer<Consumer<WizardData>> launchNestedWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (cons) -> {
@@ -170,11 +183,11 @@ public class TabViewController extends GUIContainer {
                         ObjectProperty<String> toggleText =
                                 (!newValue) ?
                                           MultiLanguageUtility.getInstance()
-                                                  .getStringProperty(EDITOR_INPUT_KEY)
+                                                  .getStringProperty(RUNNER_INPUT_KEY)
                                           :
                                           MultiLanguageUtility
                                                   .getInstance()
-                                                  .getStringProperty(RUNNER_INPUT_KEY);
+                                                  .getStringProperty(EDITOR_INPUT_KEY);
                         controllerToggle.textProperty().bind(toggleText);
                         Class<?> inputManager =
                                 (newValue) ? EditorInputManager.class

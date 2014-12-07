@@ -1,5 +1,6 @@
 package view.editor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +68,7 @@ public class EditorScreen extends GUIScreen {
     @FXML
     private ElementAccordionController levelElementAccordionController;
 
+    private List<TabViewController> myTabViewControllers;
     private Tab myCurrentTab;
     private final int myHashingPrime = 31;
 
@@ -82,6 +84,12 @@ public class EditorScreen extends GUIScreen {
         projectExplorerController.setOnLevelClicked( (String level) -> {
             String campaign = projectExplorerController.getSelectedHierarchy()[1];
             launchTab(campaign, level);
+        });
+    }
+
+    public void updateModelToSave () {
+        myTabViewControllers.forEach( (tabController) -> {
+            tabController.updateModelToSave();
         });
     }
 
@@ -132,26 +140,34 @@ public class EditorScreen extends GUIScreen {
     }
 
     private Tab createNewTab (String campaign, String level) {
-        Tab tab = new Tab(String.format("%s: %s", campaign, level));
+        Optional<TabViewController> option =
+                myTabViewControllers.stream()
+                        .filter(
+                                (tabController) -> tabController.isLevel(campaign, level))
+                        .findFirst();
+        TabViewController tabController;
+        if (option.isPresent()) {
+            tabController = option.get();
+        }
+        else {
+            tabController = (TabViewController) GUILoadStyleUtility
+                    .generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW.getFilePath());
+            attachChildContainers(tabController);
+            try {
+                tabController.setLevel(campaign, level);
+                levelElementAccordionController.setLevel(campaign, level);
+                tabController.modelUpdate();
+            }
+            catch (LevelNotFoundException | CampaignNotFoundException e) {
+                // Should not happen
+                DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
 
-        TabViewController tabController =
-                (TabViewController) GUILoadStyleUtility.generateGUIPane(GUIPanePath.EDITOR_TAB_VIEW
-                        .getFilePath());
-        attachChildContainers(tabController);
-        try {
-            tabController.setLevel(campaign, level);
-            // TODO: Jonathan fix "current level" for the accordion pane
-            levelElementAccordionController.setLevel(campaign, level);
-            tabController.modelUpdate();
+            }
         }
-        catch (LevelNotFoundException | CampaignNotFoundException e) {
-            // Should not happen
-            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
-        }
+        Tab tab = new Tab(String.format("%s: %s", campaign, level));
         tab.setUserData(new CampaignLevelPair(campaign, level));
         tab.setContent((BorderPane) tabController.getRoot());
         tabPane.getTabs().add(tab);
-        
         return tab;
     }
 
@@ -159,18 +175,19 @@ public class EditorScreen extends GUIScreen {
         myCurrentTab = newTab;
         if (myCurrentTab != null) {
             CampaignLevelPair id = (CampaignLevelPair) myCurrentTab.getUserData();
-            // TODO: Jonathan fix "current level" for the accordion pane
             try {
-                levelElementAccordionController.setLevel(id.myCampaign.getName(), id.myLevel.getName());
+                levelElementAccordionController.setLevel(id.myCampaign.getName(),
+                                                         id.myLevel.getName());
             }
             catch (LevelNotFoundException | CampaignNotFoundException e) {
                 e.printStackTrace();
-            }            
+            }
         }
     }
 
     @Override
     public void init () {
+        myTabViewControllers = new ArrayList<>();
         attachChildContainers(editorMenuBarController, levelElementAccordionController);
         initTabs();
         initProjectExplorer();
