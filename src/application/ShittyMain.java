@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javafx.application.Application;
@@ -143,7 +144,7 @@ public class ShittyMain extends Application {
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
-        levelState.addGoal(createGoal());
+        createGoals().forEach(goal -> levelState.addGoal(goal));
 
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
@@ -171,16 +172,20 @@ public class ShittyMain extends Application {
         return engine;
     }
 
-    private GameElementState createGoal () {
+    private List<GameElementState> createGoals () {
+        List<GameElementState> goals = new ArrayList<>();
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
                                         "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
-        ges.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.OBJECT_LOCATION_DETECTION,
+        goals.add(ges);
+        GameElementState ges2 = new GameElementState();
+        ges2.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.OBJECT_LOCATION_DETECTION,
                                 "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
-        return ges;
+        goals.add(ges2);
+        return goals;
     }
     
     private SelectableGameElementState createResource(double[] bounds, double x, double y, int teamID) throws Exception{

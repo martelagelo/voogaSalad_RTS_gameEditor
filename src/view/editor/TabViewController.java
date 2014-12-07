@@ -233,9 +233,9 @@ public class TabViewController extends GUIContainer {
     }
 
     private String extractParamString (String[] oldStrings) {
-        String[] params = oldStrings[2].substring(1, oldStrings[2].length() - 1).split(",");
+        String[] params = oldStrings[2].substring(1, oldStrings[2].length() - 1).split(",");        
         StringBuilder sb = new StringBuilder();
-        Arrays.asList(params).forEach(param -> sb.append(param + ","));
+        Arrays.asList(params).forEach(param -> sb.append(param.trim() + ","));
         return sb.toString();
     }
 
