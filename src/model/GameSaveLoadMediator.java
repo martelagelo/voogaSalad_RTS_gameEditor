@@ -58,33 +58,30 @@ public class GameSaveLoadMediator {
     /**
      * 
      * @param data
+     * @param elementType
      * @return
-     * @throws IOException
+     * @throws SaveLoadException
      */
-    public String saveImage (WizardData data, GameElementImageType type) throws SaveLoadException {
-        if (type.equals(GameElementImageType.DRAWABLE))
-            System.out.println(type.name()); // string for filepath use
-                                             // type.name()
-        // TODO: Remove this hardcoded save location
-        String saveLocation = "testSpritesheet";
-
+    public String saveImage (WizardData data, GameElementImageType elementType)
+            throws SaveLoadException {
         String localLocation = data.getValueByKey(WizardDataType.IMAGE);
-
-        String toSaveLocation = processPath(localLocation, type);
-
-        return SaveLoadUtility.saveImage(data.getValueByKey(WizardDataType.IMAGE), saveLocation
-                + File.separator + data.getValueByKey(WizardDataType.NAME) + PNG_EXT);
-
+        String destinationLocation = processImagePath(localLocation,
+                GameElementImageType.Spritesheet, elementType);
+        String savedLocation = SaveLoadUtility.saveImage(localLocation, destinationLocation);
+        return savedLocation;
     }
 
-    private String processPath (String localLocation, GameElementImageType imageType) {
-        // Replace spaces with underscores because UNIX directories don't play
-        File file = new File(localLocation);
-        String imageName = file.getName();
-        String saveLocation = GAME_ELEMENT_RESOURCES + imageType.name() + File.separator
-                + imageName;
+    private String processImagePath (String localLocation, GameElementImageType imageType,
+            GameElementImageType stateType) {
+        String imageName = getImageName(localLocation);
+        String saveLocation = GAME_ELEMENT_RESOURCES + stateType.getFolderName() + File.separator
+                + imageType.getFolderName() + File.separator + imageName;
         return saveLocation;
+    }
 
+    private String getImageName (String localLocation) {
+        File file = new File(localLocation);
+        return file.getName();
     }
 
     /**
@@ -93,13 +90,13 @@ public class GameSaveLoadMediator {
      * @return
      * @throws IOException
      */
-    public String saveColorMask (WizardData data, GameElementImageType type)
+    public String saveColorMask (WizardData data, GameElementImageType elementType)
             throws SaveLoadException {
-        // TODO: Remove this hardcoded save location
-        String saveLocation = "testSpritesheet";
-
-        return SaveLoadUtility.saveImage(data.getValueByKey(WizardDataType.COLOR_MASK),
-                saveLocation + File.separator + data.getValueByKey(WizardDataType.NAME) + PNG_EXT);
+        String currentLocation = data.getValueByKey(WizardDataType.COLOR_MASK);
+        String imageName = getImageName(currentLocation);
+        String destinationLocation = processImagePath(currentLocation,
+                GameElementImageType.Colormask, elementType);
+        return SaveLoadUtility.saveImage(currentLocation, destinationLocation);
 
     }
 
