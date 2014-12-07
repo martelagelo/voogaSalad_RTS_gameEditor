@@ -39,15 +39,6 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 	 */
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
 			String numericParameterTag, double minAttributeValue,
-			double maxAttributeValue, String BackgroundColor, String ForegroundColor) {
-		this.displayerTag = displayerTag;
-		this.parameterTag = numericParameterTag;
-		this.minAttributeValue = minAttributeValue;
-		this.maxAttributeValue = maxAttributeValue;
-	}
-	
-	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
-			String numericParameterTag, double minAttributeValue,
 			double maxAttributeValue) {
 		this.displayerTag = displayerTag;
 		this.parameterTag = numericParameterTag;

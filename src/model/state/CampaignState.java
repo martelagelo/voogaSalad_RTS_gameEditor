@@ -43,14 +43,8 @@ public class CampaignState extends DescribableState {
         }
     }
 
-    /**
-     * gets unmodifiable list of all of the levels
-     * 
-     * @return List<LevelState>
-     *         the list of all the campaign state's levels
-     */
     public List<LevelState> getLevels () {
-        return Collections.unmodifiableList(myLevels);
+        return myLevels;
     }
 
     /**

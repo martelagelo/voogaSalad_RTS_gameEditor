@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
+import model.state.LevelIdentifier;
 import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -30,8 +32,8 @@ import view.gui.GUIPanePath;
 
 
 /**
- * Element Accordion Controller to handle communication between model and element accordion
- * as well as to the titled panes in the accordion
+ * Element Accordion Controller to handle communication between model and
+ * element accordion as well as to the titled panes in the accordion
  * 
  * @author Jonathan Tseng
  *
@@ -54,21 +56,23 @@ public class ElementAccordionController extends GUIContainer {
 
     private LevelState myLevel;
 
-    public void setLevel (String campaign, String level) throws LevelNotFoundException,
+    public void setLevel (LevelIdentifier levelID) throws LevelNotFoundException,
                                                         CampaignNotFoundException {
-        myLevel = myMainModel.getLevel(campaign, level);
+        myLevel = myMainModel.getLevel(levelID);
     }
 
     @Override
     public void init () {
         elementAccordion.expandedPaneProperty().addListener( (property, oldPane, newPane) -> {
-            if (oldPane != null) oldPane.setCollapsible(true);
-            if (newPane != null) Platform.runLater(new Runnable() {
-                @Override
-                public void run () {
-                    newPane.setCollapsible(false);
-                }
-            });
+            if (oldPane != null)
+                oldPane.setCollapsible(true);
+            if (newPane != null)
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run () {
+                        newPane.setCollapsible(false);
+                    }
+                });
         });
         attachStringProperties();
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
@@ -92,23 +96,26 @@ public class ElementAccordionController extends GUIContainer {
         terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
-                .get(elementAccordion.getPanes().size() - 1));
-        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
-        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
+                .get(
+                     elementAccordion.getPanes().size() - 1));
+        terrainTitledPaneController
+                .setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
+        unitTitledPaneController
+                .setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
     }
 
     private void editorChooseDrawableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
-            myMainModel.setEditorDrawableChosen(selection);
+            myMainModel.setEditorChosenDrawable(selection);
         }
     }
-    
+
     private void editorChooseSelectableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
-            myMainModel.setEditorSelectableChosen(selection);
+            myMainModel.setEditorChosenSelectable(selection);
         }
     }
-    
+
     private void attachStringProperties () {
         try {
             terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
@@ -187,9 +194,10 @@ public class ElementAccordionController extends GUIContainer {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
                     DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard)
-                            WizardUtility.loadWizard(GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
-                                                     new Dimension(800, 600));
+                            (DrawableGameElementWizard) WizardUtility
+                                    .loadWizard(
+                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+                                                new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
 
@@ -222,9 +230,10 @@ public class ElementAccordionController extends GUIContainer {
                 (c) -> {
                     // TODO: make a drawable ges wizard
                     DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard)
-                            WizardUtility.loadWizard(GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
-                                                     new Dimension(800, 600));
+                            (DrawableGameElementWizard) WizardUtility
+                                    .loadWizard(
+                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+                                                new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
 
@@ -253,35 +262,32 @@ public class ElementAccordionController extends GUIContainer {
     }
 
     private void addNumberAttributes (DrawableGameElementWizard wiz) {
-        List<String> numberAttrs = myMainModel.getGameUniverse().
-                getNumericalAttributes().stream().map(atr -> atr.getName())
-                .collect(Collectors.toList());
+        List<String> numberAttrs = myMainModel.getGameUniverse().getNumericalAttributes().stream()
+                .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachNumberAttributes(numberAttrs);
     }
 
     private void addStringAttributes (DrawableGameElementWizard wiz) {
-        List<String> stringAttrs = myMainModel.getGameUniverse().
-                getStringAttributes().stream().map(atr -> atr.getName())
-                .collect(Collectors.toList());
+        List<String> stringAttrs = myMainModel.getGameUniverse().getStringAttributes().stream()
+                .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachStringAttributes(stringAttrs);
     }
 
     @Override
     public void modelUpdate () {
-        List<ImageElementPair> selectableStates =
-                myMainModel.getGameUniverse().getSelectableGameElementStates().stream()
-                        .map( (element) -> {
-                            try {
-                                // TODO GET IMAGES
-                                return new ImageElementPair(null, element.getName());
-                            }
-                            catch (Exception e) {
-                                return new ImageElementPair(null, "failure");
-                            }
-                        }).collect(Collectors.toList());
+        List<ImageElementPair> selectableStates = myMainModel.getGameUniverse()
+                .getSelectableGameElementStates().stream().map( (element) -> {
+                    try {
+                        // TODO GET IMAGES
+                        return new ImageElementPair(null, element.getName());
+                    }
+                    catch (Exception e) {
+                        return new ImageElementPair(null, "failure");
+                    }
+                }).collect(Collectors.toList());
         List<ImageElementPair> drawableStates =
-                myMainModel.getGameUniverse().getDrawableGameElementStates().stream()
-                        .map( (element) -> {
+                myMainModel.getGameUniverse().getDrawableGameElementStates()
+                        .stream().map( (element) -> {
                             try {
                                 // TODO GET IMAGES
                                 return new ImageElementPair(null, element.getName());

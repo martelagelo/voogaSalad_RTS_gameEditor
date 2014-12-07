@@ -53,11 +53,12 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
-
+    
     public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
         myLevelState = levelState;
+        System.out.println("Engine version of level state: " + myLevelState.toJSON());
         // TODO fix this so it isn't null
         myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
         myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
@@ -85,15 +86,6 @@ public class Engine extends Observable implements Observer {
                         .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
         myInputManager = inputManager;
         myVisualManager.attachInputManager(myInputManager);
-    }
-
-    // TODO Should just be a call for "get next level" from main model rather than
-    // selecting a specific level
-    public void selectNextLevel () throws DescribableStateException {
-        // myLevelState = myMainModel.(campaignName, levelName);
-        // myCampaignState = myMainModel.getCampaign(campaignName);
-        // TODO: get next level and next campaign state in model (also write method in model)
-        instantiateManagers();
     }
     
     public void setAnimationEnabled(boolean b){

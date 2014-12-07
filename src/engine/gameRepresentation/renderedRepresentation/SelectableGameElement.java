@@ -31,11 +31,11 @@ public class SelectableGameElement extends DrawableGameElement {
     // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
 
-    public SelectableGameElement (DrawableGameElementState element,
+    public SelectableGameElement (SelectableGameElementState element,
                                   Visualizer visualizer) {
         super(element, visualizer);
+        selectableState = element;
         initializeInteractingElementLists();
-
     }
 
     public void setFocusedElement (SelectableGameElement element) {
