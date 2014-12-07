@@ -7,6 +7,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -26,21 +27,21 @@ public class SpriteImageGenerator {
     public static final String RESOURCES_PROPERTIES_LOCATION = "resources/gameelementresources/properties/";
     private String resourceFile = "gameelementresources.properties";
     private Map<String, String> myResourceMapping;
-    private Map<String, SpriteImageContainer> myCachedContainer;
+    private static Map<String, SpriteImageContainer> myCachedContainer;
     private ColorMapGenerator myColorMapGenerator;
 
     public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
         myColorMapGenerator = new ColorMapGenerator();
         try {
-            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION + resourceFile));
+            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
+                    + resourceFile));
         } catch (MalformedURLException e) {
             throw new SaveLoadException("Unable to load resources", e);
         }
         myResourceMapping = new HashMap<>();
         myCachedContainer = new HashMap<>();
         populateMap();
-        loadSpriteImageContainers();
     }
 
     public void populateMap () {
@@ -52,20 +53,11 @@ public class SpriteImageGenerator {
         }
     }
 
-    public Map<String, SpriteImageContainer> loadSpriteImageContainers () throws SaveLoadException {
-        String animationStateLocation = myResourceMapping.get(GameElementType.ANIMATORSTATE
-                .toString());
-        File directory = new File(animationStateLocation);
-        FileFilter fileFilter = new WildcardFileFilter(GameSaveLoadMediator.WILDCARD
-                + GameSaveLoadMediator.JSON_EXT);
-        File[] files = directory.listFiles(fileFilter);
-        if (files != null) {
-            for (File f : files) {
-                AnimatorState state = SaveLoadUtility
-                        .loadResource(AnimatorState.class, f.getPath());
-                myCachedContainer.put(state.getImageTag(),
-                        new SpriteImageContainer(state.getImageTag()));
-            }
+    public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
+            Set<AnimatorState> animatorStates) throws SaveLoadException {
+        for (AnimatorState state : animatorStates) {
+            myCachedContainer.put(state.getImageTag(),
+                    new SpriteImageContainer(state.getImageTag()));
         }
         return myCachedContainer;
     }
