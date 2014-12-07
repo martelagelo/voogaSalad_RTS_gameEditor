@@ -30,6 +30,7 @@ public class GameElementManager {
     private PathingComputer pathingComputer;
 
     public GameElementManager (GameElementFactory factory) {
+
         myFactory = factory;
     }
 
@@ -162,13 +163,20 @@ public class GameElementManager {
             if (!queueCommand) {
             	e.clearPaths();
             }
-                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-                Location from = new Location(currentX, currentY);
-                Location to = new Location(click.getX(), click.getY());
+//                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+//                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+//                Location from = new Location(currentX, currentY);
+//                Location to = new Location(click.getX(), click.getY());
+//                List<Location> waypoints = pathingComputer.findPath(from, to);
+//                e.setWaypoints(waypoints);
+//                e.addToPath(to);
+            	
+            	double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+            	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+            	Location from = new Location(currentX, currentY);
+                Location to = new Location(currentX + 50, currentY + 50);
                 List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
-                e.addToPath(to);
         }
     }
 
