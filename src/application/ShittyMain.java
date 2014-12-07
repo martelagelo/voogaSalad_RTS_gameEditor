@@ -1,8 +1,6 @@
 package application;
 
 import java.awt.Toolkit;
-import java.util.List;
-import java.util.Map;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -48,12 +46,10 @@ public class ShittyMain extends Application {
 
     private Engine hardCodeAGame () throws Exception {
         SelectableGameElementState archerState =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 200, 1);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
-        archerState
-                .addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
-                                                                        StateTags.HEALTH, 0, 500));
+        archerState.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,
@@ -103,7 +99,7 @@ public class ShittyMain extends Application {
         // levelState.addTerrain(s);
         // }
         levelState.addUnit(archerState);
-        // levelState.addUnit(archerState1);
+        levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
@@ -144,7 +140,6 @@ public class ShittyMain extends Application {
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)
                                                                                                      throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);

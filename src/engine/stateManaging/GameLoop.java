@@ -11,7 +11,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
@@ -35,7 +34,6 @@ public class GameLoop extends Observable {
     private ParticipantManager myParticipantManager;
 
     private VisualManager myVisualManager;
-    private List<Line> unitPaths;
 
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
@@ -62,7 +60,6 @@ public class GameLoop extends Observable {
         myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
-        unitPaths = new ArrayList<Line>();
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
         startTimeline();
@@ -72,10 +69,7 @@ public class GameLoop extends Observable {
      * Update the states of all prominent elements and aspects of the game
      */
     private void updateRunner () {
-        // Clears all path lines from the GUI
-        clearLinesFromRoot();
-        // Adds needed path lines to the GUI
-        addPathsToRoot();
+        myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -108,7 +102,7 @@ public class GameLoop extends Observable {
         myParticipantManager.update(myCurrentLevel.getUnits());
 
         // TODO: for testing, remove
-        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
+        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
         if (levelEndState != 0) {
@@ -116,7 +110,7 @@ public class GameLoop extends Observable {
             this.notifyObservers(levelEndState);
         }
     }
-
+    
     /**
      * Update the states of all prominent elements and aspects of the game
      */
@@ -127,18 +121,6 @@ public class GameLoop extends Observable {
             selectableElement.update();
         }
         myVisualManager.update(myCurrentLevel.getUnits());
-    }
-
-    private void addPathsToRoot () {
-        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            // unitPaths.addAll(SGE.getLines());
-        }
-        myVisualManager.getBackground().getChildren().addAll(unitPaths);
-    }
-
-    private void clearLinesFromRoot () {
-        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
-        unitPaths.clear();
     }
 
     /**

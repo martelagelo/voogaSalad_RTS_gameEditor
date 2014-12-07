@@ -64,7 +64,8 @@ public class Engine extends Observable implements Observer {
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
                                        myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
-        myUser = new HumanParticipant(1, "Yo fuckin' user name!!");
+        // TODO:wtf
+        myUser = new HumanParticipant("BLUE", "Yo fuckin' user name!!");
 
         instantiateManagers();
     }

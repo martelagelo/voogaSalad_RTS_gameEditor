@@ -67,7 +67,7 @@ public class ObjectLocationCheckAction extends Action {
         }
         for (Participant participant: matchingPlayers) {
             for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
-                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+                if (participant.checkSameTeam(element.getTextualAttribute(StateTags.TEAM_COLOR))) {
                     if (xLocation == element.getNumericalAttribute(StateTags.X_POSITION).intValue()
                             && yLocation == element.getNumericalAttribute(StateTags.Y_POSITION).intValue()) {
                         return true;
