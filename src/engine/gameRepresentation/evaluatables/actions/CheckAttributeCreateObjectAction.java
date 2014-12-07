@@ -19,6 +19,7 @@ import engine.gameRepresentation.evaluatables.parameters.NumericAttributeParamet
 import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParameter;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
+import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.stateManaging.GameElementManager;
 
 
@@ -29,8 +30,10 @@ import engine.stateManaging.GameElementManager;
  *
  */
 public class CheckAttributeCreateObjectAction extends Action {
-    String myTimerName;
-    long myTimerAmount;
+    private String myTimerName;
+    private long myTimerAmount;
+    private Evaluator<?, ?, ?> myAttributeDecrementer;
+    private Evaluator<?, ?, SelectableGameElement> myElementCreator;
 
     public CheckAttributeCreateObjectAction (String id,
                                              EvaluatorFactory factory,
@@ -65,28 +68,28 @@ public class CheckAttributeCreateObjectAction extends Action {
                                               args[5]);
         Evaluator<?, ?, ?> checkIfEnoughAttr =
                 new GreaterThanEqual<>("", attributeToRemove, costAttribute);
-        Evaluator<?, ?, ?> decrementAttr =
+        myAttributeDecrementer =
                 new SubtractionAssignment<>("", attributeToRemove, costAttribute);
 
         // Create the element
         Evaluatable<?> elementPromise =
                 new ElementPromiseParameter("", new ElementPromise(args[3], elementManager));
         Evaluatable<?> me = new GameElementParameter("", new ActorObjectIdentifier());
-        Evaluator<?, ?, ?> elementCreator = new SpawnSelectableElement<>("", me, elementPromise);
+        myElementCreator = new SpawnSelectableElement<>("", me, elementPromise);
 
-        // Make a grouping of decrementing the value and making the element
-        Evaluator<?, ?, ?> decrementAndCreate = new And<>("", decrementAttr, elementCreator);
-        // Make an ifthen for the whole thing
-        Evaluator<?, ?, ?> shouldCreateElement =
-                new IfThen<>("", checkIfEnoughAttr, decrementAndCreate);
+        // Make a grouping of checking both values
+        Evaluator<?, ?, ?> checkEvaluator =
+                new And<>("", checkIfEnoughAttr, conditionEvaluator);
 
-        return new IfThen<>("", conditionEvaluator, shouldCreateElement);
+        return checkEvaluator;
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         if (elements.getActor().getTimer(myTimerName) <= 0) {
             if ((Boolean) action.evaluate(elements)) {
+                myAttributeDecrementer.evaluate(elements);
+                myElementCreator.evaluate(elements);                
                 elements.getActor().setTimer(myTimerName, myTimerAmount);
 
             }

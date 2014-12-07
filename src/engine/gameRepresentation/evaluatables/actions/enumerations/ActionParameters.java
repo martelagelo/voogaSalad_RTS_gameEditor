@@ -44,6 +44,11 @@ public enum ActionParameters {
     STRING(),
     // Numbers
     NUMBER(),
+    //A comma delimited list of strings
+    STRING_LIST(),
+    //A comma delimited list of numbers
+    NUMBER_LIST(),
+    //Designation between my object and another object
     OBJECT_DESIGNATOR("me", "other object");
 
     String[] myOptions;
