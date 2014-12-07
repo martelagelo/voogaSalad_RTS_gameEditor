@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
@@ -24,7 +25,6 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import util.GameSaveLoadMediator;
 import util.JSONableSet;
 import util.SaveLoadUtility;
 import util.multilanguage.LanguagePropertyNotFoundException;
@@ -42,9 +42,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  *
  */
 public class MainModel extends Observable {
-
     private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
-
     private GameState myGameState;
     private GameElementState myEditorSelectedElement;
     private GameSaveLoadMediator mySaveLoadMediator;
@@ -222,10 +220,21 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElementState (WizardData data) {
-        DrawableGameElementState gameElement = GameElementStateFactory
-                .createDrawableGameElementState(data);
-        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-        updateObservers();
+        try {
+            String actualSaveLocation = mySaveLoadMediator.saveImage(data,
+                    GameElementImageType.DRAWABLE);
+            String colorMaskLocation = mySaveLoadMediator.saveColorMask(data,
+                    GameElementImageType.DRAWABLE);
+            data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
+            data.addDataPair(WizardDataType.COLOR_MASK, colorMaskLocation);
+            DrawableGameElementState gameElement = GameElementStateFactory
+                    .createDrawableGameElementState(data);
+            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+            updateObservers();
+        } catch (SaveLoadException e) {
+            // TODO remove
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -235,9 +244,12 @@ public class MainModel extends Observable {
      */
     public void createSelectableGameElementState (WizardData data) {
         try {
-            String actualSaveLocation = mySaveLoadMediator.saveImage(data);
+            String actualSaveLocation = mySaveLoadMediator.saveImage(data,
+                    GameElementImageType.SELECTABLE);
+            String colorMaskLocation = mySaveLoadMediator.saveColorMask(data,
+                    GameElementImageType.SELECTABLE);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
-
+            data.addDataPair(WizardDataType.COLOR_MASK, colorMaskLocation);
             SelectableGameElementState gameElement = GameElementStateFactory
                     .createSelectableGameElementState(data);
             myGameState.getGameUniverse().addSelectableGameElementState(gameElement);

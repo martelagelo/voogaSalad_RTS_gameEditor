@@ -5,11 +5,11 @@ import java.io.FileFilter;
 import java.util.Map;
 
 import javafx.scene.image.Image;
+import model.GameSaveLoadMediator;
 import model.exceptions.SaveLoadException;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
-import util.GameSaveLoadMediator;
 import util.SaveLoadUtility;
 
 /**

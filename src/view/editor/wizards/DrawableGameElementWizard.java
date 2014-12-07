@@ -224,7 +224,7 @@ public class DrawableGameElementWizard extends Wizard {
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
-        imagePath = file.getPath();
+        
         return file;
     }
 
@@ -256,6 +256,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
             spritesheet.getChildren().clear();
             File imageFile = fetchImage();
+            imagePath = imageFile.getPath();
             Image image = new Image(new FileInputStream(imageFile));            
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);

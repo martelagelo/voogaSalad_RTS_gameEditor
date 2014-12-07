@@ -1,4 +1,4 @@
-package util;
+package model;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import model.exceptions.SaveLoadException;
 import model.sprite.SpriteImageGenerator;
 import model.state.GameState;
+import util.JSONable;
+import util.SaveLoadUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import engine.visuals.elementVisuals.animations.AnimatorState;
@@ -22,7 +24,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  *
  */
 public class GameSaveLoadMediator {
-    public static final String GAME_ELEMENT_RESOURCES = "gameelementresources";
+    public static final String GAME_ELEMENT_RESOURCES = "gameelementresources/";
     public static final String WILDCARD = "*";
     public static final String ANIMATOR_STATE = "animatorstate";
     public static final String GAME_DIRECTORY = "myGames";
@@ -59,12 +61,45 @@ public class GameSaveLoadMediator {
      * @return
      * @throws IOException
      */
-    public String saveImage (WizardData data) throws SaveLoadException {
+    public String saveImage (WizardData data, GameElementImageType type) throws SaveLoadException {
+        if (type.equals(GameElementImageType.DRAWABLE))
+            System.out.println(type.name()); // string for filepath use
+                                             // type.name()
         // TODO: Remove this hardcoded save location
         String saveLocation = "testSpritesheet";
 
+        String localLocation = data.getValueByKey(WizardDataType.IMAGE);
+
+        String toSaveLocation = processPath(localLocation, type);
+
         return SaveLoadUtility.saveImage(data.getValueByKey(WizardDataType.IMAGE), saveLocation
                 + File.separator + data.getValueByKey(WizardDataType.NAME) + PNG_EXT);
+
+    }
+
+    private String processPath (String localLocation, GameElementImageType imageType) {
+        // Replace spaces with underscores because UNIX directories don't play
+        File file = new File(localLocation);
+        String imageName = file.getName();
+        String saveLocation = GAME_ELEMENT_RESOURCES + imageType.name() + File.separator
+                + imageName;
+        return saveLocation;
+
+    }
+
+    /**
+     * 
+     * @param data
+     * @return
+     * @throws IOException
+     */
+    public String saveColorMask (WizardData data, GameElementImageType type)
+            throws SaveLoadException {
+        // TODO: Remove this hardcoded save location
+        String saveLocation = "testSpritesheet";
+
+        return SaveLoadUtility.saveImage(data.getValueByKey(WizardDataType.COLOR_MASK),
+                saveLocation + File.separator + data.getValueByKey(WizardDataType.NAME) + PNG_EXT);
 
     }
 
@@ -82,14 +117,10 @@ public class GameSaveLoadMediator {
         return SaveLoadUtility.loadImage(filePath);
 
     }
-    
-    public void loadSpritesAndMasks(Set<AnimatorState> animatorStates) throws SaveLoadException {
-            SpriteImageGenerator.loadSpriteImageContainers(animatorStates);
-       
+
+    public void loadSpritesAndMasks (Set<AnimatorState> animatorStates) throws SaveLoadException {
+        SpriteImageGenerator.loadSpriteImageContainers(animatorStates);
+
     }
-    
-    
-    
-    
-    
+
 }
