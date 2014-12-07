@@ -45,6 +45,12 @@ public enum ActionOptions {
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER),
+    PERFORM_CALCULATION_ON_VALUE("Perform Attribute Calculation",
+                                 "PerformAttrCalculationAction",
+                                 "Perform # # on my # attribute",
+                                 ActionParameters.NN_EVAL,
+                                 ActionParameters.NUMBER,
+                                 ActionParameters.ATTR),
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",
@@ -69,7 +75,7 @@ public enum ActionOptions {
                               ActionParameters.ATTR,
                               ActionParameters.NN_EVAL,
                               ActionParameters.NUMBER),
-                              
+
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
                                          "CheckAttributeCreateObjectAction",

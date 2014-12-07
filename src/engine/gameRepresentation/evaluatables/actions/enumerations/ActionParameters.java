@@ -12,6 +12,7 @@ import java.util.List;
 public enum ActionParameters {
     // Element element evaluators
     EE_EVAL(
+            "SetFocused",
             "Attack",
             "Collision",
             "NotCollision",
@@ -28,13 +29,14 @@ public enum ActionParameters {
             "Equals",
             "GreaterThan",
             "GreaterThanEqual",
+            "MultiplicationAssignment",
             "LessThan",
             "LessThanEqual",
             "NotEquals",
             "SubtractionAssignment"),
     // Boolean boolean evaluators
     BB_EVAL("And", "Equals", "Or"),
-    PLAYER_TYPE("my","another player"),
+    PLAYER_TYPE("my", "another player"),
     // Attributes
     ATTR(),
     // Strings
