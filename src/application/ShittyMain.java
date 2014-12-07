@@ -82,7 +82,8 @@ public class ShittyMain extends Application {
                 .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
                                                                         StateTags.HEALTH.getValue(), 0, 500));
 
-        //archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeArrowDisplayer, StateTags.IS_SELECTED.getValue(), 0, 1));
+
+        archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER, StateTags.IS_SELECTED.getValue(), 0, 1));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1,
