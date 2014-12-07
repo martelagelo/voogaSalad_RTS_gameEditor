@@ -19,10 +19,6 @@ import model.state.gameelement.AttributeContainer;
 public class AttributeDisplayerFactory {
 	public final static String ATTRIBUTE_CLASS_LOCATIONS = "engine.visuals.elementVisuals.widgets.attributeDisplays.";
 
-
-	public AttributeDisplayerFactory() {
-	}
-
 	/**
 	 * Create an attribute displayer.
 	 * 
@@ -37,11 +33,8 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
-		    System.out.println(attributeDisplayerState.displayerTag);
-		    System.out.println(ATTRIBUTE_CLASS_LOCATIONS + attributeDisplayerState.displayerTag);
-			c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
+		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
 					+ attributeDisplayerState.displayerTag);
-			System.out.println(c.toString());
 		} catch (ClassNotFoundException e) {
 			// fail silently
 		}
