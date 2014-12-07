@@ -26,6 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIPanePath;
 
 
@@ -165,11 +166,18 @@ public class DrawableGameElementWizard extends Wizard {
      *
      */
     private void launchWidgetEditor () {
-    	launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingNumberAttributes,
-    			myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
+        WidgetWizard wiz = (WidgetWizard) launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
+    			myGlobalNumberAttributes, getWidgetConsumer(), new Dimension(
              		   ATTRIBUTE_WIZARD_WIDTH, 
              		   ATTRIBUTE_WIZARD_HEIGHT
              		   ));
+        wiz.attachNumberAttributes(myGlobalNumberAttributes);
+        wiz.attachStringAttributes(myGlobalStringAttributes);
+    }
+
+    private BiConsumer<Button, WizardData> getWidgetConsumer () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     private void launchAnimationEditor () {
@@ -207,7 +215,7 @@ public class DrawableGameElementWizard extends Wizard {
         wiz.setSubmit(bc);
     }
 
-    private void launchNestedWizard (GUIPanePath path,
+    private Wizard launchNestedWizard (GUIPanePath path,
                                      VBox existing,
                                      List<String> globalAttrs,
                                      BiConsumer<Button, WizardData> setTextConsumer,
@@ -236,6 +244,7 @@ public class DrawableGameElementWizard extends Wizard {
                 wiz.closeStage();
             };
         wiz.setSubmit(bc);
+        return wiz;
     }
 
     private void launchEditWizard (GUIPanePath path,
@@ -341,7 +350,7 @@ public class DrawableGameElementWizard extends Wizard {
         trigger.setOnAction(e -> launchActionEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
-        widget.setOnAction(e -> launchWidgetEditor());
+//        widget.setOnAction(e -> launchWidgetEditor());
         animation.setOnAction(e -> launchAnimationEditor());
         setBounds.setOnAction(e -> launchBoundsEditor());
         image.setOnAction(i -> loadImage());
@@ -373,7 +382,7 @@ public class DrawableGameElementWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            // TODO Do something useful with this exception
+            DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }
 

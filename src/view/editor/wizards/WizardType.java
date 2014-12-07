@@ -17,5 +17,6 @@ public enum WizardType {
     LEVEL,
     NUMBER_ATTRIBUTE,
     POSITION,
-    TRIGGER
+    TRIGGER,
+    WIDGET
 }

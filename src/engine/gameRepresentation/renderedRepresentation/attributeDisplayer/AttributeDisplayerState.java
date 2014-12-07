@@ -15,12 +15,20 @@ import util.JSONable;
 public class AttributeDisplayerState implements JSONable, Serializable {
 
 	private static final long serialVersionUID = -4791954709522087485L;
-	private AttributeDisplayerTags displayerTag;					//The the string describing the class needed to create a widget. Created with enum.
-	private String parameterTag;					//The StateTag of the attribute or the name of the attribute
-	private double minAttributeValue;			//for a numerical attribute: The minimum value 
-	private double maxAttributeValue;			//for a numerical attribute: The maximum value
-	private String myTextValue;					//for a textual attribute: The value
+	private AttributeDisplayerTags displayerTag;
+	private String parameterTag;					
+	private double minAttributeValue;			
+	private double maxAttributeValue;			
+	private String myTextValue;					
 
+	/**
+	 * Constructor
+	 * 
+	 * @param displayerTag The reference to a widget's class
+	 * @param numericParameterTag The attribute name
+	 * @param minAttributeValue The max attribute value
+	 * @param maxAttributeValue The min attribute value
+	 */
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
 			String numericParameterTag, double minAttributeValue,
 			double maxAttributeValue) {

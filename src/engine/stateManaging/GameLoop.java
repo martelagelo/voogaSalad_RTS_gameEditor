@@ -123,6 +123,11 @@ public class GameLoop extends Observable {
             SelectableGameElement selectableElement = iter.next();
             selectableElement.update();
         }
+        Iterator<DrawableGameElement> terrainIterator = myCurrentLevel.getTerrain().iterator();
+        while (terrainIterator.hasNext()) {
+            DrawableGameElement drawableElement = terrainIterator.next();
+            drawableElement.update();
+        }
         myVisualManager.update(myCurrentLevel.getUnits());
     }
 

@@ -78,7 +78,7 @@ public class BoundsWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return checkCoordinatesValid(xCoordinates) && checkCoordinatesValid(yCoordinates);
+        return checkCoordinatesValid(xCoordinates) && checkCoordinatesValid(yCoordinates) && allPoints.getChildren().size() >= 4;
     }
 
     private boolean checkCoordinatesValid (List<TextField> coordinates) {

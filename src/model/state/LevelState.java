@@ -3,6 +3,7 @@ package model.state;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -27,16 +28,18 @@ public class LevelState extends DescribableState implements Serializable {
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
+    private LevelIdentifier myIdentifier;
 
     public LevelState() {
     }
     
-    public LevelState (String name) {
+    public LevelState (String name, String campaignName) {
         super(name);
         attributes = new AttributeContainer();
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();
+        myIdentifier = new LevelIdentifier(name, campaignName);
     }
 
     /**
@@ -91,6 +94,20 @@ public class LevelState extends DescribableState implements Serializable {
      */
     public void addGoal (GameElementState goal) {
         myGoals.add(goal);
+    }
+    
+    @Override
+    public boolean equals(Object o){
+		if (!(o instanceof LevelState)) {
+			return false;
+		} else {
+			LevelState ls = (LevelState) o;
+			return this.myIdentifier.equals(ls.myIdentifier);
+		}
+    }
+    
+    public LevelIdentifier getIdentifier(){
+    	return myIdentifier;
     }
 
 }
