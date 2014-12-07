@@ -34,7 +34,8 @@ public class DrawableGameElement extends GameElement implements Displayable,
 
 	private DrawableGameElementState drawableState;
 	private Visualizer myVisualizer;
-	private Queue<Location> waypoints;
+	private Queue<Location> currentWayPoints;
+	private Queue<Location> currentPath;
 
 	/**
 	 * Create a drawable game element from the given state
@@ -50,7 +51,8 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		super(state);
 		drawableState = state;
 		myVisualizer = visualizer;
-		waypoints = new LinkedList<>();
+		currentWayPoints = new LinkedList<>();
+		currentPath = new LinkedList<>();
 		myVisualizer.initializeDisplay();
 
 		// myAttributeDisplayerState =
@@ -90,9 +92,9 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	}
 
 	public void setWaypoints(List<Location> waypointsToAdd) {
-		waypoints.clear();
-		waypoints.addAll(waypointsToAdd);
-		Location newGoal = waypoints.poll();
+		currentWayPoints.clear();
+		currentWayPoints.addAll(waypointsToAdd);
+		Location newGoal = currentWayPoints.poll();
 		// TODO make this into a method
 		setNumericalAttribute(StateTags.X_GOAL_POSITION, newGoal.myX);
 		setNumericalAttribute(StateTags.Y_GOAL_POSITION, newGoal.myY);
@@ -103,7 +105,7 @@ public class DrawableGameElement extends GameElement implements Displayable,
 
 	public void addWaypoint(double x, double y) {
 		Location newWaypoint = new Location(x, y);
-		waypoints.add(newWaypoint);
+		currentWayPoints.add(newWaypoint);
 	}
 
 	public Location getNextWaypoint() {
@@ -112,7 +114,7 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		double currentY = getNumericalAttribute(StateTags.Y_POSITION)
 				.doubleValue();
 		Location current = new Location(currentX, currentY);
-		return waypoints.size() == 0 ? current : waypoints.poll();
+		return currentWayPoints.size() == 0 ? current : currentWayPoints.poll();
 	}
 
 	public List<Line> getLines() {
@@ -125,9 +127,11 @@ public class DrawableGameElement extends GameElement implements Displayable,
 					StateTags.X_GOAL_POSITION).doubleValue(),
 					getNumericalAttribute(StateTags.Y_GOAL_POSITION)
 							.doubleValue());
+			
 			line.getStrokeDashArray().addAll(25d, 10d);
 			line.setStroke(Color.RED);
 			lines.add(line);
+			
 			// while (waypoints.peek() != null) {
 			// copyWayPoints.add(waypoints.peek());
 			// Location P1 = waypoints.poll();
@@ -144,5 +148,13 @@ public class DrawableGameElement extends GameElement implements Displayable,
 			// waypoints = copyWayPoints;
 		}
 		return lines;
+	}
+	
+	public void addToPath(Location e) {
+		currentPath.add(e);
+	}
+	
+	public void clearPaths() {
+		currentPath.clear();
 	}
 }

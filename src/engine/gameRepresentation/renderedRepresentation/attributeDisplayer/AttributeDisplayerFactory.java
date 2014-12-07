@@ -41,6 +41,7 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
+			System.out.println("LOOOOOLLLL");
 			c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
 					+ myAttributeDisplayerBundle
 							.getString(attributeDisplayerState.displayerTag));

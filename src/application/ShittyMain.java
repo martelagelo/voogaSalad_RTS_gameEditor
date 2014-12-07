@@ -48,7 +48,7 @@ public class ShittyMain extends Application {
 
     private Engine hardCodeAGame () throws Exception {
         SelectableGameElementState archerState =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 200, 1);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
         archerState
@@ -97,10 +97,10 @@ public class ShittyMain extends Application {
         // for (DrawableGameElementState s : grassTerrain) {
         // levelState.addTerrain(s);
         // }
-        levelState.addUnit(archerState);
+        //levelState.addUnit(archerState);
         // levelState.addUnit(archerState1);
-        levelState.addUnit(archerState2);
-        levelState.addUnit(archerState3);
+        //levelState.addUnit(archerState2);
+        //levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
         levelState.addGoal(createGoal());

@@ -2,7 +2,9 @@ package engine.stateManaging;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.Location;
@@ -158,9 +160,8 @@ public class GameElementManager {
         for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
             if (!checkOnTeam(e, u)) continue;
             if (queueCommand) {
-                // TODO: either implement this and allow for having headings be a linked-list, or
-                // remove this
-                // e.clearHeadings();
+            	Location to = new Location(click.getX(), click.getY());
+                e.addToPath(to);
             }
             else {
                 double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
@@ -169,6 +170,8 @@ public class GameElementManager {
                 Location to = new Location(click.getX(), click.getY());
                 List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
+                e.clearPaths();
+                e.addToPath(to);
             }
         }
     }
