@@ -16,13 +16,13 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 
 	private static final long serialVersionUID = -4791954709522087485L;
 	public AttributeDisplayerType displayerTag;					//The the string describing the class needed to create a widget. Created with enum.
-	public StateTags parameterTag;					//The StateTag of the attribute or the name of the attribute
+	public String parameterTag;					//The StateTag of the attribute or the name of the attribute
 	public double minAttributeValue;			//for a numerical attribute: The minimum value 
 	public double maxAttributeValue;			//for a numerical attribute: The maximum value
 	public String myTextValue;					//for a textual attribute: The value
 
 	public AttributeDisplayerState(AttributeDisplayerType displayerTag,
-			StateTags numericParameterTag, double minAttributeValue,
+			String numericParameterTag, double minAttributeValue,
 			double maxAttributeValue) {
 		this.displayerTag = displayerTag;
 		this.parameterTag = numericParameterTag;
@@ -32,7 +32,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 	}
 
 	public AttributeDisplayerState(AttributeDisplayerType displayerTag,
-			StateTags textualParameterTag, String value) {
+			String textualParameterTag, String value) {
 		this.displayerTag = displayerTag;
 		this.parameterTag = textualParameterTag;
 		this.myTextValue = value;

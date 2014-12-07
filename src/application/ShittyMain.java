@@ -52,7 +52,7 @@ public class ShittyMain extends Application {
         archerState.attributes.setTextualAttribute(StateTags.NAME.getValue(), "archer");
         archerState
                 .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                        StateTags.HEALTH, 0, 500));
+                                                                        StateTags.HEALTH.toString(), 0, 500));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1,
@@ -63,7 +63,7 @@ public class ShittyMain extends Application {
 
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
         archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+                                                                            StateTags.HEALTH.toString(), 0,
                                                                             500));
         archerState.addType("archerman");
 
@@ -75,7 +75,7 @@ public class ShittyMain extends Application {
 
         archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
         archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+                                                                            StateTags.HEALTH.toString(), 0,
                                                                             1000));
         archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                  ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH.getValue(),StateTags.ATTACK.getValue(),"MAX_HEALTH","50","Random Timer"));
@@ -97,7 +97,7 @@ public class ShittyMain extends Application {
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
         archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
+                                                                            StateTags.HEALTH.toString(), 0,
                                                                             500));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
