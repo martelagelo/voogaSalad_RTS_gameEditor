@@ -81,7 +81,7 @@ public class VisualManager {
     private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
                                                             Participant user) {
         for (SelectableGameElement e : list) {
-            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+            if (user.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR))) {
                 if (e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1) { return e; }
             }
         }

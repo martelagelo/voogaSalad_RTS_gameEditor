@@ -136,7 +136,7 @@ public class ShittyMain extends Application {
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "100", "Won",
+                                        "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }
@@ -144,7 +144,6 @@ public class ShittyMain extends Application {
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)
                                                                                                      throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
