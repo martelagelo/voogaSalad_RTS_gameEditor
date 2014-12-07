@@ -55,6 +55,7 @@ public class ShittyMain extends Application {
         archerState
                 .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                         StateTags.HEALTH, 0, 500));
+        //archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeArrowDisplayer, StateTags.IS_SELECTED, 0, 1));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,

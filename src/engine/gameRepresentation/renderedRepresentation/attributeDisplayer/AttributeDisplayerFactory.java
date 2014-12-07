@@ -37,6 +37,7 @@ public class AttributeDisplayerFactory {
 					+ attributeDisplayerState.displayerTag);
 		} catch (ClassNotFoundException e) {
 			// fail silently
+			//e.printStackTrace();
 		}
 		if (attributeDisplayerState.myTextValue != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
@@ -63,6 +64,7 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
+			e.printStackTrace();
 		}
 		return displayer;
 	}
