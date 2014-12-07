@@ -38,16 +38,16 @@ public class ActionWrapper implements Serializable {
         myParameters = parameters;
     }
 
-    public String getActionType () {
-        return myActionType.toString();
-    }
-
     public String getActionClassName () {
         return myActionName.getClassString();
     }
 
     public String[] getParameters () {
         return myParameters;
+    }
+    
+    public ActionType getActionType () {
+        return myActionType;
     }
 
 }

@@ -1,6 +1,7 @@
 package view.runner;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
@@ -9,12 +10,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import model.state.LevelState;
 import model.state.gameelement.AttributeContainer;
 import org.json.JSONException;
 import view.dialog.DialogBoxUtility;
-import view.gui.GUIContainer;
 import view.gui.StackPaneGUIContainer;
 import engine.Engine;
 import engine.visuals.ScrollablePane;
@@ -61,7 +60,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
             setFront(runnerPane);
         }
         catch (ClassNotFoundException | JSONException | IOException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
     }
 

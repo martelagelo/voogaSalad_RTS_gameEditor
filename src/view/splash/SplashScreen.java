@@ -1,6 +1,7 @@
 package view.splash;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -77,7 +78,7 @@ public class SplashScreen extends GUIScreen {
             gameDropDown.setItems(FXCollections.observableList(new ArrayList<>(games)));
         }
         catch (SaveLoadException e) {
-            DialogBoxUtility.createMessageDialog(e.getMessage());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
 
         setUpButtons();
@@ -94,7 +95,7 @@ public class SplashScreen extends GUIScreen {
                 switchScreen(ViewScreenPath.EDITOR);
             }
             catch (Exception e1) {
-                DialogBoxUtility.createMessageDialog(e1.getMessage());
+                DialogBoxUtility.createMessageDialog(Arrays.toString(e1.getStackTrace()));
             }
         });
 
@@ -111,7 +112,7 @@ public class SplashScreen extends GUIScreen {
                 switchScreen(path);
             }
             catch (Exception e1) {
-                DialogBoxUtility.createMessageDialog(e1.getMessage());
+                DialogBoxUtility.createMessageDialog(Arrays.toString(e1.getStackTrace()));
             }
         }
         else {
@@ -154,7 +155,7 @@ public class SplashScreen extends GUIScreen {
             gameDropDown.promptTextProperty().bind(util.getStringProperty(CHOOSE_GAME_KEY));
         }
         catch (LanguageException e) {
-            DialogBoxUtility.createMessageDialog(e.getMessage());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
 
     }

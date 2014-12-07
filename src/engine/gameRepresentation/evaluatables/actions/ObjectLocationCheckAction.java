@@ -1,10 +1,12 @@
 package engine.gameRepresentation.evaluatables.actions;
 
 import java.util.Arrays;
+import java.util.List;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.FalseEvaluatable;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
@@ -14,18 +16,27 @@ import engine.gameRepresentation.evaluatables.parameters.NumericAttributeParamet
 import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParameter;
 import engine.gameRepresentation.evaluatables.parameters.StringAttributeParameter;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
+import engine.users.Participant;
 
 
 public class ObjectLocationCheckAction extends Action {
     private String playerTypeString;
-    Evaluatable<Number> playerIdToGet;
     private String gameElementType;
-    Evaluatable<String> gameElementTypeToGet;
     private int xLocation;
-    Evaluatable<Number> xLocationToGet;
     private int yLocation;
+
+
+    /*
+
+    Evaluatable<Number> playerIdToGet;
+    Evaluatable<String> gameElementTypeToGet;
+    Evaluatable<Number> xLocationToGet;
     Evaluatable<Number> yLocationToGet;
+    */
+    GameElementManager manager;
+    private ParticipantManager participants;
 
     public ObjectLocationCheckAction (String id,
                                       EvaluatorFactory factory,
@@ -33,58 +44,36 @@ public class ObjectLocationCheckAction extends Action {
                                       ParticipantManager participantManager,
                                       String[] args) {
         super(id, factory, elementManager, participantManager, args);
+        this.manager = elementManager;
+        this.participants = participantManager;
     }
 
-    /*
-     *     OBJECT_LOCATION_DETECTION(
-                              "Object Location Check",
-                              "ObjectLocationCheckAction",
-                              "If # object of type # is at the location #,#",
-                              ActionParameters.PLAYER_TYPE,
-                              ActionParameters.STRING,
-                              ActionParameters.NUMBER,
-                              ActionParameters.NUMBER),
-     */
     @Override
     protected Evaluatable<?> initializeAction (String[] args,
                                                EvaluatorFactory factory,
                                                GameElementManager elementManager,
-                                               ParticipantManager participantManager)
-                                                                                     throws ClassNotFoundException,
-                                                                                     EvaluatorCreationException {
-        GameElementParameter you = new GameElementParameter("", new ActeeObjectIdentifier());
-        
-        this.playerTypeString = args[0];
-        this.gameElementType = args[1];
-        this.xLocation = Integer.parseInt(args[2]);
-        this.yLocation = Integer.parseInt(args[3]);
-
-        playerIdToGet =
-                new ParticipantValueParameter("",
-                    ((playerTypeString.equals("my"))
-                            ? Arrays.asList(participantManager.getUser())
-                            : participantManager.getAI()),
-                    StateTags.TEAM_ID);
-        gameElementTypeToGet = new StringAttributeParameter("",
-            StateTags.TYPE, elementManager, new ActeeObjectIdentifier());
-        xLocationToGet = new NumericAttributeParameter("",
-            StateTags.X_POSITION, elementManager, new ActeeObjectIdentifier());
-        yLocationToGet = new NumericAttributeParameter("",
-            StateTags.Y_POSITION, elementManager, new ActeeObjectIdentifier());
-        return playerIdToGet;
+                                               ParticipantManager participantManager) {
+        return new FalseEvaluatable();
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
-        int gottenPlayerId = this.playerIdToGet.evaluate(elements).intValue();
-        String gottenType = this.gameElementTypeToGet.evaluate(elements);
-        int gottenXLocation = this.xLocationToGet.evaluate(elements).intValue();
-        int gottenYLocation = this.yLocationToGet.evaluate(elements).intValue();
-        int gameElementPlayerID = elements.getActee().getNumericalAttribute(StateTags.TEAM_ID).intValue();
-        if (gottenXLocation == xLocation && gottenYLocation == yLocation
-                && gottenType.equals(gameElementType)
-                && gottenPlayerId == gameElementPlayerID) {
-            return true;
+        List<Participant> matchingPlayers;
+        if ("my".equals(playerTypeString)) {
+            matchingPlayers = Arrays.asList(participants.getUser());
+        }
+        else {
+            matchingPlayers = participants.getAI();
+        }
+        for (Participant participant: matchingPlayers) {
+            for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
+                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+                    if (xLocation == element.getNumericalAttribute(StateTags.X_POSITION).intValue()
+                            && yLocation == element.getNumericalAttribute(StateTags.Y_POSITION).intValue()) {
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }
