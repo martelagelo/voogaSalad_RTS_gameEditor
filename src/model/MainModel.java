@@ -247,7 +247,7 @@ public class MainModel extends Observable {
      * @param data
      */
     public void createDrawableGameElementState (WizardData data) {
-        try {
+        try {            
             String actualSaveLocation = mySaveLoadMediator.saveImage(data,
                     GameElementImageType.Drawable);
             String colorMaskLocation = mySaveLoadMediator.saveColorMask(data,
