@@ -3,7 +3,6 @@ package view.editor.wizards;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -42,19 +41,19 @@ public class ActionWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return actionType.getSelectionModel().getSelectedItem() != null &&
-               actionChoice.getSelectionModel().getSelectedItem() != null &&
+        return actionType.getSelectionModel().selectedItemProperty().isNotNull().get() &&
+               actionChoice.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                dropdownsValid();
     }
 
     private boolean dropdownsValid () {
-        if (dropdowns.size() == 0) return false;
+        if (dropdowns.isEmpty()) return false;
         for (ComboBox<String> box : dropdowns) {
-            if (box.getSelectionModel().getSelectedItem() == null ||
-                box.valueProperty().getValue() == null) { return false; }
+            if (box.getSelectionModel().selectedItemProperty().isNull().get() ||
+                box.valueProperty().isNull().get()) { return false; }
         }
         for (ComboBox<String> numberInput : numberDropdowns) {
-            if (!Pattern.matches(NUM_REGEX, numberInput.getSelectionModel().getSelectedItem())) { return false; }
+            if (!isNumber(numberInput.getSelectionModel().getSelectedItem())) { return false; }
         }
         return true;
     }

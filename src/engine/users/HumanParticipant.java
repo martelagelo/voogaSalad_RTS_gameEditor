@@ -10,7 +10,12 @@ package engine.users;
  */
 public class HumanParticipant extends Participant{
 	
-	public HumanParticipant(String playerColor, String name){
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 5825471747765735517L;
+
+    public HumanParticipant(String playerColor, String name){
 		super(playerColor, name);
 		isAI = false;
 	}

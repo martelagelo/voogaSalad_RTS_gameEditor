@@ -207,6 +207,7 @@ public class GameElement {
      * @param timerValue its value
      */
     public void setTimer (String timerName, long timerValue) {
+        setNumericalAttribute(timerName,0);
         myTimers.put(timerName, timerValue);
     }
 
@@ -223,9 +224,15 @@ public class GameElement {
                 entry.setValue(timerValue);
             }
             else {
+                //Set a flag indicating that the timer has completed
+                setNumericalAttribute(entry.getKey(), 1);
                 it.remove();
             }
         }
+    }
+    
+    public Map<String, Long> getTimersCopy(){
+        return new HashMap<>(myTimers);
     }
 
     public void registerAsChild (Consumer<GameElementState> function) {

@@ -50,15 +50,11 @@ public class AttributeIncrementerAction extends Action {
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         GameElement element = elements.getActor();
-        if (element.getTimer(myTimerName) > 0) {
-            System.out.println("Incrimenting");
+        if (element.getTimer(myTimerName) <= 0) {
             double parameter = element.getNumericalAttribute(myAttributeTag).doubleValue();
             double max = element.getNumericalAttribute(myAttributeAmountTag).doubleValue();
             double amount = element.getNumericalAttribute(myMaxValueTag).doubleValue();
             double newParameter = parameter + amount;
-
-            System.out.println(parameter);
-            System.out.println(newParameter);
             if (parameter > max) {
                 parameter = max;
             }
