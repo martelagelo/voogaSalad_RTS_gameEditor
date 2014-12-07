@@ -10,9 +10,7 @@ import model.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
- * for team identification. Holds a reference to a SaveLoadMediator object
- * allowing for filepath related contents to be concentrated in a single
- * location.
+ * for team identification.
  * 
  * @author Rahul
  *
@@ -26,7 +24,8 @@ public class SpriteImageContainer {
         myColorMask = colorMask;
     }
 
-    public SpriteImageContainer (String spritesheetTag, String colorMaskTag) throws SaveLoadException {
+    public SpriteImageContainer (String spritesheetTag, String colorMaskTag)
+            throws SaveLoadException {
         locateSpritesheet(spritesheetTag);
         locateColorMask(colorMaskTag);
     }
@@ -43,12 +42,17 @@ public class SpriteImageContainer {
         return mySpritesheet;
     }
 
+    /**
+     * 
+     * @param color
+     * @return
+     */
     public ImageView getColorMask (String color) {
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
-        Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome,
-                new ColorInput(0, 0, myColorMask.getImage().getWidth(), myColorMask.getImage()
-                        .getHeight(), ColorMapGenerator.getColorMask(color)));
+        Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome, new ColorInput(0, 0, myColorMask
+                .getImage().getWidth(), myColorMask.getImage().getHeight(),
+                ColorMapGenerator.getColorMask(color)));
         myColorMask.setEffect((Effect) blush);
 
         return myColorMask;
