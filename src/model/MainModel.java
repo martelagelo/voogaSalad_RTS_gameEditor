@@ -1,10 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
+import model.exceptions.ElementInUseException;
 import model.exceptions.LevelExistsException;
 import model.exceptions.LevelNotFoundException;
 import model.exceptions.SaveLoadException;
@@ -22,6 +26,8 @@ import util.GameSaveLoadMediator;
 import util.JSONableSet;
 import util.SaveLoadUtility;
 import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
@@ -75,9 +81,8 @@ public class MainModel extends Observable {
             myGameState = mySaveLoadMediator.loadGame(game);
         }
         catch (SaveLoadException e) {
-            e.printStackTrace();
-            // DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-            // .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+             DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+             .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
         updateObservers();
     }
@@ -245,7 +250,8 @@ public class MainModel extends Observable {
         }
     }
 
-    public void removeDrawableGameElement (String elementName) {
+    public void removeDrawableGameElement (String elementName) throws ElementInUseException {
+        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
         Optional<DrawableGameElementState> option = getGameUniverse()
                 .getDrawableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -255,7 +261,8 @@ public class MainModel extends Observable {
         }
     }
 
-    public void removeSelectableGameElement (String elementName) {
+    public void removeSelectableGameElement (String elementName) throws ElementInUseException {
+        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
         Optional<SelectableGameElementState> option = getGameUniverse()
                 .getSelectableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -263,6 +270,21 @@ public class MainModel extends Observable {
         if (option.isPresent()) {
             getGameUniverse().removeSelectableGameElementState(option.get());
         }
+    }
+
+    private boolean elementIsInUse (String elementName) {
+        List<GameElementState> allStates = new ArrayList<>();
+        myGameState.getCampaigns().forEach((campaign -> {
+            campaign.getLevels().forEach((level)->{
+                allStates.addAll(level.getTerrain().stream().filter((terrain)->{
+                    return terrain.getName().equals(elementName);
+                }).collect(Collectors.toList()));
+                allStates.addAll(level.getUnits().stream().filter((unit)->{
+                    return unit.getName().equals(elementName);
+                }).collect(Collectors.toList()));
+            });
+        }));
+        return allStates.size() > 0;
     }
 
     public void createGoal (LevelState levelState, WizardData data) {
