@@ -153,7 +153,7 @@ public class VisualManager {
         unitPaths.clear();
         
         for (SelectableGameElement SGE : units) {
-            unitPaths.addAll(SGE.getLines());
+            unitPaths.addAll(SGE.getLines2());
         }
         getBackground().getChildren().addAll(unitPaths);
     }

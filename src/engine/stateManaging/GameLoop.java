@@ -34,7 +34,6 @@ public class GameLoop extends Observable{
     private ParticipantManager myParticipantManager;
 
     private VisualManager myVisualManager;
-//    private List<Line> unitPaths;
 
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
@@ -54,7 +53,6 @@ public class GameLoop extends Observable{
         myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
-//        unitPaths = new ArrayList<Line>();
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
         startGameLoop();
@@ -124,18 +122,6 @@ public class GameLoop extends Observable{
             this.notifyObservers(levelEndState);
         }
     }
-
-//    private void addPathsToRoot () {
-//        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-//            unitPaths.addAll(SGE.getLines());
-//        }
-//        myVisualManager.getBackground().getChildren().addAll(unitPaths);
-//    }
-//
-//    private void clearLinesFromRoot () {
-//        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
-//        unitPaths.clear();
-//    }
 
     /**
      * Start the timeline

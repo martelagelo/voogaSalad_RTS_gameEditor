@@ -54,12 +54,6 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		currentWayPoints = new LinkedList<>();
 		currentPath = new LinkedList<>();
 		myVisualizer.initializeDisplay();
-
-		// myAttributeDisplayerState =
-		// new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0,
-		// 500);
-		// myVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(this.myAttributeDisplayerState,
-		// drawableState.attributes));
 	}
 
 	@Override
@@ -146,6 +140,33 @@ public class DrawableGameElement extends GameElement implements Displayable,
 			// }
 			// //waypoints.clear();
 			// waypoints = copyWayPoints;
+		}
+		return lines;
+	}
+	
+	public List<Line> getLines2() {
+		List<Line> lines = new ArrayList<Line>();
+		if (currentPath.peek() != null && getNumericalAttribute(StateTags.IS_SELECTED).intValue() == 1) {
+			Queue<Location> copyWayPoints = new LinkedList<Location>();
+			Line line = new Line(getNumericalAttribute(StateTags.X_POSITION)
+					.doubleValue(), getNumericalAttribute(StateTags.Y_POSITION)
+					.doubleValue(), currentPath.peek().myX, currentPath.peek().myY);
+			line.getStrokeDashArray().addAll(25d, 10d);
+			line.setStroke(Color.RED);
+			lines.add(line);
+			while (currentPath.peek() != null) {
+				copyWayPoints.add(currentPath.peek());
+				Location P1 = currentPath.poll();
+				if (currentPath.peek() != null) {
+					Location P2 = currentPath.peek();
+					Line l = new Line(P1.myX, P1.myY, P2.myX, P2.myY);
+					l.getStrokeDashArray().addAll(25d, 10d);
+					l.setStroke(Color.BLACK);
+					lines.add(l);
+				}
+			}
+			//waypoints.clear();
+			currentPath = copyWayPoints;
 		}
 		return lines;
 	}
