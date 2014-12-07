@@ -154,13 +154,11 @@ public class DrawableGameElementWizard extends Wizard {
     }
     
     private void launchWidgetWizard () {
-        WidgetWizard wiz = (WidgetWizard) launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
+        launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
     			myGlobalNumberAttributes, getWidgetConsumer(), new Dimension(
              		   ATTRIBUTE_WIZARD_WIDTH, 
              		   ATTRIBUTE_WIZARD_HEIGHT
              		   ));
-        wiz.attachNumberAttributes(myGlobalNumberAttributes);
-        wiz.attachStringAttributes(myGlobalStringAttributes);
     }
 
     private BiConsumer<Button, WizardData> getWidgetConsumer () {
@@ -203,7 +201,7 @@ public class DrawableGameElementWizard extends Wizard {
         wiz.setSubmit(bc);
     }
 
-    private Wizard launchNestedWizard (GUIPanePath path,
+    private void launchNestedWizard (GUIPanePath path,
                                      VBox existing,
                                      List<String> globalAttrs,
                                      BiConsumer<Button, WizardData> setTextConsumer,
@@ -232,7 +230,6 @@ public class DrawableGameElementWizard extends Wizard {
                 wiz.closeStage();
             };
         wiz.setSubmit(bc);
-        return wiz;
     }
 
     private void launchEditWizard (GUIPanePath path,
@@ -323,7 +320,7 @@ public class DrawableGameElementWizard extends Wizard {
         trigger.setOnAction(e -> launchActionWizard());
         stringAttribute.setOnAction(e -> launchStringAttributeWizard());
         numberAttribute.setOnAction(e -> launchNumberAttributeWizard());
-//        widget.setOnAction(e -> launchWidgetEditor());
+        // widget.setOnAction(e -> launchWidgetWizard());
         animation.setOnAction(e -> launchAnimationWizard());
         setBounds.setOnAction(e -> launchBoundsWizard());
         image.setOnAction(i -> loadImage());
