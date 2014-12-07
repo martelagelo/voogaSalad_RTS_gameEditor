@@ -62,7 +62,7 @@ public class ElementAccordionController extends GUIContainer {
 
     @Override
     public void init () {
-        elementAccordion.expandedPaneProperty().addListener((property, oldPane, newPane) -> {
+        elementAccordion.expandedPaneProperty().addListener( (property, oldPane, newPane) -> {
             if (oldPane != null) oldPane.setCollapsible(true);
             if (newPane != null) Platform.runLater(new Runnable() {
                 @Override
@@ -84,13 +84,21 @@ public class ElementAccordionController extends GUIContainer {
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
-            DialogBoxUtility.createMessageDialog("TODO remove shit");
-            // myMainModel.removeDrawableGameElement(elementName);
-            });
+            try {
+                myMainModel.removeDrawableGameElement(elementName);
+            }
+            catch (Exception e) {
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        });
         unitTitledPaneController.setDeleteConsumer( (String elementName) -> {
-            DialogBoxUtility.createMessageDialog("TODO remove shit");
-            // myMainModel.removeSelectableGameElement(elementName);
-            });
+            try {
+                myMainModel.removeSelectableGameElement(elementName);
+            }
+            catch (Exception e) {
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        });
         terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
@@ -108,11 +116,11 @@ public class ElementAccordionController extends GUIContainer {
                             try {
                                 myMainModel
                                         .addTerrainToLevel(myLevel,
-                                                        elementName,
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.X_POSITION)),
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.Y_POSITION)));
+                                                           elementName,
+                                                           Double.parseDouble(data
+                                                                   .getValueByKey(WizardDataType.X_POSITION)),
+                                                           Double.parseDouble(data
+                                                                   .getValueByKey(WizardDataType.Y_POSITION)));
                                 wiz.closeStage();
                             }
                             catch (Exception e) {

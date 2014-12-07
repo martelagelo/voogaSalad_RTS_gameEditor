@@ -19,6 +19,7 @@ public enum WizardDataType {
     
     CAMPAIGN_NAME,
     // animation specifics
+    COLOR_MASK,
     IMAGE,
     WIDTH,
     HEIGHT,
