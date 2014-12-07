@@ -1,15 +1,20 @@
 package view.editor.wizards;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import view.gui.GUIPanePath;
 
 
 /**
@@ -29,6 +34,10 @@ public class LevelWizard extends Wizard {
     private final String CAMPAIGN_KEY="Campaign";
     private final String LEVEL_WIDTH_KEY="LevelWidth";
     private final String LEVEL_HEIGHT_KEY="LevelHeight";
+    private final String PARTICIPANT_KEY="NewParticipant";
+    
+    private final int PARTICIPANT_WIZARD_WIDTH = 500;
+    private final int PARTICIPANT_WIZARD_HEIGHT = 500;
     
     @FXML
     private ComboBox<String> campaignName;
@@ -38,6 +47,8 @@ public class LevelWizard extends Wizard {
     private TextField levelWidth;
     @FXML
     private TextField levelHeight;
+    @FXML
+    private Button participant;
     
     private ObservableList<String> campaigns;
 
@@ -67,6 +78,7 @@ public class LevelWizard extends Wizard {
             campaignName.promptTextProperty().bind(util.getStringProperty(CAMPAIGN_KEY));
             levelWidth.promptTextProperty().bind(util.getStringProperty(LEVEL_WIDTH_KEY));
             levelHeight.promptTextProperty().bind(util.getStringProperty(LEVEL_HEIGHT_KEY));
+            participant.textProperty().bind(util.getStringProperty(PARTICIPANT_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
@@ -79,9 +91,22 @@ public class LevelWizard extends Wizard {
         super.initialize();
         campaigns = FXCollections.observableList(new ArrayList<>());
         campaignName.setItems(campaigns);
+        participant.setOnAction(e -> launchParticipantEditor());
     }
 
-    @Override
+    private void launchParticipantEditor() {
+		Wizard wiz = WizardUtility.loadWizard(GUIPanePath.PARTICIPANT_WIZARD, 
+				new Dimension(PARTICIPANT_WIZARD_WIDTH,
+						PARTICIPANT_WIZARD_HEIGHT
+					));
+		Consumer<WizardData> cons = (data) -> {
+			addWizardData(data);
+			wiz.closeStage();
+		};
+		wiz.setSubmit(cons);
+	}
+
+	@Override
     public void launchForEdit (WizardData oldValues) {
         campaignName.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.CAMPAIGN_NAME));
         levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));

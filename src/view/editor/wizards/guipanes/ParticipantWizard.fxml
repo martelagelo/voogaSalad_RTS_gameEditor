@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+
+<SplitPane fx:id="root" fx:controller="view.editor.wizards.ParticipantWizard"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<ScrollPane>
+			<VBox>
+				<TextField fx:id="name"></TextField>
+				<ColorPicker fx:id="teamColor"/>
+				<Label>AI Participant</Label>
+				<RadioButton fx:id="AI"></RadioButton>
+				<Button fx:id="save" defaultButton="true" />
+			</VBox>
+		</ScrollPane>
+	</items>
+</SplitPane>
