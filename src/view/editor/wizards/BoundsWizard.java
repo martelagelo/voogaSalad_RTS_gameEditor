@@ -24,8 +24,8 @@ import view.dialog.DialogBoxUtility;
 public class BoundsWizard extends Wizard {
 
     private static final String ADD_POINT_KEY = "AddPoint";
-    private static final String X_COR_KEY="XCoordinate";
-    private static final String Y_COR_KEY="YCoordinate";
+    private static final String X_COR_KEY = "XCoordinate";
+    private static final String Y_COR_KEY = "YCoordinate";
     
     @FXML
     private VBox allPoints;

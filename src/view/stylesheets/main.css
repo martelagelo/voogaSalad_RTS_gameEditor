@@ -72,6 +72,14 @@
    -fx-text-fill: white;
 }
 
+.label {
+   -fx-text-fill: white;
+}
+
+#title {
+   -fx-font-size: 32pt;
+}
+
 #duvall {
    -fx-text-fill: white;
    -fx-font-family: "Courier New";

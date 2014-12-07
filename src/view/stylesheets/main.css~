@@ -53,7 +53,7 @@
      -fx-color: #6BB8F6;
 }
 
-.titled-pane:focused > .title 
+.titled-pane > .title 
 {
      -fx-color: #6BB8F6;
 }
@@ -70,6 +70,14 @@
 .label .content {
    -fx-background-color: black;
    -fx-text-fill: white;
+}
+
+.label {
+   -fx-text-fill: white;
+}
+
+#title {
+
 }
 
 #duvall {
