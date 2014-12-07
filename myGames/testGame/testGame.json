@@ -549,41 +549,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -633,6 +598,41 @@
                       "MoveBack"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "IsDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -721,7 +721,7 @@
                   "displayerTag": "AttributeBarDisplayer",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
-                  "maxAttributeValue": 500.0
+                  "maxAttributeValue": 1000.0
                 }
               ],
               "myAnimatorState": {
@@ -1246,41 +1246,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -1331,6 +1296,52 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "IsDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
+                    "myParameters": [
+                      "health",
+                      "attack",
+                      "MAX_HEALTH",
+                      "50",
+                      "Random Timer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
                 ]
               },
               "attributes": {
@@ -1342,6 +1353,10 @@
                   {
                     "myData": 50,
                     "myName": "ReloadTime"
+                  },
+                  {
+                    "myData": 1000,
+                    "myName": "MAX_HEALTH"
                   },
                   {
                     "myData": 100.0,
@@ -1934,41 +1949,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "IsDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -2018,6 +1998,41 @@
                       "MoveBack"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "IsDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -2102,7 +2117,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "100",
+                      "1000",
                       "Won",
                       "EqualsAssignment",
                       "1"
@@ -2186,6 +2201,10 @@
       {
         "myData": 100,
         "myName": "YSpawnOffset"
+      },
+      {
+        "myData": 1000,
+        "myName": "MAX_HEALTH"
       }
     ],
     "myTextualAttributes": [
@@ -2740,41 +2759,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "FOCUSED": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -2824,6 +2808,41 @@
                 "MoveBack"
               ],
               "myActionType": "COLLISION"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
@@ -3437,41 +3456,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "FOCUSED": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3521,6 +3505,41 @@
                 "MoveBack"
               ],
               "myActionType": "COLLISION"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
@@ -3600,7 +3619,7 @@
             "displayerTag": "AttributeBarDisplayer",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
-            "maxAttributeValue": 500.0
+            "maxAttributeValue": 1000.0
           }
         ],
         "myAnimatorState": {
@@ -4125,41 +4144,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "FOCUSED": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -4210,6 +4194,52 @@
               ],
               "myActionType": "COLLISION"
             }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
+              "myParameters": [
+                "health",
+                "attack",
+                "MAX_HEALTH",
+                "50",
+                "Random Timer"
+              ],
+              "myActionType": "INTERNAL"
+            }
           ]
         },
         "attributes": {
@@ -4221,6 +4251,10 @@
             {
               "myData": 50,
               "myName": "ReloadTime"
+            },
+            {
+              "myData": 1000,
+              "myName": "MAX_HEALTH"
             },
             {
               "myData": 100.0,
@@ -4813,41 +4847,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "IsDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "FOCUSED": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -4897,6 +4896,41 @@
                 "MoveBack"
               ],
               "myActionType": "COLLISION"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "IsDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
