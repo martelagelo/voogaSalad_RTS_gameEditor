@@ -64,7 +64,6 @@ public enum ActionOptions {
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER),
-    // TODO make this use the type evaluator
     OBJECT_LOCATION_DETECTION(
                               "Object Location Check",
                               "ObjectLocationCheckAction",
@@ -81,7 +80,8 @@ public enum ActionOptions {
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
                                          "CheckAttributeCreateObjectAction",
-                                         "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) from their # value with a cooldown timer named # with a value of # frames.",
+                                         "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) " +
+                                         "from their # value with a cooldown timer named # with a value of # frames with specific attributes # set to be #",
                                          ActionParameters.ATTR,
                                          ActionParameters.NN_EVAL,
                                          ActionParameters.NUMBER,
@@ -90,10 +90,13 @@ public enum ActionOptions {
                                          ActionParameters.ATTR,
                                          ActionParameters.STRING,
                                          ActionParameters.NUMBER),
+//                                         ActionParameters.STRING_LIST, //TODO fix this
+//                                         ActionParameters.NUMBER_LIST),
     INCREMENT_DECREMENT_ACTION(
                                "Decrement object's attribute and add it to mine",
                                "DecrementIncrementAttributeAction",
-                               "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to my # with a cooldown timer named # with a value of # frames.",
+                               "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to" +
+                               " my # with a cooldown timer named # with a value of # frames.",
                                ActionParameters.STRING,
                                ActionParameters.ATTR,
                                ActionParameters.ATTR,
