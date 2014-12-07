@@ -98,7 +98,6 @@ public class GameUniverse {
                 mySelectableGameElementStates.stream()
                         .filter(e -> (e.getName().equals(elementName)))
                         .collect(Collectors.toList());
-        System.out.println(matches.size()==0?"returning null":"returning an object"+DeepCopy.deepCopy(matches.get(0)));
         return (matches.size() != 0) ? (SelectableGameElementState) DeepCopy.deepCopy(matches.get(0)) : null;
     }
 

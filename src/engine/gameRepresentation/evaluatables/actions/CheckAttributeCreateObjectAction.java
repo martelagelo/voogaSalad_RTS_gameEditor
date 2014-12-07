@@ -88,6 +88,7 @@ public class CheckAttributeCreateObjectAction extends Action {
         if (elements.getActor().getTimer(myTimerName) <= 0) {
             if ((Boolean) action.evaluate(elements)) {
                 elements.getActor().setTimer(myTimerName, myTimerAmount);
+
             }
         }
 

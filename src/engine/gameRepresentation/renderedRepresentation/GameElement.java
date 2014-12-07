@@ -227,6 +227,10 @@ public class GameElement {
             }
         }
     }
+    
+    public Map<String, Long> getTimersCopy(){
+        return new HashMap<>(myTimers);
+    }
 
     public void registerAsChild (Consumer<GameElementState> function) {
         function.accept(myState);

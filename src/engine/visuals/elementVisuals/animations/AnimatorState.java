@@ -1,6 +1,7 @@
 package engine.visuals.elementVisuals.animations;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,6 +47,10 @@ public class AnimatorState implements JSONable, Serializable {
         this.viewportSize = frameDimensions;
         this.numRows = numRows;
         this.animationSequences = animationSequenceList;
+        if(animationSequences == null){
+            animationSequences = new HashSet<>();
+            animationSequences.add(new NullAnimationSequence());
+        }
     }
 
     public void addAnimationSequence (AnimationSequence seq) {

@@ -45,7 +45,6 @@ public class DialogBoxUtility {
             okay = MultiLanguageUtility.getInstance().getStringProperty(OKAY_KEY).getValue();
         }
         catch (LanguagePropertyNotFoundException e1) {
-            System.out.println(e1);
             okay = "OK";
         }
         return createDialogBox(message, new DialogChoice(okay, e -> {
