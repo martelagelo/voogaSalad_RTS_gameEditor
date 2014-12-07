@@ -36,6 +36,8 @@ public class AnimationWizard extends Wizard {
     private final static String ANIMATION_ACTION_KEY = "AnimationAction";
     private final static String START_FRAME_KEY = "StartFrame";
     private final static String STOP_FRAME_KEY = "StopFrame";
+    
+    private final int DIRECTION_GRID_SIZE = 50;
 
     @FXML
     private AnchorPane leftPane;
@@ -111,7 +113,7 @@ public class AnimationWizard extends Wizard {
             updateAnimationGrid( (frame) -> animationGrid.setStop(frame), newValue);
         });
         gridPrompt.setFill(Paint.valueOf("white"));
-        directionGrid = new DirectionGrid(50, 50);
+        directionGrid = new DirectionGrid(DIRECTION_GRID_SIZE, DIRECTION_GRID_SIZE);
         animationDirection.getChildren().add(directionGrid);
     }
 
