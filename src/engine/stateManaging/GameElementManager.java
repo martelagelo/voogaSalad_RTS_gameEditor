@@ -160,23 +160,19 @@ public class GameElementManager {
         // if location is clicked on instead, tell all selected units to go there
         for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
             if (!checkOnTeam(e, u)) continue;
-            if (!queueCommand) {
-            	e.clearPaths();
+            if (queueCommand) {
+            	e.addWaypoint(click.getX(), click.getY());
             }
-//                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-//                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-//                Location from = new Location(currentX, currentY);
-//                Location to = new Location(click.getX(), click.getY());
-//                List<Location> waypoints = pathingComputer.findPath(from, to);
-//                e.setWaypoints(waypoints);
-//                e.addToPath(to);
-            	
-            	double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-            	double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
-            	Location from = new Location(currentX, currentY);
-                Location to = new Location(currentX + 50, currentY + 50);
+            else {
+                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+                Location from = new Location(currentX, currentY);
+                Location to = new Location(click.getX(), click.getY());
                 List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
+                //e.clearPaths();
+                //e.addToPath(to);
+            }
         }
     }
 
