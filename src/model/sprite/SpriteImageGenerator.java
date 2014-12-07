@@ -27,14 +27,15 @@ public class SpriteImageGenerator {
     public static final String RESOURCES_PROPERTIES_LOCATION = "resources/gameelementresources/properties/";
     private String resourceFile = "gameelementresources.properties";
     private Map<String, String> myResourceMapping;
-    private Map<String, SpriteImageContainer> myCachedContainer;
+    private static Map<String, SpriteImageContainer> myCachedContainer;
     private ColorMapGenerator myColorMapGenerator;
 
     public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
         myColorMapGenerator = new ColorMapGenerator();
         try {
-            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION + resourceFile));
+            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
+                    + resourceFile));
         } catch (MalformedURLException e) {
             throw new SaveLoadException("Unable to load resources", e);
         }
@@ -52,11 +53,12 @@ public class SpriteImageGenerator {
         }
     }
 
-    public Map<String, SpriteImageContainer> loadSpriteImageContainers (Set<AnimatorState> animatorStates) throws SaveLoadException {
-            for (AnimatorState state : animatorStates) {               
-                myCachedContainer.put(state.getImageTag(),
-                        new SpriteImageContainer(state.getImageTag()));
-            }
+    public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
+            Set<AnimatorState> animatorStates) throws SaveLoadException {
+        for (AnimatorState state : animatorStates) {
+            myCachedContainer.put(state.getImageTag(),
+                    new SpriteImageContainer(state.getImageTag()));
+        }
         return myCachedContainer;
     }
 

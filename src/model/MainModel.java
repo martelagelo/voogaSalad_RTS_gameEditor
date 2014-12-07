@@ -89,7 +89,6 @@ public class MainModel extends Observable {
     }
 
     private void loadSpritesAndMasks () {
-        // TODO: move out of here / off-load to mediator?
         Set<DrawableGameElementState> drawableStates = myGameState.getGameUniverse()
                 .getDrawableGameElementStates();
         Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
@@ -99,11 +98,11 @@ public class MainModel extends Observable {
         for (DrawableGameElementState dges : selectableStates) {
             animatorStates.add(dges.myAnimatorState);
         }
-
         try {
-            mySpriteImageGenerator.loadSpriteImageContainers(animatorStates);
+            mySaveLoadMediator.loadSpritesAndMasks(animatorStates);
         } catch (SaveLoadException e) {
-            // TODO Auto-generated catch block
+            // TODO: Display error to view
+            // Remove exception
             e.printStackTrace();
         }
     }
