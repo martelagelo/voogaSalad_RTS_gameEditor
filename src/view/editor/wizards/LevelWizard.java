@@ -1,13 +1,18 @@
 package view.editor.wizards;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 
@@ -29,6 +34,7 @@ public class LevelWizard extends Wizard {
     private final String CAMPAIGN_KEY="Campaign";
     private final String LEVEL_WIDTH_KEY="LevelWidth";
     private final String LEVEL_HEIGHT_KEY="LevelHeight";
+    private final String BACKGROUND_KEY="Background";
     
     @FXML
     private ComboBox<String> campaignName;
@@ -38,8 +44,11 @@ public class LevelWizard extends Wizard {
     private TextField levelWidth;
     @FXML
     private TextField levelHeight;
+    @FXML
+    private Button image;
     
     private ObservableList<String> campaigns;
+    private String backgroundPath;
 
     @Override
     public boolean checkCanSave () {
@@ -67,6 +76,7 @@ public class LevelWizard extends Wizard {
             campaignName.promptTextProperty().bind(util.getStringProperty(CAMPAIGN_KEY));
             levelWidth.promptTextProperty().bind(util.getStringProperty(LEVEL_WIDTH_KEY));
             levelHeight.promptTextProperty().bind(util.getStringProperty(LEVEL_HEIGHT_KEY));
+            image.textProperty().bind(util.getStringProperty(BACKGROUND_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
@@ -79,6 +89,13 @@ public class LevelWizard extends Wizard {
         super.initialize();
         campaigns = FXCollections.observableList(new ArrayList<>());
         campaignName.setItems(campaigns);
+        image.setOnAction(e -> selectBackground());
+    }
+    
+    private void selectBackground () {
+    	 FileChooser fileChooser = new FileChooser();
+         File file = fileChooser.showOpenDialog(new Stage());        
+         backgroundPath = file.getPath();
     }
 
     @Override
