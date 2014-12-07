@@ -2,9 +2,7 @@ package engine.stateManaging;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.Location;
@@ -15,7 +13,6 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.users.Participant;
-
 
 /**
  * A manager for selecting, deselecting, and interacting with game elements
@@ -32,7 +29,6 @@ public class GameElementManager {
     private DrawableGameElement selectedElement;
 
     public GameElementManager (GameElementFactory factory) {
-
         myFactory = factory;
     }
 

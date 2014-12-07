@@ -1,6 +1,7 @@
 package engine.visuals.elementVisuals.widgets.attributeDisplays;
 
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import model.state.gameelement.AttributeContainer;
@@ -28,13 +29,20 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
 
     @Override
     protected Group createDisplay () {
+        Group bar = new Group();
         Group group = new Group();
+        Rectangle border = new Rectangle(ATTRIBUTE_BAR_WIDTH+4, ATTRIBUTE_BAR_HEIGHT+4);
+        border.setFill(Color.BLACK);
         Rectangle r = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
         r.setFill(Paint.valueOf(FG_COLOR));
         myAttributeRectangle = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
         myAttributeRectangle.setFill(Paint.valueOf(BG_COLOR));
-        group.getChildren().add(r);
-        group.getChildren().add(myAttributeRectangle);
+        group.getChildren().add(border);
+        bar.getChildren().add(r);
+        bar.getChildren().add(myAttributeRectangle);
+        bar.setLayoutX(2);
+        bar.setLayoutY(2);
+        group.getChildren().add(bar);
         group.setLayoutX(55);
         return group;
     }

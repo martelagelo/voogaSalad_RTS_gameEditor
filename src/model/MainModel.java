@@ -53,17 +53,11 @@ public class MainModel extends Observable {
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
-    public MainModel () {
+    public MainModel () throws SaveLoadException {
         myEditorChosenElement = "";
-        try {
-            mySaveLoadMediator = new GameSaveLoadMediator();
-            mySpriteImageGenerator = new SpriteImageGenerator();
-            myModifiedContainer = new ModifiedContainer();
-        }
-        catch (SaveLoadException e) {
-            // TODO: Display error in View
-            e.printStackTrace();
-        }
+        mySaveLoadMediator = new GameSaveLoadMediator();
+        mySpriteImageGenerator = new SpriteImageGenerator();
+        myModifiedContainer = new ModifiedContainer();
     }
 
     public void newGame (String gameName) {
@@ -181,15 +175,15 @@ public class MainModel extends Observable {
         setEditorSelected(elementName, true);
     }
 
-    public void clearEditorChosen() {
+    public void clearEditorChosen () {
         myEditorChosenElement = "";
     }
-    
-    private void setEditorSelected(String elementName, boolean isSelectable) {
+
+    private void setEditorSelected (String elementName, boolean isSelectable) {
         myEditorChosenElement = elementName;
         myEditorChosenIsSelectable = isSelectable;
     }
-    
+
     /**
      * called by engine when registers click and needs what the editor has
      * selected to place on the map
@@ -197,8 +191,8 @@ public class MainModel extends Observable {
     public String getEditorSelected () {
         return myEditorChosenElement;
     }
-    
-    public boolean isEditorChosenElementSelectable() {
+
+    public boolean isEditorChosenElementSelectable () {
         return myEditorChosenIsSelectable;
     }
 
@@ -283,7 +277,8 @@ public class MainModel extends Observable {
     }
 
     public void removeDrawableGameElement (String elementName) throws ElementInUseException {
-        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
+        if (elementIsInUse(elementName))
+            throw new ElementInUseException(elementName);
         Optional<DrawableGameElementState> option = getGameUniverse()
                 .getDrawableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);
@@ -294,7 +289,8 @@ public class MainModel extends Observable {
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
-        if (elementIsInUse(elementName)) throw new ElementInUseException(elementName);
+        if (elementIsInUse(elementName))
+            throw new ElementInUseException(elementName);
         Optional<SelectableGameElementState> option = getGameUniverse()
                 .getSelectableGameElementStates().stream().filter( (state) -> {
                     return state.getName().equals(elementName);

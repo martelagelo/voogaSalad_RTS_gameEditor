@@ -29,13 +29,8 @@ public class SpriteImageGenerator {
     public SpriteImageGenerator () throws SaveLoadException {
         myBundleRetriever = new ResourceBundleRetriever();
         myColorMapGenerator = new ColorMapGenerator();
-       
-        try {
-            myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
-                    + resourceFile));
-        } catch (MalformedURLException e) {
-            throw new SaveLoadException("Unable to load resources", e);
-        }
+        myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
+                + resourceFile));
         myResourceMapping = new HashMap<>();
         myCachedContainer = new HashMap<>();
         populateColorMaskMap();
@@ -44,7 +39,7 @@ public class SpriteImageGenerator {
 
     private void populateColorMaskMap () throws SaveLoadException {
         myColorMapGenerator.populateColorMaskMap();
-        
+
     }
 
     private void populateResourceMap () {
@@ -65,9 +60,13 @@ public class SpriteImageGenerator {
     public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
             Set<AnimatorState> animatorStates) throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
+            System.out.println(myCachedContainer);
+            System.out.println(" IMAGE TAG : " + state.getImageTag());
+            System.out.println(state.getColorMaskTag());
             myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
                     state.getImageTag(), state.getColorMaskTag()));
         }
+        System.out.println("hello");
         return myCachedContainer;
     }
 

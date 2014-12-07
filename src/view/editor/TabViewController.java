@@ -168,7 +168,7 @@ public class TabViewController extends GUIContainer {
                 .addListener( (observable, oldValue, newValue) -> {
                     try {
                         ObjectProperty<String> toggleText =
-                                (newValue) ?
+                                (!newValue) ?
                                           MultiLanguageUtility.getInstance()
                                                   .getStringProperty(EDITOR_INPUT_KEY)
                                           :

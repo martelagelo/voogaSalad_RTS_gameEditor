@@ -74,8 +74,7 @@ public class SelectableGameElement extends DrawableGameElement {
     public void addInteractingElements (InteractingElementType interactingElementType,
                                         List<DrawableGameElement> interactingElements) {
         for (DrawableGameElement element : interactingElements) {
-            addInteractingElement(interactingElementType,
-                                  element);
+            addInteractingElement(interactingElementType,element);
         }
     }
 
