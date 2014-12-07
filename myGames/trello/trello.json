@@ -128,27 +128,171 @@
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 252.0,
+                    "myData": 464.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 235.0,
+                    "myData": 244.0,
                     "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 252.0,
+                    "myData": 464.0,
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 235.0,
+                    "myData": 244.0,
                     "myName": "yTempGoalPosition"
                   },
                   {
-                    "myData": 252.0,
+                    "myData": 464.0,
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 235.0,
+                    "myData": 244.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "sdfsad",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/6.png",
+                "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+                "viewportSize": {
+                  "myWidth": 35,
+                  "myHeight": 35
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 43.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 467.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 43.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 467.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 43.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 467.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "sdfsad",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/6.png",
+                "colorMaskTag": "gameelementresources/drawablegameelementstates/colormasks/default.png",
+                "viewportSize": {
+                  "myWidth": 35,
+                  "myHeight": 35
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                200.0,
+                200.0,
+                200.0,
+                200.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 141.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 359.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 141.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 359.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 141.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 359.0,
                     "myName": "yPosition"
                   }
                 ],
@@ -603,6 +747,122 @@
                   },
                   {
                     "myData": 293.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "tree",
+                    "myName": "name"
+                  },
+                  {
+                    "myData": "BLUE",
+                    "myName": "teamColor"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/tree1.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/default.png",
+                "viewportSize": {
+                  "myWidth": 106,
+                  "myHeight": 161
+                },
+                "numRows": 1,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                100.0,
+                0.0,
+                100.0,
+                100.0,
+                0.0,
+                100.0
+              ],
+              "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 2.0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 256.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 235.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 256.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 235.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 256.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 235.0,
                     "myName": "yPosition"
                   },
                   {
