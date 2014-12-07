@@ -2,6 +2,7 @@ package view.editor.wizards;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -62,6 +63,7 @@ public class AnimationWizard extends Wizard {
     private AnimationGrid animationGrid;
     private DirectionGrid directionGrid;
     private String imagePath;
+    private String colorMaskPath;
     private Double frameWidth;
     private Double frameHeight;
 
@@ -72,13 +74,13 @@ public class AnimationWizard extends Wizard {
      * StackOverflow user mathew11
      */
     private void loadImage () {
-        File file = new File(imagePath);
+        File imageFile = new File(imagePath);
+        File colorMaskFile = new File(colorMaskPath);
         try {
             spritesheet.getChildren().clear();
-            Image image = new Image(new FileInputStream(file));
-            imagePath = file.getPath();
-            imageView = new ImageView(image);
-            spritesheet.getChildren().add(imageView);
+            Image image = addImage(imageFile);
+            Image colorMask = addImage(colorMaskFile);            
+            
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(),
                                       frameWidth.doubleValue(),
@@ -88,6 +90,14 @@ public class AnimationWizard extends Wizard {
         catch (Exception e) {
             displayErrorMessage("Unable to Load Image");
         }
+    }
+
+    private Image addImage (File imageFile) throws FileNotFoundException {
+        Image image = new Image(new FileInputStream(imageFile));
+        imagePath = imageFile.getPath();
+        imageView = new ImageView(image);
+        spritesheet.getChildren().add(imageView);
+        return image;
     }
 
     /**
@@ -210,8 +220,9 @@ public class AnimationWizard extends Wizard {
     @Override
     public void loadGlobalValues (List<String> values) {
         imagePath = values.get(0);
-        frameWidth = Double.parseDouble(values.get(1));
-        frameHeight = Double.parseDouble(values.get(2));
+        colorMaskPath = values.get(1);
+        frameWidth = Double.parseDouble(values.get(2));
+        frameHeight = Double.parseDouble(values.get(3));
         loadImage();
     }
 

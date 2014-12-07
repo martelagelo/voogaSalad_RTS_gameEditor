@@ -38,8 +38,8 @@ import view.gui.GUIPanePath;
  */
 public class ElementAccordionController extends GUIContainer {
 
-    private static final String UNIT_KEY = "Unit";
-    private static final String TERRAIN_KEY = "Terrain";
+    private static final String DRAWABLE_KEY = "Drawable";
+    private static final String SELECTABLE_KEY = "Selectable";
 
     @FXML
     private Accordion elementAccordion;
@@ -70,16 +70,7 @@ public class ElementAccordionController extends GUIContainer {
                 }
             });
         });
-        try {
-            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(TERRAIN_KEY));
-            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(UNIT_KEY));
-        }
-        catch (LanguagePropertyNotFoundException e) {
-            // Should never happen
-            DialogBoxUtility.createMessageDialog(e.toString());
-        }
+        attachStringProperties();
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
@@ -102,6 +93,19 @@ public class ElementAccordionController extends GUIContainer {
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(elementAccordion.getPanes().size() - 1));
+    }
+
+    private void attachStringProperties () {
+        try {
+            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(DRAWABLE_KEY));
+            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(SELECTABLE_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            // Should never happen
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
     }
 
     private Consumer<String> addTerrainToLevel () {

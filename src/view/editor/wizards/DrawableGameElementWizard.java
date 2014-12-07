@@ -130,6 +130,7 @@ public class DrawableGameElementWizard extends Wizard {
         if (imageView != null) {
             List<String> imageValues = new ArrayList<>();
             imageValues.add(imagePath);
+            imageValues.add(colorMaskPath);
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
@@ -212,8 +213,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
-        imagePath = file.getPath();
+        File file = fileChooser.showOpenDialog(new Stage());        
         return file;
     }
 
@@ -245,6 +245,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
             spritesheet.getChildren().clear();
             File imageFile = fetchImage();
+            imagePath = imageFile.getPath();
             Image image = new Image(new FileInputStream(imageFile));            
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
@@ -260,15 +261,15 @@ public class DrawableGameElementWizard extends Wizard {
         }
     }
 
-    private void initializeSliders (Image image) {
+    private void initializeSliders (Image image) {        
+        createSliderListeners();
+        createTextFieldListeners();
         frameWidth.setMin(DEFAULT_GRID_MIN);
         frameWidth.setValue(DEFAULT_GRID_VALUE);
         frameWidth.setMax(image.getWidth());
         frameHeight.setMin(DEFAULT_GRID_MIN);
         frameHeight.setValue(DEFAULT_GRID_VALUE);
         frameHeight.setMax(image.getHeight());
-        createSliderListeners();
-        createTextFieldListeners();
     }
 
     /**
@@ -345,8 +346,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null && colorMaskPath != null &&
-               getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0;
+        return !name.getText().isEmpty() && imageView != null;
     }
 
     @Override
@@ -354,7 +354,6 @@ public class DrawableGameElementWizard extends Wizard {
         setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
-        // TODO CLEANUP AND DEAL WITH COLOR MASKS
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
         addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
         addToData(WizardDataType.COLS, Integer.toString(animationGrid.getNumColumns()));
