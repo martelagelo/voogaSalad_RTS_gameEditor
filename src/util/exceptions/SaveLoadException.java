@@ -18,6 +18,10 @@ public class SaveLoadException extends Exception {
         this("", exception);
     }
 
+    public SaveLoadException (String message) {
+        this(message, new Exception());
+    }
+
     public SaveLoadException (String message, Exception exception) {
         super(message, exception);
         myMessage = message;
@@ -28,9 +32,9 @@ public class SaveLoadException extends Exception {
     public String getMessage () {
         return myMessage;
     }
-    
+
     @Override
-    public Throwable getCause() {
+    public Throwable getCause () {
         return myException;
     }
 

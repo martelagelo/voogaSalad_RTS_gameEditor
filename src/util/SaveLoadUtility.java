@@ -16,6 +16,9 @@ import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
 
 import util.exceptions.JSONLoadException;
+import util.exceptions.JSONSaveException;
+import util.exceptions.LoadImageException;
+import util.exceptions.SaveImageException;
 import util.exceptions.SaveLoadException;
 
 import com.google.gson.Gson;
@@ -81,15 +84,10 @@ public class SaveLoadUtility {
             writer.write(json);
             writer.close();
         } catch (IOException | SaveLoadException e) {
-            throw new SaveLoadException(e.getMessage(), e);
+            throw new JSONSaveException(e);
         }
 
         return file.getPath();
-    }
-
-    private static String topLevelDirectory (String filePath) {
-        String contents = filePath.substring(0, filePath.lastIndexOf("\\") + 1);
-        return contents;
     }
 
     /**
@@ -132,7 +130,7 @@ public class SaveLoadUtility {
         try {
             Files.copy(sourceFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            throw new SaveLoadException("Unable to save image", e);
+            throw new SaveImageException(e);
         }
         return destination;
     }
@@ -159,7 +157,7 @@ public class SaveLoadUtility {
             try {
                 bufferedImage = ImageIO.read(imageFile);
             } catch (IOException e) {
-                throw new SaveLoadException("Unable to load image", e);
+                throw new LoadImageException(e);
 
             }
             if (bufferedImage != null) {
@@ -170,7 +168,7 @@ public class SaveLoadUtility {
                 return image;
             }
         }
-        throw new SaveLoadException(IMAGE_NOT_LOADED, new Exception());
+        throw new LoadImageException();
     }
 
     private static boolean fileExists (String filePath) {

@@ -5,16 +5,15 @@ package util.exceptions;
  * @author Rahul
  *
  */
-public class JSONSaveException extends SaveLoadException {
+public class SaveImageException extends SaveLoadException {
     /**
-     * Auto-generated default ID
+     * Auto-generated default serialID
      */
     private static final long serialVersionUID = 1L;
-    private static final String myMessage = "Unable to save JSON file";
+    private static final String myMessage = "Unable to save image";
 
-    public JSONSaveException (Exception exception) {
+    public SaveImageException (Exception exception) {
         super(myMessage, exception);
-
     }
 
     @Override
