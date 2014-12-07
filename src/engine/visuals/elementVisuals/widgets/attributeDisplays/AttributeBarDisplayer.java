@@ -35,6 +35,7 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
         myAttributeRectangle.setFill(Paint.valueOf(BG_COLOR));
         group.getChildren().add(r);
         group.getChildren().add(myAttributeRectangle);
+        group.setLayoutX(55);
         return group;
     }
 
