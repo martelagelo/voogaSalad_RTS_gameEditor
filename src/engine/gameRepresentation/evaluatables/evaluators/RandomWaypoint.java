@@ -28,21 +28,21 @@ public class RandomWaypoint<A, B> extends Evaluator<A, B, Boolean> {
     public Boolean evaluate (GameElement element1, GameElement element2) {
         DrawableGameElement element = (DrawableGameElement) element1; // only drawableElements can
                                                                       // move
-        double playerX = element.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-        double playerY = element.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+        double playerX = element.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
+        double playerY = element.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
         // Choose a random new waypoint. The 0.5 was not made into a constant because it is used to
         // simply get a random distribution centered on 0 and is not going to change
         double waypointX = (Math.random() - 0.5) * RANDOM_AMOUNT + MIN_AMOUNT + playerX;
         double waypointY = (Math.random() - 0.5) * RANDOM_AMOUNT + MIN_AMOUNT + playerY;
-        double xGoal = element.getNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION).doubleValue();
-        double yGoal = element.getNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION).doubleValue();
-        double speed = element.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
+        double xGoal = element.getNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue()).doubleValue();
+        double yGoal = element.getNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue()).doubleValue();
+        double speed = element.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue();
 
         // If we're currently moving somewhere
         if (Math.abs(playerX - xGoal) > speed ||
             Math.abs(playerY - yGoal) > speed) {
-            element1.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, waypointX);
-            element1.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, waypointY);
+            element1.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), waypointX);
+            element1.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), waypointY);
 
         }
         return true;

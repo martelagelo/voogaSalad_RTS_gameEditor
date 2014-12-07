@@ -1,9 +1,12 @@
 package view.editor.wizards;
 
 import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags.AttributeDisplayerType;
 
 
 /**
@@ -16,7 +19,7 @@ import javafx.scene.layout.VBox;
 public class WidgetWizard extends Wizard {
 	
     @FXML
-    protected ComboBox<String> displayerTag;
+    protected ComboBox<AttributeDisplayerType> displayerTag;
     @FXML
     protected ComboBox<String> attribute;
     @FXML
@@ -41,9 +44,23 @@ public class WidgetWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
+        displayerTag.setItems(FXCollections.observableArrayList(AttributeDisplayerType.values()));
+        attribute.valueProperty()
+        .addListener( (o, oldVal, newVal) -> newAttribute(newVal));
     }
     
-    @Override
+    
+    private void newAttribute(String newVal) {
+    	arguments.getChildren().clear();
+		if(!newVal.isEmpty()){
+			arguments.getChildren()
+			.add(new TextField());
+		}
+		arguments.getChildren()
+		.add(new TextField());
+	}
+
+	@Override
     protected void attachTextProperties () {
         super.attachTextProperties();
 //        MultiLanguageUtility util = MultiLanguageUtility.getInstance();

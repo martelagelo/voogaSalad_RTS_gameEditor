@@ -65,7 +65,7 @@ public class GameElementState implements JSONable, Serializable {
      * @return the name of the element, if it has been set
      */
     public String getName () {
-        return attributes.getTextualAttribute(StateTags.NAME);
+        return attributes.getTextualAttribute(StateTags.NAME.getValue());
     }
 
     /**

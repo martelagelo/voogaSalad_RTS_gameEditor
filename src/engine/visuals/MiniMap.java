@@ -99,7 +99,7 @@ public class MiniMap {
     private void setUnitColor (SelectableGameElement SGE) {
         Color c;
         try {
-            c = Color.valueOf(SGE.getTextualAttribute(StateTags.TEAM_COLOR));
+            c = Color.valueOf(SGE.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
         }
         catch (IllegalArgumentException | NullPointerException e) {
             c = Color.BLACK; // default for if color isn't defined
@@ -108,7 +108,7 @@ public class MiniMap {
     }
 
     private void setUnitShape (SelectableGameElement SGE) {
-        if (SGE.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0) {
+        if (SGE.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0) {
             myGraphicsContext.fillRect(SGE.getPosition().getX() / xScale, SGE
                     .getPosition().getY() / yScale,
                                        MINIMAP_BUILDING_DIMENSION, MINIMAP_BUILDING_DIMENSION);

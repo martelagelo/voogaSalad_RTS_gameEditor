@@ -1,6 +1,12 @@
 package view.editor.wizards;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import model.state.gameelement.StateTags;
+import model.state.gameelement.StateTags.StateType;
 
 
 /**
@@ -19,6 +25,15 @@ public class NumberAttributeWizard extends AttributeWizard {
                Pattern.matches(NUM_REGEX, value.getText());
     }
 
+    @Override
+    public void initialize () {
+        super.initialize();
+        attributes = Arrays.asList(StateTags.values())
+                .stream().filter(tag -> tag.getType().equals(StateType.NUMBER))
+                .map(tag -> tag.getValue())
+                .collect(Collectors.toSet()); 
+        key.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+    }
     @Override
     public void updateData () {
         setWizardType(WizardType.NUMBER_ATTRIBUTE);

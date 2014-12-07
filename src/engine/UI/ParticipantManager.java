@@ -65,7 +65,7 @@ public class ParticipantManager {
      */
     public void update (List<SelectableGameElement> allUnits) {
 
-        player1Resources.set(humanUser.getAttributes().getNumericalAttribute(StateTags.RESOURCES)
+        player1Resources.set(humanUser.getAttributes().getNumericalAttribute(StateTags.RESOURCES.getValue())
                 .intValue() +
                              "");
 
@@ -74,7 +74,7 @@ public class ParticipantManager {
          * creates a new AI team for it
          */
         for (SelectableGameElement element : allUnits) {
-            String teamColor = (element.getTextualAttribute(StateTags.TEAM_COLOR));
+            String teamColor = (element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
             boolean containsID =
                     myAIUsers.stream().filter(e -> e.checkSameTeam(teamColor))
                             .collect(Collectors.toList()).size() > 0;
@@ -88,7 +88,7 @@ public class ParticipantManager {
         for (AIParticipant p : myAIUsers) {
             for (SelectableGameElement e : allUnits
                     .stream()
-                    .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR)
+                    .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue())
                             )).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {

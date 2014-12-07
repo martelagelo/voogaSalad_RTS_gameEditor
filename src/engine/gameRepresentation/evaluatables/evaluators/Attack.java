@@ -24,14 +24,14 @@ public class Attack<A, B> extends Evaluator<A, B, Boolean> {
     @Override
     protected Boolean evaluate (GameElement object1, GameElement object2) {
         if (object1.getTimer(ATTACK_TIMER) <= 0 &&
-            object2.getTextualAttribute(StateTags.TEAM_COLOR) !=
-            object1.getTextualAttribute(StateTags.TEAM_COLOR)) {
-            object2.setNumericalAttribute(StateTags.HEALTH,
-                                          object2.getNumericalAttribute(StateTags.HEALTH)
+            object2.getTextualAttribute(StateTags.TEAM_COLOR.getValue()) !=
+            object1.getTextualAttribute(StateTags.TEAM_COLOR.getValue())) {
+            object2.setNumericalAttribute(StateTags.HEALTH.getValue(),
+                                          object2.getNumericalAttribute(StateTags.HEALTH.getValue())
                                                   .doubleValue() -
-                                                  object1.getNumericalAttribute(StateTags.ATTACK)
+                                                  object1.getNumericalAttribute(StateTags.ATTACK.getValue())
                                                           .doubleValue());
-            object1.setTimer(ATTACK_TIMER, object1.getNumericalAttribute(StateTags.RELOAD_TIME)
+            object1.setTimer(ATTACK_TIMER, object1.getNumericalAttribute(StateTags.RELOAD_TIME.getValue())
                     .longValue());
         }
         return true;

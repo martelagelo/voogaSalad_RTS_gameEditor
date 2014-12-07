@@ -33,8 +33,8 @@ public class LevelFactory {
         List<GameElement> goals = generateGoalElements(state.getGoals());
         List<DrawableGameElement> terrain = generateTerrainElements(state.getTerrain());
         List<SelectableGameElement> units = generateUnitEelements(state.getUnits());
-        Number levelHeight = state.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT);
-        Number levelWidth = state.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH);
+        Number levelHeight = state.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
+        Number levelWidth = state.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
         MapGrid newGrid = generateUpToDateGrid(levelHeight, levelWidth, terrain, units);
         Group terrainAndSessileUnitsGroup = generateBackGroundGroup(terrain, units);
         Group mobileUnitsGroup = generateUnitsGroup(units);
@@ -71,10 +71,10 @@ public class LevelFactory {
                                          List<SelectableGameElement> units,
                                          MapGrid newGrid) {
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0 &&
-                             u.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1)
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0 &&
+                             u.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
                 .forEach(u -> newGrid.registerObstaclePlacement(u.getBounds()));
-        terrain.stream().filter(t -> t.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1)
+        terrain.stream().filter(t -> t.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
                 .forEach(t -> newGrid.registerObstaclePlacement(t.getBounds()));
     }
 
@@ -82,7 +82,7 @@ public class LevelFactory {
                                            List<SelectableGameElement> units) {
         Group backgroundGroup = new Group();
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0)
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> backgroundGroup.getChildren().add(n));
         terrain.stream().map(t -> t.getNode()).collect(Collectors.toList())
@@ -93,7 +93,7 @@ public class LevelFactory {
     private Group generateUnitsGroup (List<SelectableGameElement> units) {
         Group unitsGroup = new Group();
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() > 0)
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() > 0)
                 .map(u -> u.getNode()).collect(Collectors.toList()).stream()
                 .forEach(n -> unitsGroup.getChildren().add(n));
         return unitsGroup;
