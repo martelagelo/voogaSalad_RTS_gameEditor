@@ -1,12 +1,19 @@
 package engine.visuals;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.scene.Group;
 import model.state.gameelement.StateTags;
+import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
-import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.users.Participant;
 
@@ -27,6 +34,7 @@ public class VisualManager {
     private AbilityMatrix myAbilityMatrix;
     private Group root;
     private ParticipantManager myParticipantManager;
+    private List<Line> unitPaths;
 
     /**
      * Creates a new VisualManager. One visual manager should be created for every Scene (map)
@@ -46,6 +54,7 @@ public class VisualManager {
         root = gameObjectVisuals;
         myAbilityMatrix = new AbilityMatrix(scene.widthProperty(), scene.heightProperty());
         scene.addToScene(new Group(myAbilityMatrix.getNode()));
+        unitPaths = new ArrayList<Line>();
     }
 
     /**
@@ -81,7 +90,7 @@ public class VisualManager {
     private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
                                                             Participant user) {
         for (SelectableGameElement e : list) {
-            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
+            if (user.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR))) {
                 if (e.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1) { return e; }
             }
         }
@@ -126,7 +135,7 @@ public class VisualManager {
         return background;
     }
 
-    public void attachInputManager (RunnerInputManager inputManager) {
+    public void attachInputManager (InputManager inputManager) {
         scene.attachInputManager(inputManager);
         myAbilityMatrix.attachInputManager(inputManager);
 
@@ -137,5 +146,15 @@ public class VisualManager {
         // TODO: programmatically determine position
         myStatisticsBox = new StatisticsBox(30, 10, participantManager);
         scene.addToScene(new Group(myStatisticsBox));
+    }
+    
+    public void drawWayPointLines(List<SelectableGameElement> units) {
+    	getBackground().getChildren().removeAll(unitPaths);
+        unitPaths.clear();
+        
+        for (SelectableGameElement SGE : units) {
+            unitPaths.addAll(SGE.getLines());
+        }
+        getBackground().getChildren().addAll(unitPaths);
     }
 }

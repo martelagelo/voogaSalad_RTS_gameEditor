@@ -7,7 +7,7 @@ package engine.users;
  */
 public class AIParticipant extends Participant{
 
-    public AIParticipant (int playerID, String name) {
+    public AIParticipant (String playerID, String name) {
         super(playerID, name);
         this.isAI = true;
     }

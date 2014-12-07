@@ -25,9 +25,17 @@
     -fx-background-color: #000000;
 }
 
+.vbox {
+	-fx-background-color: black;
+}
+
 .text-area .scroll-pane .content {
     -fx-background-color: #45433e;
     -fx-text-fill: #6BB8F6;
+}
+
+#sizedButton {
+    -fx-background-color: darkgrey;
 }
 
 .text-area .scroll-pane .content {
@@ -70,6 +78,14 @@
 .label .content {
    -fx-background-color: black;
    -fx-text-fill: white;
+}
+
+.label {
+   -fx-text-fill: white;
+}
+
+#title {
+   -fx-font-size: 32pt;
 }
 
 #duvall {

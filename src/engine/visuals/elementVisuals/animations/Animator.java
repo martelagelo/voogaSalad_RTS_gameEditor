@@ -80,7 +80,7 @@ public class Animator implements Updatable {
                                                                         .loadImage(SINGLE_IMAGE_PATH_STRING+imageType)),
                                                   new ImageView());
                 state = new AnimatorState(SINGLE_IMAGE_PATH_STRING+imageType,
-                                          new Dimension(1, 1), 1,
+                                          "", new Dimension(1, 1), 1,
                                           null);
             }
             catch (SaveLoadException e) {

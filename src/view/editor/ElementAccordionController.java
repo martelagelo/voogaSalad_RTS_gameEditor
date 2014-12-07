@@ -38,8 +38,8 @@ import view.gui.GUIPanePath;
  */
 public class ElementAccordionController extends GUIContainer {
 
-    private static final String UNIT_KEY = "Unit";
-    private static final String TERRAIN_KEY = "Terrain";
+    private static final String DRAWABLE_KEY = "Drawable";
+    private static final String SELECTABLE_KEY = "Selectable";
 
     @FXML
     private Accordion elementAccordion;
@@ -61,7 +61,7 @@ public class ElementAccordionController extends GUIContainer {
 
     @Override
     public void init () {
-        elementAccordion.expandedPaneProperty().addListener((property, oldPane, newPane) -> {
+        elementAccordion.expandedPaneProperty().addListener( (property, oldPane, newPane) -> {
             if (oldPane != null) oldPane.setCollapsible(true);
             if (newPane != null) Platform.runLater(new Runnable() {
                 @Override
@@ -70,30 +70,56 @@ public class ElementAccordionController extends GUIContainer {
                 }
             });
         });
+        attachStringProperties();
+        terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
+        unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
+        terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
+            try {
+                myMainModel.removeDrawableGameElement(elementName);
+            }
+            catch (Exception e) {
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        });
+        unitTitledPaneController.setDeleteConsumer( (String elementName) -> {
+            try {
+                myMainModel.removeSelectableGameElement(elementName);
+            }
+            catch (Exception e) {
+                DialogBoxUtility.createMessageDialog(e.toString());
+            }
+        });
+        terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
+        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
+        elementAccordion.setExpandedPane(elementAccordion.getPanes()
+                .get(elementAccordion.getPanes().size() - 1));
+        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
+        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
+    }
+
+    private void editorChooseDrawableElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorDrawableChosen(selection);
+        }
+    }
+    
+    private void editorChooseSelectableElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorSelectableChosen(selection);
+        }
+    }
+    
+    private void attachStringProperties () {
         try {
             terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(TERRAIN_KEY));
+                    .getStringProperty(DRAWABLE_KEY));
             unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(UNIT_KEY));
+                    .getStringProperty(SELECTABLE_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             // Should never happen
             DialogBoxUtility.createMessageDialog(e.toString());
         }
-        terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
-        unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
-        terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
-            DialogBoxUtility.createMessageDialog("TODO remove shit");
-            // myMainModel.removeDrawableGameElement(elementName);
-            });
-        unitTitledPaneController.setDeleteConsumer( (String elementName) -> {
-            DialogBoxUtility.createMessageDialog("TODO remove shit");
-            // myMainModel.removeSelectableGameElement(elementName);
-            });
-        terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
-        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
-        elementAccordion.setExpandedPane(elementAccordion.getPanes()
-                .get(elementAccordion.getPanes().size() - 1));
     }
 
     private Consumer<String> addTerrainToLevel () {
@@ -107,11 +133,11 @@ public class ElementAccordionController extends GUIContainer {
                             try {
                                 myMainModel
                                         .addTerrainToLevel(myLevel,
-                                                        elementName,
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.X_POSITION)),
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.Y_POSITION)));
+                                                           elementName,
+                                                           Double.parseDouble(data
+                                                                   .getValueByKey(WizardDataType.X_POSITION)),
+                                                           Double.parseDouble(data
+                                                                   .getValueByKey(WizardDataType.Y_POSITION)));
                                 wiz.closeStage();
                             }
                             catch (Exception e) {

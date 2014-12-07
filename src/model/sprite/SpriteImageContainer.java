@@ -10,9 +10,7 @@ import model.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
- * for team identification. Holds a reference to a SaveLoadMediator object
- * allowing for filepath related contents to be concentrated in a single
- * location.
+ * for team identification.
  * 
  * @author Rahul
  *
@@ -26,30 +24,36 @@ public class SpriteImageContainer {
         myColorMask = colorMask;
     }
 
-    public SpriteImageContainer (String imageTag) throws SaveLoadException {
-        locateSpritesheet(imageTag);
-        locateTeamColorMasks(imageTag);
+    public SpriteImageContainer (String spritesheetTag, String colorMaskTag)
+            throws SaveLoadException {
+        locateSpritesheet(spritesheetTag);
+        locateColorMask(colorMaskTag);
     }
 
-    private void locateTeamColorMasks (String imageTag) throws SaveLoadException {
-        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(imageTag));
+    private void locateColorMask (String colorMaskTag) throws SaveLoadException {
+        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(colorMaskTag));
     }
 
-    private void locateSpritesheet (String imageTag) throws SaveLoadException {
-        mySpritesheet = new ImageView(SpriteImageLoader.loadSpritesheet(imageTag));
+    private void locateSpritesheet (String spritesheetTag) throws SaveLoadException {
+        mySpritesheet = new ImageView(SpriteImageLoader.loadSpritesheet(spritesheetTag));
     }
 
     public ImageView getSpritesheet () {
         return mySpritesheet;
     }
 
+    /**
+     * 
+     * @param color
+     * @return
+     */
     public ImageView getColorMask (String color) {
         if(myColorMask.getImage() == null) return new ImageView();
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
-        Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome,
-                new ColorInput(0, 0, myColorMask.getImage().getWidth(), myColorMask.getImage()
-                        .getHeight(), ColorMapGenerator.getColorMask(color)));
+        Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome, new ColorInput(0, 0, myColorMask
+                .getImage().getWidth(), myColorMask.getImage().getHeight(),
+                ColorMapGenerator.getColorMask(color)));
         myColorMask.setEffect((Effect) blush);
 
         return myColorMask;

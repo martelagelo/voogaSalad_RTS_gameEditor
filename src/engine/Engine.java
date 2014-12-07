@@ -1,6 +1,7 @@
 package engine;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Group;
@@ -8,6 +9,7 @@ import model.MainModel;
 import model.exceptions.DescribableStateException;
 import model.state.LevelState;
 import org.json.JSONException;
+import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
@@ -20,6 +22,7 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.HumanParticipant;
+import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
 
@@ -41,7 +44,7 @@ public class Engine extends Observable implements Observer {
 
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
-    private RunnerInputManager myInputManager;
+    private InputManager myInputManager;
     private ParticipantManager myParticipantManager;
 
     private GameElementFactory myElementFactory;
@@ -50,8 +53,6 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
-
-    private boolean gameWon = false;
 
     public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
@@ -64,9 +65,26 @@ public class Engine extends Observable implements Observer {
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
                                        myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
-        myUser = new HumanParticipant(1, "Yo fuckin' user name!!");
+        // TODO:wtf
+        myUser = new HumanParticipant("BLUE", "Yo fuckin' user name!!");
 
         instantiateManagers();
+    }
+
+    public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,
+                                                            IllegalAccessException,
+                                                            IllegalArgumentException,
+                                                            InvocationTargetException,
+                                                            NoSuchMethodException,
+                                                            SecurityException {
+        InputManager inputManager =
+                (InputManager) inputManagerClass.getDeclaredConstructor(MainModel.class,
+                                                                        GameElementManager.class,
+                                                                        GameLoop.class,
+                                                                        Participant.class)
+                        .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
+        myInputManager = inputManager;
+        myVisualManager.attachInputManager(myInputManager);
     }
 
     // TODO Should just be a call for "get next level" from main model rather than
@@ -121,10 +139,7 @@ public class Engine extends Observable implements Observer {
     @Override
     public void update (Observable observable, Object arg) {
         if (observable instanceof GameLoop) {
-            gameWon = ((int) arg) > 0;
-            this.pause();
-            System.out.println("Game is over! \n   Game won? " + gameWon);
-            // TODO:something with this... display it?
+            myGameLoop.stop();
             myUser.getAttributes();
             updateObservers();
         }
@@ -138,7 +153,7 @@ public class Engine extends Observable implements Observer {
         notifyObservers(myUser.getAttributes());
         clearChanged();
     }
-    
+
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }

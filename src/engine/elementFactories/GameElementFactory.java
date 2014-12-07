@@ -26,10 +26,6 @@ import engine.visuals.elementVisuals.Visualizer;
  *
  */
 public class GameElementFactory {
-
-    public static final String INTERACTING_ELEMENT_TYPE_LOCATION =
-            "resources.properties.engine.InteractingElementTypes";
-
     private GameUniverse myUniverse;
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
@@ -73,10 +69,8 @@ public class GameElementFactory {
     public SelectableGameElement createSelectableGameElement (String elementType,
                                                               double x,
                                                               double y,
-                                                              double teamID,
                                                               String color) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
-        state.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         state.attributes.setTextualAttribute(StateTags.TEAM_COLOR, color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
@@ -98,7 +92,7 @@ public class GameElementFactory {
      * @param state the game element's state
      */
     private void generateActions (GameElement element, GameElementState state) {
-        for (Entry<String,List<ActionWrapper>> entry : state.getActions().entrySet()) {
+        for (Entry<ActionType, List<ActionWrapper>> entry : state.getActions().entrySet()) {
             entry.getValue().forEach(actionWrapper -> {
                 Evaluatable<?> action;
                 try {
@@ -108,7 +102,7 @@ public class GameElementFactory {
                     e.printStackTrace();
                     action = new FalseEvaluator();
                 }
-                element.addAction(ActionType.getEnumFromValue(entry.getKey()), action);
+                element.addAction(entry.getKey(), action);
             });
         }
     }

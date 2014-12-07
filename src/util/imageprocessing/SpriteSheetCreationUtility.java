@@ -45,18 +45,18 @@ public class SpriteSheetCreationUtility {
 
     public static void main (String[] args) throws Exception {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-//        processor.populateTagLists();
-//        String baseDirectoryPath = "resources/img/graphics/units/";
-//        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
-//        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
-//        boolean[] extrapolatedStateMirrorFlags =
-//                new boolean[] { false, false, false, false, false, true, true, true };
-//
-//        processor.createSpriteSheet(baseDirectoryPath, uniqueStateIndicies,
-//                                    extrapolatedStateIndicies, extrapolatedStateMirrorFlags,
-//                                    new Color(0xFFFF00FF));
+        processor.populateTagLists();
+        String baseDirectoryPath = "resourcesold/img/graphics/units/";
+        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
+        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
+        boolean[] extrapolatedStateMirrorFlags =
+                new boolean[] { false, false, false, false, false, true, true, true };
+
+        processor.createSpriteSheet(baseDirectoryPath, uniqueStateIndicies,
+                                    extrapolatedStateIndicies, extrapolatedStateMirrorFlags,
+                                    new Color(0xFFFF00FF));
         
-        processor.doThing();
+//        processor.doThing();
     }
 
     private void doThing() throws IOException {
@@ -177,15 +177,14 @@ public class SpriteSheetCreationUtility {
 //                colorNames.add("TEAL");
 //                colorNames.add("BLUE");
 //                colorNames.add("PURPLE");
+                String filePathForColorMask = resourcePath + "units/colormasks/" + unitName +".png";
                 for (int i = 0; i < huesForMutation.size(); i++) {
                     int hue = huesForMutation.get(i);
                     String color = colorNames.get(i);
 
                     extractor.mutateColorMask(hue);
                     BufferedImage teamColorMask = extractor.mutatedMask;
-                    ImageIO.write(teamColorMask, "PNG", new File(resourcePath +
-                                                                 "units/colormasks/" + unitName +
-                                                                 /*"_" +*/ color + ".png"));
+                    ImageIO.write(teamColorMask, "PNG", new File(filePathForColorMask));
                 }
                 int numRows = finalSpritesheetColorRemoved.getHeight() / frameHeight;
                 Set<AnimationSequence> animations = new HashSet<>();
@@ -200,9 +199,8 @@ public class SpriteSheetCreationUtility {
                     currentFrame = stopFrame;
                 }
                 AnimatorState spritesheetState =
-                        new AnimatorState(filePathForSpritesheet, new Dimension(frameWidth,
-                                                                                frameHeight),
-                                          numRows, animations);
+                        new AnimatorState(filePathForSpritesheet,filePathForColorMask,
+                        		new Dimension(frameWidth, frameHeight), numRows, animations);
                 SaveLoadUtility.save((JSONable) spritesheetState, resourcePath + "animatorstate/" +
                                                                    unitName + ".json");
             }

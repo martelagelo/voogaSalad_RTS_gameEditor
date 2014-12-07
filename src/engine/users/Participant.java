@@ -14,15 +14,15 @@ import model.state.gameelement.StateTags;
 public abstract class Participant {
 
     protected AttributeContainer attributes;
-    protected int myPlayerID;
+    protected String myTeamColor;
     protected String myName;
     protected boolean isAI;
 
-    public Participant (int playerID, String name) {
-        myPlayerID = playerID;
+    public Participant (String teamColor, String name) {
+    	myTeamColor = teamColor;
         myName = name;
         attributes = new AttributeContainer();
-        attributes.setNumericalAttribute(StateTags.TEAM_ID, playerID);
+        attributes.setTextualAttribute(StateTags.TEAM_COLOR, teamColor);
     }
 
     /**
@@ -54,8 +54,12 @@ public abstract class Participant {
      * @param otherTeamID
      * @return true if the team IDs are the same
      */
-    public boolean checkSameTeam (double otherTeamID) {
-        return myPlayerID == otherTeamID;
+    public boolean checkSameTeam (String otherTeamColor) {
+        return myTeamColor.equals(otherTeamColor);
+    }
+
+    public String getTeamColor () {
+        return myTeamColor;
     }
 
 }

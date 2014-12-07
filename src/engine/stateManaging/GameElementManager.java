@@ -14,7 +14,6 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.users.Participant;
 
-
 /**
  * A manager for selecting, deselecting, and interacting with game elements
  *
@@ -26,6 +25,8 @@ public class GameElementManager {
     private Level myLevel;
     private GameElementFactory myFactory;
     private PathingComputer pathingComputer;
+
+    private DrawableGameElement selectedElement;
 
     public GameElementManager (GameElementFactory factory) {
         myFactory = factory;
@@ -50,7 +51,7 @@ public class GameElementManager {
      */
     public List<GameElement> findAllElementsOfType (String typeName) {
         return myLevel.getUnits().stream()
-                .filter(o -> o.getType().equals(typeName)).map(o -> o)
+                .filter(o -> o.isType(typeName)).map(o -> o)
                 .collect(Collectors.toList());
     }
 
@@ -69,12 +70,45 @@ public class GameElementManager {
     public SelectableGameElement addSelectableGameElementToLevel (String typeName,
                                                                   double x,
                                                                   double y,
-                                                                  double team,
                                                                   String color) {
         SelectableGameElement newElement = myFactory
-                .createSelectableGameElement(typeName, x, y, team, color);
+                .createSelectableGameElement(typeName, x, y, color);
         myLevel.addElement(newElement);
         return newElement;
+    }
+
+    public void selectAnySingleUnit (Point2D clickLoc, Participant u) {
+        selectedElement = null;
+        deselectAllElements();
+        List<DrawableGameElement> units = myLevel.getUnits().stream().map((unit)->{
+            return (DrawableGameElement) unit;
+        }).collect(Collectors.toList());
+        selectUnit(units, clickLoc);
+        selectUnit(myLevel.getTerrain(), clickLoc);
+    }
+
+    private void selectUnit (List<DrawableGameElement> elements, Point2D clickLoc) {
+        for (DrawableGameElement e : elements) {
+            double[] cornerBounds = e.findGlobalBounds();
+            if (new Polygon(cornerBounds).contains(clickLoc)) {
+                selectedElement = e;
+                return;
+            }
+        }
+    }
+
+    private void deselectAllElements() {
+        myLevel.getUnits().forEach((unit)->unit.deselect());
+    }
+    
+    public void moveSelectedUnit (Point2D mapPoint2d, Participant user) {
+        if (selectedElement == null) return;
+        selectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
+    }
+    
+    public void deleteSelectedUnit() {
+        if (selectedElement == null) return;
+        myLevel.removeElement(selectedElement);
     }
 
     /**
@@ -110,14 +144,8 @@ public class GameElementManager {
         }
     }
 
-    private void deselectAllElements () {
-        for (SelectableGameElement e : myLevel.getUnits()) {
-            e.deselect();
-        }
-    }
-
     private boolean checkOnTeam (SelectableGameElement e, Participant u) {
-        return u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue());
+        return u.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR));
     }
 
     public void selectSingleUnit (Point2D clickLoc, boolean multiSelect, Participant u) {
@@ -158,9 +186,7 @@ public class GameElementManager {
         for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
             if (!checkOnTeam(e, u)) continue;
             if (queueCommand) {
-                // TODO: either implement this and allow for having headings be a linked-list, or
-                // remove this
-                // e.clearHeadings();
+            	e.addWaypoint(click.getX(), click.getY());
             }
             else {
                 double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
@@ -169,12 +195,15 @@ public class GameElementManager {
                 Location to = new Location(click.getX(), click.getY());
                 List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
+                //e.clearPaths();
+                //e.addToPath(to);
             }
         }
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
+                .forEach(unit -> unit.setFocusedElement(e));
 
     }
 
@@ -194,12 +223,13 @@ public class GameElementManager {
                                                               Participant p) {
         return list
                 .stream()
-                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID)
-                        .doubleValue())).collect(Collectors.toList());
+                .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR)
+                		)).collect(Collectors.toList());
     }
 
     public void notifyButtonClicked (int buttonID, Participant u) {
-        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
+        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()),
+                                                            u)) {
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
             e.executeAllButtonActions();
         }

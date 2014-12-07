@@ -1,6 +1,8 @@
 package view.runner;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
@@ -9,12 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import model.state.LevelState;
 import model.state.gameelement.AttributeContainer;
 import org.json.JSONException;
+import util.DeepCopy;
 import view.dialog.DialogBoxUtility;
-import view.gui.GUIContainer;
 import view.gui.StackPaneGUIContainer;
 import engine.Engine;
 import engine.visuals.ScrollablePane;
@@ -39,6 +40,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
     private GameEndController gameEndController;
     
     private LevelState myLevel;
+    private Engine myEngine;
     
     @Override
     public Node getRoot () {
@@ -50,18 +52,29 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
             // Jank code to properly size engine runner pane to place in view
             // because JavaFX is horrible with sizing
             // require button to fill actual size of borderpane to then be bound to runner pane size
-            sizedButton.setStyle("-fx-background-color: red;");
-            myLevel = levelState;
-            Engine engine = new Engine(myMainModel, levelState);
-            engine.setAnimationEnabled(false);
-            ScrollablePane pane = engine.getScene();
+
+            myLevel = (LevelState) DeepCopy.deepCopy(levelState);
+            myEngine = new Engine(myMainModel, myLevel);
+            ScrollablePane pane = myEngine.getScene();
+
             bindPaneSize(pane);
-            engine.play();
-            engine.addObserver(this);
+            myEngine.play();
+            myEngine.addObserver(this);
             runnerPane.setCenter(pane);
             setFront(runnerPane);
+            pane.requestFocus();
         }
         catch (ClassNotFoundException | JSONException | IOException e) {
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
+        }
+    }
+    
+    public void setInputManager(Class<?> inputManagerClass) {
+        try {
+            myEngine.setInputManager(inputManagerClass);
+        }
+        catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException | NoSuchMethodException | SecurityException e) {
             DialogBoxUtility.createMessageDialog(e.toString());
         }
     }

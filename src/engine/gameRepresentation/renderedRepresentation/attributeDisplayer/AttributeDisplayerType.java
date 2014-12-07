@@ -1,28 +1,13 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
 /**
- * An enumeration for the types of actions available e.g. collision, internal, vision
+ * An enumeration for the types of attributes displayed.
  * 
- * @author Michael D.
+ * @author Michael D., Stanley
  *
  */
 public enum AttributeDisplayerType {
-    HEALTH_BAR("AttributeBarDisplayer");
-
-    private String myString;
-
-    /**
-     * Create an action type enumeration
-     * 
-     * @param stringRepresentation the key for the action type in the map.
-     */
-    private AttributeDisplayerType (String stringRepresentation) {
-        myString = stringRepresentation;
-    }
-
-    @Override
-    public String toString () {
-        return myString;
-    }
+    AttributeBarDisplayer,
+    HEALTH_BAR;
     
 }

@@ -1,5 +1,6 @@
 package view.runner;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +80,7 @@ public class LevelChooserController implements GUIController {
                                 .getStringProperty(INVALID_SELECTION_KEY).getValue());
                     }
                     catch (Exception e1) {
-                        DialogBoxUtility.createMessageDialog(e1.toString());
+                        DialogBoxUtility.createMessageDialog(Arrays.toString(e1.getStackTrace()));
                     }
                 }
             });
@@ -96,7 +97,7 @@ public class LevelChooserController implements GUIController {
                     .getStringProperty(PLAY_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
 
     }

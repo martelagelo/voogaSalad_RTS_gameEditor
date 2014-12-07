@@ -21,18 +21,12 @@ public class ColorMapGenerator {
     public ColorMapGenerator () throws SaveLoadException {
         myColorMap = new HashMap<>();
         myBundleRetriever = new ResourceBundleRetriever();
-        try {
             // TODO: save the location outside of source
             myBundle = myBundleRetriever.getBundle(new File(
-                    SpriteImageGenerator.RESOURCES_PROPERTIES_LOCATION + myColorMaskName));
-            populateColorMaskMap();
-        } catch (MalformedURLException e) {
-            throw new SaveLoadException("Unable to load resources", e);
-        }
-
+                    SpriteImageGenerator.RESOURCES_PROPERTIES_LOCATION + myColorMaskName));        
     }
 
-    private void populateColorMaskMap () throws SaveLoadException {
+    public void populateColorMaskMap () throws SaveLoadException {
 
         Enumeration<String> keys = myBundle.getKeys();
         while (keys.hasMoreElements()) {
@@ -54,6 +48,11 @@ public class ColorMapGenerator {
         }
     }
 
+    /**
+     * 
+     * @param color
+     * @return
+     */
     public static Paint getColorMask (String color) {
         return myColorMap.get(color);
     }

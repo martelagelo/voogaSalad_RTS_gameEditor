@@ -1,5 +1,6 @@
 package model.state;
 
+import java.io.Serializable;
 import util.JSONable;
 
 /**
@@ -9,12 +10,20 @@ import util.JSONable;
  * @author Jonathan, Nishad, Rahul
  *
  */
-public abstract class DescribableState implements JSONable{
+public abstract class DescribableState implements JSONable, Serializable{
 
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = 267624806010749314L;
     private String myName;
     private String myDescription;
     private final int myHashingPrime = 31;
 
+    protected DescribableState () {
+        // empty default constructor for serialization
+    }
+    
     protected DescribableState (String name) {
         myName = name;
         myDescription = "";

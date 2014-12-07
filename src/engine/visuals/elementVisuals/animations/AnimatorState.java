@@ -24,6 +24,7 @@ public class AnimatorState implements JSONable, Serializable {
      */
     private static final long serialVersionUID = 1609072629703433749L;
     private String imageTag;
+    private String colorMaskTag;
     private Dimension viewportSize;
     private int numRows;
     private Set<AnimationSequence> animationSequences;
@@ -39,8 +40,9 @@ public class AnimatorState implements JSONable, Serializable {
      * @param numRows
      *            the number of columns across in the spritesheet
      */
-    public AnimatorState (String imageTag, Dimension frameDimensions, int numRows,
+    public AnimatorState (String imageTag, String colorMaskTag, Dimension frameDimensions, int numRows,
             Set<AnimationSequence> animationSequenceList) {
+        this.colorMaskTag = colorMaskTag;
         this.imageTag = imageTag;
         this.viewportSize = frameDimensions;
         this.numRows = numRows;
@@ -67,6 +69,10 @@ public class AnimatorState implements JSONable, Serializable {
 
     public String getImageTag () {
         return imageTag;
+    }
+    
+    public String getColorMaskTag() {
+        return colorMaskTag;
     }
 
     public Dimension getViewportSize () {

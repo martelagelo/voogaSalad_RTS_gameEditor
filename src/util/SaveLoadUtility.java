@@ -79,8 +79,8 @@ public class SaveLoadUtility {
             String json = jsonableClass.toJSON();
             writer.write(json);
             writer.close();
-        } catch (IOException e) {
-            throw new SaveLoadException("Unable to save to JSON format", e);
+        } catch (IOException | SaveLoadException e) {
+            throw new SaveLoadException(e.getMessage(), e);
         }
 
         return file.getPath();

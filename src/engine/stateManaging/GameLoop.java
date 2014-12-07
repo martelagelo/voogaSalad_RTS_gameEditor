@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Observable;
 import java.util.stream.Collectors;
 import javafx.animation.Animation;
+import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
@@ -27,23 +27,29 @@ import engine.visuals.VisualManager;
  *
  * @author Michael D., John L., Steve, Zach
  **/
-public class GameLoop extends Observable{
+public class GameLoop extends Observable {
     public static final Double framesPerSecond = 60.0;
     private Level myCurrentLevel;
     private GameElementManager myManager;
     private ParticipantManager myParticipantManager;
 
     private VisualManager myVisualManager;
-    private List<Line> unitPaths;
 
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
     private Timeline timeline;
 
-    private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
+    private EventHandler<ActionEvent> oneFrameRunner = new EventHandler<ActionEvent>() {
         @Override
         public void handle (ActionEvent evt) {
-            update();
+            updateRunner();
+        }
+    };
+
+    private EventHandler<ActionEvent> oneFrameEditor = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle (ActionEvent evt) {
+            updateEditor();
         }
     };
 
@@ -54,39 +60,16 @@ public class GameLoop extends Observable{
         myParticipantManager = participantManager;
         myManager = elementManager;
         myCurrentLevel = level;
-        unitPaths = new ArrayList<Line>();
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
-        startGameLoop();
+        startTimeline();
     }
-
-    /**
-     * Start the game loop
-     */
-    public void startGameLoop () {
-        KeyFrame frame = start(framesPerSecond);
-        startTimeline(frame);
-    }
-
-    /**
-     * Create a keyframe with the given framerate
-     *
-     * @param framesPerSecond the number of frames per second of the keyframe
-     * @return the keyframe
-     */
-    private KeyFrame start (Double framesPerSecond) {
-        KeyFrame frame = new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrame);
-        return frame;
-    }
-
+    
     /**
      * Update the states of all prominent elements and aspects of the game
      */
-    private void update () {
-        // Clears all path lines from the GUI
-        clearLinesFromRoot();
-        // Adds needed path lines to the GUI
-         addPathsToRoot();
+    private void updateRunner () {
+        myVisualManager.drawWayPointLines(this.myCurrentLevel.getUnits());
 
         // First check for and remove dead units
         Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
@@ -122,22 +105,22 @@ public class GameLoop extends Observable{
 //        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
-        if(levelEndState!=0){
+        if (levelEndState != 0) {
             setChanged();
             this.notifyObservers(levelEndState);
         }
     }
-
-    private void addPathsToRoot () {
-        for (SelectableGameElement SGE : myCurrentLevel.getUnits()) {
-            // unitPaths.addAll(SGE.getLines());
+    
+    /**
+     * Update the states of all prominent elements and aspects of the game
+     */
+    private void updateEditor () {
+        Iterator<SelectableGameElement> iter = myCurrentLevel.getUnits().iterator();
+        while (iter.hasNext()) {
+            SelectableGameElement selectableElement = iter.next();
+            selectableElement.update();
         }
-        myVisualManager.getBackground().getChildren().addAll(unitPaths);
-    }
-
-    private void clearLinesFromRoot () {
-        myVisualManager.getBackground().getChildren().removeAll(unitPaths);
-        unitPaths.clear();
+        myVisualManager.update(myCurrentLevel.getUnits());
     }
 
     /**
@@ -145,13 +128,27 @@ public class GameLoop extends Observable{
      *
      * @param frame the keyframe for the timeline
      */
-    private void startTimeline (KeyFrame frame) {
+    private void startTimeline () {
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.getKeyFrames().clear();
-        timeline.getKeyFrames().add(frame);
+        setRunnerLoop();
         timeline.playFromStart();
     }
 
+    public void setEditorLoop() {
+        setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameEditor));
+    }
+    
+    public void setRunnerLoop() {
+        setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameRunner));
+    }
+    
+    private void setLoop(KeyFrame frame) {
+        timeline.stop();
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(frame);
+        timeline.play();
+    }
+    
     /**
      * Play the game
      */
@@ -160,10 +157,15 @@ public class GameLoop extends Observable{
     }
 
     /**
-     * Pause the game
+     * Toggle Pause the game
      */
     public void pause () {
-        timeline.pause();
+        if (timeline.getStatus().equals(Status.PAUSED)) {
+            timeline.play();
+        }
+        else {
+            timeline.pause();
+        }
     }
 
     /**
