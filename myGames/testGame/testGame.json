@@ -1279,6 +1279,37 @@
                       "HealingCooldown"
                     ],
                     "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "levelUpCost",
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "levelUpButtonID",
+                      "me",
+                      "maxHealth",
+                      "AdditionAssignment",
+                      "levelUpHealthIncrease",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "levelUpAttackIncrease",
+                      "Equals",
+                      "a",
+                      "",
+                      "SubtractionAssignment",
+                      "levelUpCost",
+                      "my",
+                      "resources",
+                      "b",
+                      ""
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -1287,6 +1318,18 @@
                   {
                     "myData": 20.0,
                     "myName": "xPosition"
+                  },
+                  {
+                    "myData": 250,
+                    "myName": "levelUpCost"
+                  },
+                  {
+                    "myData": 16,
+                    "myName": "levelUpButtonID"
+                  },
+                  {
+                    "myData": 35,
+                    "myName": "levelUpAttackIncrease"
                   },
                   {
                     "myData": 20.0,
@@ -1301,7 +1344,7 @@
                     "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 2000.0,
+                    "myData": 600.0,
                     "myName": "health"
                   },
                   {
@@ -1321,23 +1364,27 @@
                     "myName": "yTempGoalPosition"
                   },
                   {
-                    "myData": 150,
+                    "myData": 100,
                     "myName": "healCost"
                   },
                   {
-                    "myData": 30.0,
+                    "myData": 50.0,
                     "myName": "reloadTime"
+                  },
+                  {
+                    "myData": 50,
+                    "myName": "levelUpHealthIncrease"
                   },
                   {
                     "myData": 20.0,
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 10000.0,
+                    "myData": 50.0,
                     "myName": "attack"
                   },
                   {
-                    "myData": 2000.0,
+                    "myData": 600.0,
                     "myName": "maxHealth"
                   },
                   {
@@ -1346,6 +1393,10 @@
                   }
                 ],
                 "myTextualAttributes": [
+                  {
+                    "myData": "resources/gameelementresources/commands/buildOffensive.png",
+                    "myName": "attributeDescription16"
+                  },
                   {
                     "myData": "resources/img/graphics/buttons/commands/defend.png",
                     "myName": "attributeDescription1"
@@ -2034,7 +2085,7 @@
                     "myName": "yTempGoalPosition"
                   },
                   {
-                    "myData": 200,
+                    "myData": 30,
                     "myName": "myValue"
                   },
                   {
@@ -2050,7 +2101,7 @@
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 100.0,
+                    "myData": 35.0,
                     "myName": "attack"
                   },
                   {
@@ -2159,6 +2210,18 @@
         "myName": "movementSpeed"
       },
       {
+        "myData": 250,
+        "myName": "levelUpCost"
+      },
+      {
+        "myData": 16,
+        "myName": "levelUpButtonID"
+      },
+      {
+        "myData": 35,
+        "myName": "levelUpAttackIncrease"
+      },
+      {
         "myData": 5000,
         "myName": "healAmount"
       },
@@ -2167,7 +2230,7 @@
         "myName": "yGoalPosition"
       },
       {
-        "myData": 2000.0,
+        "myData": 600.0,
         "myName": "health"
       },
       {
@@ -2183,19 +2246,23 @@
         "myName": "yTempGoalPosition"
       },
       {
-        "myData": 150,
+        "myData": 100,
         "myName": "healCost"
+      },
+      {
+        "myData": 50,
+        "myName": "levelUpHealthIncrease"
       },
       {
         "myData": 20.0,
         "myName": "xTempGoalPosition"
       },
       {
-        "myData": 10000.0,
+        "myData": 50.0,
         "myName": "attack"
       },
       {
-        "myData": 2000.0,
+        "myData": 600.0,
         "myName": "maxHealth"
       },
       {
@@ -2203,7 +2270,7 @@
         "myName": "HealingCooldown"
       },
       {
-        "myData": 200,
+        "myData": 30,
         "myName": "myValue"
       },
       {
@@ -2212,6 +2279,10 @@
       }
     ],
     "myTextualAttributes": [
+      {
+        "myData": "resources/gameelementresources/commands/buildOffensive.png",
+        "myName": "attributeDescription16"
+      },
       {
         "myData": "resources/img/graphics/buttons/commands/defend.png",
         "myName": "attributeDescription1"
@@ -3493,6 +3564,37 @@
                 "HealingCooldown"
               ],
               "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myParameters": [
+                "my",
+                "resources",
+                "GreaterThanEqual",
+                "levelUpCost",
+                "me",
+                "lastButtonID",
+                "Equals",
+                "levelUpButtonID",
+                "me",
+                "maxHealth",
+                "AdditionAssignment",
+                "levelUpHealthIncrease",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "levelUpAttackIncrease",
+                "Equals",
+                "a",
+                "",
+                "SubtractionAssignment",
+                "levelUpCost",
+                "my",
+                "resources",
+                "b",
+                ""
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -3501,6 +3603,18 @@
             {
               "myData": 20.0,
               "myName": "xPosition"
+            },
+            {
+              "myData": 250,
+              "myName": "levelUpCost"
+            },
+            {
+              "myData": 16,
+              "myName": "levelUpButtonID"
+            },
+            {
+              "myData": 35,
+              "myName": "levelUpAttackIncrease"
             },
             {
               "myData": 20.0,
@@ -3515,7 +3629,7 @@
               "myName": "yGoalPosition"
             },
             {
-              "myData": 2000.0,
+              "myData": 600.0,
               "myName": "health"
             },
             {
@@ -3535,23 +3649,27 @@
               "myName": "yTempGoalPosition"
             },
             {
-              "myData": 150,
+              "myData": 100,
               "myName": "healCost"
             },
             {
-              "myData": 30.0,
+              "myData": 50.0,
               "myName": "reloadTime"
+            },
+            {
+              "myData": 50,
+              "myName": "levelUpHealthIncrease"
             },
             {
               "myData": 20.0,
               "myName": "xTempGoalPosition"
             },
             {
-              "myData": 10000.0,
+              "myData": 50.0,
               "myName": "attack"
             },
             {
-              "myData": 2000.0,
+              "myData": 600.0,
               "myName": "maxHealth"
             },
             {
@@ -3560,6 +3678,10 @@
             }
           ],
           "myTextualAttributes": [
+            {
+              "myData": "resources/gameelementresources/commands/buildOffensive.png",
+              "myName": "attributeDescription16"
+            },
             {
               "myData": "resources/img/graphics/buttons/commands/defend.png",
               "myName": "attributeDescription1"
@@ -4248,7 +4370,7 @@
               "myName": "yTempGoalPosition"
             },
             {
-              "myData": 200,
+              "myData": 30,
               "myName": "myValue"
             },
             {
@@ -4264,7 +4386,7 @@
               "myName": "xTempGoalPosition"
             },
             {
-              "myData": 100.0,
+              "myData": 35.0,
               "myName": "attack"
             },
             {

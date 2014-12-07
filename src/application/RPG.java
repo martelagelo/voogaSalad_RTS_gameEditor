@@ -50,12 +50,13 @@ public class RPG extends Application {
         String uri = "resources/img/graphics/terrain/grass/1.png";
         double[] normalBounds = new double[] { 0, 0, 100, 0, 100, 100, 0, 100 };
         SelectableGameElementState hero =
-                createMovingUnit(normalBounds, 2000, 10000, 30, 20, 20, 10, 1, uri);
+                createMovingUnit(normalBounds, 600, 50, 50, 20, 20, 10, 1, uri);
         hero.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
         hero
                 .addAttributeDisplayerState(new AttributeDisplayerState(
                                                                         AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
-                                                                        StateTags.HEALTH.getValue(), 0, 1000));
+                                                                        StateTags.HEALTH.getValue(),
+                                                                        0, 1000));
         hero
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
@@ -67,33 +68,60 @@ public class RPG extends Application {
 
         // set up a healing ability
         hero.addAction(new ActionWrapper(ActionType.BUTTON, ActionOptions.MOTHER_OF_ALL_ACTIONS,
-                                         "my", StateTags.RESOURCES.getValue(), "GreaterThanEqual", "healCost",
-                                         "me", StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals",
-                                         "active", "me", StateTags.HEALTH.getValue(), "AdditionAssignment",
+                                         "my", StateTags.RESOURCES.getValue(), "GreaterThanEqual",
+                                         "healCost",
+                                         "me", StateTags.LAST_BUTTON_CLICKED_ID.getValue(),
+                                         "Equals",
+                                         "active", "me", StateTags.HEALTH.getValue(),
+                                         "AdditionAssignment",
                                          "healAmount", "me", "blah", "Equals", "active", "Equals",
                                          "a", "zero", "SubtractionAssignment", "healCost", "my",
                                          StateTags.RESOURCES.getValue(), "1", "HealingCooldown"));
-        hero.attributes.setNumericalAttribute("healCost", 150);
+        hero.attributes.setNumericalAttribute("healCost", 50);
         hero.attributes.setNumericalAttribute("healAmount", 5000);
         hero.attributes.setNumericalAttribute("active", 1);
         hero.attributes.setNumericalAttribute("HealingCooldown", 1000);
         String defendURIString = "resources/img/graphics/buttons/commands/defend.png";
-        hero.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1, defendURIString);
+        hero.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1,
+                                            defendURIString);
 
         // set the health to have a limiter
         hero.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.MOTHER_OF_ALL_ACTIONS,
                                          "my", "", "Equals", "", "me", StateTags.HEALTH.getValue(),
-                                         "GreaterThanEqual", "maxHealth", "me", StateTags.HEALTH.getValue(),
+                                         "GreaterThanEqual", "maxHealth", "me", StateTags.HEALTH
+                                                 .getValue(),
                                          "EqualsAssignment", "maxHealth", "me", "", "Equals", "",
                                          "Equals", "a", "zero", "Equals", "df", "my", "w", "f", "w"));
 
+        // set a level up (!) button
+        hero.addAction(new ActionWrapper(ActionType.BUTTON, ActionOptions.MOTHER_OF_ALL_ACTIONS,
+                                         "my", StateTags.RESOURCES.getValue(), "GreaterThanEqual",
+                                         "levelUpCost",
+                                         "me", StateTags.LAST_BUTTON_CLICKED_ID.getValue(),
+                                         "Equals",
+                                         "levelUpButtonID", "me", "maxHealth",
+                                         "AdditionAssignment",
+                                         "levelUpHealthIncrease", "me",
+                                         StateTags.ATTACK.getValue(), "AdditionAssignment",
+                                         "levelUpAttackIncrease", "Equals", "a", "",
+                                         "SubtractionAssignment", "levelUpCost", "my",
+                                         StateTags.RESOURCES.getValue(), "b", ""));
+        String levelUpURIString = "resources/gameelementresources/commands/buildOffensive.png";
+        hero.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 16,
+                                            levelUpURIString);
+        hero.attributes.setNumericalAttribute("levelUpCost", 100);
+        hero.attributes.setNumericalAttribute("levelUpButtonID", 16);
+        hero.attributes.setNumericalAttribute("levelUpHealthIncrease", 50);
+        hero.attributes.setNumericalAttribute("levelUpAttackIncrease", 35);
+
         String enemyUri = "resources/img/graphics/terrain/grass/1.png";
         SelectableGameElementState enemy =
-                this.createEnemyUnit(normalBounds, 300, 100, 75, 600, 600, 2, 2, enemyUri);
+                this.createEnemyUnit(normalBounds, 300, 35, 75, 600, 600, 2, 2, enemyUri);
         enemy
                 .addAttributeDisplayerState(new AttributeDisplayerState(
                                                                         AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
-                                                                        StateTags.HEALTH.getValue(), 0, 300));
+                                                                        StateTags.HEALTH.getValue(),
+                                                                        0, 300));
         enemy.attributes.setTextualAttribute(StateTags.NAME.getValue(), "Enemy");
         enemy.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");
 
@@ -175,8 +203,9 @@ public class RPG extends Application {
                                         "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
         // ges.addAction(new ActionWrapper(ActionType.INTERNAL,
-        // ActionOptions.OBJECT_LOCATION_DETECTION,
-        // "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
+        // ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
+        // "my", "archer", "50", "50", "50", "Won",
+        // "EqualsAssignment", "1"));
         return ges;
     }
 
@@ -196,13 +225,14 @@ public class RPG extends Application {
 
         enemy.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.MOTHER_OF_ALL_ACTIONS,
                                           "my", "", "Equals", "", "me", "toDie", "Equals",
-                                          "active", "me", StateTags.IS_DEAD.getValue(), "EqualsAssignment",
+                                          "active", "me", StateTags.IS_DEAD.getValue(),
+                                          "EqualsAssignment",
                                           "active", "me", "asdf", "Equals", "active", "Equals",
                                           "a", "123", "AdditionAssignment", "myValue", "my",
                                           StateTags.RESOURCES.getValue(), "b", "zero"));
         enemy.attributes.setNumericalAttribute("active", 1);
         enemy.attributes.setNumericalAttribute("zero", 0);
-        enemy.attributes.setNumericalAttribute("myValue", 200);
+        enemy.attributes.setNumericalAttribute("myValue", 30);
 
         return enemy;
     }
@@ -228,7 +258,8 @@ public class RPG extends Application {
         archerState.attributes.setNumericalAttribute(StateTags.ATTACK.getValue(), attack);
         archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), reloadTime);
         archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
-        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), movementSpeed);
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(),
+                                                     movementSpeed);
         archerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
         archerState.addAction(new ActionWrapper(ActionType.COLLISION,
