@@ -119,12 +119,13 @@ public enum ActionOptions {
                                ActionParameters.STRING),
     MOTHER_OF_ALL_ACTIONS("Mother of all Actions",
                           "MotherOfAllActions",
-                          "If #(my/your) player's # (attribute name) # (evaluator) my # (attr) AND " +
-                          "If  # (me/your) # (attribute name) # (evaluator < > =) # (attr), "+
+                          "If #(my/other) participant's # (attribute name) # (evaluator) my # (attr) AND " +
+                          "If  # (me/your) # (attribute name) # (evaluator < > =) my # (attr), "+
+                          "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
                           "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
                           "Do: # on both the interacting elements AND " +
                           "Do: Set the timer # (timer name) to the value # (attribute) AND " +
-                          "Do: Perform # on my unit's # attribute on # (my/your) player's # (attribute)"+
+                          "Do: Perform # on my unit's # attribute on # (my/other) participant's # (attribute)"+
                           "On a timer named # with a value of # ticks.",
                           ActionParameters.PLAYER_TYPE,
                           ActionParameters.ATTR,
@@ -135,6 +136,10 @@ public enum ActionOptions {
                           ActionParameters.NN_EVAL,
                           ActionParameters.ATTR,
                           ActionParameters.OBJECT_DESIGNATOR,
+                          ActionParameters.ATTR,
+                          ActionParameters.NN_EVAL,
+                          ActionParameters.ATTR,
+                          ActionParameters.OBJECT_DESIGNATOR,//
                           ActionParameters.ATTR,
                           ActionParameters.NN_EVAL,
                           ActionParameters.ATTR,
