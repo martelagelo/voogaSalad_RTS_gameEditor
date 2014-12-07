@@ -19,8 +19,10 @@
           "Equals",
           "1",
           "archer",
+          "health",
+          "Resources",
           "ArcherSpawnCooldown",
-          "200"
+          "1000"
         ],
         "myActionType": "BUTTON"
       }

@@ -3,6 +3,7 @@ package engine.gameRepresentation.evaluatables.actions;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.evaluators.Addition;
 import engine.gameRepresentation.evaluatables.evaluators.AdditionAssignment;
 import engine.gameRepresentation.evaluatables.evaluators.And;
 import engine.gameRepresentation.evaluatables.evaluators.EqualsAssignment;
@@ -25,7 +26,7 @@ import engine.stateManaging.GameElementManager;
 
 
 /**
- * An action that decrements a value on the other object's values and incriments the value on the
+ * An action that decrements a value on the other object's values and increments the value on the
  * other object's parameters. The string for this action is:
  * If other element is of type #, # its # by my # attribute to a minimum of # and # that amount to
  * my # with a cooldown timer named # with a value of # frames.
@@ -33,11 +34,11 @@ import engine.stateManaging.GameElementManager;
  * @author Zach
  *
  */
-public class DecrimentIncrimentAttributeAction extends Action {
+public class DecrementIncrementAttributeAction extends Action {
     private String myTimer;
     private long myTimerAmount;
 
-    public DecrimentIncrimentAttributeAction (String id,
+    public DecrementIncrementAttributeAction (String id,
                                               EvaluatorFactory factory,
                                               GameElementManager elementManager,
                                               ParticipantManager participantManager,
@@ -66,14 +67,16 @@ public class DecrimentIncrimentAttributeAction extends Action {
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> difference =
                 new Subtraction<>("", otherObjectAttribute, myAmountAttribute);
-        // If the difference is less than min, subtract this negative attribute from my attribute
+        // If the difference is less than min, subtract the difference of this negative attribute
+        // from my attribute
         Evaluatable<?> minValue = new NumberParameter("", Double.valueOf(args[3]));
+        Evaluator<?, ?, ?> differenceEvaluator = new Addition<>("", myAmountAttribute, difference);
         Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>("", difference, minValue);
         Evaluatable<?> myAttributeToSet =
                 new NumericAttributeParameter("", args[4], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> setAttributeIfNegative =
-                new SubtractionAssignment<>("", myAttributeToSet, difference);
+                new SubtractionAssignment<>("", myAttributeToSet, differenceEvaluator);
         Evaluator<?, ?, ?> ifDiffLessThan0SetAttr =
                 new IfThen<>("", differenceLessThan0, setAttributeIfNegative);
         // If the difference is greater than or equal to 0, add my subtraction attribute to my
@@ -106,9 +109,8 @@ public class DecrimentIncrimentAttributeAction extends Action {
         Evaluator<?, ?, ?> ifTypeAssignment =
                 new IfThen<>("", typeCheckEvaluator, parameterSubtracting);
         myTimer = args[5];
-        System.out.println(myTimer);
         myTimerAmount = Long.valueOf(args[6]);
-        return parameterSubtracting;
+        return ifTypeAssignment;
     }
 
     @Override
