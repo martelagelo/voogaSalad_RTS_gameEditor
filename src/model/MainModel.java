@@ -94,11 +94,14 @@ public class MainModel extends Observable {
     private void loadSpritesAndMasks () {
         Set<DrawableGameElementState> drawableStates = myGameState.getGameUniverse()
                 .getDrawableGameElementStates();
-        drawableStates.addAll(myGameState.getGameUniverse()
-                .getSelectableGameElementStates());
-                
+        Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
+                .getSelectableGameElementStates();
+        
         Set<AnimatorState> animatorStates = new HashSet<>();
         for (DrawableGameElementState dges : drawableStates) {
+            animatorStates.add(dges.myAnimatorState);
+        }
+        for (SelectableGameElementState dges : selectableStates) {
             animatorStates.add(dges.myAnimatorState);
         }
         try {
