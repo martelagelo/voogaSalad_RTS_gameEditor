@@ -58,4 +58,8 @@ public abstract class Participant {
         return myTeamColor.equals(otherTeamColor);
     }
 
+    public String getTeamColor () {
+        return myTeamColor;
+    }
+
 }

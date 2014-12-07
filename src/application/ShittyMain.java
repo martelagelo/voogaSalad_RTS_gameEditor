@@ -1,8 +1,6 @@
 package application;
 
 import java.awt.Toolkit;
-import java.util.List;
-import java.util.Map;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -83,8 +81,10 @@ public class ShittyMain extends Application {
                                                  ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH.getValue(),StateTags.ATTACK.getValue(),"MAX_HEALTH","50","Random Timer"));
 
         SelectableGameElementState archerState3 =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
+
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 2);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");
+
         // Make the third archer spawn archers on collision 
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), 500);

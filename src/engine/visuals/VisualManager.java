@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 import javafx.scene.Group;
 import model.state.gameelement.StateTags;
+import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
-import engine.UI.RunnerInputManager;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.users.Participant;
 
@@ -135,7 +135,7 @@ public class VisualManager {
         return background;
     }
 
-    public void attachInputManager (RunnerInputManager inputManager) {
+    public void attachInputManager (InputManager inputManager) {
         scene.attachInputManager(inputManager);
         myAbilityMatrix.attachInputManager(inputManager);
 

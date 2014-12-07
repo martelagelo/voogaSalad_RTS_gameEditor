@@ -11,9 +11,9 @@
 		<AnchorPane>
 			<children>
 				<VBox>
-					<ComboBox fx:id="key" editable="true" promptText="Attribute Name" />
+					<ComboBox fx:id="key" editable="true" />
 					<TextField fx:id="value" />
-					<Button fx:id="save" defaultButton="true" text="save" />
+					<Button fx:id="save" defaultButton="true" />
 					<Text fx:id="errorMessage" />
 				</VBox>
 			</children>

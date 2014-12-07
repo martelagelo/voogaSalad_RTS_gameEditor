@@ -1,7 +1,6 @@
 package view.editor;
 
 import java.awt.Dimension;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -39,8 +38,8 @@ import view.gui.GUIPanePath;
  */
 public class ElementAccordionController extends GUIContainer {
 
-    private static final String UNIT_KEY = "Unit";
-    private static final String TERRAIN_KEY = "Terrain";
+    private static final String DRAWABLE_KEY = "Drawable";
+    private static final String SELECTABLE_KEY = "Selectable";
 
     @FXML
     private Accordion elementAccordion;
@@ -71,16 +70,7 @@ public class ElementAccordionController extends GUIContainer {
                 }
             });
         });
-        try {
-            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(TERRAIN_KEY));
-            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
-                    .getStringProperty(UNIT_KEY));
-        }
-        catch (LanguagePropertyNotFoundException e) {
-            // Should never happen
-            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
-        }
+        attachStringProperties();
         terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
         unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
@@ -103,6 +93,33 @@ public class ElementAccordionController extends GUIContainer {
         unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(elementAccordion.getPanes().size() - 1));
+        terrainTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
+        unitTitledPaneController.setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
+    }
+
+    private void editorChooseDrawableElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorDrawableChosen(selection);
+        }
+    }
+    
+    private void editorChooseSelectableElement (String selection) {
+        if (selection != null && !selection.isEmpty()) {
+            myMainModel.setEditorSelectableChosen(selection);
+        }
+    }
+    
+    private void attachStringProperties () {
+        try {
+            terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(DRAWABLE_KEY));
+            unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
+                    .getStringProperty(SELECTABLE_KEY));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            // Should never happen
+            DialogBoxUtility.createMessageDialog(e.toString());
+        }
     }
 
     private Consumer<String> addTerrainToLevel () {

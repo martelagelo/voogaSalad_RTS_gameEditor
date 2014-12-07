@@ -2,9 +2,7 @@ package engine.stateManaging;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.Location;
@@ -15,7 +13,6 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.users.Participant;
-
 
 /**
  * A manager for selecting, deselecting, and interacting with game elements
@@ -29,8 +26,9 @@ public class GameElementManager {
     private GameElementFactory myFactory;
     private PathingComputer pathingComputer;
 
-    public GameElementManager (GameElementFactory factory) {
+    private DrawableGameElement selectedElement;
 
+    public GameElementManager (GameElementFactory factory) {
         myFactory = factory;
     }
 
@@ -77,6 +75,40 @@ public class GameElementManager {
                 .createSelectableGameElement(typeName, x, y, color);
         myLevel.addElement(newElement);
         return newElement;
+    }
+
+    public void selectAnySingleUnit (Point2D clickLoc, Participant u) {
+        selectedElement = null;
+        deselectAllElements();
+        List<DrawableGameElement> units = myLevel.getUnits().stream().map((unit)->{
+            return (DrawableGameElement) unit;
+        }).collect(Collectors.toList());
+        selectUnit(units, clickLoc);
+        selectUnit(myLevel.getTerrain(), clickLoc);
+    }
+
+    private void selectUnit (List<DrawableGameElement> elements, Point2D clickLoc) {
+        for (DrawableGameElement e : elements) {
+            double[] cornerBounds = e.findGlobalBounds();
+            if (new Polygon(cornerBounds).contains(clickLoc)) {
+                selectedElement = e;
+                return;
+            }
+        }
+    }
+
+    private void deselectAllElements() {
+        myLevel.getUnits().forEach((unit)->unit.deselect());
+    }
+    
+    public void moveSelectedUnit (Point2D mapPoint2d, Participant user) {
+        if (selectedElement == null) return;
+        selectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
+    }
+    
+    public void deleteSelectedUnit() {
+        if (selectedElement == null) return;
+        myLevel.removeElement(selectedElement);
     }
 
     /**
@@ -170,7 +202,8 @@ public class GameElementManager {
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(unit -> unit.setFocusedElement(e));
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
+                .forEach(unit -> unit.setFocusedElement(e));
 
     }
 

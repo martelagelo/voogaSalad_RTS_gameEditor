@@ -1,5 +1,9 @@
 package engine.UI;
 
+import model.MainModel;
+import engine.stateManaging.GameElementManager;
+import engine.stateManaging.GameLoop;
+import engine.users.Participant;
 import engine.visuals.SelectionBox;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -11,7 +15,22 @@ import javafx.scene.input.MouseEvent;
  * @author John Lorenz, Jonathan Tseng
  *
  */
-public interface InputManager {
+public abstract class InputManager {
+
+    protected MainModel myMainModel;
+    protected GameElementManager myElementManager;
+    protected GameLoop myGameLoop;
+    protected Participant myUser;
+
+    public InputManager (MainModel model,
+                         GameElementManager gameElementManager,
+                         GameLoop gameLoop,
+                         Participant user) {
+        myMainModel = model;
+        myElementManager = gameElementManager;
+        myGameLoop = gameLoop;
+        myUser = user;
+    }
 
     public abstract void primaryClickOccurred (MouseEvent e,
                                                double mapTranslateX,
@@ -35,7 +54,7 @@ public interface InputManager {
 
     public abstract void primaryDragOccurred (MouseEvent e, SelectionBox b);
 
-    //Michael D. - I don't know if this will ever be used
+    // Michael D. - I don't know if this will ever be used
     public abstract void secondaryDragOccurred (MouseEvent e, SelectionBox b);
 
     public abstract void keyPressed (KeyEvent e);
