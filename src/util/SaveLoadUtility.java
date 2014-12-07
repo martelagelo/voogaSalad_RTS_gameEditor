@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 import util.exceptions.JSONLoadException;
 import util.exceptions.JSONSaveException;
 import util.exceptions.LoadImageException;
+import util.exceptions.SaveFileException;
 import util.exceptions.SaveImageException;
 import util.exceptions.SaveLoadException;
 
@@ -105,7 +106,7 @@ public class SaveLoadUtility {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                throw new SaveLoadException("Unable to save at specified location", e);
+                throw new SaveFileException(e, filePath);
             }
         }
         return file;

@@ -6,7 +6,7 @@ package util.exceptions;
  *
  */
 public class SaveLoadException extends Exception {
-    private String myMessage;
+    private static String myMessage;
     private Exception myException;
 
     /**
@@ -18,6 +18,11 @@ public class SaveLoadException extends Exception {
         this("", exception);
     }
 
+    public SaveLoadException (Exception exception, Object... args) {
+        super(String.format(myMessage, args), exception);
+    }
+
+    
     public SaveLoadException (String message) {
         this(message, new Exception());
     }
