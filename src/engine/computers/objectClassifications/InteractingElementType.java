@@ -12,31 +12,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  *
  */
 public enum InteractingElementType {
-    COLLIDING("Colliding"),
-    VISIBLE("Visible");
+    COLLIDING,
+    VISIBLE;
 
-    private String myString;
-
-    /**
-     * Create an element type enumeration
-     * 
-     * @param stringRepresentation the key for the element type in the map.
-     */
-    private InteractingElementType (String stringRepresentation) {
-        myString = stringRepresentation;
-    }
-
-    @Override
-    public String toString () {
-        return myString;
-    }
-    
-    public static InteractingElementType getEnumFromValue (String value) {
-        List<InteractingElementType> matchingEnums =  Arrays.asList(InteractingElementType.values()).stream()
-                .filter(type -> type.toString().equals(value))
-                .collect(Collectors.toList());
-        // TODO: make null enum to return
-        return matchingEnums.size()==0 ? InteractingElementType.COLLIDING : matchingEnums.get(0);
-    }
-    
 }

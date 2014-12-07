@@ -20,6 +20,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -51,7 +52,9 @@ public class ShittyMain extends Application {
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
-        archerState.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500));
+        archerState
+                .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        StateTags.HEALTH, 0, 500));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,
@@ -61,7 +64,7 @@ public class ShittyMain extends Application {
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
 
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             500));
         archerState.addType("archerman");
@@ -71,8 +74,9 @@ public class ShittyMain extends Application {
         archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+
         archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
-        archerState2.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             1000));
         archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -81,7 +85,7 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState3 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
-        // Make the third archer spawn archers on collision
+        // Make the third archer spawn archers on collision 
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
 
@@ -92,7 +96,7 @@ public class ShittyMain extends Application {
 
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
-        archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             500));
 
