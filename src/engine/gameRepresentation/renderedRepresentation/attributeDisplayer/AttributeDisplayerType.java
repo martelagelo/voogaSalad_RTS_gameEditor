@@ -8,6 +8,7 @@ package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
  */
 public enum AttributeDisplayerType {
     AttributeBarDisplayer,
+    AttributeArrowDisplayer,
     HEALTH_BAR;
     
 }
