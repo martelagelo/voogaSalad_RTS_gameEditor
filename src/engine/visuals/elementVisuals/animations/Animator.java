@@ -62,7 +62,7 @@ public class Animator implements Updatable {
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
         // mySprite = new ImageView(spritesheet);
-        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
+        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR.getValue());
         mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         mySpriteDisplay = new Group();
         mySpriteDisplay.getChildren().add(mySpriteTeamOverlay);
@@ -113,9 +113,9 @@ public class Animator implements Updatable {
     }
 
     private void determineAnimationDirection () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY)
+        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
                 .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY)
+        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
                 .doubleValue();
 
         if (xVelocity != 0.0 || yVelocity != 0.0) {
@@ -131,12 +131,12 @@ public class Animator implements Updatable {
 
     // TODO is there a better way? make this dynamic? add an Evaluatatble?
     private AnimationTag determineAnimationType () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY)
+        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
                 .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY)
+        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
                 .doubleValue();
         double velocity = Math.sqrt(Math.pow(xVelocity, 2) + Math.pow(yVelocity, 2));
-        String currentAction = attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION);
+        String currentAction = attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION.getValue());
         boolean isAttacking = currentAction.equalsIgnoreCase("ATTACKING");
         boolean isDying = currentAction.equalsIgnoreCase("DYING");
         boolean isDecaying = currentAction.equalsIgnoreCase("DECAYING");

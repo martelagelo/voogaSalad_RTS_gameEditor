@@ -57,8 +57,8 @@ public class Visualizer implements Updatable, Displayable {
     }
     
     public void initializeDisplay () {
-    	double xPosition = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-    	double yPosition = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+    	double xPosition = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
+    	double yPosition = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
         getNode().setLayoutX(xPosition);
         getNode().setLayoutY(yPosition);
         getNode().setTranslateX(-myAnimator.getViewportSize().getWidth() / 2);
@@ -68,9 +68,9 @@ public class Visualizer implements Updatable, Displayable {
     }
 
     private void updateNodeLocation() {
-    	double xPos = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
+    	double xPos = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
     	visualRepresentation.setLayoutX(xPos);
-    	double yPos = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+    	double yPos = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
     	visualRepresentation.setLayoutY(yPos);
 	}
 

@@ -22,7 +22,7 @@ public abstract class Participant {
     	myTeamColor = teamColor;
         myName = name;
         attributes = new AttributeContainer();
-        attributes.setTextualAttribute(StateTags.TEAM_COLOR, teamColor);
+        attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
     }
 
     /**

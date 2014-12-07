@@ -88,10 +88,10 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		wayPoints.addAll(waypointsToAdd);
 		Location newGoal = wayPoints.poll();
 		// TODO make this into a method
-		setNumericalAttribute(StateTags.X_GOAL_POSITION, newGoal.myX);
-		setNumericalAttribute(StateTags.Y_GOAL_POSITION, newGoal.myY);
-		setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, newGoal.myX);
-		setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, newGoal.myY);
+		setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), newGoal.myX);
+		setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), newGoal.myY);
+		setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), newGoal.myX);
+		setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), newGoal.myY);
 
 	}
 
@@ -101,9 +101,9 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	}
 
 	public Location getNextWaypoint() {
-		double currentX = getNumericalAttribute(StateTags.X_POSITION)
+		double currentX = getNumericalAttribute(StateTags.X_POSITION.getValue())
 				.doubleValue();
-		double currentY = getNumericalAttribute(StateTags.Y_POSITION)
+		double currentY = getNumericalAttribute(StateTags.Y_POSITION.getValue())
 				.doubleValue();
 		Location current = new Location(currentX, currentY);
 		return wayPoints.size() == 0 ? current : wayPoints.poll();
@@ -111,13 +111,13 @@ public class DrawableGameElement extends GameElement implements Displayable,
 
 	public List<Line> getLines() {
 		List<Line> lines = new ArrayList<Line>();
-		if (getNumericalAttribute(StateTags.IS_SELECTED).intValue() == 1) {
+		if (getNumericalAttribute(StateTags.IS_SELECTED.getValue()).intValue() == 1) {
 			Queue<Location> copyWayPoints = new LinkedList<Location>();
-			Line line = new Line(getNumericalAttribute(StateTags.X_POSITION)
-					.doubleValue(), getNumericalAttribute(StateTags.Y_POSITION)
+			Line line = new Line(getNumericalAttribute(StateTags.X_POSITION.getValue())
+					.doubleValue(), getNumericalAttribute(StateTags.Y_POSITION.getValue())
 					.doubleValue(), getNumericalAttribute(
-					StateTags.X_GOAL_POSITION).doubleValue(),
-					getNumericalAttribute(StateTags.Y_GOAL_POSITION)
+					StateTags.X_GOAL_POSITION.getValue()).doubleValue(),
+					getNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue())
 							.doubleValue());
 
 			line.getStrokeDashArray().addAll(25d, 10d);
@@ -125,8 +125,8 @@ public class DrawableGameElement extends GameElement implements Displayable,
 			lines.add(line);
 			if (wayPoints.peek() != null) {
 				Line line2 = new Line(getNumericalAttribute(
-						StateTags.X_GOAL_POSITION).doubleValue(),
-						getNumericalAttribute(StateTags.Y_GOAL_POSITION).doubleValue(), wayPoints.peek().myX, wayPoints.peek().myY);
+						StateTags.X_GOAL_POSITION.getValue()).doubleValue(),
+						getNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue()).doubleValue(), wayPoints.peek().myX, wayPoints.peek().myY);
 				line2.getStrokeDashArray().addAll(25d, 10d);
 				line2.setStroke(Color.BLACK);
 				lines.add(line2);

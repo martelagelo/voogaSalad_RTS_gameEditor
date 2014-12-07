@@ -113,7 +113,7 @@ public class GameElementManager {
     }
 
     private boolean checkOnTeam (SelectableGameElement e, Participant u) {
-        return u.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR));
+        return u.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
     }
 
     public void selectSingleUnit (Point2D clickLoc, boolean multiSelect, Participant u) {
@@ -157,8 +157,8 @@ public class GameElementManager {
             	e.addWaypoint(click.getX(), click.getY());
             }
             else {
-                double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
-                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION).doubleValue();
+                double currentX = e.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
+                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
                 Location from = new Location(currentX, currentY);
                 Location to = new Location(click.getX(), click.getY());
                 List<Location> waypoints = pathingComputer.findPath(from, to);
@@ -182,7 +182,7 @@ public class GameElementManager {
     private List<SelectableGameElement> filterSelectedUnits (List<SelectableGameElement> list) {
         return list
                 .stream()
-                .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED).doubleValue() == 1)
+                .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED.getValue()).doubleValue() == 1)
                 .collect(Collectors.toList());
     }
 
@@ -190,13 +190,13 @@ public class GameElementManager {
                                                               Participant p) {
         return list
                 .stream()
-                .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR)
+                .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue())
                 		)).collect(Collectors.toList());
     }
 
     public void notifyButtonClicked (int buttonID, Participant u) {
         for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
-            e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID, buttonID);
+            e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID.getValue(), buttonID);
             e.executeAllButtonActions();
         }
     }

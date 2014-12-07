@@ -35,8 +35,11 @@ public class AttributeDisplayerFactory {
 		try {
 		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
 					+ attributeDisplayerState.displayerTag);
+		    //System.out.print(attributeDisplayerState.displayerTag);
+		    System.out.print("llololol");
 		} catch (ClassNotFoundException e) {
 			// fail silently
+		    e.printStackTrace();
 		}
 		if (attributeDisplayerState.myTextValue != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
@@ -63,6 +66,7 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
+		    e.printStackTrace();
 		}
 		return displayer;
 	}
@@ -81,6 +85,7 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
+		    e.printStackTrace();
 		}
 		return displayer;
 	}

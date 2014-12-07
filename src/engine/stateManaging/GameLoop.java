@@ -88,7 +88,7 @@ public class GameLoop extends Observable{
         List<SelectableGameElement> elementsToRemove = new ArrayList<>();
         while (iter.hasNext()) {
             SelectableGameElement selectableElement = iter.next();
-            if (selectableElement.getNumericalAttribute(StateTags.IS_DEAD).doubleValue() == 1) {
+            if (selectableElement.getNumericalAttribute(StateTags.IS_DEAD.getValue()).doubleValue() == 1) {
                 elementsToRemove.add(selectableElement);
             }
         }
@@ -114,7 +114,7 @@ public class GameLoop extends Observable{
         myParticipantManager.update(myCurrentLevel.getUnits());
 
         // TODO: for testing, remove
-        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES, 0.5);
+        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES.getValue(), 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
         if(levelEndState!=0){
