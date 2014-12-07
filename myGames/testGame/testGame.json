@@ -1168,6 +1168,37 @@
                       "HealingCooldown"
                     ],
                     "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "levelUpCost",
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "levelUpButtonID",
+                      "me",
+                      "maxHealth",
+                      "AdditionAssignment",
+                      "levelUpHealthIncrease",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "levelUpAttackIncrease",
+                      "Equals",
+                      "a",
+                      "",
+                      "SubtractionAssignment",
+                      "levelUpCost",
+                      "my",
+                      "resources",
+                      "b",
+                      ""
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ],
                 "FOCUSED": [
@@ -1286,73 +1317,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "healCost",
-                      "me",
-                      "lastButtonID",
-                      "Equals",
-                      "active",
-                      "me",
-                      "health",
-                      "AdditionAssignment",
-                      "healAmount",
-                      "me",
-                      "blah",
-                      "Equals",
-                      "active",
-                      "Equals",
-                      "a",
-                      "zero",
-                      "SubtractionAssignment",
-                      "healCost",
-                      "my",
-                      "resources",
-                      "1",
-                      "HealingCooldown"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "levelUpCost",
-                      "me",
-                      "lastButtonID",
-                      "Equals",
-                      "levelUpButtonID",
-                      "me",
-                      "maxHealth",
-                      "AdditionAssignment",
-                      "levelUpHealthIncrease",
-                      "me",
-                      "attack",
-                      "AdditionAssignment",
-                      "levelUpAttackIncrease",
-                      "Equals",
-                      "a",
-                      "",
-                      "SubtractionAssignment",
-                      "levelUpCost",
-                      "my",
-                      "resources",
-                      "b",
-                      ""
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-=======
->>>>>>> 58850e0e158b81cb04e41b9dde06cde780051e6b
                 ]
               },
               "attributes": {
@@ -1362,7 +1326,7 @@
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 250,
+                    "myData": 100,
                     "myName": "levelUpCost"
                   },
                   {
@@ -1406,7 +1370,7 @@
                     "myName": "yTempGoalPosition"
                   },
                   {
-                    "myData": 100,
+                    "myData": 50,
                     "myName": "healCost"
                   },
                   {
@@ -2256,7 +2220,7 @@
         "myName": "movementSpeed"
       },
       {
-        "myData": 250,
+        "myData": 100,
         "myName": "levelUpCost"
       },
       {
@@ -2292,7 +2256,7 @@
         "myName": "yTempGoalPosition"
       },
       {
-        "myData": 100,
+        "myData": 50,
         "myName": "healCost"
       },
       {
@@ -3499,6 +3463,37 @@
                 "HealingCooldown"
               ],
               "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myParameters": [
+                "my",
+                "resources",
+                "GreaterThanEqual",
+                "levelUpCost",
+                "me",
+                "lastButtonID",
+                "Equals",
+                "levelUpButtonID",
+                "me",
+                "maxHealth",
+                "AdditionAssignment",
+                "levelUpHealthIncrease",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "levelUpAttackIncrease",
+                "Equals",
+                "a",
+                "",
+                "SubtractionAssignment",
+                "levelUpCost",
+                "my",
+                "resources",
+                "b",
+                ""
+              ],
+              "myActionType": "BUTTON"
             }
           ],
           "FOCUSED": [
@@ -3617,73 +3612,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "resources",
-                "GreaterThanEqual",
-                "healCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "active",
-                "me",
-                "health",
-                "AdditionAssignment",
-                "healAmount",
-                "me",
-                "blah",
-                "Equals",
-                "active",
-                "Equals",
-                "a",
-                "zero",
-                "SubtractionAssignment",
-                "healCost",
-                "my",
-                "resources",
-                "1",
-                "HealingCooldown"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "resources",
-                "GreaterThanEqual",
-                "levelUpCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "levelUpButtonID",
-                "me",
-                "maxHealth",
-                "AdditionAssignment",
-                "levelUpHealthIncrease",
-                "me",
-                "attack",
-                "AdditionAssignment",
-                "levelUpAttackIncrease",
-                "Equals",
-                "a",
-                "",
-                "SubtractionAssignment",
-                "levelUpCost",
-                "my",
-                "resources",
-                "b",
-                ""
-              ],
-              "myActionType": "BUTTON"
-            }
-=======
->>>>>>> 58850e0e158b81cb04e41b9dde06cde780051e6b
           ]
         },
         "attributes": {
@@ -3693,7 +3621,7 @@
               "myName": "xPosition"
             },
             {
-              "myData": 250,
+              "myData": 100,
               "myName": "levelUpCost"
             },
             {
@@ -3737,7 +3665,7 @@
               "myName": "yTempGoalPosition"
             },
             {
-              "myData": 100,
+              "myData": 50,
               "myName": "healCost"
             },
             {
