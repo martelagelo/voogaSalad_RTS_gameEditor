@@ -24,8 +24,8 @@ import view.dialog.DialogBoxUtility;
 public class BoundsWizard extends Wizard {
 
     private static final String ADD_POINT_KEY = "AddPoint";
-    private static final String X_COR_KEY="XCoordinate";
-    private static final String Y_COR_KEY="YCoordinate";
+    private static final String X_COR_KEY = "XCoordinate";
+    private static final String Y_COR_KEY = "YCoordinate";
     
     @FXML
     private VBox allPoints;
@@ -106,6 +106,7 @@ public class BoundsWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         String bounds = oldValues.getValueByKey(WizardDataType.BOUND_VALUES);
         String[] points = bounds.split(",");
+        // TODO: FIX THIS, this doesn't work and don't add any points 
         for (int i = 0; i < points.length; i += 2) {
             addXYPair(points[i], points[i + 1]);
         }

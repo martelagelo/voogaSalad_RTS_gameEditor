@@ -1,0 +1,162 @@
+{
+  "AttributeDisplayerStates": [],
+  "myBounds": [
+    0.0,
+    0.0,
+    40.0,
+    0.0,
+    40.0,
+    40.0,
+    0.0,
+    40.0
+  ],
+  "myActions": {
+    "Button": [
+      {
+        "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+        "myParameters": [
+          "lastButtonID",
+          "Equals",
+          "1",
+          "archer",
+          "ArcherSpawnCooldown",
+          "200"
+        ],
+        "myActionType": "BUTTON"
+      }
+    ],
+    "Collision": [
+      {
+        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myParameters": [
+          "NotCollision",
+          "RandomWaypoint"
+        ],
+        "myActionType": "COLLISION"
+      },
+      {
+        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myParameters": [
+          "Collision",
+          "Attack"
+        ],
+        "myActionType": "COLLISION"
+      },
+      {
+        "myActionName": "OBJECT_CONDITION_ACTION",
+        "myParameters": [
+          "Collision",
+          "MoveBack"
+        ],
+        "myActionType": "COLLISION"
+      }
+    ],
+    "Internal": [
+      {
+        "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+        "myParameters": [
+          "health",
+          "LessThanEqual",
+          "0",
+          "IsDead",
+          "EqualsAssignment",
+          "1"
+        ],
+        "myActionType": "INTERNAL"
+      },
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "UpdateMovementDirection"
+        ],
+        "myActionType": "INTERNAL"
+      },
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "MovePlayer"
+        ],
+        "myActionType": "INTERNAL"
+      },
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "HeadingUpdate"
+        ],
+        "myActionType": "INTERNAL"
+      }
+    ],
+    "Focused Element": [
+      {
+        "myActionName": "ACT_ON_OBJECTS_ACTION",
+        "myParameters": [
+          "Follow"
+        ],
+        "myActionType": "FOCUSED"
+      }
+    ]
+  },
+  "attributes": {
+    "myNumericalAttributes": [
+      {
+        "myData": 400.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 50,
+        "myName": "ReloadTime"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 400.0,
+        "myName": "xHeading"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yHeading"
+      },
+      {
+        "myData": 400.0,
+        "myName": "xTempPosition"
+      },
+      {
+        "myData": 500,
+        "myName": "health"
+      },
+      {
+        "myData": 2,
+        "myName": "movementSpeed"
+      },
+      {
+        "myData": 100,
+        "myName": "XSpawnOffset"
+      },
+      {
+        "myData": 300.0,
+        "myName": "yTempGoalPosition"
+      },
+      {
+        "myData": 75,
+        "myName": "attack"
+      },
+      {
+        "myData": 1,
+        "myName": "teamID"
+      },
+      {
+        "myData": 100,
+        "myName": "YSpawnOffset"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "STANDING",
+        "myName": "currentAction"
+      }
+    ]
+  },
+  "myTypes": []
+}

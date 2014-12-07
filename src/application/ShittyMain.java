@@ -136,7 +136,7 @@ public class ShittyMain extends Application {
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "20000", "Won",
+                                        "Resources", "GreaterThanEqual", "100", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }

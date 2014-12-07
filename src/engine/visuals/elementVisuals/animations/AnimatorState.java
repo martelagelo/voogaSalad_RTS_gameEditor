@@ -1,11 +1,11 @@
 package engine.visuals.elementVisuals.animations;
 
-import engine.visuals.Dimension;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import util.JSONable;
+import engine.visuals.Dimension;
 
 /**
  * A data wrapper object used to group the pertinent information for a
@@ -23,6 +23,7 @@ public class AnimatorState implements JSONable, Serializable {
      */
     private static final long serialVersionUID = 1609072629703433749L;
     private String imageTag;
+    private String colorMaskTag;
     private Dimension viewportSize;
     private int numRows;
     private Set<AnimationSequence> animationSequences;
@@ -38,8 +39,9 @@ public class AnimatorState implements JSONable, Serializable {
      * @param numRows
      *            the number of columns across in the spritesheet
      */
-    public AnimatorState (String imageTag, Dimension frameDimensions, int numRows,
+    public AnimatorState (String imageTag, String colorMaskTag, Dimension frameDimensions, int numRows,
             Set<AnimationSequence> animationSequenceList) {
+        this.colorMaskTag = colorMaskTag;
         this.imageTag = imageTag;
         this.viewportSize = frameDimensions;
         this.numRows = numRows;
