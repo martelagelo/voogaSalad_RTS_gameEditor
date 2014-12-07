@@ -31,11 +31,11 @@ public class SelectableGameElement extends DrawableGameElement {
     // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
 
-    public SelectableGameElement (DrawableGameElementState element,
+    public SelectableGameElement (SelectableGameElementState element,
                                   Visualizer visualizer) {
         super(element, visualizer);
+        selectableState = element;
         initializeInteractingElementLists();
-
     }
 
     public void setFocusedElement (SelectableGameElement element) {
@@ -57,7 +57,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public String getType () {
-        return getTextualAttribute(StateTags.TYPE);
+        return getTextualAttribute(StateTags.TYPE.getValue());
     }
 
     public void addInteractingElement (InteractingElementType elementType,
@@ -79,11 +79,11 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void select () {
-        setNumericalAttribute(StateTags.IS_SELECTED, 1);
+        setNumericalAttribute(StateTags.IS_SELECTED.getValue(), 1);
     }
 
     public void deselect () {
-        setNumericalAttribute(StateTags.IS_SELECTED, 0);
+        setNumericalAttribute(StateTags.IS_SELECTED.getValue(), 0);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class SelectableGameElement extends DrawableGameElement {
             updateSelfDueToFocusedElement();
         }
         super.update();
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
+        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR.getValue());
         // System.out.println("Updating selectable game element: " + teamColor);
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
@@ -148,7 +148,7 @@ public class SelectableGameElement extends DrawableGameElement {
     public Map<Integer, String> getAbilityDescriptionMap (int numAttributes) {
         Map<Integer, String> descriptionMap = new HashMap<>();
         for (int i = 1; i <= numAttributes; i++) {
-            String description = this.getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + i);
+            String description = this.getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + i);
             descriptionMap.put(i, description);
         }
 

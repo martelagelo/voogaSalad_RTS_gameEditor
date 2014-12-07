@@ -24,20 +24,20 @@ public class Bounce<A, B> extends Evaluator<A, B, Boolean> {
     protected Boolean evaluate (GameElement element1, GameElement element2) {
         Point2D element1Center = getCenter(element1);
         Point2D element2Center = getCenter(element2);
-        double speed = element1.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue();
+        double speed = element1.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue();
         double deltaY = element1Center.y - element2Center.y;
         double deltaX = element1Center.x - element2Center.x;
         double angle = Math.atan2(deltaY, deltaX);
-        element1.setNumericalAttribute(StateTags.X_VELOCITY, Math.round(speed * Math.cos(angle)));
-        element1.setNumericalAttribute(StateTags.Y_VELOCITY, Math.round(speed * Math.sin(angle)));
+        element1.setNumericalAttribute(StateTags.X_VELOCITY.getValue(), Math.round(speed * Math.cos(angle)));
+        element1.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), Math.round(speed * Math.sin(angle)));
         return true;
 
     }
 
     private Point2D getCenter (GameElement element) {
         Point2D center = new Point2D();
-        center.setLocation(element.getNumericalAttribute(StateTags.X_POSITION).floatValue(),
-                           element.getNumericalAttribute(StateTags.Y_POSITION).floatValue());
+        center.setLocation(element.getNumericalAttribute(StateTags.X_POSITION.getValue()).floatValue(),
+                           element.getNumericalAttribute(StateTags.Y_POSITION.getValue()).floatValue());
         return center;
     }
 

@@ -151,7 +151,7 @@ public class GameElement {
      * Update the element based on its internal state
      */
     public void update () {
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR);
+        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR.getValue());
         // System.out.println("Updating game element: " + teamColor);
         updateTimers();
         updateSelfDueToInternalFactors();
@@ -248,11 +248,11 @@ public class GameElement {
     }
 
     public void setPosition (double x, double y) {
-        setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
-        setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
-        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
-        setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
-        setNumericalAttribute(StateTags.X_POSITION, x);
-        setNumericalAttribute(StateTags.Y_POSITION, y);
+        setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
     }
 }

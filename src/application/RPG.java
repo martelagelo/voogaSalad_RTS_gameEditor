@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import model.MainModel;
 import model.state.CampaignState;
 import model.state.GameState;
+import model.state.LevelIdentifier;
 import model.state.LevelState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -18,7 +19,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -50,11 +51,11 @@ public class RPG extends Application {
         double[] normalBounds = new double[] { 0, 0, 100, 0, 100, 100, 0, 100 };
         SelectableGameElementState hero =
                 createMovingUnit(normalBounds, 2000, 10000, 30, 20, 20, 10, 1, uri);
-        hero.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
+        hero.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
         hero
                 .addAttributeDisplayerState(new AttributeDisplayerState(
-                                                                        AttributeDisplayerType.AttributeBarDisplayer,
-                                                                        StateTags.HEALTH, 0, 1000));
+                                                                        AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                        StateTags.HEALTH.getValue(), 0, 1000));
         hero
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
@@ -62,27 +63,27 @@ public class RPG extends Application {
                                              "toDie",
                                              "Equals",
                                              "1", "me",
-                                             StateTags.IS_DEAD, "EqualsAssignment", "1"));
+                                             StateTags.IS_DEAD.getValue(), "EqualsAssignment", "1"));
 
         // set up a healing ability
         hero.addAction(new ActionWrapper(ActionType.BUTTON, ActionOptions.MOTHER_OF_ALL_ACTIONS,
-                                         "my", StateTags.RESOURCES, "GreaterThanEqual", "healCost",
-                                         "me", StateTags.LAST_BUTTON_CLICKED_ID, "Equals",
-                                         "active", "me", StateTags.HEALTH, "AdditionAssignment",
+                                         "my", StateTags.RESOURCES.getValue(), "GreaterThanEqual", "healCost",
+                                         "me", StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals",
+                                         "active", "me", StateTags.HEALTH.getValue(), "AdditionAssignment",
                                          "healAmount", "me", "blah", "Equals", "active", "Equals",
                                          "a", "zero", "SubtractionAssignment", "healCost", "my",
-                                         StateTags.RESOURCES, "1", "HealingCooldown"));
+                                         StateTags.RESOURCES.getValue(), "1", "HealingCooldown"));
         hero.attributes.setNumericalAttribute("healCost", 150);
         hero.attributes.setNumericalAttribute("healAmount", 5000);
         hero.attributes.setNumericalAttribute("active", 1);
         hero.attributes.setNumericalAttribute("HealingCooldown", 1000);
         String defendURIString = "resources/img/graphics/buttons/commands/defend.png";
-        hero.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1, defendURIString);
+        hero.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + 1, defendURIString);
 
         // set the health to have a limiter
         hero.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.MOTHER_OF_ALL_ACTIONS,
-                                         "my", "", "Equals", "", "me", StateTags.HEALTH,
-                                         "GreaterThanEqual", "maxHealth", "me", StateTags.HEALTH,
+                                         "my", "", "Equals", "", "me", StateTags.HEALTH.getValue(),
+                                         "GreaterThanEqual", "maxHealth", "me", StateTags.HEALTH.getValue(),
                                          "EqualsAssignment", "maxHealth", "me", "", "Equals", "",
                                          "Equals", "a", "zero", "Equals", "df", "my", "w", "f", "w"));
 
@@ -91,12 +92,12 @@ public class RPG extends Application {
                 this.createEnemyUnit(normalBounds, 300, 100, 75, 600, 600, 2, 2, enemyUri);
         enemy
                 .addAttributeDisplayerState(new AttributeDisplayerState(
-                                                                        AttributeDisplayerType.AttributeBarDisplayer,
-                                                                        StateTags.HEALTH, 0, 300));
-        enemy.attributes.setTextualAttribute(StateTags.NAME, "Enemy");
-        enemy.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
+                                                                        AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+                                                                        StateTags.HEALTH.getValue(), 0, 300));
+        enemy.attributes.setTextualAttribute(StateTags.NAME.getValue(), "Enemy");
+        enemy.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");
 
-        LevelState levelState = new LevelState("testLevel");
+        LevelState levelState = new LevelState("testLevel", "testCampaign");
 
         SelectableGameElementState spawner1 = createSpawnPoint(1500, 1500, "GREEN");
         levelState.addUnit(spawner1);
@@ -104,8 +105,8 @@ public class RPG extends Application {
         levelState.addUnit(hero);
         levelState.addUnit(enemy);
 
-        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
-        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT, 2000);
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 2000);
+        levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 2000);
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
@@ -124,8 +125,9 @@ public class RPG extends Application {
         model.saveGame();
         MainModel model2 = new MainModel();
         model2.loadGame("testGame");
+        LevelIdentifier l = new LevelIdentifier("testLevel", "testCampaign");
         Engine engine =
-                new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
+                new Engine(model2, model2.getLevel(l));
 
         engine.setAnimationEnabled(false);
 
@@ -135,10 +137,10 @@ public class RPG extends Application {
     private SelectableGameElementState createSpawnPoint (double x, double y, String Color)
                                                                                           throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
-        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), 50);
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 0);
         archerState.addType("spawner");
         archerState.attributes.setNumericalAttribute("isSpawn", 1);
         archerState.attributes.setNumericalAttribute("unitCost", 0);
@@ -153,8 +155,8 @@ public class RPG extends Application {
                                                 "Enemy", "unitCost", "Resources",
                                                 "1", "500"));
 
-        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, -100);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, -100);
+        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), -100);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), -100);
 
         AnimatorState archerAnimations =
                 SaveLoadUtility
@@ -194,10 +196,10 @@ public class RPG extends Application {
 
         enemy.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.MOTHER_OF_ALL_ACTIONS,
                                           "my", "", "Equals", "", "me", "toDie", "Equals",
-                                          "active", "me", StateTags.IS_DEAD, "EqualsAssignment",
+                                          "active", "me", StateTags.IS_DEAD.getValue(), "EqualsAssignment",
                                           "active", "me", "asdf", "Equals", "active", "Equals",
                                           "a", "123", "AdditionAssignment", "myValue", "my",
-                                          StateTags.RESOURCES, "b", "zero"));
+                                          StateTags.RESOURCES.getValue(), "b", "zero"));
         enemy.attributes.setNumericalAttribute("active", 1);
         enemy.attributes.setNumericalAttribute("zero", 0);
         enemy.attributes.setNumericalAttribute("myValue", 200);
@@ -215,18 +217,18 @@ public class RPG extends Application {
                                                          int teamID,
                                                          String pictureURI) throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
-        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
-        archerState.attributes.setNumericalAttribute(StateTags.HEALTH, health);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        archerState.attributes.setNumericalAttribute(StateTags.HEALTH.getValue(), health);
         archerState.attributes.setNumericalAttribute("maxHealth", health);
-        archerState.attributes.setNumericalAttribute(StateTags.ATTACK, attack);
-        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, reloadTime);
-        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
-        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, movementSpeed);
+        archerState.attributes.setNumericalAttribute(StateTags.ATTACK.getValue(), attack);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), reloadTime);
+        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), movementSpeed);
         archerState.addType("archer");
         // Choose a random temporary waypoint if we collide with anything
         archerState.addAction(new ActionWrapper(ActionType.COLLISION,
@@ -246,7 +248,7 @@ public class RPG extends Application {
                 .addAction(new ActionWrapper(ActionType.INTERNAL,
                                              ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
                                              "me",
-                                             StateTags.HEALTH,
+                                             StateTags.HEALTH.getValue(),
                                              "LessThanEqual",
                                              "0", "me",
                                              "toDie", "EqualsAssignment", "1"));

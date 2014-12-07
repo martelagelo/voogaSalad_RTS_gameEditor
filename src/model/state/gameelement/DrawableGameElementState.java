@@ -57,8 +57,8 @@ public class DrawableGameElementState extends GameElementState implements
 
 		AttributeDisplayerStates = new ArrayList<AttributeDisplayerState>();
 
-		attributes.setNumericalAttribute(StateTags.X_POSITION, xPosition);
-		attributes.setNumericalAttribute(StateTags.Y_POSITION, yPosition);
+		attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xPosition);
+		attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yPosition);
 
 	}
 
@@ -120,10 +120,10 @@ public class DrawableGameElementState extends GameElementState implements
 		double height = newBounds[5] - newBounds[3];
 		for (int i = 0; i < newBounds.length; i += 2) {
 			newBounds[i] += attributes.getNumericalAttribute(
-					StateTags.X_POSITION).doubleValue()
+					StateTags.X_POSITION.getValue()).doubleValue()
 					- width / 2;
 			newBounds[i + 1] += attributes.getNumericalAttribute(
-					StateTags.Y_POSITION).doubleValue()
+					StateTags.Y_POSITION.getValue()).doubleValue()
 					- height / 2;
 		}
 		return newBounds;

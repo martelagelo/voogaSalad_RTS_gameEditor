@@ -21,8 +21,8 @@ public class FollowX<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     protected Boolean evaluate (GameElement elem1, GameElement elem2) {
-        elem1.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION,
-                                    elem2.getNumericalAttribute(StateTags.X_POSITION));
+        elem1.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(),
+                                    elem2.getNumericalAttribute(StateTags.X_POSITION.getValue()));
         return true;
     }
 

@@ -70,8 +70,8 @@ public abstract class AttributeDisplayer implements Updatable, Widget {
 	/**
 	 * Hide the displayable widget if the player is not selected
 	 */
-	private void toggleOpacity() {
-		if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED)
+	protected void toggleOpacity() {
+		if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED.getValue())
 				.intValue() == 1) {
 			myGroup.setVisible(true);
 		} else {

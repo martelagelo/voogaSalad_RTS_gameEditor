@@ -43,7 +43,6 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
         bar.setLayoutX(2);
         bar.setLayoutY(2);
         group.getChildren().add(bar);
-        group.setLayoutX(55);
         return group;
     }
 
