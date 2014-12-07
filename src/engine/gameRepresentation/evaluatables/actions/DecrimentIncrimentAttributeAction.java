@@ -67,9 +67,10 @@ public class DecrimentIncrimentAttributeAction extends Action {
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> difference =
                 new Subtraction<>("", otherObjectAttribute, myAmountAttribute);
-        // If the difference is less than min, subtract the difference of this negative attribute from my attribute
+        // If the difference is less than min, subtract the difference of this negative attribute
+        // from my attribute
         Evaluatable<?> minValue = new NumberParameter("", Double.valueOf(args[3]));
-        Evaluator<?,?,?> differenceEvaluator = new Addition<>("",myAmountAttribute,difference);
+        Evaluator<?, ?, ?> differenceEvaluator = new Addition<>("", myAmountAttribute, difference);
         Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>("", difference, minValue);
         Evaluatable<?> myAttributeToSet =
                 new NumericAttributeParameter("", args[4], elementManager,

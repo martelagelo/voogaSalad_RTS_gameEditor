@@ -556,8 +556,10 @@
                       "Equals",
                       "1",
                       "archer",
+                      "health",
+                      "Resources",
                       "ArcherSpawnCooldown",
-                      "200"
+                      "1000"
                     ],
                     "myActionType": "BUTTON"
                   }
@@ -1250,8 +1252,10 @@
                       "Equals",
                       "1",
                       "archer",
+                      "health",
+                      "Resources",
                       "ArcherSpawnCooldown",
-                      "200"
+                      "1000"
                     ],
                     "myActionType": "BUTTON"
                   }
@@ -1935,8 +1939,10 @@
                       "Equals",
                       "1",
                       "archer",
+                      "health",
+                      "Resources",
                       "ArcherSpawnCooldown",
-                      "200"
+                      "1000"
                     ],
                     "myActionType": "BUTTON"
                   }
@@ -1963,19 +1969,6 @@
                     "myParameters": [
                       "Collision",
                       "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "INCRIMENT_DECRIMENT_ACTION",
-                    "myParameters": [
-                      "archerman",
-                      "health",
-                      "attack",
-                      "50",
-                      "health",
-                      "LeechTimer",
-                      "100"
                     ],
                     "myActionType": "COLLISION"
                   }
@@ -2751,8 +2744,10 @@
                 "Equals",
                 "1",
                 "archer",
+                "health",
+                "Resources",
                 "ArcherSpawnCooldown",
-                "200"
+                "1000"
               ],
               "myActionType": "BUTTON"
             }
@@ -3445,8 +3440,10 @@
                 "Equals",
                 "1",
                 "archer",
+                "health",
+                "Resources",
                 "ArcherSpawnCooldown",
-                "200"
+                "1000"
               ],
               "myActionType": "BUTTON"
             }
@@ -4130,8 +4127,10 @@
                 "Equals",
                 "1",
                 "archer",
+                "health",
+                "Resources",
                 "ArcherSpawnCooldown",
-                "200"
+                "1000"
               ],
               "myActionType": "BUTTON"
             }
@@ -4815,8 +4814,10 @@
                 "Equals",
                 "1",
                 "archer",
+                "health",
+                "Resources",
                 "ArcherSpawnCooldown",
-                "200"
+                "1000"
               ],
               "myActionType": "BUTTON"
             }
@@ -4843,19 +4844,6 @@
               "myParameters": [
                 "Collision",
                 "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "INCRIMENT_DECRIMENT_ACTION",
-              "myParameters": [
-                "archerman",
-                "health",
-                "attack",
-                "50",
-                "health",
-                "LeechTimer",
-                "100"
               ],
               "myActionType": "COLLISION"
             }
