@@ -11,7 +11,7 @@
     -fx-color: #6BB8F6;
 }
 
-.grid, #splash, #editorRoot, #myTreeView, #menuBar, #leftPane  {
+.grid, #root, #splash, #editorRoot, #myTreeView, #menuBar, #leftPane  {
     -fx-background-color: #000000;
     -fx-background: #000000;
     -fx-color: #6BB8F6;

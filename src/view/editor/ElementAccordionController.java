@@ -102,11 +102,19 @@ public class ElementAccordionController extends GUIContainer {
                 .setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
     }
 
+<<<<<<< HEAD
     private void editorChooseDrawableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
             myMainModel.setEditorChosenDrawable(selection);
         }
     }
+=======
+    private void editorChooseDrawableElement(String selection) {
+		if (selection != null && !selection.isEmpty()) {
+			myMainModel.setEditorDrawableChosen(selection);
+		}
+	}
+>>>>>>> saving_loading
 
     private void editorChooseSelectableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
@@ -114,6 +122,7 @@ public class ElementAccordionController extends GUIContainer {
         }
     }
 
+<<<<<<< HEAD
     private void attachStringProperties () {
         try {
             terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance()
@@ -180,6 +189,57 @@ public class ElementAccordionController extends GUIContainer {
             }
         };
     }
+=======
+	private void attachStringProperties() {
+		try {
+			terrainTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance().getStringProperty(
+					DRAWABLE_KEY));
+			unitTitledPaneController.bindGameElement(MultiLanguageUtility.getInstance().getStringProperty(
+					SELECTABLE_KEY));
+		} catch (LanguagePropertyNotFoundException e) {
+			// Should never happen
+			DialogBoxUtility.createMessageDialog(e.toString());
+		}
+	}
+	
+	private Consumer<String> addTerrainToLevel() {
+		return (String elementName) -> {
+			if (myLevel != null) {
+				Wizard wiz = WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300, 300));
+				Consumer<WizardData> cons = (data) -> {
+					try {
+						myMainModel.addTerrainToLevel(myLevel, elementName,
+								Double.parseDouble(data.getValueByKey(WizardDataType.X_POSITION)),
+								Double.parseDouble(data.getValueByKey(WizardDataType.Y_POSITION)));
+						wiz.closeStage();
+					} catch (Exception e) {
+						wiz.displayErrorMessage(e.getMessage());
+					}
+				};
+				wiz.setSubmit(cons);
+			}
+		};
+	}
+	
+	private Consumer<String> addUnitToLevel() {
+		return (String elementName) -> {
+			if (myLevel != null) {
+				Wizard wiz = WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300, 300));
+				Consumer<WizardData> cons = (data) -> {
+					try {
+						myMainModel.addUnitToLevel(myLevel, elementName,
+								Double.parseDouble(data.getValueByKey(WizardDataType.X_POSITION)),
+								Double.parseDouble(data.getValueByKey(WizardDataType.Y_POSITION)));
+						wiz.closeStage();
+					} catch (Exception e) {
+						wiz.displayErrorMessage(e.getMessage());
+					}
+				};
+				wiz.setSubmit(cons);
+			}
+		};
+	}
+>>>>>>> saving_loading
 
     private void updateList (ElementDropDownController dropDownController,
                              List<ImageElementPair> units) {
@@ -235,6 +295,7 @@ public class ElementAccordionController extends GUIContainer {
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
 
+<<<<<<< HEAD
                     Consumer<WizardData> cons =
                             (data) -> {
                                 Optional<DrawableGameElementState> sameElementExistsOption =
@@ -264,6 +325,30 @@ public class ElementAccordionController extends GUIContainer {
                 .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachNumberAttributes(numberAttrs);
     }
+=======
+			Consumer<WizardData> cons = (data) -> {
+				Optional<DrawableGameElementState> sameElementExistsOption = myMainModel.getGameUniverse()
+						.getDrawableGameElementStates().stream()
+						.filter(element -> element.getName().equals(data.getValueByKey(WizardDataType.NAME)))
+						.findFirst();
+				if (sameElementExistsOption.isPresent()) {
+					wiz.displayErrorMessage("A Drawable Game Element with this name already exists");
+				} else {
+					myMainModel.createDrawableGameElementState(data);
+					wiz.closeStage();
+				}
+			};
+			wiz.setSubmit(cons);
+		};
+		return consumer;
+	}
+	
+	private void addNumberAttributes(DrawableGameElementWizard wiz) {
+		List<String> numberAttrs = myMainModel.getGameUniverse().getNumericalAttributes().stream()
+				.map(atr -> atr.getName()).collect(Collectors.toList());
+		wiz.attachNumberAttributes(numberAttrs);
+	}
+>>>>>>> saving_loading
 
     private void addStringAttributes (DrawableGameElementWizard wiz) {
         List<String> stringAttrs = myMainModel.getGameUniverse().getStringAttributes().stream()
@@ -271,6 +356,7 @@ public class ElementAccordionController extends GUIContainer {
         wiz.attachStringAttributes(stringAttrs);
     }
 
+<<<<<<< HEAD
     @Override
     public void modelUpdate () {
         List<ImageElementPair> selectableStates = myMainModel.getGameUniverse()
@@ -307,6 +393,42 @@ public class ElementAccordionController extends GUIContainer {
     private class ImageElementPair {
         Image myImage;
         String myElementName;
+=======
+
+	@Override
+	public void modelUpdate() {
+		List<ImageElementPair> selectableStates = myMainModel.getGameUniverse()
+				.getSelectableGameElementStates().stream().map((element) -> {
+					try {
+						// TODO GET IMAGES
+						return new ImageElementPair(null, element.getName());
+					} catch (Exception e) {
+						return new ImageElementPair(null, "failure");
+					}
+				}).collect(Collectors.toList());
+		List<ImageElementPair> drawableStates = myMainModel.getGameUniverse().getDrawableGameElementStates()
+				.stream().map((element) -> {
+					try {
+						// TODO GET IMAGES
+						return new ImageElementPair(null, element.getName());
+					} catch (Exception e) {
+						return new ImageElementPair(null, "failure");
+					}
+				}).collect(Collectors.toList());
+		updateList(terrainTitledPaneController, drawableStates);
+		updateList(unitTitledPaneController, selectableStates);
+	}
+	
+	/**
+	 * data structure for holding accordion tile view data
+	 * 
+	 * @author Jonathan Tseng
+	 *
+	 */
+	private class ImageElementPair {
+		Image myImage;
+		String myElementName;
+>>>>>>> saving_loading
 
         public ImageElementPair (Image image, String elementName) {
             myImage = image;
