@@ -72,9 +72,12 @@ public class ShittyMain extends Application {
         archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
         archerState2.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
-                                                                            500));
+                                                                            1000));
+        archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
 
         SelectableGameElementState archerState3 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
@@ -136,7 +139,7 @@ public class ShittyMain extends Application {
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
         ges.addAction(new ActionWrapper(ActionType.INTERNAL,
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "100", "Won",
+                                        "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
         return ges;
     }

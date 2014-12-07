@@ -94,7 +94,16 @@ public enum ActionOptions {
                                  ActionParameters.NN_EVAL,
                                  ActionParameters.ATTR,
                                  ActionParameters.STRING,
-                                 ActionParameters.ATTR);
+                                 ActionParameters.ATTR),
+    ATTRIBUTE_INCRIMENT_ACTION(
+                               "Incriment an attribute periodically",
+                               "AttributeIncrementerAction",
+                               "Incriment my # attribute by # to a max of # every # frames on timer #",
+                               ActionParameters.ATTR,
+                               ActionParameters.ATTR,
+                               ActionParameters.ATTR,
+                               ActionParameters.NUMBER,
+                               ActionParameters.STRING);
 
     private String myClassName;
     private String myDisplayName;
