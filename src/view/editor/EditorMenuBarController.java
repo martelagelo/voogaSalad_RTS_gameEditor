@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
@@ -29,26 +28,14 @@ public class EditorMenuBarController extends MenuBarController {
     private final static String NEW_CAMPAIGN_KEY = "NewCampaign";
     private final static String NEW_LEVEL_KEY = "NewLevel";
 
-    private final static String TOGGLE_EDITOR_INPUT_KEY = "InputToggleMenu";
-    private final static String EDITOR_INPUT_KEY = "EditorInput";
-    private final static String RUNNER_INPUT_KEY = "RunnerInput";
-
     @FXML
     private MenuItem newCampaignMenuItem;
     @FXML
     private MenuItem newLevelMenuItem;
 
-    @FXML
-    private Menu toggleMenu;
-    @FXML
-    private MenuItem playGameMenuItem;
-    @FXML
-    private MenuItem editGameMenuItem;
-
     @Override
     public void initMenuBar () {
         initFileMenu();
-        initToggleMenu();
     }
 
     @Override
@@ -56,15 +43,6 @@ public class EditorMenuBarController extends MenuBarController {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         newLevelMenuItem.textProperty().bind(util.getStringProperty(NEW_LEVEL_KEY));
         newCampaignMenuItem.textProperty().bind(util.getStringProperty(NEW_CAMPAIGN_KEY));
-        toggleMenu.textProperty().bind(util.getStringProperty(TOGGLE_EDITOR_INPUT_KEY));
-        playGameMenuItem.textProperty().bind(util.getStringProperty(RUNNER_INPUT_KEY));
-        editGameMenuItem.textProperty().bind(util.getStringProperty(EDITOR_INPUT_KEY));
-    }
-
-    private void initToggleMenu () {
-        // TODO set up to switch the input manager on the current tab 
-        // playGameMenuItem.setOnAction();
-        // editGameMenuItem.setOnAction();
     }
 
     private void initFileMenu () {

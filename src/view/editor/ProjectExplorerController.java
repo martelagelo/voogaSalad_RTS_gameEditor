@@ -86,7 +86,6 @@ public class ProjectExplorerController implements GUIController {
                 .getSelectionModel()
                 .selectedItemProperty()
                 .addListener(e -> {
-                    //System.out.println(Arrays.toString(getSelectedHierarchy()));
                     mySelectionChangedConsumer.accept(getSelectedHierarchy());
                 });
     }

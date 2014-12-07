@@ -55,7 +55,6 @@ public class RunnerScreen extends StackPaneGUIScreen {
     protected void init () {
         runnerMenuBarController.attachScreen(this);
         // sizedButton used for sizing other panes and as background in stackpane
-        sizedButton.setStyle("-fx-background-color: white;");
         sizedButton.disarm();
         attachChildContainers(runnerMenuBarController, gameRunnerController);
         bindPaneSize(gameRunner);
