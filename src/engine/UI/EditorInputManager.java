@@ -42,7 +42,7 @@ public class EditorInputManager extends InputManager {
         else {
             myElementManager.addSelectableGameElementToLevel(myMainModel.getEditorSelected(),
                                                              mapPoint2d.getX(), mapPoint2d.getY(),
-                                                             myUser.getTeamID(), "BLUE");
+                                                             myUser.getTeamColor());
             myMainModel.setEditorSelected("");
         }
     }
