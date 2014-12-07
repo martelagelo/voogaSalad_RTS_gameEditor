@@ -29,7 +29,7 @@ public enum ActionOptions {
      */
     ACT_ON_OBJECTS_ACTION("Basic Action",
                           "ActOnObjectsAction",
-                          "If I'm interacting with any object, do #", ActionParameters.EE_EVAL),
+                          "Do #", ActionParameters.EE_EVAL),
     OBJECT_CONDITION_ACTION("Condition Action",
                             "ObjectConditionAction",
                             "If the other object and I #, do #",
@@ -45,13 +45,6 @@ public enum ActionOptions {
                                ActionParameters.ATTR,
                                ActionParameters.NN_EVAL,
                                ActionParameters.NUMBER),
-    CREATE_OBJECT_ACTION(
-                         "Create Object",
-                         "CreateObjectAction",
-                         "Create a # at my spawn location with a cooldown timer named # with a value of # frames.",
-                         ActionParameters.STRING,
-                         ActionParameters.STRING,
-                         ActionParameters.NUMBER),
     PLAYER_ATTRIBUTE_CONDITION(
                                "Player Stats Check",
                                "PlayerStatsCheckAction",
@@ -75,11 +68,13 @@ public enum ActionOptions {
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
                                          "CheckAttributeCreateObjectAction",
-                                         "If my attribute # value # # then create object # with a spawn cooldown timer named # with cooldown # frames",
+                                         "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) from their # value with a cooldown timer named # with a value of # frames.",
                                          ActionParameters.ATTR,
                                          ActionParameters.NN_EVAL,
                                          ActionParameters.NUMBER,
                                          ActionParameters.STRING,
+                                         ActionParameters.ATTR,
+                                         ActionParameters.ATTR,
                                          ActionParameters.STRING,
                                          ActionParameters.NUMBER),
     INCREMENT_DECREMENT_ACTION(

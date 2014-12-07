@@ -1965,19 +1965,6 @@
                       "MoveBack"
                     ],
                     "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "INCREMENT_DECREMENT_ACTION",
-                    "myParameters": [
-                      "archerman",
-                      "health",
-                      "attack",
-                      "50",
-                      "health",
-                      "LeechTimer",
-                      "100"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ],
                 "Internal": [
@@ -2106,7 +2093,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "20000",
+                      "100",
                       "Won",
                       "EqualsAssignment",
                       "1"
@@ -4843,19 +4830,6 @@
               "myParameters": [
                 "Collision",
                 "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "INCREMENT_DECREMENT_ACTION",
-              "myParameters": [
-                "archerman",
-                "health",
-                "attack",
-                "50",
-                "health",
-                "LeechTimer",
-                "100"
               ],
               "myActionType": "COLLISION"
             }
