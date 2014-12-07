@@ -708,7 +708,8 @@
                 ]
               },
               "myTypes": [
-                "archer"
+                "archer",
+                "archerman"
               ]
             },
             {
@@ -1971,7 +1972,7 @@
                       "archerman",
                       "health",
                       "attack",
-                      "10",
+                      "50",
                       "health",
                       "LeechTimer",
                       "100"
@@ -2902,7 +2903,8 @@
           ]
         },
         "myTypes": [
-          "archer"
+          "archer",
+          "archerman"
         ]
       },
       {
@@ -3587,8 +3589,7 @@
           ]
         },
         "myTypes": [
-          "archer",
-          "archerman"
+          "archer"
         ]
       },
       {
@@ -4851,7 +4852,7 @@
                 "archerman",
                 "health",
                 "attack",
-                "10",
+                "50",
                 "health",
                 "LeechTimer",
                 "100"

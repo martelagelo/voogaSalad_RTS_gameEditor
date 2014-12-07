@@ -3,6 +3,7 @@ package engine.gameRepresentation.evaluatables.actions;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.evaluators.Addition;
 import engine.gameRepresentation.evaluatables.evaluators.AdditionAssignment;
 import engine.gameRepresentation.evaluatables.evaluators.And;
 import engine.gameRepresentation.evaluatables.evaluators.EqualsAssignment;
@@ -66,14 +67,15 @@ public class DecrimentIncrimentAttributeAction extends Action {
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> difference =
                 new Subtraction<>("", otherObjectAttribute, myAmountAttribute);
-        // If the difference is less than min, subtract this negative attribute from my attribute
+        // If the difference is less than min, subtract the difference of this negative attribute from my attribute
         Evaluatable<?> minValue = new NumberParameter("", Double.valueOf(args[3]));
+        Evaluator<?,?,?> differenceEvaluator = new Addition<>("",myAmountAttribute,difference);
         Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>("", difference, minValue);
         Evaluatable<?> myAttributeToSet =
                 new NumericAttributeParameter("", args[4], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> setAttributeIfNegative =
-                new SubtractionAssignment<>("", myAttributeToSet, difference);
+                new SubtractionAssignment<>("", myAttributeToSet, differenceEvaluator);
         Evaluator<?, ?, ?> ifDiffLessThan0SetAttr =
                 new IfThen<>("", differenceLessThan0, setAttributeIfNegative);
         // If the difference is greater than or equal to 0, add my subtraction attribute to my
@@ -106,9 +108,8 @@ public class DecrimentIncrimentAttributeAction extends Action {
         Evaluator<?, ?, ?> ifTypeAssignment =
                 new IfThen<>("", typeCheckEvaluator, parameterSubtracting);
         myTimer = args[5];
-        System.out.println(myTimer);
         myTimerAmount = Long.valueOf(args[6]);
-        return parameterSubtracting;
+        return ifTypeAssignment;
     }
 
     @Override
