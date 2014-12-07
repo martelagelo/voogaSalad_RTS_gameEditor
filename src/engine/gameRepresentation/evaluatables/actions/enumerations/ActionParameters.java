@@ -42,7 +42,8 @@ public enum ActionParameters {
     // Strings
     STRING(),
     // Numbers
-    NUMBER();
+    NUMBER(),
+    OBJECT_DESIGNATOR("me", "other object");
 
     String[] myOptions;
 

@@ -563,6 +563,15 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myParameters": [
+                      "EqualsAssignment",
+                      "1",
+                      "isSelected"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -1160,15 +1169,6 @@
                     "myActionType": "COLLISION"
                   }
                 ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "FollowX"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -1187,14 +1187,25 @@
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
+                      "me",
                       "yVelocity",
                       "NotEquals",
                       "0",
+                      "me",
                       "yVelocity",
                       "EqualsAssignment",
                       "0"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
                   }
                 ]
               },
@@ -1225,7 +1236,7 @@
                     "myName": "teamID"
                   },
                   {
-                    "myData": 3,
+                    "myData": 2,
                     "myName": "movementSpeed"
                   },
                   {
@@ -1774,11 +1785,9 @@
               "myActions": {
                 "COLLISION": [
                   {
-                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
                     "myParameters": [
-                      "MultiplicationAssignment",
-                      "-1",
-                      "yVelocity"
+                      "Bounce"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -1787,7 +1796,7 @@
                     "myParameters": [
                       "MultiplicationAssignment",
                       "1.2",
-                      "yVelocity"
+                      "movementSpeed"
                     ],
                     "myActionType": "COLLISION"
                   }
@@ -1797,6 +1806,20 @@
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
                     "myParameters": [
                       "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "8"
                     ],
                     "myActionType": "INTERNAL"
                   }
@@ -2477,6 +2500,15 @@
               "myActionName": "ACT_ON_OBJECTS_ACTION",
               "myParameters": [
                 "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+              "myParameters": [
+                "EqualsAssignment",
+                "1",
+                "isSelected"
               ],
               "myActionType": "INTERNAL"
             }
