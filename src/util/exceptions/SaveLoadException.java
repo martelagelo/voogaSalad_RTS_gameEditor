@@ -8,13 +8,19 @@ package util.exceptions;
 public class SaveLoadException extends Exception {
 
 
+    private static final String SAVE_LOAD_ERROR = "Save load error";
     /**
      * Auto-generated message.
      */
     private static final long serialVersionUID = 1L;
 
+    public SaveLoadException() {
+        super (SAVE_LOAD_ERROR);
+    }
+    
+    
     public SaveLoadException (Exception exception) {
-        this("Save load error", exception);
+        this(SAVE_LOAD_ERROR, exception);
     }
 
     public SaveLoadException (String message, Exception exception, Object... args) {

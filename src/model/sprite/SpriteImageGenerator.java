@@ -70,9 +70,6 @@ public class SpriteImageGenerator {
             myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
                     state.getImageTag(), state.getColorMaskTag()));    
         }
-        System.out.println(myCachedContainer);
-        System.out.println(" IMAGE TAG : " + state.getImageTag());
-        System.out.println(state.getColorMaskTag());
     }
 
     /**

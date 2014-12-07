@@ -151,18 +151,20 @@ public class SaveLoadUtility {
      * @throws SaveLoadException
      */
     public static Image loadImage (String filePath) throws SaveLoadException {
-
+        File imageFile = obtainFile(filePath);
+        BufferedImage bufferedImage = null;
         try {
-            WritableImage image;
-            File imageFile = obtainFile(filePath);
-            BufferedImage bufferedImage = ImageIO.read(imageFile);
+            bufferedImage = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            throw new LoadImageException(e);
+        }
+        if (bufferedImage != null) {
+            WritableImage image = null;
             // Optional second parameter to save pixel data (setting to
             // null)
             image = SwingFXUtils.toFXImage(bufferedImage, null);
             return image;
-
-        } catch (IOException e) {
-            throw new LoadImageException(e);
         }
+        throw new SaveLoadException();
     }
 }
