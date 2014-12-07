@@ -65,8 +65,8 @@ public class Engine extends Observable implements Observer {
                 new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
                                        myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
-        // TODO:wtf
-        myUser = new HumanParticipant("BLUE", "Yo fuckin' user name!!");
+ 
+        myUser = new HumanParticipant("BLUE", "Username");
 
         instantiateManagers();
     }
@@ -154,6 +154,11 @@ public class Engine extends Observable implements Observer {
         clearChanged();
     }
 
+    /**
+     * Gets the view of the background
+     * 
+     * @return The scene
+     */
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }
