@@ -7,15 +7,12 @@ import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.FalseEvaluatable;
-import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
-import engine.gameRepresentation.evaluatables.parameters.AttributeParameter;
-import engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
+import engine.gameRepresentation.evaluatables.parameters.NumberParameter;
 import engine.gameRepresentation.evaluatables.parameters.NumericAttributeParameter;
-import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParameter;
-import engine.gameRepresentation.evaluatables.parameters.StringAttributeParameter;
-import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
 import engine.users.Participant;
@@ -24,19 +21,16 @@ import engine.users.Participant;
 public class ObjectLocationCheckAction extends Action {
     private String playerTypeString;
     private String gameElementType;
+    private int radius;
     private int xLocation;
     private int yLocation;
+    private static final ActionOptions description = ActionOptions.OBJECT_LOCATION_DETECTION; 
 
-
-    /*
-
-    Evaluatable<Number> playerIdToGet;
-    Evaluatable<String> gameElementTypeToGet;
-    Evaluatable<Number> xLocationToGet;
-    Evaluatable<Number> yLocationToGet;
-    */
     GameElementManager manager;
     private ParticipantManager participants;
+    private String attributeToSet;
+    private Evaluatable<?> evaluatorToUse;
+    private int valueToSet;
 
     public ObjectLocationCheckAction (String id,
                                       EvaluatorFactory factory,
@@ -52,7 +46,23 @@ public class ObjectLocationCheckAction extends Action {
     protected Evaluatable<?> initializeAction (String[] args,
                                                EvaluatorFactory factory,
                                                GameElementManager elementManager,
-                                               ParticipantManager participantManager) {
+                                               ParticipantManager participantManager) throws ClassNotFoundException, EvaluatorCreationException {
+        manager = elementManager;
+        participants = participantManager;
+        attributeToSet = args[5];
+        valueToSet = Integer.parseInt(args[7]);
+        Evaluatable<?> elementParameter = new NumericAttributeParameter("",attributeToSet,manager,new ActorObjectIdentifier());
+        Evaluatable<?> value = new NumberParameter("", valueToSet);
+        
+        playerTypeString = args[0];
+        gameElementType = args[1];
+        radius = Integer.parseInt(args[2]);
+        xLocation = Integer.parseInt(args[3]);
+        yLocation = Integer.parseInt(args[4]);
+       
+        evaluatorToUse = factory.makeEvaluator(args[6], elementParameter, value);
+        
+        
         return new FalseEvaluatable();
     }
 
@@ -68,8 +78,14 @@ public class ObjectLocationCheckAction extends Action {
         for (Participant participant: matchingPlayers) {
             for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
                 if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_ID).doubleValue())) {
-                    if (xLocation == element.getNumericalAttribute(StateTags.X_POSITION).intValue()
-                            && yLocation == element.getNumericalAttribute(StateTags.Y_POSITION).intValue()) {
+                    int curXLocation = element.getNumericalAttribute(StateTags.X_POSITION).intValue();
+                    int curYLocation = element.getNumericalAttribute(StateTags.Y_POSITION).intValue();
+                    System.out.println(curXLocation + ", " + curYLocation);
+                    double xDelta = Math.abs(xLocation - curXLocation);
+                    double yDelta = Math.abs(yLocation - curYLocation);
+                    if (xDelta < radius && yDelta < radius) {
+                        System.out.println("win");
+                        evaluatorToUse.evaluate(elements);
                         return true;
                     }
                 }

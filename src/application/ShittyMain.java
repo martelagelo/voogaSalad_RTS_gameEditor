@@ -61,6 +61,7 @@ public class ShittyMain extends Application {
 
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
+
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
@@ -134,10 +135,12 @@ public class ShittyMain extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        ges.addAction(new ActionWrapper(ActionType.INTERNAL,
-                                        ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                        "Resources", "GreaterThanEqual", "100", "Won",
-                                        "EqualsAssignment", "1"));
+//        ges.addAction(new ActionWrapper(ActionType.INTERNAL,
+//                                        ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
+//                                        "Resources", "GreaterThanEqual", "100", "Won",
+//                                        "EqualsAssignment", "1"));
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.OBJECT_LOCATION_DETECTION,
+                                        "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
         return ges;
     }
 
