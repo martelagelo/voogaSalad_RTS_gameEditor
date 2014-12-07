@@ -222,9 +222,9 @@ public class MainModel extends Observable {
     public void createDrawableGameElementState (WizardData data) {
         try {
             String actualSaveLocation = mySaveLoadMediator.saveImage(data,
-                    GameElementImageType.DRAWABLE);
+                    GameElementImageType.Drawable);
             String colorMaskLocation = mySaveLoadMediator.saveColorMask(data,
-                    GameElementImageType.DRAWABLE);
+                    GameElementImageType.Drawable);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             data.addDataPair(WizardDataType.COLOR_MASK, colorMaskLocation);
             DrawableGameElementState gameElement = GameElementStateFactory
@@ -245,9 +245,9 @@ public class MainModel extends Observable {
     public void createSelectableGameElementState (WizardData data) {
         try {
             String actualSaveLocation = mySaveLoadMediator.saveImage(data,
-                    GameElementImageType.SELECTABLE);
+                    GameElementImageType.Selectable);
             String colorMaskLocation = mySaveLoadMediator.saveColorMask(data,
-                    GameElementImageType.SELECTABLE);
+                    GameElementImageType.Selectable);
             data.addDataPair(WizardDataType.IMAGE, actualSaveLocation);
             data.addDataPair(WizardDataType.COLOR_MASK, colorMaskLocation);
             SelectableGameElementState gameElement = GameElementStateFactory

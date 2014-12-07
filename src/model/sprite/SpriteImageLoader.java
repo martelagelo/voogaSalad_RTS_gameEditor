@@ -10,8 +10,6 @@ import util.SaveLoadUtility;
  *
  */
 public class SpriteImageLoader {
-    private static final String DOT = ".";
-    private static final String RELATIVE_PATH_DELIMITER = "/";
     public static final String TAG_DELIMITER = "|";
     public static final String ESCAPE_SEQ = "\\";
     public static final String COLORMASKS = "colormasks";
