@@ -29,6 +29,7 @@ public class AttributeDisplayerFactory {
 			AttributeContainer attachee) {
 		Class<?> c = null;
 		try {
+			System.out.println("TAG: " + attributeDisplayerState.displayerTag);
 		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
 					+ attributeDisplayerState.displayerTag);
 		} catch (ClassNotFoundException e) {
