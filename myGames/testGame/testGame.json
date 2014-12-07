@@ -2093,7 +2093,7 @@
                       "my",
                       "Resources",
                       "GreaterThanEqual",
-                      "20000",
+                      "100",
                       "Won",
                       "EqualsAssignment",
                       "1"
