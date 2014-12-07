@@ -1,7 +1,9 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Optional;
+import java.util.Set;
 
 import javafx.scene.image.ImageView;
 import model.exceptions.CampaignExistsException;
@@ -28,6 +30,7 @@ import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
  * Main class for the model of the game
@@ -79,7 +82,30 @@ public class MainModel extends Observable {
             DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
                     .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
+
+        loadSpritesAndMasks();
+
         updateObservers();
+    }
+
+    private void loadSpritesAndMasks () {
+        // TODO: move out of here / off-load to mediator?
+        Set<DrawableGameElementState> drawableStates = myGameState.getGameUniverse()
+                .getDrawableGameElementStates();
+        Set<SelectableGameElementState> selectableStates = myGameState.getGameUniverse()
+                .getSelectableGameElementStates();
+
+        Set<AnimatorState> animatorStates = new HashSet<>();
+        for (DrawableGameElementState dges : selectableStates) {
+            animatorStates.add(dges.myAnimatorState);
+        }
+
+        try {
+            mySpriteImageGenerator.loadSpriteImageContainers(animatorStates);
+        } catch (SaveLoadException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void saveGame () throws RuntimeException {
@@ -200,11 +226,11 @@ public class MainModel extends Observable {
      * 
      * @param data
      */
-    public void createDrawableGameElementState (WizardData data) {       
-            DrawableGameElementState gameElement = GameElementStateFactory
-                    .createDrawableGameElementState(data);
-            myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
-            updateObservers();
+    public void createDrawableGameElementState (WizardData data) {
+        DrawableGameElementState gameElement = GameElementStateFactory
+                .createDrawableGameElementState(data);
+        myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+        updateObservers();
     }
 
     /**

@@ -7,6 +7,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -40,7 +41,6 @@ public class SpriteImageGenerator {
         myResourceMapping = new HashMap<>();
         myCachedContainer = new HashMap<>();
         populateMap();
-        loadSpriteImageContainers();
     }
 
     public void populateMap () {
@@ -52,21 +52,11 @@ public class SpriteImageGenerator {
         }
     }
 
-    public Map<String, SpriteImageContainer> loadSpriteImageContainers () throws SaveLoadException {
-        String animationStateLocation = myResourceMapping.get(GameElementType.ANIMATORSTATE
-                .toString());
-        File directory = new File(animationStateLocation);
-        FileFilter fileFilter = new WildcardFileFilter(GameSaveLoadMediator.WILDCARD
-                + GameSaveLoadMediator.JSON_EXT);
-        File[] files = directory.listFiles(fileFilter);
-        if (files != null) {
-            for (File f : files) {
-                AnimatorState state = SaveLoadUtility
-                        .loadResource(AnimatorState.class, f.getPath());
+    public Map<String, SpriteImageContainer> loadSpriteImageContainers (Set<AnimatorState> animatorStates) throws SaveLoadException {
+            for (AnimatorState state : animatorStates) {               
                 myCachedContainer.put(state.getImageTag(),
                         new SpriteImageContainer(state.getImageTag()));
             }
-        }
         return myCachedContainer;
     }
 
