@@ -3,8 +3,9 @@ package engine.visuals;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import model.exceptions.SaveLoadException;
+
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;

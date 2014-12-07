@@ -1,4 +1,4 @@
-package model.exceptions;
+package util.exceptions;
 
 /**
  * 
@@ -21,10 +21,17 @@ public class SaveLoadException extends Exception {
     public SaveLoadException (String message, Exception exception) {
         super(message, exception);
         myMessage = message;
+        myException = exception;
     }
 
     @Override
     public String getMessage () {
         return myMessage;
     }
+    
+    @Override
+    public Throwable getCause() {
+        return myException;
+    }
+
 }

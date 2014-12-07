@@ -15,7 +15,8 @@ import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 
-import model.exceptions.SaveLoadException;
+import util.exceptions.JSONLoadException;
+import util.exceptions.SaveLoadException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -50,7 +51,7 @@ public class SaveLoadUtility {
         try {
             jsonRepresentation = (T) myGson.fromJson(new FileReader(new File(filePath)), className);
         } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
-            throw new SaveLoadException("Unable to load JSON file", e);
+            throw new JSONLoadException(e);
 
         }
         return jsonRepresentation;

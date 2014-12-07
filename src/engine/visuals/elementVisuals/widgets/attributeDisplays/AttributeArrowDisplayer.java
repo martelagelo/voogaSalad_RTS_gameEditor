@@ -3,9 +3,9 @@ package engine.visuals.elementVisuals.widgets.attributeDisplays;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.exceptions.SaveLoadException;
 import model.state.gameelement.AttributeContainer;
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 
 public class AttributeArrowDisplayer extends AttributeDisplayer {
 
