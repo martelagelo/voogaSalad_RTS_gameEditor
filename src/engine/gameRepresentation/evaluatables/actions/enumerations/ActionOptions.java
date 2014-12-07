@@ -116,7 +116,38 @@ public enum ActionOptions {
                                ActionParameters.ATTR,
                                ActionParameters.ATTR,
                                ActionParameters.NUMBER,
-                               ActionParameters.STRING);
+                               ActionParameters.STRING),
+    MOTHER_OF_ALL_ACTIONS("Mother of all Actions",
+                          "MotherOfAllActions",
+                          "If #(my/your) player's # (attribute name) # (evaluator) my # (attr) AND " +
+                          "If  # (me/your) # (attribute name) # (evaluator < > =) # (attr), "+
+                          "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
+                          "Do: # on both the interacting elements AND " +
+                          "Do: Set the timer # (timer name) to the value # (attribute) AND " +
+                          "Do: Perform # on my unit's # attribute on # (my/your) player's # (attribute)"+
+                          "On a timer named # with a value of # ticks.",
+                          ActionParameters.PLAYER_TYPE,
+                          ActionParameters.ATTR,
+                          ActionParameters.NN_EVAL,
+                          ActionParameters.ATTR,
+                          ActionParameters.OBJECT_DESIGNATOR,
+                          ActionParameters.ATTR,
+                          ActionParameters.NN_EVAL,
+                          ActionParameters.ATTR,
+                          ActionParameters.OBJECT_DESIGNATOR,
+                          ActionParameters.ATTR,
+                          ActionParameters.NN_EVAL,
+                          ActionParameters.ATTR,
+                          ActionParameters.EE_EVAL,
+                          ActionParameters.STRING,
+                          ActionParameters.ATTR,
+                          ActionParameters.NN_EVAL,
+                          ActionParameters.ATTR,
+                          ActionParameters.PLAYER_TYPE,
+                          ActionParameters.ATTR,
+                          ActionParameters.STRING,
+                          ActionParameters.ATTR
+                          );
 
     private String myClassName;
     private String myDisplayName;

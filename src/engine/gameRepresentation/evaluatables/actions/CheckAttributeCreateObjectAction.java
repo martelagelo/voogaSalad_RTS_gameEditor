@@ -55,8 +55,8 @@ public class CheckAttributeCreateObjectAction extends Action {
         Evaluatable<?> comparisonNumber = new NumberParameter("", Double.valueOf(args[2]));
         Evaluator<?, ?, ?> conditionEvaluator =
                 factory.makeEvaluator(args[1], parameterEvaluator, comparisonNumber);
-        
-     // Check to see if the player has enough resources to create the element
+
+        // Check to see if the player has enough resources to create the element
         Evaluatable<?> costAttribute =
                 new NumericAttributeParameter("", args[4], elementManager,
                                               new ActorObjectIdentifier());
@@ -64,7 +64,7 @@ public class CheckAttributeCreateObjectAction extends Action {
                 new ParticipantValueParameter("", Arrays.asList(participantManager.getUser()),
                                               args[5]);
         Evaluator<?, ?, ?> checkIfEnoughAttr =
-                new GreaterThanEqual<>("", attributeToRemove,costAttribute);
+                new GreaterThanEqual<>("", attributeToRemove, costAttribute);
         Evaluator<?, ?, ?> decrementAttr =
                 new SubtractionAssignment<>("", attributeToRemove, costAttribute);
 
@@ -79,16 +79,16 @@ public class CheckAttributeCreateObjectAction extends Action {
         // Make an ifthen for the whole thing
         Evaluator<?, ?, ?> shouldCreateElement =
                 new IfThen<>("", checkIfEnoughAttr, decrementAndCreate);
-        
-        
+
         return new IfThen<>("", conditionEvaluator, shouldCreateElement);
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         if (elements.getActor().getTimer(myTimerName) <= 0) {
-            action.evaluate(elements);
-            elements.getActor().setTimer(myTimerName, myTimerAmount);
+            if ((Boolean) action.evaluate(elements)) {
+                elements.getActor().setTimer(myTimerName, myTimerAmount);
+            }
         }
 
         return true;
