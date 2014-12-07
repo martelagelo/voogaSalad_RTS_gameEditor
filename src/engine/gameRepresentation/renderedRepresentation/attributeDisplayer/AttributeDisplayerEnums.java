@@ -7,22 +7,5 @@ package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
  *
  */
 public enum AttributeDisplayerEnums {
-    ATTRIBUTEBAR("AttributeBarDisplayer");
-    
-    private String myString;
-
-    /**
-     * Create an attribute displayer type enumeration
-     * 
-     * @param stringRepresentation the key for the action type in the map.
-     */
-    private AttributeDisplayerEnums (String stringRepresentation) {
-        myString = stringRepresentation;
-    }
-
-    @Override
-    public String toString () {
-        return myString;
-    }
-    
+    ATTRIBUTEBAR;
 }

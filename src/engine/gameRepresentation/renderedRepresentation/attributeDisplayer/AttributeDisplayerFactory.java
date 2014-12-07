@@ -13,19 +13,11 @@ import model.state.gameelement.AttributeContainer;
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.
  * 
- * @author Zach
+ * @author Zach, Stanley
  *
  */
 public class AttributeDisplayerFactory {
-	public final static String ATTRIBUTE_DISPLAYER_CLASSES = "resources.properties.engine.AttributeDisplayTypes";
 	public final static String ATTRIBUTE_CLASS_LOCATIONS = "engine.visuals.elementVisuals.widgets.attributeDisplays.";
-	private ResourceBundle myAttributeDisplayerBundle;
-
-	public AttributeDisplayerFactory() {
-		myAttributeDisplayerBundle = ResourceBundle
-				.getBundle(ATTRIBUTE_DISPLAYER_CLASSES);
-
-	}
 
 	/**
 	 * Create an attribute displayer.
@@ -42,8 +34,7 @@ public class AttributeDisplayerFactory {
 		Class<?> c = null;
 		try {
 			c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
-					+ myAttributeDisplayerBundle
-							.getString(attributeDisplayerState.displayerTag));
+					+ AttributeDisplayerEnums.valueOf(attributeDisplayerState.displayerTag));
 		} catch (ClassNotFoundException e) {
 			// fail silently
 		}

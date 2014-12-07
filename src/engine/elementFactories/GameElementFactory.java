@@ -26,10 +26,6 @@ import engine.visuals.elementVisuals.Visualizer;
  *
  */
 public class GameElementFactory {
-
-    public static final String INTERACTING_ELEMENT_TYPE_LOCATION =
-            "resources.properties.engine.InteractingElementTypes";
-
     private GameUniverse myUniverse;
     private ActionFactory myActionFactory;
     private VisualizerFactory myVisualizerFactory;
