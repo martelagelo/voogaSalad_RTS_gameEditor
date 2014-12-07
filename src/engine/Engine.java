@@ -1,6 +1,7 @@
 package engine;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Group;
@@ -8,6 +9,7 @@ import model.MainModel;
 import model.exceptions.DescribableStateException;
 import model.state.LevelState;
 import org.json.JSONException;
+import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
 import engine.elementFactories.AnimatorFactory;
@@ -20,6 +22,7 @@ import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.HumanParticipant;
+import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
 
@@ -34,13 +37,14 @@ import engine.visuals.VisualManager;
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
 
+    private static final String DEFAULT_BACKGROUND_TILE = "resources/img/graphics/terrain/grass/GrassTile.jpg";
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
 
     private GameElementManager myElementManager;
     private VisualManager myVisualManager;
-    private RunnerInputManager myInputManager;
+    private InputManager myInputManager;
     private ParticipantManager myParticipantManager;
 
     private GameElementFactory myElementFactory;
@@ -49,8 +53,6 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
-
-    private boolean gameWon = false;
 
     public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
@@ -69,6 +71,22 @@ public class Engine extends Observable implements Observer {
         instantiateManagers();
     }
 
+    public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,
+                                                            IllegalAccessException,
+                                                            IllegalArgumentException,
+                                                            InvocationTargetException,
+                                                            NoSuchMethodException,
+                                                            SecurityException {
+        InputManager inputManager =
+                (InputManager) inputManagerClass.getDeclaredConstructor(MainModel.class,
+                                                                        GameElementManager.class,
+                                                                        GameLoop.class,
+                                                                        Participant.class)
+                        .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
+        myInputManager = inputManager;
+        myVisualManager.attachInputManager(myInputManager);
+    }
+
     // TODO Should just be a call for "get next level" from main model rather than
     // selecting a specific level
     public void selectNextLevel () throws DescribableStateException {
@@ -76,6 +94,10 @@ public class Engine extends Observable implements Observer {
         // myCampaignState = myMainModel.getCampaign(campaignName);
         // TODO: get next level and next campaign state in model (also write method in model)
         instantiateManagers();
+    }
+    
+    public void setAnimationEnabled(boolean b){
+        myVisualizerFactory.setAnimationEnabled(b);
     }
 
     private void instantiateManagers () {
@@ -88,7 +110,7 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-        String backgroundURI = "resources/img/graphics/terrain/grass/GrassTile.jpg";
+        String backgroundURI = DEFAULT_BACKGROUND_TILE;
         myVisualManager =
                 new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundURI);
 
@@ -117,10 +139,7 @@ public class Engine extends Observable implements Observer {
     @Override
     public void update (Observable observable, Object arg) {
         if (observable instanceof GameLoop) {
-            gameWon = ((int) arg) > 0;
-            this.pause();
-            System.out.println("Game is over! \n   Game won? " + gameWon);
-            // TODO:something with this... display it?
+            myGameLoop.stop();
             myUser.getAttributes();
             updateObservers();
         }
@@ -134,7 +153,7 @@ public class Engine extends Observable implements Observer {
         notifyObservers(myUser.getAttributes());
         clearChanged();
     }
-    
+
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }

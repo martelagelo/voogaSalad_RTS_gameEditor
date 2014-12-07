@@ -3,8 +3,6 @@ package view.editor;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,7 +46,13 @@ public class ElementDropDownController implements GUIController {
     };
     private Consumer<String> myAddToLevelConsumer = (String element) -> {
     };
+    private Consumer<String> mySelectionChangedConsumer = (String element) -> {  
+    };
 
+    public void setOnSelectionChanged(Consumer<String> selectionChangedConsumer) {
+        mySelectionChangedConsumer = selectionChangedConsumer;
+    }
+    
     public void addElement (String element, Node image) {
         if (!elementListView.getItems().contains(element)) {
             elementListView.getItems().add(element);
@@ -82,14 +86,6 @@ public class ElementDropDownController implements GUIController {
                 return new GameElementListCell();
             }
         });
-        elementListView.getSelectionModel().selectedIndexProperty()
-                .addListener(new ChangeListener<Number>() {
-                    @Override
-                    public void changed (ObservableValue<? extends Number> value, Number oldValue,
-                                         Number newValue) {
-                        // TODO: drag and drop goes here
-                    }
-                });
     }
 
     private void initDeleteElementButton () {
@@ -133,6 +129,14 @@ public class ElementDropDownController implements GUIController {
         initListView();
         initDeleteElementButton();
         initAddToLevelButton();
+        elementListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
+            mySelectionChangedConsumer.accept(newValue);
+        });
+        elementListView.focusedProperty().addListener((observable, oldValue, newValue)->{
+            if (!newValue) {
+                elementListView.getSelectionModel().clearSelection();
+            }
+        });
         try {
             newElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
                     .getStringProperty(CREATE_NEW_KEY));

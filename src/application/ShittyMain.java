@@ -18,6 +18,7 @@ import util.SaveLoadUtility;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
@@ -48,13 +49,45 @@ public class ShittyMain extends Application {
     }
 
     private Engine hardCodeAGame () throws Exception {
+        SelectableGameElementState minerState =
+                createMiner(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 10, 100, 1);
+        minerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
+        minerState.attributes.setTextualAttribute(StateTags.NAME, "miner");
+        minerState
+                .addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        StateTags.HEALTH, 0, 500));
+        minerState.attributes.setNumericalAttribute("goodness", 100);
+
+        SelectableGameElementState resource =
+                createResource(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 300, 300, 1);
+        resource.attributes.setTextualAttribute(StateTags.NAME, "resource1");
+        resource.attributes.setNumericalAttribute("ORE", 1000);
+        resource.addType("gold");
+
+        // Setting up the resource and miner actions
+        minerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                               ActionOptions.INCREMENT_DECREMENT_ACTION,
+                                               "gold", "ORE", "goodness",
+                                               "0", "resources", "MiningTimer", "100"));
+        minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                               ActionOptions.ATTRIBUTE_INTERACTION_ACTION,
+                                               "Transfer", "resources", "my", "Resources"));
+        resource.addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        "ORE", 0, 1000));
+
         SelectableGameElementState archerState =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
         archerState
-                .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
+                .addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
                                                                         StateTags.HEALTH, 0, 500));
+        // archerState.addAttributeDisplayerState(new
+        // AttributeDisplayerState(AttributeDisplayerType.AttributeArrowDisplayer,
+        // StateTags.IS_SELECTED, 0, 1));
 
         archerState.attributes
                 .setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION + 1,
@@ -64,9 +97,11 @@ public class ShittyMain extends Application {
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
 
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
-                                                                            500));
+        archerState1
+                .addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        StateTags.HEALTH, 0,
+                                                                        500));
         archerState.addType("archerman");
 
         SelectableGameElementState archerState2 =
@@ -75,17 +110,19 @@ public class ShittyMain extends Application {
         archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
 
-        archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
-        archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
-                                                                            1000));
-//        archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
-//                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
+        archerState2.attributes.setNumericalAttribute("MAX_HEALTH", 1000);
+        archerState2
+                .addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        StateTags.HEALTH, 0,
+                                                                        1000));
+        // archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
+        // ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
 
         SelectableGameElementState archerState3 =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 2);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
-        // Make the third archer spawn archers on collision 
+        // Make the third archer spawn archers on collision
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
 
@@ -96,9 +133,11 @@ public class ShittyMain extends Application {
 
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
-        archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
-                                                                            StateTags.HEALTH, 0,
-                                                                            500));
+        archerState3
+                .addAttributeDisplayerState(new AttributeDisplayerState(
+                                                                        AttributeDisplayerType.AttributeBarDisplayer,
+                                                                        StateTags.HEALTH, 0,
+                                                                        500));
 
         // TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,
         // ScrollablePane.FIELD_HEIGHT);
@@ -108,6 +147,12 @@ public class ShittyMain extends Application {
         // for (DrawableGameElementState s : grassTerrain) {
         // levelState.addTerrain(s);
         // }
+
+        SelectableGameElementState spawner1 = createSpawnPoint(800, 800, "GREEN");
+        levelState.addUnit(spawner1);
+
+        levelState.addUnit(resource);
+        levelState.addUnit(minerState);
         levelState.addUnit(archerState);
         levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
@@ -125,6 +170,9 @@ public class ShittyMain extends Application {
         MainModel model = new MainModel();
         model.saveGame(gameState);
         model.loadGame("testGame");
+        model.getGameUniverse().addSelectableGameElementState(spawner1);
+        model.getGameUniverse().addSelectableGameElementState(resource);
+        model.getGameUniverse().addSelectableGameElementState(minerState);
         model.getGameUniverse().addSelectableGameElementState(archerState);
         model.getGameUniverse().addSelectableGameElementState(archerState1);
         model.getGameUniverse().addSelectableGameElementState(archerState2);
@@ -134,7 +182,43 @@ public class ShittyMain extends Application {
         model2.loadGame("testGame");
         Engine engine =
                 new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
+
+        engine.setAnimationEnabled(true);
+
         return engine;
+    }
+
+    private SelectableGameElementState createSpawnPoint (double x, double y, String Color)
+                                                                                          throws Exception {
+        SelectableGameElementState archerState = new SelectableGameElementState(x, y);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState.addType("spawner");
+        archerState.attributes.setNumericalAttribute("isSpawn", 1);
+        archerState.attributes.setNumericalAttribute("unitCost", 0);
+
+        // set empty bounds to do nothing
+        archerState.setBounds(new double[8]);
+
+        // make spawn point action
+        archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
+                                                "isSpawn", "Equals", "1",
+                                                "archer", "unitCost", "Resources",
+                                                "1", "500"));
+
+        archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, -100);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, -100);
+
+        AnimatorState archerAnimations =
+                SaveLoadUtility
+                        .loadResource(AnimatorState.class,
+                                      "resources/gameelementresources/animatorstate/archer.json");
+        archerState.myAnimatorState = archerAnimations;
+
+        return archerState;
     }
 
     private GameElementState createGoal () {
@@ -144,9 +228,107 @@ public class ShittyMain extends Application {
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
                                         "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
-        ges.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.OBJECT_LOCATION_DETECTION,
-                                "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
+        // ges.addAction(new ActionWrapper(ActionType.INTERNAL,
+        // ActionOptions.OBJECT_LOCATION_DETECTION,
+        // "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
         return ges;
+    }
+
+    private SelectableGameElementState createResource (double[] bounds,
+                                                       double x,
+                                                       double y,
+                                                       int teamID) throws Exception {
+        SelectableGameElementState archerState = new SelectableGameElementState(x, y);
+        // archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
+        archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
+        archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
+        archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
+        archerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
+        archerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+        archerState.addType("resource");
+
+        archerState.setBounds(bounds);
+        // TESTING SAVING SGES
+        SaveLoadUtility.save(archerState, "resources/sges.json");
+        AnimatorState archerAnimations =
+                SaveLoadUtility
+                        .loadResource(AnimatorState.class,
+                                      "resources/gameelementresources/animatorstate/berserker.json");
+        archerState.myAnimatorState = archerAnimations;
+        // TESTING LOADING SGES
+        SelectableGameElementState sges =
+                SaveLoadUtility.loadResource(
+                                             SelectableGameElementState.class,
+                                             "resources/sges.json");
+        Map<ActionType, List<ActionWrapper>> map = sges.getActions();
+
+        return archerState;
+    }
+
+    private SelectableGameElementState createMiner (double[] bounds, double x, double y, int teamID)
+                                                                                                    throws Exception {
+        SelectableGameElementState minerState = new SelectableGameElementState(x, y);
+        // minerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
+        minerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
+        minerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION, y);
+        minerState.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, x);
+        minerState.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, y);
+        minerState.attributes.setNumericalAttribute(StateTags.HEALTH, 500);
+        minerState.attributes.setNumericalAttribute(StateTags.ATTACK, 75);
+        minerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME, 50);
+        minerState.attributes.setTextualAttribute(StateTags.CURRENT_ACTION, "STANDING");
+        minerState.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 3);
+        minerState.addType("archer");
+        // Choose a random temporary waypoint if we collide with anything
+        minerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                               ActionOptions.OBJECT_CONDITION_ACTION,
+                                               "NotCollision", "RandomWaypoint"));
+        // Move back if we collide with anything
+        minerState.addAction(new ActionWrapper(ActionType.COLLISION,
+                                               ActionOptions.OBJECT_CONDITION_ACTION,
+                                               "Collision", "MoveBack"));
+        // Check to see if our health is <0. If so, die.
+        minerState
+                .addAction(new ActionWrapper(ActionType.INTERNAL,
+                                             ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                             StateTags.HEALTH,
+                                             "LessThanEqual",
+                                             "0",
+                                             StateTags.IS_DEAD, "EqualsAssignment", "1"));
+        // Update player direction
+        minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                               ActionOptions.ACT_ON_OBJECTS_ACTION,
+                                               "UpdateMovementDirection"));
+        // This one moves the player
+        minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                               ActionOptions.ACT_ON_OBJECTS_ACTION,
+                                               "MovePlayer"));
+        // This one can be used for pathing
+        minerState.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                               ActionOptions.ACT_ON_OBJECTS_ACTION,
+                                               "HeadingUpdate"));
+        // Make the element so it follows another player when right-clicked on
+        minerState.addAction(new ActionWrapper(ActionType.FOCUSED,
+                                               ActionOptions.ACT_ON_OBJECTS_ACTION, "Follow"));
+
+        minerState.setBounds(bounds);
+        // TESTING SAVING SGES
+        SaveLoadUtility.save(minerState, "resources/sges.json");
+        AnimatorState archerAnimations =
+                SaveLoadUtility
+                        .loadResource(AnimatorState.class,
+                                      "resources/gameelementresources/animatorstate/champion.json");
+        minerState.myAnimatorState = archerAnimations;
+        // TESTING LOADING SGES
+        SelectableGameElementState sges =
+                SaveLoadUtility.loadResource(
+                                             SelectableGameElementState.class,
+                                             "resources/sges.json");
+        Map<ActionType, List<ActionWrapper>> map = sges.getActions();
+
+        return minerState;
     }
 
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)
@@ -202,11 +384,24 @@ public class ShittyMain extends Application {
         archerState.addAction(new ActionWrapper(ActionType.BUTTON,
                                                 ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
                                                 StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
-                                                "archer", StateTags.HEALTH, "Resources",
-                                                "ArcherSpawnCooldown", "1000"));
+                                                "archer", "cost", "Resources",
+                                                "1", "300"));
+        
+        archerState.attributes.setNumericalAttribute("cost", 0);
+        
         archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
         archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
 
+        archerState.addAction(new ActionWrapper(ActionType.BUTTON,
+                                                ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
+                                                StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "2",
+                                                StateTags.ATTACK, "AdditionAssignment", "1000"));
+
+        
+        
+        archerState.attributes.setTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION+2, "resources/img/graphics/buttons/commands/attack.png");
+        
+        
         archerState.setBounds(bounds);
 
         AnimatorState archerAnimations =
@@ -214,16 +409,15 @@ public class ShittyMain extends Application {
                         .loadResource(AnimatorState.class,
                                       "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
-        
-        
-//      // TESTING SAVING SGES
-//      SaveLoadUtility.save(archerState, "resources/sges.json");
-//        // TESTING LOADING SGES
-//        SelectableGameElementState sges =
-//                SaveLoadUtility.loadResource(
-//                                             SelectableGameElementState.class,
-//                                             "resources/sges.json");
-//        Map<ActionType, List<ActionWrapper>> map = sges.getActions();
+
+        // // TESTING SAVING SGES
+        // SaveLoadUtility.save(archerState, "resources/sges.json");
+        // SelectableGameElementState sges =
+        // SaveLoadUtility.loadResource(
+        // SelectableGameElementState.class,
+        // "resources/sges.json");
+        // Map<String, List<ActionWrapper>> map = sges.getActions();
+        // Map<ActionType, List<ActionWrapper>> map = sges.getActions();
 
         return archerState;
     }

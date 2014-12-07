@@ -2,7 +2,7 @@ package engine.visuals.elementVisuals;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -25,13 +25,19 @@ public class Visualizer implements Updatable, Displayable {
     private List<AttributeDisplayer> myWidgets;
     private Animator myAnimator;
     private AttributeContainer attributesOfInterest;
+    private SimpleBooleanProperty enabled;
 
     public Visualizer (Animator animator, AttributeContainer attributes) {
+        enabled = new SimpleBooleanProperty();
         visualRepresentation = new Group();
         myWidgets = new ArrayList<>();
         myAnimator = animator;
         myAnimator.registerNode(n -> visualRepresentation.getChildren().add(n));
         attributesOfInterest = attributes;
+    }
+    
+    public void setAnimateEnableProperty(SimpleBooleanProperty e){
+        enabled = e;
     }
 
     public void addWidget (AttributeDisplayer widget) {
@@ -50,7 +56,8 @@ public class Visualizer implements Updatable, Displayable {
 
     @Override
     public boolean update () {
-        updateAnimator();
+        if(enabled.get())
+            updateAnimator();
         updateWidgets();
         updateNodeLocation();
         return true;
