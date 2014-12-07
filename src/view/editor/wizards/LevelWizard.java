@@ -2,7 +2,6 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,11 +42,11 @@ public class LevelWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return campaignName.getSelectionModel().getSelectedItem() != null &&
+        return campaignName.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                !levelName.getText().isEmpty() && !levelWidth.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, levelWidth.getText()) &&
+               isNumber(levelWidth.getText()) &&               
                !levelHeight.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, levelHeight.getText());
+               isNumber(levelHeight.getText());
     }
 
     @Override

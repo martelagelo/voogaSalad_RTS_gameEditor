@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -37,6 +36,7 @@ import view.gui.GUIPanePath;
  */
 public class DrawableGameElementWizard extends Wizard {
 
+    private static final Dimension ACTION_WIZARD_SIZE = new Dimension(400, 600);
     private final static String NAME_KEY = "Name";
     private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
@@ -109,14 +109,10 @@ public class DrawableGameElementWizard extends Wizard {
     private AnimationGrid animationGrid;
     private String imagePath;
     private String colorMaskPath;
-
-    /**
-     * Launches a TriggerEditorWizard
-     * 
-     */
+    
     private void launchActionEditor () {
         launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, myGlobalNumberAttributes,
-                           getActionConsumer(), new Dimension(400, 600));
+                           getActionConsumer(), ACTION_WIZARD_SIZE);
     }
 
     private BiConsumer<Button, WizardData> getActionConsumer () {
@@ -127,10 +123,6 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    /**
-     * Launches a String Attribute Wizard
-     * 
-     */
     private void launchStringAttributeEditor () {
         launchNestedWizard(GUIPanePath.STRING_ATTRIBUTE_WIZARD, existingStringAttributes,
                            myGlobalStringAttributes, 
@@ -149,10 +141,6 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    /**
-     * Launches a Number Attribute Wizard
-     * 
-     */
     private void launchNumberAttributeEditor () {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
                            myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
@@ -161,10 +149,6 @@ public class DrawableGameElementWizard extends Wizard {
                         		   ));
     }
     
-    /**
-     * Launches a Widget Wizard
-     *
-     */
     private void launchWidgetEditor () {
         WidgetWizard wiz = (WidgetWizard) launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
     			myGlobalNumberAttributes, getWidgetConsumer(), new Dimension(
@@ -275,7 +259,6 @@ public class DrawableGameElementWizard extends Wizard {
      *         an Image of the user's choosing
      * @throws FileNotFoundException
      */
-
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
@@ -285,10 +268,6 @@ public class DrawableGameElementWizard extends Wizard {
         return file;
     }
 
-    /**
-     * Fired when the user uploads a new color mask
-     * 
-     */
     private void loadColorMask () {
         try {
             File colorMaskFile = fetchImage();
@@ -302,12 +281,6 @@ public class DrawableGameElementWizard extends Wizard {
         }
     }
 
-    /**
-     * Fired when the user uploads a new picture
-     * 
-     * Credit for the buffered image code goes to
-     * StackOverflow user mathew11
-     */
     private void loadImage () {
         try {
             spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
@@ -340,10 +313,6 @@ public class DrawableGameElementWizard extends Wizard {
         frameHeight.setMax(image.getHeight());
     }
 
-    /**
-     * Binds all the listeners to the scene
-     * 
-     */
     @Override
     public void initialize () {
         super.initialize();
@@ -359,11 +328,6 @@ public class DrawableGameElementWizard extends Wizard {
         errorMessage.setFill(Paint.valueOf("white"));                
     }
 
-    /**
-     * Attaches multilanguage utility to text
-     * in the wizard
-     * 
-     */
     @Override
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
@@ -387,29 +351,31 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     private void createTextFieldListeners () {
-        frameWidthText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameWidthText.getText())) {
-                frameWidth.setValue(Double.parseDouble(frameWidthText.getText()));
-            }
-        });
-        frameHeightText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameHeightText.getText())) {
-                frameHeight.setValue(Double.parseDouble(frameHeightText.getText()));
+        setTextListener(frameWidthText, (value) -> frameWidth.setValue(value));
+        setTextListener(frameHeightText, (value) -> frameHeight.setValue(value));
+    }
+    
+    private void setTextListener(TextField field, Consumer<Double> cons) {
+        field.textProperty().addListener(e -> {
+            if (isNumber(field.getText())) {
+                cons.accept(Double.parseDouble(field.getText()));
             }
         });
     }
 
     private void createSliderListeners () {
-        frameWidth.valueProperty().addListener(e -> {
-            frameWidthText.setText("" + (int) frameWidth.getValue());
+        setValueListener(frameWidth, (text) -> frameWidthText.setText(text),
+                         (gridValue) -> animationGrid.changeSize(gridValue, animationGrid.getFrameY()));
+        setValueListener(frameHeight, (text) -> frameHeightText.setText(text),
+                         (gridValue) -> animationGrid.changeSize(animationGrid.getFrameX(), gridValue));        
+    }
+    
+    private void setValueListener(Slider slider, Consumer<String> cons, 
+                                  Consumer<Double> gridCons) {
+        slider.valueProperty().addListener(e -> {
+            cons.accept("" + (int) slider.getValue());
             if (animationGrid != null) {
-                animationGrid.changeSize(frameWidth.getValue(), animationGrid.getFrameY());
-            }
-        });
-        frameHeight.valueProperty().addListener(e -> {
-            frameHeightText.setText("" + (int) frameHeight.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(animationGrid.getFrameX(), frameHeight.getValue());
+                gridCons.accept(slider.getValue());
             }
         });
     }
