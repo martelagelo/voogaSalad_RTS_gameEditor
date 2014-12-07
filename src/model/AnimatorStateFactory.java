@@ -30,6 +30,7 @@ public class AnimatorStateFactory {
         Set<AnimationSequence> sequences = createAnimationSequences(data);
         AnimatorState anim =
                 new AnimatorState(data.getValueByKey(WizardDataType.IMAGE),
+                                  data.getValueByKey(WizardDataType.COLOR_MASK),
                                   dim,
                                   Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
                                   sequences);
