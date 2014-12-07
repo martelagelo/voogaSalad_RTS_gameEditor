@@ -1,7 +1,6 @@
 package model;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Set;
 
 import javafx.scene.image.Image;
@@ -88,8 +87,9 @@ public class GameSaveLoadMediator {
     /**
      * 
      * @param data
+     * @param elementType
      * @return
-     * @throws IOException
+     * @throws SaveLoadException
      */
     public String saveColorMask (WizardData data, GameElementImageType elementType)
             throws SaveLoadException {
