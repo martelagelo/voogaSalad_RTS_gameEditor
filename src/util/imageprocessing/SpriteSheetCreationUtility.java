@@ -45,33 +45,42 @@ public class SpriteSheetCreationUtility {
 
     public static void main (String[] args) throws Exception {
         SpriteSheetCreationUtility processor = new SpriteSheetCreationUtility();
-        processor.populateTagLists();
-        String baseDirectoryPath = "resourcesold/img/graphics/units/";
-        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
-        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
-        boolean[] extrapolatedStateMirrorFlags =
-                new boolean[] { false, false, false, false, false, true, true, true };
-
-        processor.createSpriteSheet(baseDirectoryPath, uniqueStateIndicies,
-                                    extrapolatedStateIndicies, extrapolatedStateMirrorFlags,
-                                    new Color(0xFFFF00FF));
-        
-//        processor.doThing();
+//        processor.populateTagLists();
+//        String baseDirectoryPath = "resourcesold/img/graphics/units/";
+//        int[] uniqueStateIndicies = new int[] { 0, 1, 2, 3, 4 };
+//        int[] extrapolatedStateIndicies = new int[] { 0, 1, 2, 3, 4, 3, 2, 1 };
+//        boolean[] extrapolatedStateMirrorFlags =
+//                new boolean[] { false, false, false, false, false, true, true, true };
+//
+//        processor.createSpriteSheet(baseDirectoryPath, uniqueStateIndicies,
+//                                    extrapolatedStateIndicies, extrapolatedStateMirrorFlags,
+//                                    new Color(0xFFFF00FF));
+//        
+        processor.doThing();
     }
 
     private void doThing() throws IOException {
-		for (File dir : new File("C:\\Users\\Steve\\Google Drive\\Junior Year\\CS 308\\Sprites").listFiles()){
-			if (dir.isDirectory()){
-				List<BufferedImage> sprites = loadFilesInDirectory(dir);
-				int i=0;
-				for(BufferedImage sprite : sprites){
-					BufferedImage better = colorToTransparency(sprite,new Color(0xFFFF00FF));
-					ImageIO.write(better, "PNG", new File(dir.getAbsolutePath() + File.separator + i + ".png"));
-					i++;
-				}
-			}
-		}
-	}
+//		for (File dir : new File("C:\\Users\\Steve\\Google Drive\\Junior Year\\CS 308\\Sprites").listFiles()){
+//			if (dir.isDirectory()){
+//				List<BufferedImage> sprites = loadFilesInDirectory(dir);
+//				int i=0;
+//				for(BufferedImage sprite : sprites){
+//					BufferedImage better = colorToTransparency(sprite,new Color(0xFFFF00FF));
+//					ImageIO.write(better, "PNG", new File(dir.getAbsolutePath() + File.separator + i + ".png"));
+//					i++;
+//				}
+//			}
+//		}
+    	
+    	int i = 0;
+    	List<BufferedImage> images = loadFilesInDirectory(new File("C:\\Users\\Steve\\Documents\\GitHub\\voogasalad_TheException\\resources\\gameelementresources\\drawablegameelementresources\\colormasks"));
+    	for(BufferedImage image : images) {
+    		System.out.println("sd");
+    		BufferedImage better = colorToTransparency(image, new Color(0xFFFF00FF));
+			ImageIO.write(better, "PNG", new File("C:\\Users\\Steve\\Documents\\GitHub\\voogasalad_TheException\\resources\\gameelementresources\\drawablegameelementresources\\colormasks" + File.separator + i + ".png"));
+			i++;
+    	}
+    }
 
 	private void populateTagLists () {
         for (int i = 0; i < 8; i++) {
@@ -411,7 +420,7 @@ public class SpriteSheetCreationUtility {
         return max;
     }
 
-    static final String[] EXTENSIONS = new String[] { "bmp" }; // acceptable
+    static final String[] EXTENSIONS = new String[] { "png" }; // acceptable
                                                                // image file
                                                                // extensions
 
