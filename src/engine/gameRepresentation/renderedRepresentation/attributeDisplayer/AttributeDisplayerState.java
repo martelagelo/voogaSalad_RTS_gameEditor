@@ -20,8 +20,6 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 	private double minAttributeValue;
 	private double maxAttributeValue;
 	private String myTextValue;
-	private String BackgroundColor;
-	private String ForegroundColor;
 
 	/**
 	 * Constructor
@@ -46,8 +44,6 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 		this.parameterTag = numericParameterTag;
 		this.minAttributeValue = minAttributeValue;
 		this.maxAttributeValue = maxAttributeValue;
-		this.BackgroundColor = BackgroundColor;
-		this.ForegroundColor = ForegroundColor;
 	}
 	
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
@@ -86,12 +82,5 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 		return myTextValue;
 	}
 	
-	public String getBGColor() {
-		return BackgroundColor;
-	}
-	
-	public String getFGColor() {
-		return ForegroundColor;
-	}
 
 }
