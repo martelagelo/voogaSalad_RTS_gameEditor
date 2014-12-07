@@ -3,10 +3,12 @@ package view.editor.wizards;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
+
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -43,6 +45,10 @@ public class DrawableGameElementWizard extends Wizard {
     private final static String LOAD_IMAGE_KEY = "LoadImage";
     private final static String FRAME_HEIGHT_KEY = "FrameHeight";
     private final static String FRAME_WIDTH_KEY = "FrameWidth";
+    private final static String COLOR_MASK_KEY = "ColorMask";
+    
+    private final int DEFAULT_GRID_MIN = 10;
+    private final int DEFAULT_GRID_VALUE = 100;
 
     @FXML
     private AnchorPane leftPane;
@@ -56,6 +62,8 @@ public class DrawableGameElementWizard extends Wizard {
     private Button numberAttribute;
     @FXML
     private Button image;
+    @FXML
+    private Button colorMask;
     @FXML
     private Group spritesheet;
     @FXML
@@ -90,6 +98,7 @@ public class DrawableGameElementWizard extends Wizard {
     private ImageView imageView;
     private AnimationGrid animationGrid;
     private String imagePath;
+    private String colorMaskPath;
 
     /**
      * Launches a TriggerEditorWizard
@@ -193,6 +202,36 @@ public class DrawableGameElementWizard extends Wizard {
         };
         wiz.setSubmit(bc);
     }
+    
+    /**
+     * Gets an image from a file of the user's choice
+     * 
+     * @return image
+     * 		   an Image of the user's choosing
+     * @throws FileNotFoundException 
+     */
+    
+    private File fetchImage() throws FileNotFoundException{
+    	 FileChooser fileChooser = new FileChooser();
+         File file = fileChooser.showOpenDialog(new Stage());
+         return file;
+    }
+    
+    /**
+     * Fired when the user uploads a new color mask
+     * 
+     */
+    private void loadColorMask () {
+		try {
+			File colorMaskFile = fetchImage();
+			colorMaskPath = colorMaskFile.getPath();
+			Image image = new Image(new FileInputStream(colorMaskFile));
+			imageView = new ImageView(image);
+	    	spritesheet.getChildren().add(imageView);
+		} catch (FileNotFoundException e) {
+			displayErrorMessage("Unable to Load Image");
+		}
+    }
 
     /**
      * Fired when the user uploads a new picture
@@ -201,32 +240,21 @@ public class DrawableGameElementWizard extends Wizard {
      * StackOverflow user mathew11
      */
     private void loadImage () {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
-        try {
-            spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
-            spritesheet.getChildren().clear();
-            Image image = new Image(new FileInputStream(file));
-            imagePath = file.getPath();
-            imageView = new ImageView(image);
-            spritesheet.getChildren().add(imageView);
-
-            frameWidth.setMin(10.0);
-            frameWidth.setMax(image.getWidth());
-            frameWidth.setValue(100.0);
-            frameHeight.setMin(10.0);
-            frameHeight.setMax(image.getHeight());
-            frameHeight.setValue(100.0);
-
-            animationGrid =
-                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
-                                      frameHeight.getValue());
-            spritesheet.getChildren().add(animationGrid);
-            spritesheet.toFront();
-        }
-        catch (Exception e) {
-            displayErrorMessage("Unable to Load Image");
-        }
+			try {
+				spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
+	            spritesheet.getChildren().clear();
+	            File imageFile = fetchImage();
+	            Image image = new Image(new FileInputStream(imageFile));
+				imageView = new ImageView(image);
+	            spritesheet.getChildren().add(imageView);
+	            animationGrid =
+	                    new AnimationGrid(image.getWidth(), image.getHeight(), frameWidth.getValue(),
+	                                      frameHeight.getValue());
+	            spritesheet.getChildren().add(animationGrid);
+	            spritesheet.toFront();
+			} catch (FileNotFoundException e) {
+				displayErrorMessage("Unable to Load Image");
+			} 
     }
 
     /**
@@ -242,10 +270,15 @@ public class DrawableGameElementWizard extends Wizard {
         animation.setOnAction(e -> launchAnimationEditor());
         setBounds.setOnAction(e -> launchBoundsEditor());
         image.setOnAction(i -> loadImage());
+        colorMask.setOnAction(i -> loadColorMask());
         createSliderListeners();
         createTextFieldListeners();
         imagePath = "";
-        errorMessage.setFill(Paint.valueOf("white"));        
+        errorMessage.setFill(Paint.valueOf("white"));   
+        frameWidth.setMin(DEFAULT_GRID_MIN);
+        frameWidth.setValue(DEFAULT_GRID_VALUE);
+        frameHeight.setMin(DEFAULT_GRID_MIN);
+        frameHeight.setValue(DEFAULT_GRID_VALUE);
     }
 
     /**
@@ -266,6 +299,7 @@ public class DrawableGameElementWizard extends Wizard {
             setBounds.textProperty().bind(util.getStringProperty(SET_BOUNDS_KEY));
             frameHeightLabel.textProperty().bind(util.getStringProperty(FRAME_HEIGHT_KEY));
             frameWidthLabel.textProperty().bind(util.getStringProperty(FRAME_WIDTH_KEY));
+            colorMask.textProperty().bind(util.getStringProperty(COLOR_MASK_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
@@ -303,7 +337,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null &&
+        return !name.getText().isEmpty() && imageView != null && colorMaskPath !=null &&
                getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0;
     }
 
@@ -312,9 +346,11 @@ public class DrawableGameElementWizard extends Wizard {
         setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
+        //TODO CLEANUP AND DEAL WITH COLOR MASKS
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
         addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
         addToData(WizardDataType.COLS, Integer.toString(animationGrid.getNumColumns()));
+        addToData(WizardDataType.COLOR_MASK, colorMaskPath);
     }
 
     public void attachStringAttributes (List<String> stringAttributes) {
