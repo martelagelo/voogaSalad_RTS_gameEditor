@@ -8,7 +8,6 @@ import engine.gameRepresentation.evaluatables.evaluators.And;
 import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.GreaterThanEqual;
-import engine.gameRepresentation.evaluatables.evaluators.IfThen;
 import engine.gameRepresentation.evaluatables.evaluators.SpawnSelectableElement;
 import engine.gameRepresentation.evaluatables.evaluators.SubtractionAssignment;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
@@ -19,6 +18,7 @@ import engine.gameRepresentation.evaluatables.parameters.NumericAttributeParamet
 import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParameter;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
+import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.stateManaging.GameElementManager;
 
@@ -34,6 +34,8 @@ public class CheckAttributeCreateObjectAction extends Action {
     private long myTimerAmount;
     private Evaluator<?, ?, ?> myAttributeDecrementer;
     private Evaluator<?, ?, SelectableGameElement> myElementCreator;
+    private String myAttributeList;
+    private String myAttributeValues;
 
     public CheckAttributeCreateObjectAction (String id,
                                              EvaluatorFactory factory,
@@ -81,20 +83,34 @@ public class CheckAttributeCreateObjectAction extends Action {
         Evaluator<?, ?, ?> checkEvaluator =
                 new And<>("", checkIfEnoughAttr, conditionEvaluator);
 
+        myAttributeList = args[8];
+        myAttributeValues = args[9];
+
         return checkEvaluator;
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
+        GameElement player = elements.getActor();
         if (elements.getActor().getTimer(myTimerName) <= 0) {
             if ((Boolean) action.evaluate(elements)) {
                 myAttributeDecrementer.evaluate(elements);
-                myElementCreator.evaluate(elements);                
+                SelectableGameElement element = myElementCreator.evaluate(elements);
                 elements.getActor().setTimer(myTimerName, myTimerAmount);
+                // Go through all the attributes to set and set their values
+                String[] attributes = myAttributeList.split(",");
+                String[] values = myAttributeValues.split(",");
+                for (int i = 0; i < attributes.length; i++) {
+                    System.out.println(attributes[i]);
+                    System.out.println( player.getNumericalAttribute(values[i]));
+                    element.setNumericalAttribute(attributes[i],
+                                                  player.getNumericalAttribute(values[i]));
+                }
 
             }
         }
 
         return true;
     }
+
 }

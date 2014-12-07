@@ -147,13 +147,13 @@ public class RPG extends Application {
 
         // set empty bounds to do nothing
         archerState.setBounds(new double[8]);
-
+        archerState.attributes.setNumericalAttribute("specialThing", 10);
         // make spawn point action
         archerState.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
                                                 "isSpawn", "Equals", "1",
                                                 "Enemy", "unitCost", "Resources",
-                                                "1", "500"));
+                                                "1", "500", StateTags.HEALTH.getValue()+","+StateTags.MOVEMENT_SPEED.getValue(),"specialThing,specialThing"));
 
         archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), -100);
         archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), -100);
