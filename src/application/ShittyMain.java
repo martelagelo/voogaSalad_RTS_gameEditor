@@ -54,7 +54,7 @@ public class ShittyMain extends Application {
 		minerState.attributes.setTextualAttribute(StateTags.NAME.getValue(),
 				"miner");
 		minerState.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 500));
 		minerState.attributes.setNumericalAttribute("goodness", 100);
 
@@ -73,7 +73,7 @@ public class ShittyMain extends Application {
 				ActionOptions.ATTRIBUTE_INTERACTION_ACTION, "Transfer",
 				"resources", "my", "Resources"));
 		resource.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER, "ORE", 0, 1000));
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER, "ORE", 0, 1000));
 
 		SelectableGameElementState archerState = createArcher(new double[] { 0,
 				0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
@@ -83,7 +83,7 @@ public class ShittyMain extends Application {
 				"archer");
 		archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER, StateTags.IS_SELECTED.getValue(), 0, 1));
 		archerState.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 500));
 
 		archerState.attributes.setTextualAttribute(
@@ -96,7 +96,7 @@ public class ShittyMain extends Application {
 		archerState1.attributes.setTextualAttribute(
 				StateTags.TEAM_COLOR.getValue(), "BLUE");
 		archerState1.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 500));
 		archerState.addType("archerman");
 
@@ -111,7 +111,7 @@ public class ShittyMain extends Application {
 
 		archerState2.attributes.setNumericalAttribute("MAX_HEALTH", 1000);
 		archerState2.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 1000));
 		archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
 				ActionOptions.ATTRIBUTE_INCRIMENT_ACTION, StateTags.HEALTH
@@ -138,7 +138,7 @@ public class ShittyMain extends Application {
 		// archerState3.addAction(new
 		// ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
 		archerState3.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
+				AttributeDisplayerTags.HEALTH_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 500));
 
 		// TerrainGrid grid = new TerrainGrid(ScrollablePane.FIELD_WIDTH,

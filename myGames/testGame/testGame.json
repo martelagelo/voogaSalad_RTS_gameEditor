@@ -21,7 +21,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "ORE",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 1000.0
@@ -591,7 +591,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -1119,6 +1119,46 @@
                 40.0
               ],
               "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "NotCollision",
+                      "RandomWaypoint"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_CONDITION_ACTION",
+                    "myParameters": [
+                      "Collision",
+                      "MoveBack"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "INCREMENT_DECREMENT_ACTION",
+                    "myParameters": [
+                      "gold",
+                      "ORE",
+                      "goodness",
+                      "0",
+                      "resources",
+                      "MiningTimer",
+                      "100"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1162,46 +1202,6 @@
                       "Resources"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "INCREMENT_DECREMENT_ACTION",
-                    "myParameters": [
-                      "gold",
-                      "ORE",
-                      "goodness",
-                      "0",
-                      "resources",
-                      "MiningTimer",
-                      "100"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
                   }
                 ]
               },
@@ -1280,7 +1280,7 @@
                   "maxAttributeValue": 1.0
                 },
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -1808,41 +1808,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "isDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -1892,6 +1857,41 @@
                       "1000"
                     ],
                     "myActionType": "BUTTON"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "isDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -1973,7 +1973,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -2501,41 +2501,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "isDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -2585,6 +2550,41 @@
                       "1000"
                     ],
                     "myActionType": "BUTTON"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "isDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -2657,7 +2657,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 1000.0
@@ -3185,52 +3185,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "isDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
-                    "myParameters": [
-                      "health",
-                      "attack",
-                      "MAX_HEALTH",
-                      "50",
-                      "Random Timer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3280,6 +3234,52 @@
                       "1000"
                     ],
                     "myActionType": "BUTTON"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "isDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
+                    "myParameters": [
+                      "health",
+                      "attack",
+                      "MAX_HEALTH",
+                      "50",
+                      "Random Timer"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -3356,7 +3356,7 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "displayerTag": "HEALTH_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
@@ -3884,41 +3884,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "isDead",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3968,6 +3933,41 @@
                       "1000"
                     ],
                     "myActionType": "BUTTON"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "health",
+                      "LessThanEqual",
+                      "0",
+                      "isDead",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -4180,7 +4180,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "ORE",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
@@ -4750,7 +4750,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -5278,6 +5278,46 @@
           40.0
         ],
         "myActions": {
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "NotCollision",
+                "RandomWaypoint"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myParameters": [
+                "Collision",
+                "MoveBack"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "INCREMENT_DECREMENT_ACTION",
+              "myParameters": [
+                "gold",
+                "ORE",
+                "goodness",
+                "0",
+                "resources",
+                "MiningTimer",
+                "100"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -5321,46 +5361,6 @@
                 "Resources"
               ],
               "myActionType": "INTERNAL"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "INCREMENT_DECREMENT_ACTION",
-              "myParameters": [
-                "gold",
-                "ORE",
-                "goodness",
-                "0",
-                "resources",
-                "MiningTimer",
-                "100"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
             }
           ]
         },
@@ -5439,7 +5439,7 @@
             "maxAttributeValue": 1.0
           },
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -5967,41 +5967,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "isDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -6051,6 +6016,41 @@
                 "1000"
               ],
               "myActionType": "BUTTON"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "isDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
@@ -6132,7 +6132,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -6660,41 +6660,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "isDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -6744,6 +6709,41 @@
                 "1000"
               ],
               "myActionType": "BUTTON"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "isDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
@@ -6816,7 +6816,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 1000.0
@@ -7344,52 +7344,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "isDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
-              "myParameters": [
-                "health",
-                "attack",
-                "MAX_HEALTH",
-                "50",
-                "Random Timer"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -7439,6 +7393,52 @@
                 "1000"
               ],
               "myActionType": "BUTTON"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "isDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ATTRIBUTE_INCRIMENT_ACTION",
+              "myParameters": [
+                "health",
+                "attack",
+                "MAX_HEALTH",
+                "50",
+                "Random Timer"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
@@ -7515,7 +7515,7 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "displayerTag": "HEALTH_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
@@ -8043,41 +8043,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "health",
-                "LessThanEqual",
-                "0",
-                "isDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -8127,6 +8092,41 @@
                 "1000"
               ],
               "myActionType": "BUTTON"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myParameters": [
+                "health",
+                "LessThanEqual",
+                "0",
+                "isDead",
+                "EqualsAssignment",
+                "1"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },

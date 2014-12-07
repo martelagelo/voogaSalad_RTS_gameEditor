@@ -10,8 +10,9 @@ package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
  */
 public enum AttributeDisplayerTags {
     
-    ATTRIBUTE_BAR_DISPLAYER("AttributeBarDisplayer"),
+    HEALTH_BAR_DISPLAYER("HealthBarDisplayer"),
     ATTRIBUTE_ARROW_DISPLAYER("AttributeArrowDisplayer");
+    
     
     private String myValue;
     
@@ -24,7 +25,7 @@ public enum AttributeDisplayerTags {
     }
 
     public enum AttributeDisplayerType {
-        ATTRIBUTE_BAR_DISPLAYER,
+        HEALTH_BAR_DISPLAYER,
         ATTRIBUTE_ARROW_DISPLAYER
     }
     

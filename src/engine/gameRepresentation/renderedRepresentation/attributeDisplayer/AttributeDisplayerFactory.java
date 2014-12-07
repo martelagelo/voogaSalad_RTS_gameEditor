@@ -60,8 +60,6 @@ public class AttributeDisplayerFactory {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// fail silently
-			e.printStackTrace();
-			System.out.print("Im here");
 		}
 		return displayer;
 	}

@@ -12,17 +12,19 @@ import model.state.gameelement.AttributeContainer;
  * @author Zach, Steve
  *
  */
-public class AttributeBarDisplayer extends AttributeDisplayer {
+public abstract class AttributeBarDisplayer extends AttributeDisplayer {
 	public final static double ATTRIBUTE_BAR_WIDTH = 30;
 	public final static double ATTRIBUTE_BAR_HEIGHT = 5;
-	public final static String FG_COLOR = "Red";
-	public final static String BG_COLOR = "Green";
+	private Paint ForeColor;
+	private Paint BackColor;
+	
 	private Rectangle myAttributeRectangle;
 
 	public AttributeBarDisplayer(AttributeContainer attributes,
-			String numericParameterTag, double minValue, double maxValue) {
+			String numericParameterTag, double minValue, double maxValue, String fgColor, String bgColor) {
 		super(attributes, numericParameterTag, minValue, maxValue);
-
+		ForeColor = Paint.valueOf(fgColor);
+		BackColor = Paint.valueOf(bgColor);
 	}
 
 	@Override
@@ -33,10 +35,10 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
 				ATTRIBUTE_BAR_HEIGHT + 4);
 		border.setFill(Color.BLACK);
 		Rectangle r = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
-		r.setFill(Paint.valueOf(FG_COLOR));
+		r.setFill(BackColor);
 		myAttributeRectangle = new Rectangle(ATTRIBUTE_BAR_WIDTH,
 				ATTRIBUTE_BAR_HEIGHT);
-		myAttributeRectangle.setFill(Paint.valueOf(BG_COLOR));
+		myAttributeRectangle.setFill(ForeColor);
 		group.getChildren().add(border);
 		bar.getChildren().add(r);
 		bar.getChildren().add(myAttributeRectangle);
