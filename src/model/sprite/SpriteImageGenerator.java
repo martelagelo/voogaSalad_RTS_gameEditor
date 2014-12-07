@@ -1,7 +1,6 @@
 package model.sprite;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.net.MalformedURLException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -9,18 +8,15 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import model.exceptions.SaveLoadException;
-
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-
-import util.GameElementType;
-import util.GameSaveLoadMediator;
 import util.ResourceBundleRetriever;
-import util.SaveLoadUtility;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
+/**
+ * 
+ * @author Rahul
+ *
+ */
 public class SpriteImageGenerator {
     private ResourceBundleRetriever myBundleRetriever;
     private ResourceBundle myBundle;
@@ -44,7 +40,7 @@ public class SpriteImageGenerator {
         populateMap();
     }
 
-    public void populateMap () {
+    private void populateMap () {
         Enumeration<String> keys = myBundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
@@ -53,6 +49,12 @@ public class SpriteImageGenerator {
         }
     }
 
+    /**
+     * 
+     * @param animatorStates
+     * @return
+     * @throws SaveLoadException
+     */
     public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
             Set<AnimatorState> animatorStates) throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
@@ -62,6 +64,11 @@ public class SpriteImageGenerator {
         return myCachedContainer;
     }
 
+    /**
+     * 
+     * @param imageTag
+     * @return
+     */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
         return myCachedContainer.get(imageTag);
     }

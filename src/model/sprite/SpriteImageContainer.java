@@ -28,15 +28,15 @@ public class SpriteImageContainer {
 
     public SpriteImageContainer (String spritesheetTag, String colorMaskTag) throws SaveLoadException {
         locateSpritesheet(spritesheetTag);
-        locateTeamColorMasks(colorMaskTag);
+        locateColorMask(colorMaskTag);
     }
 
-    private void locateTeamColorMasks (String imageTag) throws SaveLoadException {
-        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(imageTag));
+    private void locateColorMask (String colorMaskTag) throws SaveLoadException {
+        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(colorMaskTag));
     }
 
-    private void locateSpritesheet (String imageTag) throws SaveLoadException {
-        mySpritesheet = new ImageView(SpriteImageLoader.loadSpritesheet(imageTag));
+    private void locateSpritesheet (String spritesheetTag) throws SaveLoadException {
+        mySpritesheet = new ImageView(SpriteImageLoader.loadSpritesheet(spritesheetTag));
     }
 
     public ImageView getSpritesheet () {
