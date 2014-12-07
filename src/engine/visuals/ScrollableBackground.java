@@ -50,13 +50,8 @@ public class ScrollableBackground extends Pane
 
     public void tileBackground (String backgroundURI) {
         Image im = null;
-        ImageView iv = null;
         try {
             im = SaveLoadUtility.loadImage(backgroundURI);
-            iv = new ImageView(im);
-            iv.setScaleX(3);
-            iv.setScaleY(3);
-            
         }
         catch (SaveLoadException e) {
         }
