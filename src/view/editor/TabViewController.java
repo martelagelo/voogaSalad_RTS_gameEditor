@@ -112,26 +112,31 @@ public class TabViewController extends GUIContainer {
      */
     private void updateLevelTriggersView () {
         List<TriggerPair> triggers = new ArrayList<>();
-        myLevel.getGoals()
-                .forEach( (ges) -> {
-                    ges.getActions()
-                            .forEach( (actionType, actions) -> {
-                                actions.forEach( (act) -> {
-                                    triggers.add(new TriggerPair(act.getActionType(), act
-                                            .getActionClassName(), act
-                                            .getParameters()));
-                                });
-                            });
+        myLevel.getGoals().forEach( (ges) -> {
+            ges.getActions().forEach( (actionType, actions) -> {
+                actions.forEach( (act) -> {
+                    TriggerPair pair = new TriggerPair(act.getActionType(),
+                                                       getByClassName(act.getActionClassName()),
+                                                       act.getParameters());
+                    triggers.add(pair);
                 });
+            });
+        });
         levelTriggerController.updateTriggerList(triggers);
+    }
+
+    private ActionOptions getByClassName (String className) {
+        return Arrays.asList(ActionOptions.values()).stream()
+                .filter(action -> action.getClassString().equals(className))
+                .collect(Collectors.toList()).get(0);
     }
 
     public class TriggerPair {
         public ActionType myActionType;
-        public String myAction;
+        public ActionOptions myAction;
         public String[] myParams;
 
-        public TriggerPair (ActionType actionType, String action, String[] params) {
+        public TriggerPair (ActionType actionType, ActionOptions action, String[] params) {
             myActionType = actionType;
             myAction = action;
             myParams = params;
@@ -155,24 +160,28 @@ public class TabViewController extends GUIContainer {
     }
 
     private void initToggle () {
-        controllerToggle.selectedProperty().addListener((observable, oldValue, newValue)->{
-            try {
-                ObjectProperty<String> toggleText = (newValue) ?
-                                                       MultiLanguageUtility
-                                                               .getInstance()
-                                                               .getStringProperty(EDITOR_INPUT_KEY)
-                                                       :
-                                                       MultiLanguageUtility
-                                                               .getInstance()
-                                                               .getStringProperty(RUNNER_INPUT_KEY);
-                controllerToggle.textProperty().bind(toggleText);
-                Class<?> inputManager = (newValue) ? EditorInputManager.class : RunnerInputManager.class;
-                gameRunnerPaneController.setInputManager(inputManager);
-            }
-            catch (Exception e1) {
-                // do nothing
-            }            
-        });
+        controllerToggle
+                .selectedProperty()
+                .addListener( (observable, oldValue, newValue) -> {
+                    try {
+                        ObjectProperty<String> toggleText =
+                                (newValue) ?
+                                          MultiLanguageUtility.getInstance()
+                                                  .getStringProperty(EDITOR_INPUT_KEY)
+                                          :
+                                          MultiLanguageUtility
+                                                  .getInstance()
+                                                  .getStringProperty(RUNNER_INPUT_KEY);
+                        controllerToggle.textProperty().bind(toggleText);
+                        Class<?> inputManager =
+                                (newValue) ? EditorInputManager.class
+                                          : RunnerInputManager.class;
+                        gameRunnerPaneController.setInputManager(inputManager);
+                    }
+                    catch (Exception e1) {
+                        // do nothing
+                    }
+                });
     }
 
     private BiConsumer<Integer, String> modifyGoals () {
@@ -182,7 +191,6 @@ public class TabViewController extends GUIContainer {
                     Wizard wiz =
                             WizardUtility.loadWizard(GUIPanePath.ACTION_WIZARD, new Dimension(400,
                                                                                               600));
-                    // TODO: THIS SHOULD BE CLEANED UP TO MATCH OTHER WIZARDS
                     String[] oldStrings = oldValues.split("\n");
                     WizardData oldData = new WizardData();
                     oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
@@ -190,34 +198,35 @@ public class TabViewController extends GUIContainer {
                     oldData.addDataPair(WizardDataType.ACTION_PARAMETERS,
                                         extractParamString(oldStrings));
                     wiz.launchForEdit(oldData);
-                    Consumer<WizardData> bc =
-                            (data) -> {
-                                Map<ActionType, List<ActionWrapper>> actions =
-                                        myLevel.getGoals().get(position).getActions();
-                                actions.clear();
-                                List<ActionWrapper> actionValue = new ArrayList<>();
-                                String[] params =
-                                        data.getValueByKey(WizardDataType.ACTION_PARAMETERS)
-                                                .split(",");
-                                ActionWrapper wrapper =
-                                        new ActionWrapper(
-                                                          ActionType
-                                                                  .valueOf(data
-                                                                          .getValueByKey(WizardDataType.ACTIONTYPE)),
-                                                          ActionOptions
-                                                                  .valueOf(data
-                                                                          .getValueByKey(WizardDataType.ACTION)),
-                                                          params);
-                                actionValue.add(wrapper);
-                                actions.put(ActionType
-                                        .valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE))
-                                        , actionValue);
-                                updateLevelTriggersView();
-                                wiz.closeStage();
-                            };
+                    Consumer<WizardData> bc = createInternalConsumer(position, wiz);
                     wiz.setSubmit(bc);
                 };
         return consumer;
+    }
+
+    private Consumer<WizardData> createInternalConsumer (Integer position, Wizard wiz) {
+        Consumer<WizardData> bc = (data) -> {
+            Map<ActionType, List<ActionWrapper>> actions =
+                    myLevel.getGoals().get(position).getActions();
+            actions.clear();
+            List<ActionWrapper> actionValue = new ArrayList<>();
+            String[] params =
+                    data.getValueByKey(WizardDataType.ACTION_PARAMETERS)
+                            .split(",");
+            ActionWrapper wrapper =
+                    new ActionWrapper(ActionType.valueOf(data
+                            .getValueByKey(WizardDataType.ACTIONTYPE)),
+                                      ActionOptions.valueOf(data
+                                              .getValueByKey(WizardDataType.ACTION)),
+                                      params);
+            actionValue.add(wrapper);
+            actions.put(ActionType
+                    .valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE))
+                        , actionValue);
+            updateLevelTriggersView();
+            wiz.closeStage();
+        };
+        return bc;
     }
 
     private String extractParamString (String[] oldStrings) {
