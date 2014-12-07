@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags.AttributeDisplayerType;
 
 
 /**

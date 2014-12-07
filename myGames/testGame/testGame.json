@@ -1119,49 +1119,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "INCREMENT_DECREMENT_ACTION",
-                    "myParameters": [
-                      "gold",
-                      "ORE",
-                      "goodness",
-                      "0",
-                      "resources",
-                      "MiningTimer",
-                      "100"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
->>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1206,16 +1163,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
                 ],
                 "COLLISION": [
                   {
@@ -1247,8 +1194,15 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-=======
->>>>>>> master
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -1854,60 +1808,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
->>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1942,32 +1842,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
                 ],
                 "COLLISION": [
                   {
@@ -1994,8 +1868,31 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-=======
->>>>>>> master
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -2604,60 +2501,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
->>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -2692,32 +2535,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
                 ],
                 "COLLISION": [
                   {
@@ -2744,8 +2561,31 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-=======
->>>>>>> master
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -3345,60 +3185,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
->>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3444,32 +3230,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
                 ],
                 "COLLISION": [
                   {
@@ -3496,8 +3256,31 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-=======
->>>>>>> master
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -4101,60 +3884,6 @@
                 40.0
               ],
               "myActions": {
-<<<<<<< HEAD
-=======
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
->>>>>>> master
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -4189,32 +3918,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-<<<<<<< HEAD
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
                 ],
                 "COLLISION": [
                   {
@@ -4241,8 +3944,31 @@
                     ],
                     "myActionType": "COLLISION"
                   }
-=======
->>>>>>> master
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -5549,61 +5275,6 @@
               ],
               "mySlownessMultiplier": 1.0,
               "myFrameCounter": 0
-<<<<<<< HEAD
-=======
-            }
-          ]
-        },
-        "myBounds": [
-          0.0,
-          0.0,
-          40.0,
-          0.0,
-          40.0,
-          40.0,
-          0.0,
-          40.0
-        ],
-        "myActions": {
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "INCREMENT_DECREMENT_ACTION",
-              "myParameters": [
-                "gold",
-                "ORE",
-                "goodness",
-                "0",
-                "resources",
-                "MiningTimer",
-                "100"
-              ],
-              "myActionType": "COLLISION"
->>>>>>> master
             }
           ]
         },
@@ -5662,16 +5333,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
           ],
           "COLLISION": [
             {
@@ -5703,8 +5364,15 @@
               ],
               "myActionType": "COLLISION"
             }
-=======
->>>>>>> master
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -6310,60 +5978,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
->>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -6398,32 +6012,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
           ],
           "COLLISION": [
             {
@@ -6450,8 +6038,31 @@
               ],
               "myActionType": "COLLISION"
             }
-=======
->>>>>>> master
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -7060,60 +6671,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
->>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -7148,32 +6705,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
           ],
           "COLLISION": [
             {
@@ -7200,8 +6731,31 @@
               ],
               "myActionType": "COLLISION"
             }
-=======
->>>>>>> master
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -7801,60 +7355,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
->>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -7900,32 +7400,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
           ],
           "COLLISION": [
             {
@@ -7952,8 +7426,31 @@
               ],
               "myActionType": "COLLISION"
             }
-=======
->>>>>>> master
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
@@ -8557,60 +8054,6 @@
           40.0
         ],
         "myActions": {
-<<<<<<< HEAD
-=======
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
->>>>>>> master
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -8645,32 +8088,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-<<<<<<< HEAD
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
           ],
           "COLLISION": [
             {
@@ -8697,8 +8114,31 @@
               ],
               "myActionType": "COLLISION"
             }
-=======
->>>>>>> master
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
           ]
         },
         "attributes": {
