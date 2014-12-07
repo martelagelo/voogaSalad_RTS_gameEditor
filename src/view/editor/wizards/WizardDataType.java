@@ -36,5 +36,8 @@ public enum WizardDataType {
     X_POSITION,
     Y_POSITION,
     // bounds of dges
-    BOUND_VALUES
+    BOUND_VALUES,
+    // widgets
+    WIDGET_TYPE,
+    WIDGET_PARAMETERS
 }

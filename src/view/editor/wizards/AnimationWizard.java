@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -37,7 +36,7 @@ public class AnimationWizard extends Wizard {
     private final static String ANIMATION_ACTION_KEY = "AnimationAction";
     private final static String START_FRAME_KEY = "StartFrame";
     private final static String STOP_FRAME_KEY = "StopFrame";
-    
+
     private final int DIRECTION_GRID_SIZE = 50;
 
     @FXML
@@ -75,14 +74,14 @@ public class AnimationWizard extends Wizard {
      * Credit for the buffered image code goes to
      * StackOverflow user mathew11
      */
-    private void loadImage () {
-        File imageFile = new File(imagePath);
-        File colorMaskFile = new File(colorMaskPath);
+    private void loadImage () {        
         try {
             spritesheet.getChildren().clear();
-            Image image = addImage(imageFile);
-            Image colorMask = addImage(colorMaskFile);            
-            
+            Image image = addImage(imagePath);
+            if (!colorMaskPath.isEmpty()) {
+                addImage(colorMaskPath);
+            }
+
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(),
                                       frameWidth.doubleValue(),
@@ -94,9 +93,10 @@ public class AnimationWizard extends Wizard {
         }
     }
 
-    private Image addImage (File imageFile) throws FileNotFoundException {
-        Image image = new Image(new FileInputStream(imageFile));
-        imagePath = imageFile.getPath();
+    private Image addImage (String path) throws FileNotFoundException {
+        File file = new File(path);
+        Image image = new Image(new FileInputStream(file));
+        imagePath = file.getPath();
         imageView = new ImageView(image);
         spritesheet.getChildren().add(imageView);
         return image;
@@ -110,6 +110,7 @@ public class AnimationWizard extends Wizard {
     public void initialize () {
         super.initialize();
         imagePath = "";
+        colorMaskPath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
         animationAction.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())
@@ -128,7 +129,7 @@ public class AnimationWizard extends Wizard {
     }
 
     private void updateAnimationGrid (Consumer<Integer> updateCons, String newValue) {
-        if (Pattern.matches(NUM_REGEX, newValue)) {
+        if (isNumber(newValue)) {
             int intValue = Integer.parseInt(newValue);
             try {
                 updateCons.accept(intValue);
@@ -162,13 +163,13 @@ public class AnimationWizard extends Wizard {
     @Override
     public boolean checkCanSave () {
         return !startFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, startFrame.getText()) &&
+               isNumber(startFrame.getText()) &&
                !stopFrame.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, stopFrame.getText()) &&
-               animationAction.getSelectionModel().getSelectedItem() != null &&
+               isNumber(stopFrame.getText()) &&
+               animationAction.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                !slownessMultiplier.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, slownessMultiplier.getText()) &&
-               directionGrid.getDirections().size() > 0;
+               isNumber(slownessMultiplier.getText()) &&
+               !directionGrid.getDirections().isEmpty();
     }
 
     @Override
@@ -208,23 +209,25 @@ public class AnimationWizard extends Wizard {
     }
 
     private void selectCorrectFrame (List<AnimationTag> tags) {
-        int row = 1;
-        int col = 1;
+        int row = DirectionGrid.GRID_SIZE / 2;
+        int col = DirectionGrid.GRID_SIZE / 2;
         if (tags.contains(AnimationTag.FORWARD))
-            row = 2;
-        else if (tags.contains(AnimationTag.BACKWARD)) row = 0;
+            row++;
+        else if (tags.contains(AnimationTag.BACKWARD))
+            row--;
         if (tags.contains(AnimationTag.LEFT))
-            col = 0;
-        else if (tags.contains(AnimationTag.RIGHT)) col = 2;
+            col--;
+        else if (tags.contains(AnimationTag.RIGHT))
+            col++;
         directionGrid.selectFrame(row, col);
     }
 
     @Override
     public void loadGlobalValues (List<String> values) {
-        imagePath = values.get(0);
-        colorMaskPath = values.get(1);
-        frameWidth = Double.parseDouble(values.get(2));
-        frameHeight = Double.parseDouble(values.get(3));
+        imagePath = values.get(0);        
+        frameWidth = Double.parseDouble(values.get(1));
+        frameHeight = Double.parseDouble(values.get(2));
+        colorMaskPath = values.get(3);
         loadImage();
     }
 

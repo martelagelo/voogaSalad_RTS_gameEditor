@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import model.exceptions.SaveLoadException;
 import util.ResourceBundleRetriever;
+import util.exceptions.SaveLoadException;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
@@ -70,9 +70,6 @@ public class SpriteImageGenerator {
             myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
                     state.getImageTag(), state.getColorMaskTag()));    
         }
-        System.out.println(myCachedContainer);
-        System.out.println(" IMAGE TAG : " + state.getImageTag());
-        System.out.println(state.getColorMaskTag());
     }
 
     /**

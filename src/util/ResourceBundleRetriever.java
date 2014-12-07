@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import model.exceptions.SaveLoadException;
+import util.exceptions.SaveLoadException;
 
 /**
  * Utility class to load a resource bundle from a file with a .properties

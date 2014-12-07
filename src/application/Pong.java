@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.MainModel;
-import model.exceptions.SaveLoadException;
 import model.state.CampaignState;
 import model.state.GameState;
 import model.state.LevelIdentifier;
