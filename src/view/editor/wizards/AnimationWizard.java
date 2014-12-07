@@ -74,13 +74,13 @@ public class AnimationWizard extends Wizard {
      * Credit for the buffered image code goes to
      * StackOverflow user mathew11
      */
-    private void loadImage () {
-        File imageFile = new File(imagePath);
-        File colorMaskFile = new File(colorMaskPath);
+    private void loadImage () {        
         try {
             spritesheet.getChildren().clear();
-            Image image = addImage(imageFile);
-            addImage(colorMaskFile);
+            Image image = addImage(imagePath);
+            if (!colorMaskPath.isEmpty()) {
+                addImage(colorMaskPath);
+            }
 
             animationGrid =
                     new AnimationGrid(image.getWidth(), image.getHeight(),
@@ -93,9 +93,10 @@ public class AnimationWizard extends Wizard {
         }
     }
 
-    private Image addImage (File imageFile) throws FileNotFoundException {
-        Image image = new Image(new FileInputStream(imageFile));
-        imagePath = imageFile.getPath();
+    private Image addImage (String path) throws FileNotFoundException {
+        File file = new File(path);
+        Image image = new Image(new FileInputStream(file));
+        imagePath = file.getPath();
         imageView = new ImageView(image);
         spritesheet.getChildren().add(imageView);
         return image;
@@ -109,6 +110,7 @@ public class AnimationWizard extends Wizard {
     public void initialize () {
         super.initialize();
         imagePath = "";
+        colorMaskPath = "";
         attachTextProperties();
         errorMessage.setFill(Paint.valueOf("white"));
         animationAction.setItems(FXCollections.observableList(Arrays.asList(AnimationTag.values())
@@ -222,10 +224,10 @@ public class AnimationWizard extends Wizard {
 
     @Override
     public void loadGlobalValues (List<String> values) {
-        imagePath = values.get(0);
-        colorMaskPath = values.get(1);
-        frameWidth = Double.parseDouble(values.get(2));
-        frameHeight = Double.parseDouble(values.get(3));
+        imagePath = values.get(0);        
+        frameWidth = Double.parseDouble(values.get(1));
+        frameHeight = Double.parseDouble(values.get(2));
+        colorMaskPath = values.get(3);
         loadImage();
     }
 

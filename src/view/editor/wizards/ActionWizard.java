@@ -49,8 +49,8 @@ public class ActionWizard extends Wizard {
     private boolean dropdownsValid () {
         if (dropdowns.isEmpty()) return false;
         for (ComboBox<String> box : dropdowns) {
-            if (box.getSelectionModel().selectedItemProperty().isNotNull().get() ||
-                box.valueProperty().isNotNull().get()) { return false; }
+            if (box.getSelectionModel().selectedItemProperty().isNull().get() ||
+                box.valueProperty().isNull().get()) { return false; }
         }
         for (ComboBox<String> numberInput : numberDropdowns) {
             if (!isNumber(numberInput.getSelectionModel().getSelectedItem())) { return false; }

@@ -36,6 +36,10 @@ import view.gui.GUIPanePath;
  */
 public class DrawableGameElementWizard extends Wizard {
 
+    private static final String UNABLE_TO_LAUNCH_ANIM = "Can't launch due to unspecified image information";
+    private static final String UNABLE_TO_LOAD = "Unable to Load Image";
+    private static final String DELETE_TEXT = "X";
+    private static final Dimension BOUNDS_WIZARD_SIZE = new Dimension(500, 700);
     private static final Dimension ACTION_WIZARD_SIZE = new Dimension(400, 600);
     private final static String NAME_KEY = "Name";
     private final static String NEW_ACTION_KEY = "NewAction";
@@ -110,7 +114,7 @@ public class DrawableGameElementWizard extends Wizard {
     private String imagePath;
     private String colorMaskPath;
     
-    private void launchActionEditor () {
+    private void launchActionWizard () {
         launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, myGlobalNumberAttributes,
                            getActionConsumer(), ACTION_WIZARD_SIZE);
     }
@@ -123,7 +127,7 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    private void launchStringAttributeEditor () {
+    private void launchStringAttributeWizard () {
         launchNestedWizard(GUIPanePath.STRING_ATTRIBUTE_WIZARD, existingStringAttributes,
                            myGlobalStringAttributes, 
                            getAttributeConsumer(), new Dimension(
@@ -141,7 +145,7 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    private void launchNumberAttributeEditor () {
+    private void launchNumberAttributeWizard () {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
                            myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
                         		   ATTRIBUTE_WIZARD_WIDTH, 
@@ -149,7 +153,7 @@ public class DrawableGameElementWizard extends Wizard {
                         		   ));
     }
     
-    private void launchWidgetEditor () {
+    private void launchWidgetWizard () {
         WidgetWizard wiz = (WidgetWizard) launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
     			myGlobalNumberAttributes, getWidgetConsumer(), new Dimension(
              		   ATTRIBUTE_WIZARD_WIDTH, 
@@ -164,18 +168,18 @@ public class DrawableGameElementWizard extends Wizard {
         return null;
     }
 
-    private void launchAnimationEditor () {
+    private void launchAnimationWizard () {
         if (imageView != null) {
-            List<String> imageValues = new ArrayList<>();
-            imageValues.add(imagePath);
-            imageValues.add(colorMaskPath);
+            List<String> imageValues = new ArrayList<>();            
+            imageValues.add(imagePath);            
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
+            imageValues.add(colorMaskPath);
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
                                imageValues, getAnimationConsumer(), new Dimension(ANIMATION_WIZARD_WIDTH, ANIMATION_WIZARD_HEIGHT));
         }
         else {
-            displayErrorMessage("Can't launch due to unspecified image information");
+            displayErrorMessage(UNABLE_TO_LAUNCH_ANIM);
         }
     }
 
@@ -187,10 +191,10 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    private void launchBoundsEditor () {
-        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, new Dimension(500, 700));
-        if (this.getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0) {
-            wiz.launchForEdit(this.getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
+    private void launchBoundsWizard () {
+        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, BOUNDS_WIZARD_SIZE);
+        if (!getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty()) {
+            wiz.launchForEdit(getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
         }
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
@@ -217,7 +221,7 @@ public class DrawableGameElementWizard extends Wizard {
                 newElement.getChildren().add(edit);
 
                 Button delete = new Button();
-                delete.setText("X");
+                delete.setText(DELETE_TEXT);
                 delete.setOnAction(e -> {
                     removeWizardData(data);
                     existing.getChildren().remove(newElement);
@@ -276,8 +280,8 @@ public class DrawableGameElementWizard extends Wizard {
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
         }
-        catch (FileNotFoundException e) {
-            displayErrorMessage("Unable to Load Image");
+        catch (FileNotFoundException | NullPointerException e) {
+            displayErrorMessage(UNABLE_TO_LOAD);
         }
     }
 
@@ -298,7 +302,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.toFront();
         }
         catch (FileNotFoundException | NullPointerException e) {
-            displayErrorMessage("Unable to Load Image");
+            displayErrorMessage(UNABLE_TO_LOAD);
         }
     }
 
@@ -316,15 +320,16 @@ public class DrawableGameElementWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        trigger.setOnAction(e -> launchActionEditor());
-        stringAttribute.setOnAction(e -> launchStringAttributeEditor());
-        numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
+        trigger.setOnAction(e -> launchActionWizard());
+        stringAttribute.setOnAction(e -> launchStringAttributeWizard());
+        numberAttribute.setOnAction(e -> launchNumberAttributeWizard());
 //        widget.setOnAction(e -> launchWidgetEditor());
-        animation.setOnAction(e -> launchAnimationEditor());
-        setBounds.setOnAction(e -> launchBoundsEditor());
+        animation.setOnAction(e -> launchAnimationWizard());
+        setBounds.setOnAction(e -> launchBoundsWizard());
         image.setOnAction(i -> loadImage());
         colorMask.setOnAction(i -> loadColorMask());
-        imagePath = "";
+        imagePath = "";        
+        colorMaskPath = "";
         errorMessage.setFill(Paint.valueOf("white"));                
     }
 
@@ -382,7 +387,7 @@ public class DrawableGameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null;
+        return !name.getText().isEmpty() && !imagePath.isEmpty();
     }
 
     @Override
