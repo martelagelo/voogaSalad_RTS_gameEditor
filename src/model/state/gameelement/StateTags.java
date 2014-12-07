@@ -1,6 +1,5 @@
 package model.state.gameelement;
 
-import engine.visuals.elementVisuals.animations.AnimationTag.AnimationType;
 
 /**
  * An enumeration to allow for the important tags of states.

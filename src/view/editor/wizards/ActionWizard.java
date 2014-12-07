@@ -1,13 +1,17 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
@@ -35,7 +39,7 @@ public class ActionWizard extends Wizard {
 
     private List<ComboBox<String>> dropdowns;
 
-    private List<String> attributes;
+    private Set<String> attributes;
     private List<ComboBox<String>> numberDropdowns;
 
     @Override
@@ -82,7 +86,9 @@ public class ActionWizard extends Wizard {
         actionChoice.valueProperty()
                 .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
         dropdowns = new ArrayList<>();
-        attributes = new ArrayList<>();
+        attributes = Arrays.asList(StateTags.values())
+                .stream().map(tag -> tag.getValue())
+                .collect(Collectors.toSet());
         numberDropdowns = new ArrayList<>();
     }
 
@@ -103,7 +109,7 @@ public class ActionWizard extends Wizard {
                 cb.setPromptText(actionParameters.get(parameterIndex).name());
                 cb.setEditable(cb.getItems().size() == 0);
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
-                    cb.setItems(FXCollections.observableList(attributes));
+                    cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
                 }
                 else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
                     numberDropdowns.add(cb);
