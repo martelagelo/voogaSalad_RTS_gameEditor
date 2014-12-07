@@ -87,8 +87,9 @@ public class CheckAttributeCreateObjectAction extends Action {
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         if (elements.getActor().getTimer(myTimerName) <= 0) {
-            action.evaluate(elements);
+            if((Boolean)action.evaluate(elements)){
             elements.getActor().setTimer(myTimerName, myTimerAmount);
+            }
         }
 
         return true;

@@ -70,7 +70,7 @@ public class Animator implements Updatable {
      */
     public Animator (SpriteImageContainer images, AnimatorState state, AttributeContainer attributes, SimpleBooleanProperty animationEnabled) {
         this.animationEnabled = animationEnabled;
-
+//        mySpritesheetBounds = getImageBounds(images.getSpritesheet().getImage());
         if(!animationEnabled.get()){
             try {
                 String imageType = state.getImageTag().substring(state.getImageTag().lastIndexOf('/')+1);

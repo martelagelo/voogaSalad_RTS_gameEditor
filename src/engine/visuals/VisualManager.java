@@ -84,7 +84,8 @@ public class VisualManager {
         Map<Integer, String> map =
                 e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES)
                          : new HashMap<>();
-        myAbilityMatrix.updateGridImages(map);
+        Map<String, Long> timerMap = e!=null ? e.getTimersCopy() : new HashMap<>();
+        myAbilityMatrix.updateGridImages(map, timerMap);
     }
 
     private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
