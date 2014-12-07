@@ -553,7 +553,9 @@
                       "unitCost",
                       "Resources",
                       "1",
-                      "500"
+                      "500",
+                      "health,movementSpeed",
+                      "specialThing,specialThing"
                     ],
                     "myActionType": "INTERNAL"
                   }
@@ -588,6 +590,10 @@
                   {
                     "myData": -100,
                     "myName": "ySpawnOffset"
+                  },
+                  {
+                    "myData": 10,
+                    "myName": "specialThing"
                   },
                   {
                     "myData": 0,
@@ -1131,6 +1137,39 @@
                 100.0
               ],
               "myActions": {
+                "BUTTON": [
+                  {
+                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "healCost",
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "active",
+                      "me",
+                      "health",
+                      "AdditionAssignment",
+                      "healAmount",
+                      "me",
+                      "blah",
+                      "Equals",
+                      "active",
+                      "Equals",
+                      "a",
+                      "zero",
+                      "SubtractionAssignment",
+                      "healCost",
+                      "my",
+                      "resources",
+                      "1",
+                      "HealingCooldown"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ],
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -1247,6 +1286,7 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+<<<<<<< HEAD
                 ],
                 "BUTTON": [
                   {
@@ -1311,6 +1351,8 @@
                     ],
                     "myActionType": "BUTTON"
                   }
+=======
+>>>>>>> 58850e0e158b81cb04e41b9dde06cde780051e6b
                 ]
               },
               "attributes": {
@@ -2206,6 +2248,10 @@
         "myName": "ySpawnOffset"
       },
       {
+        "myData": 10,
+        "myName": "specialThing"
+      },
+      {
         "myData": 0,
         "myName": "movementSpeed"
       },
@@ -2838,7 +2884,9 @@
                 "unitCost",
                 "Resources",
                 "1",
-                "500"
+                "500",
+                "health,movementSpeed",
+                "specialThing,specialThing"
               ],
               "myActionType": "INTERNAL"
             }
@@ -2873,6 +2921,10 @@
             {
               "myData": -100,
               "myName": "ySpawnOffset"
+            },
+            {
+              "myData": 10,
+              "myName": "specialThing"
             },
             {
               "myData": 0,
@@ -3416,6 +3468,39 @@
           100.0
         ],
         "myActions": {
+          "BUTTON": [
+            {
+              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myParameters": [
+                "my",
+                "resources",
+                "GreaterThanEqual",
+                "healCost",
+                "me",
+                "lastButtonID",
+                "Equals",
+                "active",
+                "me",
+                "health",
+                "AdditionAssignment",
+                "healAmount",
+                "me",
+                "blah",
+                "Equals",
+                "active",
+                "Equals",
+                "a",
+                "zero",
+                "SubtractionAssignment",
+                "healCost",
+                "my",
+                "resources",
+                "1",
+                "HealingCooldown"
+              ],
+              "myActionType": "BUTTON"
+            }
+          ],
           "FOCUSED": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3532,6 +3617,7 @@
               ],
               "myActionType": "INTERNAL"
             }
+<<<<<<< HEAD
           ],
           "BUTTON": [
             {
@@ -3596,6 +3682,8 @@
               ],
               "myActionType": "BUTTON"
             }
+=======
+>>>>>>> 58850e0e158b81cb04e41b9dde06cde780051e6b
           ]
         },
         "attributes": {

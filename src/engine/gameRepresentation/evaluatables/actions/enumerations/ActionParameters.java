@@ -46,8 +46,8 @@ public enum ActionParameters {
     NUMBER(),
     //A comma delimited list of strings
     STRING_LIST(),
-    //A comma delimited list of numbers
-    NUMBER_LIST(),
+    //A comma delimited list of attributes
+    ATTR_LIST(),
     //Designation between my object and another object
     OBJECT_DESIGNATOR("me", "other object");
 

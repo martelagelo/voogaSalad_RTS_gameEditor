@@ -89,9 +89,9 @@ public enum ActionOptions {
                                          ActionParameters.ATTR,
                                          ActionParameters.ATTR,
                                          ActionParameters.STRING,
-                                         ActionParameters.NUMBER),
-//                                         ActionParameters.STRING_LIST, //TODO fix this
-//                                         ActionParameters.NUMBER_LIST),
+                                         ActionParameters.NUMBER,
+                                         ActionParameters.STRING_LIST,
+                                         ActionParameters.ATTR_LIST),
     INCREMENT_DECREMENT_ACTION(
                                "Decrement object's attribute and add it to mine",
                                "DecrementIncrementAttributeAction",
