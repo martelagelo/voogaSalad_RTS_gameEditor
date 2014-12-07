@@ -65,7 +65,7 @@ public class SpriteSheetCreationUtility {
 //				List<BufferedImage> sprites = loadFilesInDirectory(dir);
 //				int i=0;
 //				for(BufferedImage sprite : sprites){
-//					BufferedImage better = colorToTransparency(sprite,new Color(0xFFFF00FF));
+//					BufferedImage better = colorTo	Transparency(sprite,new Color(0xFFFF00FF));
 //					ImageIO.write(better, "PNG", new File(dir.getAbsolutePath() + File.separator + i + ".png"));
 //					i++;
 //				}
