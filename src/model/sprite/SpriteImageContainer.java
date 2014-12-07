@@ -42,6 +42,9 @@ public class SpriteImageContainer {
         return mySpritesheet;
     }
 
+    public ImageView getColorMask() {
+        return myColorMask;
+    }
     /**
      * 
      * @param color

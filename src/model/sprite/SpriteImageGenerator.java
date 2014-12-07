@@ -60,13 +60,19 @@ public class SpriteImageGenerator {
     public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
             Set<AnimatorState> animatorStates) throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
-            System.out.println(myCachedContainer);
-            System.out.println(" IMAGE TAG : " + state.getImageTag());
-            System.out.println(state.getColorMaskTag());
-            myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
-                    state.getImageTag(), state.getColorMaskTag()));
+            loadSpriteImageContainer(state);
         }
         return myCachedContainer;
+    }
+
+    public static void loadSpriteImageContainer (AnimatorState state) throws SaveLoadException {
+        if (!myCachedContainer.containsKey(state.getImageTag())) {
+            myCachedContainer.put(state.getImageTag(), new SpriteImageContainer(
+                    state.getImageTag(), state.getColorMaskTag()));    
+        }
+        System.out.println(myCachedContainer);
+        System.out.println(" IMAGE TAG : " + state.getImageTag());
+        System.out.println(state.getColorMaskTag());
     }
 
     /**
@@ -74,7 +80,7 @@ public class SpriteImageGenerator {
      * @param imageTag
      * @return
      */
-    public SpriteImageContainer fetchImageContainer (String imageTag) {
+    public SpriteImageContainer fetchImageContainer (String imageTag) {  
         return myCachedContainer.get(imageTag);
     }
 
