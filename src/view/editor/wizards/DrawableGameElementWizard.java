@@ -48,6 +48,10 @@ public class DrawableGameElementWizard extends Wizard {
 
     private final int DEFAULT_GRID_MIN = 10;
     private final int DEFAULT_GRID_VALUE = 100;
+    private final int ANIMATION_WIZARD_WIDTH = 800;
+    private final int ANIMATION_WIZARD_HEIGHT = 800;
+    private final int ATTRIBUTE_WIZARD_WIDTH = 300;
+    private final int ATTRIBUTE_WIZARD_HEIGHT = 300;
 
     @FXML
     private AnchorPane leftPane;
@@ -114,7 +118,11 @@ public class DrawableGameElementWizard extends Wizard {
      */
     private void launchStringAttributeEditor () {
         launchNestedWizard(GUIPanePath.STRING_ATTRIBUTE_WIZARD, existingStringAttributes,
-                           myGlobalStringAttributes, new Dimension(300, 300));
+                           myGlobalStringAttributes, 
+                           new Dimension(
+                        		   ATTRIBUTE_WIZARD_WIDTH, 
+                        		   ATTRIBUTE_WIZARD_HEIGHT
+                        		   ));
     }
 
     /**
@@ -123,7 +131,10 @@ public class DrawableGameElementWizard extends Wizard {
      */
     private void launchNumberAttributeEditor () {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
-                           myGlobalNumberAttributes, new Dimension(300, 300));
+                           myGlobalNumberAttributes, new Dimension(
+                        		   ATTRIBUTE_WIZARD_WIDTH, 
+                        		   ATTRIBUTE_WIZARD_HEIGHT
+                        		   ));
     }
 
     private void launchAnimationEditor () {
@@ -134,7 +145,7 @@ public class DrawableGameElementWizard extends Wizard {
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
-                               imageValues, new Dimension(800, 600));
+                               imageValues, new Dimension(ANIMATION_WIZARD_WIDTH, ANIMATION_WIZARD_HEIGHT));
         }
         else {
             displayErrorMessage("Can't launch due to unspecified image information");

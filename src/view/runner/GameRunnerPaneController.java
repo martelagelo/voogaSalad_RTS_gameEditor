@@ -2,6 +2,7 @@ package view.runner;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
@@ -63,7 +64,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
             pane.requestFocus();
         }
         catch (ClassNotFoundException | JSONException | IOException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
         }
     }
     

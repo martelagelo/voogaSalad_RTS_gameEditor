@@ -1,6 +1,7 @@
 package view.editor;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;

@@ -65,6 +65,10 @@ public class AnimatorState implements JSONable, Serializable {
     public String getImageTag () {
         return imageTag;
     }
+    
+    public String getColorMaskTag() {
+        return colorMaskTag;
+    }
 
     public Dimension getViewportSize () {
         return viewportSize;

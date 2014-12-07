@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import util.JSONable;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
@@ -17,7 +18,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
  * representation. Examples include triggers and goals. States are essentially
  * data-wrapping objects and as such have no internal logic.
  * 
- * @author Steve, Jonathan, Rahul, Nishad, Zach, Michael D.
+ * @author Steve, Jonathan, Rahul, Nishad, Zach, Michael D., Stanley
  *
  */
 
@@ -28,6 +29,7 @@ public class GameElementState implements JSONable, Serializable {
 
     private static final long serialVersionUID = 6832117170246376287L;
 
+    // TODO: Edit explanation here
     /**
      * The actions for a given game element state will be stored in a map of
      * Strings that represent the type of action e.g. collision, internal, etc.
@@ -35,7 +37,7 @@ public class GameElementState implements JSONable, Serializable {
      * were removed from this representation as actions internally check for
      * their own conditions.
      */
-    protected Map<String, List<ActionWrapper>> myActions;
+    protected Map<ActionType, List<ActionWrapper>> myActions;
     /**
      * It was decided that all attributes for a game element would be saved in
      * sets of attributes instead of in local instance variables. Although this
@@ -55,7 +57,7 @@ public class GameElementState implements JSONable, Serializable {
      */
     public GameElementState () {
         attributes = new AttributeContainer();
-        myActions = new HashMap<String, List<ActionWrapper>>();
+        myActions = new HashMap<ActionType, List<ActionWrapper>>();
         myTypes = new HashSet<String>();
     }
 
@@ -118,7 +120,7 @@ public class GameElementState implements JSONable, Serializable {
      * 
      * @return
      */
-    public Map<String, List<ActionWrapper>> getActions () {
+    public Map<ActionType, List<ActionWrapper>> getActions () {
         return myActions;
     }
 
