@@ -76,8 +76,8 @@ public class ShittyMain extends Application {
         archerState2.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
                                                                             StateTags.HEALTH, 0,
                                                                             1000));
-        archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
-                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
+//        archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
+//                                                 ActionOptions.ATTRIBUTE_INCRIMENT_ACTION,StateTags.HEALTH,StateTags.ATTACK,"MAX_HEALTH","50","Random Timer"));
 
         SelectableGameElementState archerState3 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
