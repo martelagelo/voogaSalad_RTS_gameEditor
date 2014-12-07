@@ -81,9 +81,7 @@ public class ShittyMain extends Application {
 				StateTags.TEAM_COLOR.getValue(), "BLUE");
 		archerState.attributes.setTextualAttribute(StateTags.NAME.getValue(),
 				"archer");
-		archerState.addAttributeDisplayerState(new AttributeDisplayerState(
-				AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER,
-				StateTags.IS_SELECTED.getValue(), 0, 1));
+		archerState.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER, StateTags.IS_SELECTED.getValue(), 0, 1));
 		archerState.addAttributeDisplayerState(new AttributeDisplayerState(
 				AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER,
 				StateTags.HEALTH.getValue(), 0, 500));

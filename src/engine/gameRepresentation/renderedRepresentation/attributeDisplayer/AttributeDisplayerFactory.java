@@ -37,13 +37,18 @@ public class AttributeDisplayerFactory {
 		if (attributeDisplayerState.getTextValue() != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
 					attachee);
-		} else {
+		} 
+		else if(attributeDisplayerState.getBGColor() != null) {
+			return createNumericalAttributeDisplayerColor(c,
+					attributeDisplayerState, attachee);
+		}
+		else {
 			return createNumericalAttributeDisplayer(c,
 					attributeDisplayerState, attachee);
 		}
 
 	}
-
+	
 	private AttributeDisplayer createNumericalAttributeDisplayer(Class<?> c,
 			AttributeDisplayerState attributeDisplayerState,
 			AttributeContainer attachee) {
@@ -55,6 +60,29 @@ public class AttributeDisplayerFactory {
 					attributeDisplayerState.getParameterTag(),
 					attributeDisplayerState.getMinValue(),
 					attributeDisplayerState.getMaxValue());
+		} catch (InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			// fail silently
+			e.printStackTrace();
+			System.out.print("Im here");
+		}
+		return displayer;
+	}
+
+	private AttributeDisplayer createNumericalAttributeDisplayerColor(Class<?> c,
+			AttributeDisplayerState attributeDisplayerState,
+			AttributeContainer attachee) {
+		AttributeDisplayer displayer = null;
+		try {
+			displayer = (AttributeDisplayer) c.getDeclaredConstructor(
+					AttributeContainer.class, String.class, double.class,
+					double.class, String.class, String.class).newInstance(attachee,
+					attributeDisplayerState.getParameterTag(),
+					attributeDisplayerState.getMinValue(),
+					attributeDisplayerState.getMaxValue(),
+					attributeDisplayerState.getBGColor(), 
+					attributeDisplayerState.getFGColor());
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
