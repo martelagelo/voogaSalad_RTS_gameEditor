@@ -74,12 +74,12 @@ public class ParticipantManager {
          * creates a new AI team for it
          */
         for (SelectableGameElement element : allUnits) {
-            int ID = (element.getNumericalAttribute(StateTags.TEAM_ID).intValue());
+            String teamColor = (element.getTextualAttribute(StateTags.TEAM_COLOR));
             boolean containsID =
-                    myAIUsers.stream().filter(e -> e.checkSameTeam(ID))
+                    myAIUsers.stream().filter(e -> e.checkSameTeam(teamColor))
                             .collect(Collectors.toList()).size() > 0;
-            if (!containsID && ID != 1) {
-                myAIUsers.add(new AIParticipant(ID, "AI" + ID));
+            if (!containsID && !teamColor.equalsIgnoreCase("BLUE")) {
+                myAIUsers.add(new AIParticipant(teamColor, "AI" + teamColor));
             }
         }
         /**
@@ -88,8 +88,8 @@ public class ParticipantManager {
         for (AIParticipant p : myAIUsers) {
             for (SelectableGameElement e : allUnits
                     .stream()
-                    .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID)
-                            .doubleValue())).collect(Collectors.toList())) {
+                    .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR)
+                            )).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
                     e.addWaypoint(e.getPosition().getX() * r.nextDouble() * 2, e.getPosition()
@@ -103,12 +103,12 @@ public class ParticipantManager {
     /**
      * Used to adjust the participant's (by ID value) numerical attribute by the adjustment value
      * 
-     * @param ID
+     * @param teamColor
      * @param tag
      * @param value the value to adjust the current numerical attribute's value by
      */
-    public void adjustParticipantNumericalAttribute (int ID, String tag, double value) {
-        for (Participant p : filterParticipants(ID)) {
+    public void adjustParticipantNumericalAttribute (String teamColor, String tag, double value) {
+        for (Participant p : filterParticipants(teamColor)) {
             double currentVal = p.getAttributes().getNumericalAttribute(tag).doubleValue();
             p.getAttributes().setNumericalAttribute(tag, currentVal + value);
         }
@@ -117,12 +117,12 @@ public class ParticipantManager {
     /**
      * Used to reset the participant's (by ID value) numerical attribute. Overwrites current value
      * 
-     * @param ID
+     * @param teamColor
      * @param tag
      * @param value
      */
-    public void setParticipantNumericalAttribute (int ID, String tag, Number value) {
-        for (Participant p : filterParticipants(ID)) {
+    public void setParticipantNumericalAttribute (String teamColor, String tag, Number value) {
+        for (Participant p : filterParticipants(teamColor)) {
             p.getAttributes().setNumericalAttribute(tag, value);
         }
     }
@@ -130,12 +130,12 @@ public class ParticipantManager {
     /**
      * Used to reset participant's string attribute by ID value
      * 
-     * @param ID
+     * @param teamColor
      * @param tag
      * @param value
      */
-    public void setParticipantTextualAttribute (int ID, String tag, String value) {
-        for (Participant p : filterParticipants(ID)) {
+    public void setParticipantTextualAttribute (String teamColor, String tag, String value) {
+        for (Participant p : filterParticipants(teamColor)) {
             p.getAttributes().setTextualAttribute(tag, value);
         }
     }
@@ -143,15 +143,14 @@ public class ParticipantManager {
     /**
      * filters participants by ID. if ID = -1, returns all participants, both human and ai
      * 
-     * @param ID
+     * @param teamColor
      * @return
      */
-    private List<Participant> filterParticipants (int ID) {
+    private List<Participant> filterParticipants (String teamColor) {
         // java allows casting subclass -> superclass but not List<subclass> -> list<superclass>
         List<Participant> participants = myAIUsers.stream().collect(Collectors.toList());
-        if (humanUser.checkSameTeam(ID)) participants.add(humanUser);
-        if (ID == -1) return participants;
-        return participants.stream().filter(e -> e.checkSameTeam(ID))
+        if (humanUser.checkSameTeam(teamColor)) participants.add(humanUser);
+        return participants.stream().filter(e -> e.checkSameTeam(teamColor))
                 .collect(Collectors.toList());
     }
 

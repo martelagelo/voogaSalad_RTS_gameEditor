@@ -21,7 +21,6 @@ public class StateTags {
     public static final String X_TEMP_GOAL_POSITION = "xTempPosition";
     public static final String Y_TEMP_GOAL_POSITION = "yTempGoalPosition";
     public static final String RANDOM_MOVEMENT_STRING = "randomMove";
-    public static final String TEAM_ID = "teamID";
     public static final String MOVEMENT_SPEED = "movementSpeed";
     public static final String BLOCKING = "blocking";
     public static final String TEAM_COLOR = "teamColor";
