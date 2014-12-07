@@ -1,5 +1,7 @@
 package engine.users;
 
+import java.io.Serializable;
+import util.JSONable;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 
@@ -11,8 +13,14 @@ import model.state.gameelement.StateTags;
  * @author Michael D.
  *
  */
-public abstract class Participant {
+public abstract class Participant implements JSONable, Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 9150235534545105031L;
+    
+    
     protected AttributeContainer attributes;
     protected String myTeamColor;
     protected String myName;
