@@ -123,6 +123,14 @@ public class DrawableGameElement extends GameElement implements Displayable,
 			line.getStrokeDashArray().addAll(25d, 10d);
 			line.setStroke(Color.RED);
 			lines.add(line);
+			if (wayPoints.peek() != null) {
+				Line line2 = new Line(getNumericalAttribute(
+						StateTags.X_GOAL_POSITION).doubleValue(),
+						getNumericalAttribute(StateTags.Y_GOAL_POSITION).doubleValue(), wayPoints.peek().myX, wayPoints.peek().myY);
+				line2.getStrokeDashArray().addAll(25d, 10d);
+				line2.setStroke(Color.BLACK);
+				lines.add(line2);
+			}
 
 			while (wayPoints.peek() != null) {
 				copyWayPoints.add(wayPoints.peek());
