@@ -26,9 +26,9 @@ public class SpriteImageContainer {
         myColorMask = colorMask;
     }
 
-    public SpriteImageContainer (String imageTag) throws SaveLoadException {
-        locateSpritesheet(imageTag);
-        locateTeamColorMasks(imageTag);
+    public SpriteImageContainer (String spritesheetTag, String colorMaskTag) throws SaveLoadException {
+        locateSpritesheet(spritesheetTag);
+        locateTeamColorMasks(colorMaskTag);
     }
 
     private void locateTeamColorMasks (String imageTag) throws SaveLoadException {

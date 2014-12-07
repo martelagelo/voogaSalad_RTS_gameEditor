@@ -57,7 +57,7 @@ public class SpriteImageGenerator {
             Set<AnimatorState> animatorStates) throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
             myCachedContainer.put(state.getImageTag(),
-                    new SpriteImageContainer(state.getImageTag()));
+                    new SpriteImageContainer(state.getImageTag(), state.getColorMaskTag()));
         }
         return myCachedContainer;
     }
