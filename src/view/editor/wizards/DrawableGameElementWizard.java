@@ -40,6 +40,7 @@ public class DrawableGameElementWizard extends Wizard {
     private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
+    private final static String NEW_WIDGET_KEY = "NewWidget";
     private final static String ADD_ANIMATION_KEY = "AddAnimation";
     private final static String SET_BOUNDS_KEY = "SetBounds";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
@@ -95,7 +96,11 @@ public class DrawableGameElementWizard extends Wizard {
     @FXML
     private VBox existingAnimations;
     @FXML
+    private VBox existingWidgets;
+    @FXML
     private Button setBounds;
+    @FXML
+    private Button widget;
 
     private List<String> myGlobalStringAttributes;
     private List<String> myGlobalNumberAttributes;
@@ -153,6 +158,18 @@ public class DrawableGameElementWizard extends Wizard {
                         		   ATTRIBUTE_WIZARD_WIDTH, 
                         		   ATTRIBUTE_WIZARD_HEIGHT
                         		   ));
+    }
+    
+    /**
+     * Launches a Widget Wizard
+     *
+     */
+    private void launchWidgetEditor () {
+    	launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingNumberAttributes,
+    			myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
+             		   ATTRIBUTE_WIZARD_WIDTH, 
+             		   ATTRIBUTE_WIZARD_HEIGHT
+             		   ));
     }
 
     private void launchAnimationEditor () {
@@ -252,7 +269,10 @@ public class DrawableGameElementWizard extends Wizard {
 
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                                                 new FileChooser.ExtensionFilter("JPG", ".jpg"));
+        fileChooser.setInitialDirectory(new File("resources"));
+        File file = fileChooser.showOpenDialog(new Stage());        
         return file;
     }
 
@@ -295,7 +315,7 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.getChildren().add(animationGrid);
             spritesheet.toFront();
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException | NullPointerException e) {
             displayErrorMessage("Unable to Load Image");
         }
     }
@@ -321,6 +341,7 @@ public class DrawableGameElementWizard extends Wizard {
         trigger.setOnAction(e -> launchActionEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
+        widget.setOnAction(e -> launchWidgetEditor());
         animation.setOnAction(e -> launchAnimationEditor());
         setBounds.setOnAction(e -> launchBoundsEditor());
         image.setOnAction(i -> loadImage());
@@ -348,6 +369,7 @@ public class DrawableGameElementWizard extends Wizard {
             frameWidthLabel.textProperty().bind(util.getStringProperty(FRAME_WIDTH_KEY));
             frameHeightLabel.textProperty().bind(util.getStringProperty(FRAME_HEIGHT_KEY));
             colorMask.textProperty().bind(util.getStringProperty(COLOR_MASK_KEY));
+            widget.textProperty().bind(util.getStringProperty(NEW_WIDGET_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
