@@ -26,7 +26,7 @@ import engine.stateManaging.GameElementManager;
 
 
 /**
- * An action that decrements a value on the other object's values and incriments the value on the
+ * An action that decrements a value on the other object's values and increments the value on the
  * other object's parameters. The string for this action is:
  * If other element is of type #, # its # by my # attribute to a minimum of # and # that amount to
  * my # with a cooldown timer named # with a value of # frames.

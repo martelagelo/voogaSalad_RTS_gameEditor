@@ -1967,7 +1967,7 @@
                     "myActionType": "COLLISION"
                   },
                   {
-                    "myActionName": "INCRIMENT_DECRIMENT_ACTION",
+                    "myActionName": "INCREMENT_DECREMENT_ACTION",
                     "myParameters": [
                       "archerman",
                       "health",
@@ -4847,7 +4847,7 @@
               "myActionType": "COLLISION"
             },
             {
-              "myActionName": "INCRIMENT_DECRIMENT_ACTION",
+              "myActionName": "INCREMENT_DECREMENT_ACTION",
               "myParameters": [
                 "archerman",
                 "health",

@@ -82,9 +82,9 @@ public enum ActionOptions {
                                          ActionParameters.STRING,
                                          ActionParameters.STRING,
                                          ActionParameters.NUMBER),
-    INCRIMENT_DECRIMENT_ACTION(
-                               "Decriment object's attribute and add it to mine",
-                               "DecrimentIncrimentAttributeAction",
+    INCREMENT_DECREMENT_ACTION(
+                               "Decrement object's attribute and add it to mine",
+                               "DecrementIncrementAttributeAction",
                                "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to my # with a cooldown timer named # with a value of # frames.",
                                ActionParameters.STRING,
                                ActionParameters.ATTR,
