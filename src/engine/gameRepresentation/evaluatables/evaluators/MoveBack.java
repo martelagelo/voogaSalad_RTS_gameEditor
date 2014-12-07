@@ -20,15 +20,15 @@ public class MoveBack<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     public Boolean evaluate (GameElement object1, GameElement object2) {
-        object1.setNumericalAttribute(StateTags.X_POSITION,
-                                      object1.getNumericalAttribute(StateTags.X_POSITION)
+        object1.setNumericalAttribute(StateTags.X_POSITION.getValue(),
+                                      object1.getNumericalAttribute(StateTags.X_POSITION.getValue())
                                               .doubleValue()-
-                                              object1.getNumericalAttribute(StateTags.X_VELOCITY)
+                                              object1.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
                                                       .doubleValue());
-        object1.setNumericalAttribute(StateTags.Y_POSITION,
-                                      object1.getNumericalAttribute(StateTags.Y_POSITION)
+        object1.setNumericalAttribute(StateTags.Y_POSITION.getValue(),
+                                      object1.getNumericalAttribute(StateTags.Y_POSITION.getValue())
                                               .doubleValue()-
-                                              object1.getNumericalAttribute(StateTags.Y_VELOCITY)
+                                              object1.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
                                                       .doubleValue());
         return true;
     }

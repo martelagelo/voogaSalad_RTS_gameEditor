@@ -84,14 +84,17 @@ public class DrawableGameElement extends GameElement implements Displayable,
 		wayPoints.addAll(waypointsToAdd);
 		Location newGoal = wayPoints.poll();
 		setGoalPositions(newGoal);
-
 	}
 
 	private void setGoalPositions(Location newGoal) {
-		setNumericalAttribute(StateTags.X_GOAL_POSITION, newGoal.getX());
-		setNumericalAttribute(StateTags.Y_GOAL_POSITION, newGoal.getY());
-		setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION, newGoal.getX());
-		setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION, newGoal.getY());
+		setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(),
+				newGoal.getX());
+		setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(),
+				newGoal.getY());
+		setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(),
+				newGoal.getX());
+		setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(),
+				newGoal.getY());
 	}
 
 	public void addWaypoint(double x, double y) {
@@ -100,9 +103,9 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	}
 
 	public Location getNextWaypoint() {
-		double currentX = getNumericalAttribute(StateTags.X_POSITION)
+		double currentX = getNumericalAttribute(StateTags.X_POSITION.getValue())
 				.doubleValue();
-		double currentY = getNumericalAttribute(StateTags.Y_POSITION)
+		double currentY = getNumericalAttribute(StateTags.Y_POSITION.getValue())
 				.doubleValue();
 		Location current = new Location(currentX, currentY);
 		return wayPoints.size() == 0 ? current : wayPoints.poll();
@@ -110,30 +113,36 @@ public class DrawableGameElement extends GameElement implements Displayable,
 
 	public List<Line> getLines() {
 		List<Line> lines = new ArrayList<Line>();
-		if (getNumericalAttribute(StateTags.IS_SELECTED).intValue() == 1) {
+		if (getNumericalAttribute(StateTags.IS_SELECTED.getValue()).intValue() == 1) {
 			Queue<Location> copyWayPoints = new LinkedList<Location>();
 			createLine(lines, Color.RED,
-					getNumericalAttribute(StateTags.X_POSITION).doubleValue(),
-					getNumericalAttribute(StateTags.Y_POSITION).doubleValue(),
-					getNumericalAttribute(StateTags.X_GOAL_POSITION)
+					getNumericalAttribute(StateTags.X_POSITION.getValue())
 							.doubleValue(),
-					getNumericalAttribute(StateTags.Y_GOAL_POSITION)
+					getNumericalAttribute(StateTags.Y_POSITION.getValue())
+							.doubleValue(),
+					getNumericalAttribute(StateTags.X_GOAL_POSITION.getValue())
+							.doubleValue(),
+					getNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue())
 							.doubleValue());
 			if (wayPoints.peek() != null) {
-				createLine(lines, Color.BLACK,
-						getNumericalAttribute(StateTags.X_GOAL_POSITION)
+				createLine(
+						lines,
+						Color.BLACK,
+						getNumericalAttribute(
+								StateTags.X_GOAL_POSITION.getValue())
 								.doubleValue(),
-						getNumericalAttribute(StateTags.Y_GOAL_POSITION)
+						getNumericalAttribute(
+								StateTags.Y_GOAL_POSITION.getValue())
 								.doubleValue(), wayPoints.peek().getX(),
 						wayPoints.peek().getY());
 			}
-
 			while (wayPoints.peek() != null) {
 				copyWayPoints.add(wayPoints.peek());
 				Location P1 = wayPoints.poll();
 				if (wayPoints.peek() != null) {
 					Location P2 = wayPoints.peek();
-					createLine(lines, Color.BLACK, P1.getX(), P1.getY(), P2.getX(), P2.getY());
+					createLine(lines, Color.BLACK, P1.getX(), P1.getY(),
+							P2.getX(), P2.getY());
 				}
 			}
 			wayPoints = copyWayPoints;

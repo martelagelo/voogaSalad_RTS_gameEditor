@@ -24,14 +24,14 @@ public class SpawnSelectableElement<A, B> extends Evaluator<A, B, Boolean> {
     protected Boolean evaluate (GameElement element, ElementPromise promise) {
         promise.getManager()
                 .addSelectableGameElementToLevel(promise.getElementName(),
-                                                 element.getNumericalAttribute(StateTags.X_POSITION)
+                                                 element.getNumericalAttribute(StateTags.X_POSITION.getValue())
                                                          .doubleValue() +
-                                                         element.getNumericalAttribute(StateTags.X_SPAWN_OFFSET)
+                                                         element.getNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue())
                                                                  .doubleValue(),
-                                                 element.getNumericalAttribute(StateTags.Y_POSITION)
+                                                 element.getNumericalAttribute(StateTags.Y_POSITION.getValue())
                                                          .doubleValue() +
-                                                         element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET)
-                                                                 .doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR));
+                                                         element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue())
+                                                                 .doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
         
         return true;
     }

@@ -30,7 +30,7 @@ public class AttributeDisplayerFactory {
 		Class<?> c = null;
 		try {
 		    c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
-					+ attributeDisplayerState.displayerTag);
+					+ attributeDisplayerState.displayerTag.getValue());
 		} catch (ClassNotFoundException e) {
 			// fail silently
 		}
