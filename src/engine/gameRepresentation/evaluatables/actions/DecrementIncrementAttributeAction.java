@@ -34,11 +34,11 @@ import engine.stateManaging.GameElementManager;
  * @author Zach
  *
  */
-public class DecrimentIncrimentAttributeAction extends Action {
+public class DecrementIncrementAttributeAction extends Action {
     private String myTimer;
     private long myTimerAmount;
 
-    public DecrimentIncrimentAttributeAction (String id,
+    public DecrementIncrementAttributeAction (String id,
                                               EvaluatorFactory factory,
                                               GameElementManager elementManager,
                                               ParticipantManager participantManager,
