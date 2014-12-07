@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import model.MainModel;
 import model.state.CampaignState;
 import model.state.GameState;
+import model.state.LevelIdentifier;
 import model.state.LevelState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
@@ -135,7 +137,7 @@ public class ShittyMain extends Application {
         // ScrollablePane.FIELD_HEIGHT);
         // List<DrawableGameElementState> grassTerrain = grid.renderTerrain();
 
-        LevelState levelState = new LevelState("testLevel");
+        LevelState levelState = new LevelState("testLevel","testCampaign");
         // for (DrawableGameElementState s : grassTerrain) {
         // levelState.addTerrain(s);
         // }
@@ -168,7 +170,7 @@ public class ShittyMain extends Application {
         MainModel model2 = new MainModel();
         model2.loadGame("testGame");
         Engine engine =
-                new Engine(model2, model2.getLevel("testCampaign", "testLevel"));
+                new Engine(model2, model2.getLevel(new LevelIdentifier("testCampaign", "testLevel")));
         
 //        engine.setAnimationEnabled(true);
         

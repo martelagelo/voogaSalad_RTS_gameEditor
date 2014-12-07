@@ -55,7 +55,7 @@ public class GameState extends DescribableState {
      *         the list of the gamestate's campaignstates
      */
     public List<CampaignState> getCampaigns () {
-        return Collections.unmodifiableList(myCampaigns);
+        return myCampaigns;
     }
 
     /**

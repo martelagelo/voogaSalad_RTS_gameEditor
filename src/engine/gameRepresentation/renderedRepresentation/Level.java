@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.state.LevelState;
