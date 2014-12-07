@@ -118,15 +118,30 @@ public class DrawableGameElement extends GameElement implements Displayable,
 	public List<Line> getLines() {
 		List<Line> lines = new ArrayList<Line>();
 		if (getNumericalAttribute(StateTags.IS_SELECTED).intValue() == 1) {
+			// Queue<Location> copyWayPoints = new LinkedList<Location>();
 			Line line = new Line(getNumericalAttribute(StateTags.X_POSITION)
 					.doubleValue(), getNumericalAttribute(StateTags.Y_POSITION)
-					.doubleValue(), 100, 100);
+					.doubleValue(), getNumericalAttribute(
+					StateTags.X_GOAL_POSITION).doubleValue(),
+					getNumericalAttribute(StateTags.Y_GOAL_POSITION)
+							.doubleValue());
 			line.getStrokeDashArray().addAll(25d, 10d);
 			line.setStroke(Color.RED);
 			lines.add(line);
-//			while (waypoints.peek() != null) {
-//				
-//			}
+			// while (waypoints.peek() != null) {
+			// copyWayPoints.add(waypoints.peek());
+			// Location P1 = waypoints.poll();
+			// if (waypoints.peek() != null) {
+			// Location P2 = waypoints.peek();
+			// Line l = new Line(P1.myX, P2.myY, P2.myX,
+			// P2.myY);
+			// l.getStrokeDashArray().addAll(25d, 10d);
+			// l.setStroke(Color.GREEN);
+			// lines.add(l);
+			// }
+			// }
+			// //waypoints.clear();
+			// waypoints = copyWayPoints;
 		}
 		return lines;
 	}
