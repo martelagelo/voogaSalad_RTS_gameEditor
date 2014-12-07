@@ -3,9 +3,7 @@ package model.state.gameelement;
 import engine.visuals.elementVisuals.animations.AnimationTag.AnimationType;
 
 /**
- * A temporary file to allow for the important tags of states to be moved
- * outside of individual classes in the state hierarchy. Should eventually be
- * moved to a config file or interface of sorts.
+ * An enumeration to allow for the important tags of states.
  * 
  * @author Zach, Stanley
  *

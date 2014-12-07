@@ -22,7 +22,6 @@ public enum AttributeDisplayerTags {
     public String getValue() {
         return myValue;
     }
-    
 
     public enum AttributeDisplayerType {
         ATTRIBUTE_BAR_DISPLAYER,
