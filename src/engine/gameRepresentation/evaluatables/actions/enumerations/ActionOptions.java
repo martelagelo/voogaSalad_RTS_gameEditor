@@ -60,11 +60,16 @@ public enum ActionOptions {
     OBJECT_LOCATION_DETECTION(
                               "Object Location Check",
                               "ObjectLocationCheckAction",
-                              "If # object of type # is at the location #,#",
+                              "If # object of type # is within # of the location #,# make the attribute, # # #",
                               ActionParameters.PLAYER_TYPE,
                               ActionParameters.STRING,
                               ActionParameters.NUMBER,
+                              ActionParameters.NUMBER,
+                              ActionParameters.NUMBER,
+                              ActionParameters.ATTR,
+                              ActionParameters.NN_EVAL,
                               ActionParameters.NUMBER),
+                              
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
                                          "CheckAttributeCreateObjectAction",
@@ -94,7 +99,16 @@ public enum ActionOptions {
                                  ActionParameters.NN_EVAL,
                                  ActionParameters.ATTR,
                                  ActionParameters.STRING,
-                                 ActionParameters.ATTR);
+                                 ActionParameters.ATTR),
+    ATTRIBUTE_INCRIMENT_ACTION(
+                               "Incriment an attribute periodically",
+                               "AttributeIncrementerAction",
+                               "Incriment my # attribute by # to a max of # every # frames on timer #",
+                               ActionParameters.ATTR,
+                               ActionParameters.ATTR,
+                               ActionParameters.ATTR,
+                               ActionParameters.NUMBER,
+                               ActionParameters.STRING);
 
     private String myClassName;
     private String myDisplayName;

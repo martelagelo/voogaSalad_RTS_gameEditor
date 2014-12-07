@@ -9,7 +9,7 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 /**
  * An evaluator that adds a given action evaluatable to the given game element
  * 
- * @author Zach
+ * @author Zach, Stanley
  */
 public class AddEvaluatable<A, B> extends Evaluator<A, B, Boolean> {
 
@@ -22,7 +22,7 @@ public class AddEvaluatable<A, B> extends Evaluator<A, B, Boolean> {
 
     @Override
     protected Boolean evaluate (GameElement item1, ActionRepresentation action) {
-        item1.addAction(ActionType.valueOf(action.getActionType()), action.getEvaluatable());
+        item1.addAction(action.getActionType(), action.getEvaluatable());
         return true;
     }
 

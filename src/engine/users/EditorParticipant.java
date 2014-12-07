@@ -4,8 +4,9 @@ public class EditorParticipant extends Participant {
 
     public static final String EDITOR_NAME = "EDITOR";
 
+    // TODO: color set to empty string for compilation
     public EditorParticipant () {
-        super(0, EDITOR_NAME);
+        super("", EDITOR_NAME);
         isAI = false;
     }
 
@@ -13,7 +14,7 @@ public class EditorParticipant extends Participant {
      * The editor controls all units on all teams
      */
     @Override
-    public boolean checkSameTeam (double otherTeamID) {
+    public boolean checkSameTeam (String otherTeamColor) {
         return true;
     }
 }

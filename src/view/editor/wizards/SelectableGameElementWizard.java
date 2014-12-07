@@ -36,6 +36,7 @@ public class SelectableGameElementWizard extends Wizard {
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
 
+    private final static double DIVIDER_POSITIONS = .4;
     @FXML
     private ScrollPane leftPane;
     @FXML
@@ -192,7 +193,7 @@ public class SelectableGameElementWizard extends Wizard {
     public void initialize () {
         super.initialize();
         leftPane.setFitToWidth(true);
-        root.setDividerPositions(0.4);
+        root.setDividerPositions(DIVIDER_POSITIONS);
         trigger.setOnAction(e -> launchTriggerEditor());
         stringAttribute.setOnAction(e -> launchStringAttributeEditor());
         numberAttribute.setOnAction(e -> launchNumberAttributeEditor());

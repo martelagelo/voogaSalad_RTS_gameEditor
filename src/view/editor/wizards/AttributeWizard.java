@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
  *
  */
 public class AttributeWizard extends Wizard {
+	
     @FXML
     protected ComboBox<String> key;
     @FXML
@@ -57,7 +58,6 @@ public class AttributeWizard extends Wizard {
         key.setItems(attributes);
     }
     
-
     @Override
     protected void attachTextProperties () {
         super.attachTextProperties();
