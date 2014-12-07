@@ -42,6 +42,11 @@
 							<Double fx:constant="MAX_VALUE" />
 						</maxWidth>
 					</Button>
+					<Button fx:id="colorMask" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<HBox>
 						<Label fx:id="frameWidthLabel" />
 						<Slider fx:id="frameWidth" />
