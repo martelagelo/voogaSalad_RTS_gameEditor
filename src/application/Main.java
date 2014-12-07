@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.MainModel;
 import view.MainView;
+import view.dialog.DialogBoxUtility;
 
 /**
  * 
@@ -26,7 +27,7 @@ public class Main extends Application {
             myMainView.start();
         }
         catch (Exception e) {
-            e.printStackTrace();
+            DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }
 

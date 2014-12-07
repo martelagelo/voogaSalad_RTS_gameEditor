@@ -20,6 +20,7 @@ import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerType;
 import engine.visuals.ScrollablePane;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -48,11 +49,11 @@ public class ShittyMain extends Application {
 
     private Engine hardCodeAGame () throws Exception {
         SelectableGameElementState archerState =
-                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 200, 1);
+                createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 100, 200, 1);
         archerState.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
         archerState.attributes.setTextualAttribute(StateTags.NAME, "archer");
         archerState
-                .addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+                .addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                         StateTags.HEALTH, 0, 500));
 
         archerState.attributes
@@ -61,8 +62,9 @@ public class ShittyMain extends Application {
 
         SelectableGameElementState archerState1 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 200, 400, 1);
+
         archerState1.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "BLUE");
-        archerState1.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState1.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             500));
         archerState.addType("archerman");
@@ -72,8 +74,9 @@ public class ShittyMain extends Application {
         archerState2.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "RED");
         archerState2.attributes.setNumericalAttribute(StateTags.HEALTH, 100);
         archerState2.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED, 0);
+
         archerState2.attributes.setNumericalAttribute("MAX_HEALTH",1000);
-        archerState2.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState2.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             1000));
 //        archerState2.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -82,7 +85,7 @@ public class ShittyMain extends Application {
         SelectableGameElementState archerState3 =
                 createArcher(new double[] { 0, 0, 40, 0, 40, 40, 0, 40 }, 400, 300, 1);
         archerState3.attributes.setTextualAttribute(StateTags.TEAM_COLOR, "GREEN");
-        // Make the third archer spawn archers on collision
+        // Make the third archer spawn archers on collision 
         archerState3.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 500);
         archerState3.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 500);
 
@@ -93,7 +96,7 @@ public class ShittyMain extends Application {
 
         // archerState3.addAction(new
         // ActionWrapper(ActionType.COLLISION,ActionOptions.ATTRIBUTE_INTERACTION_ACTION,"Transfer",StateTags.HEALTH,"my","Resources"));
-        archerState3.addAttributeDisplayerState(new AttributeDisplayerState("attributeBar",
+        archerState3.addAttributeDisplayerState(new AttributeDisplayerState(AttributeDisplayerType.AttributeBarDisplayer,
                                                                             StateTags.HEALTH, 0,
                                                                             500));
 
@@ -106,7 +109,7 @@ public class ShittyMain extends Application {
         // levelState.addTerrain(s);
         // }
         levelState.addUnit(archerState);
-        // levelState.addUnit(archerState1);
+        levelState.addUnit(archerState1);
         levelState.addUnit(archerState2);
         levelState.addUnit(archerState3);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH, 2000);
@@ -141,13 +144,14 @@ public class ShittyMain extends Application {
                                         ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
                                         "Resources", "GreaterThanEqual", "1000", "Won",
                                         "EqualsAssignment", "1"));
+        ges.addAction(new ActionWrapper(ActionType.INTERNAL, ActionOptions.OBJECT_LOCATION_DETECTION,
+                                "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
         return ges;
     }
 
     private SelectableGameElementState createArcher (double[] bounds, double x, double y, int teamID)
                                                                                                      throws Exception {
         SelectableGameElementState archerState = new SelectableGameElementState(x, y);
-        archerState.attributes.setNumericalAttribute(StateTags.TEAM_ID, teamID);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION, x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION, y);
         archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION, x);

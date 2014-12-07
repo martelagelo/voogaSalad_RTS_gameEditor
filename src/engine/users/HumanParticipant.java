@@ -10,8 +10,8 @@ package engine.users;
  */
 public class HumanParticipant extends Participant{
 	
-	public HumanParticipant(int playerID, String name){
-		super(playerID, name);
+	public HumanParticipant(String playerColor, String name){
+		super(playerColor, name);
 		isAI = false;
 	}
 	

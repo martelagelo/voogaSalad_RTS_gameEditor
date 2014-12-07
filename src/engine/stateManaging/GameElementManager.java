@@ -2,7 +2,9 @@ package engine.stateManaging;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.Location;
@@ -28,6 +30,7 @@ public class GameElementManager {
     private PathingComputer pathingComputer;
 
     public GameElementManager (GameElementFactory factory) {
+
         myFactory = factory;
     }
 
@@ -69,10 +72,9 @@ public class GameElementManager {
     public SelectableGameElement addSelectableGameElementToLevel (String typeName,
                                                                   double x,
                                                                   double y,
-                                                                  double team,
                                                                   String color) {
         SelectableGameElement newElement = myFactory
-                .createSelectableGameElement(typeName, x, y, team, color);
+                .createSelectableGameElement(typeName, x, y, color);
         myLevel.addElement(newElement);
         return newElement;
     }
@@ -111,7 +113,7 @@ public class GameElementManager {
     }
 
     private boolean checkOnTeam (SelectableGameElement e, Participant u) {
-        return u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID).doubleValue());
+        return u.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR));
     }
 
     public void selectSingleUnit (Point2D clickLoc, boolean multiSelect, Participant u) {
@@ -152,9 +154,7 @@ public class GameElementManager {
         for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
             if (!checkOnTeam(e, u)) continue;
             if (queueCommand) {
-                // TODO: either implement this and allow for having headings be a linked-list, or
-                // remove this
-                // e.clearHeadings();
+            	e.addWaypoint(click.getX(), click.getY());
             }
             else {
                 double currentX = e.getNumericalAttribute(StateTags.X_POSITION).doubleValue();
@@ -163,6 +163,8 @@ public class GameElementManager {
                 Location to = new Location(click.getX(), click.getY());
                 List<Location> waypoints = pathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
+                //e.clearPaths();
+                //e.addToPath(to);
             }
         }
     }
@@ -188,8 +190,8 @@ public class GameElementManager {
                                                               Participant p) {
         return list
                 .stream()
-                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_ID)
-                        .doubleValue())).collect(Collectors.toList());
+                .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR)
+                		)).collect(Collectors.toList());
     }
 
     public void notifyButtonClicked (int buttonID, Participant u) {

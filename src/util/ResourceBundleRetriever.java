@@ -5,7 +5,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
+import model.exceptions.SaveLoadException;
 
 /**
  * Utility class to load a resource bundle from a file with a .properties
@@ -23,13 +26,18 @@ public class ResourceBundleRetriever {
      * @return resource bundle associated with the provided file
      * @throws MalformedURLException
      */
-    public ResourceBundle getBundle (File file) throws MalformedURLException {
-        File externalFolder = file.getParentFile();
-        URL[] urls = { externalFolder.toURI().toURL() };
-        ClassLoader loader = new URLClassLoader(urls);
-        String fileName = removeFileExtension(file.getName());
-        ResourceBundle bundle = ResourceBundle.getBundle(fileName, Locale.getDefault(), loader);     
-        return bundle;
+    public ResourceBundle getBundle (File file) throws SaveLoadException {
+        try {
+            ResourceBundle bundle = null;
+            File externalFolder = file.getParentFile();
+            URL[] urls = { externalFolder.toURI().toURL() };
+            ClassLoader loader = new URLClassLoader(urls);
+            String fileName = removeFileExtension(file.getName());
+            bundle = ResourceBundle.getBundle(fileName, Locale.getDefault(), loader);
+            return bundle;
+        } catch (MissingResourceException | MalformedURLException | NullPointerException e) {
+            throw new SaveLoadException("Unable to find resource bundle", e);
+        }
     }
 
     /**
