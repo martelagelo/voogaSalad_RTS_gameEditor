@@ -87,9 +87,9 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-        
+        String backgroundURI = "resources/img/graphics/terrain/grass/GrassTile.jpg";
         myVisualManager =
-                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight());
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundURI);
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
 
@@ -119,9 +119,21 @@ public class Engine extends Observable implements Observer {
             gameWon = ((int) arg) > 0;
             this.pause();
             System.out.println("Game is over! \n   Game won? " + gameWon);
+            // TODO:something with this... display it?
+            myUser.getAttributes();
+            updateObservers();
         }
     }
 
+    /**
+     * called only when game is won
+     */
+    private void updateObservers () {
+        setChanged();
+        notifyObservers(myUser.getAttributes());
+        clearChanged();
+    }
+    
     public ScrollablePane getScene () {
         return myVisualManager.getScrollingScene();
     }

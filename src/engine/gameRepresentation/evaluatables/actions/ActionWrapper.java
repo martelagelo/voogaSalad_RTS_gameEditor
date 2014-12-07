@@ -1,6 +1,8 @@
 package engine.gameRepresentation.evaluatables.actions;
 
 import java.io.Serializable;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
@@ -18,9 +20,9 @@ public class ActionWrapper implements Serializable {
      * 
      */
     private static final long serialVersionUID = 5596741540525917388L;
-    private String myActionName;
+    private ActionOptions myActionName;
     private String[] myParameters;
-    private String myActionType;
+    private ActionType myActionType;
 
     /**
      * Create the action wrapper with a given action name and a string of parameters required by the
@@ -30,18 +32,18 @@ public class ActionWrapper implements Serializable {
      * @param actionName the class name of the action as located from an enumeration
      * @param parameters any parameters that might be needed for the action
      */
-    public ActionWrapper (String actionType, String actionName, String ... parameters) {
+    public ActionWrapper (ActionType actionType, ActionOptions actionName, String ... parameters) {
         myActionType = actionType;
         myActionName = actionName;
         myParameters = parameters;
     }
 
     public String getActionType () {
-        return myActionType;
+        return myActionType.toString();
     }
 
     public String getActionClassName () {
-        return myActionName;
+        return myActionName.getClassString();
     }
 
     public String[] getParameters () {

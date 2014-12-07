@@ -25,8 +25,6 @@ import util.GameSaveLoadMediator;
 import util.JSONableSet;
 import util.SaveLoadUtility;
 import util.multilanguage.LanguagePropertyNotFoundException;
-import util.multilanguage.MultiLanguageUtility;
-import view.dialog.DialogBoxUtility;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
@@ -78,9 +76,9 @@ public class MainModel extends Observable {
             // TODO: insert Save Load code here and instantiate myGameState
             myGameState = mySaveLoadMediator.loadGame(game);
         } catch (SaveLoadException e) {
-            // TODO Get rid of stack trace printing
-            DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
-                    .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+            e.printStackTrace();
+            // DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+            // .getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
         }
 
         loadSpritesAndMasks();
@@ -112,13 +110,12 @@ public class MainModel extends Observable {
     }
 
     public void saveGame (GameState game) {
-
         try {
             JSONableSet<String> existingGames = SaveLoadUtility.loadResource(JSONableSet.class,
                     SplashScreen.EXISTING_GAMES);
             existingGames.add(game.getName());
             SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
-
+            mySaveLoadMediator.saveGame(game, game.getName());
         } catch (SaveLoadException e) {
             e.printStackTrace();
         }
