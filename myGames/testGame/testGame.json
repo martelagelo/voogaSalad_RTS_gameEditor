@@ -1274,16 +1274,16 @@
             {
               "AttributeDisplayerStates": [
                 {
-                  "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
-                  "parameterTag": "isSelected",
-                  "minAttributeValue": 0.0,
-                  "maxAttributeValue": 1.0
-                },
-                {
                   "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
                   "parameterTag": "health",
                   "minAttributeValue": 0.0,
                   "maxAttributeValue": 500.0
+                },
+                {
+                  "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+                  "parameterTag": "isSelected",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 1.0
                 }
               ],
               "myAnimatorState": {
@@ -1843,22 +1843,6 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1892,6 +1876,22 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -2536,22 +2536,6 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -2585,6 +2569,22 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -3220,22 +3220,6 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3280,6 +3264,22 @@
                       "Random Timer"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -3919,22 +3919,6 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
-                "BUTTON": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "lastButtonID",
-                      "Equals",
-                      "1",
-                      "archer",
-                      "health",
-                      "Resources",
-                      "ArcherSpawnCooldown",
-                      "1000"
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3968,6 +3952,22 @@
                       "HeadingUpdate"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "archer",
+                      "health",
+                      "Resources",
+                      "ArcherSpawnCooldown",
+                      "1000"
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -4054,7 +4054,23 @@
                       "1"
                     ],
                     "myActionType": "INTERNAL"
-                  },
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 0,
+                    "myName": "GoalSatisfied"
+                  }
+                ],
+                "myTextualAttributes": []
+              },
+              "myTypes": []
+            },
+            {
+              "myActions": {
+                "INTERNAL": [
                   {
                     "myActionName": "OBJECT_LOCATION_DETECTION",
                     "myParameters": [
@@ -4072,12 +4088,7 @@
                 ]
               },
               "attributes": {
-                "myNumericalAttributes": [
-                  {
-                    "myData": 0,
-                    "myName": "GoalSatisfied"
-                  }
-                ],
+                "myNumericalAttributes": [],
                 "myTextualAttributes": []
               },
               "myTypes": []
@@ -5433,16 +5444,16 @@
       {
         "AttributeDisplayerStates": [
           {
-            "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
-            "parameterTag": "isSelected",
-            "minAttributeValue": 0.0,
-            "maxAttributeValue": 1.0
-          },
-          {
             "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
             "parameterTag": "health",
             "minAttributeValue": 0.0,
             "maxAttributeValue": 500.0
+          },
+          {
+            "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+            "parameterTag": "isSelected",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 1.0
           }
         ],
         "myAnimatorState": {
@@ -6002,22 +6013,6 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -6051,6 +6046,22 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -6695,22 +6706,6 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -6744,6 +6739,22 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -7379,22 +7390,6 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -7439,6 +7434,22 @@
                 "Random Timer"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -8078,22 +8089,6 @@
               "myActionType": "FOCUSED"
             }
           ],
-          "BUTTON": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "lastButtonID",
-                "Equals",
-                "1",
-                "archer",
-                "health",
-                "Resources",
-                "ArcherSpawnCooldown",
-                "1000"
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -8127,6 +8122,22 @@
                 "HeadingUpdate"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+              "myParameters": [
+                "lastButtonID",
+                "Equals",
+                "1",
+                "archer",
+                "health",
+                "Resources",
+                "ArcherSpawnCooldown",
+                "1000"
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },

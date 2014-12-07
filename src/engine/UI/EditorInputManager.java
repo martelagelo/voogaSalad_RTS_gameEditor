@@ -1,5 +1,6 @@
 package engine.UI;
 
+import java.util.function.Consumer;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -34,26 +35,32 @@ public class EditorInputManager extends InputManager {
                                       SelectionBox b) {
         Point2D mapPoint2d =
                 new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
-        String element = myMainModel.getEditorSelected();
-        if (element == null || element.isEmpty()) {
+        String drawable = myMainModel.getEditorChosenDrawable();
+        String selectable = myMainModel.getEditorChosenSelectable();
+        boolean success = checkElementAndCreate(selectable, (element) ->
+        myElementManager.addSelectableGameElementToLevel(element,
+                                                         mapPoint2d.getX(),
+                                                         mapPoint2d.getY(),
+                                                         myUser.getTeamColor()));
+        success = success | checkElementAndCreate(drawable, (element) ->
+        myElementManager.addDrawableGameElementToLevel(element, mapPoint2d.getX(),
+                                                       mapPoint2d.getY())
+        );
+        myMainModel.clearEditorChosen();
+        if (!success) {
             myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
             myElementManager.selectAnySingleUnit(mapPoint2d, myUser);
         }
-        else {
-            if (myMainModel.isEditorChosenElementSelectable()) {
-                myElementManager.addSelectableGameElementToLevel(element,
-                                                                 mapPoint2d.getX(),
-                                                                 mapPoint2d.getY(),
-                                                                 myUser.getTeamColor());
-            }
-            else {
-                myElementManager.addDrawableGameElementToLevel(element, mapPoint2d.getX(),
-                                                               mapPoint2d.getY());
-            }
-            myMainModel.clearEditorChosen();
-        }
     }
 
+    private boolean checkElementAndCreate(String element, Consumer<String> consumer) {
+        boolean canAccept = !(element == null || element.isEmpty());
+        if (canAccept) {
+            consumer.accept(element);
+        }
+        return canAccept;
+    }
+    
     @Override
     public void secondaryClickOccurred (MouseEvent e,
                                         double mapTranslateX,

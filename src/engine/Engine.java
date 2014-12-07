@@ -53,7 +53,7 @@ public class Engine extends Observable implements Observer {
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
-
+    
     public Engine (MainModel mainModel, LevelState levelState)
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;

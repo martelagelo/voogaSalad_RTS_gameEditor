@@ -47,14 +47,14 @@ public class MainModel extends Observable {
     private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
 
     private GameState myGameState;
-    private String myEditorChosenElement;
-    private boolean myEditorChosenIsSelectable;
+    private String myEditorChosenSelectableElement;
+    private String myEditorChosenDrawableElement;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
     private ModifiedContainer myModifiedContainer;
 
     public MainModel () throws SaveLoadException {
-        myEditorChosenElement = "";
+        clearEditorChosen();
         mySaveLoadMediator = new GameSaveLoadMediator();
         mySpriteImageGenerator = new SpriteImageGenerator();
         myModifiedContainer = new ModifiedContainer();
@@ -167,33 +167,27 @@ public class MainModel extends Observable {
         return myGameState.getCampaign(campaignName);
     }
 
-    public void setEditorDrawableChosen (String elementName) {
-        setEditorSelected(elementName, false);
+    public void setEditorChosenDrawable (String elementName) {
+        clearEditorChosen();
+        myEditorChosenDrawableElement = elementName;
     }
 
-    public void setEditorSelectableChosen (String elementName) {
-        setEditorSelected(elementName, true);
+    public void setEditorChosenSelectable (String elementName) {
+        clearEditorChosen();
+        myEditorChosenSelectableElement = elementName;
     }
 
     public void clearEditorChosen () {
-        myEditorChosenElement = "";
+        myEditorChosenSelectableElement = "";
+        myEditorChosenDrawableElement = "";
     }
-
-    private void setEditorSelected (String elementName, boolean isSelectable) {
-        myEditorChosenElement = elementName;
-        myEditorChosenIsSelectable = isSelectable;
+    
+    public String getEditorChosenSelectable () {
+        return myEditorChosenSelectableElement;
     }
-
-    /**
-     * called by engine when registers click and needs what the editor has
-     * selected to place on the map
-     */
-    public String getEditorSelected () {
-        return myEditorChosenElement;
-    }
-
-    public boolean isEditorChosenElementSelectable () {
-        return myEditorChosenIsSelectable;
+    
+    public String getEditorChosenDrawable () {
+        return myEditorChosenDrawableElement;
     }
 
     /**

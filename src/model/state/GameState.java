@@ -18,6 +18,7 @@ import model.exceptions.CampaignNotFoundException;
 public class GameState extends DescribableState {
 
     private List<CampaignState> myCampaigns;
+    private List<HighScore> myHighScores;
     private GameUniverse myGameUniverse;
 
     public GameState (String name) {
