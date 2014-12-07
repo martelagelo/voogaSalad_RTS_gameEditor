@@ -1965,19 +1965,6 @@
                       "MoveBack"
                     ],
                     "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "INCREMENT_DECREMENT_ACTION",
-                    "myParameters": [
-                      "archerman",
-                      "health",
-                      "attack",
-                      "50",
-                      "health",
-                      "LeechTimer",
-                      "100"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ],
                 "Internal": [
@@ -4843,19 +4830,6 @@
               "myParameters": [
                 "Collision",
                 "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "INCREMENT_DECREMENT_ACTION",
-              "myParameters": [
-                "archerman",
-                "health",
-                "attack",
-                "50",
-                "health",
-                "LeechTimer",
-                "100"
               ],
               "myActionType": "COLLISION"
             }
