@@ -13,7 +13,7 @@ public class SpriteImageLoader {
     private static final String DEFAULT_COLORMASK = "resources/gameelementresources/default.png";
 
     public static Image loadTeamColorMasks (String imageTag) throws SaveLoadException {
-        return (!imageTag.equals("")) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility.loadImage(DEFAULT_COLORMASK);
+        return (!imageTag.isEmpty()) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility.loadImage(DEFAULT_COLORMASK);
         
     }
 
