@@ -94,8 +94,8 @@ public class GameSaveLoadMediator {
     public String saveColorMask (WizardData data, GameElementImageType elementType)
             throws SaveLoadException {
 
-        String currentLocation = data.getValueByKey(WizardDataType.COLOR_MASK);           
-        return (currentLocation == null) ? "" : SaveLoadUtility.saveImage(currentLocation, processImagePath(currentLocation,
+        String currentLocation = data.getValueByKey(WizardDataType.COLOR_MASK);  
+        return (currentLocation.isEmpty()) ? "" : SaveLoadUtility.saveImage(currentLocation, processImagePath(currentLocation,
                 GameElementImageType.Colormask, elementType));
     }
 
