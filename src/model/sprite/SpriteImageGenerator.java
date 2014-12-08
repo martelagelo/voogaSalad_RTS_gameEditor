@@ -26,6 +26,7 @@ public class SpriteImageGenerator {
 
     public SpriteImageGenerator () throws SaveLoadException {
         myCachedContainer = new HashMap<>();
+        myColorMapGenerator = new ColorMapGenerator();
         myBundleRetriever = new ResourceBundleRetriever();
         myBundle = myBundleRetriever.getBundle(new File(myPropertiesLocation + myColorMaskName));
         populateColorMaskMap(myBundle, myColorMaskDelimiter);
