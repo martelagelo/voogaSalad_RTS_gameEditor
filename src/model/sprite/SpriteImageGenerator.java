@@ -11,6 +11,8 @@ import util.exceptions.SaveLoadException;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
+ * This class generates and caches sprite image containers that encapsulate a
+ * spritesheet and colormask represented in game elements.
  * 
  * @author Rahul
  *
@@ -39,22 +41,25 @@ public class SpriteImageGenerator {
     }
 
     /**
+     * Creates sprite image containers from the provided animator states
      * 
      * @param animatorStates
-     * @return
+     *            set of animator states holding a spritesheet and colormask
      * @throws SaveLoadException
      */
-    public static Map<String, SpriteImageContainer> loadSpriteImageContainers (
-            Set<AnimatorState> animatorStates) throws SaveLoadException {
+    public static void loadSpriteImageContainers (Set<AnimatorState> animatorStates)
+            throws SaveLoadException {
         for (AnimatorState state : animatorStates) {
             loadSpriteImageContainer(state);
         }
-        return myCachedContainer;
     }
 
     /**
+     * Creates a sprite image container from an animator state and caches the
+     * container.
      * 
      * @param state
+     *            animator state holding a spritesheet and colormask
      * @throws SaveLoadException
      */
     public static void loadSpriteImageContainer (AnimatorState state) throws SaveLoadException {
@@ -65,9 +70,12 @@ public class SpriteImageGenerator {
     }
 
     /**
+     * Get a sprite image container from an image tag specifying the location of
+     * the spritesheet.
      * 
      * @param imageTag
-     * @return
+     *            path to image
+     * @return SpriteImageContainer wrapping the spritesheet and colormask
      */
     public SpriteImageContainer fetchImageContainer (String imageTag) {
         return myCachedContainer.get(imageTag);

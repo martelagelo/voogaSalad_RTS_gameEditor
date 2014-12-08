@@ -24,11 +24,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  */
 public class GameSaveLoadMediator {
     public static final String GAME_ELEMENT_RESOURCES = "gameelementresources";
-    public static final String WILDCARD = "*";
-    public static final String ANIMATOR_STATE = "animatorstate";
     public static final String GAME_DIRECTORY = "myGames";
-    public static final String RESOURCES = "resources";
-    public static final String PNG_EXT = ".png";
     public static final String JSON_EXT = ".json";
     public static final String PATH_DELIMITER = "/";
 
@@ -111,12 +107,15 @@ public class GameSaveLoadMediator {
      */
     public Image loadImage (String filePath) throws SaveLoadException {
         return SaveLoadUtility.loadImage(filePath);
-
     }
 
+    /**
+     * 
+     * @param animatorStates
+     * @throws SaveLoadException
+     */
     public void loadSpritesAndMasks (Set<AnimatorState> animatorStates) throws SaveLoadException {
         SpriteImageGenerator.loadSpriteImageContainers(animatorStates);
-
     }
 
 }

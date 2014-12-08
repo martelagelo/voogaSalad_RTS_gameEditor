@@ -10,7 +10,9 @@ import javafx.scene.image.ImageView;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
- * for team identification.
+ * for team identification. This is given to the Animator allowing for access to
+ * the spritsheet and color mask fundamental to visual rendering of game
+ * elements.
  * 
  * @author Rahul
  *
