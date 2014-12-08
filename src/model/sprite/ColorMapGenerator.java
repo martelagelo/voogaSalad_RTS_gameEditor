@@ -11,27 +11,37 @@ import javafx.scene.paint.Paint;
 import util.ResourceBundleRetriever;
 import util.exceptions.SaveLoadException;
 
+/**
+ * 
+ * @author Rahul
+ *
+ */
 public class ColorMapGenerator {
+    private String COLORMASK_DELIMITER = "-";
+    private String RESOURCES_PROPERTIES_LOCATION = "resources/gameelementresources/properties/";
     private String myColorMaskName = "colormasks.properties";
     private static final int RGB_LENGTH = 3;
     private ResourceBundle myBundle;
     private ResourceBundleRetriever myBundleRetriever;
-    private static HashMap<String, Paint> myColorMap;
+    private static HashMap<String, Paint> myColorMap = new HashMap<>();
 
     public ColorMapGenerator () throws SaveLoadException {
         myColorMap = new HashMap<>();
         myBundleRetriever = new ResourceBundleRetriever();
-            // TODO: save the location outside of source
-            myBundle = myBundleRetriever.getBundle(new File(
-                    SpriteImageGenerator.RESOURCES_PROPERTIES_LOCATION + myColorMaskName));        
+        myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
+                + myColorMaskName));
     }
 
-    public void populateColorMaskMap () throws SaveLoadException {
+    /**
+     * 
+     * @throws SaveLoadException
+     */
+    protected void populateColorMaskMap (ResourceBundle bundle, String valueDelimiter) throws SaveLoadException {
 
         Enumeration<String> keys = myBundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
-            String[] values = myBundle.getString(key).trim().split("-");
+            String[] values = myBundle.getString(key).trim().split(COLORMASK_DELIMITER);
             int[] rgbValues = new int[RGB_LENGTH];
             if (values.length < RGB_LENGTH) {
                 throw new SaveLoadException("Misformatted sprite color file", new Exception());

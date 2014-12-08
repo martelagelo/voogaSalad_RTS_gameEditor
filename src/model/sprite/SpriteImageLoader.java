@@ -12,9 +12,10 @@ import util.exceptions.SaveLoadException;
 public class SpriteImageLoader {
     private static final String DEFAULT_COLORMASK = "resources/gameelementresources/default.png";
 
-    public static Image loadTeamColorMasks (String imageTag) throws SaveLoadException {
-        return (!imageTag.isEmpty()) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility.loadImage(DEFAULT_COLORMASK);
-        
+    public static Image loadTeamColorMask (String imageTag) throws SaveLoadException {
+        return (!imageTag.isEmpty()) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility
+                .loadImage(DEFAULT_COLORMASK);
+
     }
 
     public static Image loadSpritesheet (String imageTag) throws SaveLoadException {
