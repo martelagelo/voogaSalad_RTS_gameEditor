@@ -15,7 +15,6 @@ public class SpriteImageLoader {
     public static Image loadTeamColorMask (String imageTag) throws SaveLoadException {
         return (!imageTag.isEmpty()) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility
                 .loadImage(DEFAULT_COLORMASK);
-
     }
 
     public static Image loadSpritesheet (String imageTag) throws SaveLoadException {

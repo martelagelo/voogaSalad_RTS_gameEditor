@@ -1,14 +1,11 @@
 package model.sprite;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import util.ResourceBundleRetriever;
 import util.exceptions.SaveLoadException;
 
 /**
@@ -17,31 +14,22 @@ import util.exceptions.SaveLoadException;
  *
  */
 public class ColorMapGenerator {
-    private String COLORMASK_DELIMITER = "-";
-    private String RESOURCES_PROPERTIES_LOCATION = "resources/gameelementresources/properties/";
-    private String myColorMaskName = "colormasks.properties";
-    private static final int RGB_LENGTH = 3;
-    private ResourceBundle myBundle;
-    private ResourceBundleRetriever myBundleRetriever;
+    
+    private static int RGB_LENGTH = 3;
     private static HashMap<String, Paint> myColorMap = new HashMap<>();
 
-    public ColorMapGenerator () throws SaveLoadException {
-        myColorMap = new HashMap<>();
-        myBundleRetriever = new ResourceBundleRetriever();
-        myBundle = myBundleRetriever.getBundle(new File(RESOURCES_PROPERTIES_LOCATION
-                + myColorMaskName));
-    }
-
-    /**
-     * 
-     * @throws SaveLoadException
-     */
+  /**
+   * 
+   * @param bundle
+   * @param valueDelimiter
+   * @throws SaveLoadException
+   */
     protected void populateColorMaskMap (ResourceBundle bundle, String valueDelimiter) throws SaveLoadException {
 
-        Enumeration<String> keys = myBundle.getKeys();
+        Enumeration<String> keys = bundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
-            String[] values = myBundle.getString(key).trim().split(COLORMASK_DELIMITER);
+            String[] values = bundle.getString(key).trim().split(valueDelimiter);
             int[] rgbValues = new int[RGB_LENGTH];
             if (values.length < RGB_LENGTH) {
                 throw new SaveLoadException("Misformatted sprite color file", new Exception());

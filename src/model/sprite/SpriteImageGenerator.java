@@ -1,8 +1,12 @@
 package model.sprite;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
+
+import util.ResourceBundleRetriever;
 import util.exceptions.SaveLoadException;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -14,15 +18,22 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 public class SpriteImageGenerator {
     private static Map<String, SpriteImageContainer> myCachedContainer;
     private ColorMapGenerator myColorMapGenerator;
+    private String myColorMaskDelimiter = "-";
+    private String myPropertiesLocation = "resources/gameelementresources/properties/";
+    private String myColorMaskName = "colormasks.properties";
+    private ResourceBundle myBundle;
+    private ResourceBundleRetriever myBundleRetriever;
 
     public SpriteImageGenerator () throws SaveLoadException {
-        myColorMapGenerator = new ColorMapGenerator();
         myCachedContainer = new HashMap<>();
-        populateColorMaskMap();
+        myBundleRetriever = new ResourceBundleRetriever();
+        myBundle = myBundleRetriever.getBundle(new File(myPropertiesLocation + myColorMaskName));
+        populateColorMaskMap(myBundle, myColorMaskDelimiter);
     }
 
-    private void populateColorMaskMap () throws SaveLoadException {
-        myColorMapGenerator.populateColorMaskMap();
+    private void populateColorMaskMap (ResourceBundle bundle, String colorMaskDelimiter)
+            throws SaveLoadException {
+        myColorMapGenerator.populateColorMaskMap(bundle, colorMaskDelimiter);
 
     }
 
