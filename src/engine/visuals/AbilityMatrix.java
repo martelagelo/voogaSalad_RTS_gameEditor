@@ -3,9 +3,6 @@ package engine.visuals;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import util.SaveLoadUtility;
-import util.exceptions.SaveLoadException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;
@@ -16,6 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import engine.UI.InputManager;
 
 
@@ -79,7 +81,7 @@ public class AbilityMatrix {
         myInputManager = inputManager;
     }
 
-    public void updateGridImages (Map<Integer, String> map) {
+    public void updateGridImages (Map<Integer, String> map, Map<String, Long> timerMap) {
         for (Button b : buttonList) {
             b.setGraphic(new ImageView());
         }
@@ -92,7 +94,21 @@ public class AbilityMatrix {
                 catch (SaveLoadException e) {
                 }
                 if (im != null) {
-                    buttonList.get(i - 1).setGraphic(new ImageView(im));
+                    StackPane p = new StackPane();
+                    p.getChildren().add(new ImageView(im));
+                    if(timerMap.containsKey(i+"")){
+//                        Rectangle r = new Rectangle();
+//                        r.setWidth(im.getWidth());
+//                        r.setHeight(timerMap.get(i+"")/1000.0*im.getHeight());
+//                        r.toFront();
+//                        p.getChildren().add(r);
+//                        r.setFill(Color.BLACK);
+                        Text t = new Text(timerMap.get(i+"")+"");
+                        p.getChildren().add(t);
+                        t.toFront();
+                        t.setFill(Color.WHITE);
+                    }
+                    buttonList.get(i - 1).setGraphic(p);
                 }
             }
         }

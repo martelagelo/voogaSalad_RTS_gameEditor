@@ -4,12 +4,8 @@ import java.awt.Dimension;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import model.exceptions.CampaignNotFoundException;
-import model.exceptions.LevelNotFoundException;
-import model.state.LevelState;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.editor.wizards.Wizard;
@@ -58,12 +54,6 @@ public class EditorMenuBarController extends MenuBarController {
     
     private void saveGame() {
         ((EditorScreen) myScreen).updateModelToSave();
-        try {
-			LevelState level = myMainModel.getCampaign("shit").getLevel("shit");
-	        System.out.println("Model version of level state to save: " + level.toJSON());
-		} catch (LevelNotFoundException | CampaignNotFoundException e) {
-			e.printStackTrace();
-		}
         myMainModel.saveGame();
     }
 

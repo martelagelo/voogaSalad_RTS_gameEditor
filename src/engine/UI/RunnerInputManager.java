@@ -20,6 +20,7 @@ import engine.visuals.SelectionBox;
  */
 public class RunnerInputManager extends InputManager {
 
+    private final static String DIGIT = "DIGIT";
     public RunnerInputManager (MainModel model,
                                GameElementManager gameElementManager,
                                GameLoop gameLoop, Participant user) {
@@ -73,6 +74,11 @@ public class RunnerInputManager extends InputManager {
         KeyCode key = e.getCode();
         if (key.equals(KeyCode.P)) {
             myGameLoop.pause();
+        }
+        if (key.isDigitKey()) {
+            myElementManager.notifyButtonClicked(Integer.valueOf(key.toString().replace(DIGIT,
+                                                                                        "")),
+                                                 myUser);
         }
     }
 

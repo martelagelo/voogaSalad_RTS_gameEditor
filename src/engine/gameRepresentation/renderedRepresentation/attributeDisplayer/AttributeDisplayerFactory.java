@@ -37,13 +37,14 @@ public class AttributeDisplayerFactory {
 		if (attributeDisplayerState.getTextValue() != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
 					attachee);
-		} else {
+		} 
+		else {
 			return createNumericalAttributeDisplayer(c,
 					attributeDisplayerState, attachee);
 		}
 
 	}
-
+	
 	private AttributeDisplayer createNumericalAttributeDisplayer(Class<?> c,
 			AttributeDisplayerState attributeDisplayerState,
 			AttributeContainer attachee) {

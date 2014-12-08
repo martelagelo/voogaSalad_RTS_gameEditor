@@ -38,14 +38,14 @@ public class CheckAttributeSetAttributeAction extends Action {
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
         Evaluatable<?> attr1Param =
-                new NumericAttributeParameter("", args[0], null, new ActorObjectIdentifier());
-        Evaluatable<?> desiredValueParam = new NumberParameter("", Double.valueOf(args[2]));
+                new NumericAttributeParameter("", args[1], null, makeObjectIdentifier(args[0]));
+        Evaluatable<?> desiredValueParam = new NumberParameter("", Double.valueOf(args[3]));
         Evaluator<?, ?, ?> conditionEvaluator =
-                factory.makeEvaluator(args[1], attr1Param, desiredValueParam);
+                factory.makeEvaluator(args[2], attr1Param, desiredValueParam);
         Evaluatable<?> attr2Param =
-                new NumericAttributeParameter("", args[3], null, new ActorObjectIdentifier());
-        Evaluatable<?> val2Param = new NumberParameter("", Double.valueOf(args[5]));
-        Evaluator<?, ?, ?> actionEvaluator = factory.makeEvaluator(args[4], attr2Param, val2Param);
+                new NumericAttributeParameter("", args[5], null, makeObjectIdentifier(args[4]));
+        Evaluatable<?> val2Param = new NumberParameter("", Double.valueOf(args[7]));
+        Evaluator<?, ?, ?> actionEvaluator = factory.makeEvaluator(args[6], attr2Param, val2Param);
         return new IfThen<>("", conditionEvaluator, actionEvaluator);
     }
 
