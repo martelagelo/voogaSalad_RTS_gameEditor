@@ -49,9 +49,11 @@ public class SpriteImageContainer {
     }
 
     /**
+     * Get the image view to the color mask with the color mask hue applied
      * 
      * @param color
-     * @return
+     *            String representation of the color mask
+     * @return ImageView with the applied color mask
      */
     public ImageView getColorMask (String color) {
         if (myColorMask.getImage() == null)
