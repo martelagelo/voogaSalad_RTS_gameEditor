@@ -34,7 +34,6 @@ import com.google.gson.JsonSyntaxException;
  */
 
 public class SaveLoadUtility {
-    public static String FILE_SEPARATOR = System.getProperty("file.separator");
     private static Gson myGson = new Gson();
 
     /**
@@ -49,7 +48,7 @@ public class SaveLoadUtility {
      * @throws SaveLoadException
      */
 
-    public static <T> T loadResource (Class<?> className, String filePath) throws SaveLoadException {
+    public static <T> T loadResource (Class className, String filePath) throws SaveLoadException {
         T jsonRepresentation = null;
         try {
             jsonRepresentation = (T) myGson.fromJson(new FileReader(new File(filePath)), className);
@@ -95,7 +94,7 @@ public class SaveLoadUtility {
      * file if currently non-existent and required directories.
      * 
      * @param filePath
-     * @return
+     * @return File object at specified file path
      * @throws SaveLoadException
      */
     public static File obtainFile (String filePath) throws SaveLoadException {
