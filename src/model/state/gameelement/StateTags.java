@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 // TODO move this into a config file or equivalent, UPDATE COMMENTS
 public enum StateTags {
 
+    BACKGROUND_PATH(StateType.STRING, "backgroundPath"),
     NAME(StateType.STRING, "name"),
     TYPE(StateType.STRING, "type"),
     TEAM_COLOR(StateType.STRING, "teamColor"),

@@ -67,7 +67,8 @@ public class EditorMenuBarController extends MenuBarController {
                 myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
                                         data.getValueByKey(WizardDataType.CAMPAIGN_NAME),
                                         Double.parseDouble(data.getValueByKey(WizardDataType.WIDTH)),
-                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)));
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)),
+                                        data.getValueByKey(WizardDataType.IMAGE));
                 wiz.closeStage();
             }
             catch (Exception e1) {
