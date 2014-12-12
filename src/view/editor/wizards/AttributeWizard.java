@@ -2,13 +2,14 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
-import util.multilanguage.LanguageException;
-import util.multilanguage.MultiLanguageUtility;
+import java.util.Set;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.state.gameelement.StateTags;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -25,7 +26,7 @@ public class AttributeWizard extends Wizard {
     @FXML
     protected TextField value;
 
-    protected ObservableList<String> attributes;
+    protected Set<String> attributes;
     
     private final String ATTRIBUTE_KEY_KEY = "AttributeKey";
     private final String ATTRIBUTE_VALUE_KEY = "AttributeValue";
@@ -36,8 +37,8 @@ public class AttributeWizard extends Wizard {
     }
 
     protected boolean areFieldsNotNull () {
-        return (key.getSelectionModel().getSelectedItem() != null ||
-               key.valueProperty().get() != null) && !value.getText().isEmpty();
+        return (key.getSelectionModel().selectedItemProperty().isNotNull().get() ||
+               key.valueProperty().isNotNull().get()) && !value.getText().isEmpty();
     }
 
     @Override
@@ -54,8 +55,8 @@ public class AttributeWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        attributes = FXCollections.observableList(new ArrayList<>());
-        key.setItems(attributes);
+        attributes = StateTags.getAllTextualAttributes();
+        key.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
     }
     
     @Override

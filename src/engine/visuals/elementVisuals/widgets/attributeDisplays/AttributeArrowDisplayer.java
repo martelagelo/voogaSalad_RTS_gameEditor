@@ -4,10 +4,12 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.state.gameelement.AttributeContainer;
+import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 
 public class AttributeArrowDisplayer extends AttributeDisplayer {
 
-	private String URL = "resources/img/Arrow.png";
+	private static final String URL = "resources/img/Arrow.png";
 			
 	public AttributeArrowDisplayer(AttributeContainer attributes,
 			String numericParameterTag, double minValue, double maxValue) {
@@ -17,8 +19,14 @@ public class AttributeArrowDisplayer extends AttributeDisplayer {
 	@Override
 	protected Group createDisplay() {
 		Group group = new Group();
-		Image img = new Image(URL);
-		ImageView imgView = new ImageView(img);
+		Image arrow = null;
+		try {
+			arrow = SaveLoadUtility.loadImage(URL);
+		} catch (SaveLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ImageView imgView = new ImageView(arrow);
 		group.getChildren().add(imgView);
 		return group;
 	}
@@ -26,7 +34,7 @@ public class AttributeArrowDisplayer extends AttributeDisplayer {
 	@Override
 	protected void updateDisplay(double attributeValue,
 			double attributeMinValue, double attributeMaxValue) {
-		//Nothing
+		//nothing should happen
 	}
 
 	

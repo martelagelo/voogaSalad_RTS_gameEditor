@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
+
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -17,7 +19,6 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.exceptions.SaveLoadException;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
@@ -70,7 +71,7 @@ public class Animator implements Updatable {
      */
     public Animator (SpriteImageContainer images, AnimatorState state, AttributeContainer attributes, SimpleBooleanProperty animationEnabled) {
         this.animationEnabled = animationEnabled;
-
+//        mySpritesheetBounds = getImageBounds(images.getSpritesheet().getImage());
         if(!animationEnabled.get()){
             try {
                 String imageType = state.getImageTag().substring(state.getImageTag().lastIndexOf('/')+1);
@@ -95,11 +96,9 @@ public class Animator implements Updatable {
         attributesOfInterest = attributes;
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
-
-        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR);
+        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR.getValue());
         
         if(!animationEnabled.get()) setColorMasking(teamColor);
-        
         mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         mySpriteDisplay = new Group();
         mySpriteDisplay.getChildren().add(mySpriteTeamOverlay);
@@ -181,9 +180,9 @@ public class Animator implements Updatable {
     }
 
     private void determineAnimationDirection () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY)
+        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
                 .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY)
+        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
                 .doubleValue();
 
         if (xVelocity != 0.0 || yVelocity != 0.0) {
@@ -199,12 +198,12 @@ public class Animator implements Updatable {
 
     // TODO is there a better way? make this dynamic? add an Evaluatatble?
     private AnimationTag determineAnimationType () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY)
+        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
                 .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY)
+        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
                 .doubleValue();
         double velocity = Math.sqrt(Math.pow(xVelocity, 2) + Math.pow(yVelocity, 2));
-        String currentAction = attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION);
+        String currentAction = attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION.getValue());
         boolean isAttacking = currentAction.equalsIgnoreCase("ATTACKING");
         boolean isDying = currentAction.equalsIgnoreCase("DYING");
         boolean isDecaying = currentAction.equalsIgnoreCase("DECAYING");

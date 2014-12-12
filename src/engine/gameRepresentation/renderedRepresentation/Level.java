@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.state.LevelState;
@@ -57,11 +58,11 @@ public class Level {
     }
     
     public double getMapWidth(){
-        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH).doubleValue();
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue()).doubleValue();
     }
     
     public double getMapHeight(){
-        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT).doubleValue();
+        return this.myState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue()).doubleValue();
     }
 
     public String getName () {
@@ -155,7 +156,7 @@ public class Level {
     public void addElement (DrawableGameElement newElement) {
         myTerrain.add(newElement);
         myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
-        if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+        if (newElement.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1) {
             myGrid.registerObstaclePlacement(newElement.getBounds());
         }
         newElement.registerAsDrawableChild(s -> myState.addTerrain(s));
@@ -163,9 +164,9 @@ public class Level {
 
     public void addElement (SelectableGameElement newElement) {
         myUnits.add(newElement);
-        if (newElement.getNumericalAttribute(StateTags.MOVEMENT_SPEED).doubleValue() == 0) {
+        if (newElement.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0) {
             myTerrainAndBuildingsGroup.getChildren().add(newElement.getNode());
-            if (newElement.getNumericalAttribute(StateTags.BLOCKING).intValue() == 1) {
+            if (newElement.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1) {
                 myGrid.registerObstaclePlacement(newElement.getBounds());
             }
         }

@@ -4,14 +4,13 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.gui.GUIPanePath;
@@ -49,16 +48,18 @@ public class LevelWizard extends Wizard {
     private TextField levelHeight;
     @FXML
     private Button participant;
+    @FXML
+    private AnchorPane leftPane;
     
     private ObservableList<String> campaigns;
 
     @Override
     public boolean checkCanSave () {
-        return campaignName.getSelectionModel().getSelectedItem() != null &&
+        return campaignName.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                !levelName.getText().isEmpty() && !levelWidth.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, levelWidth.getText()) &&
+               isNumber(levelWidth.getText()) &&               
                !levelHeight.getText().isEmpty() &&
-               Pattern.matches(NUM_REGEX, levelHeight.getText());
+               isNumber(levelHeight.getText());
     }
 
     @Override

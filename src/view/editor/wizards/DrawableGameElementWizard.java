@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -26,6 +25,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import view.gui.GUIPanePath;
 
 
@@ -36,6 +36,11 @@ import view.gui.GUIPanePath;
  */
 public class DrawableGameElementWizard extends Wizard {
 
+    private static final String UNABLE_TO_LAUNCH_ANIM = "Can't launch due to unspecified image information";
+    private static final String UNABLE_TO_LOAD = "Unable to Load Image";
+    private static final String DELETE_TEXT = "X";
+    private static final Dimension BOUNDS_WIZARD_SIZE = new Dimension(500, 700);
+    private static final Dimension ACTION_WIZARD_SIZE = new Dimension(400, 600);
     private final static String NAME_KEY = "Name";
     private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
@@ -108,14 +113,10 @@ public class DrawableGameElementWizard extends Wizard {
     private AnimationGrid animationGrid;
     private String imagePath;
     private String colorMaskPath;
-
-    /**
-     * Launches a TriggerEditorWizard
-     * 
-     */
-    private void launchActionEditor () {
+    
+    private void launchActionWizard () {
         launchNestedWizard(GUIPanePath.ACTION_WIZARD, existingTriggers, myGlobalNumberAttributes,
-                           getActionConsumer(), new Dimension(400, 600));
+                           getActionConsumer(), ACTION_WIZARD_SIZE);
     }
 
     private BiConsumer<Button, WizardData> getActionConsumer () {
@@ -126,11 +127,7 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    /**
-     * Launches a String Attribute Wizard
-     * 
-     */
-    private void launchStringAttributeEditor () {
+    private void launchStringAttributeWizard () {
         launchNestedWizard(GUIPanePath.STRING_ATTRIBUTE_WIZARD, existingStringAttributes,
                            myGlobalStringAttributes, 
                            getAttributeConsumer(), new Dimension(
@@ -148,11 +145,7 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    /**
-     * Launches a Number Attribute Wizard
-     * 
-     */
-    private void launchNumberAttributeEditor () {
+    private void launchNumberAttributeWizard () {
         launchNestedWizard(GUIPanePath.NUMBER_ATTRIBUTE_WIZARD, existingNumberAttributes,
                            myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
                         		   ATTRIBUTE_WIZARD_WIDTH, 
@@ -160,30 +153,31 @@ public class DrawableGameElementWizard extends Wizard {
                         		   ));
     }
     
-    /**
-     * Launches a Widget Wizard
-     *
-     */
-    private void launchWidgetEditor () {
-    	launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingNumberAttributes,
-    			myGlobalNumberAttributes, getAttributeConsumer(), new Dimension(
+    private void launchWidgetWizard () {
+        launchNestedWizard(GUIPanePath.WIDGET_WIZARD, existingWidgets,
+    			myGlobalNumberAttributes, getWidgetConsumer(), new Dimension(
              		   ATTRIBUTE_WIZARD_WIDTH, 
              		   ATTRIBUTE_WIZARD_HEIGHT
              		   ));
     }
 
-    private void launchAnimationEditor () {
+    private BiConsumer<Button, WizardData> getWidgetConsumer () {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    private void launchAnimationWizard () {
         if (imageView != null) {
-            List<String> imageValues = new ArrayList<>();
-            imageValues.add(imagePath);
-            imageValues.add(colorMaskPath);
+            List<String> imageValues = new ArrayList<>();            
+            imageValues.add(imagePath);            
             imageValues.add(Double.toString(frameWidth.getValue()));
             imageValues.add(Double.toString(frameHeight.getValue()));
+            imageValues.add(colorMaskPath);
             launchNestedWizard(GUIPanePath.ANIMATION_WIZARD, existingAnimations,
                                imageValues, getAnimationConsumer(), new Dimension(ANIMATION_WIZARD_WIDTH, ANIMATION_WIZARD_HEIGHT));
         }
         else {
-            displayErrorMessage("Can't launch due to unspecified image information");
+            displayErrorMessage(UNABLE_TO_LAUNCH_ANIM);
         }
     }
 
@@ -195,10 +189,10 @@ public class DrawableGameElementWizard extends Wizard {
         return consumer;
     }
 
-    private void launchBoundsEditor () {
-        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, new Dimension(500, 700));
-        if (this.getWizardData().getWizardDataByType(WizardType.BOUNDS).size() != 0) {
-            wiz.launchForEdit(this.getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
+    private void launchBoundsWizard () {
+        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, BOUNDS_WIZARD_SIZE);
+        if (!getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty()) {
+            wiz.launchForEdit(getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
         }
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
@@ -225,7 +219,7 @@ public class DrawableGameElementWizard extends Wizard {
                 newElement.getChildren().add(edit);
 
                 Button delete = new Button();
-                delete.setText("X");
+                delete.setText(DELETE_TEXT);
                 delete.setOnAction(e -> {
                     removeWizardData(data);
                     existing.getChildren().remove(newElement);
@@ -266,17 +260,15 @@ public class DrawableGameElementWizard extends Wizard {
      *         an Image of the user's choosing
      * @throws FileNotFoundException
      */
-
     private File fetchImage () throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                                                 new FileChooser.ExtensionFilter("JPG", ".jpg"));
+        fileChooser.setInitialDirectory(new File("resources"));
         File file = fileChooser.showOpenDialog(new Stage());        
         return file;
     }
 
-    /**
-     * Fired when the user uploads a new color mask
-     * 
-     */
     private void loadColorMask () {
         try {
             File colorMaskFile = fetchImage();
@@ -285,17 +277,11 @@ public class DrawableGameElementWizard extends Wizard {
             imageView = new ImageView(image);
             spritesheet.getChildren().add(imageView);
         }
-        catch (FileNotFoundException e) {
-            displayErrorMessage("Unable to Load Image");
+        catch (FileNotFoundException | NullPointerException e) {
+            displayErrorMessage(UNABLE_TO_LOAD);
         }
     }
 
-    /**
-     * Fired when the user uploads a new picture
-     * 
-     * Credit for the buffered image code goes to
-     * StackOverflow user mathew11
-     */
     private void loadImage () {
         try {
             spritesheet.setOnMouseClicked(imageScroll.getOnMouseClicked());
@@ -312,8 +298,8 @@ public class DrawableGameElementWizard extends Wizard {
             spritesheet.getChildren().add(animationGrid);
             spritesheet.toFront();
         }
-        catch (FileNotFoundException e) {
-            displayErrorMessage("Unable to Load Image");
+        catch (FileNotFoundException | NullPointerException e) {
+            displayErrorMessage(UNABLE_TO_LOAD);
         }
     }
 
@@ -328,30 +314,22 @@ public class DrawableGameElementWizard extends Wizard {
         frameHeight.setMax(image.getHeight());
     }
 
-    /**
-     * Binds all the listeners to the scene
-     * 
-     */
     @Override
     public void initialize () {
         super.initialize();
-        trigger.setOnAction(e -> launchActionEditor());
-        stringAttribute.setOnAction(e -> launchStringAttributeEditor());
-        numberAttribute.setOnAction(e -> launchNumberAttributeEditor());
-        widget.setOnAction(e -> launchWidgetEditor());
-        animation.setOnAction(e -> launchAnimationEditor());
-        setBounds.setOnAction(e -> launchBoundsEditor());
+        trigger.setOnAction(e -> launchActionWizard());
+        stringAttribute.setOnAction(e -> launchStringAttributeWizard());
+        numberAttribute.setOnAction(e -> launchNumberAttributeWizard());
+        // widget.setOnAction(e -> launchWidgetWizard());
+        animation.setOnAction(e -> launchAnimationWizard());
+        setBounds.setOnAction(e -> launchBoundsWizard());
         image.setOnAction(i -> loadImage());
         colorMask.setOnAction(i -> loadColorMask());
-        imagePath = "";
+        imagePath = "";        
+        colorMaskPath = "";
         errorMessage.setFill(Paint.valueOf("white"));                
     }
 
-    /**
-     * Attaches multilanguage utility to text
-     * in the wizard
-     * 
-     */
     @Override
     protected void attachTextProperties () {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
@@ -370,41 +348,43 @@ public class DrawableGameElementWizard extends Wizard {
             super.attachTextProperties();
         }
         catch (LanguageException e) {
-            // TODO Do something useful with this exception
+            DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }
 
     private void createTextFieldListeners () {
-        frameWidthText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameWidthText.getText())) {
-                frameWidth.setValue(Double.parseDouble(frameWidthText.getText()));
-            }
-        });
-        frameHeightText.textProperty().addListener(e -> {
-            if (Pattern.matches(NUM_REGEX, frameHeightText.getText())) {
-                frameHeight.setValue(Double.parseDouble(frameHeightText.getText()));
+        setTextListener(frameWidthText, (value) -> frameWidth.setValue(value));
+        setTextListener(frameHeightText, (value) -> frameHeight.setValue(value));
+    }
+    
+    private void setTextListener(TextField field, Consumer<Double> cons) {
+        field.textProperty().addListener(e -> {
+            if (isNumber(field.getText())) {
+                cons.accept(Double.parseDouble(field.getText()));
             }
         });
     }
 
     private void createSliderListeners () {
-        frameWidth.valueProperty().addListener(e -> {
-            frameWidthText.setText("" + (int) frameWidth.getValue());
+        setValueListener(frameWidth, (text) -> frameWidthText.setText(text),
+                         (gridValue) -> animationGrid.changeSize(gridValue, animationGrid.getFrameY()));
+        setValueListener(frameHeight, (text) -> frameHeightText.setText(text),
+                         (gridValue) -> animationGrid.changeSize(animationGrid.getFrameX(), gridValue));        
+    }
+    
+    private void setValueListener(Slider slider, Consumer<String> cons, 
+                                  Consumer<Double> gridCons) {
+        slider.valueProperty().addListener(e -> {
+            cons.accept("" + (int) slider.getValue());
             if (animationGrid != null) {
-                animationGrid.changeSize(frameWidth.getValue(), animationGrid.getFrameY());
-            }
-        });
-        frameHeight.valueProperty().addListener(e -> {
-            frameHeightText.setText("" + (int) frameHeight.getValue());
-            if (animationGrid != null) {
-                animationGrid.changeSize(animationGrid.getFrameX(), frameHeight.getValue());
+                gridCons.accept(slider.getValue());
             }
         });
     }
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && imageView != null;
+        return !name.getText().isEmpty() && !imagePath.isEmpty();
     }
 
     @Override

@@ -9,7 +9,7 @@
 <SplitPane fx:id="root" fx:controller="view.editor.wizards.ParticipantWizard"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<items>
-		<ScrollPane>
+		<ScrollPane fx:id="leftPane">
 			<VBox>
 				<TextField fx:id="name"></TextField>
 				<ColorPicker fx:id="teamColor"/>

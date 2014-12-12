@@ -38,11 +38,6 @@ public class VisualizerFactory {
                                                   elementState.attributes);
         newVisualizer.setAnimateEnableProperty(enabled);
 
-        // FOR TESTING
-        // AttributeDisplayerState myAttributeDisplayerState = new
-        // AttributeDisplayerState("attributeBar", StateTags.HEALTH, 0, 500);
-        // newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(myAttributeDisplayerState,elementState.attributes));
-
         for (AttributeDisplayerState ADS : elementState.AttributeDisplayerStates) {
             newVisualizer.addWidget(myWidgetFactory
                     .createAttributeDisplayer(ADS, elementState.attributes));

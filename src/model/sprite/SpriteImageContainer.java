@@ -1,12 +1,12 @@
 package model.sprite;
 
+import util.exceptions.SaveLoadException;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import model.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
@@ -42,6 +42,9 @@ public class SpriteImageContainer {
         return mySpritesheet;
     }
 
+    public ImageView getColorMask() {
+        return myColorMask;
+    }
     /**
      * 
      * @param color

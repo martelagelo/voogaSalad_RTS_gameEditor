@@ -4,6 +4,7 @@ import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
+import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
 
 /**
@@ -12,27 +13,26 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
  * @author Zach
  *
  */
-public class SpawnSelectableElement<A, B> extends Evaluator<A, B, Boolean> {
+public class SpawnSelectableElement<A, B> extends Evaluator<A, B, SelectableGameElement> {
 
     public SpawnSelectableElement (String id,
                                    Evaluatable<A> parameter1,
                                    Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "Spawn Element", parameter1, parameter2);
+        super(SelectableGameElement.class, id, "Spawn Element", parameter1, parameter2);
     }
 
     @Override
-    protected Boolean evaluate (GameElement element, ElementPromise promise) {
-        promise.getManager()
+    protected SelectableGameElement evaluate (GameElement element, ElementPromise promise) {
+        return promise.getManager()
                 .addSelectableGameElementToLevel(promise.getElementName(),
-                                                 element.getNumericalAttribute(StateTags.X_POSITION)
+                                                 element.getNumericalAttribute(StateTags.X_POSITION.getValue())
                                                          .doubleValue() +
-                                                         element.getNumericalAttribute(StateTags.X_SPAWN_OFFSET)
+                                                         element.getNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue())
                                                                  .doubleValue(),
-                                                 element.getNumericalAttribute(StateTags.Y_POSITION)
+                                                 element.getNumericalAttribute(StateTags.Y_POSITION.getValue())
                                                          .doubleValue() +
-                                                         element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET)
-                                                                 .doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR));
+                                                         element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue())
+                                                                 .doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
         
-        return true;
     }
 }

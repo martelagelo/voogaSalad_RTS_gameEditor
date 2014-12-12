@@ -2,12 +2,13 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
@@ -35,24 +36,24 @@ public class ActionWizard extends Wizard {
 
     private List<ComboBox<String>> dropdowns;
 
-    private List<String> attributes;
+    private Set<String> attributes;
     private List<ComboBox<String>> numberDropdowns;
 
     @Override
     public boolean checkCanSave () {
-        return actionType.getSelectionModel().getSelectedItem() != null &&
-               actionChoice.getSelectionModel().getSelectedItem() != null &&
+        return actionType.getSelectionModel().selectedItemProperty().isNotNull().get() &&
+               actionChoice.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                dropdownsValid();
     }
 
     private boolean dropdownsValid () {
-        if (dropdowns.size() == 0) return false;
+        if (dropdowns.isEmpty()) return false;
         for (ComboBox<String> box : dropdowns) {
-            if (box.getSelectionModel().getSelectedItem() == null ||
-                box.valueProperty().getValue() == null) { return false; }
+            if (box.getSelectionModel().selectedItemProperty().isNull().get() ||
+                box.valueProperty().isNull().get()) { return false; }
         }
         for (ComboBox<String> numberInput : numberDropdowns) {
-            if (!Pattern.matches(NUM_REGEX, numberInput.getSelectionModel().getSelectedItem())) { return false; }
+            if (!isNumber(numberInput.getSelectionModel().getSelectedItem())) { return false; }
         }
         return true;
     }
@@ -82,7 +83,7 @@ public class ActionWizard extends Wizard {
         actionChoice.valueProperty()
                 .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
         dropdowns = new ArrayList<>();
-        attributes = new ArrayList<>();
+        attributes = StateTags.getAllAttributes();
         numberDropdowns = new ArrayList<>();
     }
 
@@ -100,14 +101,14 @@ public class ActionWizard extends Wizard {
                 cb.setItems(FXCollections.observableArrayList(
                         actionParameters.get(parameterIndex).getOptions()
                         ));
-                cb.setPromptText(actionParameters.get(parameterIndex).name());
-                cb.setEditable(cb.getItems().size() == 0);
+                cb.setPromptText(actionParameters.get(parameterIndex).name());                
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
-                    cb.setItems(FXCollections.observableList(attributes));
-                }
+                    cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+                }                
                 else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
                     numberDropdowns.add(cb);
                 }
+                cb.setEditable(cb.getItems().size() == 0);
                 parameterIndex++;
                 dropdowns.add(cb);
                 options.getChildren().add(cb);
