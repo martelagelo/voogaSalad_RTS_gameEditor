@@ -6,7 +6,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.Group;
 import model.MainModel;
-import model.exceptions.DescribableStateException;
 import model.state.LevelState;
 import org.json.JSONException;
 import engine.UI.InputManager;
@@ -58,7 +57,6 @@ public class Engine extends Observable implements Observer {
         throws ClassNotFoundException, JSONException, IOException {
         myMainModel = mainModel;
         myLevelState = levelState;
-        System.out.println("Engine version of level state: " + myLevelState.toJSON());
         // TODO fix this so it isn't null
         myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
         myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));

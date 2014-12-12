@@ -100,7 +100,6 @@ public class GameElement {
         for (ActionType actionType : myActionLists.keySet()) {
             getActionsOfType(actionType).forEachRemaining(action -> {
                 if (action.getID().equals(actionID)) {
-                    // //System.out.println("Action should be removed");
                     myActionLists.get(actionType).remove(action);
                 }
             });
@@ -151,8 +150,6 @@ public class GameElement {
      * Update the element based on its internal state
      */
     public void update () {
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR.getValue());
-        // System.out.println("Updating game element: " + teamColor);
         updateTimers();
         updateSelfDueToInternalFactors();
     }
