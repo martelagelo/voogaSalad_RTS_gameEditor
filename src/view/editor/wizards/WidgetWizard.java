@@ -1,8 +1,10 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -28,7 +30,7 @@ public class WidgetWizard extends Wizard {
     private final static String ATTRIBUTE_KEY = "Attribute";
 
     @FXML
-    protected ComboBox<AttributeDisplayerTags> displayerTag;
+    protected ComboBox<String> displayerTag;
     @FXML
     protected ComboBox<String> attribute;
     @FXML
@@ -57,8 +59,8 @@ public class WidgetWizard extends Wizard {
     @Override
     public void updateData () {
         setWizardType(WizardType.WIDGET);
-        // addToData(WizardDataType., value);
         addToData(WizardDataType.ATTRIBUTE, attribute.getSelectionModel().getSelectedItem());
+        addToData(WizardDataType.WIDGET_TYPE, displayerTag.getSelectionModel().getSelectedItem());
         addToData(WizardDataType.WIDGET_PARAMETERS, getArguments());
     }
 
@@ -73,7 +75,9 @@ public class WidgetWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        displayerTag.setItems(FXCollections.observableArrayList(AttributeDisplayerTags.values()));
+        displayerTag.setItems(
+                              FXCollections.observableList(Arrays.asList(AttributeDisplayerTags.values()).stream()
+                                                           .map(tag -> tag.name()).collect(Collectors.toList())));
         allAttributes = StateTags.getAllAttributes();
         attribute.setItems(FXCollections.observableList(new ArrayList<>(allAttributes)));
         attribute.valueProperty().addListener( (o, oldVal, newVal) -> newAttribute(newVal));
@@ -114,10 +118,8 @@ public class WidgetWizard extends Wizard {
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        addToData(WizardDataType.WIDGET_TYPE, displayerTag.getSelectionModel().getSelectedItem()
-                .name());
-        addToData(WizardDataType.ATTRIBUTE, attribute.getSelectionModel().getSelectedItem());
-        addToData(WizardDataType.WIDGET_PARAMETERS, getArguments());
+        displayerTag.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.WIDGET_TYPE));
+        attribute.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.ATTRIBUTE));        
     }
 
     @Override

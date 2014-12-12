@@ -11,6 +11,8 @@ import view.editor.wizards.WizardType;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 
 
 /**
@@ -55,8 +57,29 @@ public class GameElementStateFactory {
     private static DrawableGameElementState addVisuals (WizardData data,
                                                         DrawableGameElementState state) {        
         state.myAnimatorState = AnimatorStateFactory.createAnimatorState(data);
-        state.setBounds(createBounds(data));       
+        state.setBounds(createBounds(data));          
+        createAttributeDisplayerState(data, state);        
         return state;
+    }
+
+    private static void createAttributeDisplayerState (WizardData data,
+                                                       DrawableGameElementState state) {
+        for (WizardData widget: data.getWizardDataByType(WizardType.WIDGET)) {            
+            String[] arguments = widget.getValueByKey(WizardDataType.WIDGET_PARAMETERS).split(",");
+            AttributeDisplayerState displayerState;
+            if (arguments.length == 2) {
+                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                                                widget.getValueByKey(WizardDataType.ATTRIBUTE), 
+                                                Double.parseDouble(arguments[0]), 
+                                                Double.parseDouble(arguments[1]));
+            }
+            else {
+                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                                                             widget.getValueByKey(WizardDataType.ATTRIBUTE), 
+                                                             arguments[0]);
+            }
+            state.addAttributeDisplayerState(displayerState);
+        }
     }
 
     private static double[] createBounds (WizardData data) {        

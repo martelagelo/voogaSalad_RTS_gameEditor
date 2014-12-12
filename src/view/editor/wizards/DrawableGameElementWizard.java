@@ -162,8 +162,11 @@ public class DrawableGameElementWizard extends Wizard {
     }
 
     private BiConsumer<Button, WizardData> getWidgetConsumer () {
-        // TODO Auto-generated method stub
-        return null;
+        BiConsumer<Button, WizardData> consumer = (Button button, WizardData data) -> {
+            String buttonName = data.getValueByKey(WizardDataType.WIDGET_TYPE);
+            button.setText(buttonName);
+        };
+        return consumer;
     }
 
     private void launchAnimationWizard () {
@@ -211,7 +214,7 @@ public class DrawableGameElementWizard extends Wizard {
         Consumer<WizardData> bc = (data) -> {
             addWizardData(data);
             HBox newElement = new HBox();
-            Button edit = new Button();
+            Button edit = new Button();                
                 setTextConsumer.accept(edit, data);                               
                 edit.setOnAction(e -> launchEditWizard(path, data, edit, setTextConsumer,
                                                        globalAttrs, dim));
@@ -320,7 +323,7 @@ public class DrawableGameElementWizard extends Wizard {
         trigger.setOnAction(e -> launchActionWizard());
         stringAttribute.setOnAction(e -> launchStringAttributeWizard());
         numberAttribute.setOnAction(e -> launchNumberAttributeWizard());
-        // widget.setOnAction(e -> launchWidgetWizard());
+         widget.setOnAction(e -> launchWidgetWizard());
         animation.setOnAction(e -> launchAnimationWizard());
         setBounds.setOnAction(e -> launchBoundsWizard());
         image.setOnAction(i -> loadImage());
