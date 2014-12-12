@@ -22,7 +22,124 @@
             ]
           },
           "myTerrains": [],
-          "myUnits": [],
+          "myUnits": [
+            {
+              "AttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/jaguar.png",
+                "colorMaskTag": "",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 50
+                },
+                "numRows": 37,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 16,
+                    "myStopFrame": 17,
+                    "myCurrentFrame": 16,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myBounds": [
+                0.0,
+                0.0,
+                100.0,
+                0.0,
+                100.0,
+                100.0,
+                0.0,
+                100.0
+              ],
+              "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 1.0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 147.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 343.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 147.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 343.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 147.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 343.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "moveable",
+                    "myName": "name"
+                  },
+                  {
+                    "myData": "BLUE",
+                    "myName": "teamColor"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
           "myGoals": [],
           "myIdentifier": {
             "levelName": "l1",
