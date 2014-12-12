@@ -8,8 +8,8 @@ import java.util.ResourceBundle;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import model.exceptions.SaveLoadException;
 import util.ResourceBundleRetriever;
+import util.exceptions.SaveLoadException;
 
 public class ColorMapGenerator {
     private String myColorMaskName = "colormasks.properties";

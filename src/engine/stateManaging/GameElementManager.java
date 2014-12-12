@@ -2,6 +2,7 @@ package engine.stateManaging;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import model.state.gameelement.StateTags;

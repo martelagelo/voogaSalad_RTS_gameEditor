@@ -1,11 +1,16 @@
 package engine.gameRepresentation.evaluatables.actions;
 
+import java.util.Arrays;
+import java.util.List;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
+import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
+import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
+import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import engine.stateManaging.GameElementManager;
 import engine.users.Participant;
 
@@ -21,6 +26,8 @@ import engine.users.Participant;
  */
 public abstract class Action extends Evaluatable<Boolean> {
     private Evaluatable<?> myAction;
+    public final static String MY_ELEMENT = "me";
+    public final static String MY_PARTICIPANT = "my";
 
     /**
      * Create an action
@@ -71,4 +78,33 @@ public abstract class Action extends Evaluatable<Boolean> {
      * @return a boolean indicating whether action execution was successful
      */
     protected abstract Boolean evaluate (Evaluatable<?> action, ElementPair elements);
+
+    /**
+     * Below are some helper methods to keep actions DRY
+     */
+
+    /**
+     * Get an object of interest identifier based on a string
+     * 
+     * @param objectIdentifierString the string for the object of interest.
+     * @return the object of interest identifier
+     */
+    protected ObjectOfInterestIdentifier makeObjectIdentifier (String objectIdentifierString) {
+        if (objectIdentifierString.equals(MY_ELEMENT)) { return new ActorObjectIdentifier(); }
+        return new ActeeObjectIdentifier();
+    }
+
+    /**
+     * Identify participants given an identifier string
+     * 
+     * @param participantIdentifier the string to identify the participants
+     * @param manager the participant manager
+     * @return the participants of interest
+     */
+    protected List<Participant> identifyParticipantsOfInterest (String participantIdentifier,
+                                                                ParticipantManager manager) {
+        return (participantIdentifier.equals(MY_PARTICIPANT) ? Arrays.asList(manager.getUser())
+                                                            : manager.getAI());
+    }
+
 }

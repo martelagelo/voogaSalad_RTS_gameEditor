@@ -70,6 +70,7 @@ public class GUILoadStyleUtility {
             return controller;
         }
         catch (IOException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

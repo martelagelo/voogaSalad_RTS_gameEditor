@@ -16,18 +16,26 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 
 	private static final long serialVersionUID = -4791954709522087485L;
 	private AttributeDisplayerTags displayerTag;
-	private String parameterTag;					
-	private double minAttributeValue;			
-	private double maxAttributeValue;			
-	private String myTextValue;					
+	private String parameterTag;
+	private double minAttributeValue;
+	private double maxAttributeValue;
+	private String myTextValue;
 
 	/**
 	 * Constructor
 	 * 
-	 * @param displayerTag The reference to a widget's class
-	 * @param numericParameterTag The attribute name
-	 * @param minAttributeValue The max attribute value
-	 * @param maxAttributeValue The min attribute value
+	 * @param displayerTag
+	 *            The reference to a widget's class
+	 * @param numericParameterTag
+	 *            The attribute name
+	 * @param minAttributeValue
+	 *            The max attribute value
+	 * @param maxAttributeValue
+	 *            The min attribute value
+	 * @param BackgroundColor
+	 *            The color in the background
+	 * @param ForegroundColor
+	 *            The color in the foreground
 	 */
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
 			String numericParameterTag, double minAttributeValue,
@@ -36,7 +44,6 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 		this.parameterTag = numericParameterTag;
 		this.minAttributeValue = minAttributeValue;
 		this.maxAttributeValue = maxAttributeValue;
-
 	}
 
 	public AttributeDisplayerState(AttributeDisplayerTags displayerTag,
@@ -45,25 +52,26 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 		this.parameterTag = textualParameterTag;
 		this.myTextValue = value;
 	}
-	
+
 	public AttributeDisplayerTags getDisplayerTag() {
 		return displayerTag;
 	}
-	
+
 	public String getParameterTag() {
 		return parameterTag;
 	}
-	
+
 	public double getMinValue() {
 		return minAttributeValue;
 	}
-	
+
 	public double getMaxValue() {
 		return maxAttributeValue;
 	}
-	
+
 	public String getTextValue() {
 		return myTextValue;
 	}
+	
 
 }

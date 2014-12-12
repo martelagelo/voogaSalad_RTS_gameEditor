@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
+
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -17,7 +19,6 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.exceptions.SaveLoadException;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
@@ -70,7 +71,7 @@ public class Animator implements Updatable {
      */
     public Animator (SpriteImageContainer images, AnimatorState state, AttributeContainer attributes, SimpleBooleanProperty animationEnabled) {
         this.animationEnabled = animationEnabled;
-
+//        mySpritesheetBounds = getImageBounds(images.getSpritesheet().getImage());
         if(!animationEnabled.get()){
             try {
                 String imageType = state.getImageTag().substring(state.getImageTag().lastIndexOf('/')+1);

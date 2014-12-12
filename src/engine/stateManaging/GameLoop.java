@@ -104,7 +104,7 @@ public class GameLoop extends Observable {
 
         // TODO: for testing, remove
 
-        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES.getValue(), 0.5);
+//        myParticipantManager.adjustParticipantNumericalAttribute("BLUE", StateTags.RESOURCES.getValue(), 0.5);
 //        myParticipantManager.adjustParticipantNumericalAttribute(1, StateTags.RESOURCES, 0.5);
 
         int levelEndState = myCurrentLevel.evaluateGoals();
@@ -122,6 +122,11 @@ public class GameLoop extends Observable {
         while (iter.hasNext()) {
             SelectableGameElement selectableElement = iter.next();
             selectableElement.update();
+        }
+        Iterator<DrawableGameElement> terrainIterator = myCurrentLevel.getTerrain().iterator();
+        while (terrainIterator.hasNext()) {
+            DrawableGameElement drawableElement = terrainIterator.next();
+            drawableElement.update();
         }
         myVisualManager.update(myCurrentLevel.getUnits());
     }
