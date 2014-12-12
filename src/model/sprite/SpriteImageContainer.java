@@ -10,7 +10,9 @@ import javafx.scene.image.ImageView;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
- * for team identification.
+ * for team identification. This is given to the Animator allowing for access to
+ * the spritsheet and color mask fundamental to visual rendering of game
+ * elements.
  * 
  * @author Rahul
  *
@@ -18,7 +20,7 @@ import javafx.scene.image.ImageView;
 public class SpriteImageContainer {
     private ImageView mySpritesheet;
     private ImageView myColorMask;
-    
+
     public SpriteImageContainer (ImageView spritesheet, ImageView colorMask) {
         mySpritesheet = spritesheet;
         myColorMask = colorMask;
@@ -31,7 +33,7 @@ public class SpriteImageContainer {
     }
 
     private void locateColorMask (String colorMaskTag) throws SaveLoadException {
-        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(colorMaskTag));
+        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMask(colorMaskTag));
     }
 
     private void locateSpritesheet (String spritesheetTag) throws SaveLoadException {
@@ -42,16 +44,20 @@ public class SpriteImageContainer {
         return mySpritesheet;
     }
 
-    public ImageView getColorMask() {
+    public ImageView getColorMask () {
         return myColorMask;
     }
+
     /**
+     * Get the image view to the color mask with the color mask hue applied
      * 
      * @param color
-     * @return
+     *            String representation of the color mask
+     * @return ImageView with the applied color mask
      */
     public ImageView getColorMask (String color) {
-        if(myColorMask.getImage() == null) return new ImageView();
+        if (myColorMask.getImage() == null)
+            return new ImageView();
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome, new ColorInput(0, 0, myColorMask
