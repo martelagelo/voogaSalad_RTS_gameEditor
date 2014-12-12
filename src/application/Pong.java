@@ -14,6 +14,7 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
@@ -51,11 +52,14 @@ public class Pong extends Application {
         paddle.setBounds(bounds);
         paddle.addAction(new ActionWrapper(ActionType.BUTTON,
                                            ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
-                                           StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals", "1", "me",
-                                           StateTags.X_VELOCITY.getValue(), "EqualsAssignment", "-3"));
+                                           StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals",
+                                           "1", "me",
+                                           StateTags.X_VELOCITY.getValue(), "EqualsAssignment",
+                                           "-3"));
         paddle.addAction(new ActionWrapper(ActionType.BUTTON,
                                            ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
-                                           StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals", "2", "me",
+                                           StateTags.LAST_BUTTON_CLICKED_ID.getValue(), "Equals",
+                                           "2", "me",
                                            StateTags.X_VELOCITY.getValue(), "EqualsAssignment", "3"));
         SelectableGameElementState enemyPaddle = createPaddle(350, 700, 2);
         enemyPaddle.setBounds(bounds);
@@ -66,33 +70,40 @@ public class Pong extends Application {
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION, "FollowX"));
         enemyPaddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
-                                                StateTags.Y_VELOCITY.getValue(), "NotEquals", "0", "me",
-                                                StateTags.Y_VELOCITY.getValue(), "EqualsAssignment", "0"));
+                                                StateTags.Y_VELOCITY.getValue(), "NotEquals", "0",
+                                                "me",
+                                                StateTags.Y_VELOCITY.getValue(),
+                                                "EqualsAssignment", "0"));
         SelectableGameElementState ball = createBall(350, 350);
         ball.setBounds(bounds);
         ball.addAction(new ActionWrapper(ActionType.INTERNAL,
                                          ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me",
-                                         StateTags.MOVEMENT_SPEED.getValue(), "GreaterThan", "8", "me",
-                                         StateTags.MOVEMENT_SPEED.getValue(), "EqualsAssignment", "8"));
+                                         StateTags.MOVEMENT_SPEED.getValue(), "GreaterThan", "8",
+                                         "me",
+                                         StateTags.MOVEMENT_SPEED.getValue(), "EqualsAssignment",
+                                         "8"));
         // This one can be used for pathing
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "HeadingUpdate"));
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.PERFORM_CALCULATION_ON_VALUE,
-                                           "EqualsAssignment", "1", StateTags.IS_SELECTED.getValue()));
+                                           "EqualsAssignment", "1", StateTags.IS_SELECTED
+                                                   .getValue()));
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "SetFocused"));
-        enemyPaddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
-      enemyPaddle.addAction(new ActionWrapper(ActionType.INTERNAL,
-         ActionOptions.ACT_ON_OBJECTS_ACTION,
-         "UpdateMovementDirection"));
-        // enemyPaddle.addAction(new
-        // ActionWrapper(ActionType.INTERNAL,ActionOptions.OBJECT_CONDITION_ACTION));
-        LevelState levelState = new LevelState("testLevel","testCampaign");
+        enemyPaddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 3);
+        enemyPaddle.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.ACT_ON_OBJECTS_ACTION,
+                                                "UpdateMovementDirection"));
 
+        LevelState levelState = new LevelState("testLevel", "testCampaign");
         levelState.addUnit(paddle);
+        levelState.addUnit(createBoundary(-10, 0));
+        levelState.addUnit(createBoundary(800, 0));
+        levelState.addUnit(createGoalRegion(0, -10,true));
+        levelState.addUnit(createGoalRegion(0, 850,false));
         levelState.addUnit(enemyPaddle);
         levelState.addUnit(ball);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 1000);
@@ -113,7 +124,8 @@ public class Pong extends Application {
         MainModel model2 = new MainModel();
         model2.loadGame("testGame");
         Engine engine =
-                new Engine(model2, model2.getLevel( new LevelIdentifier("testLevel", "testCampaign")));
+                new Engine(model2,
+                           model2.getLevel(new LevelIdentifier("testLevel", "testCampaign")));
         return engine;
     }
 
@@ -138,19 +150,53 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
         ball.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
         ball.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
-        ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 1);
-        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 1);
+        ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 4);
+        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
         ball.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
         ball.attributes.setNumericalAttribute("teamID", 2);
         ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "RED");
+        ball.attributes.setNumericalAttribute("MinMovementSpeed", 2);
         ball.addType("ball");
-        ball.addAction(new ActionWrapper(ActionType.COLLISION, ActionOptions.ACT_ON_OBJECTS_ACTION,
+
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION,
+                                         "paddle", "me", "0", "Equals", "0", "Equals", "me", "0",
                                          "Bounce"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION,
+                                         "boundary", "me", StateTags.X_VELOCITY.getValue(),
+                                         "EqualsAssignment", "-1", "MultiplicationAssignment",
+                                         "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator"));
 
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.PERFORM_CALCULATION_ON_VALUE,
                                          "MultiplicationAssignment", "1.2",
                                          StateTags.MOVEMENT_SPEED.getValue()));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
+                                         StateTags.X_POSITION.getValue(), "EqualsAssignment", "1",
+                                         "Multiplication", "me", StateTags.X_GOAL_POSITION
+                                                 .getValue(), "FalseEvaluator"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
+                                         StateTags.Y_POSITION.getValue(), "EqualsAssignment", "1",
+                                         "Multiplication", "me", StateTags.Y_GOAL_POSITION
+                                                 .getValue(), "FalseEvaluator"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
+                                         StateTags.X_VELOCITY.getValue(), "EqualsAssignment", "0",
+                                         "Multiplication", "me", "0", "FalseEvaluator"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
+                                         StateTags.MOVEMENT_SPEED.getValue(), "EqualsAssignment",
+                                         "1", "Multiplication", "me", "MinMovementSpeed",
+                                         "FalseEvaluator"));
+        ball.addAction(new ActionWrapper(ActionType.COLLISION,
+                                         ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
+                                         StateTags.Y_VELOCITY.getValue(), "EqualsAssignment", "1",
+                                         "Multiplication", "me", StateTags.MOVEMENT_SPEED
+                                                 .getValue(), "FalseEvaluator"));
+
         AnimatorState ballAnimations;
         // This one moves the player
         ball.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -162,6 +208,61 @@ public class Pong extends Application {
 
         ball.myAnimatorState = ballAnimations;
         return ball;
+    }
+
+    private SelectableGameElementState createBoundary (double x, double y) throws SaveLoadException {
+        SelectableGameElementState boundary = new SelectableGameElementState(x, y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        boundary.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        boundary.attributes.setNumericalAttribute("teamID", 0);
+        boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        boundary.addType("boundary");
+        double[] bounds = { 0, 0, 0, 1000, 10, 1000, 10, 0 };
+        boundary.setBounds(bounds);
+
+        AnimatorState boundaryAnimations =
+                SaveLoadUtility
+                        .loadResource(AnimatorState.class,
+                                      "resources/gameelementresources/animatorstate/archer.json");
+        boundary.myAnimatorState = boundaryAnimations;
+
+        return boundary;
+
+    }
+
+    private SelectableGameElementState createGoalRegion (double x, double y, boolean mine)
+                                                                                          throws SaveLoadException {
+        SelectableGameElementState boundary = new SelectableGameElementState(x, y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
+        boundary.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        boundary.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        boundary.attributes.setNumericalAttribute("teamID", 0);
+        boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "YELLOW");
+        boundary.addType("goal");
+        double[] bounds = { 0, 0, 1000, 0, 1000, 10, 0, 10 };
+        boundary.setBounds(bounds);
+        boundary.addAction(new ActionWrapper(ActionType.COLLISION,
+                                             ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my", "0",
+                                             "Equals", "0",
+                                             "Resources", "AdditionAssignment", "1"));
+
+        AnimatorState boundaryAnimations =
+                SaveLoadUtility
+                        .loadResource(AnimatorState.class,
+                                      "resources/gameelementresources/animatorstate/archer.json");
+        boundary.myAnimatorState = boundaryAnimations;
+
+        return boundary;
+
     }
 
     private SelectableGameElementState createPaddle (double x, double y, int teamID)
@@ -178,6 +279,7 @@ public class Pong extends Application {
         paddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 6);
         paddle.attributes.setNumericalAttribute("teamID", teamID);
         paddle.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+
         paddle.addType("paddle");
         // TODO make directions changed
 
@@ -206,6 +308,11 @@ public class Pong extends Application {
         // ActionOptions.ACT_ON_OBJECTS_ACTION,
         // "UpdateMovementDirection"));
         // This one moves the player
+        paddle.addAction(new ActionWrapper(ActionType.COLLISION,
+                                           ActionOptions.OBJECT_TYPE_CHECK_ACTION,
+                                           "boundary", "me", StateTags.X_VELOCITY.getValue(),
+                                           "EqualsAssignment", "-1", "MultiplicationAssignment",
+                                           "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator"));
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "MovePlayer"));

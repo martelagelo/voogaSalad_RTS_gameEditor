@@ -19,7 +19,7 @@ import engine.stateManaging.GameElementManager;
 /**
  * This action is essentially the mother of all actions.
  * 
- * @author zach
+ * @author Zach
  *
  */
 public class MotherOfAllActions extends Action {
