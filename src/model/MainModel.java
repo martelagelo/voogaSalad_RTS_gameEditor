@@ -163,6 +163,7 @@ public class MainModel extends Observable {
     public void setLevel (LevelIdentifier levelID, LevelState levelState)
                                                                          throws CampaignNotFoundException,
                                                                          LevelNotFoundException {
+        System.out.println("levelID: " + levelID);
         int levelIndex = getCampaign(levelID.campaignName).getLevels().indexOf(getLevel(levelID));
         getCampaign(levelID.campaignName).getLevels().set(levelIndex, levelState);
     }

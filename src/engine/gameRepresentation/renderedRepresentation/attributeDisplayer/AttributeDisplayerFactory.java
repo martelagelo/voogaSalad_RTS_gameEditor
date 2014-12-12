@@ -1,7 +1,6 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ResourceBundle;
 import model.state.gameelement.AttributeContainer;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 

@@ -104,11 +104,13 @@ public class ActionWizard extends Wizard {
                 cb.setPromptText(actionParameters.get(parameterIndex).name());                
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
                     cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+                    cb.setEditable(true);
                 }                
                 else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
                     numberDropdowns.add(cb);
+                    cb.setEditable(true);
                 }
-                cb.setEditable(cb.getItems().size() == 0);
+                
                 parameterIndex++;
                 dropdowns.add(cb);
                 options.getChildren().add(cb);
