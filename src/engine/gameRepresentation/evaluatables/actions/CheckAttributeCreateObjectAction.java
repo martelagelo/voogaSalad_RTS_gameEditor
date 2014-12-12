@@ -101,8 +101,8 @@ public class CheckAttributeCreateObjectAction extends Action {
                 String[] attributes = myAttributeList.split(",");
                 String[] values = myAttributeValues.split(",");
                 for (int i = 0; i < attributes.length; i++) {
-                    System.out.println(attributes[i]);
-                    System.out.println( player.getNumericalAttribute(values[i]));
+                    // System.out.println(attributes[i]);
+                    // System.out.println( player.getNumericalAttribute(values[i]));
                     element.setNumericalAttribute(attributes[i],
                                                   player.getNumericalAttribute(values[i]));
                 }

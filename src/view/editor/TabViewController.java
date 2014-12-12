@@ -46,7 +46,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 public class TabViewController extends GUIContainer {
 
     private static final Dimension WIZARD_SIZE = new Dimension(400, 600);
-    
+
     private final static String EDITOR_INPUT_KEY = "EditorInput";
     private final static String RUNNER_INPUT_KEY = "RunnerInput";
     private final static String RESET_KEY = "Reset";
@@ -71,12 +71,7 @@ public class TabViewController extends GUIContainer {
     private LevelState myLevel;
 
     public boolean isLevel (LevelIdentifier levelID) {
-        try {
-            return (myLevel == myMainModel.getLevel(myLevel.getIdentifier()));
-        }
-        catch (LevelNotFoundException | CampaignNotFoundException e) {
-            return false;
-        }
+        return (myLevel.getIdentifier().equals(levelID));
     }
 
     public void updateModelToSave () {
@@ -180,7 +175,7 @@ public class TabViewController extends GUIContainer {
         levelTriggerController.setDeleteAction(deleteGoal());
         try {
             resetButton.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                    .getStringProperty(RESET_KEY));
+                    .getStringProperty(RESET_KEY));
         }
         catch (LanguagePropertyNotFoundException e1) {
             DialogBoxUtility.createMessageDialog(e1.toString());
@@ -198,11 +193,11 @@ public class TabViewController extends GUIContainer {
                                  try {
                                      ObjectProperty<String> toggleText =
                                              (newValue) ? MultiLanguageUtility
-                                                                .getInstance()
-                                                                .getStringProperty(RUNNER_INPUT_KEY)
-                                                        : MultiLanguageUtility
-                                                                .getInstance()
-                                                                .getStringProperty(EDITOR_INPUT_KEY);
+                                                     .getInstance()
+                                                     .getStringProperty(RUNNER_INPUT_KEY)
+                                                       : MultiLanguageUtility
+                                                               .getInstance()
+                                                               .getStringProperty(EDITOR_INPUT_KEY);
                                      controllerToggle.textProperty().bind(toggleText);
                                      Class<?> inputManager = (newValue) ? EditorInputManager.class
                                                                        : RunnerInputManager.class;
@@ -228,7 +223,7 @@ public class TabViewController extends GUIContainer {
                 };
         return consumer;
     }
-    
+
     private WizardData recreateWizardData (String[] oldStrings) {
         WizardData oldData = new WizardData();
         oldData.addDataPair(WizardDataType.ACTIONTYPE, oldStrings[0]);
@@ -237,7 +232,7 @@ public class TabViewController extends GUIContainer {
                             extractParamString(oldStrings));
         return oldData;
     }
-    
+
     private Consumer<WizardData> createInternalConsumer (Integer position, Wizard wiz) {
         Consumer<WizardData> bc =
                 (data) -> {
@@ -263,18 +258,18 @@ public class TabViewController extends GUIContainer {
                 };
         return bc;
     }
-    
+
     private String extractParamString (String[] oldStrings) {
         String[] params = removeEnds(oldStrings[2]).split(",");
         StringBuilder sb = new StringBuilder();
         Arrays.asList(params).forEach(param -> sb.append(param.trim() + ","));
         return sb.toString();
     }
-    
-    private String removeEnds(String value) {
-        return value.substring(1, value.length() -1);
+
+    private String removeEnds (String value) {
+        return value.substring(1, value.length() - 1);
     }
-    
+
     private Consumer<Integer> deleteGoal () {
         Consumer<Integer> consumer = (position) -> {
             if (position > -1) {
