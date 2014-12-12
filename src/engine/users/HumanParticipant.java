@@ -15,7 +15,7 @@ public class HumanParticipant extends Participant{
      */
     private static final long serialVersionUID = 5825471747765735517L;
 
-    public HumanParticipant(String playerColor, String name){
+    public HumanParticipant(long playerColor, String name){
 		super(playerColor, name);
 		isAI = false;
 	}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
-
 import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -19,6 +18,7 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import model.sprite.ColorMapGenerator;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
@@ -96,7 +96,7 @@ public class Animator implements Updatable {
         attributesOfInterest = attributes;
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
-        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR.getValue());
+        long teamColor = attributesOfInterest.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue();
         
         if(!animationEnabled.get()) setColorMasking(teamColor);
         mySpriteTeamOverlay = myImages.getColorMask(teamColor);
@@ -114,7 +114,7 @@ public class Animator implements Updatable {
      * disabled
      * @param teamColor
      */
-    private void setColorMasking (String teamColor) {
+    private void setColorMasking (long teamColor) {
         ColorInput mask = new ColorInput(
                                          0,
                                          0,
@@ -123,7 +123,7 @@ public class Animator implements Updatable {
                                          Color.BLACK
                                  );
         try {
-            mask.setPaint(Color.valueOf(teamColor));
+            mask.setPaint(ColorMapGenerator.colorFromLong(teamColor));
 
             Blend blush = new Blend(
                                     BlendMode.MULTIPLY,

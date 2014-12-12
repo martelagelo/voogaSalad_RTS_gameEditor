@@ -77,7 +77,7 @@ public class ObjectLocationCheckAction extends Action {
         }
         for (Participant participant: matchingPlayers) {
             for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
-                if (participant.checkSameTeam(element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()))) {
+                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()))) {
                     int curXLocation = element.getNumericalAttribute(StateTags.X_POSITION.getValue()).intValue();
                     int curYLocation = element.getNumericalAttribute(StateTags.Y_POSITION.getValue()).intValue();
                     double xDelta = Math.abs(xLocation - curXLocation);

@@ -1,11 +1,9 @@
 package model.sprite;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import util.ResourceBundleRetriever;
@@ -24,6 +22,12 @@ public class ColorMapGenerator {
             // TODO: save the location outside of source
             myBundle = myBundleRetriever.getBundle(new File(
                     SpriteImageGenerator.RESOURCES_PROPERTIES_LOCATION + myColorMaskName));        
+    }
+    
+    public static Color colorFromLong(long colorValue) {
+        String colorHexValue= "000000" + Long.toHexString(colorValue);
+        String colorString = String.format("#%s", colorHexValue.substring(colorHexValue.length() - 6));
+        return Color.web(colorString);
     }
 
     public void populateColorMaskMap () throws SaveLoadException {
@@ -44,7 +48,6 @@ public class ColorMapGenerator {
                 }
             }
             myColorMap.put(key.toUpperCase(), Color.rgb(rgbValues[0], rgbValues[1], rgbValues[2]));
-
         }
     }
 
