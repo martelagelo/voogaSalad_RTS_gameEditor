@@ -49,13 +49,11 @@ public class MainModel extends Observable {
     private String myEditorChosenDrawableElement;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
-    private ModifiedContainer myModifiedContainer;
 
     public MainModel () throws SaveLoadException {
         clearEditorChosen();
         mySaveLoadMediator = new GameSaveLoadMediator();
         mySpriteImageGenerator = new SpriteImageGenerator();
-        myModifiedContainer = new ModifiedContainer();
     }
 
     public void newGame (String gameName) {
@@ -342,14 +340,12 @@ public class MainModel extends Observable {
     public void createGoal (LevelState levelState, WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         levelState.addGoal(goal);
-        myModifiedContainer.getRecentlyAddedGoals().add(goal);
         updateObservers();
     }
 
     public void removeGoal (LevelState levelState, int index) {
         GameElementState goal = levelState.getGoals().get(index);
         levelState.getGoals().remove(goal);
-        myModifiedContainer.getRecentlyDeletedGoals().add(goal);
         updateObservers();
     }
 
@@ -363,7 +359,6 @@ public class MainModel extends Observable {
                     getGameUniverse().getSelectableGameElementState(elementName);
             unit.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
             unit.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
-            myModifiedContainer.getRecentlyAddedUnits().add(unit);
             levelState.addUnit(unit);
         }
         else {
@@ -384,7 +379,6 @@ public class MainModel extends Observable {
                         getGameUniverse().getDrawableGameElementState(terrainName);
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), j);
-                myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
                 levelState.addTerrain(terrain);
             }
         }
@@ -400,7 +394,6 @@ public class MainModel extends Observable {
                     getGameUniverse().getDrawableGameElementState(elementName);
             terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
             terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
-            myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
             levelState.addTerrain(terrain);
         }
         else {
@@ -430,10 +423,6 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
-    }
-
-    public ModifiedContainer getModifiedContainer () {
-        return myModifiedContainer;
     }
 
     /**

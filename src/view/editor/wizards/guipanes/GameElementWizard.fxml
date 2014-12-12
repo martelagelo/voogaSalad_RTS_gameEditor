@@ -8,7 +8,7 @@
 <?import javafx.scene.*?>
 
 <SplitPane fx:id="root"
-	fx:controller="view.editor.wizards.DrawableGameElementWizard" xmlns="http://javafx.com/javafx/8"
+	fx:controller="view.editor.wizards.GameElementWizard" xmlns="http://javafx.com/javafx/8"
 	xmlns:fx="http://javafx.com/fxml/1">
 	<items>
 		<AnchorPane fx:id="leftPane">
@@ -18,31 +18,11 @@
 						<maxWidth>
 							<Double fx:constant="MAX_VALUE" />
 						</maxWidth>
-					</TextField>
-					<Button fx:id="trigger" defaultButton="true">
-						<maxWidth>
-							<Double fx:constant="MAX_VALUE" />
-						</maxWidth>
-					</Button>
-					<VBox fx:id="existingTriggers" />
-					<Button fx:id="stringAttribute" defaultButton="true">
-						<maxWidth>
-							<Double fx:constant="MAX_VALUE" />
-						</maxWidth>
-					</Button>
-					<VBox fx:id="existingStringAttributes" />
-					<Button fx:id="numberAttribute" defaultButton="true">
-						<maxWidth>
-							<Double fx:constant="MAX_VALUE" />
-						</maxWidth>
-					</Button>
-					<VBox fx:id="existingNumberAttributes" />
-					<Button fx:id="widget" defaultButton="true">
-						<maxWidth>
-							<Double fx:constant="MAX_VALUE" />
-						</maxWidth>
-					</Button>
-					<VBox fx:id="existingWidgets" />
+					</TextField>					
+					<fx:include source="CRUDContainer.fxml" fx:id="triggers" />
+					<fx:include source="CRUDContainer.fxml" fx:id="stringAttributes" />
+					<fx:include source="CRUDContainer.fxml" fx:id="numberAttributes" />
+					<fx:include source="CRUDContainer.fxml" fx:id="widgets" />					
 					<Button fx:id="image" defaultButton="true">
 						<maxWidth>
 							<Double fx:constant="MAX_VALUE" />
@@ -62,13 +42,8 @@
 						<Label fx:id="frameHeightLabel" />
 						<Slider fx:id="frameHeight" />
 						<TextField fx:id="frameHeightText" />
-					</HBox>
-					<Button fx:id="animation" defaultButton="true">
-						<maxWidth>
-							<Double fx:constant="MAX_VALUE" />
-						</maxWidth>
-					</Button>
-					<VBox fx:id="existingAnimations" />
+					</HBox>					
+					<fx:include source="CRUDContainer.fxml" fx:id="animations" />					
 					<Button fx:id="setBounds" defaultButton="true">
 						<maxWidth>
 							<Double fx:constant="MAX_VALUE" />

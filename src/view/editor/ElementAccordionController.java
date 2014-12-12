@@ -22,7 +22,7 @@ import model.state.gameelement.SelectableGameElementState;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
-import view.editor.wizards.DrawableGameElementWizard;
+import view.editor.wizards.GameElementWizard;
 import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
@@ -193,10 +193,10 @@ public class ElementAccordionController extends GUIContainer {
     private Consumer<Consumer<WizardData>> openSelectableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
-                    DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard) WizardUtility
+                    GameElementWizard wiz =
+                            (GameElementWizard) WizardUtility
                                     .loadWizard(
-                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+                                                GUIPanePath.GAME_ELEMENT_WIZARD,
                                                 new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
@@ -229,10 +229,10 @@ public class ElementAccordionController extends GUIContainer {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
                     // TODO: make a drawable ges wizard
-                    DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard) WizardUtility
+                    GameElementWizard wiz =
+                            (GameElementWizard) WizardUtility
                                     .loadWizard(
-                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+                                                GUIPanePath.GAME_ELEMENT_WIZARD,
                                                 new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
@@ -261,13 +261,13 @@ public class ElementAccordionController extends GUIContainer {
         return consumer;
     }
 
-    private void addNumberAttributes (DrawableGameElementWizard wiz) {
+    private void addNumberAttributes (GameElementWizard wiz) {
         List<String> numberAttrs = myMainModel.getGameUniverse().getNumericalAttributes().stream()
                 .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachNumberAttributes(numberAttrs);
     }
 
-    private void addStringAttributes (DrawableGameElementWizard wiz) {
+    private void addStringAttributes (GameElementWizard wiz) {
         List<String> stringAttrs = myMainModel.getGameUniverse().getStringAttributes().stream()
                 .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachStringAttributes(stringAttrs);
