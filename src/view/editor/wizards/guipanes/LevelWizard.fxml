@@ -16,6 +16,7 @@
 					<TextField fx:id="levelName"  />
 					<TextField fx:id="levelWidth" />
 					<TextField fx:id="levelHeight" />
+					<Button fx:id="image" />
 					<Button fx:id="save" defaultButton = "true"/>
 					<Text fx:id="errorMessage" />
 				</VBox>

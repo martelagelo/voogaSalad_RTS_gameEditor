@@ -1,6 +1,7 @@
 package view.editor.wizards;
 
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -11,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.gui.GUIPanePath;
@@ -37,6 +40,7 @@ public class LevelWizard extends Wizard {
     
     private final int PARTICIPANT_WIZARD_WIDTH = 500;
     private final int PARTICIPANT_WIZARD_HEIGHT = 500;
+    private final String BACKGROUND_KEY="Background";
     
     @FXML
     private ComboBox<String> campaignName;
@@ -50,8 +54,10 @@ public class LevelWizard extends Wizard {
     private Button participant;
     @FXML
     private AnchorPane leftPane;
+    private Button image;
     
     private ObservableList<String> campaigns;
+    private String backgroundPath;
 
     @Override
     public boolean checkCanSave () {
@@ -80,6 +86,7 @@ public class LevelWizard extends Wizard {
             levelWidth.promptTextProperty().bind(util.getStringProperty(LEVEL_WIDTH_KEY));
             levelHeight.promptTextProperty().bind(util.getStringProperty(LEVEL_HEIGHT_KEY));
             participant.textProperty().bind(util.getStringProperty(PARTICIPANT_KEY));
+            image.textProperty().bind(util.getStringProperty(BACKGROUND_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
@@ -93,6 +100,13 @@ public class LevelWizard extends Wizard {
         campaigns = FXCollections.observableList(new ArrayList<>());
         campaignName.setItems(campaigns);
         participant.setOnAction(e -> launchParticipantEditor());
+        image.setOnAction(e -> selectBackground());
+    }
+    
+    private void selectBackground () {
+    	 FileChooser fileChooser = new FileChooser();
+         File file = fileChooser.showOpenDialog(new Stage());        
+         backgroundPath = file.getPath();
     }
 
     private void launchParticipantEditor() {
