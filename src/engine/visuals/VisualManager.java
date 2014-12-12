@@ -1,16 +1,11 @@
 package engine.visuals;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.scene.Group;
+import javafx.scene.shape.Line;
 import model.state.gameelement.StateTags;
 import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
