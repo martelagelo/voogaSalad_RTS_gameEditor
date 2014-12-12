@@ -1137,79 +1137,6 @@
                 100.0
               ],
               "myActions": {
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
-                "BUTTON": [
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "healCost",
-                      "me",
-                      "lastButtonID",
-                      "Equals",
-                      "active",
-                      "me",
-                      "health",
-                      "AdditionAssignment",
-                      "healAmount",
-                      "me",
-                      "blah",
-                      "Equals",
-                      "active",
-                      "Equals",
-                      "a",
-                      "zero",
-                      "SubtractionAssignment",
-                      "healCost",
-                      "my",
-                      "resources",
-                      "1",
-                      "HealingCooldown"
-                    ],
-                    "myActionType": "BUTTON"
-                  },
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "levelUpCost",
-                      "me",
-                      "lastButtonID",
-                      "Equals",
-                      "levelUpButtonID",
-                      "me",
-                      "maxHealth",
-                      "AdditionAssignment",
-                      "levelUpHealthIncrease",
-                      "me",
-                      "attack",
-                      "AdditionAssignment",
-                      "levelUpAttackIncrease",
-                      "Equals",
-                      "a",
-                      "",
-                      "SubtractionAssignment",
-                      "levelUpCost",
-                      "my",
-                      "resources",
-                      "b",
-                      ""
-                    ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1292,6 +1219,15 @@
                     "myActionType": "INTERNAL"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_CONDITION_ACTION",
@@ -1316,6 +1252,70 @@
                       "Attack"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "healCost",
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "active",
+                      "me",
+                      "health",
+                      "AdditionAssignment",
+                      "healAmount",
+                      "me",
+                      "blah",
+                      "Equals",
+                      "active",
+                      "Equals",
+                      "a",
+                      "zero",
+                      "SubtractionAssignment",
+                      "healCost",
+                      "my",
+                      "resources",
+                      "1",
+                      "HealingCooldown"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "levelUpCost",
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "levelUpButtonID",
+                      "me",
+                      "maxHealth",
+                      "AdditionAssignment",
+                      "levelUpHealthIncrease",
+                      "me",
+                      "attack",
+                      "AdditionAssignment",
+                      "levelUpAttackIncrease",
+                      "Equals",
+                      "a",
+                      "",
+                      "SubtractionAssignment",
+                      "levelUpCost",
+                      "my",
+                      "resources",
+                      "b",
+                      ""
+                    ],
+                    "myActionType": "BUTTON"
                   }
                 ]
               },
@@ -1952,15 +1952,6 @@
                 100.0
               ],
               "myActions": {
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -2027,6 +2018,15 @@
                       "zero"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "Follow"
+                    ],
+                    "myActionType": "FOCUSED"
                   }
                 ],
                 "COLLISION": [
@@ -3432,79 +3432,6 @@
           100.0
         ],
         "myActions": {
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "BUTTON": [
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "resources",
-                "GreaterThanEqual",
-                "healCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "active",
-                "me",
-                "health",
-                "AdditionAssignment",
-                "healAmount",
-                "me",
-                "blah",
-                "Equals",
-                "active",
-                "Equals",
-                "a",
-                "zero",
-                "SubtractionAssignment",
-                "healCost",
-                "my",
-                "resources",
-                "1",
-                "HealingCooldown"
-              ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "resources",
-                "GreaterThanEqual",
-                "levelUpCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "levelUpButtonID",
-                "me",
-                "maxHealth",
-                "AdditionAssignment",
-                "levelUpHealthIncrease",
-                "me",
-                "attack",
-                "AdditionAssignment",
-                "levelUpAttackIncrease",
-                "Equals",
-                "a",
-                "",
-                "SubtractionAssignment",
-                "levelUpCost",
-                "my",
-                "resources",
-                "b",
-                ""
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -3587,6 +3514,15 @@
               "myActionType": "INTERNAL"
             }
           ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
+            }
+          ],
           "COLLISION": [
             {
               "myActionName": "OBJECT_CONDITION_ACTION",
@@ -3611,6 +3547,70 @@
                 "Attack"
               ],
               "myActionType": "COLLISION"
+            }
+          ],
+          "BUTTON": [
+            {
+              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myParameters": [
+                "my",
+                "resources",
+                "GreaterThanEqual",
+                "healCost",
+                "me",
+                "lastButtonID",
+                "Equals",
+                "active",
+                "me",
+                "health",
+                "AdditionAssignment",
+                "healAmount",
+                "me",
+                "blah",
+                "Equals",
+                "active",
+                "Equals",
+                "a",
+                "zero",
+                "SubtractionAssignment",
+                "healCost",
+                "my",
+                "resources",
+                "1",
+                "HealingCooldown"
+              ],
+              "myActionType": "BUTTON"
+            },
+            {
+              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myParameters": [
+                "my",
+                "resources",
+                "GreaterThanEqual",
+                "levelUpCost",
+                "me",
+                "lastButtonID",
+                "Equals",
+                "levelUpButtonID",
+                "me",
+                "maxHealth",
+                "AdditionAssignment",
+                "levelUpHealthIncrease",
+                "me",
+                "attack",
+                "AdditionAssignment",
+                "levelUpAttackIncrease",
+                "Equals",
+                "a",
+                "",
+                "SubtractionAssignment",
+                "levelUpCost",
+                "my",
+                "resources",
+                "b",
+                ""
+              ],
+              "myActionType": "BUTTON"
             }
           ]
         },
@@ -4247,15 +4247,6 @@
           100.0
         ],
         "myActions": {
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
           "INTERNAL": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -4322,6 +4313,15 @@
                 "zero"
               ],
               "myActionType": "INTERNAL"
+            }
+          ],
+          "FOCUSED": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "Follow"
+              ],
+              "myActionType": "FOCUSED"
             }
           ],
           "COLLISION": [
