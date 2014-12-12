@@ -24,8 +24,8 @@ public class Attack<A, B> extends Evaluator<A, B, Boolean> {
     @Override
     protected Boolean evaluate (GameElement object1, GameElement object2) {
         if (object1.getTimer(ATTACK_TIMER) <= 0 &&
-            object2.getTextualAttribute(StateTags.TEAM_COLOR.getValue()) !=
-            object1.getTextualAttribute(StateTags.TEAM_COLOR.getValue())) {
+            object2.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue() !=
+            object1.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue()) {
             object2.setNumericalAttribute(StateTags.HEALTH.getValue(),
                                           object2.getNumericalAttribute(StateTags.HEALTH.getValue())
                                                   .doubleValue() -

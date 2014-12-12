@@ -69,9 +69,9 @@ public class GameElementFactory {
     public SelectableGameElement createSelectableGameElement (String elementType,
                                                               double x,
                                                               double y,
-                                                              String color) {
+                                                              Number color) {
         SelectableGameElementState state = myUniverse.getSelectableGameElementState(elementType);
-        state.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), color);
+        state.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
         return newElement;

@@ -36,6 +36,8 @@ import engine.visuals.VisualManager;
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
 
+    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong("0000FF", 16);
+    
     private static final String DEFAULT_BACKGROUND_TILE = "resources/img/graphics/terrain/grass/GrassTile.jpg";
     private MainModel myMainModel;
     private GameLoop myGameLoop;
@@ -65,7 +67,7 @@ public class Engine extends Observable implements Observer {
                                        myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
  
-        myUser = new HumanParticipant("BLUE", "Username");
+        myUser = new HumanParticipant(DEFAULT_PLAYER_COLOR, "Username");
 
         instantiateManagers();
     }

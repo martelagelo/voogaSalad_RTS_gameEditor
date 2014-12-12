@@ -22,15 +22,15 @@ public abstract class Participant implements JSONable, Serializable {
     
     
     protected AttributeContainer attributes;
-    protected String myTeamColor;
+    protected long myTeamColor;
     protected String myName;
     protected boolean isAI;
 
-    public Participant (String teamColor, String name) {
+    public Participant (long teamColor, String name) {
     	myTeamColor = teamColor;
         myName = name;
         attributes = new AttributeContainer();
-        attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
+        attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
     }
 
     /**
@@ -62,11 +62,11 @@ public abstract class Participant implements JSONable, Serializable {
      * @param otherTeamID
      * @return true if the team IDs are the same
      */
-    public boolean checkSameTeam (String otherTeamColor) {
-        return myTeamColor.equals(otherTeamColor);
+    public boolean checkSameTeam (Number otherTeamColor) {
+        return myTeamColor == otherTeamColor.longValue();
     }
 
-    public String getTeamColor () {
+    public long getTeamColor () {
         return myTeamColor;
     }
 

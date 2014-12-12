@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import model.sprite.ColorMapGenerator;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
@@ -99,7 +100,7 @@ public class MiniMap {
     private void setUnitColor (SelectableGameElement SGE) {
         Color c;
         try {
-            c = Color.valueOf(SGE.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
+            c = ColorMapGenerator.colorFromLong(SGE.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue());
         }
         catch (IllegalArgumentException | NullPointerException e) {
             c = Color.BLACK; // default for if color isn't defined

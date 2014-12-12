@@ -32,7 +32,7 @@ public class SpawnSelectableElement<A, B> extends Evaluator<A, B, SelectableGame
                                                  element.getNumericalAttribute(StateTags.Y_POSITION.getValue())
                                                          .doubleValue() +
                                                          element.getNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue())
-                                                                 .doubleValue(),element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
+                                                                 .doubleValue(),element.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()));
         
     }
 }
