@@ -1,4 +1,0 @@
-<map id="model.MainModel.createCampaign" name="model.MainModel.createCampaign">
-<area shape="rect" id="node2" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a0d5b94f907ec1d0af45a3d77bb182c1c" title="model.state.GameState.add\lCampaign" alt="" coords="320,5,525,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="299,71,547,97"/>
-</map>

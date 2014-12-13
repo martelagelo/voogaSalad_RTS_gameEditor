@@ -1,8 +1,0 @@
-<map id="engine.stateManaging.GameLoop.setLoop" name="engine.stateManaging.GameLoop.setLoop">
-<area shape="rect" id="node2" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#af9b0effae1544b6bcf54aeefc8cbed56" title="engine.stateManaging.Game\lLoop.setEditorLoop" alt="" coords="262,5,469,46"/>
-<area shape="rect" id="node4" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a5c0db8cbec3d1b92858b661c5c073e60" title="engine.stateManaging.Game\lLoop.setRunnerLoop" alt="" coords="262,70,469,111"/>
-<area shape="rect" id="node3" href="$d6/d14/classengine_1_1_u_i_1_1_editor_input_manager.html#a3d4d2aa63ff7d45617e5a84c47d065db" title="engine.UI.EditorInputManager.\lEditorInputManager" alt="" coords="521,5,735,46"/>
-<area shape="rect" id="node5" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a7d0a79bc3438c9e9be81439f9c11a5af" title="engine.stateManaging.Game\lLoop.startTimeline" alt="" coords="525,70,731,111"/>
-<area shape="rect" id="node7" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a02fe3ba924c8fab82284f393a42d4256" title="engine.UI.RunnerInputManager.\lRunnerInputManager" alt="" coords="517,135,739,177"/>
-<area shape="rect" id="node6" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a05ef7a7dc9373b1a5f94e21de708fe5f" title="engine.stateManaging.Game\lLoop.GameLoop" alt="" coords="787,70,994,111"/>
-</map>

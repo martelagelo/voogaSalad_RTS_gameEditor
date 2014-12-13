@@ -1,6 +1,0 @@
-<map id="view.editor.TabViewController.modelUpdate" name="view.editor.TabViewController.modelUpdate">
-<area shape="rect" id="node2" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#ac0c89f6996b8d53ff24c1093072716f8" title="view.editor.EditorScreen.create\lNewTab" alt="" coords="301,5,520,46"/>
-<area shape="rect" id="node3" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#ad3d33bc95534e6b677a83a2f01be9286" title="view.editor.EditorScreen.launchTab" alt="" coords="569,12,810,39"/>
-<area shape="rect" id="node4" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aaad5f29799d14174213c2f06f6156890" title="view.editor.EditorScreen.init\lProjectExplorer" alt="" coords="859,5,1056,46"/>
-<area shape="rect" id="node5" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aba6c32908c25fa4f755a312e92860c02" title="view.editor.EditorScreen.init" alt="" coords="1104,12,1301,39"/>
-</map>
