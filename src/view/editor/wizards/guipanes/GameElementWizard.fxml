@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+
+<SplitPane fx:id="root" fx:controller="view.editor.wizards.GameElementWizard"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<items>
+		<ScrollPane fx:id="leftPane">
+			<VBox>
+				<TextField fx:id="name">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</TextField>
+				<fx:include source="CRUDContainer.fxml" fx:id="triggers" />
+				<fx:include source="CRUDContainer.fxml" fx:id="stringAttributes" />
+				<fx:include source="CRUDContainer.fxml" fx:id="numberAttributes" />
+				<fx:include source="CRUDContainer.fxml" fx:id="widgets" />
+				<Button fx:id="image" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="colorMask" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<HBox>
+					<Label fx:id="frameWidthLabel" />
+					<Slider fx:id="frameWidth" />
+					<TextField fx:id="frameWidthText" />
+				</HBox>
+				<HBox>
+					<Label fx:id="frameHeightLabel" />
+					<Slider fx:id="frameHeight" />
+					<TextField fx:id="frameHeightText" />
+				</HBox>
+				<fx:include source="CRUDContainer.fxml" fx:id="animations" />
+				<Button fx:id="setBounds" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="setVisionBounds" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Button fx:id="save" defaultButton="true">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</Button>
+				<Text fx:id="errorMessage" />
+			</VBox>
+		</ScrollPane>
+
+		<ScrollPane fx:id="imageScroll">
+			<Group fx:id="spritesheet" />
+		</ScrollPane>
+	</items>
+</SplitPane>

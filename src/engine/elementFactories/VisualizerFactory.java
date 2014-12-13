@@ -38,7 +38,7 @@ public class VisualizerFactory {
                                                   elementState.attributes);
         newVisualizer.setAnimateEnableProperty(enabled);
 
-        for (AttributeDisplayerState ADS : elementState.AttributeDisplayerStates) {
+        for (AttributeDisplayerState ADS : elementState.attributeDisplayerStates) {
             newVisualizer.addWidget(myWidgetFactory
                     .createAttributeDisplayer(ADS, elementState.attributes));
         }

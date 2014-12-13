@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
  * @author Zach, Stanley
  *
  */
-// TODO move this into a config file or equivalent, UPDATE COMMENTS
 public enum StateTags {
 
+    BACKGROUND_PATH(StateType.STRING, "backgroundPath"),
     NAME(StateType.STRING, "name"),
     TYPE(StateType.STRING, "type"),
     CURRENT_ACTION(StateType.STRING, "currentAction"), // TODO: attack, die, decay, gather??

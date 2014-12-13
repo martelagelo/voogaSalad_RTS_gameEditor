@@ -10,7 +10,9 @@ import util.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
- * for team identification.
+ * for team identification. This is given to the Animator allowing for access to
+ * the spritsheet and color mask fundamental to visual rendering of game
+ * elements.
  * 
  * @author Rahul
  *
@@ -18,7 +20,7 @@ import util.exceptions.SaveLoadException;
 public class SpriteImageContainer {
     private ImageView mySpritesheet;
     private ImageView myColorMask;
-    
+
     public SpriteImageContainer (ImageView spritesheet, ImageView colorMask) {
         mySpritesheet = spritesheet;
         myColorMask = colorMask;
@@ -31,7 +33,7 @@ public class SpriteImageContainer {
     }
 
     private void locateColorMask (String colorMaskTag) throws SaveLoadException {
-        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMasks(colorMaskTag));
+        myColorMask = new ImageView(SpriteImageLoader.loadTeamColorMask(colorMaskTag));
     }
 
     private void locateSpritesheet (String spritesheetTag) throws SaveLoadException {
@@ -42,9 +44,10 @@ public class SpriteImageContainer {
         return mySpritesheet;
     }
 
-    public ImageView getColorMask() {
+    public ImageView getColorMask () {
         return myColorMask;
     }
+
     /**
      * 
      * @param color

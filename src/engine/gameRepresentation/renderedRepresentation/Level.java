@@ -1,17 +1,12 @@
 package engine.gameRepresentation.renderedRepresentation;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-
 import javafx.scene.Group;
-import javafx.scene.Node;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.MapGrid;
-import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
@@ -142,6 +137,7 @@ public class Level {
      * @param element the element to be removed
      */
     public void removeElement (DrawableGameElement element) {
+        myState.removeElement(element.getState());
         myUnits.remove(element);
         myTerrain.remove(element);
         myUnitsGroup.getChildren().remove(element.getNode());

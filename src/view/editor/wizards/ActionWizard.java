@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionParameters;
@@ -104,11 +107,13 @@ public class ActionWizard extends Wizard {
                 cb.setPromptText(actionParameters.get(parameterIndex).name());                
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
                     cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+                    cb.setEditable(true);
                 }                
                 else if (actionParameters.get(parameterIndex).equals(ActionParameters.NUMBER)) {
                     numberDropdowns.add(cb);
+                    cb.setEditable(true);
                 }
-                cb.setEditable(cb.getItems().size() == 0);
+                
                 parameterIndex++;
                 dropdowns.add(cb);
                 options.getChildren().add(cb);

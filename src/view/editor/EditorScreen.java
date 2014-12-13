@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -68,7 +67,6 @@ public class EditorScreen extends GUIScreen {
     private ElementAccordionController levelElementAccordionController;
 
     private List<TabViewController> myTabViewControllers;
-    private Tab myCurrentTab;
 
     @Override
     public Node getRoot () {
@@ -121,12 +119,6 @@ public class EditorScreen extends GUIScreen {
         }
     }
 
-    private void initTabs () {
-        tabPane.getSelectionModel()
-                .selectedItemProperty()
-                .addListener( (observable, oldTab, newTab) -> tabChanged(observable, oldTab, newTab));
-    }
-
     private void launchTab (LevelIdentifier levelID) {
         Optional<Tab> option = tabPane
                 .getTabs()
@@ -150,7 +142,6 @@ public class EditorScreen extends GUIScreen {
             attachChildContainers(tabController);
             try {
                 tabController.setLevel(levelID);
-                levelElementAccordionController.setLevel(levelID);
                 tabController.modelUpdate();
             }
             catch (LevelNotFoundException | CampaignNotFoundException e) {
@@ -165,25 +156,10 @@ public class EditorScreen extends GUIScreen {
         return tab;
     }
 
-    private void tabChanged (ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
-        myCurrentTab = newTab;
-        if (myCurrentTab != null) {
-            LevelIdentifier id = (LevelIdentifier) myCurrentTab.getUserData();
-            try {
-                levelElementAccordionController.setLevel(new LevelIdentifier(id.levelName,
-                                                                             id.campaignName));
-            }
-            catch (LevelNotFoundException | CampaignNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     @Override
     public void init () {
         myTabViewControllers = new ArrayList<>();
         attachChildContainers(editorMenuBarController, levelElementAccordionController);
-        initTabs();
         initProjectExplorer();
         initInfoBox();
         editorMenuBarController.attachScreen(this);

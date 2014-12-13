@@ -1,7 +1,6 @@
 package model.state;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import model.exceptions.LevelExistsException;
@@ -17,6 +16,10 @@ import model.exceptions.LevelNotFoundException;
  */
 public class CampaignState extends DescribableState {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -2373136578395538792L;
     private List<LevelState> myLevels;
 
     public CampaignState (String name) {

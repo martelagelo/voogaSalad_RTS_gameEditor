@@ -1,6 +1,9 @@
 package view.editor.wizards;
 
 import java.util.List;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import util.multilanguage.LanguageException;

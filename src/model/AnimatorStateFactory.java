@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
-import view.editor.wizards.WizardType;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import engine.visuals.Dimension;
 import engine.visuals.elementVisuals.animations.AnimationSequence;
 import engine.visuals.elementVisuals.animations.AnimationTag;
@@ -32,7 +32,7 @@ public class AnimatorStateFactory {
                 new AnimatorState(data.getValueByKey(WizardDataType.IMAGE),
                                   data.getValueByKey(WizardDataType.COLOR_MASK),
                                   dim,
-                                  Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
+                                  Integer.parseInt(data.getValueByKey(WizardDataType.ROWS)),
                                   sequences);
 
         return anim;

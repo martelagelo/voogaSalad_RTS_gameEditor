@@ -44,6 +44,10 @@ public class GameElement {
         createActionLists();
     }
 
+    public GameElementState getState() {
+        return myState;
+    }
+    
     /**
      * Ensure that lists are instantiated for all the possible action types of an element to protect
      * against uninstantiated action entities at runtime.

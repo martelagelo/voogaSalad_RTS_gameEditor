@@ -131,7 +131,7 @@ public class Pong extends Application {
     }
 
     private SelectableGameElementState createBall (double x, double y) throws Exception {
-        SelectableGameElementState ball = new SelectableGameElementState(x, y);
+        SelectableGameElementState ball = new SelectableGameElementState(x, y, null);
         ball.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
         ball.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
         ball.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
@@ -167,7 +167,7 @@ public class Pong extends Application {
     private SelectableGameElementState createPaddle (double x, double y, int teamID)
                                                                                     throws Exception {
 
-        SelectableGameElementState paddle = new SelectableGameElementState(x, y);
+        SelectableGameElementState paddle = new SelectableGameElementState(x, y, null);
         paddle.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
         paddle.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
         paddle.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
@@ -179,49 +179,11 @@ public class Pong extends Application {
         paddle.attributes.setNumericalAttribute("teamID", teamID);
         paddle.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
         paddle.addType("paddle");
-        // TODO make directions changed
 
-        // // Choose a random temporary waypoint if we collide with anything
-        // archerState.addAction(new ActionWrapper(ActionType.COLLISION,
-        // ActionOptions.OBJECT_CONDITION_ACTION,
-        // "NotCollision", "RandomWaypoint"));
-        // // On collision, attack an enemy
-        // archerState.addAction(new ActionWrapper(ActionType.COLLISION,
-        // ActionOptions.OBJECT_CONDITION_ACTION,
-        // "Collision", "Attack"));
-        // // Move back if we collide with anything
-        // archerState.addAction(new ActionWrapper(ActionType.COLLISION,
-        // ActionOptions.OBJECT_CONDITION_ACTION,
-        // "Collision", "MoveBack"));
-        // // Check to see if our health is <0. If so, die.
-        // archerState
-        // .addAction(new ActionWrapper(ActionType.INTERNAL,
-        // ActionOptions.CHECK_ATTR_SET_ATTR_ACTION,
-        // StateTags.HEALTH,
-        // "LessThanEqual",
-        // "0",
-        // StateTags.IS_DEAD, "EqualsAssignment", "1"));
-        // Update player direction
-        // paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
-        // ActionOptions.ACT_ON_OBJECTS_ACTION,
-        // "UpdateMovementDirection"));
-        // This one moves the player
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "MovePlayer"));
 
-        // // Make the element so it follows another player when right-clicked on
-        // archerState.addAction(new ActionWrapper(ActionType.FOCUSED,
-        // ActionOptions.ACT_ON_OBJECTS_ACTION, "Follow"));
-        // archerState.addAction(new ActionWrapper(ActionType.BUTTON,
-        // ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
-        // StateTags.LAST_BUTTON_CLICKED_ID, "Equals", "1",
-        // "archer", StateTags.HEALTH, "Resources",
-        // "ArcherSpawnCooldown", "1000"));
-        // archerState.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET, 100);
-        // archerState.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET, 100);
-        //
-        //
         AnimatorState paddleAnimations =
                 SaveLoadUtility
                         .loadResource(AnimatorState.class,

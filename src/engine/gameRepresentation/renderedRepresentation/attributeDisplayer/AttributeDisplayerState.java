@@ -1,7 +1,6 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
 import java.io.Serializable;
-import model.state.gameelement.StateTags;
 import util.JSONable;
 
 /**
