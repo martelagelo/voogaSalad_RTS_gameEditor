@@ -1,0 +1,9 @@
+<map id="model.sprite.SpriteImageContainer.getColorMask" name="model.sprite.SpriteImageContainer.getColorMask">
+<area shape="rect" id="node2" href="$d9/d50/classengine_1_1visuals_1_1element_visuals_1_1animations_1_1_animator.html#a3a40c5c16960e8afd0cf952c1e4213a6" title="engine.visuals.elementVisuals.animations.\lAnimator.Animator" alt="" coords="237,5,531,46"/>
+<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#ae2e58698b812253b1c8e87312897b97e" title="model.MainModel.fetchImage\lContainer" alt="" coords="279,70,489,111"/>
+<area shape="rect" id="node4" href="$d6/d60/classengine_1_1element_factories_1_1_animator_factory.html#a18370178255ca1fd6c28dfc5158001f8" title="engine.elementFactories.\lAnimatorFactory.createAnimator" alt="" coords="579,70,808,111"/>
+<area shape="rect" id="node5" href="$df/df0/classengine_1_1element_factories_1_1_visualizer_factory.html#ab3af310fd8c0f30f4ab30125576112f9" title="engine.elementFactories.\lVisualizerFactory.createVisualizer" alt="" coords="857,70,1090,111"/>
+<area shape="rect" id="node6" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#ae53ef87192fe373614a7215f0e3d938c" title="engine.elementFactories.\lGameElementFactory.generateVisualizer" alt="" coords="1139,70,1421,111"/>
+<area shape="rect" id="node7" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#a8671651ea7c0bcf7fb0de5b5552832fe" title="engine.elementFactories.\lGameElementFactory.createDrawable\lGameElement" alt="" coords="1474,23,1737,79"/>
+<area shape="rect" id="node8" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#a4e478634c65c4ee64c2163fdacd09669" title="engine.elementFactories.\lGameElementFactory.createSelectable\lGameElement" alt="" coords="1470,103,1741,159"/>
+</map>

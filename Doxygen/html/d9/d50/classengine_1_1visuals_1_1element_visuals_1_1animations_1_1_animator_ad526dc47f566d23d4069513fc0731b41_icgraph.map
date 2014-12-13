@@ -1,0 +1,8 @@
+<map id="engine.visuals.elementVisuals.animations.Animator.update" name="engine.visuals.elementVisuals.animations.Animator.update">
+<area shape="rect" id="node2" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#a86b606b05e07c022484554409f533599" title="engine.visuals.elementVisuals.\lVisualizer.initializeDisplay" alt="" coords="347,15,565,57"/>
+<area shape="rect" id="node4" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#a3a940cfc6093a46b3c1d53d77674ef15" title="engine.visuals.elementVisuals.\lVisualizer.updateAnimator" alt="" coords="347,82,565,123"/>
+<area shape="rect" id="node3" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a4b23fded7a0bbd7154333b3f3353c686" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.\lDrawableGameElement" alt="" coords="613,5,891,61"/>
+<area shape="rect" id="node5" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#a466845b3211a0266cb7435d18772b372" title="engine.visuals.elementVisuals.\lVisualizer.update" alt="" coords="643,85,861,126"/>
+<area shape="rect" id="node6" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a2d69796817cdb4f32ada0982e19df9bc" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.update" alt="" coords="939,85,1261,126"/>
+<area shape="rect" id="node7" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="1310,85,1517,126"/>
+</map>

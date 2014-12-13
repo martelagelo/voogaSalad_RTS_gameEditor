@@ -1,0 +1,5 @@
+<map id="engine.computers.pathingComputers.PathingComputer.optimizePath" name="engine.computers.pathingComputers.PathingComputer.optimizePath">
+<area shape="rect" id="node2" href="$db/d9b/classengine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#adb46d9b104f908b15adbb9379fca6407" title="engine.computers.pathing\lComputers.PathingComputer.points\lAreColinear" alt="" coords="349,31,600,87"/>
+<area shape="rect" id="node3" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#a6b17f88aada14c904238ef52e51cf5e9" title="engine.computers.pathing\lComputers.Location.getX" alt="" coords="649,5,839,46"/>
+<area shape="rect" id="node4" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#ac4dc59386dde16b5784bfdaa27dbcbf4" title="engine.computers.pathing\lComputers.Location.getY" alt="" coords="649,70,839,111"/>
+</map>

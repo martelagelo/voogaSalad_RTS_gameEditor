@@ -1,0 +1,9 @@
+<map id="model.GameUniverse.getNumericalAttributes" name="model.GameUniverse.getNumericalAttributes">
+<area shape="rect" id="node2" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a626ca47a8ac963b8940a59944ee3bcb6" title="view.editor.TabViewController.add\lNumberAttributes" alt="" coords="305,9,535,50"/>
+<area shape="rect" id="node5" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#ad68baa151a28fe9c9b5dab069865a7e3" title="view.editor.ElementAccordion\lController.addNumberAttributes" alt="" coords="307,77,533,118"/>
+<area shape="rect" id="node3" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#ae2a5da639fc38047249eeb0a5728dee0" title="view.editor.TabViewController.launch\lNestedWizard" alt="" coords="599,5,849,46"/>
+<area shape="rect" id="node4" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a82e1e1f1eb84d1c30bde3a246304473e" title="view.editor.TabViewController.init" alt="" coords="912,12,1139,39"/>
+<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a8564fdf017fa6f25e3e663cf076e0c04" title="view.editor.ElementAccordion\lController.openSelectableGameElement\lWizard" alt="" coords="585,69,863,125"/>
+<area shape="rect" id="node8" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="589,149,859,205"/>
+<area shape="rect" id="node7" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="921,117,1129,158"/>
+</map>
