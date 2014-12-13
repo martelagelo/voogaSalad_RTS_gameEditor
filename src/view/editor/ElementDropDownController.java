@@ -124,8 +124,9 @@ public class ElementDropDownController implements GUIController {
                     myEditConsumer.accept(elementListView.getSelectionModel().getSelectedItem());
                 }
             }
+            elementListView.requestFocus();
         });
-        elementDropDown.focusedProperty().addListener( (observable, oldValue, newValue) -> {
+        elementListView.focusedProperty().addListener( (observable, oldValue, newValue) -> {
             if (!newValue) {
                 elementListView.getSelectionModel().clearSelection();
             }

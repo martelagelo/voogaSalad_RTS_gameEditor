@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import model.data.WizardData;
-import model.data.WizardDataType;
-import model.data.WizardType;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -21,10 +18,12 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
@@ -48,6 +47,7 @@ public class GameElementWizard extends Wizard {
     private final static String NEW_WIDGET_KEY = "NewWidget";
     private final static String ADD_ANIMATION_KEY = "AddAnimation";
     private final static String SET_BOUNDS_KEY = "SetBounds";
+    private final static String SET_VISION_BOUNDS_KEY = "SetVisionBounds";
     private final static String LOAD_IMAGE_KEY = "LoadImage";
     private final static String FRAME_HEIGHT_KEY = "FrameHeight";
     private final static String FRAME_WIDTH_KEY = "FrameWidth";
@@ -58,7 +58,7 @@ public class GameElementWizard extends Wizard {
     private final int DEFAULT_GRID_MIN = 10;
     private final int DEFAULT_GRID_VALUE = 100;
     @FXML
-    private AnchorPane leftPane;
+    private ScrollPane leftPane;
     @FXML
     private TextField name;
     @FXML
@@ -83,6 +83,8 @@ public class GameElementWizard extends Wizard {
     private TextField frameHeightText;
     @FXML
     private Button setBounds;
+    @FXML
+    private Button setVisionBounds;
     @FXML
     private CRUDContainer stringAttributesController;
     @FXML
@@ -109,7 +111,8 @@ public class GameElementWizard extends Wizard {
         imageValues = new ArrayList<>();
         myGlobalNumberAttributes = new ArrayList<>();
         myGlobalStringAttributes = new ArrayList<>();
-        setBounds.setOnAction(e -> launchBoundsWizard());
+        setBounds.setOnAction(e -> launchBoundsWizard(WizardType.BOUNDS));
+        setVisionBounds.setOnAction(e -> launchBoundsWizard(WizardType.VISION_BOUNDS));
         image.setOnAction(i -> loadImage());
         colorMask.setOnAction(i -> loadColorMask());
         errorMessage.setFill(Paint.valueOf("white"));
@@ -129,6 +132,7 @@ public class GameElementWizard extends Wizard {
             image.textProperty().bind(util.getStringProperty(LOAD_IMAGE_KEY));
             animationsController.bindButtonText(util.getStringProperty(ADD_ANIMATION_KEY));
             setBounds.textProperty().bind(util.getStringProperty(SET_BOUNDS_KEY));
+            setVisionBounds.textProperty().bind(util.getStringProperty(SET_VISION_BOUNDS_KEY));
             frameWidthLabel.textProperty().bind(util.getStringProperty(FRAME_WIDTH_KEY));
             frameHeightLabel.textProperty().bind(util.getStringProperty(FRAME_HEIGHT_KEY));
             colorMask.textProperty().bind(util.getStringProperty(COLOR_MASK_KEY));
@@ -142,7 +146,8 @@ public class GameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && !imagePath.isEmpty();
+        return !name.getText().isEmpty() && !imagePath.isEmpty() 
+                && !getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty();
     }
 
     @Override
@@ -196,24 +201,25 @@ public class GameElementWizard extends Wizard {
         // do nothing, use the attachString and Number Attributes instead
     }
 
-    private void launchBoundsWizard () {
+    private void launchBoundsWizard (WizardType boundsType) {
         Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, BOUNDS_WIZARD_SIZE);
-        if (boundsAlreadyExist()) wiz.launchForEdit(getBoundsFromWizardData());
+        if (boundsAlreadyExist(boundsType)) wiz.launchForEdit(getBoundsFromWizardData(boundsType));
 
         Consumer<WizardData> bc = (data) -> {
-            if (boundsAlreadyExist()) getWizardData().removeWizardData(getBoundsFromWizardData());
+            data.setType(boundsType);
+            if (boundsAlreadyExist(boundsType)) getWizardData().removeWizardData(getBoundsFromWizardData(boundsType));
             addWizardData(data);
             wiz.closeStage();
         };
         wiz.setSubmit(bc);
     }
 
-    private boolean boundsAlreadyExist () {
-        return !getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty();
+    private boolean boundsAlreadyExist (WizardType boundsType) {
+        return !getWizardData().getWizardDataByType(boundsType).isEmpty();
     }
 
-    private WizardData getBoundsFromWizardData () {
-        return getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0);
+    private WizardData getBoundsFromWizardData (WizardType boundsType) {
+        return getWizardData().getWizardDataByType(boundsType).get(0);
     }
 
     /**
@@ -321,7 +327,7 @@ public class GameElementWizard extends Wizard {
     private BooleanSupplier isAnimationLaunchValid () {
         return () -> {
             if (imageView != null) {
-                List<String> imageValues = new ArrayList<>();
+                imageValues.clear();
                 imageValues.add(imagePath);
                 imageValues.add(Double.toString(frameWidth.getValue()));
                 imageValues.add(Double.toString(frameHeight.getValue()));
