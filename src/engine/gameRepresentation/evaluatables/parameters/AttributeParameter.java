@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * An evaluator parameter that extracts a parameter contained within an object
+ * An evaluator parameter that extracts a numerical or textual attribute contained within an object
  *
  * @author Zach
  *
@@ -30,10 +30,10 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
      * @param objectOfInterestIdentifier
      *        an identifier that will return an object of interest
      */
-    public AttributeParameter (Class<T> type, String id, String attributeTag,
+    public AttributeParameter (Class<T> type, String attributeTag,
                                GameElementManager manager,
                                ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(type, id);
+        super(type);
         myAttributeTag = attributeTag;
         myManager = manager;
         myObjectIdentifier = objectOfInterestIdentifier;
@@ -50,11 +50,10 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
      * @param elementTag
      */
     public AttributeParameter (Class<T> type, String attributeTag,
-                               String id,
                                GameElementManager manager,
                                ObjectOfInterestIdentifier objectOfInterestIdentifier,
                                String elementTag) {
-        this(type, id, attributeTag, manager, objectOfInterestIdentifier);
+        this(type, attributeTag, manager, objectOfInterestIdentifier);
         myElementTag = elementTag;
     }
 

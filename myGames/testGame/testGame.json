@@ -572,6 +572,46 @@
                     "myActionType": "BUTTON"
                   }
                 ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -595,23 +635,6 @@
                       "isSelected"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-                    "myParameters": [
-                      "boundary",
-                      "me",
-                      "xVelocity",
-                      "EqualsAssignment",
-                      "-1",
-                      "MultiplicationAssignment",
-                      "me",
-                      "xVelocity",
-                      "FalseEvaluator"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ]
               },
@@ -2325,9 +2348,9 @@
               "myBounds": [
                 0.0,
                 0.0,
-                1000.0,
+                1500.0,
                 0.0,
-                1000.0,
+                1500.0,
                 10.0,
                 0.0,
                 10.0
@@ -2335,15 +2358,21 @@
               "myActions": {
                 "COLLISION": [
                   {
-                    "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
                     "myParameters": [
-                      "my",
+                      "ball",
+                      "me",
                       "0",
                       "Equals",
                       "0",
-                      "Resources",
+                      "Addition",
+                      "me",
+                      "0",
+                      "FalseEvaluator",
                       "AdditionAssignment",
-                      "1"
+                      "1",
+                      "other",
+                      "resources"
                     ],
                     "myActionType": "COLLISION"
                   }
@@ -2354,6 +2383,10 @@
                   {
                     "myData": 0.0,
                     "myName": "xPosition"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "1"
                   },
                   {
                     "myData": 0.0,
@@ -2911,9 +2944,9 @@
               "myBounds": [
                 0.0,
                 0.0,
-                1000.0,
+                1500.0,
                 0.0,
-                1000.0,
+                1500.0,
                 10.0,
                 0.0,
                 10.0
@@ -2921,15 +2954,21 @@
               "myActions": {
                 "COLLISION": [
                   {
-                    "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
                     "myParameters": [
-                      "my",
+                      "ball",
+                      "me",
                       "0",
                       "Equals",
                       "0",
-                      "Resources",
+                      "Addition",
+                      "me",
+                      "0",
+                      "FalseEvaluator",
                       "AdditionAssignment",
-                      "1"
+                      "1",
+                      "my",
+                      "resources"
                     ],
                     "myActionType": "COLLISION"
                   }
@@ -2940,6 +2979,10 @@
                   {
                     "myData": 0.0,
                     "myName": "xPosition"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "1"
                   },
                   {
                     "myData": 0.0,
@@ -3514,6 +3557,41 @@
                     "myActionType": "FOCUSED"
                   }
                 ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3542,37 +3620,6 @@
                       "UpdateMovementDirection"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-                    "myParameters": [
-                      "boundary",
-                      "me",
-                      "xVelocity",
-                      "EqualsAssignment",
-                      "-1",
-                      "MultiplicationAssignment",
-                      "me",
-                      "xVelocity",
-                      "FalseEvaluator"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ]
               },
@@ -4150,29 +4197,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "me",
-                      "movementSpeed",
-                      "GreaterThan",
-                      "8",
-                      "me",
-                      "movementSpeed",
-                      "EqualsAssignment",
-                      "8"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -4185,7 +4209,11 @@
                       "Equals",
                       "me",
                       "0",
-                      "Bounce"
+                      "Bounce",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4200,7 +4228,11 @@
                       "MultiplicationAssignment",
                       "me",
                       "xVelocity",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4224,7 +4256,11 @@
                       "Multiplication",
                       "me",
                       "xGoalPosition",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4239,7 +4275,11 @@
                       "Multiplication",
                       "me",
                       "yGoalPosition",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4254,7 +4294,11 @@
                       "Multiplication",
                       "me",
                       "0",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4269,7 +4313,11 @@
                       "Multiplication",
                       "me",
                       "MinMovementSpeed",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
                   },
@@ -4284,9 +4332,36 @@
                       "Multiplication",
                       "me",
                       "movementSpeed",
-                      "FalseEvaluator"
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "8"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -4309,7 +4384,7 @@
                     "myName": "teamID"
                   },
                   {
-                    "myData": 2,
+                    "myData": 4,
                     "myName": "MinMovementSpeed"
                   },
                   {
@@ -4317,7 +4392,7 @@
                     "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 2,
+                    "myData": 4,
                     "myName": "movementSpeed"
                   },
                   {
@@ -4350,6 +4425,43 @@
             }
           ],
           "myGoals": [
+            {
+              "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
+                    "myParameters": [
+                      "my",
+                      "resources",
+                      "GreaterThanEqual",
+                      "5",
+                      "Won",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
+                    "myParameters": [
+                      "other",
+                      "resources",
+                      "GreaterThanEqual",
+                      "5",
+                      "Lost",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [],
+                "myTextualAttributes": []
+              },
+              "myTypes": []
+            },
             {
               "myActions": {},
               "attributes": {
@@ -4984,6 +5096,46 @@
               "myActionType": "BUTTON"
             }
           ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+              "myParameters": [
+                "boundary",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-1",
+                "MultiplicationAssignment",
+                "me",
+                "xVelocity",
+                "FalseEvaluator",
+                "Equals",
+                "0",
+                "my",
+                "0"
+              ],
+              "myActionType": "COLLISION"
+            },
+            {
+              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+              "myParameters": [
+                "boundary",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-1",
+                "MultiplicationAssignment",
+                "me",
+                "xVelocity",
+                "FalseEvaluator",
+                "Equals",
+                "0",
+                "my",
+                "0"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
           "INTERNAL": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -5007,23 +5159,6 @@
                 "isSelected"
               ],
               "myActionType": "INTERNAL"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-              "myParameters": [
-                "boundary",
-                "me",
-                "xVelocity",
-                "EqualsAssignment",
-                "-1",
-                "MultiplicationAssignment",
-                "me",
-                "xVelocity",
-                "FalseEvaluator"
-              ],
-              "myActionType": "COLLISION"
             }
           ]
         },

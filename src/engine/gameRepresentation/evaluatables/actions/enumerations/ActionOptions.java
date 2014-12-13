@@ -15,16 +15,11 @@ import java.util.List;
 public enum ActionOptions {
     /**
      * Action types give a string representation of the prompt needed to create the action for the
-     * editor. # are used to indicate the location of each string input. Symbols are used to
-     * indicate which type of strings need to be input into the
-     * constructor at various locations.
-     *
-     * Symbol meanings are as follows
-     * EE_EVAL -> String class name of an evaluator that operates on 2 game elements.
-     * NN_EVAL -> String class name of an evaluator that operates on 2 numbers.
-     * ATTR -> a string corresponding to an attribute name.
-     * STRING -> any string.
-     * NUMBER -> any numeric string.
+     * editor. # are used to indicate the location of each string input. Additional enumerations of
+     * input possibilities are given through the ActionParameters enumeration.
+     * 
+     * The format for one of these enumerations is
+     * Human-readable action name, action class name, action prompt, list of required parameters
      * 
      */
     ACT_ON_OBJECTS_ACTION("Basic Action",
@@ -129,7 +124,9 @@ public enum ActionOptions {
                                      +
                                      "set # (me/your) # (attribute name) # (assignment evaluator) to/with # (number) # (assignment evaluator) (me/your) # (attr) AND "
                                      +
-                                     "do # with both the objects",
+                                     "do # with both the objects AND "
+                                     +
+                                     " perform # # (my attribute name) on # (my/other) player's # attribute.",
                              ActionParameters.STRING,
                              ActionParameters.OBJECT_DESIGNATOR,
                              ActionParameters.ATTR,
@@ -138,7 +135,11 @@ public enum ActionOptions {
                              ActionParameters.NN_EVAL,
                              ActionParameters.OBJECT_DESIGNATOR,
                              ActionParameters.ATTR,
-                             ActionParameters.EE_EVAL),
+                             ActionParameters.EE_EVAL,
+                             ActionParameters.NN_EVAL,
+                             ActionParameters.ATTR,
+                             ActionParameters.PLAYER_TYPE,
+                             ActionParameters.ATTR),
 
     MOTHER_OF_ALL_ACTIONS(
                           "Mother of all Actions",

@@ -7,7 +7,7 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 
 /**
  * An evaluator that attacks an enemy if their team is not the same as the current team. Uses the
- * attack timer of the attacker object
+ * attack timer of the attacker object.
  * 
  * @author Zach
  */
@@ -15,10 +15,9 @@ public class Attack<A, B> extends Evaluator<A, B, Boolean> {
 
     public static final String ATTACK_TIMER = "AttackTimer";
 
-    public Attack (String id,
-                            Evaluatable<A> parameter1,
-                            Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "Attack", parameter1, parameter2);
+    public Attack (Evaluatable<A> parameter1,
+                   Evaluatable<B> parameter2) {
+        super(Boolean.class, "attack", parameter1, parameter2);
     }
 
     @Override
@@ -29,10 +28,12 @@ public class Attack<A, B> extends Evaluator<A, B, Boolean> {
             object2.setNumericalAttribute(StateTags.HEALTH.getValue(),
                                           object2.getNumericalAttribute(StateTags.HEALTH.getValue())
                                                   .doubleValue() -
-                                                  object1.getNumericalAttribute(StateTags.ATTACK.getValue())
+                                                  object1.getNumericalAttribute(StateTags.ATTACK
+                                                          .getValue())
                                                           .doubleValue());
-            object1.setTimer(ATTACK_TIMER, object1.getNumericalAttribute(StateTags.RELOAD_TIME.getValue())
-                    .longValue());
+            object1.setTimer(ATTACK_TIMER,
+                             object1.getNumericalAttribute(StateTags.RELOAD_TIME.getValue())
+                                     .longValue());
         }
         return true;
     }

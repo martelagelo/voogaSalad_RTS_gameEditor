@@ -90,6 +90,12 @@ public class Pong extends Application {
                                            ActionOptions.PERFORM_CALCULATION_ON_VALUE,
                                            "EqualsAssignment", "1", StateTags.IS_SELECTED
                                                    .getValue()));
+        paddle.addAction(new ActionWrapper(ActionType.COLLISION,
+                                           ActionOptions.OBJECT_TYPE_CHECK_ACTION,
+                                           "boundary", "me", StateTags.X_VELOCITY.getValue(),
+                                           "EqualsAssignment", "-1", "MultiplicationAssignment",
+                                           "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator",
+                                           "Equals", "0", "my", "0"));
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "SetFocused"));
@@ -98,14 +104,24 @@ public class Pong extends Application {
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION,
                                                 "UpdateMovementDirection"));
 
+        GameElementState winningGoal = new GameElementState();
+        winningGoal.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
+                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual", "5", "Won",
+                                                "EqualsAssignment", "1"));
+        winningGoal.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                                ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "other",
+                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual", "5", "Lost",
+                                                "EqualsAssignment", "1"));
         LevelState levelState = new LevelState("testLevel", "testCampaign");
         levelState.addUnit(paddle);
         levelState.addUnit(createBoundary(-10, 0));
         levelState.addUnit(createBoundary(800, 0));
-        levelState.addUnit(createGoalRegion(0, -10,true));
-        levelState.addUnit(createGoalRegion(0, 850,false));
+        levelState.addUnit(createGoalRegion(0, -10, true));
+        levelState.addUnit(createGoalRegion(0, 850, false));
         levelState.addUnit(enemyPaddle);
         levelState.addUnit(ball);
+        levelState.addGoal(winningGoal);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 1000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 1000);
         levelState.addGoal(createGoal());
@@ -151,22 +167,23 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
         ball.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
         ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 4);
-        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
+        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 4);
         ball.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
         ball.attributes.setNumericalAttribute("teamID", 2);
         ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "RED");
-        ball.attributes.setNumericalAttribute("MinMovementSpeed", 2);
+        ball.attributes.setNumericalAttribute("MinMovementSpeed", 4);
         ball.addType("ball");
 
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION,
                                          "paddle", "me", "0", "Equals", "0", "Equals", "me", "0",
-                                         "Bounce"));
+                                         "Bounce", "Equals", "0", "my", "0"));
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION,
                                          "boundary", "me", StateTags.X_VELOCITY.getValue(),
                                          "EqualsAssignment", "-1", "MultiplicationAssignment",
-                                         "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator"));
+                                         "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator",
+                                         "Equals", "0", "my", "0"));
 
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.PERFORM_CALCULATION_ON_VALUE,
@@ -176,26 +193,30 @@ public class Pong extends Application {
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
                                          StateTags.X_POSITION.getValue(), "EqualsAssignment", "1",
                                          "Multiplication", "me", StateTags.X_GOAL_POSITION
-                                                 .getValue(), "FalseEvaluator"));
+                                                 .getValue(), "FalseEvaluator", "Equals", "0",
+                                         "my", "0"));
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
                                          StateTags.Y_POSITION.getValue(), "EqualsAssignment", "1",
                                          "Multiplication", "me", StateTags.Y_GOAL_POSITION
-                                                 .getValue(), "FalseEvaluator"));
+                                                 .getValue(), "FalseEvaluator", "Equals", "0",
+                                         "my", "0"));
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
                                          StateTags.X_VELOCITY.getValue(), "EqualsAssignment", "0",
-                                         "Multiplication", "me", "0", "FalseEvaluator"));
+                                         "Multiplication", "me", "0", "FalseEvaluator", "Equals",
+                                         "0", "my", "0"));
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
                                          StateTags.MOVEMENT_SPEED.getValue(), "EqualsAssignment",
                                          "1", "Multiplication", "me", "MinMovementSpeed",
-                                         "FalseEvaluator"));
+                                         "FalseEvaluator", "Equals", "0", "my", "0"));
         ball.addAction(new ActionWrapper(ActionType.COLLISION,
                                          ActionOptions.OBJECT_TYPE_CHECK_ACTION, "goal", "me",
                                          StateTags.Y_VELOCITY.getValue(), "EqualsAssignment", "1",
                                          "Multiplication", "me", StateTags.MOVEMENT_SPEED
-                                                 .getValue(), "FalseEvaluator"));
+                                                 .getValue(), "FalseEvaluator", "Equals", "0",
+                                         "my", "0"));
 
         AnimatorState ballAnimations;
         // This one moves the player
@@ -247,13 +268,18 @@ public class Pong extends Application {
         boundary.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
         boundary.attributes.setNumericalAttribute("teamID", 0);
         boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "YELLOW");
+        boundary.attributes.setNumericalAttribute("1", 1);
         boundary.addType("goal");
-        double[] bounds = { 0, 0, 1000, 0, 1000, 10, 0, 10 };
-        boundary.setBounds(bounds);
         boundary.addAction(new ActionWrapper(ActionType.COLLISION,
-                                             ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my", "0",
-                                             "Equals", "0",
-                                             "Resources", "AdditionAssignment", "1"));
+                                             ActionOptions.OBJECT_TYPE_CHECK_ACTION, "ball", "me",
+                                             "0", "Equals", "0", "Addition", "me", "0",
+                                             "FalseEvaluator",
+                                             "AdditionAssignment", "1", (mine ? "other" : "my"),
+                                             StateTags.RESOURCES
+                                                     .getValue()));
+        // TODO make this create a score sprite when a point is scored...
+        double[] bounds = { 0, 0, 1500, 0, 1500, 10, 0, 10 };
+        boundary.setBounds(bounds);
 
         AnimatorState boundaryAnimations =
                 SaveLoadUtility
@@ -312,7 +338,8 @@ public class Pong extends Application {
                                            ActionOptions.OBJECT_TYPE_CHECK_ACTION,
                                            "boundary", "me", StateTags.X_VELOCITY.getValue(),
                                            "EqualsAssignment", "-1", "MultiplicationAssignment",
-                                           "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator"));
+                                           "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator",
+                                           "Equals", "0", "my", "0"));
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "MovePlayer"));

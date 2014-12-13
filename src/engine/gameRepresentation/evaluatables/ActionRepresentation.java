@@ -2,11 +2,12 @@ package engine.gameRepresentation.evaluatables;
 
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
+
 /**
  * A basic data wrapper to wrap a string of a type and an evaluatable to create the representation
  * of an action.
  * 
- * @author Zach, Stanley
+ * @author Zach
  *
  */
 public class ActionRepresentation {
@@ -21,10 +22,16 @@ public class ActionRepresentation {
         myActionType = actionType;
     }
 
+    /**
+     * @return the type of the action
+     */
     public ActionType getActionType () {
         return myActionType;
     }
 
+    /**
+     * @return the evaluatable associated with the action
+     */
     public Evaluatable<?> getEvaluatable () {
         return myEvaluatable;
     }

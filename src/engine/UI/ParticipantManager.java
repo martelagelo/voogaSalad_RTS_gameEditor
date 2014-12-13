@@ -35,6 +35,8 @@ public class ParticipantManager {
                                GameElementManager gameElementManager) {
         myElementManager = gameElementManager;
         myAIUsers = new ArrayList<>();
+        //TODO this needs to be changed to be more dynamic
+        myAIUsers.add(new AIParticipant("2", "testAI"));
         humanUser = user;
         player1Resources = new SimpleObjectProperty<>();
     }
@@ -54,6 +56,8 @@ public class ParticipantManager {
      * @return
      */
     public List<Participant> getAI () {
+
+        System.out.println("Participant count:" + myAIUsers);
         return new ArrayList<>(myAIUsers);
     }
 

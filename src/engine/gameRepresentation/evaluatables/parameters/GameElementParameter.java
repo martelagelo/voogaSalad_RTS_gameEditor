@@ -29,18 +29,16 @@ public class GameElementParameter extends Parameter<GameElement> {
      *        Optional: the tag for the element. Only used if parameter is
      *        referencing a global object
      */
-    public GameElementParameter (String id,
-                                 ObjectOfInterestIdentifier objectOfInterestIdentifier,
+    public GameElementParameter (ObjectOfInterestIdentifier objectOfInterestIdentifier,
                                  String elementTag) {
-        super(GameElement.class, id);
+        super(GameElement.class);
         myObjectIdentifier = objectOfInterestIdentifier;
         myElementTag = elementTag;
 
     }
 
-    public GameElementParameter (String id,
-                                 ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        this(id, objectOfInterestIdentifier, null);
+    public GameElementParameter (ObjectOfInterestIdentifier objectOfInterestIdentifier) {
+        this(objectOfInterestIdentifier, null);
     }
 
     @Override

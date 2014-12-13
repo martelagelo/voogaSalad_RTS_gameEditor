@@ -11,13 +11,13 @@ package engine.gameRepresentation.evaluatables;
  */
 public class FalseEvaluatable extends Evaluatable<Boolean> {
 
-	public FalseEvaluatable() {
-		super(Boolean.class,"");
-	}
+    public FalseEvaluatable () {
+        super(Boolean.class);
+    }
 
-	@Override
-	public Boolean evaluate(ElementPair elements) {
-		return false;
-	}
+    @Override
+    public Boolean evaluate (ElementPair elements) {
+        return false;
+    }
 
 }

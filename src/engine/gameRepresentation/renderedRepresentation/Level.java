@@ -190,6 +190,7 @@ public class Level {
            goal.update();
             // iterate through the goals
             // evaluating all of these goals will set the internal values of "won" or "lost"
+           //TODO fix these hard strings
             if (goal.getNumericalAttribute("Won").doubleValue() == 1.0) won = 1;
             if (goal.getNumericalAttribute("Lost").doubleValue() == 1.0) lost = 1;
         }

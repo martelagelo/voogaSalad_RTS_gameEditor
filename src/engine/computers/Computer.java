@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
  * An class following the strategy pattern to allow for a large variety of
  * computing classes that take in an object of interest and a list of objects to
  * compute against. A computer goes through all the objects in the list of objects to compute
- * against, checks if they meet the criteria, and, if they do, adds them to the object that requires
+ * against, checks if they meet the criteria, and, if they do, adds them to the element that
+ * requires
  * the objects.
  *
  * @author Zach
@@ -30,7 +31,7 @@ public abstract class Computer<T, E> {
      */
     public void compute (T primaryObject, List<E> objectsToCheck) {
         List<E> listToAdd = objectsToCheck.stream()
-                .filter(o -> !primaryObject.equals(o)&&checkComputingCondition(primaryObject, o))
+                .filter(o -> !primaryObject.equals(o) && checkComputingCondition(primaryObject, o))
                 .collect(Collectors.toList());
         givePrimaryObjectElements(primaryObject, listToAdd);
     }
