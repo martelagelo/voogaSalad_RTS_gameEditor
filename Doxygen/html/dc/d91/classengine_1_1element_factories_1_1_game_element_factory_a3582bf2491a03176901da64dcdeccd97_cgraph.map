@@ -1,5 +1,0 @@
-<map id="engine.elementFactories.GameElementFactory.generateActions" name="engine.elementFactories.GameElementFactory.generateActions">
-<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a1b9361b9496199dd986432b392bb6cde" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.addAction" alt="" coords="349,5,632,46"/>
-<area shape="rect" id="node3" href="$d4/dbd/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_factory.html#a6950834fbffde384fd69a1dfaa57baf3" title="engine.gameRepresentation.evaluatables.actions.\lActionFactory.createAction" alt="" coords="320,70,661,111"/>
-<area shape="rect" id="node4" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9aa5246a488d3fc64aeaad61e6d5fb55" title="model.state.gameelement.\lGameElementState.getActions" alt="" coords="380,135,601,177"/>
-</map>

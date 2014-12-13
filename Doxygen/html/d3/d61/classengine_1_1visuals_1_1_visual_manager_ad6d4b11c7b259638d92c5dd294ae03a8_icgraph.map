@@ -1,8 +1,0 @@
-<map id="engine.visuals.VisualManager.attachInputManager" name="engine.visuals.VisualManager.attachInputManager">
-<area shape="rect" id="node2" href="$dc/de2/classengine_1_1_engine.html#a3c93d3ffede59b58f39d796d016effe4" title="engine.Engine.instantiate\lManagers" alt="" coords="329,5,513,46"/>
-<area shape="rect" id="node4" href="$dc/de2/classengine_1_1_engine.html#a8c5992eb0d36b8c389af374c6115b4f1" title="engine.Engine.setInputManager" alt="" coords="309,71,533,97"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="607,12,766,39"/>
-<area shape="rect" id="node5" href="$d8/dd1/classview_1_1runner_1_1_game_runner_pane_controller.html#a056877358884449e42bff08934bde122" title="view.runner.GameRunnerPane\lController.setInputManager" alt="" coords="581,63,792,105"/>
-<area shape="rect" id="node6" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#aa19ba9b7a9b0762bce74364ef219fabc" title="view.editor.TabViewController.init\lToggle" alt="" coords="840,63,1067,105"/>
-<area shape="rect" id="node7" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a82e1e1f1eb84d1c30bde3a246304473e" title="view.editor.TabViewController.init" alt="" coords="1115,71,1341,97"/>
-</map>

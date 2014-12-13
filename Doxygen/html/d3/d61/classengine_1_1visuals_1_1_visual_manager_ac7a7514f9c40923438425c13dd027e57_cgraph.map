@@ -1,6 +1,0 @@
-<map id="engine.visuals.VisualManager.VisualManager" name="engine.visuals.VisualManager.VisualManager">
-<area shape="rect" id="node2" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a57a571960cb6334b284c20c5ac9d7380" title="engine.visuals.Scrollable\lPane.addToScene" alt="" coords="304,5,483,46"/>
-<area shape="rect" id="node3" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#aa4f2bc8d8cb78eeee7c1d8ea58991d5c" title="engine.visuals.MiniMap.get\lDisplay" alt="" coords="297,70,490,111"/>
-<area shape="rect" id="node4" href="$dc/dbf/classengine_1_1visuals_1_1_ability_matrix.html#ab725e817cce7a61731c3e87fd938b975" title="engine.visuals.AbilityMatrix.getNode" alt="" coords="267,136,519,163"/>
-<area shape="rect" id="node5" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#ae8c718001778a386d42607939b095086" title="engine.visuals.Scrollable\lPane.getScrollingBackground" alt="" coords="289,187,497,229"/>
-</map>
