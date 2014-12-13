@@ -97,12 +97,6 @@ public class AbilityMatrix {
                     StackPane p = new StackPane();
                     p.getChildren().add(new ImageView(im));
                     if(timerMap.containsKey(i+"")){
-//                        Rectangle r = new Rectangle();
-//                        r.setWidth(im.getWidth());
-//                        r.setHeight(timerMap.get(i+"")/1000.0*im.getHeight());
-//                        r.toFront();
-//                        p.getChildren().add(r);
-//                        r.setFill(Color.BLACK);
                         Text t = new Text(timerMap.get(i+"")+"");
                         p.getChildren().add(t);
                         t.toFront();

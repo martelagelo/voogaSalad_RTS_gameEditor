@@ -63,7 +63,7 @@ public class Pong extends Application {
                                            StateTags.X_VELOCITY.getValue(), "EqualsAssignment", "3"));
         SelectableGameElementState enemyPaddle = createPaddle(350, 700, 2);
         enemyPaddle.setBounds(bounds);
-        enemyPaddle.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");
+        enemyPaddle.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("008000", 16));
         enemyPaddle.addAction(new ActionWrapper(ActionType.COLLISION,
                                                 ActionOptions.ACT_ON_OBJECTS_ACTION, "SetFocused"));
         enemyPaddle.addAction(new ActionWrapper(ActionType.FOCUSED,
@@ -165,8 +165,7 @@ public class Pong extends Application {
 
         goalDisplayMarker.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(),
                                                          "STANDING");
-        goalDisplayMarker.attributes.setNumericalAttribute("teamID", 0);
-        goalDisplayMarker.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        goalDisplayMarker.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("0000FF", 16));
         goalDisplayMarker.myAnimatorState = goalAnimations;
 
         return goalDisplayMarker;
@@ -184,8 +183,7 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 2);
         ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
         ball.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
-        ball.attributes.setNumericalAttribute("teamID", 2);
-        ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "RED");
+        ball.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("FF0000", 16));
         ball.attributes.setNumericalAttribute("MinMovementSpeed", 4);
         ball.addType("ball");
 
@@ -255,8 +253,7 @@ public class Pong extends Application {
         boundary.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
         boundary.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
         boundary.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
-        boundary.attributes.setNumericalAttribute("teamID", 0);
-        boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        boundary.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("0000FF", 16));
         boundary.addType("boundary");
         double[] bounds = { 0, 0, 0, 1000, 10, 1000, 10, 0 };
         boundary.setBounds(bounds);
@@ -281,8 +278,7 @@ public class Pong extends Application {
         boundary.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
         boundary.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
         boundary.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
-        boundary.attributes.setNumericalAttribute("teamID", 0);
-        boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "YELLOW");
+        boundary.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("FFFF00", 16));
         boundary.attributes.setNumericalAttribute("1", 1);
         boundary.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), 900);
         boundary.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(),(mine?500:-800));
@@ -331,8 +327,7 @@ public class Pong extends Application {
         paddle.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
         paddle.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
         paddle.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 6);
-        paddle.attributes.setNumericalAttribute("teamID", teamID);
-        paddle.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        paddle.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), Long.parseLong("0000FF", 16));
 
         paddle.addType("paddle");
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,

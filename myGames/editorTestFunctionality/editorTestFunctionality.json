@@ -21,16 +21,15 @@
               }
             ]
           },
-          "myTerrains": [],
-          "myUnits": [
+          "myTerrains": [
             {
               "attributeDisplayerStates": [],
               "myAnimatorState": {
-                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/archeryRange.png",
+                "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/tree1.png",
                 "colorMaskTag": "",
                 "viewportSize": {
-                  "myWidth": 312,
-                  "myHeight": 260
+                  "myWidth": 106,
+                  "myHeight": 161
                 },
                 "numRows": 1,
                 "animationSequences": [
@@ -61,214 +60,48 @@
               "myBounds": [
                 0.0,
                 0.0,
-                300.0,
                 0.0,
-                300.0,
-                300.0,
-                0.0,
-                300.0
-              ],
-              "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ]
-              },
-              "attributes": {
-                "myNumericalAttributes": [
-                  {
-                    "myData": 6.0,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 255,
-                    "myName": "teamColor"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "isSelected"
-                  },
-                  {
-                    "myData": 401.0,
-                    "myName": "xGoalPosition"
-                  },
-                  {
-                    "myData": 105.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
-                    "myData": 401.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 105.0,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 401.0,
-                    "myName": "xPosition"
-                  },
-                  {
-                    "myData": 105.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "xVelocity"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "yVelocity"
-                  }
-                ],
-                "myTextualAttributes": [
-                  {
-                    "myData": "dude",
-                    "myName": "name"
-                  }
-                ]
-              },
-              "myTypes": []
-            },
-            {
-              "attributeDisplayerStates": [],
-              "myAnimatorState": {
-                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/archeryRange.png",
-                "colorMaskTag": "",
-                "viewportSize": {
-                  "myWidth": 312,
-                  "myHeight": 260
-                },
-                "numRows": 1,
-                "animationSequences": [
-                  {
-                    "myStartFrame": 0,
-                    "myStopFrame": 1,
-                    "myCurrentFrame": 0,
-                    "myRepeatFlag": false,
-                    "myTags": [
-                      "HERE",
-                      "DO_NOTHING"
-                    ],
-                    "mySlownessMultiplier": 0.0,
-                    "myFrameCounter": 0
-                  }
-                ]
-              },
-              "myVisionBounds": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                100.0,
+                100.0,
+                100.0,
+                100.0,
                 0.0
               ],
-              "myBounds": [
-                0.0,
-                0.0,
-                300.0,
-                0.0,
-                300.0,
-                300.0,
-                0.0,
-                300.0
-              ],
-              "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ]
-              },
+              "myActions": {},
               "attributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 6.0,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 255,
-                    "myName": "teamColor"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "isSelected"
-                  },
-                  {
-                    "myData": 175.0,
-                    "myName": "xGoalPosition"
-                  },
-                  {
-                    "myData": 367.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
-                    "myData": 175.0,
-                    "myName": "xTempGoalPosition"
-                  },
-                  {
-                    "myData": 367.0,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 175.0,
+                    "myData": 457.0,
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 367.0,
+                    "myData": 457.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 281.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "xVelocity"
+                    "myData": 281.0,
+                    "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "yVelocity"
+                    "myData": 457.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 281.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
-                    "myData": "dude",
+                    "myData": "trans",
                     "myName": "name"
                   }
                 ]
@@ -276,6 +109,7 @@
               "myTypes": []
             }
           ],
+          "myUnits": [],
           "myGoals": [],
           "myIdentifier": {
             "levelName": "level",
@@ -304,6 +138,10 @@
       {
         "myData": 6.0,
         "myName": "movementSpeed"
+      },
+      {
+        "myData": 0.0,
+        "myName": "teamColor"
       }
     ],
     "myTextualAttributes": [
@@ -374,6 +212,76 @@
           "myTextualAttributes": [
             {
               "myData": "drawdude",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/drawablegameelementstates/spritesheets/tree1.png",
+          "colorMaskTag": "",
+          "viewportSize": {
+            "myWidth": 106,
+            "myHeight": 161
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "teamColor"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "trans",
               "myName": "name"
             }
           ]

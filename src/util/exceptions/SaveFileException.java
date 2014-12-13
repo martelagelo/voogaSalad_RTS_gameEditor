@@ -14,7 +14,7 @@ public class SaveFileException extends SaveLoadException {
     private static final String message = "Unable to save file at location: %s";
 
     public SaveFileException (Exception exception, Object... args) {
-        super(message, exception);
+        super(message, exception, args);
     }
 
     public SaveFileException () {

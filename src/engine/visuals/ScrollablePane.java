@@ -130,6 +130,14 @@ public class ScrollablePane extends Pane {
                                                                     .secondaryDragOccurred(e,
                                                                                            mySelectionBox)));
         setOnMouseMoved(e -> mouseMoved(e));
+        hoverProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                setFocused(false);
+                myBackground.setXScrollSpeed(0);
+                myBackground.setYScrollSpeed(0);
+            }
+            else requestFocus();
+        });
     }
 
     private void callCorrectMouseButtonAction (MouseEvent event,

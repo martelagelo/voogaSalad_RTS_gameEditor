@@ -587,6 +587,27 @@
                     "myActionType": "BUTTON"
                   }
                 ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -611,27 +632,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-                    "myParameters": [
-                      "boundary",
-                      "me",
-                      "xVelocity",
-                      "EqualsAssignment",
-                      "-1",
-                      "MultiplicationAssignment",
-                      "me",
-                      "xVelocity",
-                      "FalseEvaluator",
-                      "Equals",
-                      "0",
-                      "my",
-                      "0"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
                 ]
               },
               "attributes": {
@@ -647,10 +647,6 @@
                   {
                     "myData": 100.0,
                     "myName": "yPosition"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "teamID"
                   },
                   {
                     "myData": 1,
@@ -671,16 +667,16 @@
                   {
                     "myData": 100.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "BLUE",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -1237,10 +1233,6 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": 0.0,
                     "myName": "yGoalPosition"
                   },
@@ -1251,16 +1243,16 @@
                   {
                     "myData": 0.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "BLUE",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -1817,10 +1809,6 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": 0.0,
                     "myName": "yGoalPosition"
                   },
@@ -1831,16 +1819,16 @@
                   {
                     "myData": 0.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "BLUE",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -2382,26 +2370,6 @@
                 10.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -2441,6 +2409,26 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
                 ]
               },
               "attributes": {
@@ -2466,10 +2454,6 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": 500,
                     "myName": "ySpawnOffset"
                   },
@@ -2484,16 +2468,16 @@
                   {
                     "myData": -10.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 16776960,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "YELLOW",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -3035,26 +3019,6 @@
                 10.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -3094,6 +3058,26 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
                 ]
               },
               "attributes": {
@@ -3119,10 +3103,6 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": -800,
                     "myName": "ySpawnOffset"
                   },
@@ -3137,16 +3117,16 @@
                   {
                     "myData": 850.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 16776960,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "YELLOW",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -3688,6 +3668,22 @@
                 40.0
               ],
               "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "FOCUSED": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3726,22 +3722,6 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
                 ]
               },
               "attributes": {
@@ -3759,10 +3739,6 @@
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 2,
-                    "myName": "teamID"
-                  },
-                  {
                     "myData": 700.0,
                     "myName": "yGoalPosition"
                   },
@@ -3777,16 +3753,16 @@
                   {
                     "myData": 700.0,
                     "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 32768,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "GREEN",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -4328,29 +4304,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "me",
-                      "movementSpeed",
-                      "GreaterThan",
-                      "8",
-                      "me",
-                      "movementSpeed",
-                      "EqualsAssignment",
-                      "8"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -4494,6 +4447,29 @@
                     ],
                     "myActionType": "COLLISION"
                   }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "8"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
                 ]
               },
               "attributes": {
@@ -4509,10 +4485,6 @@
                   {
                     "myData": 350.0,
                     "myName": "yPosition"
-                  },
-                  {
-                    "myData": 2,
-                    "myName": "teamID"
                   },
                   {
                     "myData": 4,
@@ -4537,16 +4509,16 @@
                   {
                     "myData": 2,
                     "myName": "yVelocity"
+                  },
+                  {
+                    "myData": 16711680,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "RED",
-                    "myName": "teamColor"
                   }
                 ]
               },
@@ -4637,10 +4609,6 @@
       },
       {
         "myData": 1,
-        "myName": "teamID"
-      },
-      {
-        "myData": 1,
         "myName": "isSelected"
       },
       {
@@ -4658,16 +4626,16 @@
       {
         "myData": 100.0,
         "myName": "yTempGoalPosition"
+      },
+      {
+        "myData": 255,
+        "myName": "teamColor"
       }
     ],
     "myTextualAttributes": [
       {
         "myData": "STANDING",
         "myName": "currentAction"
-      },
-      {
-        "myData": "BLUE",
-        "myName": "teamColor"
       },
       {
         "myData": "goalMarker",
@@ -5241,6 +5209,27 @@
               "myActionType": "BUTTON"
             }
           ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+              "myParameters": [
+                "boundary",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-1",
+                "MultiplicationAssignment",
+                "me",
+                "xVelocity",
+                "FalseEvaluator",
+                "Equals",
+                "0",
+                "my",
+                "0"
+              ],
+              "myActionType": "COLLISION"
+            }
+          ],
           "INTERNAL": [
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -5265,27 +5254,6 @@
               ],
               "myActionType": "INTERNAL"
             }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-              "myParameters": [
-                "boundary",
-                "me",
-                "xVelocity",
-                "EqualsAssignment",
-                "-1",
-                "MultiplicationAssignment",
-                "me",
-                "xVelocity",
-                "FalseEvaluator",
-                "Equals",
-                "0",
-                "my",
-                "0"
-              ],
-              "myActionType": "COLLISION"
-            }
           ]
         },
         "attributes": {
@@ -5301,10 +5269,6 @@
             {
               "myData": 100.0,
               "myName": "yPosition"
-            },
-            {
-              "myData": 1,
-              "myName": "teamID"
             },
             {
               "myData": 1,
@@ -5325,16 +5289,16 @@
             {
               "myData": 100.0,
               "myName": "yTempGoalPosition"
+            },
+            {
+              "myData": 255,
+              "myName": "teamColor"
             }
           ],
           "myTextualAttributes": [
             {
               "myData": "STANDING",
               "myName": "currentAction"
-            },
-            {
-              "myData": "BLUE",
-              "myName": "teamColor"
             }
           ]
         },
@@ -5887,8 +5851,8 @@
               "myName": "yPosition"
             },
             {
-              "myData": 0,
-              "myName": "teamID"
+              "myData": 255,
+              "myName": "teamColor"
             }
           ],
           "myTextualAttributes": [
@@ -5899,10 +5863,6 @@
             {
               "myData": "STANDING",
               "myName": "currentAction"
-            },
-            {
-              "myData": "BLUE",
-              "myName": "teamColor"
             }
           ]
         },
