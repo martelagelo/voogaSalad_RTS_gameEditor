@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -144,7 +147,7 @@ public class GameElementWizard extends Wizard {
 
     @Override
     public void updateData () {
-        setWizardType(WizardType.DRAWABLE_GAME_ELEMENT);
+        setWizardType(WizardType.GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());

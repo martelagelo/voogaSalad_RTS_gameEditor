@@ -1,6 +1,7 @@
 package engine.visuals.elementVisuals.animations;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,6 +62,10 @@ public class AnimatorState implements JSONable, Serializable {
         List<AnimationSequence> matchingAnimationSequences = animationSequences.stream()
                 .filter(o -> o.getTags().equals(tags)).collect(Collectors.toList());
         return (matchingAnimationSequences.size() != 0) ? matchingAnimationSequences.get(0) :  new NullAnimationSequence();
+    }
+    
+    public Set<AnimationSequence> getAllAnimationSequences() {
+        return Collections.unmodifiableSet(animationSequences);
     }
 
     public boolean containsAnimationSequence (AnimationSequence seq) {

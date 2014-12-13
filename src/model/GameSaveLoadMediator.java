@@ -2,15 +2,14 @@ package model;
 
 import java.io.File;
 import java.util.Set;
-
 import javafx.scene.image.Image;
+import model.data.WizardData;
+import model.data.WizardDataType;
 import model.sprite.SpriteImageGenerator;
 import model.state.GameState;
 import util.JSONable;
 import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**

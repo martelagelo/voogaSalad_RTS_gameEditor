@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Observable;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javafx.scene.image.ImageView;
+import model.data.WizardData;
+import model.data.WizardDataType;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.ElementInUseException;
@@ -30,8 +31,6 @@ import util.exceptions.SaveLoadException;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -161,7 +160,6 @@ public class MainModel extends Observable {
     public void setLevel (LevelIdentifier levelID, LevelState levelState)
                                                                          throws CampaignNotFoundException,
                                                                          LevelNotFoundException {
-        System.out.println("levelID: " + levelID);
         int levelIndex = getCampaign(levelID.campaignName).getLevels().indexOf(getLevel(levelID));
         getCampaign(levelID.campaignName).getLevels().set(levelIndex, levelState);
     }
@@ -298,28 +296,14 @@ public class MainModel extends Observable {
 
     public void removeDrawableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
-            throw new ElementInUseException(elementName);
-        Optional<DrawableGameElementState> option =
-                getGameUniverse().getDrawableGameElementStates().stream()
-                        .filter( (state) -> {
-                            return state.getName().equals(elementName);
-                        }).findFirst();
-        if (option.isPresent()) {
-            getGameUniverse().removeDrawableGameElementState(option.get());
-        }
+            throw new ElementInUseException(elementName);        
+        getGameUniverse().removeDrawableGameElementState(elementName);
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);
-        Optional<SelectableGameElementState> option =
-                getGameUniverse().getSelectableGameElementStates()
-                        .stream().filter( (state) -> {
-                            return state.getName().equals(elementName);
-                        }).findFirst();
-        if (option.isPresent()) {
-            getGameUniverse().removeSelectableGameElementState(option.get());
-        }
+        getGameUniverse().removeSelectableGameElementState(elementName);
     }
 
     private boolean elementIsInUse (String elementName) {

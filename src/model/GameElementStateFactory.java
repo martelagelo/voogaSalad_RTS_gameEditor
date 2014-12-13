@@ -1,13 +1,13 @@
 package model;
 
 import java.util.function.BiConsumer;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
-import view.editor.wizards.WizardType;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;

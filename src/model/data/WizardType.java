@@ -1,4 +1,4 @@
-package view.editor.wizards;
+package model.data;
 
 /**
  * These are all of the potential types of input that can be given by a Wizard. They represent both
@@ -13,7 +13,7 @@ public enum WizardType {
     STRING_ATTRIBUTE,
     BOUNDS,
     CAMPAIGN,
-    DRAWABLE_GAME_ELEMENT,
+    GAME_ELEMENT,
     LEVEL,
     NUMBER_ATTRIBUTE,
     POSITION,

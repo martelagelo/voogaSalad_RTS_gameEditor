@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+import model.data.WizardData;
+import model.data.WizardDataType;
 import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

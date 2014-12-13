@@ -1,4 +1,4 @@
-package view.editor.wizards;
+package model.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;

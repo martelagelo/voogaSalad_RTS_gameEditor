@@ -1,6 +1,7 @@
 package view.editor.wizards;
 
 import java.util.List;
+import model.data.WizardData;
 import javafx.fxml.FXML;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.RadioButton;

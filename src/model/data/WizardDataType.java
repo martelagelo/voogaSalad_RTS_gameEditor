@@ -1,4 +1,4 @@
-package view.editor.wizards;
+package model.data;
 
 /**
  * These are all of the potential types of input that can be given by a Wizard. They represent both

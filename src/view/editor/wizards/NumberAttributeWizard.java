@@ -2,6 +2,7 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
+import model.data.WizardType;
 import model.state.gameelement.StateTags;
 
 
