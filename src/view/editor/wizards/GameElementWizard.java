@@ -327,7 +327,7 @@ public class GameElementWizard extends Wizard {
     private BooleanSupplier isAnimationLaunchValid () {
         return () -> {
             if (imageView != null) {
-                List<String> imageValues = new ArrayList<>();
+                imageValues.clear();
                 imageValues.add(imagePath);
                 imageValues.add(Double.toString(frameWidth.getValue()));
                 imageValues.add(Double.toString(frameHeight.getValue()));

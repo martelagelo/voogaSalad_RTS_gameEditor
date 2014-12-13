@@ -50,7 +50,9 @@ public class CRUDContainer implements GUIController {
         myWizardDatas = new ArrayList<>();
         valid = () -> true;
         add.setOnAction(e -> {
-            if (valid.getAsBoolean()) launchNestedWizard();
+            if (valid.getAsBoolean()) {
+                launchNestedWizard();
+            }
         });
     }
 
