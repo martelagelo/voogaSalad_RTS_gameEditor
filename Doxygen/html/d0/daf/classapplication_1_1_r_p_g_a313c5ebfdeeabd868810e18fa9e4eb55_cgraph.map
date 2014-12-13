@@ -1,0 +1,9 @@
+<map id="application.RPG.createSpawnPoint" name="application.RPG.createSpawnPoint">
+<area shape="rect" id="node2" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9c933a8457618e7e8e5f257ee2211c07" title="model.state.gameelement.\lGameElementState.addAction" alt="" coords="269,5,486,46"/>
+<area shape="rect" id="node4" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#afca6d910331234d0adddb94abf76d757" title="model.state.gameelement.\lGameElementState.addType" alt="" coords="275,70,480,111"/>
+<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#ab3aad60d0ba0fc214f02016621abc9a6" title="util.SaveLoadUtility.load\lResource" alt="" coords="291,135,464,177"/>
+<area shape="rect" id="node6" href="$dd/ded/classmodel_1_1state_1_1gameelement_1_1_drawable_game_element_state.html#af28ea3dfb05b4cc9b26e0d8f827ded3d" title="model.state.gameelement.\lDrawableGameElementState.set\lBounds" alt="" coords="261,200,493,256"/>
+<area shape="rect" id="node7" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="263,280,491,336"/>
+<area shape="rect" id="node3" href="$d5/d7f/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_wrapper.html#aeb7b2a7580e1ba5d6e57a13cc00e9bd5" title="engine.gameRepresentation.evaluatables.actions.\lActionWrapper.getActionType" alt="" coords="541,5,883,46"/>
+<area shape="rect" id="node8" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="601,287,823,329"/>
+</map>

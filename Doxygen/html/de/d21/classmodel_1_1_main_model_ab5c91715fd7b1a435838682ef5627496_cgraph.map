@@ -1,0 +1,4 @@
+<map id="model.MainModel.getDescribableState" name="model.MainModel.getDescribableState">
+<area shape="rect" id="node2" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="301,5,504,46"/>
+<area shape="rect" id="node3" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="289,70,517,111"/>
+</map>
