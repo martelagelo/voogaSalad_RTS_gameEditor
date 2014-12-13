@@ -48,7 +48,6 @@ public class DescribableInfoBoxController implements GUIController {
         descriptionTextArea.setText(description);
     }
 
-    // TODO: in CSS style such that looks different depending on editable or not
     private void setEditableToggle (TextInputControl textInputControl) {
         textInputControl.setEditable(false);
         textInputControl.setOnMouseClicked(e -> textInputControl.setEditable(true));
@@ -63,8 +62,6 @@ public class DescribableInfoBoxController implements GUIController {
 
     @Override
     public void initialize () {
-
-        // initIconFileChoosing();
         initLabelInputSwitching();
         try {
             submitButton.textProperty().bind(MultiLanguageUtility.getInstance()

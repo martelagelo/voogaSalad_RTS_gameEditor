@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Observable;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javafx.scene.image.ImageView;
+import model.data.WizardData;
+import model.data.WizardDataType;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.ElementInUseException;
@@ -30,8 +31,6 @@ import util.exceptions.SaveLoadException;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
 import view.splash.SplashScreen;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
@@ -47,15 +46,14 @@ public class MainModel extends Observable {
     private GameState myGameState;
     private String myEditorChosenSelectableElement;
     private String myEditorChosenDrawableElement;
+    private String myEditorChosenColor;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
-    private ModifiedContainer myModifiedContainer;
 
     public MainModel () throws SaveLoadException {
         clearEditorChosen();
         mySaveLoadMediator = new GameSaveLoadMediator();
         mySpriteImageGenerator = new SpriteImageGenerator();
-        myModifiedContainer = new ModifiedContainer();
     }
 
     public void newGame (String gameName) {
@@ -171,6 +169,14 @@ public class MainModel extends Observable {
         return myGameState.getCampaign(campaignName);
     }
 
+    public void setEditorChosenColor(String color) {
+        myEditorChosenColor = color;
+    }
+    
+    public long getEditorChosenColor() {
+        return Long.parseLong(myEditorChosenColor.substring(2, myEditorChosenColor.length() - 2), 16);
+    }
+    
     public void setEditorChosenDrawable (String elementName) {
         clearEditorChosen();
         myEditorChosenDrawableElement = elementName;
@@ -213,12 +219,17 @@ public class MainModel extends Observable {
      * @param levelName
      * @throws LevelExistsException
      */
-    public void createLevel (String levelName, String campaignName, Number width, Number height)
-                                                                                                throws LevelExistsException,
-                                                                                                CampaignNotFoundException,
-                                                                                                Exception {
+    public void createLevel (String levelName,
+                             String campaignName,
+                             Number width,
+                             Number height,
+                             String backgroundPath)
+                                                   throws LevelExistsException,
+                                                   CampaignNotFoundException, Exception {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim(), campaignName.trim());
+        newLevelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
+                                                     backgroundPath);
         if (width.doubleValue() > 0 && height.doubleValue() > 0) {
             newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), width);
             newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(),
@@ -262,7 +273,8 @@ public class MainModel extends Observable {
             updateObservers();
         }
         catch (SaveLoadException e) {
-            DialogBoxUtility.createMessageDialog(e.toString());
+            // TODO remove
+            e.printStackTrace();
         }
     }
 
@@ -293,28 +305,14 @@ public class MainModel extends Observable {
 
     public void removeDrawableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
-            throw new ElementInUseException(elementName);
-        Optional<DrawableGameElementState> option =
-                getGameUniverse().getDrawableGameElementStates().stream()
-                        .filter( (state) -> {
-                            return state.getName().equals(elementName);
-                        }).findFirst();
-        if (option.isPresent()) {
-            getGameUniverse().removeDrawableGameElementState(option.get());
-        }
+            throw new ElementInUseException(elementName);        
+        getGameUniverse().removeDrawableGameElementState(elementName);
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);
-        Optional<SelectableGameElementState> option =
-                getGameUniverse().getSelectableGameElementStates()
-                        .stream().filter( (state) -> {
-                            return state.getName().equals(elementName);
-                        }).findFirst();
-        if (option.isPresent()) {
-            getGameUniverse().removeSelectableGameElementState(option.get());
-        }
+        getGameUniverse().removeSelectableGameElementState(elementName);
     }
 
     private boolean elementIsInUse (String elementName) {
@@ -335,14 +333,12 @@ public class MainModel extends Observable {
     public void createGoal (LevelState levelState, WizardData data) {
         GameElementState goal = GameElementStateFactory.createGoal(data);
         levelState.addGoal(goal);
-        myModifiedContainer.getRecentlyAddedGoals().add(goal);
         updateObservers();
     }
 
     public void removeGoal (LevelState levelState, int index) {
         GameElementState goal = levelState.getGoals().get(index);
         levelState.getGoals().remove(goal);
-        myModifiedContainer.getRecentlyDeletedGoals().add(goal);
         updateObservers();
     }
 
@@ -356,7 +352,6 @@ public class MainModel extends Observable {
                     getGameUniverse().getSelectableGameElementState(elementName);
             unit.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
             unit.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
-            myModifiedContainer.getRecentlyAddedUnits().add(unit);
             levelState.addUnit(unit);
         }
         else {
@@ -377,7 +372,6 @@ public class MainModel extends Observable {
                         getGameUniverse().getDrawableGameElementState(terrainName);
                 terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), i);
                 terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), j);
-                myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
                 levelState.addTerrain(terrain);
             }
         }
@@ -393,7 +387,6 @@ public class MainModel extends Observable {
                     getGameUniverse().getDrawableGameElementState(elementName);
             terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
             terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
-            myModifiedContainer.getRecentlyAddedTerrain().add(terrain);
             levelState.addTerrain(terrain);
         }
         else {
@@ -423,10 +416,6 @@ public class MainModel extends Observable {
      */
     public GameUniverse getGameUniverse () {
         return myGameState.getGameUniverse();
-    }
-
-    public ModifiedContainer getModifiedContainer () {
-        return myModifiedContainer;
     }
 
     /**

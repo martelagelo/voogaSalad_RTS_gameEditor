@@ -47,7 +47,6 @@ public class SplashScreen extends GUIScreen {
     private static final String DUVALL_PATH = "resources/duvall.txt";
     public static final String EXISTING_GAMES =
             "src/resources/properties/view/existingGames.json";
-    // TODO make longer to scroll, 1 for now for the sake of testing
     private static final Integer LOAD_DURATION = 1;
 
     @FXML

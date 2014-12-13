@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+
+<VBox fx:id="root" fx:controller="view.editor.wizards.CRUDContainer"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<Button fx:id="add" defaultButton="true">
+		<maxWidth>
+			<Double fx:constant="MAX_VALUE" />
+		</maxWidth>
+	</Button>
+	<VBox fx:id="existing" />
+</VBox>

@@ -1,17 +1,12 @@
 package engine.gameRepresentation.renderedRepresentation;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-
 import javafx.scene.Group;
-import javafx.scene.Node;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
 import engine.computers.pathingComputers.MapGrid;
-import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
@@ -142,6 +137,7 @@ public class Level {
      * @param element the element to be removed
      */
     public void removeElement (DrawableGameElement element) {
+        myState.removeElement(element.getState());
         myUnits.remove(element);
         myTerrain.remove(element);
         myUnitsGroup.getChildren().remove(element.getNode());
@@ -190,6 +186,7 @@ public class Level {
            goal.update();
             // iterate through the goals
             // evaluating all of these goals will set the internal values of "won" or "lost"
+           //TODO fix these hard strings
             if (goal.getNumericalAttribute("Won").doubleValue() == 1.0) won = 1;
             if (goal.getNumericalAttribute("Lost").doubleValue() == 1.0) lost = 1;
         }

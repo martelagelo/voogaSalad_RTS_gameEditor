@@ -5,7 +5,8 @@ import engine.gameRepresentation.evaluatables.ElementPair;
 
 
 /**
- * A parameter that holds and returns an action
+ * A parameter that holds and returns an action. This was created after the action wrapper was
+ * created in order to allow actions to call other actions.
  * 
  * @author Zach
  *
@@ -14,8 +15,8 @@ public class ActionParameter extends Parameter<ActionRepresentation> {
 
     private ActionRepresentation myAction;
 
-    public ActionParameter (String id, ActionRepresentation action) {
-        super(ActionRepresentation.class, id);
+    public ActionParameter (ActionRepresentation action) {
+        super(ActionRepresentation.class);
         myAction = action;
     }
 

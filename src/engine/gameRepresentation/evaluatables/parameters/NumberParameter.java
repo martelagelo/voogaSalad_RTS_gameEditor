@@ -18,8 +18,8 @@ public class NumberParameter extends Parameter<Number> {
      *
      * @param value
      */
-    public NumberParameter (String id, Number value) {
-        super(Number.class, id);
+    public NumberParameter (Number value) {
+        super(Number.class);
         myValue = value;
     }
 

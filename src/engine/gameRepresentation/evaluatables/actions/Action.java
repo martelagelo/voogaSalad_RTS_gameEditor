@@ -2,22 +2,27 @@ package engine.gameRepresentation.evaluatables.actions;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.FalseEvaluator;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
+import engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
+import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
 import engine.users.Participant;
 
 
 /**
  * The wrapper for an action class. Actions are a layer of abstraction that was added on top of
- * evaluators in order to make more strict type casting of parameters with evaluators. This allows
+ * evaluators in order to make more strict type casting of parameters with evaluators. The action
+ * hierarchy arose from a time constraint on evaluatable parsing from strings. Essentially, actions
+ * represent commands with inputable commands for functionality. @see ActionOptions This allows
  * for specifying complex actions using only string pieces as opposed to necessitating the user to
  * type in long VScript strings for actions.
  * 
@@ -37,11 +42,10 @@ public abstract class Action extends Evaluatable<Boolean> {
      * @param args any arguments that dictate the makeup of the Action. These are specified through
      *        the ActionTypes.java file
      */
-    public Action (String id,
-                   EvaluatorFactory factory,
+    public Action (EvaluatorFactory factory,
                    GameElementManager elementManager, ParticipantManager participantManager,
                    String[] args) {
-        super(Boolean.class, id);
+        super(Boolean.class);
         try {
             myAction = initializeAction(args, factory, elementManager, participantManager);
         }
@@ -105,6 +109,43 @@ public abstract class Action extends Evaluatable<Boolean> {
                                                                 ParticipantManager manager) {
         return (participantIdentifier.equals(MY_PARTICIPANT) ? Arrays.asList(manager.getUser())
                                                             : manager.getAI());
+    }
+
+    // ----------------------------------------------------------------------------------------
+    // Below are methods and variables used to perform common evaluatable creations in actions
+    // Used to keep action code as DRY as possible. Although this is a lot of methods for one
+    // class to have, the decision to put all these methods in one class allowed for a much
+    // more succinct creation of actions in all other action children as the evaluatable
+    // hierarchy was originally designed to be read from string input and translated into
+    // a class tree using a parser.
+    // ----------------------------------------------------------------------------------------
+    protected final static GameElementParameter ACTOR =
+            new GameElementParameter(new ActorObjectIdentifier());
+    protected final static GameElementParameter ACTEE =
+            new GameElementParameter(new ActeeObjectIdentifier());
+
+    /**
+     * Execute a given action if a timer has expired
+     * 
+     * @param element the element containing the timer
+     * @param timerName the name of the timer
+     * @param timerReloadTime the amount of time until the timer can execute again
+     * @param elements a grouping of important elements for the action to execute on
+     * @param action the action to execute
+     * @return a boolean indicating if he action was executed
+     */
+    protected boolean executeActionIfTimerExpired (GameElement element,
+                                                   String timerName,
+                                                   long timerReloadTime,
+                                                   ElementPair elements,
+                                                   Consumer<ElementPair> action) {
+        if (element.getTimer(timerName) <= 0) {
+            element.setTimer(timerName, timerReloadTime);
+            action.accept(elements);
+            return true;
+        }
+        return false;
+
     }
 
 }

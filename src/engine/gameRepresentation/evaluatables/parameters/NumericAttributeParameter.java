@@ -16,10 +16,10 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
     /**
      * @see AttriubteParameter
      */
-    public NumericAttributeParameter (String id, String attributeTag,
+    public NumericAttributeParameter (String attributeTag,
                                       GameElementManager elementManager,
                                       ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(Number.class, id, attributeTag, elementManager,
+        super(Number.class, attributeTag, elementManager,
               objectOfInterestIdentifier);
     }
 
@@ -50,7 +50,7 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
         elements.stream().forEach(
                                   element -> element
                                           .setNumericalAttribute(
-                                                               attributeTag, value));
+                                                                 attributeTag, value));
         return true;
     }
 

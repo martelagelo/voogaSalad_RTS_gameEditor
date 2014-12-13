@@ -13,9 +13,9 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
  */
 public class Collision<A, B> extends Evaluator<A, B, Boolean> {
 
-    public Collision (String id, Evaluatable<A> parameter1,
-                               Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "collidesWith", parameter1, parameter2);
+    public Collision (Evaluatable<A> parameter1,
+                      Evaluatable<B> parameter2) {
+        super(Boolean.class, "collidesWith", parameter1, parameter2);
     }
 
     @Override

@@ -47,9 +47,9 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      *        a string representation of the parameter on the right side of
      *        the evaluator
      */
-    public Evaluator (Class<T> type, String id, String evaluatorRepresentation,
+    public Evaluator (Class<T> type, String evaluatorRepresentation,
                       Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
-        super(type, id);
+        super(type);
         myEvaluatorRepresentation = evaluatorRepresentation;
         myParameter1 = parameter1;
         myParameter2 = parameter2;
@@ -132,7 +132,7 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * methods with given casting. This method is messy but is the only way to
      * work around generic erasure and compile-time typing by java. This method, although messy,
      * allows for a powerful design pattern to work for the rest of the code and was included in
-     * order to take a hit in terms of ugly code to allow other code to allow other code to be
+     * order to take a hit in terms of ugly code to allow other code other code in the program to be
      * cleaner.
      * 
      * @param parameter1Value

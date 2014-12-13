@@ -6,18 +6,16 @@ import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
 
 /**
- * Set the focused element for the actor to the actee
+ * Tell the actor element to focus on the actee. Returns true if selected.
  * 
  * @author Zach
  *
  */
 public class SetFocused<A, B> extends Evaluator<A, B, Boolean> {
 
-    public SetFocused (
-                       String id,
-                       Evaluatable<A> parameter1,
+    public SetFocused (Evaluatable<A> parameter1,
                        Evaluatable<B> parameter2) {
-        super(Boolean.TYPE, id, "setFocused", parameter1, parameter2);
+        super(Boolean.TYPE, "setFocused", parameter1, parameter2);
     }
 
     @Override

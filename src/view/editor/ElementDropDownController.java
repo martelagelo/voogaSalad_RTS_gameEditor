@@ -14,7 +14,6 @@ import javafx.scene.control.TitledPane;
 import javafx.util.Callback;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
-import view.editor.wizards.WizardData;
 import view.gui.GUIController;
 
 
@@ -28,14 +27,11 @@ public class ElementDropDownController implements GUIController {
 
     private final static String DELETE_SELECTED_KEY = "DeleteSelected";
     private final static String CREATE_NEW_KEY = "CreateNew";
-    private final static String ADD_TO_LEVEL_KEY = "AddToLevel";
 
     @FXML
     private Button newElementButton;
     @FXML
     private Button deleteElementButton;
-    @FXML
-    private Button addToLevelButton;
     @FXML
     private ListView<String> elementListView;
     @FXML
@@ -44,15 +40,19 @@ public class ElementDropDownController implements GUIController {
     private HashMap<String, Node> myElementsMap;
     private Consumer<String> myDeletionConsumer = (String element) -> {
     };
-    private Consumer<String> myAddToLevelConsumer = (String element) -> {
+    private Consumer<String> mySelectionChangedConsumer = (String element) -> {
     };
-    private Consumer<String> mySelectionChangedConsumer = (String element) -> {  
+    private Consumer<String> myEditConsumer = (String element) -> {
     };
 
-    public void setOnSelectionChanged(Consumer<String> selectionChangedConsumer) {
+    public void setOnSelectionChanged (Consumer<String> selectionChangedConsumer) {
         mySelectionChangedConsumer = selectionChangedConsumer;
     }
-    
+
+    public void setEditConsumer (Consumer<String> editConsumer) {
+        myEditConsumer = editConsumer;
+    }
+
     public void addElement (String element, Node image) {
         if (!elementListView.getItems().contains(element)) {
             elementListView.getItems().add(element);
@@ -60,16 +60,12 @@ public class ElementDropDownController implements GUIController {
         }
     }
 
-    public void setButtonAction (Consumer<Consumer<WizardData>> consumer) {
+    public void setButtonAction (Consumer<String> consumer) {
         newElementButton.setOnAction(e -> consumer.accept(null));
     }
 
     public void setDeleteConsumer (Consumer<String> deleteConsumer) {
         myDeletionConsumer = deleteConsumer;
-    }
-
-    public void setAddToLevelConsumer (Consumer<String> levelConsumer) {
-        myAddToLevelConsumer = levelConsumer;
     }
 
     public void bindGameElement (ObjectProperty<String> elementName) {
@@ -89,22 +85,12 @@ public class ElementDropDownController implements GUIController {
     }
 
     private void initDeleteElementButton () {
-        deleteElementButton.setOnAction(event -> {
-            String selected = elementListView.getSelectionModel().getSelectedItem();
-            if (selected != null) {
-                elementListView.getItems().remove(selected);
+        deleteElementButton.setOnAction(event -> {           
+            if (elementListView.getSelectionModel().selectedItemProperty().isNotNull().get()) {
+                String selected = elementListView.getSelectionModel().getSelectedItem();
+                myDeletionConsumer.accept(selected);                
                 myElementsMap.remove(selected);
-                myDeletionConsumer.accept(selected);
-            }
-        });
-    }
-
-    private void initAddToLevelButton () {
-        addToLevelButton.setOnAction(event -> {
-            String selected = elementListView.getSelectionModel().getSelectedItem();
-            if (selected != null) {
-                myAddToLevelConsumer.accept(selected);
-            }
+            }            
         });
     }
 
@@ -128,11 +114,19 @@ public class ElementDropDownController implements GUIController {
     public void initialize () {
         initListView();
         initDeleteElementButton();
-        initAddToLevelButton();
-        elementListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
-            mySelectionChangedConsumer.accept(newValue);
+        elementListView.getSelectionModel().selectedItemProperty()
+                .addListener( (observable, oldValue, newValue) -> {
+                    mySelectionChangedConsumer.accept(newValue);
+                });
+        elementListView.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                if (elementListView.getSelectionModel().selectedItemProperty().isNotNull().get()) {
+                    myEditConsumer.accept(elementListView.getSelectionModel().getSelectedItem());
+                }
+            }
+            elementListView.requestFocus();
         });
-        elementListView.focusedProperty().addListener((observable, oldValue, newValue)->{
+        elementListView.focusedProperty().addListener( (observable, oldValue, newValue) -> {
             if (!newValue) {
                 elementListView.getSelectionModel().clearSelection();
             }
@@ -142,8 +136,6 @@ public class ElementDropDownController implements GUIController {
                     .getStringProperty(CREATE_NEW_KEY));
             deleteElementButton.textProperty().bind(MultiLanguageUtility.getInstance()
                     .getStringProperty(DELETE_SELECTED_KEY));
-            addToLevelButton.textProperty().bind(MultiLanguageUtility.getInstance()
-                    .getStringProperty(ADD_TO_LEVEL_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             e.printStackTrace();

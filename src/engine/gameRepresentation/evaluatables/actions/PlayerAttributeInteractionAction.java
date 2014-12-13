@@ -1,9 +1,9 @@
 package engine.gameRepresentation.evaluatables.actions;
 
-import java.util.Arrays;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
@@ -16,17 +16,18 @@ import engine.stateManaging.GameElementManager;
 /**
  * An action that interacts with a player's attribute with one of the current element
  * 
+ * @see ActionOptions.ATTRIBUTE_INTERACTION_ACTION
+ * 
  * @author Zach
  *
  */
 public class PlayerAttributeInteractionAction extends Action {
 
-    public PlayerAttributeInteractionAction (String id,
-                                             EvaluatorFactory factory,
+    public PlayerAttributeInteractionAction (EvaluatorFactory factory,
                                              GameElementManager elementManager,
                                              ParticipantManager participantManager,
                                              String[] args) {
-        super(id, factory, elementManager, participantManager, args);
+        super(factory, elementManager, participantManager, args);
     }
 
     @Override
@@ -37,17 +38,14 @@ public class PlayerAttributeInteractionAction extends Action {
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
         Evaluatable<?> playerAttr =
-                new ParticipantValueParameter("",
-                                              ((args[2].equals("my")) ? Arrays
-                                                      .asList(participantManager
-                                                              .getUser())
-                                                                     : participantManager.getAI()),
+                new ParticipantValueParameter(identifyParticipantsOfInterest(args[2],
+                                                                             participantManager),
                                               args[3]);
         Evaluatable<?> elementAttr =
-                new NumericAttributeParameter("", args[1], elementManager,
+                new NumericAttributeParameter(args[1], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> participantValueEvaluator =
-                factory.makeEvaluator(args[0], elementAttr,playerAttr);
+                factory.makeEvaluator(args[0], elementAttr, playerAttr);
         return participantValueEvaluator;
     }
 

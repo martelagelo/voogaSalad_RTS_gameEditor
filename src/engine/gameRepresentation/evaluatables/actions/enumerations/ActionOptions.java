@@ -15,16 +15,11 @@ import java.util.List;
 public enum ActionOptions {
     /**
      * Action types give a string representation of the prompt needed to create the action for the
-     * editor. # are used to indicate the location of each string input. Symbols are used to
-     * indicate which type of strings need to be input into the
-     * constructor at various locations.
-     *
-     * Symbol meanings are as follows
-     * EE_EVAL -> String class name of an evaluator that operates on 2 game elements.
-     * NN_EVAL -> String class name of an evaluator that operates on 2 numbers.
-     * ATTR -> a string corresponding to an attribute name.
-     * STRING -> any string.
-     * NUMBER -> any numeric string.
+     * editor. # are used to indicate the location of each string input. Additional enumerations of
+     * input possibilities are given through the ActionParameters enumeration.
+     * 
+     * The format for one of these enumerations is
+     * Human-readable action name, action class name, action prompt, list of required parameters
      * 
      */
     ACT_ON_OBJECTS_ACTION("Basic Action",
@@ -80,8 +75,10 @@ public enum ActionOptions {
     CHECK_CONDITION_CREATE_OBJECT_ACTION(
                                          "Check attribute create object",
                                          "CheckAttributeCreateObjectAction",
-                                         "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) " +
-                                         "from their # value with a cooldown timer named # with a value of # frames with specific attributes # set to be #",
+                                         "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) "
+                                                 +
+                                                 "from their # value with a cooldown timer named # with a value of # frames with specific attributes # set to be # AND" +
+                                                 " set my attribute # value to be #",
                                          ActionParameters.ATTR,
                                          ActionParameters.NN_EVAL,
                                          ActionParameters.NUMBER,
@@ -91,12 +88,15 @@ public enum ActionOptions {
                                          ActionParameters.STRING,
                                          ActionParameters.NUMBER,
                                          ActionParameters.STRING_LIST,
-                                         ActionParameters.ATTR_LIST),
+                                         ActionParameters.ATTR_LIST,
+                                         ActionParameters.ATTR,
+                                         ActionParameters.ATTR),
     INCREMENT_DECREMENT_ACTION(
                                "Decrement object's attribute and add it to mine",
                                "DecrementIncrementAttributeAction",
-                               "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to" +
-                               " my # with a cooldown timer named # with a value of # frames.",
+                               "If other element is of type #, subtract its # by my # attribute to a minimum of # and add that amount to"
+                                       +
+                                       " my # with a cooldown timer named # with a value of # frames.",
                                ActionParameters.STRING,
                                ActionParameters.ATTR,
                                ActionParameters.ATTR,
@@ -120,16 +120,48 @@ public enum ActionOptions {
                                ActionParameters.ATTR,
                                ActionParameters.NUMBER,
                                ActionParameters.STRING),
-    MOTHER_OF_ALL_ACTIONS("Mother of all Actions",
+    OBJECT_TYPE_CHECK_ACTION(
+                             "Object Type Action",
+                             "ObjectTypeCheckAction",
+                             "If the other object is of type #, "
+                                     +
+                                     "set # (me/your) # (attribute name) # (assignment evaluator) to/with # (number) # (assignment evaluator) (me/your) # (attr) AND "
+                                     +
+                                     "do # with both the objects AND "
+                                     +
+                                     " perform # # (my attribute name) on # (my/other) player's # attribute.",
+                             ActionParameters.STRING,
+                             ActionParameters.OBJECT_DESIGNATOR,
+                             ActionParameters.ATTR,
+                             ActionParameters.NN_EVAL,
+                             ActionParameters.NUMBER,
+                             ActionParameters.NN_EVAL,
+                             ActionParameters.OBJECT_DESIGNATOR,
+                             ActionParameters.ATTR,
+                             ActionParameters.EE_EVAL,
+                             ActionParameters.NN_EVAL,
+                             ActionParameters.ATTR,
+                             ActionParameters.PLAYER_TYPE,
+                             ActionParameters.ATTR),
+
+    MOTHER_OF_ALL_ACTIONS(
+                          "Mother of all Actions",
                           "MotherOfAllActions",
-                          "If #(my/other) participant's # (attribute name) # (evaluator) my # (attr) AND " +
-                          "If  # (me/your) # (attribute name) # (evaluator < > =) my # (attr), "+
-                          "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
-                          "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND " +
-                          "Do: # on both the interacting elements AND " +
-                          "Do: Set the timer # (timer name) to the value # (attribute) AND " +
-                          "Do: Perform # # attribute on # (my/other) participant's # (attribute)"+
-                          "On a timer named # with a value of # ticks.",
+                          "If #(my/other) participant's # (attribute name) # (evaluator) my # (attr) AND "
+                                  +
+                                  "If  # (me/your) # (attribute name) # (evaluator < > =) my # (attr), "
+                                  +
+                                  "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND "
+                                  +
+                                  "Do: # (me/your) #(attribute name) # (assignment evaluator) # (attr) AND "
+                                  +
+                                  "Do: # on both the interacting elements AND "
+                                  +
+                                  "Do: Set the timer # (timer name) to the value # (attribute) AND "
+                                  +
+                                  "Do: Perform # # attribute on # (my/other) participant's # (attribute)"
+                                  +
+                                  "On a timer named # with a value of # ticks.",
                           ActionParameters.PLAYER_TYPE,
                           ActionParameters.ATTR,
                           ActionParameters.NN_EVAL,
@@ -155,7 +187,7 @@ public enum ActionOptions {
                           ActionParameters.ATTR,
                           ActionParameters.STRING,
                           ActionParameters.ATTR
-                          );
+    );
 
     private String myClassName;
     private String myDisplayName;

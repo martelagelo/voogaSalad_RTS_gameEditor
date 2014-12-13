@@ -13,25 +13,19 @@ import engine.stateManaging.GameElementManager;
 
 /**
  * Perform a calculation on a attribute of an element
- * PERFORM_CALCULATION_ON_VALUE("Perform Attribute Calculation",
- * "PerformAttrCalculationAction",
- * "Perform # # on my # attribute",
- * ActionParameters.NN_EVAL,
- * ActionParameters.NUMBER,
- * ActionParameters.ATTR),
+ * 
+ * @see ActionOptions.PERFORM_CALCULATION_ON_VALUE
  * 
  * @author Zach
  *
  */
 public class PerformAttrCalculationAction extends Action {
 
-    public PerformAttrCalculationAction (String id,
-                                         EvaluatorFactory factory,
+    public PerformAttrCalculationAction (EvaluatorFactory factory,
                                          GameElementManager elementManager,
                                          ParticipantManager participantManager,
                                          String[] args) {
-        super(id, factory, elementManager, participantManager, args);
-        // TODO Auto-generated constructor stub
+        super(factory, elementManager, participantManager, args);
     }
 
     @Override
@@ -42,9 +36,9 @@ public class PerformAttrCalculationAction extends Action {
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
         Evaluatable<?> playerValue =
-                new NumericAttributeParameter("", args[2], elementManager,
+                new NumericAttributeParameter(args[2], elementManager,
                                               new ActorObjectIdentifier());
-        Evaluatable<?> number = new NumberParameter("", Double.valueOf(args[1]));
+        Evaluatable<?> number = new NumberParameter(Double.valueOf(args[1]));
 
         return factory.makeEvaluator(args[0], playerValue, number);
     }

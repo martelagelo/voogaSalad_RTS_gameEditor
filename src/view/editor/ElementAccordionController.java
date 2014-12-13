@@ -1,11 +1,14 @@
 package view.editor;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
+import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
+import engine.visuals.elementVisuals.animations.AnimationSequence;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,19 +16,17 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.exceptions.CampaignNotFoundException;
-import model.exceptions.LevelNotFoundException;
-import model.state.LevelIdentifier;
-import model.state.LevelState;
+import model.data.WizardData;
+import model.data.WizardDataFactory;
+import model.data.WizardDataType;
+import model.data.WizardType;
+import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
-import view.editor.wizards.DrawableGameElementWizard;
-import view.editor.wizards.Wizard;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
+import view.editor.wizards.GameElementWizard;
 import view.editor.wizards.WizardUtility;
 import view.gui.GUIContainer;
 import view.gui.GUIPanePath;
@@ -54,13 +55,6 @@ public class ElementAccordionController extends GUIContainer {
     @FXML
     private ElementDropDownController unitTitledPaneController;
 
-    private LevelState myLevel;
-
-    public void setLevel (LevelIdentifier levelID) throws LevelNotFoundException,
-                                                        CampaignNotFoundException {
-        myLevel = myMainModel.getLevel(levelID);
-    }
-
     @Override
     public void init () {
         elementAccordion.expandedPaneProperty().addListener( (property, oldPane, newPane) -> {
@@ -75,8 +69,8 @@ public class ElementAccordionController extends GUIContainer {
                 });
         });
         attachStringProperties();
-        terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard());
-        unitTitledPaneController.setButtonAction(openSelectableGameElementWizard());
+        terrainTitledPaneController.setButtonAction(openDrawableGameElementWizard(new WizardData()));
+        unitTitledPaneController.setButtonAction(openSelectableGameElementWizard(new WizardData()));
         terrainTitledPaneController.setDeleteConsumer( (String elementName) -> {
             try {
                 myMainModel.removeDrawableGameElement(elementName);
@@ -93,17 +87,27 @@ public class ElementAccordionController extends GUIContainer {
                 DialogBoxUtility.createMessageDialog(e.toString());
             }
         });
-        terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
-        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
-                .get(
-                     elementAccordion.getPanes().size() - 1));
+                .get(elementAccordion.getPanes().size() - 1));
         terrainTitledPaneController
-                .setOnSelectionChanged( (String s) -> editorChooseDrawableElement(s));
+                .setOnSelectionChanged(s -> editorChooseDrawableElement(s));
         unitTitledPaneController
-                .setOnSelectionChanged( (String s) -> editorChooseSelectableElement(s));
+                .setOnSelectionChanged(s -> editorChooseSelectableElement(s));
+        terrainTitledPaneController.setEditConsumer((value) -> {});
+        unitTitledPaneController.setEditConsumer((value) -> {
+            SelectableGameElementState sges = myMainModel.getGameUniverse().getSelectableGameElementState(value);            
+            openSelectableGameElementWizard(createWizardData(sges)).accept("");
+        });
+        terrainTitledPaneController.setEditConsumer((value) -> {
+            DrawableGameElementState sges = myMainModel.getGameUniverse().getDrawableGameElementState(value);
+            openDrawableGameElementWizard(createWizardData(sges)).accept("");
+        });
     }
 
+    private WizardData createWizardData(DrawableGameElementState state) {
+        return WizardDataFactory.createWizardData(state);
+    }
+    
     private void editorChooseDrawableElement (String selection) {
         if (selection != null && !selection.isEmpty()) {
             myMainModel.setEditorChosenDrawable(selection);
@@ -127,62 +131,8 @@ public class ElementAccordionController extends GUIContainer {
             // Should never happen
             DialogBoxUtility.createMessageDialog(e.toString());
         }
-    }
-
-    private Consumer<String> addTerrainToLevel () {
-        return (String elementName) -> {
-            if (myLevel != null) {
-                Wizard wiz =
-                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
-                                                                                            300));
-                Consumer<WizardData> cons =
-                        (data) -> {
-                            try {
-                                myMainModel
-                                        .addTerrainToLevel(myLevel,
-                                                           elementName,
-                                                           Double.parseDouble(data
-                                                                   .getValueByKey(WizardDataType.X_POSITION)),
-                                                           Double.parseDouble(data
-                                                                   .getValueByKey(WizardDataType.Y_POSITION)));
-                                wiz.closeStage();
-                            }
-                            catch (Exception e) {
-                                wiz.displayErrorMessage(e.getMessage());
-                            }
-                        };
-                wiz.setSubmit(cons);
-            }
-        };
-    }
-
-    private Consumer<String> addUnitToLevel () {
-        return (String elementName) -> {
-            if (myLevel != null) {
-                Wizard wiz =
-                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
-                                                                                            300));
-                Consumer<WizardData> cons =
-                        (data) -> {
-                            try {
-                                myMainModel
-                                        .addUnitToLevel(myLevel,
-                                                        elementName,
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.X_POSITION)),
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.Y_POSITION)));
-                                wiz.closeStage();
-                            }
-                            catch (Exception e) {
-                                wiz.displayErrorMessage(e.getMessage());
-                            }
-                        };
-                wiz.setSubmit(cons);
-            }
-        };
-    }
-
+    }    
+    
     private void updateList (ElementDropDownController dropDownController,
                              List<ImageElementPair> units) {
         units.forEach( (item) -> {
@@ -190,17 +140,16 @@ public class ElementAccordionController extends GUIContainer {
         });
     }
 
-    private Consumer<Consumer<WizardData>> openSelectableGameElementWizard () {
-        Consumer<Consumer<WizardData>> consumer =
-                (c) -> {
-                    DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard) WizardUtility
-                                    .loadWizard(
-                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+    private Consumer<String> openSelectableGameElementWizard (WizardData oldData) {
+        Consumer<String> consumer = (c) -> {
+                    GameElementWizard wiz =
+                            (GameElementWizard) WizardUtility
+                                    .loadWizard(GUIPanePath.GAME_ELEMENT_WIZARD,
                                                 new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
-
+                    System.out.println(c);
+                    if (!oldData.getType().equals(WizardType.UNSPECIFIED)) wiz.launchForEdit(oldData);
                     Consumer<WizardData> cons =
                             (data) -> {
                                 Optional<SelectableGameElementState> sameElementExistsOption =
@@ -213,7 +162,7 @@ public class ElementAccordionController extends GUIContainer {
                                                                 .equals(data.getValueByKey(WizardDataType.NAME)))
                                                 .findFirst();
                                 if (sameElementExistsOption.isPresent()) {
-                                    wiz.displayErrorMessage("A Selectable Game Element with this name already exists");
+                                    myMainModel.getGameUniverse().removeSelectableGameElementState(data.getValueByKey(WizardDataType.NAME));
                                 }
                                 else {
                                     myMainModel.createSelectableGameElementState(data);
@@ -225,18 +174,17 @@ public class ElementAccordionController extends GUIContainer {
         return consumer;
     }
 
-    private Consumer<Consumer<WizardData>> openDrawableGameElementWizard () {
-        Consumer<Consumer<WizardData>> consumer =
-                (c) -> {
-                    // TODO: make a drawable ges wizard
-                    DrawableGameElementWizard wiz =
-                            (DrawableGameElementWizard) WizardUtility
+    private Consumer<String> openDrawableGameElementWizard (WizardData oldData) {
+        Consumer<String> consumer = (c) -> {
+                    GameElementWizard wiz =
+                            (GameElementWizard) WizardUtility
                                     .loadWizard(
-                                                GUIPanePath.DRAWABLE_GAME_ELEMENT_WIZARD,
+                                                GUIPanePath.GAME_ELEMENT_WIZARD,
                                                 new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
-
+                    if (!oldData.getType().equals(WizardType.UNSPECIFIED)) wiz.launchForEdit(oldData);
+                    
                     Consumer<WizardData> cons =
                             (data) -> {
                                 Optional<DrawableGameElementState> sameElementExistsOption =
@@ -249,7 +197,7 @@ public class ElementAccordionController extends GUIContainer {
                                                                 .equals(data.getValueByKey(WizardDataType.NAME)))
                                                 .findFirst();
                                 if (sameElementExistsOption.isPresent()) {
-                                    wiz.displayErrorMessage("A Drawable Game Element with this name already exists");
+                                    myMainModel.getGameUniverse().removeDrawableGameElementState(data.getValueByKey(WizardDataType.NAME));
                                 }
                                 else {
                                     myMainModel.createDrawableGameElementState(data);
@@ -261,13 +209,13 @@ public class ElementAccordionController extends GUIContainer {
         return consumer;
     }
 
-    private void addNumberAttributes (DrawableGameElementWizard wiz) {
+    private void addNumberAttributes (GameElementWizard wiz) {
         List<String> numberAttrs = myMainModel.getGameUniverse().getNumericalAttributes().stream()
                 .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachNumberAttributes(numberAttrs);
     }
 
-    private void addStringAttributes (DrawableGameElementWizard wiz) {
+    private void addStringAttributes (GameElementWizard wiz) {
         List<String> stringAttrs = myMainModel.getGameUniverse().getStringAttributes().stream()
                 .map(atr -> atr.getName()).collect(Collectors.toList());
         wiz.attachStringAttributes(stringAttrs);
@@ -278,7 +226,6 @@ public class ElementAccordionController extends GUIContainer {
         List<ImageElementPair> selectableStates = myMainModel.getGameUniverse()
                 .getSelectableGameElementStates().stream().map( (element) -> {
                     try {
-                        // TODO GET IMAGES
                         return new ImageElementPair(null, element.getName());
                     }
                     catch (Exception e) {
@@ -289,7 +236,7 @@ public class ElementAccordionController extends GUIContainer {
                 myMainModel.getGameUniverse().getDrawableGameElementStates()
                         .stream().map( (element) -> {
                             try {
-                                // TODO GET IMAGES
+                                // TODO remove ImageElementPair
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {

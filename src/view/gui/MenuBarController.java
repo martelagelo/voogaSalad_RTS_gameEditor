@@ -2,6 +2,7 @@ package view.gui;
 
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import view.dialog.DialogBoxUtility;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Menu;
@@ -58,7 +59,7 @@ public abstract class MenuBarController extends GUIContainer {
             bindTextProperties();
         }
         catch (LanguageException e) {
-            // TODO
+            DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }
 

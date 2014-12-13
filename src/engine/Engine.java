@@ -7,6 +7,7 @@ import java.util.Observer;
 import javafx.scene.Group;
 import model.MainModel;
 import model.state.LevelState;
+import model.state.gameelement.StateTags;
 import org.json.JSONException;
 import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
@@ -35,10 +36,9 @@ import engine.visuals.VisualManager;
  */
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
-
-    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong("0000FF", 16);
     
-    private static final String DEFAULT_BACKGROUND_TILE = "resources/img/graphics/terrain/grass/GrassTile.jpg";
+    public static final String DEFAULT_PLAYER_COLOR_STRING = "0000ff";
+    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong(DEFAULT_PLAYER_COLOR_STRING, 16);
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
@@ -69,7 +69,7 @@ public class Engine extends Observable implements Observer {
  
         myUser = new HumanParticipant(DEFAULT_PLAYER_COLOR, "Username");
 
-        instantiateManagers();
+        instantiateManagers(levelState.attributes.getTextualAttribute(StateTags.BACKGROUND_PATH.getValue()));
     }
 
     public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,
@@ -92,7 +92,7 @@ public class Engine extends Observable implements Observer {
         myVisualizerFactory.setAnimationEnabled(b);
     }
 
-    private void instantiateManagers () {
+    private void instantiateManagers (String backgroundPath) {
         myElementManager = new GameElementManager(myElementFactory);
         // The game evaluatable factory must have its game element manager set after it is created
         myEvaluatableFactory.setGameElementManager(myElementManager);
@@ -102,9 +102,8 @@ public class Engine extends Observable implements Observer {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
         // Finally, the GameElementManager needs to have its next level set
         myElementManager.setLevel(nextLevel);
-        String backgroundURI = DEFAULT_BACKGROUND_TILE;
         myVisualManager =
-                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundURI);
+                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(), backgroundPath);
 
         myParticipantManager = new ParticipantManager(myUser, myElementManager);
 

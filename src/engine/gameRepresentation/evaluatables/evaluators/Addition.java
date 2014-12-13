@@ -4,8 +4,7 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
- * Perform addition on two numbers. Return a boolean indicating whether the
- * addition was successful
+ * Perform addition on two numbers but perform no assignment. Return the result of the addition.
  * 
  * @author Zach
  *
@@ -16,9 +15,9 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class Addition<A, B> extends Evaluator<A, B, Number> {
 
-    public Addition (String id, Evaluatable<A> parameter1,
-                                        Evaluatable<B> parameter2) {
-        super(Number.class, id, "+", parameter1, parameter2);
+    public Addition (Evaluatable<A> parameter1,
+                     Evaluatable<B> parameter2) {
+        super(Number.class, "+", parameter1, parameter2);
     }
 
     @Override
