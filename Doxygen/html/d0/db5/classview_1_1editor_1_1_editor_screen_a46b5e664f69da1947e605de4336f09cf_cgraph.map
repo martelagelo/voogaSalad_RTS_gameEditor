@@ -1,0 +1,22 @@
+<map id="view.editor.EditorScreen.modelUpdate" name="view.editor.EditorScreen.modelUpdate">
+<area shape="rect" id="node2" href="$d0/db5/classview_1_1editor_1_1_project_explorer_controller.html#a4cc908b5338e9cad4280abc1fba863ab" title="view.editor.ProjectExplorer\lController.getSelectedHierarchy" alt="" coords="273,167,498,209"/>
+<area shape="rect" id="node3" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a5f5fb5168dd6e42923a567640bbab58f" title="view.editor.EditorScreen.update\lInfoBox" alt="" coords="274,233,497,274"/>
+<area shape="rect" id="node16" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a3ef2d43c38446b381267d26326a0bd1f" title="view.editor.EditorScreen.update\lProjectExplorer" alt="" coords="274,319,497,361"/>
+<area shape="rect" id="node21" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#ab07b7b59082461f50ae59b5deb6630a3" title="view.editor.EditorScreen.update\lTabTexts" alt="" coords="274,385,497,426"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#ab5c91715fd7b1a435838682ef5627496" title="model.MainModel.getDescribable\lState" alt="" coords="568,37,803,78"/>
+<area shape="rect" id="node7" href="$d7/d60/classview_1_1editor_1_1_describable_info_box_controller.html#aa7fee9f90289c135a3f23f6e31a5f5af" title="view.editor.DescribableInfo\lBoxController.setText" alt="" coords="590,102,781,143"/>
+<area shape="rect" id="node8" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#aa574aa52876c496c08830912fb48752a" title="model.state.DescribableState.getName" alt="" coords="547,299,824,325"/>
+<area shape="rect" id="node9" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#a6174a0cfb0bbcb459409effa1a541df1" title="model.state.DescribableState.get\lDescription" alt="" coords="566,167,805,209"/>
+<area shape="rect" id="node10" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="567,233,804,274"/>
+<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="889,5,1092,46"/>
+<area shape="rect" id="node6" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="877,70,1105,111"/>
+<area shape="rect" id="node11" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="872,167,1109,209"/>
+<area shape="rect" id="node12" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="891,233,1090,274"/>
+<area shape="rect" id="node14" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="873,301,1109,342"/>
+<area shape="rect" id="node13" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="1157,224,1373,280"/>
+<area shape="rect" id="node15" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="1166,303,1365,345"/>
+<area shape="rect" id="node17" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="562,349,809,376"/>
+<area shape="rect" id="node18" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="584,401,787,442"/>
+<area shape="rect" id="node19" href="$d0/db5/classview_1_1editor_1_1_project_explorer_controller.html#a8de5f9043974e45cf8a0517663e9d249" title="view.editor.ProjectExplorer\lController.update" alt="" coords="591,466,779,507"/>
+<area shape="rect" id="node20" href="$d0/dc6/classview_1_1editor_1_1_project_explorer_tree_item.html#aa08b39b61b2d682609a4a8d06e0caa23" title="view.editor.ProjectExplorer\lTreeItem.setAction" alt="" coords="897,466,1085,507"/>
+</map>

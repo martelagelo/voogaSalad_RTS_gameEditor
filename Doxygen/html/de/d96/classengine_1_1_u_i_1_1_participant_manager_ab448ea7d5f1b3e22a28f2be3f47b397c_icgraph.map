@@ -1,0 +1,8 @@
+<map id="engine.UI.ParticipantManager.getUser" name="engine.UI.ParticipantManager.getUser">
+<area shape="rect" id="node2" href="$d4/d78/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_object_location_check_action.html#a81d6b285c7b9a6fe2eeab7563e984bb7" title="engine.gameRepresentation.evaluatables.actions.\lObjectLocationCheckAction.evaluate" alt="" coords="317,5,659,46"/>
+<area shape="rect" id="node3" href="$d5/dee/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action.html#a71ecd5fff5af935d618db86d47785e2e" title="engine.gameRepresentation.evaluatables.actions.\lAction.identifyParticipantsOfInterest" alt="" coords="317,70,659,111"/>
+<area shape="rect" id="node5" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a5bd2adc4f3bb17dd5ed51909689d8f91" title="engine.visuals.VisualManager.update" alt="" coords="359,139,617,165"/>
+<area shape="rect" id="node4" href="$d8/d98/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_mother_of_all_actions.html#a6e86f80b215f12de071eeaf784820c79" title="engine.gameRepresentation.evaluatables.actions.\lMotherOfAllActions.initializeAction" alt="" coords="707,66,1048,107"/>
+<area shape="rect" id="node6" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="774,131,981,173"/>
+<area shape="rect" id="node7" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="774,197,981,238"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="engine.visuals.elementVisuals.Visualizer.updateAnimator" name="engine.visuals.elementVisuals.Visualizer.updateAnimator">
+<area shape="rect" id="node2" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#a466845b3211a0266cb7435d18772b372" title="engine.visuals.elementVisuals.\lVisualizer.update" alt="" coords="272,5,491,46"/>
+<area shape="rect" id="node3" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a2d69796817cdb4f32ada0982e19df9bc" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.update" alt="" coords="539,5,861,46"/>
+<area shape="rect" id="node4" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="910,5,1117,46"/>
+</map>
