@@ -234,27 +234,27 @@
                     "myName": "isSelected"
                   },
                   {
-                    "myData": 175.0,
+                    "myData": 210.0,
                     "myName": "xGoalPosition"
                   },
                   {
-                    "myData": 367.0,
+                    "myData": 651.0,
                     "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 175.0,
+                    "myData": 210.0,
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 367.0,
+                    "myData": 651.0,
                     "myName": "yTempGoalPosition"
                   },
                   {
-                    "myData": 175.0,
+                    "myData": 210.0,
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 367.0,
+                    "myData": 651.0,
                     "myName": "yPosition"
                   },
                   {
@@ -269,6 +269,186 @@
                 "myTextualAttributes": [
                   {
                     "myData": "dude",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                100.0,
+                100.0,
+                100.0,
+                100.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 718.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 718.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 280.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 280.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 718.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 280.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "berserker",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/archer.png",
+                "colorMaskTag": "",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 11,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                100.0,
+                0.0,
+                100.0,
+                100.0,
+                0.0,
+                100.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 290.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 290.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 301.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 301.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 290.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 301.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "archer",
                     "myName": "name"
                   }
                 ]
@@ -470,6 +650,138 @@
           "myTextualAttributes": [
             {
               "myData": "dude",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 100
+          },
+          "numRows": 10,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "berserker",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/archer.png",
+          "colorMaskTag": "",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 100
+          },
+          "numRows": 11,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          100.0,
+          0.0,
+          100.0,
+          100.0,
+          0.0,
+          100.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "archer",
               "myName": "name"
             }
           ]

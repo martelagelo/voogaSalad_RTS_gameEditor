@@ -22,7 +22,7 @@ public class VisualizerFactory {
     SimpleBooleanProperty enabled;
 
     public VisualizerFactory (AnimatorFactory animatorFactory) {
-        enabled = new SimpleBooleanProperty(false);
+        enabled = new SimpleBooleanProperty(true);
         myAnimatorFactory = animatorFactory;
         myWidgetFactory = new AttributeDisplayerFactory();
     }
