@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,17 +12,12 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.exceptions.CampaignNotFoundException;
-import model.exceptions.LevelNotFoundException;
-import model.state.LevelIdentifier;
-import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.editor.wizards.GameElementWizard;
-import view.editor.wizards.Wizard;
 import view.editor.wizards.WizardData;
 import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardUtility;
@@ -53,13 +47,6 @@ public class ElementAccordionController extends GUIContainer {
     private ElementDropDownController terrainTitledPaneController;
     @FXML
     private ElementDropDownController unitTitledPaneController;
-
-    private LevelState myLevel;
-
-    public void setLevel (LevelIdentifier levelID) throws LevelNotFoundException,
-                                                        CampaignNotFoundException {
-        myLevel = myMainModel.getLevel(levelID);
-    }
 
     @Override
     public void init () {
@@ -93,8 +80,6 @@ public class ElementAccordionController extends GUIContainer {
                 DialogBoxUtility.createMessageDialog(e.toString());
             }
         });
-        terrainTitledPaneController.setAddToLevelConsumer(addTerrainToLevel());
-        unitTitledPaneController.setAddToLevelConsumer(addUnitToLevel());
         elementAccordion.setExpandedPane(elementAccordion.getPanes()
                 .get(
                      elementAccordion.getPanes().size() - 1));
@@ -127,62 +112,8 @@ public class ElementAccordionController extends GUIContainer {
             // Should never happen
             DialogBoxUtility.createMessageDialog(e.toString());
         }
-    }
-
-    private Consumer<String> addTerrainToLevel () {
-        return (String elementName) -> {
-            if (myLevel != null) {
-                Wizard wiz =
-                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
-                                                                                            300));
-                Consumer<WizardData> cons =
-                        (data) -> {
-                            try {
-                                myMainModel
-                                        .addTerrainToLevel(myLevel,
-                                                           elementName,
-                                                           Double.parseDouble(data
-                                                                   .getValueByKey(WizardDataType.X_POSITION)),
-                                                           Double.parseDouble(data
-                                                                   .getValueByKey(WizardDataType.Y_POSITION)));
-                                wiz.closeStage();
-                            }
-                            catch (Exception e) {
-                                wiz.displayErrorMessage(e.getMessage());
-                            }
-                        };
-                wiz.setSubmit(cons);
-            }
-        };
-    }
-
-    private Consumer<String> addUnitToLevel () {
-        return (String elementName) -> {
-            if (myLevel != null) {
-                Wizard wiz =
-                        WizardUtility.loadWizard(GUIPanePath.POSITION_WIZARD, new Dimension(300,
-                                                                                            300));
-                Consumer<WizardData> cons =
-                        (data) -> {
-                            try {
-                                myMainModel
-                                        .addUnitToLevel(myLevel,
-                                                        elementName,
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.X_POSITION)),
-                                                        Double.parseDouble(data
-                                                                .getValueByKey(WizardDataType.Y_POSITION)));
-                                wiz.closeStage();
-                            }
-                            catch (Exception e) {
-                                wiz.displayErrorMessage(e.getMessage());
-                            }
-                        };
-                wiz.setSubmit(cons);
-            }
-        };
-    }
-
+    }    
+    
     private void updateList (ElementDropDownController dropDownController,
                              List<ImageElementPair> units) {
         units.forEach( (item) -> {
@@ -228,7 +159,6 @@ public class ElementAccordionController extends GUIContainer {
     private Consumer<Consumer<WizardData>> openDrawableGameElementWizard () {
         Consumer<Consumer<WizardData>> consumer =
                 (c) -> {
-                    // TODO: make a drawable ges wizard
                     GameElementWizard wiz =
                             (GameElementWizard) WizardUtility
                                     .loadWizard(
@@ -278,7 +208,6 @@ public class ElementAccordionController extends GUIContainer {
         List<ImageElementPair> selectableStates = myMainModel.getGameUniverse()
                 .getSelectableGameElementStates().stream().map( (element) -> {
                     try {
-                        // TODO GET IMAGES
                         return new ImageElementPair(null, element.getName());
                     }
                     catch (Exception e) {
@@ -289,7 +218,7 @@ public class ElementAccordionController extends GUIContainer {
                 myMainModel.getGameUniverse().getDrawableGameElementStates()
                         .stream().map( (element) -> {
                             try {
-                                // TODO GET IMAGES
+                                // TODO remove ImageElementPair
                                 return new ImageElementPair(null, element.getName());
                             }
                             catch (Exception e) {

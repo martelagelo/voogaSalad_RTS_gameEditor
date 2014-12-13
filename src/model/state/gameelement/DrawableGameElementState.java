@@ -2,11 +2,8 @@ package model.state.gameelement;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.Node;
 import model.state.gameelement.traits.Boundable;
 import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
-import engine.visuals.Displayable;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
 /**
@@ -17,7 +14,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  *
  */
 public class DrawableGameElementState extends GameElementState implements
-		Boundable, Displayable {
+		Boundable {
 
 	/**
 	 * This is a list of wrappers that contain information about widgets that
@@ -102,12 +99,6 @@ public class DrawableGameElementState extends GameElementState implements
 	 */
 	public void setBounds(double[] bounds) {
 		myBounds = bounds;
-	}
-
-	@Override
-	public Node getNode() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**

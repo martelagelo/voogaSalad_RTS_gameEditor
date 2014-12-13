@@ -171,7 +171,6 @@ public class GameElementWizard extends Wizard {
         name.setText(oldValues.getValueByKey(WizardDataType.NAME));
         imagePath = oldValues.getValueByKey(WizardDataType.IMAGE);
         colorMaskPath = oldValues.getValueByKey(WizardDataType.COLOR_MASK);
-        // TODO: load the image related stuff
         try {
             if (!imagePath.isEmpty()) renderImage(new File(imagePath));
             if (!colorMaskPath.isEmpty()) addImageToView(new File(colorMaskPath));
@@ -196,14 +195,22 @@ public class GameElementWizard extends Wizard {
 
     private void launchBoundsWizard () {
         Wizard wiz = WizardUtility.loadWizard(GUIPanePath.BOUNDS_WIZARD, BOUNDS_WIZARD_SIZE);
-        if (!getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty()) {
-            wiz.launchForEdit(getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0));
-        }
+        if (boundsAlreadyExist()) wiz.launchForEdit(getBoundsFromWizardData());
+
         Consumer<WizardData> bc = (data) -> {
+            if (boundsAlreadyExist()) getWizardData().removeWizardData(getBoundsFromWizardData());
             addWizardData(data);
             wiz.closeStage();
         };
         wiz.setSubmit(bc);
+    }
+
+    private boolean boundsAlreadyExist () {
+        return !getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty();
+    }
+
+    private WizardData getBoundsFromWizardData () {
+        return getWizardData().getWizardDataByType(WizardType.BOUNDS).get(0);
     }
 
     /**

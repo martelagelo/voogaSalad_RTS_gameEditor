@@ -108,8 +108,7 @@ public class BoundsWizard extends Wizard {
     @Override
     public void launchForEdit (WizardData oldValues) {
         String bounds = oldValues.getValueByKey(WizardDataType.BOUND_VALUES);
-        String[] points = bounds.split(",");
-        // TODO: FIX THIS, this doesn't work and don't add any points
+        String[] points = bounds.split(",");       
         for (int i = 0; i < points.length; i += 2) {
             addXYPair(points[i], points[i + 1]);
         }

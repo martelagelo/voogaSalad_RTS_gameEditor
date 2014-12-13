@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
  * @author Zach, Stanley
  *
  */
-// TODO move this into a config file or equivalent, UPDATE COMMENTS
 public enum StateTags {
 
     BACKGROUND_PATH(StateType.STRING, "backgroundPath"),
