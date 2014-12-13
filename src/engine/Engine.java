@@ -67,7 +67,7 @@ public class Engine extends Observable implements Observer {
  
         myUser = new HumanParticipant("BLUE", "Username");
 
-        instantiateManagers(levelState.attributes.getTextualAttribute(StateTags.BACKGROUND_PATH.name()));
+        instantiateManagers(levelState.attributes.getTextualAttribute(StateTags.BACKGROUND_PATH.getValue()));
     }
 
     public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,

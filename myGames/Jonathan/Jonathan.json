@@ -16,15 +16,15 @@
             ],
             "myTextualAttributes": [
               {
-                "myData": "resourcesold/gameelementresources/terrain/farm32.png",
-                "myName": "BACKGROUND_PATH"
+                "myData": "resources/img/graphics/terrain/grass/GrassTile.jpg",
+                "myName": "backgroundPath"
               }
             ]
           },
           "myTerrains": [],
           "myUnits": [
             {
-              "AttributeDisplayerStates": [],
+              "attributeDisplayerStates": [],
               "myAnimatorState": {
                 "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/jaguar.png",
                 "colorMaskTag": "",

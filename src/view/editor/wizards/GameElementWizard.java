@@ -152,7 +152,7 @@ public class GameElementWizard extends Wizard {
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
         addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
-        addToData(WizardDataType.COLS, Integer.toString(animationGrid.getNumRows()));
+        addToData(WizardDataType.ROWS, Integer.toString(animationGrid.getNumRows()));
         addToData(WizardDataType.COLOR_MASK, colorMaskPath);
         storeContainerData(stringAttributesController);
         storeContainerData(numberAttributesController);

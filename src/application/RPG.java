@@ -135,6 +135,8 @@ public class RPG extends Application {
 
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 2000);
+        levelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
+                                                  "resources/img/graphics/terrain/grass/GrassTile.jpg");
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");

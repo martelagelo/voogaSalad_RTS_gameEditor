@@ -32,7 +32,7 @@ public class AnimatorStateFactory {
                 new AnimatorState(data.getValueByKey(WizardDataType.IMAGE),
                                   data.getValueByKey(WizardDataType.COLOR_MASK),
                                   dim,
-                                  Integer.parseInt(data.getValueByKey(WizardDataType.COLS)),
+                                  Integer.parseInt(data.getValueByKey(WizardDataType.ROWS)),
                                   sequences);
 
         return anim;

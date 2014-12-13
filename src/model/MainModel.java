@@ -219,7 +219,7 @@ public class MainModel extends Observable {
                                                    CampaignNotFoundException, Exception {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim(), campaignName.trim());
-        newLevelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.name(),
+        newLevelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
                                                      backgroundPath);
         if (width.doubleValue() > 0 && height.doubleValue() > 0) {
             newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), width);

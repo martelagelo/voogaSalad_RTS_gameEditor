@@ -26,7 +26,7 @@ public enum WizardDataType {
     ANIMATOR_STATE,
     FRAME_X,
     FRAME_Y,
-    COLS,
+    ROWS,
     ANIMATION_TAG,
     START_FRAME,
     STOP_FRAME,
