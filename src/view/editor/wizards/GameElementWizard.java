@@ -18,7 +18,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -59,7 +58,7 @@ public class GameElementWizard extends Wizard {
     private final int DEFAULT_GRID_MIN = 10;
     private final int DEFAULT_GRID_VALUE = 100;
     @FXML
-    private AnchorPane leftPane;
+    private ScrollPane leftPane;
     @FXML
     private TextField name;
     @FXML
