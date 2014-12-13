@@ -1,8 +1,0 @@
-<map id="engine.visuals.ScrollablePane.initializeHandlers" name="engine.visuals.ScrollablePane.initializeHandlers">
-<area shape="rect" id="node2" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a32e24f7577c90d24424b51fedec69ebf" title="engine.visuals.Scrollable\lPane.callCorrectMouseButtonAction" alt="" coords="232,5,483,46"/>
-<area shape="rect" id="node3" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a4f9d5b9e492262ccf1edfa7eeb37e716" title="engine.UI.InputManager.key\lPressed" alt="" coords="258,70,457,111"/>
-<area shape="rect" id="node4" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a055e5e25ccdd27de96fdd1235281a622" title="engine.visuals.Scrollable\lPane.mouseMoved" alt="" coords="268,187,447,229"/>
-<area shape="rect" id="node6" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a14ea8fb797a5e13a9e425610f6c91655" title="engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="758,142,965,183"/>
-<area shape="rect" id="node7" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a0a95d45df6721fccc5ba417111c36cf4" title="engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="759,221,964,262"/>
-<area shape="rect" id="node5" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#af7dc0dac9cdc19cac041a7389dbd8ab0" title="engine.visuals.Scrollable\lPane.setScrollSpeed" alt="" coords="531,187,709,229"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="model.MainModel.clearEditorChosen" name="model.MainModel.clearEditorChosen">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#aab28c05fe06c21453bcc1a62e54709d9" title="model.MainModel.MainModel" alt="" coords="290,5,497,32"/>
-<area shape="rect" id="node3" href="$d6/d14/classengine_1_1_u_i_1_1_editor_input_manager.html#a3bf1a3596ba0f8e5f8586a9522da7397" title="engine.UI.EditorInputManager.primary\lClickOccurred" alt="" coords="262,57,525,98"/>
-<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#a10b881974c2cb51d6340030a675a99d2" title="model.MainModel.setEditor\lChosenDrawable" alt="" coords="296,122,491,163"/>
-<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html#a1a577f1ab36509882c2b5c16c1361e7a" title="model.MainModel.setEditor\lChosenSelectable" alt="" coords="296,191,491,233"/>
-<area shape="rect" id="node5" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#aec4ee01f416c20ae8de07cbbe29087f7" title="view.editor.ElementAccordion\lController.editorChooseDrawable\lElement" alt="" coords="578,111,809,167"/>
-<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="861,158,1069,199"/>
-<area shape="rect" id="node8" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#ae997861fef74f40d6202453edd3f87b5" title="view.editor.ElementAccordion\lController.editorChooseSelectable\lElement" alt="" coords="574,191,813,247"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="engine.visuals.ScrollableBackground.ScrollableBackground" name="engine.visuals.ScrollableBackground.ScrollableBackground">
-<area shape="rect" id="node2" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a889c67926401e58709f19351076a5a38" title="engine.visuals.Scrollable\lBackground.tileBackground" alt="" coords="293,5,491,46"/>
-<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#af1333303576053ddda0787bcf1cd9c81" title="util.SaveLoadUtility.load\lImage" alt="" coords="539,5,712,46"/>
-<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="761,12,967,39"/>
-</map>

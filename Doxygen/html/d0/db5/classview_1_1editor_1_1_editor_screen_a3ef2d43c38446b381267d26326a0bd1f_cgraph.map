@@ -1,7 +1,0 @@
-<map id="view.editor.EditorScreen.updateProjectExplorer" name="view.editor.EditorScreen.updateProjectExplorer">
-<area shape="rect" id="node2" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="315,5,517,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="293,71,539,97"/>
-<area shape="rect" id="node4" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#aa574aa52876c496c08830912fb48752a" title="model.state.DescribableState.getName" alt="" coords="277,121,555,148"/>
-<area shape="rect" id="node5" href="$d0/db5/classview_1_1editor_1_1_project_explorer_controller.html#a8de5f9043974e45cf8a0517663e9d249" title="view.editor.ProjectExplorer\lController.update" alt="" coords="322,173,510,214"/>
-<area shape="rect" id="node6" href="$d0/dc6/classview_1_1editor_1_1_project_explorer_tree_item.html#aa08b39b61b2d682609a4a8d06e0caa23" title="view.editor.ProjectExplorer\lTreeItem.setAction" alt="" coords="603,173,791,214"/>
-</map>

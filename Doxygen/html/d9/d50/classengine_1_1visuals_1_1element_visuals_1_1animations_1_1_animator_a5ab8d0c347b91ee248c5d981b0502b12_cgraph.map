@@ -1,5 +1,0 @@
-<map id="engine.visuals.elementVisuals.animations.Animator.determineAnimationType" name="engine.visuals.elementVisuals.animations.Animator.determineAnimationType">
-<area shape="rect" id="node2" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5f0e6026d1877c9e4f04fe389163970c" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttribute" alt="" coords="347,5,576,61"/>
-<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a8a042f15b78a8ff954168334572f49ff" title="model.state.gameelement.\lAttributeContainer.getTextual\lAttribute" alt="" coords="357,85,565,141"/>
-<area shape="rect" id="node3" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="625,53,845,94"/>
-</map>
