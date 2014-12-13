@@ -1,4 +1,0 @@
-<map id="engine.gameRepresentation.renderedRepresentation.Level.getGoals" name="engine.gameRepresentation.renderedRepresentation.Level.getGoals">
-<area shape="rect" id="node2" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#abc50b6a4c15d1829ad6db45e0b3940ef" title="engine.gameRepresentation.rendered\lRepresentation.Level.evaluateGoals" alt="" coords="317,5,581,46"/>
-<area shape="rect" id="node3" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="630,5,837,46"/>
-</map>

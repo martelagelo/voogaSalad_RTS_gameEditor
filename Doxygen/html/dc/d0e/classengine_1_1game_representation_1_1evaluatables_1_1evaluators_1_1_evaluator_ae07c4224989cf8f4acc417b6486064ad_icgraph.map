@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.evaluatables.evaluators.Evaluator.evaluate" name="engine.gameRepresentation.evaluatables.evaluators.Evaluator.evaluate">
-<area shape="rect" id="node2" href="$d8/d3a/classengine_1_1computers_1_1bounds_computers_1_1_collision_computer.html#a7849f7da8bebd1497f828b5edbb722a0" title="engine.computers.boundsComputers.\lCollisionComputer.checkComputingCondition" alt="" coords="443,5,751,46"/>
-<area shape="rect" id="node3" href="$de/d41/classengine_1_1game_representation_1_1evaluatables_1_1evaluators_1_1_not_collision.html#a019e3e14763ea8e91d724a72d08b18a9" title="engine.gameRepresentation.evaluatables.evaluators.\lNotCollision.evaluate" alt="" coords="416,70,779,111"/>
-<area shape="rect" id="node4" href="$df/d07/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_check_attribute_create_object_action.html#a7748525bf0dd7b5ddc38f978020dd2aa" title="engine.gameRepresentation.evaluatables.actions.\lCheckAttributeCreateObjectAction.evaluate" alt="" coords="427,135,768,177"/>
-<area shape="rect" id="node5" href="$d8/d98/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_mother_of_all_actions.html#a488e8c7f50249f5caabac492108d1ca0" title="engine.gameRepresentation.evaluatables.actions.\lMotherOfAllActions.evaluate" alt="" coords="427,201,768,242"/>
-</map>

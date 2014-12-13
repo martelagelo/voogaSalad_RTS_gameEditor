@@ -1,7 +1,0 @@
-<map id="engine.gameRepresentation.renderedRepresentation.DrawableGameElement.setGoalPositions" name="engine.gameRepresentation.renderedRepresentation.DrawableGameElement.setGoalPositions">
-<area shape="rect" id="node2" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#a6b17f88aada14c904238ef52e51cf5e9" title="engine.computers.pathing\lComputers.Location.getX" alt="" coords="409,5,599,46"/>
-<area shape="rect" id="node3" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#ac4dc59386dde16b5784bfdaa27dbcbf4" title="engine.computers.pathing\lComputers.Location.getY" alt="" coords="409,70,599,111"/>
-<area shape="rect" id="node4" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a5a426090456bba2adf4993b5b3fb0ffd" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.setNumerical\lAttribute" alt="" coords="353,135,655,191"/>
-<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="705,135,933,191"/>
-<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="982,142,1205,183"/>
-</map>

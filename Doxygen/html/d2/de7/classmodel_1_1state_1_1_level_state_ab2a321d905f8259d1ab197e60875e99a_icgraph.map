@@ -1,6 +1,0 @@
-<map id="model.state.LevelState.removeElement" name="model.state.LevelState.removeElement">
-<area shape="rect" id="node2" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a9bd2160251994143432ae9b66d59aecd" title="engine.gameRepresentation.rendered\lRepresentation.Level.removeElement" alt="" coords="277,38,541,79"/>
-<area shape="rect" id="node3" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#abc1308396958c2dbedea9e5c7cc4c618" title="engine.stateManaging.Game\lElementManager.deleteSelectedUnit" alt="" coords="589,5,845,46"/>
-<area shape="rect" id="node5" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="614,70,821,111"/>
-<area shape="rect" id="node4" href="$d6/d14/classengine_1_1_u_i_1_1_editor_input_manager.html#a175b132a024bf966837697783ad87e30" title="engine.UI.EditorInputManager.key\lPressed" alt="" coords="894,5,1130,46"/>
-</map>
