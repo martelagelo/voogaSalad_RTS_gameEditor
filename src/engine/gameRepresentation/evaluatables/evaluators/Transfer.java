@@ -4,17 +4,16 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
- * An evaluator that takes all of one attribute and transfers it to another attribute.
+ * An evaluator that takes all of one parameter's value and transfers it to another parameter.
  * 
  * @author Zach
  *
  */
 public class Transfer<A, B> extends Evaluator<A, B, Boolean> {
 
-    public Transfer (String id,
-                     Evaluatable<A> parameter1,
+    public Transfer (Evaluatable<A> parameter1,
                      Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "transfer", parameter1, parameter2);
+        super(Boolean.class, "transfer", parameter1, parameter2);
     }
 
     @Override

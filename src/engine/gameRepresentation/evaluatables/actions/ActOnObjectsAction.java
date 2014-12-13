@@ -5,25 +5,21 @@ import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
-import engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
-import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
-import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
 
 /**
  * A basic action that just acts on two objects when given them on an update
- * 
+ * @see ActionOptions.ACT_ON_OBJECTS_ACTION
  * @author Zach
  *
  */
 public class ActOnObjectsAction extends Action {
 
-    public ActOnObjectsAction (String id,
-                               EvaluatorFactory factory,
+    public ActOnObjectsAction (EvaluatorFactory factory,
                                GameElementManager manager, ParticipantManager participantManager,
                                String[] args) {
-        super(id, factory, manager, participantManager, args);
+        super(factory, manager, participantManager, args);
     }
 
     @Override
@@ -33,9 +29,8 @@ public class ActOnObjectsAction extends Action {
                                                ParticipantManager participantManager)
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
-        GameElementParameter me = new GameElementParameter("", new ActorObjectIdentifier());
-        GameElementParameter you = new GameElementParameter("", new ActeeObjectIdentifier());
-        return factory.makeEvaluator(args[0], me, you);
+       
+        return factory.makeEvaluator(args[0], ACTOR, ACTEE);
     }
 
     @Override

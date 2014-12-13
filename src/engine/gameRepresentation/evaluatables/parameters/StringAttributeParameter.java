@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * An attribute parameter that acts on a string from the given object
+ * An attribute parameter that wraps around a string from the given object
  *
  * @author Zach
  *
@@ -16,10 +16,10 @@ public class StringAttributeParameter extends AttributeParameter<String> {
     /**
      * @see AttributeParameter
      */
-    public StringAttributeParameter (String id, String attributeTag,
+    public StringAttributeParameter (String attributeTag,
                                      GameElementManager manager,
                                      ObjectOfInterestIdentifier objectOfInterestIdentifier) {
-        super(String.class, id, attributeTag, manager, objectOfInterestIdentifier);
+        super(String.class, attributeTag, manager, objectOfInterestIdentifier);
     }
 
     /**

@@ -13,10 +13,9 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
  */
 public class FollowX<A, B> extends Evaluator<A, B, Boolean> {
 
-    public FollowX (String id,
-                   Evaluatable<A> parameter1,
-                   Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "Follow", parameter1, parameter2);
+    public FollowX (Evaluatable<A> parameter1,
+                    Evaluatable<B> parameter2) {
+        super(Boolean.class, "follow", parameter1, parameter2);
     }
 
     @Override

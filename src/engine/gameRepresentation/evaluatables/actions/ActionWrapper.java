@@ -16,9 +16,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  *
  */
 public class ActionWrapper implements Serializable {
-    /**
-     * 
-     */
+
     private static final long serialVersionUID = 5596741540525917388L;
     private ActionOptions myActionName;
     private String[] myParameters;
@@ -45,7 +43,7 @@ public class ActionWrapper implements Serializable {
     public String[] getParameters () {
         return myParameters;
     }
-    
+
     public ActionType getActionType () {
         return myActionType;
     }

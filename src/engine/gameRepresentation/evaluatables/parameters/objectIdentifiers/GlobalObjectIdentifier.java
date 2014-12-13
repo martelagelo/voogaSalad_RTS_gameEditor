@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * Get all the objects corresponding to a global object identifier e.g. all the objects of type
+ * Get all the objects corresponding to a global object identifier e.g. get all the objects of type
  * "tank"
  * 
  * @author Zach
@@ -17,7 +17,7 @@ public class GlobalObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
     public List<GameElement> getElementOfInterest (GameElementManager elementManager,
-                                                        ElementPair elementPair, String elementName) {
+                                                   ElementPair elementPair, String elementName) {
         return elementManager.findAllElementsOfType(elementName);
     }
 

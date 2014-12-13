@@ -11,9 +11,9 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class GreaterThanEqual<A, B> extends Evaluator<A, B, Boolean> {
 
-    public GreaterThanEqual (String id, Evaluatable<A> parameter1,
-                                      Evaluatable<B> parameter2) {
-        super(Boolean.class, id, ">=", parameter1, parameter2);
+    public GreaterThanEqual (Evaluatable<A> parameter1,
+                             Evaluatable<B> parameter2) {
+        super(Boolean.class, ">=", parameter1, parameter2);
 
     }
 

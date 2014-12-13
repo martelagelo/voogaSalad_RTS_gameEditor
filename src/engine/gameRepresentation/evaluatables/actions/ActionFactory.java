@@ -61,14 +61,16 @@ public class ActionFactory {
         String actionClassName = wrapper.getActionClassName();
         String[] actionParams = wrapper.getParameters();
         String currentPackage = this.getClass().getPackage().getName();
+        //Added because java generics don't play nicely with reflection
+        @SuppressWarnings("unchecked")
         Class<Evaluatable<?>> evaluatableClass =
                 (Class<Evaluatable<?>>) Class.forName(currentPackage + "." + actionClassName);
         try {
             Constructor<Evaluatable<?>> constructor =
-                    evaluatableClass.getConstructor(String.class, EvaluatorFactory.class,
+                    evaluatableClass.getConstructor(EvaluatorFactory.class,
                                                     GameElementManager.class,
                                                     ParticipantManager.class, String[].class);
-            return constructor.newInstance(actionClassName, myEvaluatorFactory,
+            return constructor.newInstance(myEvaluatorFactory,
                                            myGameElementManager, myParticipantManager,
                                            actionParams);
         }
