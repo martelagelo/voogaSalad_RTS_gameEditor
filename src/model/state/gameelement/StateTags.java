@@ -16,10 +16,10 @@ public enum StateTags {
     BACKGROUND_PATH(StateType.STRING, "backgroundPath"),
     NAME(StateType.STRING, "name"),
     TYPE(StateType.STRING, "type"),
-    TEAM_COLOR(StateType.STRING, "teamColor"),
     CURRENT_ACTION(StateType.STRING, "currentAction"), // TODO: attack, die, decay, gather??
     ATTRIBUTE_DESCRIPTION(StateType.STRING, "attributeDescription"),
 
+    TEAM_COLOR(StateType.NUMBER, "teamColor"),
     X_POSITION(StateType.NUMBER, "xPosition"),
     Y_POSITION(StateType.NUMBER, "yPosition"),
     X_VELOCITY(StateType.NUMBER, "xVelocity"),

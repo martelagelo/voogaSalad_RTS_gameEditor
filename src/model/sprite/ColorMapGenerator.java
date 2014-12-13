@@ -1,10 +1,10 @@
 package model.sprite;
 
+
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import util.exceptions.SaveLoadException;
@@ -20,7 +20,13 @@ import util.exceptions.SaveLoadException;
 public class ColorMapGenerator {
 
     private static int RGB_LENGTH = 3;
-    private static Map<String, Paint> myColorMap = new HashMap<>();
+    private static Map<String, Paint> myColorMap = new HashMap<>();   
+    
+    public static Color colorFromLong(long colorValue) {
+        String colorHexValue= "000000" + Long.toHexString(colorValue);
+        String colorString = String.format("#%s", colorHexValue.substring(colorHexValue.length() - 6));
+        return Color.web(colorString);
+    }
 
     /**
      * Generates a map of string of colors to JavaFX paint from a resource

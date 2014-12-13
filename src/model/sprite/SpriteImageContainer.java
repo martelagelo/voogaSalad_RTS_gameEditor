@@ -1,12 +1,12 @@
 package model.sprite;
 
-import util.exceptions.SaveLoadException;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
+import util.exceptions.SaveLoadException;
 
 /**
  * Passive data structure that wraps an animation spritesheet with a color mask
@@ -49,22 +49,19 @@ public class SpriteImageContainer {
     }
 
     /**
-     * Get the image view to the color mask with the color mask hue applied
      * 
      * @param color
-     *            String representation of the color mask
-     * @return ImageView with the applied color mask
+     * @return
      */
-    public ImageView getColorMask (String color) {
-        if (myColorMask.getImage() == null)
-            return new ImageView();
+    public ImageView getColorMask (long color) {
+        if(myColorMask.getImage() == null) return new ImageView();
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome, new ColorInput(0, 0, myColorMask
-                .getImage().getWidth(), myColorMask.getImage().getHeight(),
-                ColorMapGenerator.getColorMask(color)));
+                .getImage().getWidth(), myColorMask.getImage().getHeight(), ColorMapGenerator.colorFromLong(color)));
+        
         myColorMask.setEffect((Effect) blush);
-
+        
         return myColorMask;
     }
 }
