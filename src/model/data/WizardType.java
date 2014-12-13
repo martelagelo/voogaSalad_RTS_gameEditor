@@ -12,6 +12,7 @@ public enum WizardType {
     ANIMATION_SEQUENCE,
     STRING_ATTRIBUTE,
     BOUNDS,
+    VISION_BOUNDS,
     CAMPAIGN,
     GAME_ELEMENT,
     LEVEL,

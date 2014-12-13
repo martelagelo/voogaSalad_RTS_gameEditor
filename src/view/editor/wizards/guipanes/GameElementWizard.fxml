@@ -49,6 +49,11 @@
 							<Double fx:constant="MAX_VALUE" />
 						</maxWidth>
 					</Button>
+					<Button fx:id="setVisionBounds" defaultButton="true">
+						<maxWidth>
+							<Double fx:constant="MAX_VALUE" />
+						</maxWidth>
+					</Button>
 					<Button fx:id="save" defaultButton="true">
 						<maxWidth>
 							<Double fx:constant="MAX_VALUE" />

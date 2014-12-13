@@ -36,7 +36,7 @@ public class GameElementStateFactory {
 
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
         SelectableGameElementState state = (SelectableGameElementState)
-                addEssentials(new SelectableGameElementState(0.0, 0.0), data);
+                addEssentials(new SelectableGameElementState(0.0, 0.0, null), data);
         return (SelectableGameElementState) addVisuals(data, state);
     }
 
@@ -57,7 +57,8 @@ public class GameElementStateFactory {
     private static DrawableGameElementState addVisuals (WizardData data,
                                                         DrawableGameElementState state) {        
         state.myAnimatorState = AnimatorStateFactory.createAnimatorState(data);
-        state.setBounds(createBounds(data));          
+        state.setBounds(createBounds(data, WizardType.BOUNDS));        
+        state.setVisionBounds(createBounds(data, WizardType.VISION_BOUNDS));
         createAttributeDisplayerState(data, state);        
         return state;
     }
@@ -82,10 +83,10 @@ public class GameElementStateFactory {
         }
     }
 
-    private static double[] createBounds (WizardData data) {        
-        if (data.getWizardDataByType(WizardType.BOUNDS).size() > 0) {
+    private static double[] createBounds (WizardData data, WizardType boundsType) {        
+        if (data.getWizardDataByType(boundsType).size() > 0) {
             String bounds =
-                    data.getWizardDataByType(WizardType.BOUNDS).get(0)
+                    data.getWizardDataByType(boundsType).get(0)
                             .getValueByKey(WizardDataType.BOUND_VALUES);
             String[] points = bounds.split(",");
             double[] myBounds = new double[points.length];

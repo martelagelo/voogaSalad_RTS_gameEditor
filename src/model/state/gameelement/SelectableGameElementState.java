@@ -1,6 +1,6 @@
 package model.state.gameelement;
 
-import model.state.gameelement.traits.Sighted;
+import engine.visuals.elementVisuals.animations.AnimatorState;
 
 
 /**
@@ -8,30 +8,17 @@ import model.state.gameelement.traits.Sighted;
  * bounding box and a vision box. This is the element that reacts to collisions
  * with DrawableGameElements.
  *
- * @author Steve, Jonathan, Rahul, Zach
+ * @author Steve
  *
  */
-public class SelectableGameElementState extends DrawableGameElementState implements Sighted {
-
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 778064050257391179L;
-
-    private double[] myVisionBounds;
-
-    public SelectableGameElementState (Number xPosition, Number yPosition) {
-        super(xPosition, yPosition, null);
-    }
-
-    @Override
-    public double[] getVisionBounds () {
-        // TODO do this
-        return null;
-        // return visualRepresentation.getVisionBounds();
-    }
-    public void setVisionBounds(double[] bounds){
-        //TODO implement this
+public class SelectableGameElementState extends DrawableGameElementState {
+   
+    private static final long serialVersionUID = 778064050257391179L;    
+    
+    public SelectableGameElementState (Number xPosition,
+                                       Number yPosition,
+                                       AnimatorState animatorState) {
+        super(xPosition, yPosition, animatorState);
     }
 
 }
