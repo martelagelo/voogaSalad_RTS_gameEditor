@@ -1,0 +1,5 @@
+<map id="model.state.gameelement.GameElementState.getName" name="model.state.gameelement.GameElementState.getName">
+<area shape="rect" id="node2" href="$d0/da0/classmodel_1_1data_1_1_wizard_data_factory.html#a0c0eb91e1b531f96b715e1a9c0c45db9" title="model.data.WizardDataFactory.create\lWizardData" alt="" coords="267,5,528,46"/>
+<area shape="rect" id="node3" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#ac52ea89f2e0af7497883a0fd53199296" title="view.editor.ElementAccordion\lController.createWizardData" alt="" coords="576,5,784,46"/>
+<area shape="rect" id="node4" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="832,5,1040,46"/>
+</map>
