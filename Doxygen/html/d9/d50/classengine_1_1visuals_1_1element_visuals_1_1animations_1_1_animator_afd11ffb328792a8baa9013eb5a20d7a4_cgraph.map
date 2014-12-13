@@ -1,0 +1,4 @@
+<map id="engine.visuals.elementVisuals.animations.Animator.setColorMasking" name="engine.visuals.elementVisuals.animations.Animator.setColorMasking">
+<area shape="rect" id="node2" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html#aaf99b936de9ed452a5ff8b3469f760f5" title="model.sprite.ColorMapGenerator.color\lFromLong" alt="" coords="347,5,613,46"/>
+<area shape="rect" id="node3" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#aeda9017d9625cc566d6cc9a640db43e1" title="model.sprite.SpriteImage\lContainer.getSpritesheet" alt="" coords="388,70,572,111"/>
+</map>

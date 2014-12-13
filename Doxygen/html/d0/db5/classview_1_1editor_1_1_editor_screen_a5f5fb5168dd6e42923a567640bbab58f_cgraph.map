@@ -1,0 +1,14 @@
+<map id="view.editor.EditorScreen.updateInfoBox" name="view.editor.EditorScreen.updateInfoBox">
+<area shape="rect" id="node2" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="297,102,535,143"/>
+<area shape="rect" id="node8" href="$de/d21/classmodel_1_1_main_model.html#ab5c91715fd7b1a435838682ef5627496" title="model.MainModel.getDescribable\lState" alt="" coords="299,201,533,242"/>
+<area shape="rect" id="node11" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#a6174a0cfb0bbcb459409effa1a541df1" title="model.state.DescribableState.get\lDescription" alt="" coords="297,266,535,307"/>
+<area shape="rect" id="node12" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#aa574aa52876c496c08830912fb48752a" title="model.state.DescribableState.getName" alt="" coords="277,332,555,359"/>
+<area shape="rect" id="node13" href="$d7/d60/classview_1_1editor_1_1_describable_info_box_controller.html#aa7fee9f90289c135a3f23f6e31a5f5af" title="view.editor.DescribableInfo\lBoxController.setText" alt="" coords="321,383,511,425"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="603,5,840,46"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="622,70,821,111"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="603,135,839,177"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="888,59,1104,115"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="897,138,1095,179"/>
+<area shape="rect" id="node9" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="620,201,823,242"/>
+<area shape="rect" id="node10" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="607,266,835,307"/>
+</map>
