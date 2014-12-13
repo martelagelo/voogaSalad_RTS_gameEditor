@@ -5,6 +5,7 @@ import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.evaluators.And;
+import engine.gameRepresentation.evaluatables.evaluators.EqualsAssignment;
 import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.GreaterThanEqual;
@@ -22,6 +23,8 @@ import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.stateManaging.GameElementManager;
 
 
+// TODO clean this up
+
 /**
  * An action that checks an attribute then creates an action
  * 
@@ -33,6 +36,7 @@ public class CheckAttributeCreateObjectAction extends Action {
     private long myTimerAmount;
     private Evaluator<?, ?, ?> myAttributeDecrementer;
     private Evaluator<?, ?, SelectableGameElement> myElementCreator;
+    private Evaluator<?, ?, ?> myElementAttributeDecrementer;
     private String myAttributeList;
     private String myAttributeValues;
 
@@ -84,6 +88,12 @@ public class CheckAttributeCreateObjectAction extends Action {
         myAttributeList = args[8];
         myAttributeValues = args[9];
 
+        // Make an evaluator to decrement the value
+        Evaluatable<?> myParameter =
+                new NumericAttributeParameter(args[10], elementManager, new ActorObjectIdentifier());
+        Evaluatable<?> newValue =
+                new NumericAttributeParameter(args[11], elementManager, new ActorObjectIdentifier());
+        myElementAttributeDecrementer = new EqualsAssignment<>(myParameter, newValue);
         return checkEvaluator;
     }
 
@@ -98,19 +108,20 @@ public class CheckAttributeCreateObjectAction extends Action {
                                                    myAttributeDecrementer.evaluate(elements);
                                                    SelectableGameElement element =
                                                            myElementCreator.evaluate(elements);
+                                                   myElementAttributeDecrementer.evaluate(elements);
                                                    elements.getActor().setTimer(myTimerName,
                                                                                 myTimerAmount);
                                                    // Go through all the attributes to set and set
                                                    // their values
-                                           String[] attributes = myAttributeList.split(",");
-                                           String[] values = myAttributeValues.split(",");
-                                           for (int i = 0; i < attributes.length; i++) {
-                                               element.setNumericalAttribute(attributes[i],
-                                                                             elements.getActor()
-                                                                                     .getNumericalAttribute(values[i]));
-                                           }
+                                                   String[] attributes = myAttributeList.split(",");
+                                                   String[] values = myAttributeValues.split(",");
+                                                   for (int i = 0; i < attributes.length; i++) {
+                                                       element.setNumericalAttribute(attributes[i],
+                                                                                     elements.getActor()
+                                                                                             .getNumericalAttribute(values[i]));
+                                                   }
 
-                                       }
-                                   });
+                                               }
+                                           });
     }
 }

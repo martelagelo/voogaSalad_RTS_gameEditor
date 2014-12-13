@@ -107,11 +107,13 @@ public class Pong extends Application {
         GameElementState winningGoal = new GameElementState();
         winningGoal.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual", "5", "Won",
+                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual",
+                                                "5", "Won",
                                                 "EqualsAssignment", "1"));
         winningGoal.addAction(new ActionWrapper(ActionType.INTERNAL,
                                                 ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "other",
-                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual", "5", "Lost",
+                                                StateTags.RESOURCES.getValue(), "GreaterThanEqual",
+                                                "5", "Lost",
                                                 "EqualsAssignment", "1"));
         LevelState levelState = new LevelState("testLevel", "testCampaign");
         levelState.addUnit(paddle);
@@ -136,6 +138,7 @@ public class Pong extends Application {
         model.saveGame(gameState);
         model.loadGame("testGame");
         model.getGameUniverse().addSelectableGameElementState(paddle);
+        model.getGameUniverse().addSelectableGameElementState(createGoalDisplayMarker());
         model.saveGame();
         MainModel model2 = new MainModel();
         model2.loadGame("testGame");
@@ -148,14 +151,25 @@ public class Pong extends Application {
     private GameElementState createGoal () {
         GameElementState ges = new GameElementState();
         ges.attributes.setNumericalAttribute("GoalSatisfied", 0);
-        // ges.addAction(new ActionWrapper(ActionType.INTERNAL,
-        // ActionOptions.PLAYER_ATTRIBUTE_CONDITION, "my",
-        // "Resources", "GreaterThanEqual", "1000", "Won",
-        // "EqualsAssignment", "1"));
-        // ges.addAction(new ActionWrapper(ActionType.INTERNAL,
-        // ActionOptions.OBJECT_LOCATION_DETECTION,
-        // "my", "archer", "50", "50", "50", "Won", "EqualsAssignment", "1"));
         return ges;
+    }
+
+    private SelectableGameElementState createGoalDisplayMarker () throws SaveLoadException {
+        SelectableGameElementState goalDisplayMarker = new SelectableGameElementState(0, 0);
+        goalDisplayMarker.addType("goalMarker");
+        goalDisplayMarker.attributes.setTextualAttribute(StateTags.NAME.getValue(), "goalMarker");
+        AnimatorState goalAnimations = SaveLoadUtility
+                .loadResource(AnimatorState.class,
+                              "resources/gameelementresources/animatorstate/archer.json");
+
+        goalDisplayMarker.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(),
+                                                         "STANDING");
+        goalDisplayMarker.attributes.setNumericalAttribute("teamID", 0);
+        goalDisplayMarker.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
+        goalDisplayMarker.myAnimatorState = goalAnimations;
+
+        return goalDisplayMarker;
+
     }
 
     private SelectableGameElementState createBall (double x, double y) throws Exception {
@@ -166,8 +180,8 @@ public class Pong extends Application {
         ball.attributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
         ball.attributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
         ball.attributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
-        ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 4);
-        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 4);
+        ball.attributes.setNumericalAttribute(StateTags.Y_VELOCITY.getValue(), 2);
+        ball.attributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(), 2);
         ball.attributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
         ball.attributes.setNumericalAttribute("teamID", 2);
         ball.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "RED");
@@ -269,14 +283,27 @@ public class Pong extends Application {
         boundary.attributes.setNumericalAttribute("teamID", 0);
         boundary.attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "YELLOW");
         boundary.attributes.setNumericalAttribute("1", 1);
+        boundary.attributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), 900);
+        boundary.attributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(),(mine?500:-800));
         boundary.addType("goal");
         boundary.addAction(new ActionWrapper(ActionType.COLLISION,
                                              ActionOptions.OBJECT_TYPE_CHECK_ACTION, "ball", "me",
-                                             "0", "Equals", "0", "Addition", "me", "0",
+                                             "spawnScore", "EqualsAssignment", "1", "Addition",
+                                             "me", "0",
                                              "FalseEvaluator",
                                              "AdditionAssignment", "1", (mine ? "other" : "my"),
                                              StateTags.RESOURCES
                                                      .getValue()));
+        boundary.addAction(new ActionWrapper(ActionType.INTERNAL,
+                                             ActionOptions.CHECK_CONDITION_CREATE_OBJECT_ACTION,
+                                             "spawnScore", "Equals", "1", "goalMarker", "0", "0",
+                                             "0", "0", "", "", "spawnScore", "0"));
+        boundary.addAction(new ActionWrapper(ActionType.COLLISION,
+                                             ActionOptions.OBJECT_TYPE_CHECK_ACTION, "ball", "me",
+                                             StateTags.Y_SPAWN_OFFSET.getValue(),
+                                             "EqualsAssignment", "75", "AdditionAssignment",
+                                             "me", StateTags.Y_SPAWN_OFFSET.getValue(),
+                                             "FalseEvaluator", "Addition", "0", "0", "0"));
         // TODO make this create a score sprite when a point is scored...
         double[] bounds = { 0, 0, 1500, 0, 1500, 10, 0, 10 };
         boundary.setBounds(bounds);
@@ -334,12 +361,7 @@ public class Pong extends Application {
         // ActionOptions.ACT_ON_OBJECTS_ACTION,
         // "UpdateMovementDirection"));
         // This one moves the player
-        paddle.addAction(new ActionWrapper(ActionType.COLLISION,
-                                           ActionOptions.OBJECT_TYPE_CHECK_ACTION,
-                                           "boundary", "me", StateTags.X_VELOCITY.getValue(),
-                                           "EqualsAssignment", "-1", "MultiplicationAssignment",
-                                           "me", StateTags.X_VELOCITY.getValue(), "FalseEvaluator",
-                                           "Equals", "0", "my", "0"));
+        
         paddle.addAction(new ActionWrapper(ActionType.INTERNAL,
                                            ActionOptions.ACT_ON_OBJECTS_ACTION,
                                            "MovePlayer"));

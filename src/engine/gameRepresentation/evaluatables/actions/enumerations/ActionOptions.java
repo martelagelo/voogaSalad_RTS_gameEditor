@@ -77,7 +77,8 @@ public enum ActionOptions {
                                          "CheckAttributeCreateObjectAction",
                                          "If my attribute # value # # then create a # at my spawn location that that costs the player # (element attribute name) "
                                                  +
-                                                 "from their # value with a cooldown timer named # with a value of # frames with specific attributes # set to be #",
+                                                 "from their # value with a cooldown timer named # with a value of # frames with specific attributes # set to be # AND" +
+                                                 " set my attribute # value to be #",
                                          ActionParameters.ATTR,
                                          ActionParameters.NN_EVAL,
                                          ActionParameters.NUMBER,
@@ -87,7 +88,9 @@ public enum ActionOptions {
                                          ActionParameters.STRING,
                                          ActionParameters.NUMBER,
                                          ActionParameters.STRING_LIST,
-                                         ActionParameters.ATTR_LIST),
+                                         ActionParameters.ATTR_LIST,
+                                         ActionParameters.ATTR,
+                                         ActionParameters.ATTR),
     INCREMENT_DECREMENT_ACTION(
                                "Decrement object's attribute and add it to mine",
                                "DecrementIncrementAttributeAction",
