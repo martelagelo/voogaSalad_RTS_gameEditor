@@ -23,9 +23,12 @@ public class ColorMapGenerator {
     private static Map<String, Paint> myColorMap = new HashMap<>();   
     
     public static Color colorFromLong(long colorValue) {
+        return Color.web(colorString(colorValue));
+    }
+    
+    public static String colorString(long colorValue) {
         String colorHexValue= "000000" + Long.toHexString(colorValue);
-        String colorString = String.format("#%s", colorHexValue.substring(colorHexValue.length() - 6));
-        return Color.web(colorString);
+        return String.format("#%s", colorHexValue.substring(colorHexValue.length() - 6));
     }
 
     /**

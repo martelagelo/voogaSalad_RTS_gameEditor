@@ -12,7 +12,6 @@
 			<children>
 				<VBox>
 					<ComboBox fx:id="campaignName" />
-					<Button fx:id="participant" />
 					<TextField fx:id="levelName"  />
 					<TextField fx:id="levelWidth" />
 					<TextField fx:id="levelHeight" />

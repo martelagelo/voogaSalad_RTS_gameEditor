@@ -4,6 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="editorRoot" fx:controller="view.editor.EditorScreen">
@@ -21,8 +22,32 @@
 				</children>
 			</VBox>
 			<HBox>
-				<fx:include source="EditorElementAccordion.fxml" fx:id="levelElementAccordion" />
-				<TabPane fx:id="tabPane" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
+				<VBox>
+					<children>
+						<HBox>
+							<children>
+								<ColorPicker fx:id="teamColorPicker" HBox.hgrow="SOMETIMES" />
+								<Button fx:id="addButton" HBox.hgrow="ALWAYS">
+									<maxHeight>
+										<Double fx:constant="MAX_VALUE" />
+									</maxHeight>
+									<maxWidth>
+										<Double fx:constant="MAX_VALUE" />
+									</maxWidth>
+								</Button>
+							</children>
+						</HBox>
+						<ComboBox fx:id="participantDropDown">
+							<maxWidth>
+								<Double fx:constant="MAX_VALUE" />
+							</maxWidth>
+						</ComboBox>
+						<fx:include VBox.vgrow="ALWAYS" source="EditorElementAccordion.fxml"
+							fx:id="levelElementAccordion" />
+					</children>
+				</VBox>
+				<TabPane fx:id="tabPane" BorderPane.alignment="CENTER"
+					HBox.hgrow="ALWAYS" />
 			</HBox>
 		</SplitPane>
 	</center>

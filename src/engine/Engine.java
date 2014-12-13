@@ -37,7 +37,8 @@ import engine.visuals.VisualManager;
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
     
-    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong("0000FF", 16);
+    public static final String DEFAULT_PLAYER_COLOR_STRING = "0000ff";
+    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong(DEFAULT_PLAYER_COLOR_STRING, 16);
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;

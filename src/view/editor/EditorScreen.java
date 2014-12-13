@@ -7,21 +7,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import engine.Engine;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import model.exceptions.CampaignNotFoundException;
 import model.exceptions.LevelNotFoundException;
 import model.state.DescribableState;
 import model.state.GameState;
 import model.state.LevelIdentifier;
+import util.multilanguage.LanguagePropertyNotFoundException;
+import util.multilanguage.MultiLanguageUtility;
 import view.GUILoadStyleUtility;
 import view.dialog.DialogBoxUtility;
 import view.gui.GUIPanePath;
@@ -38,6 +44,9 @@ import view.gui.GUIScreen;
  */
 
 public class EditorScreen extends GUIScreen {
+
+    private static final String ADD_KEY = "Add";
+    private static final String TEAM_COLOR_PROMPT = "TeamColorPrompt";
 
     @FXML
     private TabPane tabPane;
@@ -65,6 +74,12 @@ public class EditorScreen extends GUIScreen {
     private Accordion levelElementAccordion;
     @FXML
     private ElementAccordionController levelElementAccordionController;
+    @FXML
+    private ColorPicker teamColorPicker;
+    @FXML
+    private Button addButton;
+    @FXML
+    private ComboBox<String> participantDropDown;
 
     private List<TabViewController> myTabViewControllers;
 
@@ -156,6 +171,21 @@ public class EditorScreen extends GUIScreen {
         return tab;
     }
 
+    private void initParticipantInfo () {
+        addButton.setOnAction(e -> {
+            if (!participantDropDown.getItems().contains(teamColorPicker.getValue().toString())){
+                participantDropDown.getItems().add(teamColorPicker.getValue().toString());
+                myMainModel.getGameUniverse().addParticipantColor(Long.parseLong(teamColorPicker.getValue().toString().substring(2), 16));
+            }
+        });
+        participantDropDown.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
+            if (newValue != null) {
+                teamColorPicker.setValue(Color.web(newValue));
+                myMainModel.setEditorChosenColor(newValue);
+            }
+        });
+    }
+
     @Override
     public void init () {
         myTabViewControllers = new ArrayList<>();
@@ -163,6 +193,20 @@ public class EditorScreen extends GUIScreen {
         initProjectExplorer();
         initInfoBox();
         editorMenuBarController.attachScreen(this);
+        attachTextProperties();
+        participantDropDown.getItems().add(String.format("0x%sff", Engine.DEFAULT_PLAYER_COLOR_STRING));
+    }
+
+    private void attachTextProperties () {
+        try {
+            addButton.textProperty().bind(MultiLanguageUtility.getInstance()
+                                                  .getStringProperty(ADD_KEY));
+            participantDropDown.promptTextProperty()
+                    .bind(MultiLanguageUtility.getInstance().getStringProperty(TEAM_COLOR_PROMPT));
+        }
+        catch (LanguagePropertyNotFoundException e) {
+            DialogBoxUtility.createMessageDialog(e.getMessage());
+        }
     }
 
     @Override
@@ -170,6 +214,10 @@ public class EditorScreen extends GUIScreen {
         updateProjectExplorer();
         updateTabTexts();
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
+        initParticipantInfo();
+        if (participantDropDown.getSelectionModel().selectedItemProperty().isNull().get()) {
+            participantDropDown.getSelectionModel().selectFirst();
+        }
     }
 
     private void updateTabTexts () {
@@ -186,12 +234,12 @@ public class EditorScreen extends GUIScreen {
             return campaign.getName();
         }).collect(Collectors.toList());
         game.getCampaigns().forEach( (campaignState) -> {
-                                        campaignLevelMap.put(campaignState.getName(), campaignState
-                                                .getLevels().stream().map( (level) -> {
-                                                    return level.getName();
-                                                }).collect(Collectors.toList()));
-                                    });
+            campaignLevelMap.put(campaignState.getName(), campaignState
+                    .getLevels().stream().map( (level) -> {
+                        return level.getName();
+                    }).collect(Collectors.toList()));
+        });
         projectExplorerController.update(game.getName(), campaigns, campaignLevelMap);
     }
-    
+
 }

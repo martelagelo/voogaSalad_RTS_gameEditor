@@ -1,13 +1,8 @@
 package view.editor.wizards;
 
-import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
-import model.data.WizardData;
-import model.data.WizardDataType;
-import model.data.WizardType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,9 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
-import view.gui.GUIPanePath;
 
 
 /**
@@ -39,10 +36,6 @@ public class LevelWizard extends Wizard {
     private final String CAMPAIGN_KEY = "Campaign";
     private final String LEVEL_WIDTH_KEY = "LevelWidth";
     private final String LEVEL_HEIGHT_KEY = "LevelHeight";
-    private final String PARTICIPANT_KEY = "NewParticipant";
-
-    private final int PARTICIPANT_WIZARD_WIDTH = 500;
-    private final int PARTICIPANT_WIZARD_HEIGHT = 500;
     private final String BACKGROUND_KEY = "Background";
 
     @FXML
@@ -53,8 +46,6 @@ public class LevelWizard extends Wizard {
     private TextField levelWidth;
     @FXML
     private TextField levelHeight;
-    @FXML
-    private Button participant;
     @FXML
     private AnchorPane leftPane;
     @FXML
@@ -90,7 +81,6 @@ public class LevelWizard extends Wizard {
             campaignName.promptTextProperty().bind(util.getStringProperty(CAMPAIGN_KEY));
             levelWidth.promptTextProperty().bind(util.getStringProperty(LEVEL_WIDTH_KEY));
             levelHeight.promptTextProperty().bind(util.getStringProperty(LEVEL_HEIGHT_KEY));
-            participant.textProperty().bind(util.getStringProperty(PARTICIPANT_KEY));
             image.textProperty().bind(util.getStringProperty(BACKGROUND_KEY));
             super.attachTextProperties();
         }
@@ -105,7 +95,6 @@ public class LevelWizard extends Wizard {
         backgroundPath = "";
         campaigns = FXCollections.observableList(new ArrayList<>());
         campaignName.setItems(campaigns);
-        participant.setOnAction(e -> launchParticipantEditor());
         image.setOnAction(e -> selectBackground());
     }
 
@@ -113,18 +102,6 @@ public class LevelWizard extends Wizard {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
         backgroundPath = (file.getPath() == null) ? "" : file.getPath();
-    }
-
-    private void launchParticipantEditor () {
-        Wizard wiz = WizardUtility.loadWizard(GUIPanePath.PARTICIPANT_WIZARD,
-                                              new Dimension(PARTICIPANT_WIZARD_WIDTH,
-                                                            PARTICIPANT_WIZARD_HEIGHT
-                                              ));
-        Consumer<WizardData> cons = (data) -> {
-            addWizardData(data);
-            wiz.closeStage();
-        };
-        wiz.setSubmit(cons);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class EditorInputManager extends InputManager {
         myElementManager.addSelectableGameElementToLevel(element,
                                                          mapPoint2d.getX(),
                                                          mapPoint2d.getY(),
-                                                         myUser.getTeamColor()));
+                                                         myMainModel.getEditorChosenColor()));
         success = success | checkElementAndCreate(drawable, (element) ->
         myElementManager.addDrawableGameElementToLevel(element, mapPoint2d.getX(),
                                                        mapPoint2d.getY())

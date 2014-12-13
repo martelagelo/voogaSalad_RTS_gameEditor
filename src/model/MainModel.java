@@ -46,6 +46,7 @@ public class MainModel extends Observable {
     private GameState myGameState;
     private String myEditorChosenSelectableElement;
     private String myEditorChosenDrawableElement;
+    private String myEditorChosenColor;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
 
@@ -168,6 +169,14 @@ public class MainModel extends Observable {
         return myGameState.getCampaign(campaignName);
     }
 
+    public void setEditorChosenColor(String color) {
+        myEditorChosenColor = color;
+    }
+    
+    public long getEditorChosenColor() {
+        return Long.parseLong(myEditorChosenColor.substring(2, myEditorChosenColor.length() - 2), 16);
+    }
+    
     public void setEditorChosenDrawable (String elementName) {
         clearEditorChosen();
         myEditorChosenDrawableElement = elementName;
