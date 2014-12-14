@@ -1,25 +1,28 @@
 package model.state;
 
+import java.util.Set;
+
+import model.state.gameelement.Attribute;
+import model.state.gameelement.AttributeContainer;
+
 public class HighScore {
 	
-	private int myScore;
-	private String myPlayerName;
-	private String myAchievement;
+	private AttributeContainer myAttributes;
 	
-	public HighScore (int score, String playerName, String achievement) {
-		myScore = score;
-		myPlayerName = playerName;
-		myAchievement = achievement;
+	public HighScore (AttributeContainer ac) {
+		myAttributes = ac;
 	}
 	
 	@Override
 	public String toString () {
-		return "Player " 
-				+ myPlayerName
-				+ " Achieved Victory by "
-				+ myAchievement
-				+ " with a score of "
-				+ myScore;
+		StringBuilder sb = new StringBuilder();
+		for(Attribute<Number> a : myAttributes.getNumericalAttributes()){
+			sb.append(a);
+		}
+		for(Attribute<String> a : myAttributes.getTextualAttributes()){
+			sb.append(a);
+		}
+		return sb.toString();
 	}
 
 }

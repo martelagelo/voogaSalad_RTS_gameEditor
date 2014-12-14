@@ -5,15 +5,19 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import model.state.HighScore;
 import model.state.LevelState;
 import model.state.gameelement.AttributeContainer;
+
 import org.json.JSONException;
+
 import util.DeepCopy;
 import view.dialog.DialogBoxUtility;
 import view.gui.StackPaneGUIContainer;
@@ -107,6 +111,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
                                                            attribute.getData()))
                         .collect(Collectors.toList());
         gameEndController.updateGameEndView(myLevel.getName(), attributesToShow);
+        myMainModel.getCurrentGame().addHighScore(attributes);
         setFront(gameEnd);
     }
 
