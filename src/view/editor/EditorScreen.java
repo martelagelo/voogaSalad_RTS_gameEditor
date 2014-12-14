@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 import engine.Engine;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,6 +16,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeView;
@@ -47,6 +49,7 @@ public class EditorScreen extends GUIScreen {
 
     private static final String ADD_KEY = "Add";
     private static final String TEAM_COLOR_PROMPT = "TeamColorPrompt";
+    private static final String NEW_PARTICIPANT_KEY = "NewParticipant";
 
     @FXML
     private TabPane tabPane;
@@ -199,10 +202,10 @@ public class EditorScreen extends GUIScreen {
 
     private void attachTextProperties () {
         try {
-            addButton.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                  .getStringProperty(ADD_KEY));
+        	MultiLanguageUtility util = MultiLanguageUtility.getInstance();
             participantDropDown.promptTextProperty()
-                    .bind(MultiLanguageUtility.getInstance().getStringProperty(TEAM_COLOR_PROMPT));
+                    .bind(util.getStringProperty(TEAM_COLOR_PROMPT));
+            addButton.textProperty().bind(util.getStringProperty(NEW_PARTICIPANT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
