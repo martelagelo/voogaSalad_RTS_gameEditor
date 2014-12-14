@@ -1,0 +1,8 @@
+<map id="engine.elementFactories.GameElementFactory.createDrawableGameElement" name="engine.elementFactories.GameElementFactory.createDrawableGameElement">
+<area shape="rect" id="node2" href="$de/dda/classmodel_1_1_game_universe.html#ae4f3cd93ec055a728724659859244c65" title="model.GameUniverse.getDrawable\lGameElementState" alt="" coords="339,5,584,46"/>
+<area shape="rect" id="node4" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#ab00622dd7923aa9115154156e15451ae" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.setPosition" alt="" coords="317,70,605,111"/>
+<area shape="rect" id="node3" href="$d6/dea/classutil_1_1_deep_copy.html#a2e316cf2fbb29f638582d531f13f2f25" title="util.DeepCopy.deepCopy" alt="" coords="717,12,894,39"/>
+<area shape="rect" id="node5" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a5a426090456bba2adf4993b5b3fb0ffd" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.setNumerical\lAttribute" alt="" coords="654,63,957,119"/>
+<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="1006,63,1234,119"/>
+<area shape="rect" id="node7" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="1283,70,1506,111"/>
+</map>
