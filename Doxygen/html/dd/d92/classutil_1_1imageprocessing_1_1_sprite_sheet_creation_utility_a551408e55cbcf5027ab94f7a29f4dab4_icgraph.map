@@ -1,5 +1,0 @@
-<map id="util.imageprocessing.SpriteSheetCreationUtility.mirrorImageHorizontally" name="util.imageprocessing.SpriteSheetCreationUtility.mirrorImageHorizontally">
-<area shape="rect" id="node2" href="$dd/d92/classutil_1_1imageprocessing_1_1_sprite_sheet_creation_utility.html#a022dc6eb95d4125daba7fe408ecb762b" title="util.imageprocessing.Sprite\lSheetCreationUtility.extrapolate\lSprites" alt="" coords="286,4,511,60"/>
-<area shape="rect" id="node3" href="$dd/d92/classutil_1_1imageprocessing_1_1_sprite_sheet_creation_utility.html#aa068488206f0ef378045c98dcaf3aa94" title="util.imageprocessing.Sprite\lSheetCreationUtility.extractAll\lSpriteLists" alt="" coords="561,4,773,60"/>
-<area shape="rect" id="node4" href="$dd/d92/classutil_1_1imageprocessing_1_1_sprite_sheet_creation_utility.html#ac6251a369463548bca5dfe671bff7e71" title="util.imageprocessing.Sprite\lSheetCreationUtility.createSpriteSheet" alt="" coords="821,11,1091,53"/>
-</map>
