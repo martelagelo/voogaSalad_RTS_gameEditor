@@ -2,22 +2,20 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
  * Perform addition on two numbers. Return a boolean indicating whether the
  * addition was successful
- * 
+ *
  * @author Zach
  *
  * @param <A>
- *        the first number
+ *            the first number
  * @param <B>
- *        the second number
+ *            the second number
  */
 public class AdditionAssignment<A, B> extends Evaluator<A, B, Boolean> {
 
-    public AdditionAssignment (Evaluatable<A> parameter1,
-                               Evaluatable<B> parameter2) {
+    public AdditionAssignment (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Boolean.class, "+=", parameter1, parameter2);
     }
 

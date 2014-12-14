@@ -5,8 +5,9 @@ package engine.gameRepresentation.evaluatables;
  * Evaluators are generics to allow for the implementation of complex logic with
  * evaluatables. Evaluatables have the option to both get and set values
  * although the value setting is not by default implemented by children of
- * evaluatables. The intent of this interface is to be used in the composite pattern to build large
- * dynamic logic to allow for interaction between game elements and components.
+ * evaluatables. The intent of this interface is to be used in the composite
+ * pattern to build large dynamic logic to allow for interaction between game
+ * elements and components.
  *
  * @author Zach
  *
@@ -16,10 +17,10 @@ public abstract class Evaluatable<T> {
 
     /**
      * Create an evaluatable
-     * 
+     *
      * @param type
-     *        the type of the class T of the evaluatable. Used as a
-     *        workaround for the poor implementation of generics by Java
+     *            the type of the class T of the evaluatable. Used as a
+     *            workaround for the poor implementation of generics by Java
      */
     public Evaluatable (Class<T> type) {
         myType = type;
@@ -34,9 +35,9 @@ public abstract class Evaluatable<T> {
 
     /**
      * Sets the evaluatable's value to a given value
-     * 
+     *
      * @param value
-     *        the value to set the evaluatable's stored computation value to
+     *            the value to set the evaluatable's stored computation value to
      * @return a boolean indicating whether setting was successful
      */
     public boolean setValue (ElementPair elements, T value) {
@@ -52,7 +53,7 @@ public abstract class Evaluatable<T> {
 
     /**
      * Get the type of the object as a way of bypassing Java type erasure
-     * 
+     *
      * @return the generic's type
      */
     public Class<T> getType () {

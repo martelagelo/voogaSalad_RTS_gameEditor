@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import util.JSONable;
 import engine.visuals.Dimension;
 
@@ -13,26 +14,26 @@ import engine.visuals.Dimension;
  * A data wrapper object used to group the pertinent information for a
  * spritesheet. Internal data is intentionally made public as this is just a
  * data wrapper to simplify the passing of data
- * 
+ *
  * @author Rahul, Zach, Steve
  *
  */
 
 public class AnimatorState implements JSONable, Serializable {
-    
+
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1609072629703433749L;
-    private String imageTag;
-    private String colorMaskTag;
-    private Dimension viewportSize;
-    private int numRows;
-    private Set<AnimationSequence> animationSequences;
+    private String myImageTag;
+    private String myColorMaskTag;
+    private Dimension myViewportSize;
+    private int myNumRows;
+    private Set<AnimationSequence> myAnimationSquences;
 
     /**
      * Create the Spritesheet
-     * 
+     *
      * @param imageTag
      *            the tag for the image that will be sent to the save/load
      *            utility to get the image
@@ -41,50 +42,51 @@ public class AnimatorState implements JSONable, Serializable {
      * @param numRows
      *            the number of columns across in the spritesheet
      */
-    public AnimatorState (String imageTag, String colorMaskTag, Dimension frameDimensions, int numRows,
-            Set<AnimationSequence> animationSequenceList) {
-        this.colorMaskTag = colorMaskTag;
-        this.imageTag = imageTag;
-        this.viewportSize = frameDimensions;
-        this.numRows = numRows;
-        this.animationSequences = animationSequenceList;
-        if(animationSequences == null){
-            animationSequences = new HashSet<>();
-            animationSequences.add(new NullAnimationSequence());
+    public AnimatorState (String imageTag, String colorMaskTag, Dimension frameDimensions,
+            int numRows, Set<AnimationSequence> animationSequences) {
+        myColorMaskTag = colorMaskTag;
+        myImageTag = imageTag;
+        myViewportSize = frameDimensions;
+        myNumRows = numRows;
+        myAnimationSquences = animationSequences;
+        if (myAnimationSquences == null) {
+            myAnimationSquences = new HashSet<>();
+            myAnimationSquences.add(new NullAnimationSequence());
         }
     }
 
     public void addAnimationSequence (AnimationSequence seq) {
-        animationSequences.add(seq);
+        myAnimationSquences.add(seq);
     }
 
     public AnimationSequence getAnimationSequence (List<AnimationTag> tags) {
-        List<AnimationSequence> matchingAnimationSequences = animationSequences.stream()
+        List<AnimationSequence> matchingAnimationSequences = myAnimationSquences.stream()
                 .filter(o -> o.getTags().equals(tags)).collect(Collectors.toList());
-        return (matchingAnimationSequences.size() != 0) ? matchingAnimationSequences.get(0) :  new NullAnimationSequence();
+        return (matchingAnimationSequences.size() != 0) ? matchingAnimationSequences.get(0)
+                : new NullAnimationSequence();
     }
-    
-    public Set<AnimationSequence> getAllAnimationSequences() {
-        return Collections.unmodifiableSet(animationSequences);
+
+    public Set<AnimationSequence> getAllAnimationSequences () {
+        return Collections.unmodifiableSet(myAnimationSquences);
     }
 
     public boolean containsAnimationSequence (AnimationSequence seq) {
-        return animationSequences.contains(seq);
+        return myAnimationSquences.contains(seq);
     }
 
     public String getImageTag () {
-        return imageTag;
+        return myImageTag;
     }
-    
-    public String getColorMaskTag() {
-        return colorMaskTag;
+
+    public String getColorMaskTag () {
+        return myColorMaskTag;
     }
 
     public Dimension getViewportSize () {
-        return viewportSize;
+        return myViewportSize;
     }
 
     public int getNumRows () {
-        return numRows;
+        return myNumRows;
     }
 }

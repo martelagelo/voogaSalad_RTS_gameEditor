@@ -5,19 +5,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
 /**
  * The class for creating the rectangle that the user draws during a game with
  * their cursor. Extends observable so that other classes that want to be
  * notified of unit selection can see where the box was drawn
- * 
+ *
  * @author John
  *
  */
 public class SelectionBox {
     private Rectangle myRectangle;
-    private double pressedX, pressedY;
-    private MouseEvent lastEvent;
+    private double myXClickLocation, myYClickLocation;
+    private MouseEvent myLastEvent;
 
     public SelectionBox () {
         myRectangle = new Rectangle();
@@ -64,33 +63,35 @@ public class SelectionBox {
         double xTop = myRectangle.getX() + mapTranslateX;
         double yTop = myRectangle.getY() + mapTranslateY;
 
-        return new double[] { xTop, yTop, xTop + myRectangle.getWidth(), yTop
-                                                                         + myRectangle.getHeight() };
+        return new double[] { xTop, yTop, xTop + myRectangle.getWidth(),
+                yTop + myRectangle.getHeight() };
     }
 
     public void primaryClick (MouseEvent e) {
         if (e.getButton().equals(MouseButton.PRIMARY)) {
             resetBox();
-            pressedX = e.getX();
-            pressedY = e.getY();
+            myXClickLocation = e.getX();
+            myYClickLocation = e.getY();
             setLocation(e.getX(), e.getY());
         }
     }
 
     public void reactToDrag (MouseEvent e) {
-        lastEvent = e;
-        if (lastEvent.isPrimaryButtonDown()) {
+        myLastEvent = e;
+        if (myLastEvent.isPrimaryButtonDown()) {
             setVisible(true);
-            double newX = lastEvent.getX();
-            double newY = lastEvent.getY();
-            double difX = newX - pressedX;
-            double difY = newY - pressedY;
+            double newX = myLastEvent.getX();
+            double newY = myLastEvent.getY();
+            double difX = newX - myXClickLocation;
+            double difY = newY - myYClickLocation;
 
             setSize(Math.abs(difX), Math.abs(difY));
-            if (difX <= 0)
+            if (difX <= 0) {
                 setX(newX);
-            if (difY <= 0)
+            }
+            if (difY <= 0) {
                 setY(newY);
+            }
 
         }
     }

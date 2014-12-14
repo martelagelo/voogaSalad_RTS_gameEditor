@@ -8,11 +8,11 @@ import view.dialog.DialogBoxUtility;
 
 /**
  * 
- * @author Jonathan, Nishad
- * 
  * This class is the starting point of our application.
  * It instantiates a model and a view, and adds the view
  * as an observer of the model.
+ * 
+ * @author Jonathan, Nishad
  *
  */
 
@@ -25,8 +25,7 @@ public class Main extends Application {
             MainView myMainView = new MainView(primaryStage, myMainModel);
             myMainModel.addObserver(myMainView);
             myMainView.start();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
         }
     }

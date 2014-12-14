@@ -42,7 +42,8 @@ public enum StateTags {
     Y_SPAWN_OFFSET(StateType.NUMBER, "ySpawnOffset"),
     SUPPORTS_RANGED_ATTACK(StateType.NUMBER, "supportsRangedAttack"),
     LAST_BUTTON_CLICKED_ID(StateType.NUMBER, "lastButtonID"),
-    RESOURCES(StateType.NUMBER, "resources");
+    RESOURCES(StateType.NUMBER, "resources"),
+    TIMER(StateType.NUMBER, "gameTimer");
 
     private StateType myType;
     private String myValue;

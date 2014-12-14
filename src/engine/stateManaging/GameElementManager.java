@@ -25,9 +25,8 @@ public class GameElementManager {
 
     private Level myLevel;
     private GameElementFactory myFactory;
-    private PathingComputer pathingComputer;
-
-    private DrawableGameElement selectedElement;
+    private PathingComputer myPathingComputer;
+    private DrawableGameElement mySelectedElement;
 
     public GameElementManager (GameElementFactory factory) {
         myFactory = factory;
@@ -35,24 +34,23 @@ public class GameElementManager {
 
     /**
      * Set the level for the element manager
-     * 
+     *
      * @param level
      */
     public void setLevel (Level level) {
         myLevel = level;
-        pathingComputer = new PathingComputer(myLevel.getGrid());
+        myPathingComputer = new PathingComputer(myLevel.getGrid());
     }
 
     /**
      * Get all the game elements of a given type
      *
      * @param typeName
-     *        the name of the type of the game elements
+     *            the name of the type of the game elements
      * @return all the game elements with the given type
      */
     public List<GameElement> findAllElementsOfType (String typeName) {
-        return myLevel.getUnits().stream()
-                .filter(o -> o.isType(typeName)).map(o -> o)
+        return myLevel.getUnits().stream().filter(o -> o.isType(typeName)).map(o -> o)
                 .collect(Collectors.toList());
     }
 
@@ -61,28 +59,24 @@ public class GameElementManager {
         myLevel.addElement(newElement);
     }
 
-    public void addDrawableGameElementToLevel (String typeName, double x,
-                                               double y) {
-        DrawableGameElement newElement = myFactory.createDrawableGameElement(
-                                                                             typeName, x, y);
+    public void addDrawableGameElementToLevel (String typeName, double x, double y) {
+        DrawableGameElement newElement = myFactory.createDrawableGameElement(typeName, x, y);
         myLevel.addElement(newElement);
     }
 
-    public SelectableGameElement addSelectableGameElementToLevel (String typeName,
-                                                                  double x,
-                                                                  double y,
-                                                                  Number color) {
-        SelectableGameElement newElement = myFactory
-                .createSelectableGameElement(typeName, x, y, color);
+    public SelectableGameElement addSelectableGameElementToLevel (String typeName, double x,
+            double y, Number color) {
+        SelectableGameElement newElement = myFactory.createSelectableGameElement(typeName, x, y,
+                color);
         myLevel.addElement(newElement);
         return newElement;
     }
 
-    public void selectAnySingleUnit (Point2D clickLoc, Participant u) {
-        selectedElement = null;
+    public void selectAnySingleUnit (Point2D clickLoc, Participant participant) {
+        mySelectedElement = null;
         deselectAllElements();
-        List<DrawableGameElement> units = myLevel.getUnits().stream().map((unit)->{
-            return (DrawableGameElement) unit;
+        List<DrawableGameElement> units = myLevel.getUnits().stream().map( (unit) -> {
+            return unit;
         }).collect(Collectors.toList());
         selectUnit(units, clickLoc);
         selectUnit(myLevel.getTerrain(), clickLoc);
@@ -92,31 +86,35 @@ public class GameElementManager {
         for (DrawableGameElement e : elements) {
             double[] cornerBounds = e.findGlobalBounds();
             if (new Polygon(cornerBounds).contains(clickLoc)) {
-                selectedElement = e;
+                mySelectedElement = e;
                 return;
             }
         }
     }
 
-    private void deselectAllElements() {
-        myLevel.getUnits().forEach((unit)->unit.deselect());
+    private void deselectAllElements () {
+        myLevel.getUnits().forEach( (unit) -> unit.deselect());
     }
-    
+
     public void moveSelectedUnit (Point2D mapPoint2d, Participant user) {
-        if (selectedElement == null) return;
-        selectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
+        if (mySelectedElement == null) {
+            return;
+        }
+        mySelectedElement.setPosition(mapPoint2d.getX(), mapPoint2d.getY());
     }
-    
-    public void deleteSelectedUnit() {
-        if (selectedElement == null) return;
-        myLevel.removeElement(selectedElement);
+
+    public void deleteSelectedUnit () {
+        if (mySelectedElement == null) {
+            return;
+        }
+        myLevel.removeElement(mySelectedElement);
     }
 
     /**
      * Select all the elements in a given rectangle
      *
      * @param rectPoints
-     *        the points in the rectangle surrounding the player's units
+     *            the points in the rectangle surrounding the player's units
      */
     public void selectUnitsInBounds (double[] rectPoints, boolean multiSelect, Participant u) {
         boolean isTeamSelected = false;
@@ -135,8 +133,7 @@ public class GameElementManager {
                 if (contains(rectPoints, e.getPosition()) && checkOnTeam(e, u)) {
                     e.select();
                 }
-            }
-            else {
+            } else {
                 if (contains(rectPoints, e.getPosition())) {
                     e.select();
                     break;
@@ -161,7 +158,9 @@ public class GameElementManager {
             }
             // don't want to multi-select enemy units
             if (multiSelect) {
-                if (!checkOnTeam(e, u)) e.deselect();
+                if (!checkOnTeam(e, u)) {
+                    e.deselect();
+                }
             }
         }
     }
@@ -183,53 +182,58 @@ public class GameElementManager {
             }
         }
 
-        // if location is clicked on instead, tell all selected units to go there
+        // if location is clicked on instead, tell all selected units to go
+        // there
         for (SelectableGameElement e : filterSelectedUnits(myLevel.getUnits())) {
-            if (!checkOnTeam(e, u)) continue;
-            if (queueCommand) {
-            	e.addWaypoint(click.getX(), click.getY());
+            if (!checkOnTeam(e, u)) {
+                continue;
             }
-            else {
-                double currentX = e.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
-                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
+            if (queueCommand) {
+                e.addWaypoint(click.getX(), click.getY());
+            } else {
+                double currentX = e.getNumericalAttribute(StateTags.X_POSITION.getValue())
+                        .doubleValue();
+                double currentY = e.getNumericalAttribute(StateTags.Y_POSITION.getValue())
+                        .doubleValue();
                 Location from = new Location(currentX, currentY);
                 Location to = new Location(click.getX(), click.getY());
-                List<Location> waypoints = pathingComputer.findPath(from, to);
+                List<Location> waypoints = myPathingComputer.findPath(from, to);
                 e.setWaypoints(waypoints);
-                //e.clearPaths();
-                //e.addToPath(to);
+                // e.clearPaths();
+                // e.addToPath(to);
             }
         }
     }
 
     private void notifySelectedElementsOfTarget (SelectableGameElement e, Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
-                .forEach(unit -> unit.setFocusedElement(e));
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(
+                unit -> unit.setFocusedElement(e));
 
     }
 
     private void clearSelectedElementsOfTarget (Participant u) {
-        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)
-                .forEach(unit -> unit.clearFocusedElement());
+        filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u).forEach(
+                unit -> unit.clearFocusedElement());
     }
 
     private List<SelectableGameElement> filterSelectedUnits (List<SelectableGameElement> list) {
         return list
                 .stream()
-                .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED.getValue()).doubleValue() == 1)
-                .collect(Collectors.toList());
+                .filter(unit -> unit.getNumericalAttribute(StateTags.IS_SELECTED.getValue())
+                        .doubleValue() == 1).collect(Collectors.toList());
     }
 
     private List<SelectableGameElement> filterTeamIDElements (List<SelectableGameElement> list,
-                                                              Participant p) {
+            Participant p) {
         return list
                 .stream()
-                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR.getValue())
-                		)).collect(Collectors.toList());
+                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR
+                        .getValue()))).collect(Collectors.toList());
     }
 
     public void notifyButtonClicked (int buttonID, Participant u) {
-        for (SelectableGameElement e : filterTeamIDElements(filterSelectedUnits(myLevel.getUnits()), u)) {
+        for (SelectableGameElement e : filterTeamIDElements(
+                filterSelectedUnits(myLevel.getUnits()), u)) {
             e.setNumericalAttribute(StateTags.LAST_BUTTON_CLICKED_ID.getValue(), buttonID);
             e.executeAllButtonActions();
         }
@@ -237,10 +241,12 @@ public class GameElementManager {
 
     /**
      * Determines whether the rectangle defined by rectPoints contains a Point2D
-     * 
-     * @param rectPoints a length 4 array with points { x_top_right, y_top_right, x_bottom_left,
-     *        y_bottom_left}
-     * @param unitLocationCenter point2D that contains is checking
+     *
+     * @param rectPoints
+     *            a length 4 array with points { x_top_right, y_top_right,
+     *            x_bottom_left, y_bottom_left}
+     * @param unitLocationCenter
+     *            point2D that contains is checking
      * @return whether the rectangle contains the point2D
      */
     private boolean contains (double[] rectPoints, Point2D unitLocationCenter) {
@@ -251,7 +257,9 @@ public class GameElementManager {
         double bottomRightY = rectPoints[3];
 
         if (topLeftX <= unitLocationCenter.getX() && bottomRightX >= unitLocationCenter.getX()) {
-            if (topLeftY <= unitLocationCenter.getY() && bottomRightY >= unitLocationCenter.getY()) { return true; }
+            if (topLeftY <= unitLocationCenter.getY() && bottomRightY >= unitLocationCenter.getY()) {
+                return true;
+            }
         }
         return false;
     }

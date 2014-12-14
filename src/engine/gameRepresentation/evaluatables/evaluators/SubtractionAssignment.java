@@ -2,18 +2,16 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
- * Perform subtraction and assignment (-=) on two numbers. Return the value resulting from the
- * assignment.
- * 
+ * Perform subtraction and assignment (-=) on two numbers. Return the value
+ * resulting from the assignment.
+ *
  * @author Zach
  *
  */
 public class SubtractionAssignment<A, B> extends Evaluator<A, B, Number> {
 
-    public SubtractionAssignment (Evaluatable<A> parameter1,
-                                  Evaluatable<B> parameter2) {
+    public SubtractionAssignment (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Number.class, "-=", parameter1, parameter2);
     }
 

@@ -3,11 +3,12 @@ package model.data;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
+import model.state.gameelement.traits.AttributeDisplayerState;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
 import engine.visuals.elementVisuals.animations.AnimationSequence;
 
 /**
@@ -33,7 +34,7 @@ public class WizardDataFactory {
         data.addDataPair(WizardDataType.FRAME_X, "" + state.myAnimatorState.getViewportSize().getWidth());
         data.addDataPair(WizardDataType.FRAME_Y, "" + state.myAnimatorState.getViewportSize().getHeight());
         data.addDataPair(WizardDataType.COLOR_MASK, state.myAnimatorState.getColorMaskTag());
-        for (Attribute<Number> attr: state.attributes.getNumericalAttributes()) {
+        for (Attribute<Number> attr: state.myAttributes.getNumericalAttributes()) {
             WizardData numberAtr = new WizardData();
             numberAtr.setType(WizardType.NUMBER_ATTRIBUTE);
             numberAtr.addDataPair(WizardDataType.ATTRIBUTE, attr.getName());
@@ -41,7 +42,7 @@ public class WizardDataFactory {
             data.addWizardData(numberAtr);
         }
         
-        for (Attribute<String> attr: state.attributes.getTextualAttributes()) {
+        for (Attribute<String> attr: state.myAttributes.getTextualAttributes()) {
             WizardData numberAtr = new WizardData();
             numberAtr.setType(WizardType.STRING_ATTRIBUTE);
             numberAtr.addDataPair(WizardDataType.ATTRIBUTE, attr.getName());

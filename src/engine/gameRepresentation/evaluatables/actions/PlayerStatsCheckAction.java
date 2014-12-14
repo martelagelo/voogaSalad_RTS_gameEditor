@@ -13,37 +13,27 @@ import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParamet
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
-
 public class PlayerStatsCheckAction extends Action {
 
-    public PlayerStatsCheckAction (EvaluatorFactory factory,
-                                   GameElementManager elementManager,
-                                   ParticipantManager participantManager,
-                                   String[] args) {
+    public PlayerStatsCheckAction (EvaluatorFactory factory, GameElementManager elementManager,
+            ParticipantManager participantManager, String[] args) {
         super(factory, elementManager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args,
-                                               EvaluatorFactory factory,
-                                               GameElementManager elementManager,
-                                               ParticipantManager participantManager)
-                                                                                     throws ClassNotFoundException,
-                                                                                     EvaluatorCreationException {
-        Evaluatable<?> playerAttr =
-                new ParticipantValueParameter(identifyParticipantsOfInterest(args[0],
-                                                                             participantManager),
-                                              args[1]);
+    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,
+            GameElementManager elementManager, ParticipantManager participantManager)
+            throws ClassNotFoundException, EvaluatorCreationException {
+        Evaluatable<?> playerAttr = new ParticipantValueParameter(identifyParticipantsOfInterest(
+                args[0], participantManager), args[1]);
         Evaluatable<?> numberAttr = new NumberParameter(Double.valueOf(args[3]));
-        Evaluator<?, ?, ?> participantValueEvaluator =
-                factory.makeEvaluator(args[2], playerAttr, numberAttr);
-        Evaluatable<?> attrToSet =
-                new NumericAttributeParameter(args[4], elementManager,
-                                              new ActorObjectIdentifier());
+        Evaluator<?, ?, ?> participantValueEvaluator = factory.makeEvaluator(args[2], playerAttr,
+                numberAttr);
+        Evaluatable<?> attrToSet = new NumericAttributeParameter(args[4], elementManager,
+                new ActorObjectIdentifier());
         Evaluatable<?> valueToSet = new NumberParameter(Double.valueOf(args[6]));
         Evaluator<?, ?, ?> valueSetter = factory.makeEvaluator(args[5], attrToSet, valueToSet);
-        Evaluator<?, ?, ?> ifThenEvaluator =
-                new IfThen<>(participantValueEvaluator, valueSetter);
+        Evaluator<?, ?, ?> ifThenEvaluator = new IfThen<>(participantValueEvaluator, valueSetter);
         return ifThenEvaluator;
     }
 

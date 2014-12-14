@@ -2,8 +2,8 @@ package engine.visuals.elementVisuals.animations;
 
 import java.io.Serializable;
 import java.util.List;
-import model.state.gameelement.traits.Updatable;
 
+import model.state.gameelement.traits.Updatable;
 
 /**
  * A basic animation. Keeps track of progress, the frame bounds, and the
@@ -14,11 +14,8 @@ import model.state.gameelement.traits.Updatable;
  */
 public class AnimationSequence implements Updatable, Serializable {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = -9193394127044465741L;
-    
+
     private int myStartFrame;
     private int myStopFrame;
     private int myCurrentFrame;
@@ -32,27 +29,24 @@ public class AnimationSequence implements Updatable, Serializable {
      * Initialize the animation and insert a multiplier for slowness
      *
      * @param slownessMultiplier
-     *        a multiplier for the speed of the animation. Must be less than
-     *        1.
+     *            a multiplier for the speed of the animation. Must be less than
+     *            1.
      * @param startFrame
-     *        the startframe of the animation. This is the index at which the
-     *        animation begins.
+     *            the startframe of the animation. This is the index at which
+     *            the animation begins.
      * @param stopFrame
      *            the stopFrame of the animation. This is the index at which the
-     *        animation ends.
+     *            animation ends.
      * @param repeats
      *            a boolean which controls whether or not the animation sequence
-     *        repeats itself.
+     *            repeats itself.
      * @param name
-     *            the name of the particular list of sprites the animation traverses
-     *        through.
-     *        
+     *            the name of the particular list of sprites the animation
+     *            traverses through.
+     *
      */
-    public AnimationSequence (List<AnimationTag> name,
-                              int startFrame,
-                              int stopFrame,
-                              boolean repeats,
-                              double slownessMultiplier) {
+    public AnimationSequence (List<AnimationTag> name, int startFrame, int stopFrame,
+            boolean repeats, double slownessMultiplier) {
         myStartFrame = startFrame;
         myCurrentFrame = startFrame;
         myStopFrame = stopFrame;
@@ -86,14 +80,12 @@ public class AnimationSequence implements Updatable, Serializable {
     public boolean update () {
         if (myFrameCounter < 1 / mySlownessMultiplier) {
             myFrameCounter++;
-        }
-        else {
+        } else {
             myFrameCounter = 0;
             if (myCurrentFrame < myStopFrame - 1) {
                 myCurrentFrame++;
                 return false;
-            }
-            else if (myCurrentFrame == (myStopFrame - 1) && myRepeatFlag) {
+            } else if (myCurrentFrame == (myStopFrame - 1) && myRepeatFlag) {
                 reset();
             }
             return true;
@@ -113,20 +105,22 @@ public class AnimationSequence implements Updatable, Serializable {
     public List<AnimationTag> getTags () {
         return myTags;
     }
-    
+
     @Override
     public boolean equals (Object arg) {
-        if (!(arg instanceof AnimationSequence)) return false;
-        return this.hashCode() == arg.hashCode();
+        if (!(arg instanceof AnimationSequence)) {
+            return false;
+        }
+        return hashCode() == arg.hashCode();
     }
 
     @Override
     public int hashCode () {
         return myTags.hashCode();
     }
-    
-    @Override 
-    public String toString() {
-    	return "myTags: " + myTags + "; current frame: " + myCurrentFrame;
+
+    @Override
+    public String toString () {
+        return "myTags: " + myTags + "; current frame: " + myCurrentFrame;
     }
 }

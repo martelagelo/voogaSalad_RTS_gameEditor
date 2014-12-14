@@ -2,7 +2,7 @@ package engine.gameRepresentation.evaluatables.actions;
 
 /**
  * An exception thrown in action creation
- * 
+ *
  * @author Michael R.
  *
  */

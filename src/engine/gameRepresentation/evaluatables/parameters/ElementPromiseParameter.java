@@ -3,12 +3,11 @@ package engine.gameRepresentation.evaluatables.parameters;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 
-
 /**
  * A parameter that serves as a wrapper for an element promise
- * 
+ *
  * @see ElementPromise
- * 
+ *
  * @author Zach
  *
  */

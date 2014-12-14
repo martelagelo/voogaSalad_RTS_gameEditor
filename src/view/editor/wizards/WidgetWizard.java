@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -14,9 +15,9 @@ import model.data.WizardData;
 import model.data.WizardDataType;
 import model.data.WizardType;
 import model.state.gameelement.StateTags;
+import model.state.gameelement.traits.AttributeDisplayerTags;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 
 
 /**
