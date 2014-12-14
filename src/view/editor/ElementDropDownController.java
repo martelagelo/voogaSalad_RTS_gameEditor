@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
@@ -36,6 +37,8 @@ public class ElementDropDownController implements GUIController {
     private ListView<String> elementListView;
     @FXML
     private TitledPane elementDropDown;
+    @FXML
+    private VBox vboxRoot;
 
     private HashMap<String, Node> myElementsMap;
     private Consumer<String> myDeletionConsumer = (String element) -> {
@@ -88,10 +91,18 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {           
             if (elementListView.getSelectionModel().selectedItemProperty().isNotNull().get()) {
                 String selected = elementListView.getSelectionModel().getSelectedItem();
+                System.out.println(selected);
                 myDeletionConsumer.accept(selected);                
                 myElementsMap.remove(selected);
-            }            
+            }          
+            else {
+                System.out.println("shit");
+            }
         });
+    }
+    
+    public void clearItems() {
+        elementListView.getItems().clear();
     }
 
     private class GameElementListCell extends ListCell<String> {
@@ -126,7 +137,7 @@ public class ElementDropDownController implements GUIController {
             }
             elementListView.requestFocus();
         });
-        elementListView.focusedProperty().addListener( (observable, oldValue, newValue) -> {
+        vboxRoot.focusedProperty().addListener( (observable, oldValue, newValue) -> {
             if (!newValue) {
                 elementListView.getSelectionModel().clearSelection();
             }

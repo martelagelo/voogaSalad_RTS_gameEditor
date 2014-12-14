@@ -18,7 +18,7 @@ public class EvaluatorFactory {
                                                                                                     EvaluatorCreationException {
         String currentPackage = this.getClass().getPackage().getName();
         Class<Evaluator<?, ?, ?>> evaluatable =
-                (Class<Evaluator<?, ?, ?>>) Class.forName(currentPackage + "." + evaluatableClass);
+                (Class<Evaluator<?, ?, ?>>) Class.forName(currentPackage + "." + evaluatableClass.trim());
         Constructor<Evaluator<?, ?, ?>> constructor = getConstructor(evaluatable);
         try {
             return constructor.newInstance(parameters[0], parameters[1]);

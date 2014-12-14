@@ -9,6 +9,7 @@ package model.data;
  */
 public enum WizardDataType {        
     NAME,
+    TYPE,
     //attributes
     ATTRIBUTE,
     VALUE,

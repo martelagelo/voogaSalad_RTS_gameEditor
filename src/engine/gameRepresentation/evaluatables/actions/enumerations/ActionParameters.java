@@ -22,7 +22,8 @@ public enum ActionParameters {
             "MoveBack",
             "MovePlayer",
             "RandomWaypoint",
-            "UpdateMovementDirection"),
+            "UpdateMovementDirection",
+            "FalseEvaluator"),
     // Number number evaluators
     NN_EVAL(
             "AdditionAssignment",
