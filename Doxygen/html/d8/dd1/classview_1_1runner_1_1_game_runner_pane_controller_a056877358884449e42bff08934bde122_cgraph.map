@@ -1,0 +1,12 @@
+<map id="view.runner.GameRunnerPaneController.setInputManager" name="view.runner.GameRunnerPaneController.setInputManager">
+<area shape="rect" id="node2" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="264,103,501,145"/>
+<area shape="rect" id="node8" href="$dc/de2/classengine_1_1_engine.html#a8c5992eb0d36b8c389af374c6115b4f1" title="engine.Engine.setInputManager" alt="" coords="271,172,495,199"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="559,5,796,46"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="578,70,777,111"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="559,135,795,177"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="865,56,1081,112"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="874,135,1073,177"/>
+<area shape="rect" id="node9" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#ad6d4b11c7b259638d92c5dd294ae03a8" title="engine.visuals.VisualManager.attach\lInputManager" alt="" coords="550,201,805,242"/>
+<area shape="rect" id="node10" href="$dc/dbf/classengine_1_1visuals_1_1_ability_matrix.html#a8c12bf4db9d7ac71ad138c73a45b4954" title="engine.visuals.AbilityMatrix.attach\lInputManager" alt="" coords="854,201,1093,242"/>
+<area shape="rect" id="node11" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a14c11cc145b3264213ad4459e258a4c9" title="engine.visuals.Scrollable\lPane.attachInputManager" alt="" coords="880,266,1067,307"/>
+</map>

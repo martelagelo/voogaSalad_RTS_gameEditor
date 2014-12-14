@@ -1,0 +1,7 @@
+<map id="model.MainModel.removeDrawableGameElement" name="model.MainModel.removeDrawableGameElement">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a5e586ccd36318309b2a0cbc804458c2d" title="model.MainModel.elementIs\lInUse" alt="" coords="329,7,530,49"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="302,75,557,101"/>
+<area shape="rect" id="node6" href="$de/dda/classmodel_1_1_game_universe.html#ab52e6d4fb594d8deafe5645e3ccaa4cf" title="model.GameUniverse.remove\lDrawableGameElementState" alt="" coords="322,126,537,167"/>
+<area shape="rect" id="node3" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="605,5,808,46"/>
+<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="605,70,808,111"/>
+</map>

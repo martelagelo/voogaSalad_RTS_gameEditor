@@ -1,0 +1,10 @@
+<map id="model.state.GameState.addCampaign" name="model.state.GameState.addCampaign">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a8ddc0fe3ba33800adf41546b919d6bba" title="model.MainModel.createCampaign" alt="" coords="259,12,503,39"/>
+<area shape="rect" id="node6" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="288,63,475,105"/>
+<area shape="rect" id="node8" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="285,129,478,170"/>
+<area shape="rect" id="node3" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#ace188ceb5aa48f608d66256760574071" title="view.editor.EditorMenuBar\lController.onNewCampaignClick" alt="" coords="552,5,776,46"/>
+<area shape="rect" id="node4" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a56696b0f0540d2e86c3e4fe4521717a2" title="view.editor.EditorMenuBar\lController.initFileMenu" alt="" coords="824,5,1011,46"/>
+<area shape="rect" id="node5" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a5b101a400664af0200be8010673acb49" title="view.editor.EditorMenuBar\lController.initMenuBar" alt="" coords="1059,5,1245,46"/>
+<area shape="rect" id="node7" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="587,71,741,97"/>
+<area shape="rect" id="node9" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="583,136,745,163"/>
+</map>

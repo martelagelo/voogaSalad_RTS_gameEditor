@@ -1,0 +1,10 @@
+<map id="view.editor.wizards.GameElementWizard.createTextFieldListeners" name="view.editor.wizards.GameElementWizard.createTextFieldListeners">
+<area shape="rect" id="node2" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a9186bc2aecf42e0dc000cc684d20c685" title="view.editor.wizards.Game\lElementWizard.initializeSliders" alt="" coords="270,127,485,169"/>
+<area shape="rect" id="node3" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a0d98e58393e2435808900ae3a2643eee" title="view.editor.wizards.Game\lElementWizard.renderImage" alt="" coords="533,127,736,169"/>
+<area shape="rect" id="node4" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#abe8ad6d8e7a4eec7b8184d12047755be" title="view.editor.wizards.Game\lElementWizard.launchForEdit" alt="" coords="785,93,991,134"/>
+<area shape="rect" id="node8" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a1b56666ff43ed5d0ccbeacf0c7cda38f" title="view.editor.wizards.Game\lElementWizard.loadImage" alt="" coords="794,161,982,202"/>
+<area shape="rect" id="node5" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a8564fdf017fa6f25e3e663cf076e0c04" title="view.editor.ElementAccordion\lController.openSelectableGameElement\lWizard" alt="" coords="1041,5,1319,61"/>
+<area shape="rect" id="node7" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="1045,85,1315,141"/>
+<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="1368,53,1576,94"/>
+<area shape="rect" id="node9" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a108e1aaa06ef6b80a4a1d33d460cde06" title="view.editor.wizards.Game\lElementWizard.initialize" alt="" coords="1089,165,1271,206"/>
+</map>

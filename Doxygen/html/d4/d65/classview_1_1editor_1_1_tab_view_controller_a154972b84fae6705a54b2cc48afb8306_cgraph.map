@@ -1,0 +1,5 @@
+<map id="view.editor.TabViewController.deleteGoal" name="view.editor.TabViewController.deleteGoal">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#adecdf0dfc472dea28234cc69a6e844d7" title="model.MainModel.removeGoal" alt="" coords="331,41,547,68"/>
+<area shape="rect" id="node3" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#a0eb901df6408563a86cbb88b7298120a" title="model.state.LevelState.get\lGoals" alt="" coords="621,5,817,46"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="595,71,843,97"/>
+</map>
