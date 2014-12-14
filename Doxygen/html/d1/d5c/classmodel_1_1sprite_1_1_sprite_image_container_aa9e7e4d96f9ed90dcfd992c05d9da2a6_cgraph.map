@@ -1,8 +1,0 @@
-<map id="model.sprite.SpriteImageContainer.SpriteImageContainer" name="model.sprite.SpriteImageContainer.SpriteImageContainer">
-<area shape="rect" id="node2" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#a6f0600404dbb67cab50a7b300e51b916" title="model.sprite.SpriteImage\lContainer.locateColorMask" alt="" coords="284,5,476,46"/>
-<area shape="rect" id="node6" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#ab0948a5207ebc753a4d28471ed1bffa5" title="model.sprite.SpriteImage\lContainer.locateSpritesheet" alt="" coords="280,70,480,111"/>
-<area shape="rect" id="node3" href="$dc/d71/classmodel_1_1sprite_1_1_sprite_image_loader.html#a7a414ef9c8f43d6051fdb46d761104c9" title="model.sprite.SpriteImage\lLoader.loadTeamColorMask" alt="" coords="529,5,725,46"/>
-<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#af1333303576053ddda0787bcf1cd9c81" title="util.SaveLoadUtility.load\lImage" alt="" coords="773,38,947,79"/>
-<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="995,45,1202,72"/>
-<area shape="rect" id="node7" href="$dc/d71/classmodel_1_1sprite_1_1_sprite_image_loader.html#ae41a60156e2bbfe6e60355ba0ebecd09" title="model.sprite.SpriteImage\lLoader.loadSpritesheet" alt="" coords="535,70,719,111"/>
-</map>

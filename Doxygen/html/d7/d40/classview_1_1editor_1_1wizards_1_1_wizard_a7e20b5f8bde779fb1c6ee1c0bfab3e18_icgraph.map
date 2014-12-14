@@ -1,6 +1,0 @@
-<map id="view.editor.wizards.Wizard.addWizardData" name="view.editor.wizards.Wizard.addWizardData">
-<area shape="rect" id="node2" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#af1a70ba89d682d331e46be6a564472cd" title="view.editor.wizards.Game\lElementWizard.launchBoundsWizard" alt="" coords="267,5,520,46"/>
-<area shape="rect" id="node4" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a39050dce98611f314054cc4d59be86f4" title="view.editor.wizards.Game\lElementWizard.storeContainerData" alt="" coords="270,70,517,111"/>
-<area shape="rect" id="node3" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a108e1aaa06ef6b80a4a1d33d460cde06" title="view.editor.wizards.Game\lElementWizard.initialize" alt="" coords="575,5,758,46"/>
-<area shape="rect" id="node5" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a5aef02ce2b3e8f7470cd74aea63e4f6b" title="view.editor.wizards.Game\lElementWizard.updateData" alt="" coords="568,70,765,111"/>
-</map>

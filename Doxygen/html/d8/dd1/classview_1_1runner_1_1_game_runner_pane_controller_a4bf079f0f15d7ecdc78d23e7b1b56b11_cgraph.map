@@ -1,8 +1,0 @@
-<map id="view.runner.GameRunnerPaneController.engineUpdate" name="view.runner.GameRunnerPaneController.engineUpdate">
-<area shape="rect" id="node2" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a88032ee5bd8e5dce8604401bd3a43669" title="model.state.GameState.add\lHighScore" alt="" coords="300,5,505,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="279,71,526,97"/>
-<area shape="rect" id="node4" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#aa574aa52876c496c08830912fb48752a" title="model.state.DescribableState.getName" alt="" coords="264,121,541,148"/>
-<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5582c5bba557ed93a5269e562bca0ba2" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttributes" alt="" coords="288,172,517,228"/>
-<area shape="rect" id="node6" href="$d5/d9d/classview_1_1gui_1_1_stack_pane_g_u_i_container.html#a4af729800064db0d0069ac73f518d222" title="view.gui.StackPaneGUIContainer.set\lFront" alt="" coords="277,251,528,293"/>
-<area shape="rect" id="node7" href="$d8/db4/classview_1_1runner_1_1_game_end_controller.html#acbe2ab20925778370a95d11566b21455" title="view.runner.GameEndController.update\lGameEndView" alt="" coords="267,317,538,358"/>
-</map>

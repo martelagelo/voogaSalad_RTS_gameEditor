@@ -1,8 +1,0 @@
-<map id="model.GameUniverse.addParticipantColor" name="model.GameUniverse.addParticipantColor">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a44709338c2ecd04438921fb7b3232fa6" title="model.MainModel.addParticipant\lColor" alt="" coords="309,7,539,49"/>
-<area shape="rect" id="node5" href="$de/d21/classmodel_1_1_main_model.html#af9c20fbbad657aa750844a8b5dabac80" title="model.MainModel.newGame" alt="" coords="323,75,525,101"/>
-<area shape="rect" id="node3" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a9e6edd6257068039459672ab6242ae5f" title="view.editor.EditorScreen.init\lParticipantInfo" alt="" coords="593,5,791,46"/>
-<area shape="rect" id="node4" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aba6c32908c25fa4f755a312e92860c02" title="view.editor.EditorScreen.init" alt="" coords="851,12,1048,39"/>
-<area shape="rect" id="node6" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a6425dffd80436213cce943fc3aa27563" title="view.splash.SplashScreen.set\lUpButtons" alt="" coords="587,70,797,111"/>
-<area shape="rect" id="node7" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#af2da20a5479f92e4669ae93f0d6121de" title="view.splash.SplashScreen.init" alt="" coords="845,77,1053,104"/>
-</map>

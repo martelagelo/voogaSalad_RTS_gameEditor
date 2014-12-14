@@ -1,4 +1,0 @@
-<map id="engine.UI.InputManager.screenButtonClicked" name="engine.UI.InputManager.screenButtonClicked">
-<area shape="rect" id="node2" href="$dc/dbf/classengine_1_1visuals_1_1_ability_matrix.html#a583f1e42b24190661c71e35d6f8bd40d" title="engine.visuals.AbilityMatrix.initialize\lButtons" alt="" coords="275,5,523,46"/>
-<area shape="rect" id="node3" href="$dc/dbf/classengine_1_1visuals_1_1_ability_matrix.html#ae75390da488dfb82609e3e826086095a" title="engine.visuals.AbilityMatrix.\lAbilityMatrix" alt="" coords="571,5,768,46"/>
-</map>
