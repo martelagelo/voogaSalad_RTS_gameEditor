@@ -1,6 +1,0 @@
-<map id="model.state.DescribableState" name="model.state.DescribableState">
-<area shape="rect" id="node4" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html" title="model.state.CampaignState" alt="" coords="5,155,208,181"/>
-<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html" title="model.state.GameState" alt="" coords="233,155,409,181"/>
-<area shape="rect" id="node6" href="$d2/de7/classmodel_1_1state_1_1_level_state.html" title="model.state.LevelState" alt="" coords="435,155,605,181"/>
-<area shape="rect" id="node2" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="208,5,312,32"/>
-</map>

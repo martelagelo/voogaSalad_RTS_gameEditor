@@ -1,5 +1,0 @@
-<map id="engine.Engine.update" name="engine.Engine.update">
-<area shape="rect" id="node2" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a12036cd3e0006802cefce29f467bdd9f" title="engine.stateManaging.Game\lLoop.stop" alt="" coords="226,5,433,46"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#ac366da9d72a098c59e5c5c2bac25d8b3" title="engine.Engine.updateObservers" alt="" coords="216,71,443,97"/>
-<area shape="rect" id="node4" href="$d5/d29/classengine_1_1users_1_1_participant.html#a4b89f6e9603c4bcfc4c7b341fff8ab9e" title="engine.users.Participant.get\lAttributes" alt="" coords="491,63,691,105"/>
-</map>

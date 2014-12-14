@@ -1,7 +1,0 @@
-<map id="model.state.gameelement.SelectableGameElementState" name="model.state.gameelement.SelectableGameElementState">
-<area shape="rect" id="node2" href="$dd/ded/classmodel_1_1state_1_1gameelement_1_1_drawable_game_element_state.html" title="model.state.gameelement.\lDrawableGameElementState" alt="" coords="440,89,648,130"/>
-<area shape="rect" id="node3" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html" title="model.state.gameelement.\lGameElementState" alt="" coords="176,23,373,65"/>
-<area shape="rect" id="node4" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="5,5,109,32"/>
-<area shape="rect" id="node6" href="$d6/def/interfacemodel_1_1state_1_1gameelement_1_1traits_1_1_boundable.html" title="model.state.gameelement.traits.\lBoundable" alt="" coords="157,89,392,130"/>
-<area shape="rect" id="node7" href="$d0/d9d/interfacemodel_1_1state_1_1gameelement_1_1traits_1_1_sighted.html" title="model.state.gameelement.traits.\lSighted" alt="" coords="157,154,392,195"/>
-</map>
