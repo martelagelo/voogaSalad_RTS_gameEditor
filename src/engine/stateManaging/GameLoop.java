@@ -5,12 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.stream.Collectors;
+
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
@@ -38,6 +40,8 @@ public class GameLoop extends Observable {
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
     private Timeline timeline;
+    
+    Timeline timerTimeline;
 
     private EventHandler<ActionEvent> oneFrameRunner = new EventHandler<ActionEvent>() {
         @Override
@@ -62,6 +66,7 @@ public class GameLoop extends Observable {
         myCurrentLevel = level;
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
+        timerTimeline = new Timeline();
         startTimeline();
     }
     
@@ -141,6 +146,8 @@ public class GameLoop extends Observable {
         setRunnerLoop();
         timeline.playFromStart();
     }
+    
+    
 
     public void setEditorLoop() {
         setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameEditor));
@@ -182,5 +189,26 @@ public class GameLoop extends Observable {
     public void stop () {
         timeline.stop();
     }
+    
+    private void activateTimer(Label label, int time) {
+		if (timerTimeline != null) {
+			timerTimeline.stop();
+		}
+		timerTimeline = new Timeline();
+		timerTimeline.setCycleCount(Timeline.INDEFINITE);
+
+		timerTimeline.getKeyFrames().add(
+				new KeyFrame(Duration.seconds(1),
+						new EventHandler<ActionEvent>() {
+							public void handle(ActionEvent event) {
+								int curTime = time - timerTimeline.getCycleCount();
+								label.setText("" + curTime);
+								if (curTime <= 0) {
+									timerTimeline.stop();
+								}
+							}
+						}));
+		timerTimeline.play();
+	}
 
 }
