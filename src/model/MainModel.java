@@ -314,12 +314,14 @@ public class MainModel extends Observable {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);        
         getGameUniverse().removeDrawableGameElementState(elementName);
+        updateObservers();
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);
         getGameUniverse().removeSelectableGameElementState(elementName);
+        updateObservers();
     }
 
     private boolean elementIsInUse (String elementName) {

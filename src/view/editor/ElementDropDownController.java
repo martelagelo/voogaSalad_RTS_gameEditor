@@ -133,7 +133,7 @@ public class ElementDropDownController implements GUIController {
             }
             elementListView.requestFocus();
         });
-        elementListView.focusedProperty().addListener( (observable, oldValue, newValue) -> {
+        vboxRoot.hoverProperty().addListener( (observable, oldValue, newValue) -> {
             if (!newValue) {
                 elementListView.getSelectionModel().clearSelection();
             }
