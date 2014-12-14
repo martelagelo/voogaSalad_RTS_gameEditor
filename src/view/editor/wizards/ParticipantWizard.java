@@ -29,6 +29,7 @@ public class ParticipantWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
+    	//TODO: Verify data
         return true;
     }
 
