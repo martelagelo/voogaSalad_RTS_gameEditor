@@ -1,8 +1,0 @@
-<map id="model.sprite.SpriteImageGenerator.fetchImageContainer" name="model.sprite.SpriteImageGenerator.fetchImageContainer">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#ae2e58698b812253b1c8e87312897b97e" title="model.MainModel.fetchImage\lContainer" alt="" coords="277,53,488,94"/>
-<area shape="rect" id="node3" href="$d6/d60/classengine_1_1element_factories_1_1_animator_factory.html#a18370178255ca1fd6c28dfc5158001f8" title="engine.elementFactories.\lAnimatorFactory.createAnimator" alt="" coords="536,53,765,94"/>
-<area shape="rect" id="node4" href="$df/df0/classengine_1_1element_factories_1_1_visualizer_factory.html#ab3af310fd8c0f30f4ab30125576112f9" title="engine.elementFactories.\lVisualizerFactory.createVisualizer" alt="" coords="814,53,1047,94"/>
-<area shape="rect" id="node5" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#ae53ef87192fe373614a7215f0e3d938c" title="engine.elementFactories.\lGameElementFactory.generateVisualizer" alt="" coords="1097,53,1378,94"/>
-<area shape="rect" id="node6" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#a8671651ea7c0bcf7fb0de5b5552832fe" title="engine.elementFactories.\lGameElementFactory.createDrawable\lGameElement" alt="" coords="1431,5,1694,61"/>
-<area shape="rect" id="node7" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#a4e478634c65c4ee64c2163fdacd09669" title="engine.elementFactories.\lGameElementFactory.createSelectable\lGameElement" alt="" coords="1427,85,1698,141"/>
-</map>

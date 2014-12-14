@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.evaluatables.parameters.ParameterFactory.make" name="engine.gameRepresentation.evaluatables.parameters.ParameterFactory.make">
-<area shape="rect" id="node2" href="$db/dd3/classengine_1_1game_representation_1_1evaluatables_1_1parameters_1_1_parameter_factory.html#ad1b3f2dccaa046bdfaacc3b8e9f1507d" title="engine.gameRepresentation.evaluatables.parameters.\lParameterFactory.createParameter" alt="" coords="424,38,795,79"/>
-<area shape="rect" id="node3" href="$db/dd3/classengine_1_1game_representation_1_1evaluatables_1_1parameters_1_1_parameter_factory.html#af2f574e7cd56395e9d9a1af32237e934" title="engine.gameRepresentation.evaluatables.parameters.\lParameterFactory.getObjectOfInterestIdentifier" alt="" coords="843,5,1213,46"/>
-<area shape="rect" id="node5" href="$db/dd3/classengine_1_1game_representation_1_1evaluatables_1_1parameters_1_1_parameter_factory.html#a545cb84d00d814dd28e85f0ff07dffc2" title="engine.gameRepresentation.evaluatables.parameters.\lParameterFactory.makeParameter" alt="" coords="843,70,1213,111"/>
-<area shape="rect" id="node4" href="$db/dd3/classengine_1_1game_representation_1_1evaluatables_1_1parameters_1_1_parameter_factory.html#a3ef2435879667780e7e466620041f87f" title="engine.gameRepresentation.evaluatables.parameters.\lParameterFactory.getClassFromString" alt="" coords="1261,38,1632,79"/>
-</map>

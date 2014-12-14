@@ -1,6 +1,0 @@
-<map id="engine.visuals.MiniMap.MiniMap" name="engine.visuals.MiniMap.MiniMap">
-<area shape="rect" id="node2" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#ace0e57f6e87b1249932c9f4dfecf4968" title="engine.visuals.Scrollable\lPane.getFieldHeight" alt="" coords="300,5,479,46"/>
-<area shape="rect" id="node3" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a581f52ecf0dad20c2c55881043038d71" title="engine.visuals.Scrollable\lPane.getFieldWidth" alt="" coords="300,70,479,111"/>
-<area shape="rect" id="node4" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#a1373d0267719135068ed492a8a6a8f3c" title="engine.visuals.MiniMap.initialize\lDisplay" alt="" coords="278,135,501,177"/>
-<area shape="rect" id="node5" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#a3a4bb5f368b785f5fc9e28f87d8014b6" title="engine.visuals.MiniMap.initialize\lGraphicsContext" alt="" coords="278,201,501,242"/>
-</map>

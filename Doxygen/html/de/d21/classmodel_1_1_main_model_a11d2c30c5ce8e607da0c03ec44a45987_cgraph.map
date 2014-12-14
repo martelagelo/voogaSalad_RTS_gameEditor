@@ -1,9 +1,0 @@
-<map id="model.MainModel.createGoal" name="model.MainModel.createGoal">
-<area shape="rect" id="node2" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#a7e393da870d4eeaa9a00c0eadf82279f" title="model.state.LevelState.addGoal" alt="" coords="303,5,531,32"/>
-<area shape="rect" id="node3" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a7bd0f6ee4d48dd103f87c28444c6eb8d" title="model.GameElementStateFactory.createGoal" alt="" coords="262,56,573,83"/>
-<area shape="rect" id="node8" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="293,107,541,133"/>
-<area shape="rect" id="node4" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9c933a8457618e7e8e5f257ee2211c07" title="model.state.gameelement.\lGameElementState.addAction" alt="" coords="654,17,871,58"/>
-<area shape="rect" id="node6" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0182be087dfefa408c6194ff5ca55ac1" title="model.GameElementStateFactory.create\lActionWrapper" alt="" coords="621,82,904,123"/>
-<area shape="rect" id="node5" href="$d5/d7f/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_wrapper.html#aeb7b2a7580e1ba5d6e57a13cc00e9bd5" title="engine.gameRepresentation.evaluatables.actions.\lActionWrapper.getActionType" alt="" coords="952,17,1293,58"/>
-<area shape="rect" id="node7" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ae19ca8de1e400fb399d702d78c861a81" title="model.data.WizardData.get\lValueByKey" alt="" coords="1024,82,1221,123"/>
-</map>
