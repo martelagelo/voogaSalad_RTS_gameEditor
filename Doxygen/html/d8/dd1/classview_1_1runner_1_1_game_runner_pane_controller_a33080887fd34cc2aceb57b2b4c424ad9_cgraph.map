@@ -1,0 +1,15 @@
+<map id="view.runner.GameRunnerPaneController.setLevel" name="view.runner.GameRunnerPaneController.setLevel">
+<area shape="rect" id="node2" href="$d5/d9d/classview_1_1gui_1_1_stack_pane_g_u_i_container.html#a4062ee797b3c933338598b36584642ba" title="view.gui.StackPaneGUIContainer.bind\lPaneSize" alt="" coords="265,26,522,67"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="275,91,512,133"/>
+<area shape="rect" id="node9" href="$d6/dea/classutil_1_1_deep_copy.html#a2e316cf2fbb29f638582d531f13f2f25" title="util.DeepCopy.deepCopy" alt="" coords="305,157,482,184"/>
+<area shape="rect" id="node10" href="$dc/de2/classengine_1_1_engine.html#a239a5b104190750076623079fa00d8f4" title="engine.Engine.getScene" alt="" coords="305,208,482,235"/>
+<area shape="rect" id="node12" href="$dc/de2/classengine_1_1_engine.html#a6f77d24003db212911a1e73420361bc9" title="engine.Engine.play" alt="" coords="322,259,465,285"/>
+<area shape="rect" id="node14" href="$d5/d9d/classview_1_1gui_1_1_stack_pane_g_u_i_container.html#a4af729800064db0d0069ac73f518d222" title="view.gui.StackPaneGUIContainer.set\lFront" alt="" coords="268,310,519,351"/>
+<area shape="rect" id="node4" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="571,5,808,46"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="590,70,789,111"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="571,135,807,177"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="856,59,1072,115"/>
+<area shape="rect" id="node8" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="865,138,1063,179"/>
+<area shape="rect" id="node11" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a62e6a401d1c498141b246f28e1149472" title="engine.visuals.VisualManager.get\lScrollingScene" alt="" coords="572,201,807,242"/>
+<area shape="rect" id="node13" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a4d8ff588651cb911c0c2fb8ddf8ff4a1" title="engine.stateManaging.Game\lLoop.play" alt="" coords="586,266,793,307"/>
+</map>

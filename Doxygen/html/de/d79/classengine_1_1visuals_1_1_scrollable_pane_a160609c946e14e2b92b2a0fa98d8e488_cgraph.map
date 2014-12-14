@@ -1,0 +1,16 @@
+<map id="engine.visuals.ScrollablePane.ScrollablePane" name="engine.visuals.ScrollablePane.ScrollablePane">
+<area shape="rect" id="node2" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a9c272b51a5b5a1b3eaa82956088de6f5" title="engine.visuals.Selection\lBox.getBox" alt="" coords="234,253,409,294"/>
+<area shape="rect" id="node3" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a84c7589cc61d150a9b33e4603bbac25a" title="engine.visuals.Scrollable\lPane.initializeHandlers" alt="" coords="232,318,411,359"/>
+<area shape="rect" id="node4" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a4f9d5b9e492262ccf1edfa7eeb37e716" title="engine.UI.InputManager.key\lPressed" alt="" coords="485,5,683,46"/>
+<area shape="rect" id="node5" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a14ea8fb797a5e13a9e425610f6c91655" title="engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="985,93,1191,134"/>
+<area shape="rect" id="node6" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a0a95d45df6721fccc5ba417111c36cf4" title="engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="985,398,1191,439"/>
+<area shape="rect" id="node7" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a32e24f7577c90d24424b51fedec69ebf" title="engine.visuals.Scrollable\lPane.callCorrectMouseButtonAction" alt="" coords="459,187,709,229"/>
+<area shape="rect" id="node8" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#ab79ae26c609002b404e4e47021373e3e" title="engine.UI.InputManager.primary\lClickOccurred" alt="" coords="471,253,697,294"/>
+<area shape="rect" id="node9" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a62e755c992f1a2555975347fd0480aa4" title="engine.UI.InputManager.secondary\lClickOccurred" alt="" coords="463,318,705,359"/>
+<area shape="rect" id="node10" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#ae62336a8262bb70ee51c1e5f1fa2c064" title="engine.UI.InputManager.primary\lClickReleaseOccurred" alt="" coords="471,383,697,425"/>
+<area shape="rect" id="node11" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a1045f4176d4a2d37b1c69295e5a95f70" title="engine.UI.InputManager.secondary\lClickReleaseOccurred" alt="" coords="463,449,705,490"/>
+<area shape="rect" id="node12" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a1446887e98df26419f1157d705e3ed5c" title="engine.UI.InputManager.primary\lDragOccurred" alt="" coords="471,514,697,555"/>
+<area shape="rect" id="node13" href="$d1/d47/classengine_1_1_u_i_1_1_input_manager.html#a7c67af2a9a3c7897dfd48fc33d124e15" title="engine.UI.InputManager.secondary\lDragOccurred" alt="" coords="463,579,705,621"/>
+<area shape="rect" id="node14" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a055e5e25ccdd27de96fdd1235281a622" title="engine.visuals.Scrollable\lPane.mouseMoved" alt="" coords="495,122,673,163"/>
+<area shape="rect" id="node15" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#af7dc0dac9cdc19cac041a7389dbd8ab0" title="engine.visuals.Scrollable\lPane.setScrollSpeed" alt="" coords="757,122,936,163"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="model.GameSaveLoadMediator.processImagePath" name="model.GameSaveLoadMediator.processImagePath">
+<area shape="rect" id="node2" href="$dc/dc9/enummodel_1_1_game_element_image_type.html#a23cfaf60b3e4007677321718035947cd" title="model.GameElementImageType.get\lFolderName" alt="" coords="331,5,581,46"/>
+<area shape="rect" id="node3" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a1ff8333eab06fb87ad20b637746c2660" title="model.GameSaveLoadMediator.get\lImageName" alt="" coords="332,70,580,111"/>
+</map>
