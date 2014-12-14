@@ -14,7 +14,7 @@ import engine.computers.pathingComputers.MapGrid;
  * lists of terrains and units, and a list of goals for the level. Essentially acts as a displayable
  * wrapper around the serializable levelState object.
  * 
- * @author Jonathan, Nishad, Rahul
+ * @author Nishad, Jonathan, Rahul
  *
  */
 public class Level {

@@ -11,7 +11,7 @@ import model.exceptions.LevelNotFoundException;
  * This class is a collection of Levels used to string together gameplay in
  * order to make a cohesive user experience.
  * 
- * @author Steve, Jonathan, Nishad, Rahul
+ * @author Jonathan, Nishad
  *
  */
 public class CampaignState extends DescribableState {

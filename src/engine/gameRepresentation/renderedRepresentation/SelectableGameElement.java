@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
-import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.computers.objectClassifications.InteractingElementType;
@@ -20,7 +19,7 @@ import engine.visuals.elementVisuals.Visualizer;
  * visual appearance to the appearance defined by the DrawableGameElement and
  * handles animations for actions resulting from being selected.
  *
- * @author Jonathan , Steve, Nishad, Rahul, John, Michael D., Zach, Stanley
+ * @author Steve, Nishad, Jonathan, Rahul, John, Michael D., Zach, Stanley
  *
  */
 public class SelectableGameElement extends DrawableGameElement {

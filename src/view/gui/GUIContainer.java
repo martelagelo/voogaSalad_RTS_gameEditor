@@ -15,7 +15,7 @@ import model.state.gameelement.AttributeContainer;
  * info to its subpanes. Handles updating from the model and delegating updates
  * to its subpanes
  * 
- * @author Jonathan Tseng
+ * @author Jonathan Tseng, Nishad Agrawal
  *
  */
 public abstract class GUIContainer extends Observable implements Observer, GUIController {

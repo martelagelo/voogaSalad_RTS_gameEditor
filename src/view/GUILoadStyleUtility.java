@@ -15,7 +15,6 @@ import javafx.scene.Scene;
  * 
  * @author Jonathan Tseng
  * @author Nishad Agrawal
- * @author Joshua Miller
  * 
  */
 public class GUILoadStyleUtility {

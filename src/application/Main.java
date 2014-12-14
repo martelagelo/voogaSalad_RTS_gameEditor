@@ -8,7 +8,7 @@ import view.dialog.DialogBoxUtility;
 
 /**
  * 
- * @author jonathan, nishad, joshua
+ * @author Jonathan, Nishad
  * 
  * This class is the starting point of our application.
  * It instantiates a model and a view, and adds the view

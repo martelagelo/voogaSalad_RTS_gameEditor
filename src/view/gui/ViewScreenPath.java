@@ -3,7 +3,7 @@ package view.gui;
 /**
  * Class for enumerated types of screens that can be opened
  * 
- * @author Jonathan Tseng, Rahul
+ * @author Jonathan Tseng, Nishad, Rahul
  *
  */
 public enum ViewScreenPath {
