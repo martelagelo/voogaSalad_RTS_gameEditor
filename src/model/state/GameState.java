@@ -1,10 +1,8 @@
 package model.state;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import model.GameUniverse;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
@@ -29,6 +27,7 @@ public class GameState extends DescribableState {
 
     public GameState (String name) {
         super(name);
+        myHighScores = new ArrayList<>();
         myCampaigns = new ArrayList<>();
         myGameUniverse = new GameUniverse();
     }

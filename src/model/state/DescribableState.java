@@ -7,7 +7,7 @@ import util.JSONable;
  * A state object that has a name and description. Essentially used to create states with associated
  * name and description metadata.
  * 
- * @author Jonathan, Nishad, Rahul
+ * @author Jonathan, Nishad
  *
  */
 public abstract class DescribableState implements JSONable, Serializable{

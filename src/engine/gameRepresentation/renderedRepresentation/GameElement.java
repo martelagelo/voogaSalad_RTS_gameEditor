@@ -19,7 +19,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  * actions. Also contains an update method to update the element due to its
  * internal state.
  *
- * @author Jonathan, Nishad, Rahul, Steve, Zach, Stanley
+ * @author Steve, Zach, Jonathan, Nishad, Rahul, Stanley
  *
  */
 public class GameElement {

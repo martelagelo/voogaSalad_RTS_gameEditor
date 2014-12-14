@@ -15,7 +15,7 @@ import engine.computers.pathingComputers.MapGrid;
  * the level. Essentially acts as a displayable wrapper around the serializable
  * levelState object.
  *
- * @author Jonathan, Nishad, Rahul
+ * @author Nishad, Jonathan, Rahul
  *
  */
 public class Level {

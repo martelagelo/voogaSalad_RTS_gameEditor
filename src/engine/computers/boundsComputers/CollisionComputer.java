@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * Checks for collisions between groups of objects and give the primary object
  * references
  *
- * @author Zach, Jonathan, Rahul, Nishad
+ * @author Zach, Jonathan
  *
  */
 public class CollisionComputer extends Computer<DrawableGameElement, DrawableGameElement> {

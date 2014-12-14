@@ -39,7 +39,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
 /**
  * Main class for the model of the game
  * 
- * @author Jonathan Tseng, Rahul Harikrishnan, Nishad Agrawal
+ * @author Rahul Harikrishnan, Nishad Agrawal, Jonathan Tseng
  *
  */
 public class MainModel extends Observable {

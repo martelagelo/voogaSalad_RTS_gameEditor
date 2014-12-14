@@ -31,7 +31,7 @@ import view.gui.GUIPanePath;
  * Element Accordion Controller to handle communication between model and
  * element accordion as well as to the titled panes in the accordion
  * 
- * @author Jonathan Tseng
+ * @author Jonathan Tseng, Nishad Agrawal
  *
  */
 public class ElementAccordionController extends GUIContainer {
