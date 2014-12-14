@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>GameUniverse.java</title>
+
+	<meta name="GENERATOR" content="CodePro Server"/>
+
+	<style type="text/css">
+	span.highSeverity {background-color: #FFAAAA; font: bold}
+span.mediumSeverity {background-color: #FFFF77; font: bold}
+span.lowSeverity {background-color: #AAAAFF; font: bold}
+table.code {border-spacing: 0; border-collapse: collapse; border-width: 1px 0 1px 1px; }
+table.code td {padding-left: 0.25em; padding-right: 0.25em; font-family: courier,monospace; font-size: 10pt; border-style: solid; border-color: black;}
+tr.first td.flags {border-width: 1px 1px 0 1px; text-align: right;}
+tr.first td.lineNumber {border-width: 1px 1px 0 1px; text-align: right;}
+tr.first td.sourceLine {border-width: 1px 1px 0 1px; background-color: #F0F0FF;}
+tr.middle td.flags {border-width: 0 1px 0 1px; text-align: right;}
+tr.middle td.lineNumber {border-width: 0 1px 0 1px; text-align: right;}
+tr.middle td.sourceLine {border-width: 0 1px 0 1px; background-color: #F0F0FF;}
+tr.last td.flags {border-width: 0 1px 1px 1px; text-align: right;}
+tr.last td.lineNumber {border-width: 0 1px 1px 1px; text-align: right;}
+tr.last td.sourceLine {border-width: 0 1px 1px 1px; background-color: #F0F0FF;}
+	</style>
+
+	<style type="text/css">
+	body {font: 70% verdana,arial,helvetica; color: #000000}
+p  {margin-top:  3px; line-height: 1.5em}
+h1 {margin-top:  0px; margin-bottom: 6px; font: bold 150% verdana,arial,helvetica}
+h2 {margin-top: 12px; margin-bottom: 6px; font: bold 125% verdana,arial,helvetica}
+h3 {margin-top: 12px; margin-bottom: 6px; font: bold 100% verdana,arial,helvetica}
+h4 {margin-top: 12px; margin-bottom: 6px; font: bold 100% verdana,arial,helvetica}
+.rounded_page{display:block}
+.rounded_page *{display:block; height:1px; overflow:hidden; font-size:.01em; background:#7799DD}
+.rounded_page1{ margin-left:3px; margin-right:3px; padding-left:1px; padding-right:1px; border-left:1px solid #c4d3ef; border-right:1px solid #c4d3ef; background:#99b2e5}
+.rounded_page2{ margin-left:1px; margin-right:1px; padding-right:1px; padding-left:1px; border-left:1px solid #f1f4fa; border-right:1px solid #f1f4fa; background:#90ace3}
+.rounded_page3{ margin-left:1px; margin-right:1px; border-left:1px solid #90ace3; border-right:1px solid #90ace3;}
+.rounded_page4{ border-left:1px solid #c4d3ef; border-right:1px solid #c4d3ef}
+.rounded_page5{ border-left:1px solid #99b2e5; border-right:1px solid #99b2e5}
+.rounded_pagefg{ background:#7799DD}
+.rounded_section{display:block}
+.rounded_section *{display:block; height:1px; overflow:hidden; font-size:.01em; background:#C3D9FF}
+.rounded_section1{ margin-left:3px; margin-right:3px; padding-left:1px; padding-right:1px; border-left:1px solid #e5eefe; border-right:1px solid #e5eefe; background:#d2e2fe}
+.rounded_section2{ margin-left:1px; margin-right:1px; padding-right:1px; padding-left:1px; border-left:1px solid #f9fbfe; border-right:1px solid #f9fbfe; background:#cee0fe}
+.rounded_section3{ margin-left:1px; margin-right:1px; border-left:1px solid #cee0fe; border-right:1px solid #cee0fe;}
+.rounded_section4{ border-left:1px solid #e5eefe; border-right:1px solid #e5eefe}
+.rounded_section5{ border-left:1px solid #d2e2fe; border-right:1px solid #d2e2fe}
+.rounded_sectionfg{ background:#C3D9FF}
+.page-title { color: #FFFFFE; font-weight: bold; font-size: large; margin: 0px 0px 0px 8px; }
+.page-title-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.page-footer { color: #FFFFFE; font-weight: bold; margin-left: 8px}
+.page-footer-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.majorsection-title { color: #FFFFFE; font-weight: bold; margin: 0px 0px 0px 8px; }
+.majorsection-title-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.majorsection-contents { margin: 0px 0px 15px 16px; }
+.section-title { color: #1F4F8F; font-weight: bold; margin: 0px 0px 0px 6px; }
+.section-title-details { font-weight: bold; margin-left: 6px; margin-right: 6px; }
+.section-contents { margin: 6px 0px 15px 14px; }
+.bodyTable { border: 0px solid #777777; width:100%; border-collapse: collapse; }
+.bodyTable th { border: 1px solid #777777; white-space:nowrap; background-color: #EEEEEE; padding-left: 3px; padding-right: 3px; }
+.bodyTable td { border: 1px solid #777777; vertical-align: top; padding-left: 3px; padding-right: 3px; }
+td[class=emptyborder] { border: 0px solid #777777; padding: 3px 0px 3px 0px; }
+
+	</style>
+
+</head>
+
+<body>
+
+<div>
+		<b class="rounded_page"><b class="rounded_page1"><b></b></b><b class="rounded_page2"><b></b></b><b class="rounded_page3"></b><b class="rounded_page4"></b><b class="rounded_page5"></b></b>
+		<div class="rounded_pagefg">
+			<h3 class="majorsection-title">/TempCodeProProject1/src1/src/model/GameUniverse.java</h3>
+		</div>
+		<b class="rounded_page"><b class="rounded_page5"></b><b class="rounded_page4"></b><b class="rounded_page3"></b><b class="rounded_page2"><b></b></b><b class="rounded_page1"><b></b></b></b>
+	</div>
+	<div class="section-contents">
+		<b>Violations: 0 high, 0 medium, 15 low</b>
+	</div>
+	&nbsp;
+	<div>
+		<b class="rounded_section"><b class="rounded_section1"><b></b></b><b class="rounded_section2"><b></b></b><b class="rounded_section3"></b><b class="rounded_section4"></b><b class="rounded_section5"></b></b>
+		<div class="rounded_sectionfg">
+			<h4 class="section-title">Violations</h4>
+		</div>
+		<b class="rounded_section"><b class="rounded_section5"></b><b class="rounded_section4"></b><b class="rounded_section3"></b><b class="rounded_section2"><b></b></b><b class="rounded_section1"><b></b></b></b>
+	</div>
+	<table>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line81">Line 81 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line107">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line82">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line108">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line87">Line 87 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line109">Line 109 is longer than 100 characters</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line88">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line114">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line93">Line 93 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line115">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line94">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line116">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line100">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line117">Line 117 is longer than 100 characters</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line101">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top">&nbsp;</td>
+	<td valign="top">&nbsp;</td>
+	</tr>
+	</table>
+	&nbsp;
+	<div>
+		<b class="rounded_section"><b class="rounded_section1"><b></b></b><b class="rounded_section2"><b></b></b><b class="rounded_section3"></b><b class="rounded_section4"></b><b class="rounded_section5"></b></b>
+		<div class="rounded_sectionfg">
+			<h4 class="section-title">Source</h4>
+		</div>
+		<b class="rounded_section"><b class="rounded_section5"></b><b class="rounded_section4"></b><b class="rounded_section3"></b><b class="rounded_section2"><b></b></b><b class="rounded_section1"><b></b></b></b>
+	</div>
+	<div class="section-contents">
+		<table width="100%" class="code">
+		<tr class="first">
+		<td class="lineNumber">
+		<a name="line1">1</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		package&nbsp;model;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line2">2</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line3">3</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.Collections;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line4">4</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.HashSet;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line5">5</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.List;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line6">6</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.Set;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line7">7</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.stream.Collectors;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line8">8</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.Attribute;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line9">9</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.DrawableGameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line10">10</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.GameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line11">11</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.SelectableGameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line12">12</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.DeepCopy;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line13">13</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line14">14</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line15">15</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line16">16</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;Class&nbsp;that&nbsp;represents&nbsp;all&nbsp;possible&nbsp;elements&nbsp;that&nbsp;could&nbsp;make&nbsp;up&nbsp;a&nbsp;game.&nbsp;This
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line17">17</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;is&nbsp;a&nbsp;passive&nbsp;data&nbsp;structure/wrapper&nbsp;class**&nbsp;with&nbsp;no&nbsp;behavior.
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line18">18</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line19">19</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line20">20</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;@author&nbsp;Jonathan&nbsp;Tseng,&nbsp;Rahul
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line21">21</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line22">22</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line23">23</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		public&nbsp;class&nbsp;GameUniverse&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line24">24</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;Long&gt;&nbsp;myParticipantColors;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line25">25</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;Attribute&lt;Number&gt;&gt;&nbsp;myNumericalAttributes;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line26">26</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;Attribute&lt;String&gt;&gt;&nbsp;myTextualAttributes;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line27">27</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;GameElementState&gt;&nbsp;myGameElementStates;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line28">28</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;DrawableGameElementState&gt;&nbsp;myDrawableGameElementStates;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line29">29</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Set&lt;SelectableGameElementState&gt;&nbsp;mySelectableGameElementStates;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line30">30</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line31">31</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;GameUniverse&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line32">32</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myParticipantColors&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line33">33</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myNumericalAttributes&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line34">34</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myTextualAttributes&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line35">35</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myDrawableGameElementStates&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line36">36</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySelectableGameElementStates&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line37">37</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameElementStates&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line38">38</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line39">39</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line40">40</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addParticipantColor(Long&nbsp;color)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line41">41</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myParticipantColors.add(color);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line42">42</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line43">43</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line44">44</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;Long&gt;&nbsp;getParticipantColors()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line45">45</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Collections.unmodifiableSet(myParticipantColors);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line46">46</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line47">47</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line48">48</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addGameElementState&nbsp;(GameElementState&nbsp;ges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line49">49</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameElementStates.add(ges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line50">50</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;storeAttributes(ges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line51">51</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line52">52</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line53">53</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addDrawableGameElementState&nbsp;(DrawableGameElementState&nbsp;dges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line54">54</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myDrawableGameElementStates.add(dges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line55">55</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;storeAttributes(dges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line56">56</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line57">57</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line58">58</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addSelectableGameElementState&nbsp;(SelectableGameElementState&nbsp;sges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line59">59</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySelectableGameElementStates.add(sges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line60">60</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;storeAttributes(sges);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line61">61</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line62">62</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line63">63</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;storeAttributes&nbsp;(GameElementState&nbsp;ges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line64">64</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myNumericalAttributes.addAll(ges.attributes.getNumericalAttributes());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line65">65</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myTextualAttributes.addAll(ges.attributes.getTextualAttributes());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line66">66</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line67">67</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line68">68</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;GameElementState&gt;&nbsp;getGameElementStates&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line69">69</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Collections.unmodifiableSet(myGameElementStates);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line70">70</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line71">71</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line72">72</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;DrawableGameElementState&gt;&nbsp;getDrawableGameElementStates&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line73">73</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Collections.unmodifiableSet(myDrawableGameElementStates);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line74">74</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line75">75</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line76">76</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;SelectableGameElementState&gt;&nbsp;getSelectableGameElementStates&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line77">77</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Collections.unmodifiableSet(mySelectableGameElementStates);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line78">78</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line79">79</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line80">80</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeSelectableGameElementState&nbsp;(String&nbsp;sges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line81"><b>81</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 81 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;SelectableGameElementState&gt;&nbsp;nonMatches&nbsp;=&nbsp;mySelectableGameElementStates.stream().filter(e&nbsp;-&gt;&nbsp;(!e.getName().equals(sges)))</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line82"><b>82</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toSet());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line83">83</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySelectableGameElementStates&nbsp;=&nbsp;nonMatches;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line84">84</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line85">85</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line86">86</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeDrawableGameElementState&nbsp;(String&nbsp;dges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line87"><b>87</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 87 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;DrawableGameElementState&gt;&nbsp;nonMatches&nbsp;=&nbsp;myDrawableGameElementStates.stream().filter(e&nbsp;-&gt;&nbsp;(!e.getName().equals(dges)))</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line88"><b>88</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toSet());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line89">89</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myDrawableGameElementStates&nbsp;=&nbsp;nonMatches;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line90">90</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line91">91</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line92">92</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeGameElementState&nbsp;(GameElementState&nbsp;ges)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line93"><b>93</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 93 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;GameElementState&gt;&nbsp;nonMatches&nbsp;=&nbsp;myGameElementStates.stream().filter(e&nbsp;-&gt;&nbsp;(!e.getName().equals(ges)))</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line94"><b>94</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toSet());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line95">95</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameElementStates&nbsp;=&nbsp;nonMatches;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line96">96</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line97">97</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line98">98</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;GameElementState&nbsp;getGameElementState&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line99">99</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;GameElementState&gt;&nbsp;matches&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line100"><b>100</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>myGameElementStates.stream().filter(e&nbsp;-&gt;&nbsp;(e.getName().equals(elementName)))
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line101"><b>101</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toList());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line102">102</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(matches.size()&nbsp;!=&nbsp;0)&nbsp;?&nbsp;(GameElementState)&nbsp;DeepCopy.deepCopy(matches.get(0))&nbsp;:&nbsp;null;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line103">103</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line104">104</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line105">105</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DrawableGameElementState&nbsp;getDrawableGameElementState&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line106">106</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;DrawableGameElementState&gt;&nbsp;matches&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line107"><b>107</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>myDrawableGameElementStates.stream().filter(e&nbsp;-&gt;&nbsp;(e.getName().equals(elementName)))
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line108"><b>108</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toList());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line109"><b>109</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 109 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(matches.size()&nbsp;!=&nbsp;0)&nbsp;?&nbsp;(DrawableGameElementState)&nbsp;DeepCopy.deepCopy(matches.get(0))&nbsp;:&nbsp;null;</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line110">110</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line111">111</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line112">112</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;SelectableGameElementState&nbsp;getSelectableGameElementState&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line113">113</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;SelectableGameElementState&gt;&nbsp;matches&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line114"><b>114</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>mySelectableGameElementStates.stream()
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line115"><b>115</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.filter(e&nbsp;-&gt;&nbsp;(e.getName().equals(elementName)))
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line116"><b>116</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.collect(Collectors.toList());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line117"><b>117</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 117 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(matches.size()&nbsp;!=&nbsp;0)&nbsp;?&nbsp;(SelectableGameElementState)&nbsp;DeepCopy.deepCopy(matches.get(0))&nbsp;:&nbsp;null;</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line118">118</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line119">119</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line120">120</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;Attribute&lt;Number&gt;&gt;&nbsp;getNumericalAttributes&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line121">121</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myNumericalAttributes;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line122">122</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line123">123</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line124">124</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Set&lt;Attribute&lt;String&gt;&gt;&nbsp;getStringAttributes&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line125">125</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myTextualAttributes;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line126">126</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="last">
+		<td class="lineNumber">
+		<a name="line127">127</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		}
+		</td>
+		</tr>
+		</table>
+	</div>
+	<div>
+		<b class="rounded_page"><b class="rounded_page1"><b></b></b><b class="rounded_page2"><b></b></b><b class="rounded_page3"></b><b class="rounded_page4"></b><b class="rounded_page5"></b></b>
+		<div class="rounded_pagefg">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" ><tr><td valign="middle">
+			<span class="page-footer"></span>
+			</td><td align="right" valign="middle">
+			<span class="page-footer-details">Powered by <span title="0.0.0, UNKNOWN">CodePro Server</span></span></td></tr></table>
+		</div>
+		<b class="rounded_page"><b class="rounded_page5"></b><b class="rounded_page4"></b><b class="rounded_page3"></b><b class="rounded_page2"><b></b></b><b class="rounded_page1"><b></b></b></b>
+	</div>
+
+</body>
+
+</html>

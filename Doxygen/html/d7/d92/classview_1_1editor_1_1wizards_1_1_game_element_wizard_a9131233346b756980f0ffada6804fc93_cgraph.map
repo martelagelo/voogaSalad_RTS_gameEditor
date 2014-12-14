@@ -1,0 +1,8 @@
+<map id="view.editor.wizards.GameElementWizard.createSliderListeners" name="view.editor.wizards.GameElementWizard.createSliderListeners">
+<area shape="rect" id="node2" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#ae8b023d0c40b27c1f76cb457cf5a7c20" title="view.editor.wizards.Animation\lGrid.changeSize" alt="" coords="319,5,527,46"/>
+<area shape="rect" id="node5" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#a94942c619771b542804ed7e09e371a87" title="view.editor.wizards.Grid.get\lFrameX" alt="" coords="325,70,520,111"/>
+<area shape="rect" id="node6" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#a4278bcf939fc9f507c14eba27cff9b68" title="view.editor.wizards.Grid.get\lFrameY" alt="" coords="325,135,520,177"/>
+<area shape="rect" id="node7" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a801947dda9cfb2380e6c7d5e860bf8d8" title="view.editor.wizards.Game\lElementWizard.setValueListener" alt="" coords="309,201,536,242"/>
+<area shape="rect" id="node3" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#ae5c3a9c2a2e322a67f22ea893395fe09" title="view.editor.wizards.Grid.createGrid" alt="" coords="584,12,824,39"/>
+<area shape="rect" id="node4" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#a7a745baf6411f65575eec276d04c7c08" title="view.editor.wizards.Grid.create\lColumns" alt="" coords="873,5,1087,46"/>
+</map>
