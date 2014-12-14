@@ -2,7 +2,6 @@ package engine.gameRepresentation.evaluatables.parameters;
 
 import engine.gameRepresentation.evaluatables.ElementPair;
 
-
 /**
  * A basic string parameter that wraps around and returns a string.
  *
@@ -16,7 +15,8 @@ public class StringParameter extends Parameter<String> {
     /**
      * Create a string parameter giving the string that the parameter references
      *
-     * @param string the string to wrap
+     * @param string
+     *            the string to wrap
      */
     public StringParameter (String string) {
         super(String.class);

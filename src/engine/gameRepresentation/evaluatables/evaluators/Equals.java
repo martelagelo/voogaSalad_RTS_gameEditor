@@ -2,11 +2,10 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
- * An equals evaluator. Returns a boolean indicating if the two objects are equal. Does no
- * assignment to the parameters.
- * 
+ * An equals evaluator. Returns a boolean indicating if the two objects are
+ * equal. Does no assignment to the parameters.
+ *
  * @author Zach
  *
  */

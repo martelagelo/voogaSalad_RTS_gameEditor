@@ -2,7 +2,6 @@ package engine.gameRepresentation.evaluatables.parameters;
 
 import engine.gameRepresentation.evaluatables.ElementPair;
 
-
 /**
  * A basic numeric parameter. i.e. a double
  *

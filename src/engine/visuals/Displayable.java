@@ -2,10 +2,9 @@ package engine.visuals;
 
 import javafx.scene.Node;
 
-
 /**
  * An object that can be displayed
- * 
+ *
  * @author Zach
  *
  */

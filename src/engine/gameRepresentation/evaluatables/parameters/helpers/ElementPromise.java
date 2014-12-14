@@ -2,14 +2,13 @@ package engine.gameRepresentation.evaluatables.parameters.helpers;
 
 import engine.stateManaging.GameElementManager;
 
-
 /**
- * A data wrapper for an element creation promise containing an element name and an element manager.
- * Needed
- * due to the 2 input restrictions of evaluators that has gains in other areas. This requirement for
- * a wrapper comes from a design choice that was made in the design of evaluators to make the system
- * more dynamic.
- * 
+ * A data wrapper for an element creation promise containing an element name and
+ * an element manager. Needed due to the 2 input restrictions of evaluators that
+ * has gains in other areas. This requirement for a wrapper comes from a design
+ * choice that was made in the design of evaluators to make the system more
+ * dynamic.
+ *
  * @author Zach
  *
  */
@@ -19,9 +18,11 @@ public class ElementPromise {
 
     /**
      * Create the data wrapper for element creation
-     * 
-     * @param elementName the name of the element
-     * @param elementManager the manager used to create the parameter
+     *
+     * @param elementName
+     *            the name of the element
+     * @param elementManager
+     *            the manager used to create the parameter
      */
     public ElementPromise (String elementName, GameElementManager elementManager) {
         myElementName = elementName;

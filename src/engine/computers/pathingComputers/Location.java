@@ -9,7 +9,7 @@ package engine.computers.pathingComputers;
 public class Location implements Comparable<Location>{
     private double myX;
     private double myY;
-    private double movementSpeedScalingFactor = 1;
+    private double myMovementSpeedScalingFactor = 1;
     private double myPriority;
     
     public Location(double x, double y){
@@ -58,6 +58,6 @@ public class Location implements Comparable<Location>{
     }
     
     public double getMovementSpeed() {
-    	return movementSpeedScalingFactor;
+    	return myMovementSpeedScalingFactor;
     }
 }

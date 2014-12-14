@@ -46,7 +46,7 @@ public class GameElementState implements JSONable, Serializable {
      * allowing for much more power on the side of engine extensibility at the
      * cost of some "parameter uncertainty" in the engine.
      */
-    public AttributeContainer attributes;
+    public AttributeContainer myAttributes;
 
     public Set<String> myTypes;
 
@@ -54,7 +54,7 @@ public class GameElementState implements JSONable, Serializable {
      * Initialize the game element state and its internal data structures.
      */
     public GameElementState () {
-        attributes = new AttributeContainer();
+        myAttributes = new AttributeContainer();
         myActions = new HashMap<ActionType, List<ActionWrapper>>();
         myTypes = new HashSet<String>();
     }
@@ -63,7 +63,7 @@ public class GameElementState implements JSONable, Serializable {
      * @return the name of the element, if it has been set
      */
     public String getName () {
-        return attributes.getTextualAttribute(StateTags.NAME.getValue());
+        return myAttributes.getTextualAttribute(StateTags.NAME.getValue());
     }
 
     /**

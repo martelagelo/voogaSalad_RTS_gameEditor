@@ -3,10 +3,9 @@ package engine.gameRepresentation.evaluatables.parameters;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.users.Participant;
 
-
 /**
  * A parameter that wraps around and returns a participant
- * 
+ *
  * @author Zach
  *
  */

@@ -12,40 +12,32 @@ import engine.gameRepresentation.evaluatables.parameters.ParticipantValueParamet
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
-
 /**
- * An action that interacts with a player's attribute with one of the current element
- * 
+ * An action that interacts with a player's attribute with one of the current
+ * element
+ *
  * @see ActionOptions.ATTRIBUTE_INTERACTION_ACTION
- * 
+ *
  * @author Zach
  *
  */
 public class PlayerAttributeInteractionAction extends Action {
 
     public PlayerAttributeInteractionAction (EvaluatorFactory factory,
-                                             GameElementManager elementManager,
-                                             ParticipantManager participantManager,
-                                             String[] args) {
+            GameElementManager elementManager, ParticipantManager participantManager, String[] args) {
         super(factory, elementManager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args,
-                                               EvaluatorFactory factory,
-                                               GameElementManager elementManager,
-                                               ParticipantManager participantManager)
-                                                                                     throws ClassNotFoundException,
-                                                                                     EvaluatorCreationException {
-        Evaluatable<?> playerAttr =
-                new ParticipantValueParameter(identifyParticipantsOfInterest(args[2],
-                                                                             participantManager),
-                                              args[3]);
-        Evaluatable<?> elementAttr =
-                new NumericAttributeParameter(args[1], elementManager,
-                                              new ActorObjectIdentifier());
-        Evaluator<?, ?, ?> participantValueEvaluator =
-                factory.makeEvaluator(args[0], elementAttr, playerAttr);
+    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,
+            GameElementManager elementManager, ParticipantManager participantManager)
+            throws ClassNotFoundException, EvaluatorCreationException {
+        Evaluatable<?> playerAttr = new ParticipantValueParameter(identifyParticipantsOfInterest(
+                args[2], participantManager), args[3]);
+        Evaluatable<?> elementAttr = new NumericAttributeParameter(args[1], elementManager,
+                new ActorObjectIdentifier());
+        Evaluator<?, ?, ?> participantValueEvaluator = factory.makeEvaluator(args[0], elementAttr,
+                playerAttr);
         return participantValueEvaluator;
     }
 

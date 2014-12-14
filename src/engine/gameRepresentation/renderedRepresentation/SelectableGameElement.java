@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
-import model.state.gameelement.DrawableGameElementState;
+
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import engine.computers.objectClassifications.InteractingElementType;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import engine.visuals.elementVisuals.Visualizer;
-
 
 /**
  * A wrapper for game elements capable of being selected. Adds a "selected"
@@ -25,16 +24,13 @@ import engine.visuals.elementVisuals.Visualizer;
  */
 public class SelectableGameElement extends DrawableGameElement {
 
-    private SelectableGameElementState selectableState;
-
+    private SelectableGameElementState mySelectableState;
     private Map<InteractingElementType, Set<DrawableGameElement>> myInteractingElements;
-    // The element that is currently being focused on by the element
     private SelectableGameElement myFocusedElement;
 
-    public SelectableGameElement (SelectableGameElementState element,
-                                  Visualizer visualizer) {
+    public SelectableGameElement (SelectableGameElementState element, Visualizer visualizer) {
         super(element, visualizer);
-        selectableState = element;
+        mySelectableState = element;
         initializeInteractingElementLists();
     }
 
@@ -61,7 +57,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void addInteractingElement (InteractingElementType elementType,
-                                       DrawableGameElement element) {
+            DrawableGameElement element) {
         Set<DrawableGameElement> elements = new HashSet<>();
         Set<DrawableGameElement> oldElements = myInteractingElements.get(elementType);
         if (oldElements != null) {
@@ -72,9 +68,9 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void addInteractingElements (InteractingElementType interactingElementType,
-                                        List<DrawableGameElement> interactingElements) {
+            List<DrawableGameElement> interactingElements) {
         for (DrawableGameElement element : interactingElements) {
-            addInteractingElement(interactingElementType,element);
+            addInteractingElement(interactingElementType, element);
         }
     }
 
@@ -115,18 +111,21 @@ public class SelectableGameElement extends DrawableGameElement {
 
     private void updateSelfDueToCollisions () {
         updateSelfDueToInteractingElementsSubset(InteractingElementType.COLLIDING,
-                                                 ActionType.COLLISION);
+                ActionType.COLLISION);
     }
 
     private void updateSelfDueToInteractingElementsSubset (InteractingElementType elementType,
-                                                           ActionType actionType) {
+            ActionType actionType) {
         // TODO: string literals still exist
         Set<DrawableGameElement> elementsOfInterest = myInteractingElements.get(elementType);
         getActionsOfType(actionType).forEachRemaining(action -> {
             for (DrawableGameElement element : elementsOfInterest) {
                 ElementPair elements = new ElementPair(this, element);
-                if ((Boolean) action.evaluate(elements)) { return; }
-                // By default, only evaluate one single collision action per game loop refresh
+                if ((Boolean) action.evaluate(elements)) {
+                    return;
+                }
+                // By default, only evaluate one single collision action per
+                // game loop refresh
             }
         });
 
@@ -136,7 +135,7 @@ public class SelectableGameElement extends DrawableGameElement {
     }
 
     public void registerAsSelectableChild (Consumer<SelectableGameElementState> function) {
-        function.accept(selectableState);
+        function.accept(mySelectableState);
     }
 
     public void executeAllButtonActions () {
@@ -146,7 +145,7 @@ public class SelectableGameElement extends DrawableGameElement {
     public Map<Integer, String> getAbilityDescriptionMap (int numAttributes) {
         Map<Integer, String> descriptionMap = new HashMap<>();
         for (int i = 1; i <= numAttributes; i++) {
-            String description = this.getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + i);
+            String description = getTextualAttribute(StateTags.ATTRIBUTE_DESCRIPTION.getValue() + i);
             descriptionMap.put(i, description);
         }
 

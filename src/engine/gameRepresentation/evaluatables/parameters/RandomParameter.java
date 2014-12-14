@@ -2,10 +2,10 @@ package engine.gameRepresentation.evaluatables.parameters;
 
 import engine.gameRepresentation.evaluatables.ElementPair;
 
-
 /**
- * A random parameter that takes in two values and returns a random number between them
- * 
+ * A random parameter that takes in two values and returns a random number
+ * between them
+ *
  * @author Zach
  *
  */
@@ -15,11 +15,13 @@ public class RandomParameter extends Parameter<Number> {
     private double myUpperBound;
 
     /**
-     * Create a random parameter that, when evaluated, returns a random number evenly distributed
-     * between the lowerBound and upperBound
-     * 
-     * @param lowerBound the lower number for the randomly generated number
-     * @param upperBound the upper number for the randomly generated number
+     * Create a random parameter that, when evaluated, returns a random number
+     * evenly distributed between the lowerBound and upperBound
+     *
+     * @param lowerBound
+     *            the lower number for the randomly generated number
+     * @param upperBound
+     *            the upper number for the randomly generated number
      */
     public RandomParameter (double lowerBound, double upperBound) {
         super(Number.class);

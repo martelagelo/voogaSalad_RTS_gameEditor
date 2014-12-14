@@ -1,6 +1,7 @@
 package engine.UI;
 
 import java.util.function.Consumer;
+
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -11,41 +12,35 @@ import engine.stateManaging.GameLoop;
 import engine.users.Participant;
 import engine.visuals.SelectionBox;
 
-
 /**
- * Input Manager when the editor is toggled as opposed to the game runner
- * does not use the selection box... only 1 element can be selected at a time
- * 
+ * Input Manager when the editor is toggled as opposed to the game runner does
+ * not use the selection box... only 1 element can be selected at a time
+ *
  * @author Jonathan Tseng, John L.
  *
  */
 public class EditorInputManager extends InputManager {
 
-    public EditorInputManager (MainModel model,
-                               GameElementManager gameElementManager,
-                               GameLoop gameLoop, Participant user) {
+    public EditorInputManager (MainModel model, GameElementManager gameElementManager,
+            GameLoop gameLoop, Participant user) {
         super(model, gameElementManager, gameLoop, user);
         gameLoop.setEditorLoop();
     }
 
     @Override
-    public void primaryClickOccurred (MouseEvent e,
-                                      double mapTranslateX,
-                                      double mapTranslateY,
-                                      SelectionBox b) {
-        Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
+    public void primaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
+            SelectionBox b) {
+        Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         String drawable = myMainModel.getEditorChosenDrawable();
         String selectable = myMainModel.getEditorChosenSelectable();
-        boolean success = checkElementAndCreate(selectable, (element) ->
-        myElementManager.addSelectableGameElementToLevel(element,
-                                                         mapPoint2d.getX(),
-                                                         mapPoint2d.getY(),
-                                                         myMainModel.getEditorChosenColor()));
-        success = success | checkElementAndCreate(drawable, (element) ->
-        myElementManager.addDrawableGameElementToLevel(element, mapPoint2d.getX(),
-                                                       mapPoint2d.getY())
-        );
+        boolean success = checkElementAndCreate(
+                selectable,
+                (element) -> myElementManager.addSelectableGameElementToLevel(element,
+                        mapPoint2d.getX(), mapPoint2d.getY(), myMainModel.getEditorChosenColor()));
+        success = success
+                | checkElementAndCreate(drawable,
+                        (element) -> myElementManager.addDrawableGameElementToLevel(element,
+                                mapPoint2d.getX(), mapPoint2d.getY()));
         myMainModel.clearEditorChosen();
         if (!success) {
             myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
@@ -53,37 +48,30 @@ public class EditorInputManager extends InputManager {
         }
     }
 
-    private boolean checkElementAndCreate(String element, Consumer<String> consumer) {
+    private boolean checkElementAndCreate (String element, Consumer<String> consumer) {
         boolean canAccept = !(element == null || element.isEmpty());
         if (canAccept) {
             consumer.accept(element);
         }
         return canAccept;
     }
-    
+
     @Override
-    public void secondaryClickOccurred (MouseEvent e,
-                                        double mapTranslateX,
-                                        double mapTranslateY,
-                                        SelectionBox b) {
-        Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
+    public void secondaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
+            SelectionBox b) {
+        Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.moveSelectedUnit(mapPoint2d, myUser);
     }
 
     @Override
-    public void primaryClickReleaseOccurred (MouseEvent e,
-                                             double mapTranslateX,
-                                             double mapTranslateY,
-                                             SelectionBox b) {
-        // do nothing
+    public void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
+            double mapTranslateY, SelectionBox b) {
+        // TODO: make this comment better
     }
 
     @Override
-    public void secondaryClickReleaseOccurred (MouseEvent e,
-                                               double mapTranslateX,
-                                               double mapTranslateY,
-                                               SelectionBox b) {
+    public void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
+            double mapTranslateY, SelectionBox b) {
         // do nothing
     }
 

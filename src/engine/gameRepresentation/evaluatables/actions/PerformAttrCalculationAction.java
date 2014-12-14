@@ -10,34 +10,27 @@ import engine.gameRepresentation.evaluatables.parameters.NumericAttributeParamet
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
-
 /**
  * Perform a calculation on a attribute of an element
- * 
+ *
  * @see ActionOptions.PERFORM_CALCULATION_ON_VALUE
- * 
+ *
  * @author Zach
  *
  */
 public class PerformAttrCalculationAction extends Action {
 
     public PerformAttrCalculationAction (EvaluatorFactory factory,
-                                         GameElementManager elementManager,
-                                         ParticipantManager participantManager,
-                                         String[] args) {
+            GameElementManager elementManager, ParticipantManager participantManager, String[] args) {
         super(factory, elementManager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args,
-                                               EvaluatorFactory factory,
-                                               GameElementManager elementManager,
-                                               ParticipantManager participantManager)
-                                                                                     throws ClassNotFoundException,
-                                                                                     EvaluatorCreationException {
-        Evaluatable<?> playerValue =
-                new NumericAttributeParameter(args[2], elementManager,
-                                              new ActorObjectIdentifier());
+    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,
+            GameElementManager elementManager, ParticipantManager participantManager)
+            throws ClassNotFoundException, EvaluatorCreationException {
+        Evaluatable<?> playerValue = new NumericAttributeParameter(args[2], elementManager,
+                new ActorObjectIdentifier());
         Evaluatable<?> number = new NumberParameter(Double.valueOf(args[1]));
 
         return factory.makeEvaluator(args[0], playerValue, number);

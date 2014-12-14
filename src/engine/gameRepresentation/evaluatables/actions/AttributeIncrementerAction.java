@@ -9,9 +9,9 @@ import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCre
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
 
-
 /**
  * Create an action that increments an attribute to a max value based on a timer
+ *
  * @see ActionOptions.ATTRIBUTE_INCRIMENT_ACTION
  * @author Zach
  *
@@ -24,20 +24,15 @@ public class AttributeIncrementerAction extends Action {
     private Long myNumFrames;
     private String myTimerName;
 
-    public AttributeIncrementerAction (EvaluatorFactory factory,
-                                       GameElementManager elementManager,
-                                       ParticipantManager participantManager,
-                                       String[] args) {
+    public AttributeIncrementerAction (EvaluatorFactory factory, GameElementManager elementManager,
+            ParticipantManager participantManager, String[] args) {
         super(factory, elementManager, participantManager, args);
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args,
-                                               EvaluatorFactory factory,
-                                               GameElementManager elementManager,
-                                               ParticipantManager participantManager)
-                                                                                     throws ClassNotFoundException,
-                                                                                     EvaluatorCreationException {
+    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,
+            GameElementManager elementManager, ParticipantManager participantManager)
+            throws ClassNotFoundException, EvaluatorCreationException {
         myAttributeTag = args[0];
         myAttributeAmountTag = args[1];
         myMaxValueTag = args[2];
@@ -47,9 +42,9 @@ public class AttributeIncrementerAction extends Action {
     }
 
     /**
-     * Note: this evaluate implementation relies solely on java code as opposed to
-     * evaluatable trees. This is possible with the action implementation for more
-     * complex actions that would be too long to implement without vscript
+     * Note: this evaluate implementation relies solely on java code as opposed
+     * to evaluatable trees. This is possible with the action implementation for
+     * more complex actions that would be too long to implement without vscript
      */
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {

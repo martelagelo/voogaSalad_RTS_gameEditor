@@ -2,10 +2,9 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
  * Implements the OR functionality on two parameters
- * 
+ *
  * @author Zach
  */
 public class Or<A, B> extends Evaluator<A, B, Boolean> {

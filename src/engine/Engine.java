@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.scene.Group;
+
 import javafx.scene.paint.Color;
 import model.MainModel;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
+
 import org.json.JSONException;
+
 import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
 import engine.UI.RunnerInputManager;
@@ -17,7 +19,7 @@ import engine.elementFactories.AnimatorFactory;
 import engine.elementFactories.GameElementFactory;
 import engine.elementFactories.LevelFactory;
 import engine.elementFactories.VisualizerFactory;
-import engine.gameRepresentation.evaluatables.actions.ActionFactory;
+import engine.gameRepresentation.evaluatables.actions.EvaluatableFactory;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.stateManaging.GameElementManager;
@@ -26,7 +28,6 @@ import engine.users.HumanParticipant;
 import engine.users.Participant;
 import engine.visuals.ScrollablePane;
 import engine.visuals.VisualManager;
-
 
 /**
  * The concrete boundary of the Engine - this class exposes the public API of
@@ -51,27 +52,27 @@ public class Engine extends Observable implements Observer {
 
     private GameElementFactory myElementFactory;
     private LevelFactory myLevelFactory;
-    private ActionFactory myEvaluatableFactory;
+    private EvaluatableFactory myEvaluatableFactory;
     private VisualizerFactory myVisualizerFactory;
 
     private HumanParticipant myUser;
 
-    public Engine (MainModel mainModel, LevelState levelState)
-        throws ClassNotFoundException, JSONException, IOException {
+    public Engine (MainModel mainModel, LevelState levelState) throws ClassNotFoundException,
+            JSONException, IOException {
         myMainModel = mainModel;
         myLevelState = levelState;
-        // TODO fix this so it isn't null
-        myEvaluatableFactory = new ActionFactory(new EvaluatorFactory(), null, null);
-        myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
-        myElementFactory =
-                new GameElementFactory(myMainModel.getGameUniverse(), myEvaluatableFactory,
-                                       myVisualizerFactory);
-        myLevelFactory = new LevelFactory(myElementFactory);
-
         myUser = new HumanParticipant(DEFAULT_PLAYER_COLOR, "Username");
 
-        instantiateManagers(levelState.attributes.getTextualAttribute(StateTags.BACKGROUND_PATH
-                .getValue()));
+        instantiateFactories();
+        instantiateManagers();
+    }
+
+    private void instantiateFactories () {
+        myEvaluatableFactory = new EvaluatableFactory(new EvaluatorFactory());
+        myVisualizerFactory = new VisualizerFactory(new AnimatorFactory(myMainModel));
+        myElementFactory = new GameElementFactory(myMainModel.getGameUniverse(),
+                myEvaluatableFactory, myVisualizerFactory);
+        myLevelFactory = new LevelFactory(myElementFactory);
     }
 
     public static Color colorFromInt (int colorValue) {
@@ -79,60 +80,63 @@ public class Engine extends Observable implements Observer {
     }
 
     public static int colorIntFromString (String color) {
-        return Integer.parseInt(color.substring(2), 16);
+        return Integer.parseInt(color.substring(2, color.length() - 2), 16);
     }
-    
-    public static String colorStringFromInt(int color) {
+
+    public static String colorStringFromInt (int color) {
         String colorString = String.format("000000%s", Integer.toHexString(color));
         return colorString.substring(colorString.length() - 6);
     }
 
     public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,
-                                                            IllegalAccessException,
-                                                            IllegalArgumentException,
-                                                            InvocationTargetException,
-                                                            NoSuchMethodException,
-                                                            SecurityException {
-        InputManager inputManager =
-                (InputManager) inputManagerClass.getDeclaredConstructor(MainModel.class,
-                                                                        GameElementManager.class,
-                                                                        GameLoop.class,
-                                                                        Participant.class)
-                        .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
+            IllegalAccessException, IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException {
+        InputManager inputManager = (InputManager) inputManagerClass.getDeclaredConstructor(
+                MainModel.class, GameElementManager.class, GameLoop.class, Participant.class)
+                .newInstance(myMainModel, myElementManager, myGameLoop, myUser);
         myInputManager = inputManager;
         myVisualManager.attachInputManager(myInputManager);
     }
 
-    public void setAnimationEnabled (boolean b) {
-        myVisualizerFactory.setAnimationEnabled(b);
+    private void instantiateManagers () {
+        myElementManager = new GameElementManager(myElementFactory);
+        myParticipantManager = new ParticipantManager(myUser);
+
+        initializeEvaluatableFactory();
+        createLevel();
+
+        myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
+
+        initializeVisualManager();
     }
 
-    private void instantiateManagers (String backgroundPath) {
-        myElementManager = new GameElementManager(myElementFactory);
-        // The game evaluatable factory must have its game element manager set after it is created
-        myEvaluatableFactory.setGameElementManager(myElementManager);
-        myParticipantManager = new ParticipantManager(myUser, myElementManager);
-        myEvaluatableFactory.setParticipantManager(myParticipantManager);
-        // The next level needs to then be created
+    private void createLevel () {
         Level nextLevel = myLevelFactory.createLevel(myLevelState);
-        // Finally, the GameElementManager needs to have its next level set
+        instantiateVisualManager(nextLevel);
+        instantiateGameLoop(nextLevel);
         myElementManager.setLevel(nextLevel);
-        myVisualManager =
-                new VisualManager(new Group(), nextLevel.getMapWidth(), nextLevel.getMapHeight(),
-                                  backgroundPath);
+    }
 
-        myParticipantManager = new ParticipantManager(myUser, myElementManager);
-
-        myGameLoop =
-                new GameLoop(nextLevel, myVisualManager,
-                             myElementManager, myParticipantManager);
-        // to notify engine when level is finished
-        myGameLoop.addObserver(this);
-
-        nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
-        myInputManager = new RunnerInputManager(myMainModel, myElementManager, myGameLoop, myUser);
+    private void initializeVisualManager () {
         myVisualManager.attachInputManager(myInputManager);
         myVisualManager.attachParticipantManager(myParticipantManager);
+    }
+
+    private void initializeEvaluatableFactory () {
+        myEvaluatableFactory.setGameElementManager(myElementManager);
+        myEvaluatableFactory.setParticipantManager(myParticipantManager);
+    }
+
+    private void instantiateVisualManager (Level nextLevel) {
+        String backgroundPath = nextLevel.getTextualAttribute(StateTags.BACKGROUND_PATH.getValue());
+        myVisualManager = new VisualManager(nextLevel.getMapWidth(), nextLevel.getMapHeight(),
+                backgroundPath);
+        nextLevel.getGroups().stream().forEach(g -> myVisualManager.addObject(g));
+    }
+
+    private void instantiateGameLoop (Level nextLevel) {
+        myGameLoop = new GameLoop(nextLevel, myVisualManager, myParticipantManager);
+        myGameLoop.addObserver(this);
     }
 
     public void play () {
@@ -163,7 +167,7 @@ public class Engine extends Observable implements Observer {
 
     /**
      * Gets the view of the background
-     * 
+     *
      * @return The scene
      */
     public ScrollablePane getScene () {

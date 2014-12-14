@@ -2,7 +2,6 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
  * A greater than evaluator
  *
@@ -11,8 +10,7 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class GreaterThan<A, B> extends Evaluator<A, B, Boolean> {
 
-    public GreaterThan (Evaluatable<A> parameter1,
-                        Evaluatable<B> parameter2) {
+    public GreaterThan (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Boolean.class, ">", parameter1, parameter2);
     }
 

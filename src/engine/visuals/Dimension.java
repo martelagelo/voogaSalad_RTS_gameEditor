@@ -2,11 +2,11 @@ package engine.visuals;
 
 import java.io.Serializable;
 
-
 /**
  *
- * Very simple class that holds dimensions for an object. This was created to avoid using the
- * unserializable Point2D from JavaFX. A data wrapping class that contains no logic of its own.
+ * Very simple class that holds dimensions for an object. This was created to
+ * avoid using the unserializable Point2D from JavaFX. A data wrapping class
+ * that contains no logic of its own.
  *
  * @author Steve, Zach
  *
@@ -35,12 +35,14 @@ public class Dimension implements Serializable {
 
     @Override
     public boolean equals (Object o) {
-        if (!(o instanceof Dimension))
+        if (!(o instanceof Dimension)) {
             return false;
-        else {
+        } else {
             Dimension otherDim = (Dimension) o;
             if (myWidth == otherDim.myWidth) {
-                if (myHeight == otherDim.myHeight) return true;
+                if (myHeight == otherDim.myHeight) {
+                    return true;
+                }
             }
         }
         return false;

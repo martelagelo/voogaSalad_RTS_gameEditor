@@ -2,18 +2,16 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
- * An evaluator that performs the multiplication assignment (*=) function. This returns the result
- * of the multiplication.
- * 
+ * An evaluator that performs the multiplication assignment (*=) function. This
+ * returns the result of the multiplication.
+ *
  * @author Zach
  *
  */
 public class MultiplicationAssignment<A, B> extends Evaluator<A, B, Number> {
 
-    public MultiplicationAssignment (Evaluatable<A> parameter1,
-                                     Evaluatable<B> parameter2) {
+    public MultiplicationAssignment (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Number.class, "*=", parameter1, parameter2);
     }
 

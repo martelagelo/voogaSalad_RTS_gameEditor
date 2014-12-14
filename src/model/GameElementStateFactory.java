@@ -2,6 +2,7 @@ package model;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
+
 import model.data.WizardData;
 import model.data.WizardDataType;
 import model.data.WizardType;
@@ -9,11 +10,11 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
+import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.traits.AttributeDisplayerTags;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 
 
 /**
@@ -101,16 +102,16 @@ public class GameElementStateFactory {
     }
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
-        state.attributes.setTextualAttribute(StateTags.NAME.getValue(),
+        state.myAttributes.setTextualAttribute(StateTags.NAME.getValue(),
                                              data.getValueByKey(WizardDataType.NAME));
 
         addToState( (String key, String value) ->
-                   state.attributes.setTextualAttribute(key, value),
+                   state.myAttributes.setTextualAttribute(key, value),
                    data, WizardType.STRING_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
         addToState( (String key, String value) ->
-                   state.attributes.setNumericalAttribute(key, Double.parseDouble(value)),
+                   state.myAttributes.setNumericalAttribute(key, Double.parseDouble(value)),
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
