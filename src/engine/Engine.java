@@ -74,7 +74,7 @@ public class Engine extends Observable implements Observer {
                 myEvaluatableFactory, myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
     }
-    
+
     public static Color colorFromInt (int colorValue) {
         return Color.web(String.format("0x%s", colorStringFromInt(colorValue)), 1.0);
     }
@@ -82,8 +82,8 @@ public class Engine extends Observable implements Observer {
     public static int colorIntFromString (String color) {
         return Integer.parseInt(color.substring(2, color.length() - 2), 16);
     }
-    
-    public static String colorStringFromInt(int color) {
+
+    public static String colorStringFromInt (int color) {
         String colorString = String.format("000000%s", Integer.toHexString(color));
         return colorString.substring(colorString.length() - 6);
     }

@@ -209,13 +209,17 @@ public class RPG extends Application {
         archerState.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
         archerState.myAttributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);
         archerState.myAttributes.setNumericalAttribute(StateTags.Y_GOAL_POSITION.getValue(), y);
-        archerState.myAttributes.setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
-        archerState.myAttributes.setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
+        archerState.myAttributes
+                .setNumericalAttribute(StateTags.X_TEMP_GOAL_POSITION.getValue(), x);
+        archerState.myAttributes
+                .setNumericalAttribute(StateTags.Y_TEMP_GOAL_POSITION.getValue(), y);
         archerState.myAttributes.setNumericalAttribute(StateTags.HEALTH.getValue(), health);
         archerState.myAttributes.setNumericalAttribute("maxHealth", health);
         archerState.myAttributes.setNumericalAttribute(StateTags.ATTACK.getValue(), attack);
-        archerState.myAttributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), reloadTime);
-        archerState.myAttributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(), "STANDING");
+        archerState.myAttributes
+                .setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), reloadTime);
+        archerState.myAttributes.setTextualAttribute(StateTags.CURRENT_ACTION.getValue(),
+                "STANDING");
         archerState.myAttributes.setNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue(),
                 movementSpeed);
         archerState.addType("archer");
