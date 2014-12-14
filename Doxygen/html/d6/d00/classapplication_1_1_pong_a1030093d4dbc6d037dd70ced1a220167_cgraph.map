@@ -1,0 +1,7 @@
+<map id="application.Pong.createGoalDisplayMarker" name="application.Pong.createGoalDisplayMarker">
+<area shape="rect" id="node2" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#afca6d910331234d0adddb94abf76d757" title="model.state.gameelement.\lGameElementState.addType" alt="" coords="268,5,473,46"/>
+<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#ab3aad60d0ba0fc214f02016621abc9a6" title="util.SaveLoadUtility.load\lResource" alt="" coords="284,70,457,111"/>
+<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="257,135,485,191"/>
+<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a9537867c561e10d0d497563aab33e447" title="model.state.gameelement.\lAttributeContainer.setTextual\lAttribute" alt="" coords="267,215,474,271"/>
+<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="534,182,757,223"/>
+</map>

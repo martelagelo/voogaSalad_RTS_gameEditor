@@ -1,0 +1,8 @@
+<map id="model.MainModel.getDescribableState" name="model.MainModel.getDescribableState">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a7b4313b612f46386bde3a982728e69d5" title="model.MainModel.updateDescribable\lState" alt="" coords="288,5,547,46"/>
+<area shape="rect" id="node5" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a5f5fb5168dd6e42923a567640bbab58f" title="view.editor.EditorScreen.update\lInfoBox" alt="" coords="306,70,529,111"/>
+<area shape="rect" id="node3" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a47de3e6af78c842ca02d2ace8085c21a" title="view.editor.EditorScreen.init\lInfoBox" alt="" coords="605,5,803,46"/>
+<area shape="rect" id="node4" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aba6c32908c25fa4f755a312e92860c02" title="view.editor.EditorScreen.init" alt="" coords="861,45,1059,72"/>
+<area shape="rect" id="node6" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aaad5f29799d14174213c2f06f6156890" title="view.editor.EditorScreen.init\lProjectExplorer" alt="" coords="605,70,803,111"/>
+<area shape="rect" id="node7" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a46b5e664f69da1947e605de4336f09cf" title="view.editor.EditorScreen.model\lUpdate" alt="" coords="595,135,813,177"/>
+</map>

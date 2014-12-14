@@ -1,0 +1,12 @@
+<map id="view.gui.GUIContainer" name="view.gui.GUIContainer">
+<area shape="rect" id="node5" href="$de/d21/classmodel_1_1_main_model.html" title="model.MainModel" alt="" coords="1423,241,1558,268"/>
+<area shape="rect" id="node4" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="1411,343,1571,369"/>
+<area shape="rect" id="node6" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html" title="model.state.GameState" alt="" coords="967,232,1145,259"/>
+<area shape="rect" id="node7" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html" title="model.state.DescribableState" alt="" coords="524,56,737,83"/>
+<area shape="rect" id="node8" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="71,5,175,32"/>
+<area shape="rect" id="node11" href="$de/dda/classmodel_1_1_game_universe.html" title="model.GameUniverse" alt="" coords="550,232,711,259"/>
+<area shape="rect" id="node19" href="$de/d33/classmodel_1_1_game_save_load_mediator.html" title="model.GameSaveLoadMediator" alt="" coords="944,287,1168,313"/>
+<area shape="rect" id="node20" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html" title="model.sprite.SpriteImage\lGenerator" alt="" coords="964,385,1148,426"/>
+<area shape="rect" id="node23" href="$d9/d0f/classutil_1_1_resource_bundle_retriever.html" title="util.ResourceBundleRetriever" alt="" coords="529,451,732,477"/>
+<area shape="rect" id="node24" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html" title="model.sprite.ColorMapGenerator" alt="" coords="515,501,746,528"/>
+</map>
