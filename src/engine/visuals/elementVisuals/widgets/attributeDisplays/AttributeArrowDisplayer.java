@@ -7,10 +7,28 @@ import model.state.gameelement.AttributeContainer;
 import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 
+/**
+ * Creates a selection arrow for units that are selected
+ * 
+ * @author Michael D.
+ *
+ */
 public class AttributeArrowDisplayer extends AttributeDisplayer {
 
     private static final String imageURL = "resources/img/Arrow.png";
 
+    /**
+     * The constructor
+     * 
+     * @param attributes
+     *            The list of attributes belonging to the game element
+     * @param numericParameterTag
+     *            The indicator or name of the attribute
+     * @param minValue
+     *            The minimum value
+     * @param maxValue
+     *            The maximum value
+     */
     public AttributeArrowDisplayer (AttributeContainer attributes, String numericParameterTag,
             double minValue, double maxValue) {
         super(attributes, numericParameterTag, minValue, maxValue);

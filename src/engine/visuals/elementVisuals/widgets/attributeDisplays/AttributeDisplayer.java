@@ -64,17 +64,18 @@ public abstract class AttributeDisplayer implements Updatable, Widget {
         return true;
     }
 
-	/**
-	 * Hide the displayable widget if the player is not selected
-	 */
-	protected void toggleOpacity() {
-		if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED.getValue())
-				.intValue() == 1 || attributesOfInterest.getNumericalAttribute(StateTags.HEALTH.getValue()).intValue() > 0) {
-			myGroup.setVisible(true);
-		} else {
-			myGroup.setVisible(false);
-		}
-	}
+    /**
+     * Hide the displayable widget if the player is not selected
+     */
+    protected void toggleOpacity () {
+        if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED.getValue()).intValue() == 1
+                || attributesOfInterest.getNumericalAttribute(StateTags.HEALTH.getValue())
+                        .intValue() > 0) {
+            myGroup.setVisible(true);
+        } else {
+            myGroup.setVisible(false);
+        }
+    }
 
     /**
      * Create the display for the graphical element
