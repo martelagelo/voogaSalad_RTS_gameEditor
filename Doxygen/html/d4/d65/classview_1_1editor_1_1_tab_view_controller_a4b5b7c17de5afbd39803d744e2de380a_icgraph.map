@@ -1,0 +1,10 @@
+<map id="view.editor.TabViewController.updateLevelTriggersView" name="view.editor.TabViewController.updateLevelTriggersView">
+<area shape="rect" id="node2" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a8cb6adfbffdd06b96f8c068a79737ac8" title="view.editor.TabViewController.create\lInternalConsumer" alt="" coords="307,5,555,46"/>
+<area shape="rect" id="node3" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a1dc26904601bc736368a83e6ca0fc470" title="view.editor.TabViewController.modify\lGoals" alt="" coords="603,31,853,73"/>
+<area shape="rect" id="node5" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a09a49ebdd6badb48bf543982a434955e" title="view.editor.TabViewController.model\lUpdate" alt="" coords="307,122,554,163"/>
+<area shape="rect" id="node4" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a82e1e1f1eb84d1c30bde3a246304473e" title="view.editor.TabViewController.init" alt="" coords="909,39,1136,65"/>
+<area shape="rect" id="node6" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#ac0c89f6996b8d53ff24c1093072716f8" title="view.editor.EditorScreen.create\lNewTab" alt="" coords="619,122,837,163"/>
+<area shape="rect" id="node7" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#ad3d33bc95534e6b677a83a2f01be9286" title="view.editor.EditorScreen.launchTab" alt="" coords="902,129,1143,156"/>
+<area shape="rect" id="node8" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aaad5f29799d14174213c2f06f6156890" title="view.editor.EditorScreen.init\lProjectExplorer" alt="" coords="1192,122,1389,163"/>
+<area shape="rect" id="node9" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aba6c32908c25fa4f755a312e92860c02" title="view.editor.EditorScreen.init" alt="" coords="1437,129,1635,156"/>
+</map>

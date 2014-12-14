@@ -1,0 +1,8 @@
+<map id="model.exceptions.DescribableStateException" name="model.exceptions.DescribableStateException">
+<area shape="rect" id="node3" href="$dd/d14/classmodel_1_1exceptions_1_1_describable_state_exists_exception.html" title="model.exceptions.Describable\lStateExistsException" alt="" coords="403,70,618,111"/>
+<area shape="rect" id="node6" href="$d3/d31/classmodel_1_1exceptions_1_1_describable_state_not_found_exception.html" title="model.exceptions.Describable\lStateNotFoundException" alt="" coords="403,135,618,177"/>
+<area shape="rect" id="node4" href="$d0/dd5/classmodel_1_1exceptions_1_1_campaign_exists_exception.html" title="model.exceptions.Campaign\lExistsException" alt="" coords="670,5,874,46"/>
+<area shape="rect" id="node5" href="$dd/de3/classmodel_1_1exceptions_1_1_level_exists_exception.html" title="model.exceptions.LevelExists\lException" alt="" coords="667,70,877,111"/>
+<area shape="rect" id="node7" href="$da/dfc/classmodel_1_1exceptions_1_1_campaign_not_found_exception.html" title="model.exceptions.Campaign\lNotFoundException" alt="" coords="670,135,874,177"/>
+<area shape="rect" id="node8" href="$d1/d82/classmodel_1_1exceptions_1_1_level_not_found_exception.html" title="model.exceptions.LevelNot\lFoundException" alt="" coords="675,201,869,242"/>
+</map>

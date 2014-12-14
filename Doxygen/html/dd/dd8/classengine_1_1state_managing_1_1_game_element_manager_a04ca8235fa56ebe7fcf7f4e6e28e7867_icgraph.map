@@ -1,0 +1,4 @@
+<map id="engine.stateManaging.GameElementManager.notifyButtonClicked" name="engine.stateManaging.GameElementManager.notifyButtonClicked">
+<area shape="rect" id="node2" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#aed338dcfef23593dc29149fe5fb7bce9" title="engine.UI.RunnerInputManager.key\lPressed" alt="" coords="323,5,565,46"/>
+<area shape="rect" id="node3" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#ae0fb6ff58423e4a0f464e6c2a65fb437" title="engine.UI.RunnerInputManager.screen\lButtonClicked" alt="" coords="312,70,576,111"/>
+</map>

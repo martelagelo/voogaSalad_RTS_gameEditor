@@ -1,0 +1,5 @@
+<map id="engine.visuals.ScrollableBackground.update" name="engine.visuals.ScrollableBackground.update">
+<area shape="rect" id="node2" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a251a35e68afa105dc68cad8e4667faaa" title="engine.visuals.Scrollable\lBackground.retractOutOfBoundsScroll" alt="" coords="233,5,498,46"/>
+<area shape="rect" id="node3" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a14ea8fb797a5e13a9e425610f6c91655" title="engine.visuals.Scrollable\lBackground.setXScrollSpeed" alt="" coords="262,70,469,111"/>
+<area shape="rect" id="node4" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a0a95d45df6721fccc5ba417111c36cf4" title="engine.visuals.Scrollable\lBackground.setYScrollSpeed" alt="" coords="263,135,468,177"/>
+</map>
