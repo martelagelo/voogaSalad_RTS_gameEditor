@@ -11,6 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.sprite.ColorMapGenerator;
 import model.state.gameelement.StateTags;
+import engine.Engine;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
 /**
@@ -99,9 +100,9 @@ public class MiniMap {
     private void setUnitColor (SelectableGameElement SGE) {
         Color c;
         try {
-            c = ColorMapGenerator.colorFromLong(SGE.getNumericalAttribute(
-                    StateTags.TEAM_COLOR.getValue()).longValue());
-        } catch (IllegalArgumentException | NullPointerException e) {
+            c = Engine.colorFromInt(SGE.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).intValue());
+        }
+        catch (IllegalArgumentException | NullPointerException e) {
             c = Color.BLACK; // default for if color isn't defined
         }
         myGraphicsContext.setFill(c);

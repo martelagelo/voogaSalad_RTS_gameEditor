@@ -32,6 +32,7 @@ import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
 import view.splash.SplashScreen;
+import engine.Engine;
 import engine.visuals.elementVisuals.animations.AnimatorState;
 
 
@@ -59,6 +60,7 @@ public class MainModel extends Observable {
     public void newGame (String gameName) {
         // TODO CLEAN THIS UP
         myGameState = new GameState(gameName);
+        getGameUniverse().addParticipantColor(Engine.DEFAULT_PLAYER_COLOR_STRING);
     }
 
     /**
@@ -124,6 +126,11 @@ public class MainModel extends Observable {
 
     }
 
+    public void addParticipantColor(String color) {
+        getGameUniverse().addParticipantColor(color);
+        updateObservers();
+    }
+    
     public void updateDescribableState (String[] selection, String name, String description)
                                                                                             throws CampaignNotFoundException,
                                                                                             LevelNotFoundException {
@@ -307,12 +314,14 @@ public class MainModel extends Observable {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);        
         getGameUniverse().removeDrawableGameElementState(elementName);
+        updateObservers();
     }
 
     public void removeSelectableGameElement (String elementName) throws ElementInUseException {
         if (elementIsInUse(elementName))
             throw new ElementInUseException(elementName);
         getGameUniverse().removeSelectableGameElementState(elementName);
+        updateObservers();
     }
 
     private boolean elementIsInUse (String elementName) {

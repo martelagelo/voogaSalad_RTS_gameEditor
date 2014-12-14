@@ -31,7 +31,7 @@ public abstract class Participant implements JSONable, Serializable {
         attributes = new AttributeContainer();
         attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
     }
-
+    
     /**
      * Gets the name of the user
      *
@@ -62,7 +62,7 @@ public abstract class Participant implements JSONable, Serializable {
      * @return true if the team IDs are the same
      */
     public boolean checkSameTeam (Number otherTeamColor) {
-        return myTeamColor == otherTeamColor.longValue();
+        return otherTeamColor.longValue() == myTeamColor;
     }
 
     public long getTeamColor () {

@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javafx.scene.paint.Color;
 import model.MainModel;
 import model.state.LevelState;
 import model.state.gameelement.StateTags;
@@ -38,8 +39,8 @@ import engine.visuals.VisualManager;
 // TODO: probably doesn't need to be observable or observer
 public class Engine extends Observable implements Observer {
 
-    public static final String DEFAULT_PLAYER_COLOR_STRING = "0000ff";
-    public static final long DEFAULT_PLAYER_COLOR = Long.parseLong(DEFAULT_PLAYER_COLOR_STRING, 16);
+    public static final String DEFAULT_PLAYER_COLOR_STRING = "0x0000ffff";
+    public static final int DEFAULT_PLAYER_COLOR = colorIntFromString(DEFAULT_PLAYER_COLOR_STRING);
     private MainModel myMainModel;
     private GameLoop myGameLoop;
     private LevelState myLevelState;
@@ -72,6 +73,19 @@ public class Engine extends Observable implements Observer {
         myElementFactory = new GameElementFactory(myMainModel.getGameUniverse(),
                 myEvaluatableFactory, myVisualizerFactory);
         myLevelFactory = new LevelFactory(myElementFactory);
+    }
+    
+    public static Color colorFromInt (int colorValue) {
+        return Color.web(String.format("0x%s", colorStringFromInt(colorValue)), 1.0);
+    }
+
+    public static int colorIntFromString (String color) {
+        return Integer.parseInt(color.substring(2, color.length() - 2), 16);
+    }
+    
+    public static String colorStringFromInt(int color) {
+        String colorString = String.format("000000%s", Integer.toHexString(color));
+        return colorString.substring(colorString.length() - 6);
     }
 
     public void setInputManager (Class<?> inputManagerClass) throws InstantiationException,

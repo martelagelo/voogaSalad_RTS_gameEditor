@@ -64,6 +64,7 @@ public abstract class AttributeDisplayer implements Updatable, Widget {
         return true;
     }
 
+<<<<<<< HEAD
     /**
      * Hide the displayable widget if the player is not selected
      */
@@ -74,6 +75,19 @@ public abstract class AttributeDisplayer implements Updatable, Widget {
             myGroup.setVisible(false);
         }
     }
+=======
+	/**
+	 * Hide the displayable widget if the player is not selected
+	 */
+	protected void toggleOpacity() {
+		if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED.getValue())
+				.intValue() == 1 || attributesOfInterest.getNumericalAttribute(StateTags.HEALTH.getValue()).intValue() > 0) {
+			myGroup.setVisible(true);
+		} else {
+			myGroup.setVisible(false);
+		}
+	}
+>>>>>>> master
 
     /**
      * Create the display for the graphical element

@@ -51,7 +51,6 @@ public class ParticipantManager {
      */
     public List<Participant> getAI () {
 
-        System.out.println("Participant count:" + myAIUsers);
         return new ArrayList<>(myAIUsers);
     }
 

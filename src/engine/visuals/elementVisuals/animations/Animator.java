@@ -13,11 +13,11 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.sprite.ColorMapGenerator;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Updatable;
+import engine.Engine;
 import engine.visuals.Dimension;
 
 /**
@@ -68,8 +68,9 @@ public class Animator implements Updatable {
         attributesOfInterest = attributes;
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
-        long teamColor = attributesOfInterest
-                .getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue();
+        int teamColor =
+                attributesOfInterest.getNumericalAttribute(StateTags.TEAM_COLOR.getValue())
+                        .intValue();
 
         setColorMasking(teamColor);
         mySpriteTeamOverlay = myImages.getColorMask(teamColor);
@@ -88,12 +89,21 @@ public class Animator implements Updatable {
      *
      * @param teamColor
      */
-    private void setColorMasking (long teamColor) {
-        ColorInput mask = new ColorInput(0, 0, myImages.getSpritesheet().getImage().getWidth(),
-                myImages.getSpritesheet().getImage().getHeight(), Color.BLACK);
+    private void setColorMasking (int teamColor) {
+        ColorInput mask = new ColorInput(
+                                         0,
+                                         0,
+                                         myImages.getSpritesheet().getImage().getWidth(),
+                                         myImages.getSpritesheet().getImage().getHeight(),
+                                         Color.BLACK
+                );
         try {
-            mask.setPaint(ColorMapGenerator.colorFromLong(teamColor));
-            Blend blush = new Blend(BlendMode.MULTIPLY, null, mask);
+            mask.setPaint(Engine.colorFromInt(teamColor));
+            Blend blush = new Blend(
+                                    BlendMode.SRC_ATOP,
+                                    null,
+                                    mask
+                    );
             myImages.getSpritesheet().setEffect(blush);
         } catch (Exception e) {
             e.printStackTrace();

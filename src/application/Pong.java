@@ -18,7 +18,6 @@ import model.state.LevelState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
@@ -322,4 +321,5 @@ public class Pong extends Application {
     public static void main (String[] args) {
         launch(args);
     }
+
 }

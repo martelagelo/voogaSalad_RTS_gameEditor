@@ -414,26 +414,6 @@
                 10.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -472,6 +452,26 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -574,26 +574,6 @@
                 10.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -632,6 +612,26 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -881,29 +881,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "me",
-                      "movementSpeed",
-                      "GreaterThan",
-                      "8",
-                      "me",
-                      "movementSpeed",
-                      "EqualsAssignment",
-                      "8"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -1046,6 +1023,29 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "8"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },

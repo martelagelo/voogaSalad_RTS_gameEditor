@@ -107,6 +107,7 @@ public class GameRunnerPaneController extends StackPaneGUIContainer {
                                                            attribute.getData()))
                         .collect(Collectors.toList());
         gameEndController.updateGameEndView(myLevel.getName(), attributesToShow);
+        myMainModel.getCurrentGame().addHighScore(attributes);
         setFront(gameEnd);
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import engine.Engine;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -45,8 +45,8 @@ import view.gui.GUIScreen;
 
 public class EditorScreen extends GUIScreen {
 
-    private static final String ADD_KEY = "Add";
     private static final String TEAM_COLOR_PROMPT = "TeamColorPrompt";
+    private static final String NEW_PARTICIPANT_KEY = "NewParticipant";
 
     @FXML
     private TabPane tabPane;
@@ -173,17 +173,15 @@ public class EditorScreen extends GUIScreen {
 
     private void initParticipantInfo () {
         addButton.setOnAction(e -> {
-            if (!participantDropDown.getItems().contains(teamColorPicker.getValue().toString())){
-                participantDropDown.getItems().add(teamColorPicker.getValue().toString());
-                myMainModel.getGameUniverse().addParticipantColor(Long.parseLong(teamColorPicker.getValue().toString().substring(2), 16));
-            }
+            myMainModel.addParticipantColor(teamColorPicker.getValue().toString());
         });
-        participantDropDown.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
-            if (newValue != null) {
-                teamColorPicker.setValue(Color.web(newValue));
-                myMainModel.setEditorChosenColor(newValue);
-            }
-        });
+        participantDropDown.getSelectionModel().selectedItemProperty()
+                .addListener( (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        teamColorPicker.setValue(Color.web(newValue));
+                        myMainModel.setEditorChosenColor(newValue);
+                    }
+                });
     }
 
     @Override
@@ -194,15 +192,15 @@ public class EditorScreen extends GUIScreen {
         initInfoBox();
         editorMenuBarController.attachScreen(this);
         attachTextProperties();
-        participantDropDown.getItems().add(String.format("0x%sff", Engine.DEFAULT_PLAYER_COLOR_STRING));
+        initParticipantInfo();
     }
 
     private void attachTextProperties () {
         try {
-            addButton.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                  .getStringProperty(ADD_KEY));
+            MultiLanguageUtility util = MultiLanguageUtility.getInstance();
             participantDropDown.promptTextProperty()
-                    .bind(MultiLanguageUtility.getInstance().getStringProperty(TEAM_COLOR_PROMPT));
+                    .bind(util.getStringProperty(TEAM_COLOR_PROMPT));
+            addButton.textProperty().bind(util.getStringProperty(NEW_PARTICIPANT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());
@@ -214,10 +212,14 @@ public class EditorScreen extends GUIScreen {
         updateProjectExplorer();
         updateTabTexts();
         updateInfoBox(projectExplorerController.getSelectedHierarchy());
-        initParticipantInfo();
+        updateParticipantDropDown();
         if (participantDropDown.getSelectionModel().selectedItemProperty().isNull().get()) {
             participantDropDown.getSelectionModel().selectFirst();
         }
+    }
+
+    private void updateParticipantDropDown () {
+        participantDropDown.setItems(FXCollections.observableArrayList(new ArrayList<>(myMainModel.getGameUniverse().getParticipantColors())));
     }
 
     private void updateTabTexts () {
