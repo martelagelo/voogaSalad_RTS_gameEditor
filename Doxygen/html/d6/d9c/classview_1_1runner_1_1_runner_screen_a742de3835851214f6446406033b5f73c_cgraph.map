@@ -1,0 +1,7 @@
+<map id="view.runner.RunnerScreen.modelUpdate" name="view.runner.RunnerScreen.modelUpdate">
+<area shape="rect" id="node2" href="$d6/d9c/classview_1_1runner_1_1_runner_screen.html#a21f8a6f5340b0800b4698489d14902c0" title="view.runner.RunnerScreen.update\lLevelChooser" alt="" coords="285,57,520,98"/>
+<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="569,5,815,32"/>
+<area shape="rect" id="node4" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="591,57,793,98"/>
+<area shape="rect" id="node5" href="$d2/df7/classview_1_1runner_1_1_level_chooser_controller.html#afaeb9f3bcf20a59b97577a8ba3c60c05" title="view.runner.LevelChooser\lController.updateDropDowns" alt="" coords="589,122,795,163"/>
+<area shape="rect" id="node6" href="$d2/df7/classview_1_1runner_1_1_level_chooser_controller.html#a5cc21157c025a3c2eb93b46ece498207" title="view.runner.LevelChooser\lController.initDropDowns" alt="" coords="865,122,1047,163"/>
+</map>

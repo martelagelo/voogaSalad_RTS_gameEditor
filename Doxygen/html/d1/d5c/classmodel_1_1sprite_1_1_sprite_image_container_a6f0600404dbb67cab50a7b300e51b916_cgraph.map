@@ -1,0 +1,5 @@
+<map id="model.sprite.SpriteImageContainer.locateColorMask" name="model.sprite.SpriteImageContainer.locateColorMask">
+<area shape="rect" id="node2" href="$dc/d71/classmodel_1_1sprite_1_1_sprite_image_loader.html#a7a414ef9c8f43d6051fdb46d761104c9" title="model.sprite.SpriteImage\lLoader.loadTeamColorMask" alt="" coords="246,5,442,46"/>
+<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#af1333303576053ddda0787bcf1cd9c81" title="util.SaveLoadUtility.load\lImage" alt="" coords="491,5,664,46"/>
+<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="713,12,919,39"/>
+</map>

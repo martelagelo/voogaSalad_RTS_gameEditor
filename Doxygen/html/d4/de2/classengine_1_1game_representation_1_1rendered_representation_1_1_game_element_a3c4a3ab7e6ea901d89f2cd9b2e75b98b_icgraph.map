@@ -1,0 +1,7 @@
+<map id="engine.gameRepresentation.renderedRepresentation.GameElement.getTextualAttribute" name="engine.gameRepresentation.renderedRepresentation.GameElement.getTextualAttribute">
+<area shape="rect" id="node2" href="$d4/d68/classengine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a6429747b0025b62db7c47e8ffcb5df55" title="engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.get\lAbilityDescriptionMap" alt="" coords="351,31,657,87"/>
+<area shape="rect" id="node6" href="$d4/d68/classengine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html#a89445a22ac4165d3fd31eec8a287a03a" title="engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement.getType" alt="" coords="337,110,671,151"/>
+<area shape="rect" id="node3" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a5bd2adc4f3bb17dd5ed51909689d8f91" title="engine.visuals.VisualManager.update" alt="" coords="720,45,979,72"/>
+<area shape="rect" id="node4" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="1027,5,1234,46"/>
+<area shape="rect" id="node5" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="1027,70,1234,111"/>
+</map>
