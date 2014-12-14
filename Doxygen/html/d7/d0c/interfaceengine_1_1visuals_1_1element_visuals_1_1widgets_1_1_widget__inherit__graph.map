@@ -1,0 +1,6 @@
+<map id="engine.visuals.elementVisuals.widgets.Widget" name="engine.visuals.elementVisuals.widgets.Widget">
+<area shape="rect" id="node2" href="$d7/df4/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeDisplayer" alt="" coords="325,70,651,111"/>
+<area shape="rect" id="node3" href="$dd/d48/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_arrow_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeArrowDisplayer" alt="" coords="699,5,1024,46"/>
+<area shape="rect" id="node4" href="$d8/d27/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_bar_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeBarDisplayer" alt="" coords="699,70,1024,111"/>
+<area shape="rect" id="node5" href="$dc/d93/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_unit_selected_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.UnitSelectedDisplayer" alt="" coords="699,135,1024,177"/>
+</map>

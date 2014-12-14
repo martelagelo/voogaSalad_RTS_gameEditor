@@ -1,0 +1,5 @@
+<map id="engine.gameRepresentation.renderedRepresentation.SelectableGameElement.getAbilityDescriptionMap" name="engine.gameRepresentation.renderedRepresentation.SelectableGameElement.getAbilityDescriptionMap">
+<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a3c4a3ab7e6ea901d89f2cd9b2e75b98b" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getTextual\lAttribute" alt="" coords="360,4,643,60"/>
+<area shape="rect" id="node3" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a8a042f15b78a8ff954168334572f49ff" title="model.state.gameelement.\lAttributeContainer.getTextual\lAttribute" alt="" coords="691,4,899,60"/>
+<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="947,11,1167,53"/>
+</map>

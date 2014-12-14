@@ -1,0 +1,7 @@
+<map id="engine.visuals.ScrollablePane.addToScene" name="engine.visuals.ScrollablePane.addToScene">
+<area shape="rect" id="node2" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#ae3a6fc9ece227bd7eff08f163f41d790" title="engine.visuals.VisualManager.attach\lParticipantManager" alt="" coords="233,5,487,46"/>
+<area shape="rect" id="node6" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#aa2393e99ee94de4db415aaa71561d7ac" title="engine.visuals.VisualManager.\lVisualManager" alt="" coords="253,70,467,111"/>
+<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a59df1204b83c43cbc3c5dd5a19fa3127" title="engine.Engine.initialize\lVisualManager" alt="" coords="537,5,703,46"/>
+<area shape="rect" id="node4" href="$dc/de2/classengine_1_1_engine.html#af201d1d894a31f20aa1e05f674d4584b" title="engine.Engine.instantiate\lManagers" alt="" coords="752,5,936,46"/>
+<area shape="rect" id="node5" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="985,12,1143,39"/>
+</map>

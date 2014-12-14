@@ -1,0 +1,5 @@
+<map id="model.MainModel.createCampaign" name="model.MainModel.createCampaign">
+<area shape="rect" id="node2" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#ace188ceb5aa48f608d66256760574071" title="view.editor.EditorMenuBar\lController.onNewCampaignClick" alt="" coords="299,5,523,46"/>
+<area shape="rect" id="node3" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a56696b0f0540d2e86c3e4fe4521717a2" title="view.editor.EditorMenuBar\lController.initFileMenu" alt="" coords="571,5,757,46"/>
+<area shape="rect" id="node4" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a5b101a400664af0200be8010673acb49" title="view.editor.EditorMenuBar\lController.initMenuBar" alt="" coords="805,5,992,46"/>
+</map>

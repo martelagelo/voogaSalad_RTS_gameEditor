@@ -1,0 +1,6 @@
+<map id="engine.visuals.SelectionBox.resetBox" name="engine.visuals.SelectionBox.resetBox">
+<area shape="rect" id="node2" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a1ef6c15fdaca99a33c3faa163a801bef" title="engine.visuals.Selection\lBox.setLocation" alt="" coords="230,37,405,78"/>
+<area shape="rect" id="node5" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#aaaf3fb5d2042e3e2209cc79a2a37d27a" title="engine.visuals.Selection\lBox.setSize" alt="" coords="230,102,405,143"/>
+<area shape="rect" id="node3" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#ac411e7ea55e3f6aa8380a2562e1fac61" title="engine.visuals.Selection\lBox.setX" alt="" coords="454,5,629,46"/>
+<area shape="rect" id="node4" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a348f690ae5541a613fea75b81c405a61" title="engine.visuals.Selection\lBox.setY" alt="" coords="454,70,629,111"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="engine.computers.pathingComputers.PathingComputer.findPath" name="engine.computers.pathingComputers.PathingComputer.findPath">
+<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#af2b27c63c8557bc1b84990cd1e266f9f" title="engine.stateManaging.Game\lElementManager.setSelectedUnit\lCommand" alt="" coords="318,4,554,60"/>
+<area shape="rect" id="node3" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a4709ebdf2608218227aab4d9af9ca2ca" title="engine.UI.RunnerInputManager.secondary\lClickOccurred" alt="" coords="603,11,890,53"/>
+</map>
