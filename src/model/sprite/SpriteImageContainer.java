@@ -1,5 +1,6 @@
 package model.sprite;
 
+import engine.Engine;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
@@ -53,12 +54,12 @@ public class SpriteImageContainer {
      * @param color
      * @return
      */
-    public ImageView getColorMask (long color) {
+    public ImageView getColorMask (int color) {
         if(myColorMask.getImage() == null) return new ImageView();
         ColorAdjust monochrome = new ColorAdjust();
         monochrome.setSaturation(0.0);
         Blend blush = new Blend(BlendMode.SRC_ATOP, monochrome, new ColorInput(0, 0, myColorMask
-                .getImage().getWidth(), myColorMask.getImage().getHeight(), ColorMapGenerator.colorFromLong(color)));
+                .getImage().getWidth(), myColorMask.getImage().getHeight(), Engine.colorFromInt(color)));
         
         myColorMask.setEffect((Effect) blush);
         

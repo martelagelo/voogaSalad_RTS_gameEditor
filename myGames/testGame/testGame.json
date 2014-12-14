@@ -3668,6 +3668,15 @@
                 40.0
               ],
               "myActions": {
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3682,15 +3691,6 @@
                       "SetFocused"
                     ],
                     "myActionType": "COLLISION"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "FollowX"
-                    ],
-                    "myActionType": "FOCUSED"
                   }
                 ],
                 "INTERNAL": [

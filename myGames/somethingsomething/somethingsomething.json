@@ -1,0 +1,309 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 1000.0,
+                "myName": "levelWidth"
+              },
+              {
+                "myData": 1000.0,
+                "myName": "levelHeight"
+              }
+            ],
+            "myTextualAttributes": [
+              {
+                "myData": "C:\\Users\\Jonathan Tseng\\Documents\\GitHub\\CS308\\voogasalad_TheException\\resources\\img\\graphics\\terrain\\grass\\GrassTile.jpg",
+                "myName": "backgroundPath"
+              }
+            ]
+          },
+          "myTerrains": [],
+          "myUnits": [
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                100.0,
+                100.0,
+                100.0,
+                100.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  },
+                  {
+                    "myData": 272.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 257.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 272.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 257.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 272.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 257.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "b",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                100.0,
+                100.0,
+                100.0,
+                100.0,
+                0.0
+              ],
+              "myActions": {},
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 16777062,
+                    "myName": "teamColor"
+                  },
+                  {
+                    "myData": 205.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 407.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 205.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 407.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 205.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 407.0,
+                    "myName": "yPosition"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "b",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
+          "myGoals": [],
+          "myIdentifier": {
+            "levelName": "l",
+            "campaignName": "c"
+          },
+          "myName": "l",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "c",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myParticipantColors": [
+      "0x0000ffff",
+      "0xffff66ff"
+    ],
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "b",
+        "myName": "name"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": [
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 100
+          },
+          "numRows": 10,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "b",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ]
+  },
+  "myName": "somethingsomething",
+  "myDescription": "",
+  "myHashingPrime": 31
+}

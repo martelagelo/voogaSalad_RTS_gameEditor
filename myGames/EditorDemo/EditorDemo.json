@@ -1,0 +1,486 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 1000.0,
+                "myName": "levelWidth"
+              },
+              {
+                "myData": 1000.0,
+                "myName": "levelHeight"
+              }
+            ],
+            "myTextualAttributes": [
+              {
+                "myData": "C:\\Users\\Jonathan Tseng\\Documents\\GitHub\\CS308\\voogasalad_TheException\\resources\\img\\graphics\\terrain\\grass\\GrassTile.jpg",
+                "myName": "backgroundPath"
+              }
+            ]
+          },
+          "myTerrains": [],
+          "myUnits": [
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                100.0,
+                0.0,
+                100.0,
+                100.0,
+                0.0,
+                100.0
+              ],
+              "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 225.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 225.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 520.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 520.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 1.0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 225.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 520.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "Berserker",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            },
+            {
+              "attributeDisplayerStates": [],
+              "myAnimatorState": {
+                "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+                "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+                "viewportSize": {
+                  "myWidth": 100,
+                  "myHeight": 100
+                },
+                "numRows": 10,
+                "animationSequences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 1,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": false,
+                    "myTags": [
+                      "HERE",
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 0.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                100.0,
+                0.0,
+                100.0,
+                100.0,
+                0.0,
+                100.0
+              ],
+              "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "UpdateMovementDirection"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ]
+              },
+              "attributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 349.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "xVelocity"
+                  },
+                  {
+                    "myData": 349.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 499.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 499.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 1.0,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 349.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 499.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 15112525,
+                    "myName": "teamColor"
+                  },
+                  {
+                    "myData": 0,
+                    "myName": "yVelocity"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "Berserker",
+                    "myName": "name"
+                  }
+                ]
+              },
+              "myTypes": []
+            }
+          ],
+          "myGoals": [],
+          "myIdentifier": {
+            "levelName": "LevelDemo1",
+            "campaignName": "CampaignDemo"
+          },
+          "myName": "LevelDemo1",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "CampaignDemo",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myParticipantColors": [
+      3868806655
+    ],
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      },
+      {
+        "myData": 1.0,
+        "myName": "movementSpeed"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "Berserker",
+        "myName": "name"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": [
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 100
+          },
+          "numRows": 10,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          100.0,
+          0.0,
+          100.0,
+          100.0,
+          0.0,
+          100.0
+        ],
+        "myActions": {
+          "INTERNAL": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "UpdateMovementDirection"
+              ],
+              "myActionType": "INTERNAL"
+            }
+          ]
+        },
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 1.0,
+              "myName": "movementSpeed"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "Berserker",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      },
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/tree0.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/tree0.png",
+          "viewportSize": {
+            "myWidth": 109,
+            "myHeight": 164
+          },
+          "numRows": 1,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          100.0,
+          0.0,
+          100.0,
+          100.0,
+          0.0,
+          100.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "Tree",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ]
+  },
+  "myName": "EditorDemo",
+  "myDescription": "This is our editor demo",
+  "myHashingPrime": 31
+}

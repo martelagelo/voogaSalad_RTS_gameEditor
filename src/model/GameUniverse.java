@@ -21,7 +21,7 @@ import util.DeepCopy;
  *
  */
 public class GameUniverse {
-    private Set<Long> myParticipantColors;
+    private Set<String> myParticipantColors;
     private Set<Attribute<Number>> myNumericalAttributes;
     private Set<Attribute<String>> myTextualAttributes;
     private Set<GameElementState> myGameElementStates;
@@ -37,11 +37,11 @@ public class GameUniverse {
         myGameElementStates = new HashSet<>();
     }
 
-    public void addParticipantColor(Long color) {
+    public void addParticipantColor(String color) {
         myParticipantColors.add(color);
     }
     
-    public Set<Long> getParticipantColors() {
+    public Set<String> getParticipantColors() {
         return Collections.unmodifiableSet(myParticipantColors);
     }
     

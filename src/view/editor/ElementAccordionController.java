@@ -130,7 +130,6 @@ public class ElementAccordionController extends GUIContainer {
     
     private void updateList (ElementDropDownController dropDownController,
                              List<ImageElementPair> units) {
-        System.out.println(units.size());
         dropDownController.clearItems();
         units.forEach( (item) -> {
             dropDownController.addElement(item.myElementName, new ImageView(item.myImage));
@@ -145,7 +144,6 @@ public class ElementAccordionController extends GUIContainer {
                                                 new Dimension(800, 600));
                     addStringAttributes(wiz);
                     addNumberAttributes(wiz);
-                    System.out.println(c);
                     if (!oldData.getType().equals(WizardType.UNSPECIFIED)) wiz.launchForEdit(oldData);
                     Consumer<WizardData> cons =
                             (data) -> {
@@ -240,7 +238,6 @@ public class ElementAccordionController extends GUIContainer {
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
-        System.out.println("model update");
         updateList(terrainTitledPaneController, drawableStates);
         updateList(unitTitledPaneController, selectableStates);
     }

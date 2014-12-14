@@ -91,12 +91,8 @@ public class ElementDropDownController implements GUIController {
         deleteElementButton.setOnAction(event -> {           
             if (elementListView.getSelectionModel().selectedItemProperty().isNotNull().get()) {
                 String selected = elementListView.getSelectionModel().getSelectedItem();
-                System.out.println(selected);
                 myDeletionConsumer.accept(selected);                
                 myElementsMap.remove(selected);
-            }          
-            else {
-                System.out.println("shit");
             }
         });
     }
@@ -137,7 +133,7 @@ public class ElementDropDownController implements GUIController {
             }
             elementListView.requestFocus();
         });
-        vboxRoot.focusedProperty().addListener( (observable, oldValue, newValue) -> {
+        elementListView.focusedProperty().addListener( (observable, oldValue, newValue) -> {
             if (!newValue) {
                 elementListView.getSelectionModel().clearSelection();
             }

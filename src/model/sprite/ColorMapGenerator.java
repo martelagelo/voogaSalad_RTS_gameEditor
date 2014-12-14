@@ -22,15 +22,6 @@ public class ColorMapGenerator {
     private static int RGB_LENGTH = 3;
     private static Map<String, Paint> myColorMap = new HashMap<>();   
     
-    public static Color colorFromLong(long colorValue) {
-        return Color.web(colorString(colorValue));
-    }
-    
-    public static String colorString(long colorValue) {
-        String colorHexValue= "000000" + Long.toHexString(colorValue);
-        return String.format("#%s", colorHexValue.substring(colorHexValue.length() - 6));
-    }
-
     /**
      * Generates a map of string of colors to JavaFX paint from a resource
      * bundle whose values (RGB) are separated by the provided delimiter
