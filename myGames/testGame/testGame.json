@@ -68,31 +68,6 @@
                 40.0
               ],
               "myActions": {
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
-                    "myParameters": [
-                      "EqualsAssignment",
-                      "1",
-                      "isSelected"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
                 "BUTTON": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -142,6 +117,31 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myParameters": [
+                      "EqualsAssignment",
+                      "1",
+                      "isSelected"
+                    ],
+                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -734,6 +734,31 @@
                 40.0
               ],
               "myActions": {
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -762,31 +787,6 @@
                       "UpdateMovementDirection"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "FollowX"
-                    ],
-                    "myActionType": "FOCUSED"
                   }
                 ]
               },
@@ -1268,31 +1268,6 @@
           40.0
         ],
         "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
-              "myParameters": [
-                "EqualsAssignment",
-                "1",
-                "isSelected"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
           "BUTTON": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -1342,6 +1317,31 @@
                 "0"
               ],
               "myActionType": "COLLISION"
+            }
+          ],
+          "INTERNAL": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+              "myParameters": [
+                "EqualsAssignment",
+                "1",
+                "isSelected"
+              ],
+              "myActionType": "INTERNAL"
             }
           ]
         },
