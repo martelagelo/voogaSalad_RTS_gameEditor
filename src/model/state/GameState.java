@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import model.GameUniverse;
 import model.exceptions.CampaignExistsException;
 import model.exceptions.CampaignNotFoundException;
+import model.state.gameelement.AttributeContainer;
 
 
 /**
@@ -90,6 +92,29 @@ public class GameState extends DescribableState {
         myCampaigns = myCampaigns.stream().filter( (campaign) -> {
             return !campaign.getName().equals(campaignName);
         }).collect(Collectors.toList());
+    }
+    
+    /**
+     * Adds a high score to a game given a player's
+     * attributes at the end of a game
+     * 
+     * @param player
+     * 		  an attributecontainer which holds the player's
+     * 		  attributes
+     */
+    public void addHighScore (AttributeContainer player) {
+    	HighScore highScore = new HighScore(player);
+    	myHighScores.add(highScore);
+    }
+    
+    /**
+     * Returns the list of highscores of the game
+     * 
+     * @return myHighScores
+     * 		   the list of highscores of the game
+     */
+    public List<HighScore> getHighScores () {
+    	return myHighScores;
     }
 
     /**
