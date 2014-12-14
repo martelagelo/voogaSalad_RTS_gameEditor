@@ -98,6 +98,7 @@ public class SaveLoadUtility {
      * @throws SaveLoadException
      */
     public static File obtainFile (String filePath) throws SaveLoadException {
+        System.out.println("obtainFile:" + filePath + ", exists: " + new File(filePath).exists());
         File file = new File(filePath);
         if (!file.exists()) {
             file.getParentFile().mkdirs();

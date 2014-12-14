@@ -24,7 +24,7 @@ public class LevelState extends DescribableState implements Serializable {
      * Auto-generated
      */
     private static final long serialVersionUID = 846038357373984158L;
-    public AttributeContainer attributes;
+    public AttributeContainer myAttributes;
     private List<DrawableGameElementState> myTerrains;
     private List<SelectableGameElementState> myUnits;
     private List<GameElementState> myGoals;
@@ -35,7 +35,7 @@ public class LevelState extends DescribableState implements Serializable {
     
     public LevelState (String name, String campaignName) {
         super(name);
-        attributes = new AttributeContainer();
+        myAttributes = new AttributeContainer();
         myTerrains = new ArrayList<>();
         myUnits = new ArrayList<>();
         myGoals = new ArrayList<>();

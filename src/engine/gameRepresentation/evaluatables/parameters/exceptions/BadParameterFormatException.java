@@ -2,7 +2,7 @@ package engine.gameRepresentation.evaluatables.parameters.exceptions;
 
 /**
  * Throw an exception if a poorly formed parameter is received.
- * 
+ *
  * @author John
  *
  */

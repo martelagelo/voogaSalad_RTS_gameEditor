@@ -3,6 +3,7 @@ package engine.visuals;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;
@@ -20,61 +21,56 @@ import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import engine.UI.InputManager;
 
-
 public class AbilityMatrix {
     private static final double GRID_SPACING = 2;
     public static final int MATRIX_NUM_ROWS = 4;
     public static final int MATRIX_NUM_COLS = 4;
     public static final double BUTTON_WIDTH = 45;
-
     public static final int NUM_ATTRIBUTES = MATRIX_NUM_COLS * MATRIX_NUM_ROWS;
 
-    private GridPane buttonGrid;
-    private List<Button> buttonList;
+    private GridPane myButtonGrid;
+    private List<Button> myButtonList;
     private InputManager myInputManager;
-
-    private static NumberBinding yPos;
+    private NumberBinding myYPosition;
 
     public AbilityMatrix (ReadOnlyDoubleProperty widthProperty,
-                          ReadOnlyDoubleProperty heightProperty) {
-        buttonList = new ArrayList<>();
+            ReadOnlyDoubleProperty heightProperty) {
+        myButtonList = new ArrayList<>();
         initializeButtons();
 
         initializeDisplay(heightProperty);
     }
 
     private void initializeDisplay (ReadOnlyDoubleProperty heightProperty) {
-        DoubleProperty xDelta =
-                new SimpleDoubleProperty(ScrollablePane.FAST_SCROLL_BOUNDARY / 2);
-        DoubleProperty yDelta =
-                new SimpleDoubleProperty(ScrollablePane.FAST_SCROLL_BOUNDARY / 4);
-        yPos = Bindings.subtract(heightProperty, buttonGrid.heightProperty());
-        yPos = Bindings.subtract(yPos, yDelta);
+        DoubleProperty xDelta = new SimpleDoubleProperty(ScrollablePane.FAST_SCROLL_BOUNDARY / 2);
+        DoubleProperty yDelta = new SimpleDoubleProperty(ScrollablePane.FAST_SCROLL_BOUNDARY / 4);
+        myYPosition = Bindings.subtract(heightProperty, myButtonGrid.heightProperty());
+        myYPosition = Bindings.subtract(myYPosition, yDelta);
 
-        buttonGrid.layoutXProperty().bind(xDelta);
-        buttonGrid.layoutYProperty().bind(yPos);
+        myButtonGrid.layoutXProperty().bind(xDelta);
+        myButtonGrid.layoutYProperty().bind(myYPosition);
     }
 
     private void initializeButtons () {
-        buttonGrid = new GridPane();
-        buttonGrid.setHgap(GRID_SPACING);
-        buttonGrid.setVgap(GRID_SPACING);
+        myButtonGrid = new GridPane();
+        myButtonGrid.setHgap(GRID_SPACING);
+        myButtonGrid.setVgap(GRID_SPACING);
 
         for (int i = 0; i < MATRIX_NUM_COLS; i++) {
             for (int j = 0; j < MATRIX_NUM_ROWS; j++) {
                 Button b = new Button();
-                buttonList.add(b);
+                myButtonList.add(b);
                 int id = i * MATRIX_NUM_ROWS + j + 1;
                 b.setOnMouseClicked(e -> myInputManager.screenButtonClicked(id));
                 b.setMinSize(BUTTON_WIDTH, BUTTON_WIDTH);
                 b.setMaxSize(BUTTON_WIDTH, BUTTON_WIDTH);
-                buttonGrid.add(b, j, i);
+                myButtonGrid.add(b, j, i);
             }
         }
     }
 
     public Node getNode () {
-        return buttonGrid;
+        return myButtonGrid;
     }
 
     public void attachInputManager (InputManager inputManager) {
@@ -82,7 +78,7 @@ public class AbilityMatrix {
     }
 
     public void updateGridImages (Map<Integer, String> map, Map<String, Long> timerMap) {
-        for (Button b : buttonList) {
+        for (Button b : myButtonList) {
             b.setGraphic(new ImageView());
         }
         for (int i : map.keySet()) {
@@ -90,19 +86,18 @@ public class AbilityMatrix {
                 Image im = null;
                 try {
                     im = SaveLoadUtility.loadImage(map.get(i));
-                }
-                catch (SaveLoadException e) {
+                } catch (SaveLoadException e) {
                 }
                 if (im != null) {
                     StackPane p = new StackPane();
                     p.getChildren().add(new ImageView(im));
-                    if(timerMap.containsKey(i+"")){
-                        Text t = new Text(timerMap.get(i+"")+"");
+                    if (timerMap.containsKey(i + "")) {
+                        Text t = new Text(timerMap.get(i + "") + "");
                         p.getChildren().add(t);
                         t.toFront();
                         t.setFill(Color.WHITE);
                     }
-                    buttonList.get(i - 1).setGraphic(p);
+                    myButtonList.get(i - 1).setGraphic(p);
                 }
             }
         }

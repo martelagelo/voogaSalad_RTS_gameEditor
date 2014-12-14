@@ -2,16 +2,15 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
- * A not equals evaluator returns a boolean indicating if two parameters are not equal.
+ * A not equals evaluator returns a boolean indicating if two parameters are not
+ * equal.
  *
  * @author Zach
  *
  */
 public class NotEquals<A, B> extends Evaluator<A, B, Boolean> {
-    public NotEquals (Evaluatable<A> parameter1,
-                      Evaluatable<B> parameter2) {
+    public NotEquals (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Boolean.class, "!=", parameter1, parameter2);
     }
 

@@ -2,11 +2,13 @@ package engine.gameRepresentation.evaluatables.actions;
 
 import java.util.Arrays;
 import java.util.List;
+
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.FalseEvaluatable;
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
 import engine.gameRepresentation.evaluatables.parameters.NumberParameter;
@@ -22,69 +24,68 @@ import engine.users.Participant;
  *
  */
 public class ObjectLocationCheckAction extends Action {
-    private String playerTypeString;
-    private String gameElementType;
-    private int radius;
-    private int xLocation;
-    private int yLocation;
+    private String myPlayerTypeString;
+    private String myGameElementType;
+    private int myRadius;
+    private int myXLocation;
+    private int myYLocation;
 
-    GameElementManager manager;
-    private ParticipantManager participants;
-    private String attributeToSet;
-    private Evaluatable<?> evaluatorToUse;
-    private int valueToSet;
+    private GameElementManager myManager;
+    private ParticipantManager myParticipantManager;
+    private String myAttributeToSet;
+    private Evaluatable<?> myEvaluatorToUse;
+    private int myValueToSet;
 
-    public ObjectLocationCheckAction (EvaluatorFactory factory,
-                                      GameElementManager elementManager,
-                                      ParticipantManager participantManager,
-                                      String[] args) {
+    public ObjectLocationCheckAction (EvaluatorFactory factory, GameElementManager elementManager,
+            ParticipantManager participantManager, String[] args) {
         super(factory, elementManager, participantManager, args);
-        this.manager = elementManager;
-        this.participants = participantManager;
+        myManager = elementManager;
+        myParticipantManager = participantManager;
     }
 
     @Override
-    protected Evaluatable<?> initializeAction (String[] args,
-                                               EvaluatorFactory factory,
-                                               GameElementManager elementManager,
-                                               ParticipantManager participantManager) throws ClassNotFoundException, EvaluatorCreationException {
-        manager = elementManager;
-        participants = participantManager;
-        attributeToSet = args[5];
-        valueToSet = Integer.parseInt(args[7]);
-        Evaluatable<?> elementParameter = new NumericAttributeParameter(attributeToSet,manager,new ActorObjectIdentifier());
-        Evaluatable<?> value = new NumberParameter(valueToSet);
-        
-        playerTypeString = args[0];
-        gameElementType = args[1];
-        radius = Integer.parseInt(args[2]);
-        xLocation = Integer.parseInt(args[3]);
-        yLocation = Integer.parseInt(args[4]);
-       
-        evaluatorToUse = factory.makeEvaluator(args[6], elementParameter, value);
-        
-        
+    protected Evaluatable<?> initializeAction (String[] args, EvaluatorFactory factory,
+            GameElementManager elementManager, ParticipantManager participantManager)
+            throws ClassNotFoundException, EvaluatorCreationException {
+        myManager = elementManager;
+        myParticipantManager = participantManager;
+        myAttributeToSet = args[5];
+        myValueToSet = Integer.parseInt(args[7]);
+        Evaluatable<?> elementParameter = new NumericAttributeParameter(myAttributeToSet,
+                myManager, new ActorObjectIdentifier());
+        Evaluatable<?> value = new NumberParameter(myValueToSet);
+
+        myPlayerTypeString = args[0];
+        myGameElementType = args[1];
+        myRadius = Integer.parseInt(args[2]);
+        myXLocation = Integer.parseInt(args[3]);
+        myYLocation = Integer.parseInt(args[4]);
+
+        myEvaluatorToUse = factory.makeEvaluator(args[6], elementParameter, value);
+
         return new FalseEvaluatable();
     }
 
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         List<Participant> matchingPlayers;
-        if ("my".equals(playerTypeString)) {
-            matchingPlayers = Arrays.asList(participants.getUser());
+        if ("my".equals(myPlayerTypeString)) {
+            matchingPlayers = Arrays.asList(myParticipantManager.getUser());
+        } else {
+            matchingPlayers = myParticipantManager.getAI();
         }
-        else {
-            matchingPlayers = participants.getAI();
-        }
-        for (Participant participant: matchingPlayers) {
-            for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
-                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()))) {
-                    int curXLocation = element.getNumericalAttribute(StateTags.X_POSITION.getValue()).intValue();
-                    int curYLocation = element.getNumericalAttribute(StateTags.Y_POSITION.getValue()).intValue();
-                    double xDelta = Math.abs(xLocation - curXLocation);
-                    double yDelta = Math.abs(yLocation - curYLocation);
-                    if (xDelta < radius && yDelta < radius) {
-                        evaluatorToUse.evaluate(elements);
+        for (Participant participant : matchingPlayers) {
+            for (GameElement element : myManager.findAllElementsOfType(myGameElementType)) {
+                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_COLOR
+                        .getValue()))) {
+                    int curXLocation = element.getNumericalAttribute(
+                            StateTags.X_POSITION.getValue()).intValue();
+                    int curYLocation = element.getNumericalAttribute(
+                            StateTags.Y_POSITION.getValue()).intValue();
+                    double xDelta = Math.abs(myXLocation - curXLocation);
+                    double yDelta = Math.abs(myYLocation - curYLocation);
+                    if (xDelta < myRadius && yDelta < myRadius) {
+                        myEvaluatorToUse.evaluate(elements);
                         return true;
                     }
                 }

@@ -10,61 +10,51 @@ import engine.stateManaging.GameLoop;
 import engine.users.Participant;
 import engine.visuals.SelectionBox;
 
-
 /**
- * 
+ *
  * Input Manager for the game runner
- * 
+ *
  * @author John Lorenz, Jonathan Tseng
  *
  */
 public class RunnerInputManager extends InputManager {
 
     private final static String DIGIT = "DIGIT";
-    public RunnerInputManager (MainModel model,
-                               GameElementManager gameElementManager,
-                               GameLoop gameLoop, Participant user) {
+
+    public RunnerInputManager (MainModel model, GameElementManager gameElementManager,
+            GameLoop gameLoop, Participant user) {
         super(model, gameElementManager, gameLoop, user);
         gameLoop.setRunnerLoop();
     }
 
     @Override
-    public void primaryClickOccurred (MouseEvent e,
-                                      double mapTranslateX,
-                                      double mapTranslateY,
-                                      SelectionBox b) {
-        Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
+    public void primaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
+            SelectionBox b) {
+        Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         b.primaryClick(e);
         myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
-    public void secondaryClickOccurred (MouseEvent e,
-                                        double mapTranslateX,
-                                        double mapTranslateY,
-                                        SelectionBox b) {
+    public void secondaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
+            SelectionBox b) {
 
-        Point2D mapPoint2d =
-                new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
+        Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
     }
 
     @Override
-    public void primaryClickReleaseOccurred (MouseEvent e,
-                                             double mapTranslateX,
-                                             double mapTranslateY,
-                                             SelectionBox b) {
+    public void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
+            double mapTranslateY, SelectionBox b) {
         double[] points = b.clickReleased(e, mapTranslateX, mapTranslateY);
-        if (points[0] != points[2] && points[1] != points[3])
+        if (points[0] != points[2] && points[1] != points[3]) {
             myElementManager.selectUnitsInBounds(points, e.isShiftDown(), myUser);
+        }
     }
 
     @Override
-    public void secondaryClickReleaseOccurred (MouseEvent e,
-                                               double mapTranslateX,
-                                               double mapTranslateY,
-                                               SelectionBox b) {
+    public void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
+            double mapTranslateY, SelectionBox b) {
         // do nothing
     }
 
@@ -76,9 +66,8 @@ public class RunnerInputManager extends InputManager {
             myGameLoop.pause();
         }
         if (key.isDigitKey()) {
-            myElementManager.notifyButtonClicked(Integer.valueOf(key.toString().replace(DIGIT,
-                                                                                        "")),
-                                                 myUser);
+            myElementManager.notifyButtonClicked(
+                    Integer.valueOf(key.toString().replace(DIGIT, "")), myUser);
         }
     }
 

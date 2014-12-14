@@ -1,6 +1,7 @@
 package engine.visuals;
 
 import java.util.List;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;
@@ -12,30 +13,29 @@ import model.sprite.ColorMapGenerator;
 import model.state.gameelement.StateTags;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
-
 /**
  * The minimap for the application
- * 
+ *
  * @author Michael D., John L.
  *
  */
 public class MiniMap {
 
-    private static final int CONTEXT_RECT_LINE_WIDTH = 2;
-    private static final int CONTEXT_RECT_ARC_WIDTH = 10;
-    private static final int MINIMAP_UNIT_DIAMETER = 3;
-    private static final int MINIMAP_BUILDING_DIMENSION = 8;
-    private static final int MINIMAP_LINE_WIDTH = 5;
-    private static final int MINIMAP_ARC_WIDTH = 40;
-    private static final double MINIMIAP_OPACITY = 0.8;
-    private static final double MINIMAP_WIDTH = 320;
-    private static final double MINIMAP_HEIGHT = 160;
-    
-    private double xScale;
-    private double yScale;
+    public static final int CONTEXT_RECT_LINE_WIDTH = 2;
+    public static final int CONTEXT_RECT_ARC_WIDTH = 10;
+    public static final int MINIMAP_UNIT_DIAMETER = 3;
+    public static final int MINIMAP_BUILDING_DIMENSION = 8;
+    public static final int MINIMAP_LINE_WIDTH = 5;
+    public static final int MINIMAP_ARC_WIDTH = 40;
+    public static final double MINIMIAP_OPACITY = 0.8;
+    public static final double MINIMAP_WIDTH = 320;
+    public static final double MINIMAP_HEIGHT = 160;
 
-    private static NumberBinding xPos;
-    private static NumberBinding yPos;
+    private double myXScale;
+    private double myYScale;
+
+    private NumberBinding myXPosition;
+    private NumberBinding myYPosition;
 
     private ScrollablePane myScene;
     private Canvas myDisplay;
@@ -45,25 +45,25 @@ public class MiniMap {
      * Constructor for the MiniMap
      */
     public MiniMap (ScrollablePane SS) {
-        DoubleProperty xDelta =
-                new SimpleDoubleProperty(MINIMAP_WIDTH + ScrollablePane.FAST_SCROLL_BOUNDARY / 2);
-        DoubleProperty yDelta =
-                new SimpleDoubleProperty(MINIMAP_HEIGHT + ScrollablePane.FAST_SCROLL_BOUNDARY / 4);
-        xPos = Bindings.subtract(SS.prefWidthProperty(), xDelta);
-        yPos = Bindings.subtract(SS.prefHeightProperty(), yDelta);
+        DoubleProperty xDelta = new SimpleDoubleProperty(MINIMAP_WIDTH
+                + ScrollablePane.FAST_SCROLL_BOUNDARY / 2);
+        DoubleProperty yDelta = new SimpleDoubleProperty(MINIMAP_HEIGHT
+                + ScrollablePane.FAST_SCROLL_BOUNDARY / 4);
+        myXPosition = Bindings.subtract(SS.prefWidthProperty(), xDelta);
+        myYPosition = Bindings.subtract(SS.prefHeightProperty(), yDelta);
 
         myScene = SS;
         myDisplay = new Canvas();
         myGraphicsContext = myDisplay.getGraphicsContext2D();
         initializeDisplay();
         initializeGraphicsContext();
-        xScale = SS.getFieldWidth() / MINIMAP_WIDTH;
-        yScale = SS.getFieldHeight() / MINIMAP_HEIGHT;
+        myXScale = SS.getFieldWidth() / MINIMAP_WIDTH;
+        myYScale = SS.getFieldHeight() / MINIMAP_HEIGHT;
     }
 
     /**
      * Gets the canvas for the minimap
-     * 
+     *
      * @return The canvas representing the minimap
      */
     public Canvas getDisplay () {
@@ -84,10 +84,9 @@ public class MiniMap {
         double YPos = -1 * myScene.getScrollingBackground().getTranslateY();
         myGraphicsContext.setLineWidth(CONTEXT_RECT_LINE_WIDTH);
         myGraphicsContext.setStroke(Color.BLUE);
-        myGraphicsContext.strokeRoundRect(XPos / xScale, YPos / yScale,
-                                          myScene.getWidth() / xScale, myScene.getHeight() /
-                                                                        yScale,
-                                          CONTEXT_RECT_ARC_WIDTH, CONTEXT_RECT_ARC_WIDTH);
+        myGraphicsContext.strokeRoundRect(XPos / myXScale, YPos / myYScale, myScene.getWidth()
+                / myXScale, myScene.getHeight() / myYScale, CONTEXT_RECT_ARC_WIDTH,
+                CONTEXT_RECT_ARC_WIDTH);
     }
 
     private void moveUnits (List<SelectableGameElement> gameUnits) {
@@ -100,9 +99,9 @@ public class MiniMap {
     private void setUnitColor (SelectableGameElement SGE) {
         Color c;
         try {
-            c = ColorMapGenerator.colorFromLong(SGE.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue());
-        }
-        catch (IllegalArgumentException | NullPointerException e) {
+            c = ColorMapGenerator.colorFromLong(SGE.getNumericalAttribute(
+                    StateTags.TEAM_COLOR.getValue()).longValue());
+        } catch (IllegalArgumentException | NullPointerException e) {
             c = Color.BLACK; // default for if color isn't defined
         }
         myGraphicsContext.setFill(c);
@@ -110,20 +109,17 @@ public class MiniMap {
 
     private void setUnitShape (SelectableGameElement SGE) {
         if (SGE.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0) {
-            myGraphicsContext.fillRect(SGE.getPosition().getX() / xScale, SGE
-                    .getPosition().getY() / yScale,
-                                       MINIMAP_BUILDING_DIMENSION, MINIMAP_BUILDING_DIMENSION);
-        }
-        else {
-            myGraphicsContext.fillOval(SGE.getPosition().getX() / xScale, SGE
-                    .getPosition().getY() / yScale, MINIMAP_UNIT_DIAMETER,
-                                       MINIMAP_UNIT_DIAMETER);
+            myGraphicsContext.fillRect(SGE.getPosition().getX() / myXScale, SGE.getPosition()
+                    .getY() / myYScale, MINIMAP_BUILDING_DIMENSION, MINIMAP_BUILDING_DIMENSION);
+        } else {
+            myGraphicsContext.fillOval(SGE.getPosition().getX() / myXScale, SGE.getPosition()
+                    .getY() / myYScale, MINIMAP_UNIT_DIAMETER, MINIMAP_UNIT_DIAMETER);
         }
     }
 
     private void initializeDisplay () {
-        myDisplay.layoutXProperty().bind(xPos);
-        myDisplay.layoutYProperty().bind(yPos);
+        myDisplay.layoutXProperty().bind(myXPosition);
+        myDisplay.layoutYProperty().bind(myYPosition);
         myDisplay.setWidth(MINIMAP_WIDTH);
         myDisplay.setHeight(MINIMAP_HEIGHT);
         myDisplay.setOpacity(MINIMIAP_OPACITY);
@@ -133,10 +129,10 @@ public class MiniMap {
         myGraphicsContext.setFill(Color.WHITE);
         myGraphicsContext.setStroke(Color.BLACK);
         myGraphicsContext.setLineWidth(MINIMAP_LINE_WIDTH);
-        myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT,
-                                        MINIMAP_ARC_WIDTH, MINIMAP_ARC_WIDTH);
-        myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT,
-                                          MINIMAP_ARC_WIDTH, MINIMAP_ARC_WIDTH);
+        myGraphicsContext.fillRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, MINIMAP_ARC_WIDTH,
+                MINIMAP_ARC_WIDTH);
+        myGraphicsContext.strokeRoundRect(0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, MINIMAP_ARC_WIDTH,
+                MINIMAP_ARC_WIDTH);
     }
 
 }

@@ -3,7 +3,6 @@ package engine.visuals.elementVisuals;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -18,7 +17,7 @@ import engine.visuals.elementVisuals.animations.NullAnimationSequence;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
 /**
- * 
+ *
  * @author Steve
  *
  */
@@ -29,10 +28,8 @@ public class Visualizer implements Updatable, Displayable {
     private List<AttributeDisplayer> myWidgets;
     private Animator myAnimator;
     private AttributeContainer attributesOfInterest;
-    private SimpleBooleanProperty enabled;
 
     public Visualizer (Animator animator, AttributeContainer attributes) {
-        enabled = new SimpleBooleanProperty();
         visualRepresentation = new Group();
         myVBox = new VBox(1);
         myVBox.setLayoutX(45);
@@ -44,10 +41,6 @@ public class Visualizer implements Updatable, Displayable {
         myAnimator.registerNode(n -> visualRepresentation.getChildren().add(n));
         attributesOfInterest = attributes;
     }
-    
-    public void setAnimateEnableProperty(SimpleBooleanProperty e){
-        enabled = e;
-    }
 
     public void addWidget (AttributeDisplayer widget) {
         myWidgets.add(widget);
@@ -58,23 +51,24 @@ public class Visualizer implements Updatable, Displayable {
     public Node getNode () {
         return visualRepresentation;
     }
-    
+
     public Point2D getNodeLocation () {
         return new Point2D(visualRepresentation.getLayoutX(), visualRepresentation.getLayoutY());
     }
 
     @Override
     public boolean update () {
-        if(enabled.get())
-            updateAnimator();
+        updateAnimator();
         updateWidgets();
         updateNodeLocation();
         return true;
     }
-    
+
     public void initializeDisplay () {
-    	double xPosition = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
-    	double yPosition = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
+        double xPosition = attributesOfInterest.getNumericalAttribute(
+                StateTags.X_POSITION.getValue()).doubleValue();
+        double yPosition = attributesOfInterest.getNumericalAttribute(
+                StateTags.Y_POSITION.getValue()).doubleValue();
         getNode().setLayoutX(xPosition);
         getNode().setLayoutY(yPosition);
         getNode().setTranslateX(-myAnimator.getViewportSize().getWidth() / 2);
@@ -83,14 +77,16 @@ public class Visualizer implements Updatable, Displayable {
         myAnimator.update();
     }
 
-    private void updateNodeLocation() {
-    	double xPos = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION.getValue()).doubleValue();
-    	visualRepresentation.setLayoutX(xPos);
-    	double yPos = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION.getValue()).doubleValue();
-    	visualRepresentation.setLayoutY(yPos);
-	}
+    private void updateNodeLocation () {
+        double xPos = attributesOfInterest.getNumericalAttribute(StateTags.X_POSITION.getValue())
+                .doubleValue();
+        visualRepresentation.setLayoutX(xPos);
+        double yPos = attributesOfInterest.getNumericalAttribute(StateTags.Y_POSITION.getValue())
+                .doubleValue();
+        visualRepresentation.setLayoutY(yPos);
+    }
 
-	private void updateWidgets () {
+    private void updateWidgets () {
         for (AttributeDisplayer widget : myWidgets) {
             widget.update();
         }

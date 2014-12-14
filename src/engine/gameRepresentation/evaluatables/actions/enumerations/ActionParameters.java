@@ -52,7 +52,7 @@ public enum ActionParameters {
     // Designation between my object and another object
     OBJECT_DESIGNATOR("me", "other object");
 
-    String[] myOptions;
+    private String[] myOptions;
 
     /**
      * Create an action parameter with a list of java class names for the Possible elements in the

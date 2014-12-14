@@ -2,16 +2,14 @@ package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
-
 /**
  * An evaluator that tries to assign the value at parameter 2 to the first
  * parameter
- * 
+ *
  * @author Zach
  */
 public class EqualsAssignment<A, B> extends Evaluator<A, B, Boolean> {
-    public EqualsAssignment (Evaluatable<A> parameter1,
-                             Evaluatable<B> parameter2) {
+    public EqualsAssignment (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
         super(Boolean.class, "==", parameter1, parameter2);
     }
 

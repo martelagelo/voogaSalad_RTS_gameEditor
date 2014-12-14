@@ -2,6 +2,7 @@ package engine.elementFactories;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import javafx.scene.Group;
 import model.state.LevelState;
 import model.state.gameelement.DrawableGameElementState;
@@ -14,10 +15,9 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.gameRepresentation.renderedRepresentation.Level;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 
-
 /**
  * Factory for creating Level objects from LevelState objects.
- * 
+ *
  * @author Steve
  *
  */
@@ -33,14 +33,16 @@ public class LevelFactory {
         List<GameElement> goals = generateGoalElements(state.getGoals());
         List<DrawableGameElement> terrain = generateTerrainElements(state.getTerrain());
         List<SelectableGameElement> units = generateUnitEelements(state.getUnits());
-        Number levelHeight = state.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
-        Number levelWidth = state.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
+        Number levelHeight = state.myAttributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT
+                .getValue());
+        Number levelWidth = state.myAttributes
+                .getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
         MapGrid newGrid = generateUpToDateGrid(levelHeight, levelWidth, terrain, units);
         Group terrainAndSessileUnitsGroup = generateBackGroundGroup(terrain, units);
         Group mobileUnitsGroup = generateUnitsGroup(units);
         mobileUnitsGroup.toFront();
         return new Level(state, terrain, units, goals, terrainAndSessileUnitsGroup,
-                         mobileUnitsGroup, newGrid);
+                mobileUnitsGroup, newGrid);
     }
 
     private List<GameElement> generateGoalElements (List<GameElementState> goals) {
@@ -48,43 +50,44 @@ public class LevelFactory {
                 .collect(Collectors.toList());
     }
 
-    private List<DrawableGameElement> generateTerrainElements (List<DrawableGameElementState> terrain) {
+    private List<DrawableGameElement> generateTerrainElements (
+            List<DrawableGameElementState> terrain) {
         return terrain.stream().map(s -> myElementFactory.createDrawableGameElement(s))
                 .collect(Collectors.toList());
     }
 
-    private List<SelectableGameElement> generateUnitEelements (List<SelectableGameElementState> units) {
+    private List<SelectableGameElement> generateUnitEelements (
+            List<SelectableGameElementState> units) {
         return units.stream().map(s -> myElementFactory.createSelectableGameElement(s))
                 .collect(Collectors.toList());
     }
 
-    private MapGrid generateUpToDateGrid (Number levelHeight,
-                                          Number levelWidth,
-                                          List<DrawableGameElement> terrain,
-                                          List<SelectableGameElement> units) {
+    private MapGrid generateUpToDateGrid (Number levelHeight, Number levelWidth,
+            List<DrawableGameElement> terrain, List<SelectableGameElement> units) {
         MapGrid newGrid = new MapGrid(levelWidth, levelHeight);
         updateGridForObstacles(terrain, units, newGrid);
         return newGrid;
     }
 
     private void updateGridForObstacles (List<DrawableGameElement> terrain,
-                                         List<SelectableGameElement> units,
-                                         MapGrid newGrid) {
+            List<SelectableGameElement> units, MapGrid newGrid) {
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0 &&
-                             u.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue())
+                        .doubleValue() == 0
+                        && u.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
                 .forEach(u -> newGrid.registerObstaclePlacement(u.getBounds()));
-        terrain.stream().filter(t -> t.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
+        terrain.stream()
+                .filter(t -> t.getNumericalAttribute(StateTags.BLOCKING.getValue()).intValue() == 1)
                 .forEach(t -> newGrid.registerObstaclePlacement(t.getBounds()));
     }
 
     private Group generateBackGroundGroup (List<DrawableGameElement> terrain,
-                                           List<SelectableGameElement> units) {
+            List<SelectableGameElement> units) {
         Group backgroundGroup = new Group();
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() == 0)
-                .map(u -> u.getNode()).collect(Collectors.toList()).stream()
-                .forEach(n -> backgroundGroup.getChildren().add(n));
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue())
+                        .doubleValue() == 0).map(u -> u.getNode()).collect(Collectors.toList())
+                .stream().forEach(n -> backgroundGroup.getChildren().add(n));
         terrain.stream().map(t -> t.getNode()).collect(Collectors.toList())
                 .forEach(n -> backgroundGroup.getChildren().add(n));
         return backgroundGroup;
@@ -93,9 +96,9 @@ public class LevelFactory {
     private Group generateUnitsGroup (List<SelectableGameElement> units) {
         Group unitsGroup = new Group();
         units.stream()
-                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue()).doubleValue() > 0)
-                .map(u -> u.getNode()).collect(Collectors.toList()).stream()
-                .forEach(n -> unitsGroup.getChildren().add(n));
+                .filter(u -> u.getNumericalAttribute(StateTags.MOVEMENT_SPEED.getValue())
+                        .doubleValue() > 0).map(u -> u.getNode()).collect(Collectors.toList())
+                .stream().forEach(n -> unitsGroup.getChildren().add(n));
         return unitsGroup;
     }
 }

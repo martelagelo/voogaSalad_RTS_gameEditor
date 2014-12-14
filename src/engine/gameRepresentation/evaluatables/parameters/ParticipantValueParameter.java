@@ -1,13 +1,13 @@
 package engine.gameRepresentation.evaluatables.parameters;
 
 import java.util.List;
+
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.users.Participant;
 
-
 /**
  * A wrapper for a participant's numerical attribute values
- * 
+ *
  * @author zach
  *
  */
@@ -15,8 +15,7 @@ public class ParticipantValueParameter extends Parameter<Number> {
     private List<Participant> myParticipants;
     private String myAttributeTag;
 
-    public ParticipantValueParameter (List<Participant> participants,
-                                      String attributeName) {
+    public ParticipantValueParameter (List<Participant> participants, String attributeName) {
         super(Number.class);
         myParticipants = participants;
         myAttributeTag = attributeName;
@@ -31,8 +30,9 @@ public class ParticipantValueParameter extends Parameter<Number> {
         double maxValue = 0;
         for (Participant p : myParticipants) {
             double val = p.getAttributes().getNumericalAttribute(myAttributeTag).doubleValue();
-            if (val > maxValue)
+            if (val > maxValue) {
                 maxValue = val;
+            }
         }
         return maxValue;
     }
@@ -42,8 +42,8 @@ public class ParticipantValueParameter extends Parameter<Number> {
      */
     @Override
     public boolean setValue (ElementPair elements, Number value) {
-        myParticipants.forEach(participant -> participant.getAttributes()
-                .setNumericalAttribute(myAttributeTag, value));
+        myParticipants.forEach(participant -> participant.getAttributes().setNumericalAttribute(
+                myAttributeTag, value));
         return true;
     }
 

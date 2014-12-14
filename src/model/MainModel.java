@@ -228,11 +228,11 @@ public class MainModel extends Observable {
                                                    CampaignNotFoundException, Exception {
         CampaignState campaignState = myGameState.getCampaign(campaignName.trim());
         LevelState newLevelState = new LevelState(levelName.trim(), campaignName.trim());
-        newLevelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
+        newLevelState.myAttributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
                                                      backgroundPath);
         if (width.doubleValue() > 0 && height.doubleValue() > 0) {
-            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), width);
-            newLevelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(),
+            newLevelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), width);
+            newLevelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(),
                                                            height);
         }
         else {
@@ -350,8 +350,8 @@ public class MainModel extends Observable {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
             SelectableGameElementState unit =
                     getGameUniverse().getSelectableGameElementState(elementName);
-            unit.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
-            unit.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
+            unit.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
+            unit.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
             levelState.addUnit(unit);
         }
         else {
@@ -362,16 +362,16 @@ public class MainModel extends Observable {
 
     public void setTerrain (LevelState levelState, String terrainName) {
         int width =
-                levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue())
+                levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue())
                         .intValue();
-        int height = levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue())
+        int height = levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue())
                 .intValue();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 DrawableGameElementState terrain =
                         getGameUniverse().getDrawableGameElementState(terrainName);
-                terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), i);
-                terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), j);
+                terrain.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), i);
+                terrain.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), j);
                 levelState.addTerrain(terrain);
             }
         }
@@ -385,8 +385,8 @@ public class MainModel extends Observable {
         if (areCoordinatesValid(levelState, xValue, yValue)) {
             DrawableGameElementState terrain =
                     getGameUniverse().getDrawableGameElementState(elementName);
-            terrain.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
-            terrain.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
+            terrain.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), xValue);
+            terrain.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), yValue);
             levelState.addTerrain(terrain);
         }
         else {
@@ -396,9 +396,9 @@ public class MainModel extends Observable {
 
     private boolean areCoordinatesValid (LevelState levelState, Double x, Double y) {
         Number width =
-                levelState.attributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
+                levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
         Number height =
-                levelState.attributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
+                levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
         return (x >= 0 && width.doubleValue() > x && y >= 0 && height.doubleValue() > y);
     }
 
