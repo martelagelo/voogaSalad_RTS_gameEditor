@@ -1,0 +1,19 @@
+<map id="model.MainModel.createGameElementState" name="model.MainModel.createGameElementState">
+<area shape="rect" id="node2" href="$de/dda/classmodel_1_1_game_universe.html#aa27cf8fa7751ec9c6da83c8ac64299e5" title="model.GameUniverse.addGame\lElementState" alt="" coords="299,117,527,158"/>
+<area shape="rect" id="node6" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#ae86793b00959ab2c973f3854c0756d83" title="model.GameElementStateFactory.create\lGameElementState" alt="" coords="272,277,555,318"/>
+<area shape="rect" id="node17" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="312,342,515,383"/>
+<area shape="rect" id="node18" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="289,408,537,435"/>
+<area shape="rect" id="node3" href="$de/dda/classmodel_1_1_game_universe.html#af1828205204bed217447c08b9da6076b" title="model.GameUniverse.store\lAttributes" alt="" coords="637,93,835,134"/>
+<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5582c5bba557ed93a5269e562bca0ba2" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttributes" alt="" coords="944,5,1173,61"/>
+<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a4291bdbf5ccacfa0273f0e657e20406e" title="model.state.gameelement.\lAttributeContainer.getTextual\lAttributes" alt="" coords="955,85,1163,141"/>
+<area shape="rect" id="node7" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a58beddcf86b79336d5f7de3c2c03f2a7" title="model.GameElementStateFactory.add\lEssentials" alt="" coords="603,323,869,365"/>
+<area shape="rect" id="node8" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9c933a8457618e7e8e5f257ee2211c07" title="model.state.gameelement.\lGameElementState.addAction" alt="" coords="950,165,1167,206"/>
+<area shape="rect" id="node10" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0c7129019d734a04dfc2d6b6b25dc45d" title="model.GameElementStateFactory.add\lToState" alt="" coords="926,230,1191,271"/>
+<area shape="rect" id="node11" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ad9134aa0c85f67b8fd66ff84f7f79cbe" title="model.data.WizardData.get\lWizardDataByType" alt="" coords="1320,259,1517,301"/>
+<area shape="rect" id="node12" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0182be087dfefa408c6194ff5ca55ac1" title="model.GameElementStateFactory.create\lActionWrapper" alt="" coords="917,347,1200,389"/>
+<area shape="rect" id="node13" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ae19ca8de1e400fb399d702d78c861a81" title="model.data.WizardData.get\lValueByKey" alt="" coords="1320,386,1517,427"/>
+<area shape="rect" id="node14" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="945,464,1173,520"/>
+<area shape="rect" id="node16" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a9537867c561e10d0d497563aab33e447" title="model.state.gameelement.\lAttributeContainer.setTextual\lAttribute" alt="" coords="955,544,1162,600"/>
+<area shape="rect" id="node9" href="$d5/d7f/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_wrapper.html#aeb7b2a7580e1ba5d6e57a13cc00e9bd5" title="engine.gameRepresentation.evaluatables.actions.\lActionWrapper.getActionType" alt="" coords="1248,165,1589,206"/>
+<area shape="rect" id="node15" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="1307,491,1530,533"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="view.editor.wizards.Wizard.getWizardData" name="view.editor.wizards.Wizard.getWizardData">
+<area shape="rect" id="node2" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#adb1e5f7288d7b0929d995f348c69d4bc" title="view.editor.wizards.Game\lElementWizard.boundsAlreadyExist" alt="" coords="289,5,535,46"/>
+<area shape="rect" id="node3" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#af1a70ba89d682d331e46be6a564472cd" title="view.editor.wizards.Game\lElementWizard.launchBoundsWizard" alt="" coords="608,63,861,105"/>
+<area shape="rect" id="node5" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a307d1b68df420edd610f0911f86a0f53" title="view.editor.wizards.Game\lElementWizard.checkCanSave" alt="" coords="305,122,519,163"/>
+<area shape="rect" id="node6" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#ad27c5e1a925add12e871ed6ba932d317" title="view.editor.wizards.Game\lElementWizard.getBoundsFromWizardData" alt="" coords="265,187,559,229"/>
+<area shape="rect" id="node4" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a108e1aaa06ef6b80a4a1d33d460cde06" title="view.editor.wizards.Game\lElementWizard.initialize" alt="" coords="910,63,1093,105"/>
+</map>

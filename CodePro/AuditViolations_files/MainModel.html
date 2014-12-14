@@ -1,0 +1,4763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>MainModel.java</title>
+
+	<meta name="GENERATOR" content="CodePro Server"/>
+
+	<style type="text/css">
+	span.highSeverity {background-color: #FFAAAA; font: bold}
+span.mediumSeverity {background-color: #FFFF77; font: bold}
+span.lowSeverity {background-color: #AAAAFF; font: bold}
+table.code {border-spacing: 0; border-collapse: collapse; border-width: 1px 0 1px 1px; }
+table.code td {padding-left: 0.25em; padding-right: 0.25em; font-family: courier,monospace; font-size: 10pt; border-style: solid; border-color: black;}
+tr.first td.flags {border-width: 1px 1px 0 1px; text-align: right;}
+tr.first td.lineNumber {border-width: 1px 1px 0 1px; text-align: right;}
+tr.first td.sourceLine {border-width: 1px 1px 0 1px; background-color: #F0F0FF;}
+tr.middle td.flags {border-width: 0 1px 0 1px; text-align: right;}
+tr.middle td.lineNumber {border-width: 0 1px 0 1px; text-align: right;}
+tr.middle td.sourceLine {border-width: 0 1px 0 1px; background-color: #F0F0FF;}
+tr.last td.flags {border-width: 0 1px 1px 1px; text-align: right;}
+tr.last td.lineNumber {border-width: 0 1px 1px 1px; text-align: right;}
+tr.last td.sourceLine {border-width: 0 1px 1px 1px; background-color: #F0F0FF;}
+	</style>
+
+	<style type="text/css">
+	body {font: 70% verdana,arial,helvetica; color: #000000}
+p  {margin-top:  3px; line-height: 1.5em}
+h1 {margin-top:  0px; margin-bottom: 6px; font: bold 150% verdana,arial,helvetica}
+h2 {margin-top: 12px; margin-bottom: 6px; font: bold 125% verdana,arial,helvetica}
+h3 {margin-top: 12px; margin-bottom: 6px; font: bold 100% verdana,arial,helvetica}
+h4 {margin-top: 12px; margin-bottom: 6px; font: bold 100% verdana,arial,helvetica}
+.rounded_page{display:block}
+.rounded_page *{display:block; height:1px; overflow:hidden; font-size:.01em; background:#7799DD}
+.rounded_page1{ margin-left:3px; margin-right:3px; padding-left:1px; padding-right:1px; border-left:1px solid #c4d3ef; border-right:1px solid #c4d3ef; background:#99b2e5}
+.rounded_page2{ margin-left:1px; margin-right:1px; padding-right:1px; padding-left:1px; border-left:1px solid #f1f4fa; border-right:1px solid #f1f4fa; background:#90ace3}
+.rounded_page3{ margin-left:1px; margin-right:1px; border-left:1px solid #90ace3; border-right:1px solid #90ace3;}
+.rounded_page4{ border-left:1px solid #c4d3ef; border-right:1px solid #c4d3ef}
+.rounded_page5{ border-left:1px solid #99b2e5; border-right:1px solid #99b2e5}
+.rounded_pagefg{ background:#7799DD}
+.rounded_section{display:block}
+.rounded_section *{display:block; height:1px; overflow:hidden; font-size:.01em; background:#C3D9FF}
+.rounded_section1{ margin-left:3px; margin-right:3px; padding-left:1px; padding-right:1px; border-left:1px solid #e5eefe; border-right:1px solid #e5eefe; background:#d2e2fe}
+.rounded_section2{ margin-left:1px; margin-right:1px; padding-right:1px; padding-left:1px; border-left:1px solid #f9fbfe; border-right:1px solid #f9fbfe; background:#cee0fe}
+.rounded_section3{ margin-left:1px; margin-right:1px; border-left:1px solid #cee0fe; border-right:1px solid #cee0fe;}
+.rounded_section4{ border-left:1px solid #e5eefe; border-right:1px solid #e5eefe}
+.rounded_section5{ border-left:1px solid #d2e2fe; border-right:1px solid #d2e2fe}
+.rounded_sectionfg{ background:#C3D9FF}
+.page-title { color: #FFFFFE; font-weight: bold; font-size: large; margin: 0px 0px 0px 8px; }
+.page-title-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.page-footer { color: #FFFFFE; font-weight: bold; margin-left: 8px}
+.page-footer-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.majorsection-title { color: #FFFFFE; font-weight: bold; margin: 0px 0px 0px 8px; }
+.majorsection-title-details { color: #FFFFFE; font-weight: bold; margin-right: 8px; margin-left: 8px; }
+.majorsection-contents { margin: 0px 0px 15px 16px; }
+.section-title { color: #1F4F8F; font-weight: bold; margin: 0px 0px 0px 6px; }
+.section-title-details { font-weight: bold; margin-left: 6px; margin-right: 6px; }
+.section-contents { margin: 6px 0px 15px 14px; }
+.bodyTable { border: 0px solid #777777; width:100%; border-collapse: collapse; }
+.bodyTable th { border: 1px solid #777777; white-space:nowrap; background-color: #EEEEEE; padding-left: 3px; padding-right: 3px; }
+.bodyTable td { border: 1px solid #777777; vertical-align: top; padding-left: 3px; padding-right: 3px; }
+td[class=emptyborder] { border: 0px solid #777777; padding: 3px 0px 3px 0px; }
+
+	</style>
+
+</head>
+
+<body>
+
+<div>
+		<b class="rounded_page"><b class="rounded_page1"><b></b></b><b class="rounded_page2"><b></b></b><b class="rounded_page3"></b><b class="rounded_page4"></b><b class="rounded_page5"></b></b>
+		<div class="rounded_pagefg">
+			<h3 class="majorsection-title">/TempCodeProProject1/src1/src/model/MainModel.java</h3>
+		</div>
+		<b class="rounded_page"><b class="rounded_page5"></b><b class="rounded_page4"></b><b class="rounded_page3"></b><b class="rounded_page2"><b></b></b><b class="rounded_page1"><b></b></b></b>
+	</div>
+	<div class="section-contents">
+		<b>Violations: 8 high, 3 medium, 62 low</b>
+	</div>
+	&nbsp;
+	<div>
+		<b class="rounded_section"><b class="rounded_section1"><b></b></b><b class="rounded_section2"><b></b></b><b class="rounded_section3"></b><b class="rounded_section4"></b><b class="rounded_section5"></b></b>
+		<div class="rounded_sectionfg">
+			<h4 class="section-title">Violations</h4>
+		</div>
+		<b class="rounded_section"><b class="rounded_section5"></b><b class="rounded_section4"></b><b class="rounded_section3"></b><b class="rounded_section2"><b></b></b><b class="rounded_section1"><b></b></b></b>
+	</div>
+	<table>
+	<tr>
+	<td valign="top"><img src="medium_severity.gif" alt="medium"/>
+	</td><td valign="top"><a href="#line45">Too many methods: 36</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line232">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line337">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line81">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line233">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line355">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line91">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line234">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line356">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line93">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line235">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line357">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line117">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line239">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line358">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line118">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line241">Line 241 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line361">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line135">Line 135 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line243">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line367">Invalid string literal: &quot;location not within level grid bounds&quot;</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line135">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line246">Invalid string literal: &quot;invalid size of level&quot;</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line374">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line136">Line 136 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line271">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line375">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line136">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line273">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line376">Line 376 is longer than 100 characters</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line144">Line 144 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line277">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line377">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line144">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line296">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line381">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line145">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line298">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line390">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line146">Invalid numeric literal: 2</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line302">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line391">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line155">Invalid numeric literal: 2</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line315">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line392">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line164">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="medium_severity.gif" alt="medium"/>
+	</td><td valign="top"><a href="#line315">Missing block in if clause: throw new ElementInUseException(elementName);</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line393">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line169">Line 169 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line322">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line396">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line169">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="medium_severity.gif" alt="medium"/>
+	</td><td valign="top"><a href="#line322">Missing block in if clause: throw new ElementInUseException(elementName);</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line402">Invalid string literal: &quot;location not within level grid bounds&quot;</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line170">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line330">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line408">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line184">Line 184 is longer than 100 characters</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line331">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line410">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line184">Invalid numeric literal: 2</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line332">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line438">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line184">Invalid numeric literal: 2</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line333">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line441">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="high_severity.gif" alt="high"/>
+	</td><td valign="top"><a href="#line184">Invalid numeric literal: 16</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line334">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line443">Code within a block is not indented</a>
+	</td></tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line230">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line335">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top">&nbsp;</td>
+	<td valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line231">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top"><img src="low_severity.gif" alt="low"/>
+	</td><td valign="top"><a href="#line336">Code within a block is not indented</a>
+	</td>	<td width="10"/>
+	<td valign="top">&nbsp;</td>
+	<td valign="top">&nbsp;</td>
+	</tr>
+	</table>
+	&nbsp;
+	<div>
+		<b class="rounded_section"><b class="rounded_section1"><b></b></b><b class="rounded_section2"><b></b></b><b class="rounded_section3"></b><b class="rounded_section4"></b><b class="rounded_section5"></b></b>
+		<div class="rounded_sectionfg">
+			<h4 class="section-title">Source</h4>
+		</div>
+		<b class="rounded_section"><b class="rounded_section5"></b><b class="rounded_section4"></b><b class="rounded_section3"></b><b class="rounded_section2"><b></b></b><b class="rounded_section1"><b></b></b></b>
+	</div>
+	<div class="section-contents">
+		<table width="100%" class="code">
+		<tr class="first">
+		<td class="lineNumber">
+		<a name="line1">1</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		package&nbsp;model;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line2">2</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line3">3</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.ArrayList;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line4">4</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.HashSet;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line5">5</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.List;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line6">6</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.Observable;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line7">7</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.Set;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line8">8</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;java.util.stream.Collectors;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line9">9</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;javafx.scene.image.ImageView;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line10">10</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.data.WizardData;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line11">11</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.data.WizardDataType;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line12">12</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.exceptions.CampaignExistsException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line13">13</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.exceptions.CampaignNotFoundException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line14">14</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.exceptions.ElementInUseException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line15">15</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.exceptions.LevelExistsException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line16">16</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.exceptions.LevelNotFoundException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line17">17</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.sprite.SpriteImageContainer;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line18">18</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.sprite.SpriteImageGenerator;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line19">19</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.CampaignState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line20">20</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.DescribableState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line21">21</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.GameState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line22">22</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.LevelIdentifier;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line23">23</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.LevelState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line24">24</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.DrawableGameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line25">25</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.GameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line26">26</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.SelectableGameElementState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line27">27</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;model.state.gameelement.StateTags;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line28">28</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.JSONableSet;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line29">29</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.SaveLoadUtility;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line30">30</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.exceptions.SaveLoadException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line31">31</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.multilanguage.LanguagePropertyNotFoundException;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line32">32</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;util.multilanguage.MultiLanguageUtility;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line33">33</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;view.dialog.DialogBoxUtility;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line34">34</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;view.splash.SplashScreen;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line35">35</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;engine.Engine;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line36">36</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		import&nbsp;engine.visuals.elementVisuals.animations.AnimatorState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line37">37</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line38">38</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line39">39</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line40">40</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;Main&nbsp;class&nbsp;for&nbsp;the&nbsp;model&nbsp;of&nbsp;the&nbsp;game
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line41">41</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line42">42</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*&nbsp;@author&nbsp;Rahul&nbsp;Harikrishnan,&nbsp;Nishad&nbsp;Agrawal,&nbsp;Jonathan&nbsp;Tseng
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line43">43</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line44">44</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line45"><b>45</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="medium_severity.gif" alt="medium" title="Too many methods: 36"/></td>
+		<td class="sourceLine" width="100%">
+		public&nbsp;class&nbsp;<span class="mediumSeverity">MainModel</span>&nbsp;extends&nbsp;Observable&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line46">46</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;String&nbsp;LOAD_GAME_ERROR_KEY&nbsp;=&nbsp;&quot;LoadGameError&quot;;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line47">47</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;GameState&nbsp;myGameState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line48">48</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;myEditorChosenSelectableElement;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line49">49</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;myEditorChosenDrawableElement;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line50">50</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;myEditorChosenColor;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line51">51</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;GameSaveLoadMediator&nbsp;mySaveLoadMediator;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line52">52</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;SpriteImageGenerator&nbsp;mySpriteImageGenerator;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line53">53</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line54">54</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;MainModel&nbsp;()&nbsp;throws&nbsp;SaveLoadException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line55">55</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearEditorChosen();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line56">56</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySaveLoadMediator&nbsp;=&nbsp;new&nbsp;GameSaveLoadMediator();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line57">57</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySpriteImageGenerator&nbsp;=&nbsp;new&nbsp;SpriteImageGenerator();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line58">58</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line59">59</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line60">60</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;newGame&nbsp;(String&nbsp;gameName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line61">61</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO&nbsp;CLEAN&nbsp;THIS&nbsp;UP
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line62">62</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState&nbsp;=&nbsp;new&nbsp;GameState(gameName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line63">63</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getGameUniverse().addParticipantColor(Engine.DEFAULT_PLAYER_COLOR_STRING);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line64">64</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line65">65</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line66">66</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line67">67</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Sets&nbsp;the&nbsp;game&nbsp;of&nbsp;the&nbsp;Model.
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line68">68</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line69">69</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;game
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line70">70</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;LanguagePropertyNotFoundException
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line71">71</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line72">72</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;loadGame&nbsp;(String&nbsp;game)&nbsp;throws&nbsp;LanguagePropertyNotFoundException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line73">73</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO:&nbsp;Move&nbsp;the&nbsp;dialog&nbsp;box&nbsp;utility&nbsp;message&nbsp;dialog&nbsp;to&nbsp;a&nbsp;View&nbsp;class&nbsp;as
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line74">74</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;opposed&nbsp;to&nbsp;in&nbsp;model.
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line75">75</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line76">76</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO:&nbsp;insert&nbsp;Save&nbsp;Load&nbsp;code&nbsp;here&nbsp;and&nbsp;instantiate&nbsp;myGameState
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line77">77</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState&nbsp;=&nbsp;mySaveLoadMediator.loadGame(game);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line78">78</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line79">79</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(SaveLoadException&nbsp;e)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line80">80</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DialogBoxUtility.createMessageDialog(MultiLanguageUtility.getInstance()
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line81"><b>81</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.getStringProperty(LOAD_GAME_ERROR_KEY).getValue());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line82">82</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line83">83</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line84">84</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateSpritesAndMasks();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line85">85</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line86">86</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line87">87</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line88">88</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line89">89</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;updateSpritesAndMasks&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line90">90</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;DrawableGameElementState&gt;&nbsp;drawableStates&nbsp;=&nbsp;myGameState.getGameUniverse()
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line91"><b>91</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.getDrawableGameElementStates();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line92">92</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;SelectableGameElementState&gt;&nbsp;selectableStates&nbsp;=&nbsp;myGameState.getGameUniverse()
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line93"><b>93</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.getSelectableGameElementStates();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line94">94</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line95">95</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&lt;AnimatorState&gt;&nbsp;animatorStates&nbsp;=&nbsp;new&nbsp;HashSet&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line96">96</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(DrawableGameElementState&nbsp;dges&nbsp;:&nbsp;drawableStates)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line97">97</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animatorStates.add(dges.myAnimatorState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line98">98</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line99">99</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(SelectableGameElementState&nbsp;dges&nbsp;:&nbsp;selectableStates)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line100">100</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animatorStates.add(dges.myAnimatorState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line101">101</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line102">102</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line103">103</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySaveLoadMediator.loadSpritesAndMasks(animatorStates);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line104">104</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line105">105</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(SaveLoadException&nbsp;e)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line106">106</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DialogBoxUtility.createMessageDialog(e.getMessage());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line107">107</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line108">108</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line109">109</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line110">110</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;saveGame&nbsp;()&nbsp;throws&nbsp;RuntimeException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line111">111</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;saveGame(myGameState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line112">112</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line113">113</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line114">114</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;saveGame&nbsp;(GameState&nbsp;game)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line115">115</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line116">116</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSONableSet&lt;String&gt;&nbsp;existingGames&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line117"><b>117</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>SaveLoadUtility.loadResource(JSONableSet.class,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line118"><b>118</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>SplashScreen.EXISTING_GAMES);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line119">119</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;existingGames.add(game.getName());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line120">120</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SaveLoadUtility.save(existingGames,&nbsp;SplashScreen.EXISTING_GAMES);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line121">121</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mySaveLoadMediator.saveGame(game,&nbsp;game.getName());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line122">122</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line123">123</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(SaveLoadException&nbsp;e)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line124">124</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line125">125</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line126">126</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line127">127</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line128">128</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line129">129</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addParticipantColor(String&nbsp;color)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line130">130</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getGameUniverse().addParticipantColor(color);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line131">131</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line132">132</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line133">133</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line134">134</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;updateDescribableState&nbsp;(String[]&nbsp;selection,&nbsp;String&nbsp;name,&nbsp;String&nbsp;description)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line135"><b>135</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 135 is longer than 100 characters"/><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;CampaignNotFoundException,</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line136"><b>136</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 136 is longer than 100 characters"/><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LevelNotFoundException&nbsp;{</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line137">137</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DescribableState&nbsp;state&nbsp;=&nbsp;getDescribableState(selection);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line138">138</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.updateName(name);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line139">139</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.updateDescription(description);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line140">140</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line141">141</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line142">142</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line143">143</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DescribableState&nbsp;getDescribableState&nbsp;(String[]&nbsp;selection)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line144"><b>144</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 144 is longer than 100 characters"/><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;CampaignNotFoundException,</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line145"><b>145</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>LevelNotFoundException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line146"><b>146</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="high_severity.gif" alt="high" title="Invalid numeric literal: 2"/></td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(selection[<span class="highSeverity">2</span>].isEmpty())&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line147">147</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(selection[1].isEmpty())&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line148">148</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line149">149</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line150">150</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line151">151</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState.getCampaign(selection[1]);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line152">152</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line153">153</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line154">154</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line155"><b>155</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="high_severity.gif" alt="high" title="Invalid numeric literal: 2"/></td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState.getCampaign(selection[1]).getLevel(selection[<span class="highSeverity">2</span>]);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line156">156</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line157">157</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line158">158</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line159">159</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;GameState&nbsp;getCurrentGame&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line160">160</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line161">161</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line162">162</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line163">163</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;LevelState&nbsp;getLevel&nbsp;(LevelIdentifier&nbsp;levelID)&nbsp;throws&nbsp;LevelNotFoundException,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line164"><b>164</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>CampaignNotFoundException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line165">165</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;getCampaign(levelID.campaignName).getLevel(levelID.levelName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line166">166</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line167">167</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line168">168</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setLevel&nbsp;(LevelIdentifier&nbsp;levelID,&nbsp;LevelState&nbsp;levelState)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line169"><b>169</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 169 is longer than 100 characters"/><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;CampaignNotFoundException,</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line170"><b>170</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>LevelNotFoundException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line171">171</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;levelIndex&nbsp;=&nbsp;getCampaign(levelID.campaignName).getLevels().indexOf(getLevel(levelID));
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line172">172</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getCampaign(levelID.campaignName).getLevels().set(levelIndex,&nbsp;levelState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line173">173</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line174">174</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line175">175</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;CampaignState&nbsp;getCampaign&nbsp;(String&nbsp;campaignName)&nbsp;throws&nbsp;CampaignNotFoundException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line176">176</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState.getCampaign(campaignName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line177">177</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line178">178</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line179">179</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setEditorChosenColor(String&nbsp;color)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line180">180</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myEditorChosenColor&nbsp;=&nbsp;color;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line181">181</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line182">182</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line183">183</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;long&nbsp;getEditorChosenColor()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line184"><b>184</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 184 is longer than 100 characters"/><img src="high_severity.gif" alt="high" title="Invalid numeric literal: 2"/><img src="high_severity.gif" alt="high" title="Invalid numeric literal: 2"/><img src="high_severity.gif" alt="high" title="Invalid numeric literal: 16"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Long.parseLong(myEditorChosenColor.substring(</span><span class="highSeverity">2</span><span class="lowSeverity">,&nbsp;myEditorChosenColor.length()&nbsp;-&nbsp;</span><span class="highSeverity">2</span><span class="lowSeverity">),&nbsp;</span><span class="highSeverity">16</span><span class="lowSeverity">);</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line185">185</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line186">186</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line187">187</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setEditorChosenDrawable&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line188">188</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearEditorChosen();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line189">189</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myEditorChosenDrawableElement&nbsp;=&nbsp;elementName;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line190">190</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line191">191</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line192">192</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setEditorChosenSelectable&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line193">193</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearEditorChosen();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line194">194</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myEditorChosenSelectableElement&nbsp;=&nbsp;elementName;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line195">195</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line196">196</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line197">197</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;clearEditorChosen&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line198">198</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myEditorChosenSelectableElement&nbsp;=&nbsp;&quot;&quot;;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line199">199</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myEditorChosenDrawableElement&nbsp;=&nbsp;&quot;&quot;;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line200">200</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line201">201</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line202">202</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getEditorChosenSelectable&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line203">203</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myEditorChosenSelectableElement;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line204">204</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line205">205</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line206">206</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getEditorChosenDrawable&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line207">207</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myEditorChosenDrawableElement;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line208">208</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line209">209</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line210">210</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line211">211</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;called&nbsp;by&nbsp;editor&nbsp;when&nbsp;creating&nbsp;a&nbsp;new&nbsp;campaign
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line212">212</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line213">213</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;campaignName
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line214">214</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;CampaignExistsException
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line215">215</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line216">216</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createCampaign&nbsp;(String&nbsp;campaignName)&nbsp;throws&nbsp;CampaignExistsException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line217">217</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CampaignState&nbsp;newCampaignState&nbsp;=&nbsp;new&nbsp;CampaignState(campaignName.trim());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line218">218</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState.addCampaign(newCampaignState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line219">219</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line220">220</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line221">221</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line222">222</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line223">223</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;called&nbsp;by&nbsp;editor&nbsp;when&nbsp;creating&nbsp;a&nbsp;new&nbsp;level&nbsp;under&nbsp;a&nbsp;certain&nbsp;campaign
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line224">224</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line225">225</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;campaignName
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line226">226</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;levelName
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line227">227</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;LevelExistsException
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line228">228</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line229">229</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createLevel&nbsp;(String&nbsp;levelName,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line230"><b>230</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>String&nbsp;campaignName,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line231"><b>231</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Number&nbsp;width,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line232"><b>232</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Number&nbsp;height,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line233"><b>233</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>String&nbsp;backgroundPath)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line234"><b>234</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>throws&nbsp;LevelExistsException,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line235"><b>235</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>CampaignNotFoundException,&nbsp;Exception&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line236">236</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CampaignState&nbsp;campaignState&nbsp;=&nbsp;myGameState.getCampaign(campaignName.trim());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line237">237</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LevelState&nbsp;newLevelState&nbsp;=&nbsp;new&nbsp;LevelState(levelName.trim(),&nbsp;campaignName.trim());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line238">238</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newLevelState.myAttributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line239"><b>239</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>backgroundPath);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line240">240</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(width.doubleValue()&nbsp;&gt;&nbsp;0&nbsp;&amp;&amp;&nbsp;height.doubleValue()&nbsp;&gt;&nbsp;0)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line241"><b>241</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 241 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newLevelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(),&nbsp;width);</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line242">242</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newLevelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(),
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line243"><b>243</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>height);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line244">244</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line245">245</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line246"><b>246</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="high_severity.gif" alt="high" title="Invalid string literal: &quot;invalid size of level&quot;"/></td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;Exception(<span class="highSeverity">&quot;invalid&nbsp;size&nbsp;of&nbsp;level&quot;</span>);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line247">247</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line248">248</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;campaignState.addLevel(newLevelState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line249">249</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line250">250</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line251">251</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line252">252</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line253">253</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;called&nbsp;by&nbsp;editor&nbsp;when&nbsp;creating&nbsp;a&nbsp;new&nbsp;game&nbsp;element
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line254">254</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line255">255</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;data
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line256">256</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line257">257</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createGameElementState&nbsp;(WizardData&nbsp;data)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line258">258</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GameElementState&nbsp;gameElement&nbsp;=&nbsp;GameElementStateFactory.createGameElementState(data);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line259">259</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState.getGameUniverse().addGameElementState(gameElement);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line260">260</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line261">261</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line262">262</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line263">263</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line264">264</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;called&nbsp;by&nbsp;editor&nbsp;when&nbsp;creating&nbsp;a&nbsp;new&nbsp;game&nbsp;element
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line265">265</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line266">266</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;data
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line267">267</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line268">268</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createDrawableGameElementState&nbsp;(WizardData&nbsp;data)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line269">269</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line270">270</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;actualSaveLocation&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line271"><b>271</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>mySaveLoadMediator.saveImage(data,&nbsp;GameElementImageType.Drawable);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line272">272</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;colorMaskLocation&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line273"><b>273</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>mySaveLoadMediator.saveColorMask(data,&nbsp;GameElementImageType.Drawable);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line274">274</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.addDataPair(WizardDataType.IMAGE,&nbsp;actualSaveLocation);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line275">275</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.addDataPair(WizardDataType.COLOR_MASK,&nbsp;colorMaskLocation);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line276">276</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawableGameElementState&nbsp;gameElement&nbsp;=&nbsp;GameElementStateFactory
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line277"><b>277</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.createDrawableGameElementState(data);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line278">278</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState.getGameUniverse().addDrawableGameElementState(gameElement);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line279">279</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpriteImageGenerator.loadSpriteImageContainer(gameElement.myAnimatorState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line280">280</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line281">281</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line282">282</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(SaveLoadException&nbsp;e)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line283">283</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO&nbsp;remove
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line284">284</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line285">285</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line286">286</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line287">287</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line288">288</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line289">289</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;called&nbsp;by&nbsp;editor&nbsp;when&nbsp;creating&nbsp;a&nbsp;new&nbsp;game&nbsp;element
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line290">290</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line291">291</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;data
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line292">292</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line293">293</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createSelectableGameElementState&nbsp;(WizardData&nbsp;data)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line294">294</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line295">295</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;actualSaveLocation&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line296"><b>296</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>mySaveLoadMediator.saveImage(data,&nbsp;GameElementImageType.Selectable);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line297">297</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;colorMaskLocation&nbsp;=&nbsp;mySaveLoadMediator
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line298"><b>298</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.saveColorMask(data,&nbsp;GameElementImageType.Selectable);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line299">299</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.addDataPair(WizardDataType.IMAGE,&nbsp;actualSaveLocation);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line300">300</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.addDataPair(WizardDataType.COLOR_MASK,&nbsp;colorMaskLocation);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line301">301</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectableGameElementState&nbsp;gameElement&nbsp;=&nbsp;GameElementStateFactory
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line302"><b>302</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.createSelectableGameElementState(data);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line303">303</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState.getGameUniverse().addSelectableGameElementState(gameElement);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line304">304</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpriteImageGenerator.loadSpriteImageContainer(gameElement.myAnimatorState);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line305">305</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line306">306</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line307">307</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(SaveLoadException&nbsp;e)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line308">308</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TODO&nbsp;remove
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line309">309</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line310">310</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line311">311</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line312">312</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line313">313</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeDrawableGameElement&nbsp;(String&nbsp;elementName)&nbsp;throws&nbsp;ElementInUseException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line314">314</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(elementIsInUse(elementName))
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line315"><b>315</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/><img src="medium_severity.gif" alt="medium" title="Missing block in if clause: throw new ElementInUseException(elementName);"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="mediumSeverity">throw&nbsp;new&nbsp;ElementInUseException(elementName);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line316">316</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getGameUniverse().removeDrawableGameElementState(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line317">317</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line318">318</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line319">319</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line320">320</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeSelectableGameElement&nbsp;(String&nbsp;elementName)&nbsp;throws&nbsp;ElementInUseException&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line321">321</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(elementIsInUse(elementName))
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line322"><b>322</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/><img src="medium_severity.gif" alt="medium" title="Missing block in if clause: throw new ElementInUseException(elementName);"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="mediumSeverity">throw&nbsp;new&nbsp;ElementInUseException(elementName);</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line323">323</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getGameUniverse().removeSelectableGameElementState(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line324">324</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line325">325</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line326">326</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line327">327</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;elementIsInUse&nbsp;(String&nbsp;elementName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line328">328</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;GameElementState&gt;&nbsp;allStates&nbsp;=&nbsp;new&nbsp;ArrayList&lt;&gt;();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line329">329</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myGameState.getCampaigns().forEach((campaign&nbsp;-&gt;&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line330"><b>330</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>campaign.getLevels().forEach(&nbsp;(level)&nbsp;-&gt;&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line331"><b>331</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>allStates.addAll(level.getTerrain().stream().filter(&nbsp;(terrain)&nbsp;-&gt;&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line332"><b>332</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>return&nbsp;terrain.getName().equals(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line333"><b>333</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>}).collect(Collectors.toList()));
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line334"><b>334</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>allStates.addAll(level.getUnits().stream().filter(&nbsp;(unit)&nbsp;-&gt;&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line335"><b>335</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>return&nbsp;unit.getName().equals(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line336"><b>336</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>}).collect(Collectors.toList()));
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line337"><b>337</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>});
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line338">338</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}));
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line339">339</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;allStates.size()&nbsp;&gt;&nbsp;0;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line340">340</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line341">341</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line342">342</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;createGoal&nbsp;(LevelState&nbsp;levelState,&nbsp;WizardData&nbsp;data)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line343">343</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GameElementState&nbsp;goal&nbsp;=&nbsp;GameElementStateFactory.createGoal(data);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line344">344</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levelState.addGoal(goal);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line345">345</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line346">346</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line347">347</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line348">348</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;removeGoal&nbsp;(LevelState&nbsp;levelState,&nbsp;int&nbsp;index)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line349">349</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GameElementState&nbsp;goal&nbsp;=&nbsp;levelState.getGoals().get(index);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line350">350</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levelState.getGoals().remove(goal);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line351">351</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line352">352</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line353">353</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line354">354</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addUnitToLevel&nbsp;(LevelState&nbsp;levelState,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line355"><b>355</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>String&nbsp;elementName,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line356"><b>356</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Double&nbsp;xValue,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line357"><b>357</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Double&nbsp;yValue)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line358"><b>358</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>throws&nbsp;Exception&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line359">359</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(areCoordinatesValid(levelState,&nbsp;xValue,&nbsp;yValue))&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line360">360</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectableGameElementState&nbsp;unit&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line361"><b>361</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>getGameUniverse().getSelectableGameElementState(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line362">362</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(),&nbsp;xValue);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line363">363</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(),&nbsp;yValue);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line364">364</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levelState.addUnit(unit);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line365">365</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line366">366</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line367"><b>367</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="high_severity.gif" alt="high" title="Invalid string literal: &quot;location not within level grid bounds&quot;"/></td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;Exception(<span class="highSeverity">&quot;location&nbsp;not&nbsp;within&nbsp;level&nbsp;grid&nbsp;bounds&quot;</span>);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line368">368</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line369">369</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line370">370</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line371">371</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line372">372</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setTerrain&nbsp;(LevelState&nbsp;levelState,&nbsp;String&nbsp;terrainName)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line373">373</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;width&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line374"><b>374</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue())
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line375"><b>375</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.intValue();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line376"><b>376</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Line 376 is longer than 100 characters"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;height&nbsp;=&nbsp;levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue())</span>
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line377"><b>377</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>.intValue();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line378">378</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;width;&nbsp;i++)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line379">379</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;&nbsp;height;&nbsp;j++)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line380">380</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawableGameElementState&nbsp;terrain&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line381"><b>381</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>getGameUniverse().getDrawableGameElementState(terrainName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line382">382</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terrain.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(),&nbsp;i);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line383">383</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terrain.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(),&nbsp;j);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line384">384</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levelState.addTerrain(terrain);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line385">385</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line386">386</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line387">387</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line388">388</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line389">389</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addTerrainToLevel&nbsp;(LevelState&nbsp;levelState,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line390"><b>390</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>String&nbsp;elementName,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line391"><b>391</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Double&nbsp;xValue,
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line392"><b>392</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Double&nbsp;yValue)
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line393"><b>393</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>throws&nbsp;Exception&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line394">394</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(areCoordinatesValid(levelState,&nbsp;xValue,&nbsp;yValue))&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line395">395</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawableGameElementState&nbsp;terrain&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line396"><b>396</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>getGameUniverse().getDrawableGameElementState(elementName);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line397">397</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terrain.myAttributes.setNumericalAttribute(StateTags.X_POSITION.getValue(),&nbsp;xValue);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line398">398</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terrain.myAttributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(),&nbsp;yValue);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line399">399</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levelState.addTerrain(terrain);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line400">400</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line401">401</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line402"><b>402</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="high_severity.gif" alt="high" title="Invalid string literal: &quot;location not within level grid bounds&quot;"/></td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;Exception(<span class="highSeverity">&quot;location&nbsp;not&nbsp;within&nbsp;level&nbsp;grid&nbsp;bounds&quot;</span>);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line403">403</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line404">404</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line405">405</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line406">406</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;boolean&nbsp;areCoordinatesValid&nbsp;(LevelState&nbsp;levelState,&nbsp;Double&nbsp;x,&nbsp;Double&nbsp;y)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line407">407</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;width&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line408"><b>408</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_WIDTH.getValue());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line409">409</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;height&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line410"><b>410</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>levelState.myAttributes.getNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line411">411</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(x&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;width.doubleValue()&nbsp;&gt;&nbsp;x&nbsp;&amp;&amp;&nbsp;y&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;height.doubleValue()&nbsp;&gt;&nbsp;y);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line412">412</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line413">413</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line414">414</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;updateObservers&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line415">415</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setChanged();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line416">416</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notifyObservers();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line417">417</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearChanged();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line418">418</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line419">419</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line420">420</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line421">421</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;gets&nbsp;the&nbsp;game&nbsp;universe&nbsp;(list&nbsp;of&nbsp;all&nbsp;elements&nbsp;that&nbsp;could&nbsp;be&nbsp;used&nbsp;in&nbsp;the
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line422">422</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;currently&nbsp;selected&nbsp;game
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line423">423</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line424">424</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line425">425</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line426">426</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;GameUniverse&nbsp;getGameUniverse&nbsp;()&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line427">427</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;myGameState.getGameUniverse();
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line428">428</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line429">429</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line430">430</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;/**
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line431">431</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line432">432</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;imageTag
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line433">433</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line434">434</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@throws&nbsp;Exception
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line435">435</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line436">436</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;SpriteImageContainer&nbsp;fetchImageContainer&nbsp;(String&nbsp;imageTag)&nbsp;{
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line437">437</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpriteImageContainer&nbsp;matchingContainer&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line438"><b>438</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>mySpriteImageGenerator.fetchImageContainer(imageTag);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line439">439</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageView&nbsp;newImageView&nbsp;=&nbsp;new&nbsp;ImageView(matchingContainer.getSpritesheet().getImage());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line440">440</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageView&nbsp;newColorMaskImageView&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line441"><b>441</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>new&nbsp;ImageView(matchingContainer.getColorMask().getImage());
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line442">442</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpriteImageContainer&nbsp;spriteContainer&nbsp;=
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line443"><b>443</b></a>
+		</td>
+		<td class="flags" nowrap="nowrap"><img src="low_severity.gif" alt="low" title="Code within a block is not indented"/></td>
+		<td class="sourceLine" width="100%">
+		<span class="lowSeverity">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>new&nbsp;SpriteImageContainer(newImageView,&nbsp;newColorMaskImageView);
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line444">444</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;spriteContainer;
+		</td>
+		</tr>
+		<tr class="middle">
+		<td class="lineNumber">
+		<a name="line445">445</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		&nbsp;&nbsp;&nbsp;&nbsp;}
+		</td>
+		</tr>
+		<tr class="last">
+		<td class="lineNumber">
+		<a name="line446">446</a>
+		</td>
+		<td class="flags">
+		</td>
+		<td class="sourceLine" width="100%">
+		}
+		</td>
+		</tr>
+		</table>
+	</div>
+	<div>
+		<b class="rounded_page"><b class="rounded_page1"><b></b></b><b class="rounded_page2"><b></b></b><b class="rounded_page3"></b><b class="rounded_page4"></b><b class="rounded_page5"></b></b>
+		<div class="rounded_pagefg">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" ><tr><td valign="middle">
+			<span class="page-footer"></span>
+			</td><td align="right" valign="middle">
+			<span class="page-footer-details">Powered by <span title="0.0.0, UNKNOWN">CodePro Server</span></span></td></tr></table>
+		</div>
+		<b class="rounded_page"><b class="rounded_page5"></b><b class="rounded_page4"></b><b class="rounded_page3"></b><b class="rounded_page2"><b></b></b><b class="rounded_page1"><b></b></b></b>
+	</div>
+
+</body>
+
+</html>

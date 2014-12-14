@@ -1,0 +1,7 @@
+<map id="model.MainModel.setLevel" name="model.MainModel.setLevel">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a1d62bac35f70e49b8e2094c6f15fe477" title="model.MainModel.getCampaign" alt="" coords="525,12,749,39"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#a325b6fee358919fa4ae565752ecb9a7b" title="model.MainModel.getLevel" alt="" coords="264,63,456,89"/>
+<area shape="rect" id="node6" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a9572f386b094baa8abd72f14fe5d6a4e" title="model.state.CampaignState.get\lLevels" alt="" coords="246,114,474,155"/>
+<area shape="rect" id="node3" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="800,5,1003,46"/>
+<area shape="rect" id="node5" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="523,63,751,105"/>
+</map>
