@@ -72,7 +72,7 @@ public abstract class AttributeDisplayer implements Updatable, Widget {
 	 */
 	protected void toggleOpacity() {
 		if (attributesOfInterest.getNumericalAttribute(StateTags.IS_SELECTED.getValue())
-				.intValue() == 1) {
+				.intValue() == 1 || attributesOfInterest.getNumericalAttribute(StateTags.HEALTH.getValue()).intValue() > 0) {
 			myGroup.setVisible(true);
 		} else {
 			myGroup.setVisible(false);

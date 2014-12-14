@@ -2,7 +2,6 @@ package engine.elementFactories;
 
 import java.util.List;
 import java.util.Map.Entry;
-import com.sun.xml.internal.fastinfoset.algorithm.HexadecimalEncodingAlgorithm;
 import model.GameUniverse;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
@@ -75,7 +74,6 @@ public class GameElementFactory {
         state.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
-        System.out.println(Long.toHexString(color.longValue()));
         return newElement;
     }
 

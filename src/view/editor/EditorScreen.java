@@ -45,8 +45,8 @@ import view.gui.GUIScreen;
 
 public class EditorScreen extends GUIScreen {
 
-    private static final String ADD_KEY = "Add";
     private static final String TEAM_COLOR_PROMPT = "TeamColorPrompt";
+    private static final String NEW_PARTICIPANT_KEY = "NewParticipant";
 
     @FXML
     private TabPane tabPane;
@@ -197,10 +197,10 @@ public class EditorScreen extends GUIScreen {
 
     private void attachTextProperties () {
         try {
-            addButton.textProperty().bind(MultiLanguageUtility.getInstance()
-                    .getStringProperty(ADD_KEY));
+            MultiLanguageUtility util = MultiLanguageUtility.getInstance();
             participantDropDown.promptTextProperty()
-                    .bind(MultiLanguageUtility.getInstance().getStringProperty(TEAM_COLOR_PROMPT));
+                    .bind(util.getStringProperty(TEAM_COLOR_PROMPT));
+            addButton.textProperty().bind(util.getStringProperty(NEW_PARTICIPANT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             DialogBoxUtility.createMessageDialog(e.getMessage());

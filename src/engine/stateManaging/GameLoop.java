@@ -5,12 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.stream.Collectors;
+
 import javafx.animation.Animation;
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.state.gameelement.StateTags;
 import engine.UI.ParticipantManager;
@@ -141,6 +143,8 @@ public class GameLoop extends Observable {
         setRunnerLoop();
         timeline.playFromStart();
     }
+    
+    
 
     public void setEditorLoop() {
         setLoop(new KeyFrame(Duration.millis(1000 / framesPerSecond), oneFrameEditor));
@@ -182,5 +186,5 @@ public class GameLoop extends Observable {
     public void stop () {
         timeline.stop();
     }
-
+    
 }

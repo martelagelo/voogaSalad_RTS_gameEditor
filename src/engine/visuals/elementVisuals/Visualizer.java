@@ -36,7 +36,7 @@ public class Visualizer implements Updatable, Displayable {
         visualRepresentation = new Group();
         myVBox = new VBox(1);
         myVBox.setLayoutX(45);
-        myVBox.setLayoutY(-30);
+        myVBox.setLayoutY(-20);
         myVBox.setAlignment(Pos.CENTER);
         visualRepresentation.getChildren().add(myVBox);
         myWidgets = new ArrayList<>();
