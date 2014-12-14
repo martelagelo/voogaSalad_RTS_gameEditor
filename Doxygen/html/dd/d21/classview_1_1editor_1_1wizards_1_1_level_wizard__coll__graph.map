@@ -1,6 +1,0 @@
-<map id="view.editor.wizards.LevelWizard" name="view.editor.wizards.LevelWizard">
-<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html" title="view.editor.wizards.Wizard" alt="" coords="747,187,933,213"/>
-<area shape="rect" id="node3" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="384,56,544,83"/>
-<area shape="rect" id="node4" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html" title="model.data.WizardData" alt="" coords="378,107,550,133"/>
-<area shape="rect" id="node5" href="$d6/d26/enummodel_1_1data_1_1_wizard_type.html" title="model.data.WizardType" alt="" coords="33,56,202,83"/>
-</map>
