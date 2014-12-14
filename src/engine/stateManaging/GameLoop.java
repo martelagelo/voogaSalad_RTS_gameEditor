@@ -40,8 +40,6 @@ public class GameLoop extends Observable {
     private List<Computer<DrawableGameElement, DrawableGameElement>> myComputers =
             new ArrayList<>();
     private Timeline timeline;
-    
-    Timeline timerTimeline;
 
     private EventHandler<ActionEvent> oneFrameRunner = new EventHandler<ActionEvent>() {
         @Override
@@ -66,7 +64,6 @@ public class GameLoop extends Observable {
         myCurrentLevel = level;
         myComputers.add(new CollisionComputer());
         timeline = new Timeline();
-        timerTimeline = new Timeline();
         startTimeline();
     }
     
@@ -190,25 +187,4 @@ public class GameLoop extends Observable {
         timeline.stop();
     }
     
-    private void activateTimer(Label label, int time) {
-		if (timerTimeline != null) {
-			timerTimeline.stop();
-		}
-		timerTimeline = new Timeline();
-		timerTimeline.setCycleCount(Timeline.INDEFINITE);
-
-		timerTimeline.getKeyFrames().add(
-				new KeyFrame(Duration.seconds(1),
-						new EventHandler<ActionEvent>() {
-							public void handle(ActionEvent event) {
-								int curTime = time - timerTimeline.getCycleCount();
-								label.setText("" + curTime);
-								if (curTime <= 0) {
-									timerTimeline.stop();
-								}
-							}
-						}));
-		timerTimeline.play();
-	}
-
 }
