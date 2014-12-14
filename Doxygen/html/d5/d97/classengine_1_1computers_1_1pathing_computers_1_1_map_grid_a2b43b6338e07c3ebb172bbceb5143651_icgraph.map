@@ -1,8 +1,0 @@
-<map id="engine.computers.pathingComputers.MapGrid.registerObstaclePlacement" name="engine.computers.pathingComputers.MapGrid.registerObstaclePlacement">
-<area shape="rect" id="node2" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#aa4cb01e38b312497df4e237d409878cb" title="engine.gameRepresentation.rendered\lRepresentation.Level.addElement" alt="" coords="312,5,576,46"/>
-<area shape="rect" id="node3" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a029e86d7a716269e218fde2964e2fb1b" title="engine.elementFactories.\lLevelFactory.updateGridForObstacles" alt="" coords="315,70,573,111"/>
-<area shape="rect" id="node4" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#ac158d0930716eea61439aaface0aacb4" title="engine.elementFactories.\lLevelFactory.generateUpToDateGrid" alt="" coords="625,70,874,111"/>
-<area shape="rect" id="node5" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a0558c33c2ce1c757e3464d18c84db2e7" title="engine.elementFactories.\lLevelFactory.createLevel" alt="" coords="923,70,1106,111"/>
-<area shape="rect" id="node6" href="$dc/de2/classengine_1_1_engine.html#a3c93d3ffede59b58f39d796d016effe4" title="engine.Engine.instantiate\lManagers" alt="" coords="1155,70,1339,111"/>
-<area shape="rect" id="node7" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="1387,77,1546,104"/>
-</map>

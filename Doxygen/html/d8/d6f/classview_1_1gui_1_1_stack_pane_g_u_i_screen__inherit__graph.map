@@ -1,6 +1,0 @@
-<map id="view.gui.StackPaneGUIScreen" name="view.gui.StackPaneGUIScreen">
-<area shape="rect" id="node7" href="$d6/d9c/classview_1_1runner_1_1_runner_screen.html" title="view.runner.RunnerScreen" alt="" coords="71,304,257,331"/>
-<area shape="rect" id="node2" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html" title="view.gui.GUIScreen" alt="" coords="93,155,235,181"/>
-<area shape="rect" id="node3" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html" title="view.gui.GUIContainer" alt="" coords="84,80,243,107"/>
-<area shape="rect" id="node6" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="228,5,387,32"/>
-</map>

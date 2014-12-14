@@ -1,5 +1,0 @@
-<map id="engine.visuals.AbilityMatrix.updateGridImages" name="engine.visuals.AbilityMatrix.updateGridImages">
-<area shape="rect" id="node2" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a5bd2adc4f3bb17dd5ed51909689d8f91" title="engine.visuals.VisualManager.update" alt="" coords="296,45,555,72"/>
-<area shape="rect" id="node3" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="603,5,810,46"/>
-<area shape="rect" id="node4" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="603,70,810,111"/>
-</map>

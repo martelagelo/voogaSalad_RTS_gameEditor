@@ -1,7 +1,0 @@
-<map id="engine.visuals.MiniMap.setUnitShape" name="engine.visuals.MiniMap.setUnitShape">
-<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a0e5df2ee82fed90f049282832babf477" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getNumerical\lAttribute" alt="" coords="245,4,549,60"/>
-<area shape="rect" id="node5" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a466544f206761abd617264290a523363" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.get\lPosition" alt="" coords="248,84,547,140"/>
-<area shape="rect" id="node3" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5f0e6026d1877c9e4f04fe389163970c" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttribute" alt="" coords="597,4,827,60"/>
-<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="875,11,1095,53"/>
-<area shape="rect" id="node6" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#abe00fd585f3cccf00ee753203b284fe3" title="engine.visuals.elementVisuals.\lVisualizer.getNodeLocation" alt="" coords="603,91,821,133"/>
-</map>

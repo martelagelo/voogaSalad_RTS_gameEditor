@@ -1,7 +1,0 @@
-<map id="engine.elementFactories.AnimatorFactory.createAnimator" name="engine.elementFactories.AnimatorFactory.createAnimator">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#ae2e58698b812253b1c8e87312897b97e" title="model.MainModel.fetchImage\lContainer" alt="" coords="324,70,535,111"/>
-<area shape="rect" id="node6" href="$d5/d66/classengine_1_1visuals_1_1element_visuals_1_1animations_1_1_animator_state.html#acaa50348e29aa983feacc3fbce6aefcc" title="engine.visuals.elementVisuals.animations.\lAnimatorState.getImageTag" alt="" coords="283,135,576,177"/>
-<area shape="rect" id="node3" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#acc5fd25511da23fdddf26107aea74d44" title="model.sprite.SpriteImage\lGenerator.fetchImageContainer" alt="" coords="624,5,848,46"/>
-<area shape="rect" id="node4" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#aeda9017d9625cc566d6cc9a640db43e1" title="model.sprite.SpriteImage\lContainer.getSpritesheet" alt="" coords="644,70,828,111"/>
-<area shape="rect" id="node5" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#af83a0e388cc4a15338ada9ef04ba5ace" title="model.sprite.SpriteImage\lContainer.getColorMask" alt="" coords="644,135,828,177"/>
-</map>
