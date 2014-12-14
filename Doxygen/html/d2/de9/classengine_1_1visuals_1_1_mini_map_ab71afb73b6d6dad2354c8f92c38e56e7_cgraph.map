@@ -1,7 +1,0 @@
-<map id="engine.visuals.MiniMap.setUnitColor" name="engine.visuals.MiniMap.setUnitColor">
-<area shape="rect" id="node2" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html#aaf99b936de9ed452a5ff8b3469f760f5" title="model.sprite.ColorMapGenerator.color\lFromLong" alt="" coords="265,5,530,46"/>
-<area shape="rect" id="node4" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a0e5df2ee82fed90f049282832babf477" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getNumerical\lAttribute" alt="" coords="245,69,549,125"/>
-<area shape="rect" id="node3" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html#a43c9cf2615c98fe34b4c8270ffaf744f" title="model.sprite.ColorMapGenerator.color\lString" alt="" coords="598,5,863,46"/>
-<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5f0e6026d1877c9e4f04fe389163970c" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttribute" alt="" coords="616,69,845,125"/>
-<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="913,77,1133,118"/>
-</map>

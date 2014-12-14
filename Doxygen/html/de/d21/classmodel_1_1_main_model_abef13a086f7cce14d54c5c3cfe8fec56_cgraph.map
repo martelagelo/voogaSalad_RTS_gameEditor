@@ -1,9 +1,0 @@
-<map id="model.MainModel.saveGame" name="model.MainModel.saveGame">
-<area shape="rect" id="node2" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#aa574aa52876c496c08830912fb48752a" title="model.state.DescribableState.getName" alt="" coords="271,5,548,32"/>
-<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#ab3aad60d0ba0fc214f02016621abc9a6" title="util.SaveLoadUtility.load\lResource" alt="" coords="323,57,496,98"/>
-<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#ad10d6bbf9499a296708397b33f81e5c1" title="util.SaveLoadUtility.save" alt="" coords="641,123,817,149"/>
-<area shape="rect" id="node7" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a32747af8fcb2cd24c79793a0d86e6314" title="model.GameSaveLoadMediator.saveGame" alt="" coords="261,173,557,200"/>
-<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#a7dd5135de57549be59b6af1d5828e2a1" title="util.SaveLoadUtility.pre\lProcess" alt="" coords="922,86,1089,127"/>
-<area shape="rect" id="node6" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="902,152,1109,179"/>
-<area shape="rect" id="node8" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a237824617b5628913e3cf83027b0edfe" title="model.GameSaveLoadMediator.get\lGameLocation" alt="" coords="605,174,853,215"/>
-</map>

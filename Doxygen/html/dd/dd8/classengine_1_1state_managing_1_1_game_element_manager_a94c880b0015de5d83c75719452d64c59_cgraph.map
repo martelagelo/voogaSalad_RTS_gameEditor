@@ -1,7 +1,0 @@
-<map id="engine.stateManaging.GameElementManager.selectAnySingleUnit" name="engine.stateManaging.GameElementManager.selectAnySingleUnit">
-<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#a2d08b89b5b457a3ae5b87bef6442ae2d" title="engine.stateManaging.Game\lElementManager.deselectAllElements" alt="" coords="315,5,578,46"/>
-<area shape="rect" id="node3" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a08df8c7314ec79159bd08080849dd2f7" title="engine.gameRepresentation.rendered\lRepresentation.Level.getUnits" alt="" coords="627,34,891,75"/>
-<area shape="rect" id="node4" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a2c34b75b20aee78079ad092c332e9f6e" title="engine.gameRepresentation.rendered\lRepresentation.Level.getTerrain" alt="" coords="315,122,579,163"/>
-<area shape="rect" id="node5" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#ad6f0d610b1e50050e3f8b7fceb0c8f3b" title="engine.stateManaging.Game\lElementManager.selectUnit" alt="" coords="343,187,550,229"/>
-<area shape="rect" id="node6" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#aea7cca17969dfa8b91702eaf0be7a49a" title="engine.stateManaging.Game\lElementManager.contains" alt="" coords="655,187,862,229"/>
-</map>

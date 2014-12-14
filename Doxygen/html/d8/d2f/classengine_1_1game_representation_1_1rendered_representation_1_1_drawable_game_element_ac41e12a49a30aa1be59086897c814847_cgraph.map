@@ -1,8 +1,0 @@
-<map id="engine.gameRepresentation.renderedRepresentation.DrawableGameElement.getLines" name="engine.gameRepresentation.renderedRepresentation.DrawableGameElement.getLines">
-<area shape="rect" id="node2" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a1d160a064fa251fce7602a51e646bef5" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.createLine" alt="" coords="384,5,728,46"/>
-<area shape="rect" id="node3" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a0e5df2ee82fed90f049282832babf477" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getNumerical\lAttribute" alt="" coords="404,69,708,125"/>
-<area shape="rect" id="node6" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#a6b17f88aada14c904238ef52e51cf5e9" title="engine.computers.pathing\lComputers.Location.getX" alt="" coords="461,149,651,190"/>
-<area shape="rect" id="node7" href="$d1/d19/classengine_1_1computers_1_1pathing_computers_1_1_location.html#ac4dc59386dde16b5784bfdaa27dbcbf4" title="engine.computers.pathing\lComputers.Location.getY" alt="" coords="461,214,651,255"/>
-<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5f0e6026d1877c9e4f04fe389163970c" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttribute" alt="" coords="776,69,1005,125"/>
-<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="1054,77,1274,118"/>
-</map>

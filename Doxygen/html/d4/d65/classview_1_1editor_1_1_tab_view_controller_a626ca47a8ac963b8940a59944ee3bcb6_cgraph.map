@@ -1,6 +1,0 @@
-<map id="view.editor.TabViewController.addNumberAttributes" name="view.editor.TabViewController.addNumberAttributes">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="286,12,541,39"/>
-<area shape="rect" id="node4" href="$de/dda/classmodel_1_1_game_universe.html#aa069355e82f32d93b576672e0a5185ae" title="model.GameUniverse.getNumerical\lAttributes" alt="" coords="288,63,539,105"/>
-<area shape="rect" id="node5" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ab4942fec6fe2e4e166f9ed82f6a2b2af" title="view.editor.wizards.Wizard.load\lGlobalValues" alt="" coords="305,129,521,170"/>
-<area shape="rect" id="node3" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="589,5,792,46"/>
-</map>

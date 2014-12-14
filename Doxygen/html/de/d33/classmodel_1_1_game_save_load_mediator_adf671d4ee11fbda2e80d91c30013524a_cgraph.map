@@ -1,8 +1,0 @@
-<map id="model.GameSaveLoadMediator.saveImage" name="model.GameSaveLoadMediator.saveImage">
-<area shape="rect" id="node2" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a3b2227e67893203916babd82b9a0b40e" title="model.GameSaveLoadMediator.process\lImagePath" alt="" coords="312,70,589,111"/>
-<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#aef3dcf15d1cb5a20ff2a0bed69ccb0dd" title="util.SaveLoadUtility.save\lImage" alt="" coords="363,135,539,177"/>
-<area shape="rect" id="node3" href="$dc/dc9/enummodel_1_1_game_element_image_type.html#a23cfaf60b3e4007677321718035947cd" title="model.GameElementImageType.get\lFolderName" alt="" coords="637,5,888,46"/>
-<area shape="rect" id="node4" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a1ff8333eab06fb87ad20b637746c2660" title="model.GameSaveLoadMediator.get\lImageName" alt="" coords="639,70,887,111"/>
-<area shape="rect" id="node6" href="$d3/d14/classutil_1_1_save_load_utility.html#a7dd5135de57549be59b6af1d5828e2a1" title="util.SaveLoadUtility.pre\lProcess" alt="" coords="679,135,846,177"/>
-<area shape="rect" id="node7" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="659,201,866,228"/>
-</map>
