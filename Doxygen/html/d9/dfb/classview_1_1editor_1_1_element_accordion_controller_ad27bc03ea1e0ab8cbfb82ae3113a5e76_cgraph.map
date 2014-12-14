@@ -1,9 +1,0 @@
-<map id="view.editor.ElementAccordionController.modelUpdate" name="view.editor.ElementAccordionController.modelUpdate">
-<area shape="rect" id="node2" href="$de/dda/classmodel_1_1_game_universe.html#ae55bff5ebd307949b81d7cce069f0423" title="model.GameUniverse.getDrawable\lGameElementStates" alt="" coords="267,5,512,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="262,71,517,97"/>
-<area shape="rect" id="node5" href="$de/dda/classmodel_1_1_game_universe.html#a058797c0ccdf5a6ed5d3b1f53654f9a0" title="model.GameUniverse.getSelectable\lGameElementStates" alt="" coords="263,122,516,163"/>
-<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a3acac29c31a0e3f5fbb47468910627b2" title="view.editor.ElementAccordion\lController.updateList" alt="" coords="285,187,493,229"/>
-<area shape="rect" id="node4" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="569,63,772,105"/>
-<area shape="rect" id="node7" href="$dc/d2d/classview_1_1editor_1_1_element_drop_down_controller.html#a63d03d4f51e6a38f6f192db8156a2203" title="view.editor.ElementDropDown\lController.clearItems" alt="" coords="565,158,776,199"/>
-<area shape="rect" id="node8" href="$dc/d2d/classview_1_1editor_1_1_element_drop_down_controller.html#afa22d98097f1d41668280259887af5a3" title="view.editor.ElementDropDown\lController.addElement" alt="" coords="565,223,776,265"/>
-</map>

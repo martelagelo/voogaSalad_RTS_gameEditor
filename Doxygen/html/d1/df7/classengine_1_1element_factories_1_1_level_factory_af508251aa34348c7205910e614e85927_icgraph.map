@@ -1,6 +1,0 @@
-<map id="engine.elementFactories.LevelFactory.generateUnitEelements" name="engine.elementFactories.LevelFactory.generateUnitEelements">
-<area shape="rect" id="node2" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a0558c33c2ce1c757e3464d18c84db2e7" title="engine.elementFactories.\lLevelFactory.createLevel" alt="" coords="310,5,493,46"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a7a3f6d4d4586f3bc336cacbb58037eeb" title="engine.Engine.createLevel" alt="" coords="542,12,733,39"/>
-<area shape="rect" id="node4" href="$dc/de2/classengine_1_1_engine.html#af201d1d894a31f20aa1e05f674d4584b" title="engine.Engine.instantiate\lManagers" alt="" coords="781,5,965,46"/>
-<area shape="rect" id="node5" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="1014,12,1173,39"/>
-</map>

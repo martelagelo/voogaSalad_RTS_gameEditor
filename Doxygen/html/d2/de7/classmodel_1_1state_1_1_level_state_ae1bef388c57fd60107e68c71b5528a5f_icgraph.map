@@ -1,7 +1,0 @@
-<map id="model.state.LevelState.addUnit" name="model.state.LevelState.addUnit">
-<area shape="rect" id="node2" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a503cc0a0bd0a7eb282f22a2400dd0dbd" title="engine.gameRepresentation.rendered\lRepresentation.Level.addElement" alt="" coords="280,5,544,46"/>
-<area shape="rect" id="node3" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="319,70,505,111"/>
-<area shape="rect" id="node5" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="315,135,509,177"/>
-<area shape="rect" id="node4" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="596,77,751,104"/>
-<area shape="rect" id="node6" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="593,143,754,169"/>
-</map>

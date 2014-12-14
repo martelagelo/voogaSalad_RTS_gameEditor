@@ -1,8 +1,0 @@
-<map id="view.editor.EditorScreen.initParticipantInfo" name="view.editor.EditorScreen.initParticipantInfo">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a44709338c2ecd04438921fb7b3232fa6" title="model.MainModel.addParticipant\lColor" alt="" coords="251,63,480,105"/>
-<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html#ad14db20f62249b2f185cf89c65cfc08a" title="model.MainModel.setEditor\lChosenColor" alt="" coords="268,129,463,170"/>
-<area shape="rect" id="node3" href="$de/dda/classmodel_1_1_game_universe.html#a2d229478f1a4b27c5b683c30acefa33d" title="model.GameUniverse.addParticipant\lColor" alt="" coords="528,5,784,46"/>
-<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="529,71,783,97"/>
-<area shape="rect" id="node6" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="532,121,780,148"/>
-<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="832,63,1035,105"/>
-</map>
