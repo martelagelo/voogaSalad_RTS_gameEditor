@@ -1,8 +1,0 @@
-<map id="model.GameUniverse.getGameElementState" name="model.GameUniverse.getGameElementState">
-<area shape="rect" id="node2" href="$dc/d91/classengine_1_1element_factories_1_1_game_element_factory.html#ad0246a0ea244eefb16445b38c4b61ddf" title="engine.elementFactories.\lGameElementFactory.createGame\lElement" alt="" coords="280,31,523,87"/>
-<area shape="rect" id="node3" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#afd73b1e02bd85b7edad0828041e7fafa" title="engine.stateManaging.Game\lElementManager.addGameElementToLevel" alt="" coords="571,5,867,46"/>
-<area shape="rect" id="node4" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a6b22c2b825ac2747787ca450d76f0304" title="engine.elementFactories.\lLevelFactory.generateGoalElements" alt="" coords="593,70,844,111"/>
-<area shape="rect" id="node5" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a0558c33c2ce1c757e3464d18c84db2e7" title="engine.elementFactories.\lLevelFactory.createLevel" alt="" coords="915,70,1098,111"/>
-<area shape="rect" id="node6" href="$dc/de2/classengine_1_1_engine.html#a3c93d3ffede59b58f39d796d016effe4" title="engine.Engine.instantiate\lManagers" alt="" coords="1147,70,1331,111"/>
-<area shape="rect" id="node7" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="1379,77,1538,104"/>
-</map>

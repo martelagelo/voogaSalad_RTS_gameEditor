@@ -1,6 +1,0 @@
-<map id="engine.computers.pathingComputers.PathingComputer.determineHeuristic" name="engine.computers.pathingComputers.PathingComputer.determineHeuristic">
-<area shape="rect" id="node2" href="$db/d9b/classengine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#a70bbf9c10b2b1b5a3a1ac0b038048429" title="engine.computers.pathing\lComputers.PathingComputer.computePath" alt="" coords="331,11,627,53"/>
-<area shape="rect" id="node3" href="$db/d9b/classengine_1_1computers_1_1pathing_computers_1_1_pathing_computer.html#ad6c08d3abbb8b266ae32fd7cf01d3b3c" title="engine.computers.pathing\lComputers.PathingComputer.findPath" alt="" coords="675,11,938,53"/>
-<area shape="rect" id="node4" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#af2b27c63c8557bc1b84990cd1e266f9f" title="engine.stateManaging.Game\lElementManager.setSelectedUnit\lCommand" alt="" coords="987,4,1223,60"/>
-<area shape="rect" id="node5" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a4709ebdf2608218227aab4d9af9ca2ca" title="engine.UI.RunnerInputManager.secondary\lClickOccurred" alt="" coords="1273,11,1559,53"/>
-</map>

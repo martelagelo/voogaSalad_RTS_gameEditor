@@ -1,6 +1,0 @@
-<map id="view.runner.RunnerScreen.updateLevelChooser" name="view.runner.RunnerScreen.updateLevelChooser">
-<area shape="rect" id="node2" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="311,5,513,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="289,71,535,97"/>
-<area shape="rect" id="node4" href="$d2/df7/classview_1_1runner_1_1_level_chooser_controller.html#afaeb9f3bcf20a59b97577a8ba3c60c05" title="view.runner.LevelChooser\lController.updateDropDowns" alt="" coords="309,122,515,163"/>
-<area shape="rect" id="node5" href="$d2/df7/classview_1_1runner_1_1_level_chooser_controller.html#a5cc21157c025a3c2eb93b46ece498207" title="view.runner.LevelChooser\lController.initDropDowns" alt="" coords="585,122,767,163"/>
-</map>
