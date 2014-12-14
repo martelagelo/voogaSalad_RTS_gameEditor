@@ -1,0 +1,11 @@
+<map id="view.editor.wizards.GameElementWizard.updateData" name="view.editor.wizards.GameElementWizard.updateData">
+<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a8b5c3014ae6cff39c23e427462dc2128" title="view.editor.wizards.Wizard.add\lToData" alt="" coords="268,5,481,46"/>
+<area shape="rect" id="node4" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#a00470632710dbe2f2bb6a86bb1695524" title="view.editor.wizards.Animation\lGrid.getNumRows" alt="" coords="271,70,479,111"/>
+<area shape="rect" id="node5" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ad224bc849cb336f4afe785c1e53c92a0" title="view.editor.wizards.Wizard.set\lWizardType" alt="" coords="270,135,479,177"/>
+<area shape="rect" id="node7" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a39050dce98611f314054cc4d59be86f4" title="view.editor.wizards.Game\lElementWizard.storeContainerData" alt="" coords="251,201,498,242"/>
+<area shape="rect" id="node3" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a9cc5ffae61bf745c8aad40f05ee31ab4" title="model.data.WizardData.add\lDataPair" alt="" coords="580,5,780,46"/>
+<area shape="rect" id="node6" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a1e736ec6491093474359e05d47f1650c" title="model.data.WizardData.setType" alt="" coords="568,143,792,169"/>
+<area shape="rect" id="node8" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a7e20b5f8bde779fb1c6ee1c0bfab3e18" title="view.editor.wizards.Wizard.add\lWizardData" alt="" coords="573,197,787,238"/>
+<area shape="rect" id="node10" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#a7aa372d74e61701a53be3723dd2fe641" title="view.editor.wizards.CRUDContainer.get\lWizardDatas" alt="" coords="547,262,813,303"/>
+<area shape="rect" id="node9" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#afb58a9257c1483a369c84247716786e1" title="model.data.WizardData.add\lWizardData" alt="" coords="861,197,1061,238"/>
+</map>

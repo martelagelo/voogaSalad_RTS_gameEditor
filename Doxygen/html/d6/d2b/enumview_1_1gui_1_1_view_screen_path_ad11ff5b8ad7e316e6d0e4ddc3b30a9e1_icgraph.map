@@ -1,0 +1,12 @@
+<map id="view.gui.ViewScreenPath.getFilePath" name="view.gui.ViewScreenPath.getFilePath">
+<area shape="rect" id="node2" href="$d1/d75/classview_1_1_main_view.html#a6d02708fccb6f546a83ee8d9d25a0456" title="view.MainView.launchScreen" alt="" coords="257,81,458,108"/>
+<area shape="rect" id="node3" href="$d1/d75/classview_1_1_main_view.html#a2b8a45380eae155860ea6833e7f7f54d" title="view.MainView.MainView" alt="" coords="513,52,687,79"/>
+<area shape="rect" id="node4" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html#ab3d125c65e5d548dfa9e5566c7a4c50f" title="view.gui.GUIScreen.switch\lScreen" alt="" coords="507,103,693,145"/>
+<area shape="rect" id="node5" href="$df/d3c/classview_1_1runner_1_1_runner_menu_bar_controller.html#ac111d6e610efd9ef57cfaa12badfcef9" title="view.runner.RunnerMenuBar\lController.initFileMenu" alt="" coords="750,5,949,46"/>
+<area shape="rect" id="node7" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a56696b0f0540d2e86c3e4fe4521717a2" title="view.editor.EditorMenuBar\lController.initFileMenu" alt="" coords="756,70,943,111"/>
+<area shape="rect" id="node9" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a7e50ce5a292e35b972ae31ec4df4f5ca" title="view.splash.SplashScreen.load\lGameAndSwitchScreen" alt="" coords="741,135,957,177"/>
+<area shape="rect" id="node10" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a6425dffd80436213cce943fc3aa27563" title="view.splash.SplashScreen.set\lUpButtons" alt="" coords="1006,165,1215,206"/>
+<area shape="rect" id="node6" href="$df/d3c/classview_1_1runner_1_1_runner_menu_bar_controller.html#a0171308aa8acdbf21aaca6063ece0e44" title="view.runner.RunnerMenuBar\lController.initMenuBar" alt="" coords="1011,5,1210,46"/>
+<area shape="rect" id="node8" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a5b101a400664af0200be8010673acb49" title="view.editor.EditorMenuBar\lController.initMenuBar" alt="" coords="1017,70,1204,111"/>
+<area shape="rect" id="node11" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#af2da20a5479f92e4669ae93f0d6121de" title="view.splash.SplashScreen.init" alt="" coords="1264,172,1472,199"/>
+</map>

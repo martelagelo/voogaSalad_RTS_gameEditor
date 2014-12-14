@@ -1,0 +1,14 @@
+<map id="view.editor.wizards.AnimationWizard.initialize" name="view.editor.wizards.AnimationWizard.initialize">
+<area shape="rect" id="node2" href="$d3/d91/classview_1_1editor_1_1wizards_1_1_animation_wizard.html#a111fbe861838279d90317f965c5143b0" title="view.editor.wizards.Animation\lWizard.attachTextProperties" alt="" coords="261,74,469,115"/>
+<area shape="rect" id="node8" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#a65580cac8df938870bf26a6abe7092b1" title="view.editor.wizards.Animation\lGrid.setStart" alt="" coords="261,205,469,246"/>
+<area shape="rect" id="node11" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#a37c0f6c7629b1b60de7cf95dfa71bac2" title="view.editor.wizards.Animation\lGrid.setStop" alt="" coords="261,270,469,311"/>
+<area shape="rect" id="node12" href="$d3/d91/classview_1_1editor_1_1wizards_1_1_animation_wizard.html#ad4d324c2f589604f469c78694be2e4b8" title="view.editor.wizards.Animation\lWizard.updateAnimationGrid" alt="" coords="261,139,469,181"/>
+<area shape="rect" id="node3" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a52c0d50f4a78361541be6627971a9384" title="view.editor.wizards.Wizard.display\lErrorMessage" alt="" coords="519,139,753,181"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="537,74,735,115"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="518,6,754,47"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="803,69,1019,125"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="811,5,1010,46"/>
+<area shape="rect" id="node9" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#aed8a39ceb1dc915271b9438976386ecd" title="view.editor.wizards.Animation\lGrid.selectFrame" alt="" coords="532,270,740,311"/>
+<area shape="rect" id="node10" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#aa8d522ed12f49a8897fdf7d7dfee9136" title="view.editor.wizards.Grid.reset\lExistingFill" alt="" coords="807,270,1014,311"/>
+<area shape="rect" id="node13" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a66e85758b9fdb366c5d2a931f4cc1598" title="view.editor.wizards.Wizard.is\lNumber" alt="" coords="537,205,735,246"/>
+</map>

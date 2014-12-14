@@ -1,0 +1,4 @@
+<map id="engine.gameRepresentation.renderedRepresentation.Level.addElement" name="engine.gameRepresentation.renderedRepresentation.Level.addElement">
+<area shape="rect" id="node2" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#a7e393da870d4eeaa9a00c0eadf82279f" title="model.state.LevelState.addGoal" alt="" coords="337,5,565,32"/>
+<area shape="rect" id="node3" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#ad35ba4ef33132a56c60cb3864163d810" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.register\lAsChild" alt="" coords="317,56,584,112"/>
+</map>
