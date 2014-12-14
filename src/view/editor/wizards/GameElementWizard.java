@@ -41,6 +41,7 @@ public class GameElementWizard extends Wizard {
             "Can't launch due to unspecified image information";
     private static final String UNABLE_TO_LOAD = "Unable to Load Image";
     private final static String NAME_KEY = "Name";
+    private final static String TYPE_KEY = "Type";
     private final static String NEW_ACTION_KEY = "NewAction";
     private final static String NEW_STRING_ATTRIBUTE_KEY = "NewStringAttribute";
     private final static String NEW_NUMBER_ATTRIBUTE_KEY = "NewNumberAttribute";
@@ -61,6 +62,8 @@ public class GameElementWizard extends Wizard {
     private ScrollPane leftPane;
     @FXML
     private TextField name;
+    @FXML
+    private TextField type;
     @FXML
     private Button image;
     @FXML
@@ -124,6 +127,7 @@ public class GameElementWizard extends Wizard {
         MultiLanguageUtility util = MultiLanguageUtility.getInstance();
         try {
             name.promptTextProperty().bind(util.getStringProperty(NAME_KEY));
+            type.promptTextProperty().bind(util.getStringProperty(TYPE_KEY));
             triggersController.bindButtonText(util.getStringProperty(NEW_ACTION_KEY));
             stringAttributesController.bindButtonText(util
                     .getStringProperty(NEW_STRING_ATTRIBUTE_KEY));
@@ -146,7 +150,7 @@ public class GameElementWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty() && !imagePath.isEmpty() 
+        return !name.getText().isEmpty() && !type.getText().isEmpty() && !imagePath.isEmpty() 
                 && !getWizardData().getWizardDataByType(WizardType.BOUNDS).isEmpty();
     }
 
@@ -154,6 +158,7 @@ public class GameElementWizard extends Wizard {
     public void updateData () {
         setWizardType(WizardType.GAME_ELEMENT);
         addToData(WizardDataType.NAME, name.getText());
+        addToData(WizardDataType.TYPE, type.getText());
         addToData(WizardDataType.IMAGE, imagePath);
         addToData(WizardDataType.FRAME_X, "" + (int) frameWidth.getValue());
         addToData(WizardDataType.FRAME_Y, "" + (int) frameHeight.getValue());
@@ -177,6 +182,7 @@ public class GameElementWizard extends Wizard {
     @Override
     public void launchForEdit (WizardData oldValues) {
         name.setText(oldValues.getValueByKey(WizardDataType.NAME));
+        type.setText(oldValues.getValueByKey(WizardDataType.TYPE));
         imagePath = oldValues.getValueByKey(WizardDataType.IMAGE);
         colorMaskPath = oldValues.getValueByKey(WizardDataType.COLOR_MASK);
         try {

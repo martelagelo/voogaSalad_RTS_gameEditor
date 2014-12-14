@@ -8,7 +8,7 @@
 <TitledPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="elementDropDown" fx:controller="view.editor.ElementDropDownController">
 	<content>
-		<VBox>
+		<VBox fx:id="vboxRoot">
 			<padding>
 				<Insets top="0" bottom="0" right="0" left="0" />
 			</padding>

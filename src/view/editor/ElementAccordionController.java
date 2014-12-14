@@ -1,14 +1,10 @@
 package view.editor;
 
 import java.awt.Dimension;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
-import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
-import engine.visuals.elementVisuals.animations.AnimationSequence;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -20,7 +16,6 @@ import model.data.WizardData;
 import model.data.WizardDataFactory;
 import model.data.WizardDataType;
 import model.data.WizardType;
-import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import util.multilanguage.LanguagePropertyNotFoundException;
@@ -135,6 +130,8 @@ public class ElementAccordionController extends GUIContainer {
     
     private void updateList (ElementDropDownController dropDownController,
                              List<ImageElementPair> units) {
+        System.out.println(units.size());
+        dropDownController.clearItems();
         units.forEach( (item) -> {
             dropDownController.addElement(item.myElementName, new ImageView(item.myImage));
         });
@@ -243,6 +240,7 @@ public class ElementAccordionController extends GUIContainer {
                                 return new ImageElementPair(null, "failure");
                             }
                         }).collect(Collectors.toList());
+        System.out.println("model update");
         updateList(terrainTitledPaneController, drawableStates);
         updateList(unitTitledPaneController, selectableStates);
     }

@@ -78,24 +78,21 @@ public class GameUniverse {
     }
 
     public void removeSelectableGameElementState (String sges) {
-        List<SelectableGameElementState> matches =
-                mySelectableGameElementStates.stream().filter(e -> (e.getName().equals(sges)))
-                        .collect(Collectors.toList());
-        if (matches.size() != 0) mySelectableGameElementStates.remove(matches.get(0));
+        Set<SelectableGameElementState> nonMatches = mySelectableGameElementStates.stream().filter(e -> (!e.getName().equals(sges)))
+                .collect(Collectors.toSet());
+        mySelectableGameElementStates = nonMatches; 
     }
 
     public void removeDrawableGameElementState (String dges) {
-        List<DrawableGameElementState> matches =
-                myDrawableGameElementStates.stream().filter(e -> (e.getName().equals(dges)))
-                        .collect(Collectors.toList());
-        if (matches.size() != 0) myDrawableGameElementStates.remove(matches.get(0));        
+        Set<DrawableGameElementState> nonMatches = myDrawableGameElementStates.stream().filter(e -> (!e.getName().equals(dges)))
+                        .collect(Collectors.toSet());
+        myDrawableGameElementStates = nonMatches;   
     }
 
     public void removeGameElementState (GameElementState ges) {
-        List<GameElementState> matches =
-                myGameElementStates.stream().filter(e -> (e.getName().equals(ges)))
-                        .collect(Collectors.toList());
-        if (matches.size() != 0) myGameElementStates.remove(matches.get(0));        
+        Set<GameElementState> nonMatches = myGameElementStates.stream().filter(e -> (!e.getName().equals(ges)))
+                .collect(Collectors.toSet());
+        myGameElementStates = nonMatches;          
     }
 
     public GameElementState getGameElementState (String elementName) {

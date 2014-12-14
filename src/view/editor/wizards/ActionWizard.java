@@ -73,7 +73,7 @@ public class ActionWizard extends Wizard {
     private String getDropdownText () {
         StringBuilder sb = new StringBuilder();
         for (ComboBox<String> box : dropdowns) {
-            sb.append(box.getSelectionModel().getSelectedItem() + ",");
+            sb.append(box.getSelectionModel().getSelectedItem().trim() + ",");
         }
         return sb.toString();
     }
@@ -104,7 +104,8 @@ public class ActionWizard extends Wizard {
                 cb.setItems(FXCollections.observableArrayList(
                         actionParameters.get(parameterIndex).getOptions()
                         ));
-                cb.setPromptText(actionParameters.get(parameterIndex).name());                
+                cb.setPromptText(actionParameters.get(parameterIndex).name()); 
+                cb.setEditable(cb.getItems().isEmpty());
                 if (actionParameters.get(parameterIndex).equals(ActionParameters.ATTR)) {
                     cb.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
                     cb.setEditable(true);
@@ -113,6 +114,7 @@ public class ActionWizard extends Wizard {
                     numberDropdowns.add(cb);
                     cb.setEditable(true);
                 }
+                
                 
                 parameterIndex++;
                 dropdowns.add(cb);
@@ -134,7 +136,7 @@ public class ActionWizard extends Wizard {
                 .getValueByKey(WizardDataType.ACTION)));
         String[] params = oldValues.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
         for (int i = 0; i < dropdowns.size(); i++) {
-            dropdowns.get(i).getSelectionModel().select(params[i]);
+            dropdowns.get(i).getSelectionModel().select(params[i].trim());
         }
     }
 

@@ -24,6 +24,11 @@ public class WizardDataFactory {
         WizardData data = new WizardData();
         data.setType(WizardType.GAME_ELEMENT);
         data.addDataPair(WizardDataType.NAME, state.getName());
+        StringBuilder sb = new StringBuilder();
+        for (String type: state.getTypes()) {
+            sb.append(type + ",");
+        }
+        data.addDataPair(WizardDataType.TYPE, sb.toString().substring(0, sb.toString().length()));
         data.addDataPair(WizardDataType.IMAGE, state.myAnimatorState.getImageTag());
         data.addDataPair(WizardDataType.FRAME_X, "" + state.myAnimatorState.getViewportSize().getWidth());
         data.addDataPair(WizardDataType.FRAME_Y, "" + state.myAnimatorState.getViewportSize().getHeight());

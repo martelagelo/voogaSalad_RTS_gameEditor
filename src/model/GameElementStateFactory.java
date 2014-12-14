@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.function.BiConsumer;
 import model.data.WizardData;
 import model.data.WizardDataType;
@@ -30,7 +31,8 @@ public class GameElementStateFactory {
     public static DrawableGameElementState createDrawableGameElementState (WizardData data) {
         DrawableGameElementState state = (DrawableGameElementState)
                 addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);        
-
+        String[] types = data.getValueByKey(WizardDataType.TYPE).split(",");
+        Arrays.asList(types).forEach(type -> state.addType(type));
         return (DrawableGameElementState) addVisuals(data, state);
     }
 
