@@ -9,7 +9,7 @@ import model.state.gameelement.AttributeContainer;
 /**
  * A displaying module that displays an attribute in a bar-like form
  *
- * @author Zach, Steve
+ * @author Zach, Steve, Michael D.
  *
  */
 public class AttributeBarDisplayer extends AttributeDisplayer {
@@ -21,6 +21,18 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
 
     private Rectangle myAttributeRectangle;
 
+    /**
+     * Constructor
+     * 
+     * @param attributes
+     *            The list of attributes belonging to a particular game element
+     * @param numericParameterTag
+     *            The reference/name to a particular element
+     * @param minValue
+     *            The minimum value
+     * @param maxValue
+     *            The maximum value
+     */
     public AttributeBarDisplayer (AttributeContainer attributes, String numericParameterTag,
             double minValue, double maxValue) {
         super(attributes, numericParameterTag, minValue, maxValue);

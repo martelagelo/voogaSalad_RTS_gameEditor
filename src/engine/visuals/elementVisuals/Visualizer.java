@@ -17,8 +17,9 @@ import engine.visuals.elementVisuals.animations.NullAnimationSequence;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
 /**
+ * The class in charge of handling the visuals for each selectable game element
  *
- * @author Steve
+ * @author Steve, Michael D.
  *
  */
 public class Visualizer implements Updatable, Displayable {
@@ -29,6 +30,15 @@ public class Visualizer implements Updatable, Displayable {
     private Animator myAnimator;
     private AttributeContainer attributesOfInterest;
 
+    /**
+     * Constructor
+     * 
+     * @param animator
+     *            An animation player that allows for the playing of animations
+     *            using a given spritesheet.
+     * @param attributes
+     *            A list of attributes in a container
+     */
     public Visualizer (Animator animator, AttributeContainer attributes) {
         visualRepresentation = new Group();
         myVBox = new VBox(1);
@@ -42,16 +52,31 @@ public class Visualizer implements Updatable, Displayable {
         attributesOfInterest = attributes;
     }
 
+    /**
+     * Adds a widget to a particular unit
+     * 
+     * @param widget
+     *            The widget
+     */
     public void addWidget (AttributeDisplayer widget) {
         myWidgets.add(widget);
         widget.registerAsComponent(n -> myVBox.getChildren().add(n));
     }
 
+    /**
+     * Gets the group that contains all of the physical elements of a game
+     * element
+     */
     @Override
     public Node getNode () {
         return visualRepresentation;
     }
 
+    /**
+     * Gets the current location of a drawable game element
+     * 
+     * @return The current point2D
+     */
     public Point2D getNodeLocation () {
         return new Point2D(visualRepresentation.getLayoutX(), visualRepresentation.getLayoutY());
     }
@@ -64,6 +89,9 @@ public class Visualizer implements Updatable, Displayable {
         return true;
     }
 
+    /**
+     * Initializes the display of the physical game element
+     */
     public void initializeDisplay () {
         double xPosition = attributesOfInterest.getNumericalAttribute(
                 StateTags.X_POSITION.getValue()).doubleValue();

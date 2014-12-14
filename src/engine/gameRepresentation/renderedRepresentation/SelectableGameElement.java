@@ -27,16 +27,33 @@ public class SelectableGameElement extends DrawableGameElement {
     private Map<InteractingElementType, Set<DrawableGameElement>> myInteractingElements;
     private SelectableGameElement myFocusedElement;
 
+    /**
+     * The constructor
+     * 
+     * @param element
+     *            The state of this particular element
+     * @param visualizer
+     *            The physical display of the game element
+     */
     public SelectableGameElement (SelectableGameElementState element, Visualizer visualizer) {
         super(element, visualizer);
         mySelectableState = element;
         initializeInteractingElementLists();
     }
 
+    /**
+     * Sets the focused element
+     * 
+     * @param element
+     *            The new focused element
+     */
     public void setFocusedElement (SelectableGameElement element) {
         myFocusedElement = element;
     }
 
+    /**
+     * Sets the focused element to null
+     */
     public void clearFocusedElement () {
         myFocusedElement = null;
     }
@@ -51,10 +68,24 @@ public class SelectableGameElement extends DrawableGameElement {
 
     }
 
+    /**
+     * Gets type of a attribute
+     * 
+     * @return The string defining the type
+     */
     public String getType () {
         return getTextualAttribute(StateTags.TYPE.getValue());
     }
 
+    /**
+     * Adds an element that is in current interaction with the particular game
+     * element
+     * 
+     * @param elementType
+     *            Whether or not the interacting element is colliding or visible
+     * @param element
+     *            The interacting element
+     */
     public void addInteractingElement (InteractingElementType elementType,
             DrawableGameElement element) {
         Set<DrawableGameElement> elements = new HashSet<>();
@@ -73,10 +104,16 @@ public class SelectableGameElement extends DrawableGameElement {
         }
     }
 
+    /**
+     * Sets the game element to selected
+     */
     public void select () {
         setNumericalAttribute(StateTags.IS_SELECTED.getValue(), 1);
     }
 
+    /**
+     * Deselects the game element
+     */
     public void deselect () {
         setNumericalAttribute(StateTags.IS_SELECTED.getValue(), 0);
     }
@@ -100,6 +137,9 @@ public class SelectableGameElement extends DrawableGameElement {
         executeAllActions(ActionType.FOCUSED, new ElementPair(this, myFocusedElement));
     }
 
+    /**
+     * Runs particular actions based on selection
+     */
     public void updateSelfDueToSelection () {
         executeAllActions(ActionType.SELECTION);
     }
@@ -141,6 +181,14 @@ public class SelectableGameElement extends DrawableGameElement {
         this.executeAllActions(ActionType.BUTTON, new ElementPair(this, this));
     }
 
+    /**
+     * Gets the button descriptions of the buttons in the ability description
+     * map
+     * 
+     * @param numAttributes
+     *            The numerical attributes
+     * @return A map of descriptions to indexes
+     */
     public Map<Integer, String> getAbilityDescriptionMap (int numAttributes) {
         Map<Integer, String> descriptionMap = new HashMap<>();
         for (int i = 1; i <= numAttributes; i++) {
