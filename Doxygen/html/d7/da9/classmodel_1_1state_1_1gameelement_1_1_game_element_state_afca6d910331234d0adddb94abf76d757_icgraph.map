@@ -1,0 +1,18 @@
+<map id="model.state.gameelement.GameElementState.addType" name="model.state.gameelement.GameElementState.addType">
+<area shape="rect" id="node2" href="$d6/d00/classapplication_1_1_pong.html#a059c1503f302e2a7503d7c46fe1ddd6a" title="application.Pong.createBall" alt="" coords="303,5,497,32"/>
+<area shape="rect" id="node5" href="$d6/d00/classapplication_1_1_pong.html#af198a5e24972581c04081609ce8121d3" title="application.Pong.createBoundary" alt="" coords="283,56,517,83"/>
+<area shape="rect" id="node6" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a46a26fb8160e1cbef9933f6eb5779ccf" title="model.GameElementStateFactory.create\lDrawableGameElementState" alt="" coords="259,290,541,331"/>
+<area shape="rect" id="node10" href="$d0/daf/classapplication_1_1_r_p_g.html#ab7c6bd6b210231265c4afb6bf6c27341" title="application.RPG.createEnemyUnit" alt="" coords="591,356,827,383"/>
+<area shape="rect" id="node13" href="$d6/d00/classapplication_1_1_pong.html#a1030093d4dbc6d037dd70ced1a220167" title="application.Pong.createGoal\lDisplayMarker" alt="" coords="299,107,501,149"/>
+<area shape="rect" id="node14" href="$d6/d00/classapplication_1_1_pong.html#a4fbd748031f43b712ecce553e44e420f" title="application.Pong.createGoal\lRegion" alt="" coords="299,173,501,214"/>
+<area shape="rect" id="node15" href="$d0/daf/classapplication_1_1_r_p_g.html#a6c7e7f23af1e659516c8dbec3fa33878" title="application.RPG.createMovingUnit" alt="" coords="281,407,519,433"/>
+<area shape="rect" id="node16" href="$d6/d00/classapplication_1_1_pong.html#a5bdf26abd557720b83b5b204260ee9bd" title="application.Pong.createPaddle" alt="" coords="293,239,507,265"/>
+<area shape="rect" id="node17" href="$d0/daf/classapplication_1_1_r_p_g.html#a313c5ebfdeeabd868810e18fa9e4eb55" title="application.RPG.createSpawn\lPoint" alt="" coords="605,458,813,499"/>
+<area shape="rect" id="node3" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="613,107,806,149"/>
+<area shape="rect" id="node4" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="933,115,1094,141"/>
+<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html#ad0bb08a7d763bbd67aa5ac062dde5121" title="model.MainModel.createDrawable\lGameElementState" alt="" coords="590,290,829,331"/>
+<area shape="rect" id="node8" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="878,283,1149,339"/>
+<area shape="rect" id="node9" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="1197,290,1405,331"/>
+<area shape="rect" id="node11" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="920,399,1107,441"/>
+<area shape="rect" id="node12" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="1224,407,1379,433"/>
+</map>

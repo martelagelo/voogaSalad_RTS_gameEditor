@@ -1,0 +1,24 @@
+<map id="view.editor.TabViewController.setLevel" name="view.editor.TabViewController.setLevel">
+<area shape="rect" id="node2" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html#a1ce1feddcb7db253756f1e8397e9d62a" title="view.gui.GUIContainer.attach\lChildContainers" alt="" coords="297,6,501,47"/>
+<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#a325b6fee358919fa4ae565752ecb9a7b" title="model.MainModel.getLevel" alt="" coords="303,72,495,99"/>
+<area shape="rect" id="node7" href="$d8/dd1/classview_1_1runner_1_1_game_runner_pane_controller.html#a142237ce4d8c0d2e732bf4985f2cc4be" title="view.runner.GameRunnerPane\lController.setOnDone" alt="" coords="293,126,504,167"/>
+<area shape="rect" id="node9" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a937f892f003cf82b7ba2f114b6dfff8a" title="view.editor.TabViewController.start\lLevel" alt="" coords="280,193,517,234"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#a1d62bac35f70e49b8e2094c6f15fe477" title="model.MainModel.getCampaign" alt="" coords="576,12,800,39"/>
+<area shape="rect" id="node6" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="574,63,802,105"/>
+<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="887,5,1089,46"/>
+<area shape="rect" id="node8" href="$d8/db4/classview_1_1runner_1_1_game_end_controller.html#ada276551cbe1f418982367eb13d7b0e9" title="view.runner.GameEndController.set\lOnDone" alt="" coords="565,129,811,170"/>
+<area shape="rect" id="node10" href="$d8/dd1/classview_1_1runner_1_1_game_runner_pane_controller.html#a33080887fd34cc2aceb57b2b4c424ad9" title="view.runner.GameRunnerPane\lController.setLevel" alt="" coords="583,194,793,235"/>
+<area shape="rect" id="node11" href="$d6/dea/classutil_1_1_deep_copy.html#a2e316cf2fbb29f638582d531f13f2f25" title="util.DeepCopy.deepCopy" alt="" coords="899,81,1077,108"/>
+<area shape="rect" id="node12" href="$dc/de2/classengine_1_1_engine.html#a239a5b104190750076623079fa00d8f4" title="engine.Engine.getScene" alt="" coords="899,132,1077,159"/>
+<area shape="rect" id="node14" href="$d5/d9d/classview_1_1gui_1_1_stack_pane_g_u_i_container.html#a4062ee797b3c933338598b36584642ba" title="view.gui.StackPaneGUIContainer.bind\lPaneSize" alt="" coords="859,183,1117,225"/>
+<area shape="rect" id="node15" href="$dc/de2/classengine_1_1_engine.html#a6f77d24003db212911a1e73420361bc9" title="engine.Engine.play" alt="" coords="917,249,1059,276"/>
+<area shape="rect" id="node17" href="$d5/d9d/classview_1_1gui_1_1_stack_pane_g_u_i_container.html#a4af729800064db0d0069ac73f518d222" title="view.gui.StackPaneGUIContainer.set\lFront" alt="" coords="863,301,1113,342"/>
+<area shape="rect" id="node18" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="869,369,1107,410"/>
+<area shape="rect" id="node13" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a62e6a401d1c498141b246f28e1149472" title="engine.visuals.VisualManager.get\lScrollingScene" alt="" coords="1167,125,1401,166"/>
+<area shape="rect" id="node16" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a4d8ff588651cb911c0c2fb8ddf8ff4a1" title="engine.stateManaging.Game\lLoop.play" alt="" coords="1181,239,1387,281"/>
+<area shape="rect" id="node19" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="1165,305,1403,346"/>
+<area shape="rect" id="node20" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="1185,370,1383,411"/>
+<area shape="rect" id="node22" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="1166,437,1402,478"/>
+<area shape="rect" id="node21" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="1451,360,1667,416"/>
+<area shape="rect" id="node23" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="1459,439,1658,481"/>
+</map>

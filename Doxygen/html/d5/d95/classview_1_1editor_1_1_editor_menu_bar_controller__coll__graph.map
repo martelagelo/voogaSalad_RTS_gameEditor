@@ -1,0 +1,17 @@
+<map id="view.editor.EditorMenuBarController" name="view.editor.EditorMenuBarController">
+<area shape="rect" id="node2" href="$dd/dc6/classview_1_1gui_1_1_menu_bar_controller.html" title="view.gui.MenuBarController" alt="" coords="2435,127,2629,153"/>
+<area shape="rect" id="node3" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html" title="view.gui.GUIContainer" alt="" coords="1771,343,1931,369"/>
+<area shape="rect" id="node29" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html" title="view.gui.GUIScreen" alt="" coords="2089,368,2231,395"/>
+<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html" title="model.MainModel" alt="" coords="1423,459,1558,485"/>
+<area shape="rect" id="node30" href="$d1/d75/classview_1_1_main_view.html" title="view.MainView" alt="" coords="2477,447,2587,473"/>
+<area shape="rect" id="node6" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="1411,393,1571,420"/>
+<area shape="rect" id="node8" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html" title="model.state.GameState" alt="" coords="967,472,1145,499"/>
+<area shape="rect" id="node9" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html" title="model.state.DescribableState" alt="" coords="524,427,737,453"/>
+<area shape="rect" id="node10" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="71,376,175,403"/>
+<area shape="rect" id="node13" href="$de/dda/classmodel_1_1_game_universe.html" title="model.GameUniverse" alt="" coords="550,584,711,611"/>
+<area shape="rect" id="node21" href="$de/d33/classmodel_1_1_game_save_load_mediator.html" title="model.GameSaveLoadMediator" alt="" coords="944,523,1168,549"/>
+<area shape="rect" id="node22" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html" title="model.sprite.SpriteImage\lGenerator" alt="" coords="964,343,1148,385"/>
+<area shape="rect" id="node25" href="$d9/d0f/classutil_1_1_resource_bundle_retriever.html" title="util.ResourceBundleRetriever" alt="" coords="529,325,732,352"/>
+<area shape="rect" id="node26" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html" title="model.sprite.ColorMapGenerator" alt="" coords="515,376,746,403"/>
+<area shape="rect" id="node32" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html" title="view.GUILoadStyleUtility" alt="" coords="2073,653,2247,680"/>
+</map>

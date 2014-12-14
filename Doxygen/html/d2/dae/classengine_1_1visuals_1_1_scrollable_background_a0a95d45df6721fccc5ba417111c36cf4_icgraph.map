@@ -1,0 +1,11 @@
+<map id="engine.visuals.ScrollableBackground.setYScrollSpeed" name="engine.visuals.ScrollableBackground.setYScrollSpeed">
+<area shape="rect" id="node2" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a84c7589cc61d150a9b33e4603bbac25a" title="engine.visuals.Scrollable\lPane.initializeHandlers" alt="" coords="752,5,931,46"/>
+<area shape="rect" id="node4" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#af7dc0dac9cdc19cac041a7389dbd8ab0" title="engine.visuals.Scrollable\lPane.setScrollSpeed" alt="" coords="259,34,437,75"/>
+<area shape="rect" id="node6" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a36b2cbd2dc8ebe546d522f114b0d9892" title="engine.visuals.Scrollable\lBackground.update" alt="" coords="259,99,437,141"/>
+<area shape="rect" id="node3" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a160609c946e14e2b92b2a0fa98d8e488" title="engine.visuals.Scrollable\lPane.ScrollablePane" alt="" coords="1033,5,1212,46"/>
+<area shape="rect" id="node5" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a055e5e25ccdd27de96fdd1235281a622" title="engine.visuals.Scrollable\lPane.mouseMoved" alt="" coords="485,34,664,75"/>
+<area shape="rect" id="node7" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a122733ce9a5c0e75235c35ef66e5b0e9" title="engine.visuals.Scrollable\lPane.update" alt="" coords="485,99,664,141"/>
+<area shape="rect" id="node8" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a5bd2adc4f3bb17dd5ed51909689d8f91" title="engine.visuals.VisualManager.update" alt="" coords="712,107,971,133"/>
+<area shape="rect" id="node9" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="1019,85,1226,126"/>
+<area shape="rect" id="node10" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="1019,150,1226,191"/>
+</map>
