@@ -1,7 +1,0 @@
-<map id="util.exceptions.SaveLoadException" name="util.exceptions.SaveLoadException">
-<area shape="rect" id="node3" href="$d9/daa/classutil_1_1exceptions_1_1_j_s_o_n_load_exception.html" title="util.exceptions.JSONLoad\lException" alt="" coords="373,5,555,46"/>
-<area shape="rect" id="node4" href="$d1/dc9/classutil_1_1exceptions_1_1_j_s_o_n_save_exception.html" title="util.exceptions.JSONSave\lException" alt="" coords="373,70,555,111"/>
-<area shape="rect" id="node5" href="$d5/dbf/classutil_1_1exceptions_1_1_load_image_exception.html" title="util.exceptions.LoadImage\lException" alt="" coords="369,135,559,177"/>
-<area shape="rect" id="node6" href="$dc/d51/classutil_1_1exceptions_1_1_save_file_exception.html" title="util.exceptions.SaveFile\lException" alt="" coords="379,201,549,242"/>
-<area shape="rect" id="node7" href="$db/d2a/classutil_1_1exceptions_1_1_save_image_exception.html" title="util.exceptions.SaveImage\lException" alt="" coords="369,266,559,307"/>
-</map>

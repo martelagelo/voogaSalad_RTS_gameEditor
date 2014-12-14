@@ -1,4 +1,0 @@
-<map id="model.state.gameelement.GameElementState.isType" name="model.state.gameelement.GameElementState.isType">
-<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a609768f3721fb9beaecc5b5a07a8fb1a" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.isType" alt="" coords="251,5,515,46"/>
-<area shape="rect" id="node3" href="$d4/d63/classengine_1_1game_representation_1_1evaluatables_1_1evaluators_1_1_type_check.html#a6f877b078697b12ffb44f0f64f6bd1a0" title="engine.gameRepresentation.evaluatables.evaluators.\lTypeCheck.evaluate" alt="" coords="563,5,925,46"/>
-</map>
