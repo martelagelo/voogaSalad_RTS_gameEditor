@@ -578,6 +578,31 @@
                     "myActionType": "COLLISION"
                   }
                 ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myParameters": [
+                      "EqualsAssignment",
+                      "1",
+                      "isSelected"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
                 "BUTTON": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -606,31 +631,6 @@
                       "3"
                     ],
                     "myActionType": "BUTTON"
-                  }
-                ],
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
-                    "myParameters": [
-                      "EqualsAssignment",
-                      "1",
-                      "isSelected"
-                    ],
-                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -3684,6 +3684,15 @@
                     "myActionType": "COLLISION"
                   }
                 ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3712,15 +3721,6 @@
                       "UpdateMovementDirection"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "FollowX"
-                    ],
-                    "myActionType": "FOCUSED"
                   }
                 ]
               },
@@ -4594,6 +4594,7 @@
     }
   ],
   "myGameUniverse": {
+    "myParticipantColors": [],
     "myNumericalAttributes": [
       {
         "myData": 350.0,
@@ -5200,6 +5201,31 @@
               "myActionType": "COLLISION"
             }
           ],
+          "INTERNAL": [
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "MovePlayer"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "ACT_ON_OBJECTS_ACTION",
+              "myParameters": [
+                "HeadingUpdate"
+              ],
+              "myActionType": "INTERNAL"
+            },
+            {
+              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+              "myParameters": [
+                "EqualsAssignment",
+                "1",
+                "isSelected"
+              ],
+              "myActionType": "INTERNAL"
+            }
+          ],
           "BUTTON": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -5228,31 +5254,6 @@
                 "3"
               ],
               "myActionType": "BUTTON"
-            }
-          ],
-          "INTERNAL": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
-              "myParameters": [
-                "EqualsAssignment",
-                "1",
-                "isSelected"
-              ],
-              "myActionType": "INTERNAL"
             }
           ]
         },

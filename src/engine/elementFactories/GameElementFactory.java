@@ -75,7 +75,6 @@ public class GameElementFactory {
         state.attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), color);
         SelectableGameElement newElement = createSelectableGameElement(state);
         newElement.setPosition(x, y);
-        System.out.println(Long.toHexString(color.longValue()));
         return newElement;
     }
 
