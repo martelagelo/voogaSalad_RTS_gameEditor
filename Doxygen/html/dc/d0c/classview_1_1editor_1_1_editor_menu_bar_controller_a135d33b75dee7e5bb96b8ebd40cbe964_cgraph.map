@@ -1,0 +1,24 @@
+<map id="view.editor.EditorMenuBarController.onNewLevelClick" name="view.editor.EditorMenuBarController.onNewLevelClick">
+<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#af04694bcdb4842048f357e2e05097440" title="view.editor.wizards.Wizard.close\lStage" alt="" coords="258,111,481,153"/>
+<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#a679916cbd440cd8a600574b9b6b8957a" title="model.MainModel.createLevel" alt="" coords="263,177,475,204"/>
+<area shape="rect" id="node10" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a52c0d50f4a78361541be6627971a9384" title="view.editor.wizards.Wizard.display\lErrorMessage" alt="" coords="253,229,486,270"/>
+<area shape="rect" id="node11" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="268,294,471,335"/>
+<area shape="rect" id="node12" href="$de/d21/classmodel_1_1_main_model.html#afd2d3b70172d1f06ef47225fe09c0888" title="model.MainModel.getCurrentGame" alt="" coords="246,360,493,387"/>
+<area shape="rect" id="node13" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ab4942fec6fe2e4e166f9ed82f6a2b2af" title="view.editor.wizards.Wizard.load\lGlobalValues" alt="" coords="261,411,477,453"/>
+<area shape="rect" id="node14" href="$d2/d33/classview_1_1editor_1_1wizards_1_1_wizard_utility.html#acece70a3dea98cde832a608d4aff204d" title="view.editor.wizards.Wizard\lUtility.loadWizard" alt="" coords="277,477,462,518"/>
+<area shape="rect" id="node23" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ac0ea3bff75d232a7c87af57bc5bbd623" title="view.editor.wizards.Wizard.set\lSubmit" alt="" coords="265,542,474,583"/>
+<area shape="rect" id="node4" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#aaed6d510f703b4a44f5393b3eb625868" title="model.state.CampaignState.add\lLevel" alt="" coords="550,5,781,46"/>
+<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="564,70,767,111"/>
+<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="551,135,779,191"/>
+<area shape="rect" id="node8" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a9537867c561e10d0d497563aab33e447" title="model.state.gameelement.\lAttributeContainer.setTextual\lAttribute" alt="" coords="562,215,769,271"/>
+<area shape="rect" id="node9" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="541,295,789,321"/>
+<area shape="rect" id="node7" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="838,182,1061,223"/>
+<area shape="rect" id="node15" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#ad5c2539d920db1e4cec593d49cbf28bc" title="view.GUILoadStyleUtility.get\lInstance" alt="" coords="567,346,764,387"/>
+<area shape="rect" id="node17" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="548,411,783,453"/>
+<area shape="rect" id="node18" href="$d8/d35/enumview_1_1gui_1_1_g_u_i_pane_path.html#a21483b76823df7d547e7c451c9877b65" title="view.gui.GUIPanePath.get\lFilePath" alt="" coords="574,477,757,518"/>
+<area shape="rect" id="node19" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#acf4e507283b52e3f07d0178de8a95900" title="view.editor.wizards.Wizard.getRoot" alt="" coords="546,543,785,569"/>
+<area shape="rect" id="node20" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#ad8a679308f5305b82d32661a86f96690" title="view.GUILoadStyleUtility.add\lScene" alt="" coords="565,594,765,635"/>
+<area shape="rect" id="node22" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#abb231f895d1f01a0406555641eebedc5" title="view.editor.wizards.Wizard.set\lStage" alt="" coords="561,659,770,701"/>
+<area shape="rect" id="node16" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#aec297413dba8a98a536fdd9792d27860" title="view.GUILoadStyleUtility.\lGUILoadStyleUtility" alt="" coords="861,346,1037,387"/>
+<area shape="rect" id="node21" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a9540b620f62a09da8127367e897d5129" title="view.GUILoadStyleUtility.attach\lStyles" alt="" coords="841,594,1058,635"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="model.MainModel.getGameUniverse" name="model.MainModel.getGameUniverse">
+<area shape="rect" id="node2" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a626ca47a8ac963b8940a59944ee3bcb6" title="view.editor.TabViewController.add\lNumberAttributes" alt="" coords="310,5,541,46"/>
+<area shape="rect" id="node5" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#ad68baa151a28fe9c9b5dab069865a7e3" title="view.editor.ElementAccordion\lController.addNumberAttributes" alt="" coords="312,187,539,229"/>
+<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a8564fdf017fa6f25e3e663cf076e0c04" title="view.editor.ElementAccordion\lController.openSelectableGameElement\lWizard" alt="" coords="590,205,869,261"/>
+<area shape="rect" id="node7" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="927,289,1135,330"/>
+<area shape="rect" id="node8" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="594,121,865,177"/>
+<area shape="rect" id="node9" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a3bf1b5eaf1b993a7dd608f3a9598a153" title="view.editor.ElementAccordion\lController.addStringAttributes" alt="" coords="319,122,531,163"/>
+<area shape="rect" id="node10" href="$de/d21/classmodel_1_1_main_model.html#a4b5658ed9c29f4b1147dfc9ece8b36d5" title="model.MainModel.addTerrain\lToLevel" alt="" coords="323,457,527,498"/>
+<area shape="rect" id="node11" href="$de/d21/classmodel_1_1_main_model.html#a515a2b3f5e066e6c7959f91cce64181b" title="model.MainModel.addUnitTo\lLevel" alt="" coords="325,522,526,563"/>
+<area shape="rect" id="node12" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="346,588,505,615"/>
+<area shape="rect" id="node13" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="332,639,519,681"/>
+<area shape="rect" id="node15" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="329,705,522,746"/>
+<area shape="rect" id="node17" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a9e6edd6257068039459672ab6242ae5f" title="view.editor.EditorScreen.init\lParticipantInfo" alt="" coords="327,770,524,811"/>
+<area shape="rect" id="node19" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#ad27bc03ea1e0ab8cbfb82ae3113a5e76" title="view.editor.ElementAccordion\lController.modelUpdate" alt="" coords="321,835,529,877"/>
+<area shape="rect" id="node20" href="$de/d21/classmodel_1_1_main_model.html#a4c06208d5fc1ed5694a1cfc76a116599" title="model.MainModel.removeDrawable\lGameElement" alt="" coords="606,406,853,447"/>
+<area shape="rect" id="node21" href="$de/d21/classmodel_1_1_main_model.html#a245e01adfaf1f234878f391818d392b1" title="model.MainModel.removeSelectable\lGameElement" alt="" coords="602,289,857,330"/>
+<area shape="rect" id="node22" href="$de/d21/classmodel_1_1_main_model.html#aeafec1c0a2c8d787f6ce596c544a9190" title="model.MainModel.setTerrain" alt="" coords="325,901,525,928"/>
+<area shape="rect" id="node3" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#ae2a5da639fc38047249eeb0a5728dee0" title="view.editor.TabViewController.launch\lNestedWizard" alt="" coords="605,5,854,46"/>
+<area shape="rect" id="node4" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a82e1e1f1eb84d1c30bde3a246304473e" title="view.editor.TabViewController.init" alt="" coords="917,12,1144,39"/>
+<area shape="rect" id="node14" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="652,647,807,673"/>
+<area shape="rect" id="node16" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="649,712,810,739"/>
+<area shape="rect" id="node18" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a46b5e664f69da1947e605de4336f09cf" title="view.editor.EditorScreen.model\lUpdate" alt="" coords="620,770,839,811"/>
+</map>

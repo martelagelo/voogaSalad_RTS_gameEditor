@@ -1,0 +1,8 @@
+<map id="engine.UI.EditorInputManager.keyPressed" name="engine.UI.EditorInputManager.keyPressed">
+<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#abc1308396958c2dbedea9e5c7cc4c618" title="engine.stateManaging.Game\lElementManager.deleteSelectedUnit" alt="" coords="291,70,547,111"/>
+<area shape="rect" id="node3" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a9bd2160251994143432ae9b66d59aecd" title="engine.gameRepresentation.rendered\lRepresentation.Level.removeElement" alt="" coords="595,70,859,111"/>
+<area shape="rect" id="node4" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#acf33d4d5a42cecd5f88230b73a644268" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.getNode" alt="" coords="907,5,1239,46"/>
+<area shape="rect" id="node6" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a46ccf281e2cba5b240918e353bf1782a" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getState" alt="" coords="936,70,1211,111"/>
+<area shape="rect" id="node7" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#ab2a321d905f8259d1ab197e60875e99a" title="model.state.LevelState.remove\lElement" alt="" coords="961,135,1185,177"/>
+<area shape="rect" id="node5" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#ad3584be6f6368589ed27e26357d8ddf8" title="engine.visuals.elementVisuals.\lVisualizer.getNode" alt="" coords="1288,5,1507,46"/>
+</map>

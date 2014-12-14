@@ -1,0 +1,9 @@
+<map id="view.editor.ElementAccordionController.attachStringProperties" name="view.editor.ElementAccordionController.attachStringProperties">
+<area shape="rect" id="node2" href="$dc/d2d/classview_1_1editor_1_1_element_drop_down_controller.html#a533fb0058ac70a0f203f86171b453333" title="view.editor.ElementDropDown\lController.bindGameElement" alt="" coords="299,5,509,46"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="285,122,523,163"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="590,57,789,98"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="571,187,807,229"/>
+<area shape="rect" id="node4" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="571,122,808,163"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="856,49,1072,105"/>
+<area shape="rect" id="node8" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="865,187,1063,229"/>
+</map>

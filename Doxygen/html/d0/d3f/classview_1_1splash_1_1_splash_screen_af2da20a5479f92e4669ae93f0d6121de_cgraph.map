@@ -1,0 +1,28 @@
+<map id="view.splash.SplashScreen.init" name="view.splash.SplashScreen.init">
+<area shape="rect" id="node2" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="1396,698,1633,740"/>
+<area shape="rect" id="node8" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a325406adfc4f126519e952a07081546f" title="view.splash.SplashScreen.draw\lTitle" alt="" coords="261,461,480,502"/>
+<area shape="rect" id="node9" href="$d3/d14/classutil_1_1_save_load_utility.html#ab3aad60d0ba0fc214f02016621abc9a6" title="util.SaveLoadUtility.load\lResource" alt="" coords="1428,202,1601,244"/>
+<area shape="rect" id="node10" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a6425dffd80436213cce943fc3aa27563" title="view.splash.SplashScreen.set\lUpButtons" alt="" coords="266,526,475,568"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="1704,694,1941,736"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="1723,322,1922,364"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="1705,760,1941,801"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="2024,314,2240,370"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="2033,760,2231,801"/>
+<area shape="rect" id="node11" href="$de/d21/classmodel_1_1_main_model.html#af9c20fbbad657aa750844a8b5dabac80" title="model.MainModel.newGame" alt="" coords="535,475,737,502"/>
+<area shape="rect" id="node12" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html#ab3d125c65e5d548dfa9e5566c7a4c50f" title="view.gui.GUIScreen.switch\lScreen" alt="" coords="801,174,988,216"/>
+<area shape="rect" id="node15" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a7e50ce5a292e35b972ae31ec4df4f5ca" title="view.splash.SplashScreen.load\lGameAndSwitchScreen" alt="" coords="528,526,744,568"/>
+<area shape="rect" id="node27" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a814a650c8c538899aa3d7c465209d3da" title="view.splash.SplashScreen.attach\lStringProperties" alt="" coords="1077,821,1307,862"/>
+<area shape="rect" id="node13" href="$d1/d75/classview_1_1_main_view.html#a6d02708fccb6f546a83ee8d9d25a0456" title="view.MainView.launchScreen" alt="" coords="1091,84,1293,111"/>
+<area shape="rect" id="node14" href="$d6/d2b/enumview_1_1gui_1_1_view_screen_path.html#ad11ff5b8ad7e316e6d0e4ddc3b30a9e1" title="view.gui.ViewScreenPath.get\lFilePath" alt="" coords="1413,85,1616,126"/>
+<area shape="rect" id="node16" href="$de/d21/classmodel_1_1_main_model.html#a1a794fbf99be0146fb0a50681091ad7d" title="model.MainModel.loadGame" alt="" coords="793,458,997,484"/>
+<area shape="rect" id="node17" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a0c1638e64ab7544ac407e8d7debb5781" title="model.GameSaveLoadMediator.loadGame" alt="" coords="1045,275,1339,302"/>
+<area shape="rect" id="node19" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="1068,399,1316,426"/>
+<area shape="rect" id="node20" href="$de/d21/classmodel_1_1_main_model.html#a82c8d6e91e52b19dfe6a7f5a7f81d600" title="model.MainModel.updateSprites\lAndMasks" alt="" coords="1078,450,1306,492"/>
+<area shape="rect" id="node18" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a237824617b5628913e3cf83027b0edfe" title="model.GameSaveLoadMediator.get\lGameLocation" alt="" coords="1391,268,1639,309"/>
+<area shape="rect" id="node21" href="$de/dda/classmodel_1_1_game_universe.html#ae55bff5ebd307949b81d7cce069f0423" title="model.GameUniverse.getDrawable\lGameElementStates" alt="" coords="1392,581,1637,622"/>
+<area shape="rect" id="node22" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="1413,450,1616,492"/>
+<area shape="rect" id="node23" href="$de/dda/classmodel_1_1_game_universe.html#a058797c0ccdf5a6ed5d3b1f53654f9a0" title="model.GameUniverse.getSelectable\lGameElementStates" alt="" coords="1388,516,1641,557"/>
+<area shape="rect" id="node24" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a826a98c89d42cfd8abb16dd31dfa919a" title="model.GameSaveLoadMediator.load\lSpritesAndMasks" alt="" coords="1387,385,1642,426"/>
+<area shape="rect" id="node25" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#a6213b8131d50465b417e375f32cb33e3" title="model.sprite.SpriteImage\lGenerator.loadSpriteImageContainers" alt="" coords="1691,390,1955,432"/>
+<area shape="rect" id="node26" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#ab447717d12685c64342203f9ad82fcaa" title="model.sprite.SpriteImage\lGenerator.loadSpriteImageContainer" alt="" coords="2003,393,2261,434"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer" name="engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer">
+<area shape="rect" id="node4" href="$dd/d48/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_arrow_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeArrowDisplayer" alt="" coords="699,5,1024,46"/>
+<area shape="rect" id="node5" href="$d8/d27/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_bar_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeBarDisplayer" alt="" coords="699,70,1024,111"/>
+<area shape="rect" id="node6" href="$dc/d90/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_label_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeLabelDisplayer" alt="" coords="699,135,1024,177"/>
+<area shape="rect" id="node7" href="$dc/d93/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_unit_selected_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.UnitSelectedDisplayer" alt="" coords="699,201,1024,242"/>
+<area shape="rect" id="node2" href="$d3/dc9/interfacemodel_1_1state_1_1gameelement_1_1traits_1_1_updatable.html" title="model.state.gameelement.traits.\lUpdatable" alt="" coords="24,70,259,111"/>
+<area shape="rect" id="node3" href="$d8/dfe/interfaceengine_1_1visuals_1_1element_visuals_1_1widgets_1_1_widget.html" title="engine.visuals.elementVisuals.widgets.\lWidget" alt="" coords="6,135,277,177"/>
+</map>

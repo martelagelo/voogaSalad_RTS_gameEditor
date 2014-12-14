@@ -1,0 +1,6 @@
+<map id="engine.visuals.VisualManager.changeBackground" name="engine.visuals.VisualManager.changeBackground">
+<area shape="rect" id="node2" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a2333c32eb97d8da3a8ba96659080b236" title="engine.visuals.Scrollable\lPane.changeBackground" alt="" coords="315,5,495,46"/>
+<area shape="rect" id="node3" href="$d2/dae/classengine_1_1visuals_1_1_scrollable_background.html#a889c67926401e58709f19351076a5a38" title="engine.visuals.Scrollable\lBackground.tileBackground" alt="" coords="544,5,741,46"/>
+<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#af1333303576053ddda0787bcf1cd9c81" title="util.SaveLoadUtility.load\lImage" alt="" coords="789,5,963,46"/>
+<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="1011,12,1218,39"/>
+</map>

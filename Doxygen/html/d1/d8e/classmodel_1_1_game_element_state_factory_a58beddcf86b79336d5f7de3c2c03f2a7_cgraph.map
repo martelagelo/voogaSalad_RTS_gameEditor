@@ -1,0 +1,11 @@
+<map id="model.GameElementStateFactory.addEssentials" name="model.GameElementStateFactory.addEssentials">
+<area shape="rect" id="node2" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9c933a8457618e7e8e5f257ee2211c07" title="model.state.gameelement.\lGameElementState.addAction" alt="" coords="353,5,570,46"/>
+<area shape="rect" id="node4" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0c7129019d734a04dfc2d6b6b25dc45d" title="model.GameElementStateFactory.add\lToState" alt="" coords="329,70,594,111"/>
+<area shape="rect" id="node5" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ad9134aa0c85f67b8fd66ff84f7f79cbe" title="model.data.WizardData.get\lWizardDataByType" alt="" coords="723,99,920,141"/>
+<area shape="rect" id="node6" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0182be087dfefa408c6194ff5ca55ac1" title="model.GameElementStateFactory.create\lActionWrapper" alt="" coords="320,187,603,229"/>
+<area shape="rect" id="node7" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ae19ca8de1e400fb399d702d78c861a81" title="model.data.WizardData.get\lValueByKey" alt="" coords="723,226,920,267"/>
+<area shape="rect" id="node8" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="347,304,575,360"/>
+<area shape="rect" id="node10" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a9537867c561e10d0d497563aab33e447" title="model.state.gameelement.\lAttributeContainer.setTextual\lAttribute" alt="" coords="358,384,565,440"/>
+<area shape="rect" id="node3" href="$d5/d7f/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_wrapper.html#aeb7b2a7580e1ba5d6e57a13cc00e9bd5" title="engine.gameRepresentation.evaluatables.actions.\lActionWrapper.getActionType" alt="" coords="651,5,992,46"/>
+<area shape="rect" id="node9" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="710,331,933,373"/>
+</map>

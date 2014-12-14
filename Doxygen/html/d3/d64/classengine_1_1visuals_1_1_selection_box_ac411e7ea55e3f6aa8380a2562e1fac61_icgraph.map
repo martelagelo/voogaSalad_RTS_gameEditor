@@ -1,0 +1,8 @@
+<map id="engine.visuals.SelectionBox.setX" name="engine.visuals.SelectionBox.setX">
+<area shape="rect" id="node2" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a7a9d3029e5b7d6729b0fc460a9416725" title="engine.visuals.Selection\lBox.reactToDrag" alt="" coords="230,5,405,46"/>
+<area shape="rect" id="node4" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a1ef6c15fdaca99a33c3faa163a801bef" title="engine.visuals.Selection\lBox.setLocation" alt="" coords="230,70,405,111"/>
+<area shape="rect" id="node3" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a69bebb0b08eb17978e6725587c159397" title="engine.UI.RunnerInputManager.primary\lDragOccurred" alt="" coords="454,5,725,46"/>
+<area shape="rect" id="node5" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#ae75e9190a5a34ba4d809949a5a51e411" title="engine.visuals.Selection\lBox.primaryClick" alt="" coords="774,95,949,137"/>
+<area shape="rect" id="node7" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a933beff47845dede95bb8ad2f3bc2dec" title="engine.visuals.Selection\lBox.resetBox" alt="" coords="502,125,677,166"/>
+<area shape="rect" id="node6" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a185ddda1d575d743ea889c24a32f8ff4" title="engine.UI.RunnerInputManager.primary\lClickOccurred" alt="" coords="998,95,1269,137"/>
+</map>
