@@ -1,6 +1,0 @@
-<map id="engine.stateManaging.GameElementManager.notifyButtonClicked" name="engine.stateManaging.GameElementManager.notifyButtonClicked">
-<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#ade9eef1c34b814ef2308ff85d33e8895" title="engine.stateManaging.Game\lElementManager.filterSelectedUnits" alt="" coords="321,5,572,46"/>
-<area shape="rect" id="node3" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#a2431d89fa3d884ecd98b31badcea4ea8" title="engine.stateManaging.Game\lElementManager.filterTeamIDElements" alt="" coords="312,70,581,111"/>
-<area shape="rect" id="node5" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a08df8c7314ec79159bd08080849dd2f7" title="engine.gameRepresentation.rendered\lRepresentation.Level.getUnits" alt="" coords="315,135,579,177"/>
-<area shape="rect" id="node4" href="$d5/d29/classengine_1_1users_1_1_participant.html#abda8825e8c4e6b4b4340e23b65f0b685" title="engine.users.Participant.check\lSameTeam" alt="" coords="629,70,845,111"/>
-</map>

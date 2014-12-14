@@ -1,9 +1,0 @@
-<map id="engine.visuals.elementVisuals.Visualizer.getNodeLocation" name="engine.visuals.elementVisuals.Visualizer.getNodeLocation">
-<area shape="rect" id="node2" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#a466544f206761abd617264290a523363" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.get\lPosition" alt="" coords="272,31,571,87"/>
-<area shape="rect" id="node3" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#aa545380bd8f999e045b08010e464a168" title="engine.visuals.MiniMap.set\lUnitShape" alt="" coords="619,38,811,79"/>
-<area shape="rect" id="node4" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#aaf0c6d66cb481c4cb5507bf38acbd68b" title="engine.visuals.MiniMap.move\lUnits" alt="" coords="859,38,1067,79"/>
-<area shape="rect" id="node5" href="$d2/de9/classengine_1_1visuals_1_1_mini_map.html#aa9c49ec7b002d6b193e07a42771b9a1d" title="engine.visuals.MiniMap.update\lMiniMap" alt="" coords="1115,38,1333,79"/>
-<area shape="rect" id="node6" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#a5bd2adc4f3bb17dd5ed51909689d8f91" title="engine.visuals.VisualManager.update" alt="" coords="1381,45,1640,72"/>
-<area shape="rect" id="node7" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#a6b4981af45d656d6bfffa3a6ad9b0b9d" title="engine.stateManaging.Game\lLoop.updateEditor" alt="" coords="1689,5,1895,46"/>
-<area shape="rect" id="node8" href="$d2/d87/classengine_1_1state_managing_1_1_game_loop.html#ab3cf1b000f90849c5389fbd90b147602" title="engine.stateManaging.Game\lLoop.updateRunner" alt="" coords="1689,70,1895,111"/>
-</map>

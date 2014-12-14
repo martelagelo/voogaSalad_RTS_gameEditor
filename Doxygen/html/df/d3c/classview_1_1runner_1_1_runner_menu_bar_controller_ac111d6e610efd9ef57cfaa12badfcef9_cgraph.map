@@ -1,6 +1,0 @@
-<map id="view.runner.RunnerMenuBarController.initFileMenu" name="view.runner.RunnerMenuBarController.initFileMenu">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#aad72e8d239a29bb3a1e1575698d385e7" title="model.MainModel.saveGame" alt="" coords="254,5,461,32"/>
-<area shape="rect" id="node3" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html#ab3d125c65e5d548dfa9e5566c7a4c50f" title="view.gui.GUIScreen.switch\lScreen" alt="" coords="264,57,451,98"/>
-<area shape="rect" id="node4" href="$d1/d75/classview_1_1_main_view.html#a6d02708fccb6f546a83ee8d9d25a0456" title="view.MainView.launchScreen" alt="" coords="510,64,711,91"/>
-<area shape="rect" id="node5" href="$d6/d2b/enumview_1_1gui_1_1_view_screen_path.html#ad11ff5b8ad7e316e6d0e4ddc3b30a9e1" title="view.gui.ViewScreenPath.get\lFilePath" alt="" coords="760,57,963,98"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="view.editor.TabViewController.updateLevelTriggersView" name="view.editor.TabViewController.updateLevelTriggersView">
-<area shape="rect" id="node2" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a42e1f2d600b9509d77b5535d075b5130" title="view.editor.TabViewController.get\lByClassName" alt="" coords="307,5,535,46"/>
-<area shape="rect" id="node3" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#a0eb901df6408563a86cbb88b7298120a" title="model.state.LevelState.get\lGoals" alt="" coords="323,70,519,111"/>
-<area shape="rect" id="node4" href="$da/d87/classview_1_1editor_1_1_level_triggers_view_controller.html#a1bb769102f0b8963979f9f043c4700cd" title="view.editor.LevelTriggers\lViewController.updateTriggerList" alt="" coords="309,135,534,177"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="engine.stateManaging.GameElementManager.moveSelectedUnit" name="engine.stateManaging.GameElementManager.moveSelectedUnit">
-<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#ab00622dd7923aa9115154156e15451ae" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.setPosition" alt="" coords="307,11,595,53"/>
-<area shape="rect" id="node3" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a5a426090456bba2adf4993b5b3fb0ffd" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.setNumerical\lAttribute" alt="" coords="643,4,946,60"/>
-<area shape="rect" id="node4" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a168d6e922a93b11894753a0598c02cf7" title="model.state.gameelement.\lAttributeContainer.setNumerical\lAttribute" alt="" coords="995,4,1223,60"/>
-<area shape="rect" id="node5" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a03dd9ed123fc97bfc8bce5528b488333" title="model.state.gameelement.\lAttributeContainer.addAttribute" alt="" coords="1273,11,1495,53"/>
-</map>
