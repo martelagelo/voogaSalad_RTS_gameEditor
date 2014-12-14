@@ -1,0 +1,10 @@
+<map id="view.editor.wizards.GameElementWizard" name="view.editor.wizards.GameElementWizard">
+<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html" title="view.editor.wizards.Wizard" alt="" coords="807,191,993,217"/>
+<area shape="rect" id="node3" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="384,287,544,313"/>
+<area shape="rect" id="node15" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html" title="view.editor.wizards.CRUDContainer" alt="" coords="779,609,1021,636"/>
+<area shape="rect" id="node4" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html" title="model.data.WizardData" alt="" coords="378,228,550,255"/>
+<area shape="rect" id="node5" href="$d6/d26/enummodel_1_1data_1_1_wizard_type.html" title="model.data.WizardType" alt="" coords="33,257,202,284"/>
+<area shape="rect" id="node16" href="$d8/d35/enumview_1_1gui_1_1_g_u_i_pane_path.html" title="view.gui.GUIPanePath" alt="" coords="385,781,543,808"/>
+<area shape="rect" id="node25" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html" title="view.editor.wizards.AnimationGrid" alt="" coords="783,1027,1017,1053"/>
+<area shape="rect" id="node26" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html" title="view.editor.wizards.Grid" alt="" coords="379,1027,549,1053"/>
+</map>

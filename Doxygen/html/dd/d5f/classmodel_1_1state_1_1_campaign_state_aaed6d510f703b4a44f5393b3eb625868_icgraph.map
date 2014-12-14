@@ -1,0 +1,10 @@
+<map id="model.state.CampaignState.addLevel" name="model.state.CampaignState.addLevel">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a679916cbd440cd8a600574b9b6b8957a" title="model.MainModel.createLevel" alt="" coords="286,12,498,39"/>
+<area shape="rect" id="node6" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="299,63,485,105"/>
+<area shape="rect" id="node8" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="295,129,489,170"/>
+<area shape="rect" id="node3" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a135d33b75dee7e5bb96b8ebd40cbe964" title="view.editor.EditorMenuBar\lController.onNewLevelClick" alt="" coords="547,5,739,46"/>
+<area shape="rect" id="node4" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a56696b0f0540d2e86c3e4fe4521717a2" title="view.editor.EditorMenuBar\lController.initFileMenu" alt="" coords="787,5,973,46"/>
+<area shape="rect" id="node5" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a5b101a400664af0200be8010673acb49" title="view.editor.EditorMenuBar\lController.initMenuBar" alt="" coords="1021,5,1208,46"/>
+<area shape="rect" id="node7" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="565,71,720,97"/>
+<area shape="rect" id="node9" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="562,136,723,163"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="model.state.DescribableState.getDescription" name="model.state.DescribableState.getDescription">
+<area shape="rect" id="node2" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#ad5bb84d7b3857ffe9185709f37830be4" title="engine.gameRepresentation.rendered\lRepresentation.Level.getDescription" alt="" coords="293,5,557,46"/>
+<area shape="rect" id="node3" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#a9246f01a0df957d3b37c836a9e2aa1e7" title="model.state.DescribableState.to\lString" alt="" coords="310,70,541,111"/>
+<area shape="rect" id="node4" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a5f5fb5168dd6e42923a567640bbab58f" title="view.editor.EditorScreen.update\lInfoBox" alt="" coords="314,135,537,177"/>
+<area shape="rect" id="node5" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aaad5f29799d14174213c2f06f6156890" title="view.editor.EditorScreen.init\lProjectExplorer" alt="" coords="616,102,813,143"/>
+<area shape="rect" id="node7" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#a46b5e664f69da1947e605de4336f09cf" title="view.editor.EditorScreen.model\lUpdate" alt="" coords="605,167,824,209"/>
+<area shape="rect" id="node6" href="$d0/db5/classview_1_1editor_1_1_editor_screen.html#aba6c32908c25fa4f755a312e92860c02" title="view.editor.EditorScreen.init" alt="" coords="872,109,1069,136"/>
+</map>

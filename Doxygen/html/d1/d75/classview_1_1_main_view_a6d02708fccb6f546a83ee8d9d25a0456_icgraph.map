@@ -1,0 +1,11 @@
+<map id="view.MainView.launchScreen" name="view.MainView.launchScreen">
+<area shape="rect" id="node2" href="$d1/d75/classview_1_1_main_view.html#a2b8a45380eae155860ea6833e7f7f54d" title="view.MainView.MainView" alt="" coords="263,48,436,75"/>
+<area shape="rect" id="node3" href="$d2/d02/classview_1_1gui_1_1_g_u_i_screen.html#ab3d125c65e5d548dfa9e5566c7a4c50f" title="view.gui.GUIScreen.switch\lScreen" alt="" coords="256,99,443,141"/>
+<area shape="rect" id="node4" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a56696b0f0540d2e86c3e4fe4521717a2" title="view.editor.EditorMenuBar\lController.initFileMenu" alt="" coords="505,5,692,46"/>
+<area shape="rect" id="node6" href="$df/d3c/classview_1_1runner_1_1_runner_menu_bar_controller.html#ac111d6e610efd9ef57cfaa12badfcef9" title="view.runner.RunnerMenuBar\lController.initFileMenu" alt="" coords="499,70,698,111"/>
+<area shape="rect" id="node8" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a6425dffd80436213cce943fc3aa27563" title="view.splash.SplashScreen.set\lUpButtons" alt="" coords="755,161,965,202"/>
+<area shape="rect" id="node10" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a7e50ce5a292e35b972ae31ec4df4f5ca" title="view.splash.SplashScreen.load\lGameAndSwitchScreen" alt="" coords="491,187,707,229"/>
+<area shape="rect" id="node5" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html#a5b101a400664af0200be8010673acb49" title="view.editor.EditorMenuBar\lController.initMenuBar" alt="" coords="767,5,953,46"/>
+<area shape="rect" id="node7" href="$df/d3c/classview_1_1runner_1_1_runner_menu_bar_controller.html#a0171308aa8acdbf21aaca6063ece0e44" title="view.runner.RunnerMenuBar\lController.initMenuBar" alt="" coords="761,70,959,111"/>
+<area shape="rect" id="node9" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#af2da20a5479f92e4669ae93f0d6121de" title="view.splash.SplashScreen.init" alt="" coords="1013,168,1221,195"/>
+</map>

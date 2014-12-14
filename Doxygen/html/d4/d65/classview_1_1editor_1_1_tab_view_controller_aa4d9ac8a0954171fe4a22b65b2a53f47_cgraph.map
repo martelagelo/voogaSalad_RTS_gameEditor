@@ -1,0 +1,5 @@
+<map id="view.editor.TabViewController.isLevel" name="view.editor.TabViewController.isLevel">
+<area shape="rect" id="node2" href="$d0/d5f/classmodel_1_1state_1_1_level_identifier.html#a6fe1f55885e5fc0a7f35f423ad5b7533" title="model.state.LevelIdentifier.equals" alt="" coords="273,12,509,39"/>
+<area shape="rect" id="node4" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#a3e96e406cee034b7971a9cd043b53aa9" title="model.state.LevelState.get\lIdentifier" alt="" coords="293,63,489,105"/>
+<area shape="rect" id="node3" href="$d0/d5f/classmodel_1_1state_1_1_level_identifier.html#a768df1c5878d2273ef19f6d9a7aa5aad" title="model.state.LevelIdentifier.\lLevelIdentifier" alt="" coords="557,5,752,46"/>
+</map>

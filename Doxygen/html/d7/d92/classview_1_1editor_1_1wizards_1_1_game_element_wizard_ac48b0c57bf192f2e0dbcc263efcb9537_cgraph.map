@@ -1,0 +1,10 @@
+<map id="view.editor.wizards.GameElementWizard.initContainers" name="view.editor.wizards.GameElementWizard.initContainers">
+<area shape="rect" id="node2" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#ab08ed585bf4cdd5e1d8f26d0c3644643" title="view.editor.wizards.Game\lElementWizard.getActionConsumer" alt="" coords="277,5,525,46"/>
+<area shape="rect" id="node3" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#af9cb111b9a78d77b8a070ebea7d1a098" title="view.editor.wizards.Game\lElementWizard.getAnimationConsumer" alt="" coords="265,70,538,111"/>
+<area shape="rect" id="node4" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a355ba4f9b2360e9ff4ee13e02b52323c" title="view.editor.wizards.Game\lElementWizard.getAttributeConsumer" alt="" coords="269,135,533,177"/>
+<area shape="rect" id="node5" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a0ab3670efca0295da4463a89f99d7175" title="view.editor.wizards.Game\lElementWizard.getWidgetConsumer" alt="" coords="276,201,527,242"/>
+<area shape="rect" id="node6" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#a5e8dc1ea8d74b9a2a6e8ceb3d325cfba" title="view.editor.wizards.CRUDContainer.init" alt="" coords="269,267,533,293"/>
+<area shape="rect" id="node7" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a236dc95eb9107be4f82dee28567e7d99" title="view.editor.wizards.Game\lElementWizard.isAnimationLaunchValid" alt="" coords="265,318,537,359"/>
+<area shape="rect" id="node9" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#a0071ee95eefd895cfebf4705c1dc5ded" title="view.editor.wizards.CRUDContainer.set\lValidToLaunch" alt="" coords="269,383,534,425"/>
+<area shape="rect" id="node8" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a52c0d50f4a78361541be6627971a9384" title="view.editor.wizards.Wizard.display\lErrorMessage" alt="" coords="587,318,821,359"/>
+</map>

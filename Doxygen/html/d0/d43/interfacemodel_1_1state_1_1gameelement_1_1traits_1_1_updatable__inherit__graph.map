@@ -1,0 +1,10 @@
+<map id="model.state.gameelement.traits.Updatable" name="model.state.gameelement.traits.Updatable">
+<area shape="rect" id="node2" href="$d2/d9b/classengine_1_1visuals_1_1element_visuals_1_1animations_1_1_animation_sequence.html" title="engine.visuals.elementVisuals.animations.\lAnimationSequence" alt="" coords="304,5,597,46"/>
+<area shape="rect" id="node4" href="$d9/d50/classengine_1_1visuals_1_1element_visuals_1_1animations_1_1_animator.html" title="engine.visuals.elementVisuals.animations.\lAnimator" alt="" coords="304,70,597,111"/>
+<area shape="rect" id="node5" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html" title="engine.visuals.elementVisuals.\lVisualizer" alt="" coords="341,135,560,177"/>
+<area shape="rect" id="node6" href="$d7/df4/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeDisplayer" alt="" coords="288,201,613,242"/>
+<area shape="rect" id="node3" href="$dd/d72/classengine_1_1visuals_1_1element_visuals_1_1animations_1_1_null_animation_sequence.html" title="engine.visuals.elementVisuals.animations.\lNullAnimationSequence" alt="" coords="677,5,971,46"/>
+<area shape="rect" id="node7" href="$dd/d48/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_arrow_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeArrowDisplayer" alt="" coords="661,135,987,177"/>
+<area shape="rect" id="node8" href="$d8/d27/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_attribute_bar_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.AttributeBarDisplayer" alt="" coords="661,201,987,242"/>
+<area shape="rect" id="node9" href="$dc/d93/classengine_1_1visuals_1_1element_visuals_1_1widgets_1_1attribute_displays_1_1_unit_selected_displayer.html" title="engine.visuals.elementVisuals.widgets.attribute\lDisplays.UnitSelectedDisplayer" alt="" coords="661,266,987,307"/>
+</map>
