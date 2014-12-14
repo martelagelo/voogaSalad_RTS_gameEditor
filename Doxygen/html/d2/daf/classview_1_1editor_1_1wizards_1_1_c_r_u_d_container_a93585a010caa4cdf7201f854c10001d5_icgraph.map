@@ -1,0 +1,10 @@
+<map id="view.editor.wizards.CRUDContainer.createVisualRepresentation" name="view.editor.wizards.CRUDContainer.createVisualRepresentation">
+<area shape="rect" id="node2" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#afc90f248b63b655ded20ea49f90d01a3" title="view.editor.wizards.CRUDContainer.add\lAndRenderWizardDatas" alt="" coords="351,53,620,94"/>
+<area shape="rect" id="node8" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#ae2023a0be85d2e08579ad62bf18a0bc5" title="view.editor.wizards.CRUDContainer.launch\lNestedWizard" alt="" coords="342,118,629,159"/>
+<area shape="rect" id="node3" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a657ee6352e5119f1ec2fe9add8340899" title="view.editor.wizards.Game\lElementWizard.addContainerData" alt="" coords="706,53,945,94"/>
+<area shape="rect" id="node4" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#abe8ad6d8e7a4eec7b8184d12047755be" title="view.editor.wizards.Game\lElementWizard.launchForEdit" alt="" coords="1022,53,1229,94"/>
+<area shape="rect" id="node5" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a8564fdf017fa6f25e3e663cf076e0c04" title="view.editor.ElementAccordion\lController.openSelectableGameElement\lWizard" alt="" coords="1278,5,1557,61"/>
+<area shape="rect" id="node7" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="1282,85,1553,141"/>
+<area shape="rect" id="node6" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="1605,53,1813,94"/>
+<area shape="rect" id="node9" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#ab64f7f353707925c8aa7b919886038c5" title="view.editor.wizards.CRUDContainer.initialize" alt="" coords="677,125,973,152"/>
+</map>
