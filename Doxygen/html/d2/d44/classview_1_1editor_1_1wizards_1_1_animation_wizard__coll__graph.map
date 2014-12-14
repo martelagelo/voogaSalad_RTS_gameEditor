@@ -1,0 +1,9 @@
+<map id="view.editor.wizards.AnimationWizard" name="view.editor.wizards.AnimationWizard">
+<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html" title="view.editor.wizards.Wizard" alt="" coords="806,191,991,217"/>
+<area shape="rect" id="node3" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="396,5,556,32"/>
+<area shape="rect" id="node4" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html" title="model.data.WizardData" alt="" coords="390,56,562,83"/>
+<area shape="rect" id="node5" href="$d6/d26/enummodel_1_1data_1_1_wizard_type.html" title="model.data.WizardType" alt="" coords="33,5,202,32"/>
+<area shape="rect" id="node18" href="$d9/dd9/classview_1_1editor_1_1wizards_1_1_direction_grid.html" title="view.editor.wizards.DirectionGrid" alt="" coords="785,787,1012,813"/>
+<area shape="rect" id="node19" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html" title="view.editor.wizards.Grid" alt="" coords="391,740,561,767"/>
+<area shape="rect" id="node24" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html" title="view.editor.wizards.AnimationGrid" alt="" coords="781,736,1016,763"/>
+</map>

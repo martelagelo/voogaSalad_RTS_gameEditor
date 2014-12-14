@@ -1,0 +1,5 @@
+<map id="model.sprite.SpriteImageContainer.locateSpritesheet" name="model.sprite.SpriteImageContainer.locateSpritesheet">
+<area shape="rect" id="node2" href="$dc/d71/classmodel_1_1sprite_1_1_sprite_image_loader.html#ae41a60156e2bbfe6e60355ba0ebecd09" title="model.sprite.SpriteImage\lLoader.loadSpritesheet" alt="" coords="253,5,437,46"/>
+<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#af1333303576053ddda0787bcf1cd9c81" title="util.SaveLoadUtility.load\lImage" alt="" coords="485,5,659,46"/>
+<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="707,12,914,39"/>
+</map>

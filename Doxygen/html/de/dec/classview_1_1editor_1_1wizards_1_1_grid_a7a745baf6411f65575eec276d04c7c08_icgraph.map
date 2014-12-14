@@ -1,0 +1,15 @@
+<map id="view.editor.wizards.Grid.createColumns" name="view.editor.wizards.Grid.createColumns">
+<area shape="rect" id="node2" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#ae5c3a9c2a2e322a67f22ea893395fe09" title="view.editor.wizards.Grid.createGrid" alt="" coords="269,132,509,159"/>
+<area shape="rect" id="node3" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#ae8b023d0c40b27c1f76cb457cf5a7c20" title="view.editor.wizards.Animation\lGrid.changeSize" alt="" coords="557,95,765,137"/>
+<area shape="rect" id="node14" href="$de/dec/classview_1_1editor_1_1wizards_1_1_grid.html#a402a7cf0c1528ceeb9d3fed6fac791df" title="view.editor.wizards.Grid.Grid" alt="" coords="562,161,761,188"/>
+<area shape="rect" id="node4" href="$de/dd2/classview_1_1editor_1_1wizards_1_1_animation_grid.html#a64a2e48458f3dfa8601033d72adab277" title="view.editor.wizards.Animation\lGrid.AnimationGrid" alt="" coords="837,62,1045,103"/>
+<area shape="rect" id="node5" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a9131233346b756980f0ffada6804fc93" title="view.editor.wizards.Game\lElementWizard.createSliderListeners" alt="" coords="813,127,1069,169"/>
+<area shape="rect" id="node6" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a9186bc2aecf42e0dc000cc684d20c685" title="view.editor.wizards.Game\lElementWizard.initializeSliders" alt="" coords="1118,127,1333,169"/>
+<area shape="rect" id="node7" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a0d98e58393e2435808900ae3a2643eee" title="view.editor.wizards.Game\lElementWizard.renderImage" alt="" coords="1381,127,1584,169"/>
+<area shape="rect" id="node8" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#abe8ad6d8e7a4eec7b8184d12047755be" title="view.editor.wizards.Game\lElementWizard.launchForEdit" alt="" coords="1633,93,1839,134"/>
+<area shape="rect" id="node12" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a1b56666ff43ed5d0ccbeacf0c7cda38f" title="view.editor.wizards.Game\lElementWizard.loadImage" alt="" coords="1642,161,1830,202"/>
+<area shape="rect" id="node9" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a71bb33e7588f335fc2ebc1346924ad2d" title="view.editor.ElementAccordion\lController.openDrawableGameElement\lWizard" alt="" coords="1893,5,2163,61"/>
+<area shape="rect" id="node11" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#a8564fdf017fa6f25e3e663cf076e0c04" title="view.editor.ElementAccordion\lController.openSelectableGameElement\lWizard" alt="" coords="1889,85,2167,141"/>
+<area shape="rect" id="node10" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="2216,53,2424,94"/>
+<area shape="rect" id="node13" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a108e1aaa06ef6b80a4a1d33d460cde06" title="view.editor.wizards.Game\lElementWizard.initialize" alt="" coords="1937,165,2119,206"/>
+</map>
