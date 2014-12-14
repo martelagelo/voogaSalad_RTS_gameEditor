@@ -1,0 +1,7 @@
+<map id="engine.UI.RunnerInputManager.primaryDragOccurred" name="engine.UI.RunnerInputManager.primaryDragOccurred">
+<area shape="rect" id="node2" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a7a9d3029e5b7d6729b0fc460a9416725" title="engine.visuals.Selection\lBox.reactToDrag" alt="" coords="326,103,501,145"/>
+<area shape="rect" id="node3" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a62bd7690c9dd37a968a32ead97ef62b1" title="engine.visuals.Selection\lBox.setVisible" alt="" coords="550,5,725,46"/>
+<area shape="rect" id="node4" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#aaaf3fb5d2042e3e2209cc79a2a37d27a" title="engine.visuals.Selection\lBox.setSize" alt="" coords="550,70,725,111"/>
+<area shape="rect" id="node5" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#ac411e7ea55e3f6aa8380a2562e1fac61" title="engine.visuals.Selection\lBox.setX" alt="" coords="550,135,725,177"/>
+<area shape="rect" id="node6" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a348f690ae5541a613fea75b81c405a61" title="engine.visuals.Selection\lBox.setY" alt="" coords="550,201,725,242"/>
+</map>

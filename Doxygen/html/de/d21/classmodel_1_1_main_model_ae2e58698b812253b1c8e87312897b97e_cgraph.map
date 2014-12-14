@@ -1,0 +1,5 @@
+<map id="model.MainModel.fetchImageContainer" name="model.MainModel.fetchImageContainer">
+<area shape="rect" id="node2" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#acc5fd25511da23fdddf26107aea74d44" title="model.sprite.SpriteImage\lGenerator.fetchImageContainer" alt="" coords="264,5,488,46"/>
+<area shape="rect" id="node3" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#af83a0e388cc4a15338ada9ef04ba5ace" title="model.sprite.SpriteImage\lContainer.getColorMask" alt="" coords="284,70,468,111"/>
+<area shape="rect" id="node4" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#aeda9017d9625cc566d6cc9a640db43e1" title="model.sprite.SpriteImage\lContainer.getSpritesheet" alt="" coords="284,135,468,177"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="engine.UI.RunnerInputManager.primaryClickReleaseOccurred" name="engine.UI.RunnerInputManager.primaryClickReleaseOccurred">
+<area shape="rect" id="node2" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#aee988b53535fe44a9f455a782c00c242" title="engine.visuals.Selection\lBox.clickReleased" alt="" coords="370,22,545,63"/>
+<area shape="rect" id="node4" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#abc104943b3831eee294618eaaa207401" title="engine.stateManaging.Game\lElementManager.selectUnitsInBounds" alt="" coords="325,119,589,161"/>
+<area shape="rect" id="node3" href="$d3/d64/classengine_1_1visuals_1_1_selection_box.html#a62bd7690c9dd37a968a32ead97ef62b1" title="engine.visuals.Selection\lBox.setVisible" alt="" coords="682,5,857,46"/>
+<area shape="rect" id="node5" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#a2383f0a605117bbc67d1c4b077b7174c" title="engine.stateManaging.Game\lElementManager.checkOnTeam" alt="" coords="658,70,881,111"/>
+<area shape="rect" id="node10" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#aea7cca17969dfa8b91702eaf0be7a49a" title="engine.stateManaging.Game\lElementManager.contains" alt="" coords="666,135,873,177"/>
+<area shape="rect" id="node11" href="$db/d6f/classengine_1_1game_representation_1_1rendered_representation_1_1_level.html#a08df8c7314ec79159bd08080849dd2f7" title="engine.gameRepresentation.rendered\lRepresentation.Level.getUnits" alt="" coords="637,201,901,242"/>
+<area shape="rect" id="node6" href="$d5/d29/classengine_1_1users_1_1_participant.html#abda8825e8c4e6b4b4340e23b65f0b685" title="engine.users.Participant.check\lSameTeam" alt="" coords="993,34,1209,75"/>
+<area shape="rect" id="node7" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a0e5df2ee82fed90f049282832babf477" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getNumerical\lAttribute" alt="" coords="949,99,1253,155"/>
+<area shape="rect" id="node8" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a5f0e6026d1877c9e4f04fe389163970c" title="model.state.gameelement.\lAttributeContainer.getNumerical\lAttribute" alt="" coords="1301,99,1531,155"/>
+<area shape="rect" id="node9" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html#a59a08ce23cf989feca0a78b2642364d4" title="model.state.gameelement.\lAttributeContainer.getAttribute" alt="" coords="1579,106,1799,147"/>
+</map>

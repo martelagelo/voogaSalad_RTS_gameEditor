@@ -1,0 +1,4 @@
+<map id="model.exceptions.CampaignNotFoundException" name="model.exceptions.CampaignNotFoundException">
+<area shape="rect" id="node2" href="$d3/d31/classmodel_1_1exceptions_1_1_describable_state_not_found_exception.html" title="model.exceptions.Describable\lStateNotFoundException" alt="" coords="5,171,219,213"/>
+<area shape="rect" id="node3" href="$d0/d64/classmodel_1_1exceptions_1_1_describable_state_exception.html" title="model.exceptions.Describable\lStateException" alt="" coords="5,81,219,122"/>
+</map>

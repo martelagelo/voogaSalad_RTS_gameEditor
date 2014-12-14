@@ -1,0 +1,6 @@
+<map id="model.GameSaveLoadMediator.saveGame" name="model.GameSaveLoadMediator.saveGame">
+<area shape="rect" id="node2" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a237824617b5628913e3cf83027b0edfe" title="model.GameSaveLoadMediator.get\lGameLocation" alt="" coords="349,5,597,46"/>
+<area shape="rect" id="node3" href="$d3/d14/classutil_1_1_save_load_utility.html#ad10d6bbf9499a296708397b33f81e5c1" title="util.SaveLoadUtility.save" alt="" coords="385,71,561,97"/>
+<area shape="rect" id="node4" href="$d3/d14/classutil_1_1_save_load_utility.html#a7dd5135de57549be59b6af1d5828e2a1" title="util.SaveLoadUtility.pre\lProcess" alt="" coords="666,34,833,75"/>
+<area shape="rect" id="node5" href="$d3/d14/classutil_1_1_save_load_utility.html#a45324a0a42802150f23edb0fe9340aa2" title="util.SaveLoadUtility.obtainFile" alt="" coords="646,100,853,127"/>
+</map>
