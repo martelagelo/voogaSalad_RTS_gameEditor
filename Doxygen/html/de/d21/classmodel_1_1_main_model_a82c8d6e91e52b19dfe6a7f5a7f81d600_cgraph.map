@@ -1,0 +1,14 @@
+<map id="model.MainModel.updateSpritesAndMasks" name="model.MainModel.updateSpritesAndMasks">
+<area shape="rect" id="node2" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="292,82,529,123"/>
+<area shape="rect" id="node8" href="$de/dda/classmodel_1_1_game_universe.html#ae55bff5ebd307949b81d7cce069f0423" title="model.GameUniverse.getDrawable\lGameElementStates" alt="" coords="288,147,533,189"/>
+<area shape="rect" id="node9" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="309,213,512,254"/>
+<area shape="rect" id="node10" href="$de/dda/classmodel_1_1_game_universe.html#a058797c0ccdf5a6ed5d3b1f53654f9a0" title="model.GameUniverse.getSelectable\lGameElementStates" alt="" coords="284,278,537,319"/>
+<area shape="rect" id="node11" href="$de/d33/classmodel_1_1_game_save_load_mediator.html#a826a98c89d42cfd8abb16dd31dfa919a" title="model.GameSaveLoadMediator.load\lSpritesAndMasks" alt="" coords="283,343,538,385"/>
+<area shape="rect" id="node3" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="619,14,818,55"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="601,82,837,123"/>
+<area shape="rect" id="node7" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="600,147,837,189"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="920,5,1136,61"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="929,85,1127,126"/>
+<area shape="rect" id="node12" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#a6213b8131d50465b417e375f32cb33e3" title="model.sprite.SpriteImage\lGenerator.loadSpriteImageContainers" alt="" coords="587,343,851,385"/>
+<area shape="rect" id="node13" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#ab447717d12685c64342203f9ad82fcaa" title="model.sprite.SpriteImage\lGenerator.loadSpriteImageContainer" alt="" coords="899,343,1157,385"/>
+</map>

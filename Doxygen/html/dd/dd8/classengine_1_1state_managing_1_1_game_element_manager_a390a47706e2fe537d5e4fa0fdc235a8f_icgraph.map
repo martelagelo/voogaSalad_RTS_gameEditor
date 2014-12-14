@@ -1,0 +1,4 @@
+<map id="engine.stateManaging.GameElementManager.findAllElementsOfType" name="engine.stateManaging.GameElementManager.findAllElementsOfType">
+<area shape="rect" id="node2" href="$d4/d78/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_object_location_check_action.html#a81d6b285c7b9a6fe2eeab7563e984bb7" title="engine.gameRepresentation.evaluatables.actions.\lObjectLocationCheckAction.evaluate" alt="" coords="320,5,661,46"/>
+<area shape="rect" id="node3" href="$d7/d03/classengine_1_1game_representation_1_1evaluatables_1_1parameters_1_1object_identifiers_1_1_global_object_identifier.html#a3cdbdd5118da2e621fd0a473cc87eedb" title="engine.gameRepresentation.evaluatables.parameters.object\lIdentifiers.GlobalObjectIdentifier.getElementOfInterest" alt="" coords="286,70,695,111"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="view.gui.MenuBarController.initLanguageMenu" name="view.gui.MenuBarController.initLanguageMenu">
+<area shape="rect" id="node2" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="275,13,474,54"/>
+<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a2ab4bbb91f3d8a0c0987afbb20125308" title="util.multilanguage.Multi\lLanguageUtility.getSupported\lLanguages" alt="" coords="269,77,480,133"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a87a79a63384474ed2c5e31bbd4c90000" title="util.multilanguage.Multi\lLanguageUtility.setLanguage" alt="" coords="271,157,478,198"/>
+<area shape="rect" id="node3" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="537,5,753,61"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#ac4432e1fec53f64c1538f9e0166d8f75" title="util.multilanguage.Multi\lLanguageUtility.updateProperties" alt="" coords="529,157,762,198"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6d69f8159afbf46212a09e0b273b4a2a" title="util.multilanguage.Multi\lLanguageUtility.createString\lListProperties" alt="" coords="813,29,1016,85"/>
+<area shape="rect" id="node8" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a187839512290f2b29e9847bd164e87df" title="util.multilanguage.Multi\lLanguageUtility.createString\lProperties" alt="" coords="813,109,1016,165"/>
+<area shape="rect" id="node9" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#aa42945f9e0519aa6ebc3f38916a92657" title="util.multilanguage.Multi\lLanguageUtility.updateString\lListProperties" alt="" coords="811,189,1018,245"/>
+<area shape="rect" id="node10" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a46568b52c46e3ac4b5f7a1bea260bbc9" title="util.multilanguage.Multi\lLanguageUtility.updateString\lProperties" alt="" coords="811,269,1018,325"/>
+</map>

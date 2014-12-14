@@ -1,0 +1,9 @@
+<map id="view.editor.wizards.GameElementWizard.attachTextProperties" name="view.editor.wizards.GameElementWizard.attachTextProperties">
+<area shape="rect" id="node2" href="$d2/daf/classview_1_1editor_1_1wizards_1_1_c_r_u_d_container.html#ae0664452e6723f9d17b648016910103a" title="view.editor.wizards.CRUDContainer.bind\lButtonText" alt="" coords="307,5,579,46"/>
+<area shape="rect" id="node3" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#a9b51f9af82adaed09caacee651b8f566" title="view.dialog.DialogBoxUtility.create\lMessageDialog" alt="" coords="324,122,561,163"/>
+<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="646,57,845,98"/>
+<area shape="rect" id="node7" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="627,187,863,229"/>
+<area shape="rect" id="node4" href="$d8/d1e/classview_1_1dialog_1_1_dialog_box_utility.html#ac719f60b2969771ed4bc5acd0dabe41e" title="view.dialog.DialogBoxUtility.create\lDialogBox" alt="" coords="627,122,864,163"/>
+<area shape="rect" id="node6" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="912,49,1128,105"/>
+<area shape="rect" id="node8" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="921,187,1119,229"/>
+</map>

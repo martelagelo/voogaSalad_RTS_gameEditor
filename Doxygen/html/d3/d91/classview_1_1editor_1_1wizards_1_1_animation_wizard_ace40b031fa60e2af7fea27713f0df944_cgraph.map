@@ -1,0 +1,5 @@
+<map id="view.editor.wizards.AnimationWizard.launchForEdit" name="view.editor.wizards.AnimationWizard.launchForEdit">
+<area shape="rect" id="node2" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ae19ca8de1e400fb399d702d78c861a81" title="model.data.WizardData.get\lValueByKey" alt="" coords="267,5,464,46"/>
+<area shape="rect" id="node3" href="$d3/d91/classview_1_1editor_1_1wizards_1_1_animation_wizard.html#a68f2bd92782ff01c65296cebe732b794" title="view.editor.wizards.Animation\lWizard.selectCorrectFrame" alt="" coords="261,70,469,111"/>
+<area shape="rect" id="node4" href="$d9/dd9/classview_1_1editor_1_1wizards_1_1_direction_grid.html#a0bc272657ee927e3f8b761a80015c70e" title="view.editor.wizards.Direction\lGrid.selectFrame" alt="" coords="517,70,717,111"/>
+</map>
