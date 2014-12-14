@@ -1,8 +1,0 @@
-<map id="view.editor.DescribableInfoBoxController.initialize" name="view.editor.DescribableInfoBoxController.initialize">
-<area shape="rect" id="node2" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a4434d82aa88c08ec97fb70994f38041c" title="util.multilanguage.Multi\lLanguageUtility.getInstance" alt="" coords="274,17,473,58"/>
-<area shape="rect" id="node4" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a6adf3e1cb73a5cef3bc6d4a11cb1b091" title="util.multilanguage.Multi\lLanguageUtility.getStringProperty" alt="" coords="255,85,491,126"/>
-<area shape="rect" id="node6" href="$d7/d60/classview_1_1editor_1_1_describable_info_box_controller.html#ae13b7cce012112fd44c5690298664be1" title="view.editor.DescribableInfo\lBoxController.initLabelInputSwitching" alt="" coords="245,150,501,191"/>
-<area shape="rect" id="node3" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a39432790595e3fc9ef3e2842299739f7" title="util.multilanguage.Multi\lLanguageUtility.MultiLanguage\lUtility" alt="" coords="553,5,769,61"/>
-<area shape="rect" id="node5" href="$d4/d81/classutil_1_1multilanguage_1_1_multi_language_utility.html#a596dd4d3069ea8571f1379d6d8a8471b" title="util.multilanguage.Multi\lLanguageUtility.getProperty" alt="" coords="562,85,761,126"/>
-<area shape="rect" id="node7" href="$d7/d60/classview_1_1editor_1_1_describable_info_box_controller.html#a473310a582ca4cdc6e4675b2bb64cc6d" title="view.editor.DescribableInfo\lBoxController.setEditableToggle" alt="" coords="550,150,773,191"/>
-</map>

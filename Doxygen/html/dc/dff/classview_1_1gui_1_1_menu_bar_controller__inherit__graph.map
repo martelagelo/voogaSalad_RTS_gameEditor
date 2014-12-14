@@ -1,6 +1,0 @@
-<map id="view.gui.MenuBarController" name="view.gui.MenuBarController">
-<area shape="rect" id="node6" href="$dc/d0c/classview_1_1editor_1_1_editor_menu_bar_controller.html" title="view.editor.EditorMenuBar\lController" alt="" coords="5,230,192,271"/>
-<area shape="rect" id="node7" href="$df/d3c/classview_1_1runner_1_1_runner_menu_bar_controller.html" title="view.runner.RunnerMenuBar\lController" alt="" coords="217,230,415,271"/>
-<area shape="rect" id="node2" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html" title="view.gui.GUIContainer" alt="" coords="127,80,285,107"/>
-<area shape="rect" id="node5" href="$d5/d13/interfaceview_1_1gui_1_1_g_u_i_controller.html" title="view.gui.GUIController" alt="" coords="271,5,429,32"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="view.editor.TabViewController.recreateWizardData" name="view.editor.TabViewController.recreateWizardData">
-<area shape="rect" id="node2" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a9cc5ffae61bf745c8aad40f05ee31ab4" title="model.data.WizardData.add\lDataPair" alt="" coords="341,5,541,46"/>
-<area shape="rect" id="node3" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a6b44fe417ec28ee3ba038c3ef8ec0221" title="view.editor.TabViewController.extract\lParamString" alt="" coords="315,70,567,111"/>
-<area shape="rect" id="node4" href="$d4/d65/classview_1_1editor_1_1_tab_view_controller.html#a2fdb8e36f124e6195361d48a4dc7cfc1" title="view.editor.TabViewController.removeEnds" alt="" coords="617,77,903,104"/>
-</map>

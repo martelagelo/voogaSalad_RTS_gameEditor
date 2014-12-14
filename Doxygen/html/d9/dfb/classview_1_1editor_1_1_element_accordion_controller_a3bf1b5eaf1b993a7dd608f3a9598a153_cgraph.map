@@ -1,6 +1,0 @@
-<map id="view.editor.ElementAccordionController.addStringAttributes" name="view.editor.ElementAccordionController.addStringAttributes">
-<area shape="rect" id="node2" href="$d7/d92/classview_1_1editor_1_1wizards_1_1_game_element_wizard.html#a03fc79965e6b6d0f7a9865542a141f79" title="view.editor.wizards.Game\lElementWizard.attachStringAttributes" alt="" coords="267,5,530,46"/>
-<area shape="rect" id="node3" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="271,71,526,97"/>
-<area shape="rect" id="node5" href="$de/dda/classmodel_1_1_game_universe.html#a476517cd9082f708749da1c047fbbfef" title="model.GameUniverse.getString\lAttributes" alt="" coords="287,122,511,163"/>
-<area shape="rect" id="node4" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="579,63,781,105"/>
-</map>

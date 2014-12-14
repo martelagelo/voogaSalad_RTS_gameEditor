@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.renderedRepresentation.Level.removeElement" name="engine.gameRepresentation.renderedRepresentation.Level.removeElement">
-<area shape="rect" id="node2" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html#acf33d4d5a42cecd5f88230b73a644268" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement.getNode" alt="" coords="318,5,650,46"/>
-<area shape="rect" id="node4" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html#a46ccf281e2cba5b240918e353bf1782a" title="engine.gameRepresentation.rendered\lRepresentation.GameElement.getState" alt="" coords="347,70,621,111"/>
-<area shape="rect" id="node5" href="$d2/de7/classmodel_1_1state_1_1_level_state.html#ab2a321d905f8259d1ab197e60875e99a" title="model.state.LevelState.remove\lElement" alt="" coords="372,135,596,177"/>
-<area shape="rect" id="node3" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html#ad3584be6f6368589ed27e26357d8ddf8" title="engine.visuals.elementVisuals.\lVisualizer.getNode" alt="" coords="699,5,917,46"/>
-</map>
