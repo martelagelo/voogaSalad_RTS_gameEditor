@@ -116,7 +116,6 @@ public class Pong extends Application {
         levelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 1000);
         levelState.myAttributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
                 "resources/img/graphics/terrain/grass/GrassTile.jpg");
-        levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
@@ -140,12 +139,6 @@ public class Pong extends Application {
         Engine engine = new Engine(model2, model2.getLevel(new LevelIdentifier("testLevel",
                 "testCampaign")));
         return engine;
-    }
-
-    private GameElementState createGoal () {
-        GameElementState ges = new GameElementState();
-        ges.myAttributes.setNumericalAttribute("GoalSatisfied", 0);
-        return ges;
     }
 
     private SelectableGameElementState createGoalDisplayMarker () throws SaveLoadException {
