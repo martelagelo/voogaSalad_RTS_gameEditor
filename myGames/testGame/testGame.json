@@ -24,7 +24,20 @@
           "myTerrains": [],
           "myUnits": [
             {
-              "attributeDisplayerStates": [],
+              "attributeDisplayerStates": [
+                {
+                  "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+                  "parameterTag": "isSelected",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 1.0
+                },
+                {
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 200.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "colorMaskTag": "resources/gameelementresources/units/colormasks/archer.png",
@@ -557,27 +570,6 @@
                 40.0
               ],
               "myActions": {
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-                    "myParameters": [
-                      "boundary",
-                      "me",
-                      "xVelocity",
-                      "EqualsAssignment",
-                      "-1",
-                      "MultiplicationAssignment",
-                      "me",
-                      "xVelocity",
-                      "FalseEvaluator",
-                      "Equals",
-                      "0",
-                      "my",
-                      "0"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
                 "BUTTON": [
                   {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -632,6 +624,27 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
                 ]
               },
               "attributes": {
@@ -655,6 +668,10 @@
                   {
                     "myData": 100.0,
                     "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 200,
+                    "myName": "health"
                   },
                   {
                     "myData": 6,
@@ -2370,6 +2387,26 @@
                 10.0
               ],
               "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -2408,26 +2445,6 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
-                  }
-                ],
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -3019,6 +3036,26 @@
                 10.0
               ],
               "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
+                    "myParameters": [
+                      "spawnScore",
+                      "Equals",
+                      "1",
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -3057,26 +3094,6 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
-                  }
-                ],
-                "INTERNAL": [
-                  {
-                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-                    "myParameters": [
-                      "spawnScore",
-                      "Equals",
-                      "1",
-                      "goalMarker",
-                      "0",
-                      "0",
-                      "0",
-                      "0",
-                      "",
-                      "",
-                      "spawnScore",
-                      "0"
-                    ],
-                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -3135,7 +3152,14 @@
               ]
             },
             {
-              "attributeDisplayerStates": [],
+              "attributeDisplayerStates": [
+                {
+                  "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+                  "parameterTag": "health",
+                  "minAttributeValue": 0.0,
+                  "maxAttributeValue": 200.0
+                }
+              ],
               "myAnimatorState": {
                 "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
                 "colorMaskTag": "resources/gameelementresources/units/colormasks/archer.png",
@@ -3668,31 +3692,6 @@
                 40.0
               ],
               "myActions": {
-                "COLLISION": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "SetFocused"
-                    ],
-                    "myActionType": "COLLISION"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "FollowX"
-                    ],
-                    "myActionType": "FOCUSED"
-                  }
-                ],
                 "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
@@ -3722,6 +3721,31 @@
                     ],
                     "myActionType": "INTERNAL"
                   }
+                ],
+                "COLLISION": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
                 ]
               },
               "attributes": {
@@ -3741,6 +3765,10 @@
                   {
                     "myData": 700.0,
                     "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 200,
+                    "myName": "health"
                   },
                   {
                     "myData": 3,
@@ -4304,6 +4332,29 @@
                 40.0
               ],
               "myActions": {
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "8"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
                 "COLLISION": [
                   {
                     "myActionName": "OBJECT_TYPE_CHECK_ACTION",
@@ -4446,29 +4497,6 @@
                       "0"
                     ],
                     "myActionType": "COLLISION"
-                  }
-                ],
-                "INTERNAL": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "me",
-                      "movementSpeed",
-                      "GreaterThan",
-                      "8",
-                      "me",
-                      "movementSpeed",
-                      "EqualsAssignment",
-                      "8"
-                    ],
-                    "myActionType": "INTERNAL"
                   }
                 ]
               },
@@ -4617,6 +4645,10 @@
         "myName": "yGoalPosition"
       },
       {
+        "myData": 200,
+        "myName": "health"
+      },
+      {
         "myData": 6,
         "myName": "movementSpeed"
       },
@@ -4647,7 +4679,20 @@
     "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
-        "attributeDisplayerStates": [],
+        "attributeDisplayerStates": [
+          {
+            "displayerTag": "ATTRIBUTE_ARROW_DISPLAYER",
+            "parameterTag": "isSelected",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 1.0
+          },
+          {
+            "displayerTag": "ATTRIBUTE_BAR_DISPLAYER",
+            "parameterTag": "health",
+            "minAttributeValue": 0.0,
+            "maxAttributeValue": 200.0
+          }
+        ],
         "myAnimatorState": {
           "imageTag": "resources/gameelementresources/units/spritesheets/archer.png",
           "colorMaskTag": "resources/gameelementresources/units/colormasks/archer.png",
@@ -5180,27 +5225,6 @@
           40.0
         ],
         "myActions": {
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
-              "myParameters": [
-                "boundary",
-                "me",
-                "xVelocity",
-                "EqualsAssignment",
-                "-1",
-                "MultiplicationAssignment",
-                "me",
-                "xVelocity",
-                "FalseEvaluator",
-                "Equals",
-                "0",
-                "my",
-                "0"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ],
           "BUTTON": [
             {
               "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
@@ -5255,6 +5279,27 @@
               ],
               "myActionType": "INTERNAL"
             }
+          ],
+          "COLLISION": [
+            {
+              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+              "myParameters": [
+                "boundary",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-1",
+                "MultiplicationAssignment",
+                "me",
+                "xVelocity",
+                "FalseEvaluator",
+                "Equals",
+                "0",
+                "my",
+                "0"
+              ],
+              "myActionType": "COLLISION"
+            }
           ]
         },
         "attributes": {
@@ -5278,6 +5323,10 @@
             {
               "myData": 100.0,
               "myName": "yGoalPosition"
+            },
+            {
+              "myData": 200,
+              "myName": "health"
             },
             {
               "myData": 6,
