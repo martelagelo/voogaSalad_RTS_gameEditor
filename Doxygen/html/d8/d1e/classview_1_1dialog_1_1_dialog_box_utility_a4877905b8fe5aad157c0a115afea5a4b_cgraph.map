@@ -1,9 +1,0 @@
-<map id="view.dialog.DialogBoxUtility.createDialogBox" name="view.dialog.DialogBoxUtility.createDialogBox">
-<area shape="rect" id="node2" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#ad8a679308f5305b82d32661a86f96690" title="view.GUILoadStyleUtility.add\lScene" alt="" coords="335,5,535,46"/>
-<area shape="rect" id="node4" href="$d3/d2d/classview_1_1dialog_1_1_dialog_box_controller.html#ae8b91b675a02c6e95a304bf96bb62898" title="view.dialog.DialogBoxController.attachInfo" alt="" coords="291,71,578,97"/>
-<area shape="rect" id="node5" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a3f0bdbc7239563c54aa365afd86f620d" title="view.GUILoadStyleUtility.generate\lGUIPane" alt="" coords="317,122,552,163"/>
-<area shape="rect" id="node6" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#ad5c2539d920db1e4cec593d49cbf28bc" title="view.GUILoadStyleUtility.get\lInstance" alt="" coords="336,187,533,229"/>
-<area shape="rect" id="node8" href="$d3/d2d/classview_1_1dialog_1_1_dialog_box_controller.html#a3faf455420e8e5621a1fadee45196235" title="view.dialog.DialogBoxController.getRoot" alt="" coords="299,253,571,280"/>
-<area shape="rect" id="node3" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#a9540b620f62a09da8127367e897d5129" title="view.GUILoadStyleUtility.attach\lStyles" alt="" coords="627,5,845,46"/>
-<area shape="rect" id="node7" href="$de/d50/classview_1_1_g_u_i_load_style_utility.html#aec297413dba8a98a536fdd9792d27860" title="view.GUILoadStyleUtility.\lGUILoadStyleUtility" alt="" coords="648,187,824,229"/>
-</map>

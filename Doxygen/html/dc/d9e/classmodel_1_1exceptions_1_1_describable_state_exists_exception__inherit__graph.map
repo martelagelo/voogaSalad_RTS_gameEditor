@@ -1,5 +1,0 @@
-<map id="model.exceptions.DescribableStateExistsException" name="model.exceptions.DescribableStateExistsException">
-<area shape="rect" id="node4" href="$d0/dd5/classmodel_1_1exceptions_1_1_campaign_exists_exception.html" title="model.exceptions.Campaign\lExistsException" alt="" coords="5,262,208,303"/>
-<area shape="rect" id="node5" href="$dd/de3/classmodel_1_1exceptions_1_1_level_exists_exception.html" title="model.exceptions.LevelExists\lException" alt="" coords="233,262,441,303"/>
-<area shape="rect" id="node2" href="$d0/d64/classmodel_1_1exceptions_1_1_describable_state_exception.html" title="model.exceptions.Describable\lStateException" alt="" coords="114,81,328,122"/>
-</map>
