@@ -1,0 +1,9 @@
+<map id="model.MainModel.loadGame" name="model.MainModel.loadGame">
+<area shape="rect" id="node2" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="273,5,460,46"/>
+<area shape="rect" id="node4" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="270,70,463,111"/>
+<area shape="rect" id="node6" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a7e50ce5a292e35b972ae31ec4df4f5ca" title="view.splash.SplashScreen.load\lGameAndSwitchScreen" alt="" coords="259,135,475,177"/>
+<area shape="rect" id="node3" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="551,12,705,39"/>
+<area shape="rect" id="node5" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="547,77,709,104"/>
+<area shape="rect" id="node7" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#a6425dffd80436213cce943fc3aa27563" title="view.splash.SplashScreen.set\lUpButtons" alt="" coords="523,135,733,177"/>
+<area shape="rect" id="node8" href="$d0/d3f/classview_1_1splash_1_1_splash_screen.html#af2da20a5479f92e4669ae93f0d6121de" title="view.splash.SplashScreen.init" alt="" coords="781,143,989,169"/>
+</map>

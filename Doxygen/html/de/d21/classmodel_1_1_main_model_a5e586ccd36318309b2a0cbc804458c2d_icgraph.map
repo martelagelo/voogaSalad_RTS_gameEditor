@@ -1,0 +1,5 @@
+<map id="model.MainModel.elementIsInUse" name="model.MainModel.elementIsInUse">
+<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a4c06208d5fc1ed5694a1cfc76a116599" title="model.MainModel.removeDrawable\lGameElement" alt="" coords="261,5,507,46"/>
+<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#a245e01adfaf1f234878f391818d392b1" title="model.MainModel.removeSelectable\lGameElement" alt="" coords="257,70,511,111"/>
+<area shape="rect" id="node3" href="$d9/dfb/classview_1_1editor_1_1_element_accordion_controller.html#af80453486ff349552dab988fb64397c0" title="view.editor.ElementAccordion\lController.init" alt="" coords="560,38,768,79"/>
+</map>

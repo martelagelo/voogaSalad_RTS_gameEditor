@@ -1,0 +1,5 @@
+<map id="model.state.GameState" name="model.state.GameState">
+<area shape="rect" id="node2" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html" title="model.state.DescribableState" alt="" coords="519,56,732,83"/>
+<area shape="rect" id="node3" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="71,5,175,32"/>
+<area shape="rect" id="node6" href="$de/dda/classmodel_1_1_game_universe.html" title="model.GameUniverse" alt="" coords="545,245,706,272"/>
+</map>
