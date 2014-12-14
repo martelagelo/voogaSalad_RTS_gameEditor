@@ -35,6 +35,7 @@ public class ParticipantManager {
                                GameElementManager gameElementManager) {
         myElementManager = gameElementManager;
         myAIUsers = new ArrayList<>();
+        myAIUsers.add(new AIParticipant(2, "testAI"));
         humanUser = user;
         player1Resources = new SimpleObjectProperty<>();
     }

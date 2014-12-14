@@ -79,7 +79,7 @@ public class Engine extends Observable implements Observer {
     }
 
     public static int colorIntFromString (String color) {
-        return Integer.parseInt(color.substring(2), 16);
+        return Integer.parseInt(color.substring(2, color.length() - 2), 16);
     }
     
     public static String colorStringFromInt(int color) {
