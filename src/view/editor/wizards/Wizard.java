@@ -3,6 +3,10 @@ package view.editor.wizards;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.regex.Pattern;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -214,6 +218,10 @@ public abstract class Wizard implements GUIController {
         catch (LanguageException e) {
             displayErrorMessage(e.getMessage());
         }
+    }
+    
+    protected boolean isNumber(String value) {
+        return Pattern.matches(NUM_REGEX, value);
     }
 
 }

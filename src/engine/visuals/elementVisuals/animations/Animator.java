@@ -1,27 +1,25 @@
 package engine.visuals.elementVisuals.animations;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
-import util.SaveLoadUtility;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import model.exceptions.SaveLoadException;
+import model.sprite.ColorMapGenerator;
 import model.sprite.SpriteImageContainer;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.Updatable;
+import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import engine.visuals.Dimension;
 
 
@@ -35,8 +33,10 @@ import engine.visuals.Dimension;
  */
 public class Animator implements Updatable {
 
-    public static final String SINGLE_IMAGE_PATH_STRING = "resources/gameelementresources/units/singleImages/";
-    public static final String DEFAULT_IMAGE_STRING = "resources/gameelementresources/terrain/stone6.png";
+    public static final String SINGLE_IMAGE_PATH_STRING =
+            "resources/gameelementresources/units/singleImages/";
+    public static final String DEFAULT_IMAGE_STRING =
+            "resources/gameelementresources/terrain/stone6.png";
     private SpriteImageContainer myImages;
     private AnimatorState myState;
     private AttributeContainer attributesOfInterest;
@@ -48,9 +48,9 @@ public class Animator implements Updatable {
 
     private AnimationSequence myCurrentAnimation;
     private List<AnimationTag> currentDirection;
-    
+
     private SimpleBooleanProperty animationEnabled = new SimpleBooleanProperty(false);
-    
+
     /**
      * Initialize the player
      *
@@ -62,24 +62,30 @@ public class Animator implements Updatable {
      * @param numCols
      *        the number of columns across the spritesheet goes before
      *        moving to the next row
-     *        
+     * 
      * @param animationEnabled
      *        whether to keep track of the actual animation of the object
      *        or replace with the default image. JavaFX has difficulty managing
      *        large sprite sheets
      */
-    public Animator (SpriteImageContainer images, AnimatorState state, AttributeContainer attributes, SimpleBooleanProperty animationEnabled) {
+    public Animator (SpriteImageContainer images,
+                     AnimatorState state,
+                     AttributeContainer attributes,
+                     SimpleBooleanProperty animationEnabled) {
         this.animationEnabled = animationEnabled;
-
-        if(!animationEnabled.get()){
+        // mySpritesheetBounds = getImageBounds(images.getSpritesheet().getImage());
+        if (!animationEnabled.get()) {
             try {
-                String imageType = state.getImageTag().substring(state.getImageTag().lastIndexOf('/')+1);
-                images = new SpriteImageContainer(
-                                                  new ImageView(
-                                                                SaveLoadUtility
-                                                                        .loadImage(SINGLE_IMAGE_PATH_STRING+imageType)),
-                                                  new ImageView());
-                state = new AnimatorState(SINGLE_IMAGE_PATH_STRING+imageType,
+                String imageType =
+                        state.getImageTag().substring(state.getImageTag().lastIndexOf('/') + 1);
+                images =
+                        new SpriteImageContainer(
+                                                 new ImageView(
+                                                               SaveLoadUtility
+                                                                       .loadImage(SINGLE_IMAGE_PATH_STRING +
+                                                                                  imageType)),
+                                                 new ImageView());
+                state = new AnimatorState(SINGLE_IMAGE_PATH_STRING + imageType,
                                           "", new Dimension(1, 1), 1,
                                           null);
             }
@@ -87,7 +93,7 @@ public class Animator implements Updatable {
                 // continue, do nothing
             }
         }
-        
+
         myImages = images;
         myImages.getSpritesheet().setClip(new ImageView(myImages.getSpritesheet().getImage()));
 
@@ -95,9 +101,11 @@ public class Animator implements Updatable {
         attributesOfInterest = attributes;
         mySprite = myImages.getSpritesheet();
         mySpritesheetBounds = getImageBounds(mySprite.getImage());
-        String teamColor = attributesOfInterest.getTextualAttribute(StateTags.TEAM_COLOR.getValue());
-        
-        if(!animationEnabled.get()) setColorMasking(teamColor);
+        long teamColor =
+                attributesOfInterest.getNumericalAttribute(StateTags.TEAM_COLOR.getValue())
+                        .longValue();
+
+        if (!animationEnabled.get()) setColorMasking(teamColor);
         mySpriteTeamOverlay = myImages.getColorMask(teamColor);
         mySpriteDisplay = new Group();
         mySpriteDisplay.getChildren().add(mySpriteTeamOverlay);
@@ -105,34 +113,38 @@ public class Animator implements Updatable {
         currentDirection = new ArrayList<>();
         currentDirection.add(AnimationTag.FORWARD);
         myCurrentAnimation = new NullAnimationSequence();
-        
+
     }
 
     /**
      * Sets the hue of the unit to match the team color. Use only if animations are
      * disabled
+     * 
      * @param teamColor
      */
-    private void setColorMasking (String teamColor) {
+    private void setColorMasking (long teamColor) {
         ColorInput mask = new ColorInput(
                                          0,
                                          0,
                                          myImages.getSpritesheet().getImage().getWidth(),
                                          myImages.getSpritesheet().getImage().getHeight(),
                                          Color.BLACK
-                                 );
+                );
         try {
-            mask.setPaint(Color.valueOf(teamColor));
-
+            mask.setPaint(ColorMapGenerator.colorFromLong(teamColor));
             Blend blush = new Blend(
                                     BlendMode.MULTIPLY,
                                     null,
                                     mask
-                            );
+                    );
             myImages.getSpritesheet().setEffect(blush);
         }
         catch (Exception e) {
+            e.printStackTrace();
             // fail silently
+        }
+        if (teamColor == 0) {
+            mask.setPaint(Color.TRANSPARENT);
         }
     }
 
@@ -179,10 +191,12 @@ public class Animator implements Updatable {
     }
 
     private void determineAnimationDirection () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
-                .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
-                .doubleValue();
+        double xVelocity =
+                attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
+                        .doubleValue();
+        double yVelocity =
+                attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
+                        .doubleValue();
 
         if (xVelocity != 0.0 || yVelocity != 0.0) {
             currentDirection.clear();
@@ -197,12 +211,15 @@ public class Animator implements Updatable {
 
     // TODO is there a better way? make this dynamic? add an Evaluatatble?
     private AnimationTag determineAnimationType () {
-        double xVelocity = attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
-                .doubleValue();
-        double yVelocity = attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
-                .doubleValue();
+        double xVelocity =
+                attributesOfInterest.getNumericalAttribute(StateTags.X_VELOCITY.getValue())
+                        .doubleValue();
+        double yVelocity =
+                attributesOfInterest.getNumericalAttribute(StateTags.Y_VELOCITY.getValue())
+                        .doubleValue();
         double velocity = Math.sqrt(Math.pow(xVelocity, 2) + Math.pow(yVelocity, 2));
-        String currentAction = attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION.getValue());
+        String currentAction =
+                attributesOfInterest.getTextualAttribute(StateTags.CURRENT_ACTION.getValue());
         boolean isAttacking = currentAction.equalsIgnoreCase("ATTACKING");
         boolean isDying = currentAction.equalsIgnoreCase("DYING");
         boolean isDecaying = currentAction.equalsIgnoreCase("DECAYING");

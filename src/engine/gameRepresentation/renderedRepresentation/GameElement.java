@@ -44,6 +44,10 @@ public class GameElement {
         createActionLists();
     }
 
+    public GameElementState getState() {
+        return myState;
+    }
+    
     /**
      * Ensure that lists are instantiated for all the possible action types of an element to protect
      * against uninstantiated action entities at runtime.
@@ -51,7 +55,7 @@ public class GameElement {
     private void createActionLists () {
         if (myActionLists == null) {
             myActionLists = new HashMap<>();
-        }  
+        }
         for (ActionType type : ActionType.values()) {
             if (!myActionLists.containsKey(type)) {
                 myActionLists.put(type, new CopyOnWriteArrayList<>());
@@ -89,22 +93,6 @@ public class GameElement {
             myActionLists.put(actionType, new CopyOnWriteArrayList<>());
         }
         myActionLists.get(actionType).add(action);
-    }
-
-    /**
-     * Remove the given action the array of actions
-     * 
-     * @param actionID the identifier string for the action tree @see Evaluatable
-     */
-    public void removeAction (String actionID) {
-        for (ActionType actionType : myActionLists.keySet()) {
-            getActionsOfType(actionType).forEachRemaining(action -> {
-                if (action.getID().equals(actionID)) {
-                    // //System.out.println("Action should be removed");
-                    myActionLists.get(actionType).remove(action);
-                }
-            });
-        }
     }
 
     /**
@@ -151,8 +139,6 @@ public class GameElement {
      * Update the element based on its internal state
      */
     public void update () {
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR.getValue());
-        // System.out.println("Updating game element: " + teamColor);
         updateTimers();
         updateSelfDueToInternalFactors();
     }
@@ -207,6 +193,7 @@ public class GameElement {
      * @param timerValue its value
      */
     public void setTimer (String timerName, long timerValue) {
+        setNumericalAttribute(timerName, 0);
         myTimers.put(timerName, timerValue);
     }
 
@@ -223,9 +210,15 @@ public class GameElement {
                 entry.setValue(timerValue);
             }
             else {
+                // Set a flag indicating that the timer has completed
+                setNumericalAttribute(entry.getKey(), 1);
                 it.remove();
             }
         }
+    }
+
+    public Map<String, Long> getTimersCopy () {
+        return new HashMap<>(myTimers);
     }
 
     public void registerAsChild (Consumer<GameElementState> function) {

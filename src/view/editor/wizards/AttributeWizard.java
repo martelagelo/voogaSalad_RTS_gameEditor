@@ -1,16 +1,16 @@
 package view.editor.wizards;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import model.state.gameelement.StateTags;
-import model.state.gameelement.StateTags.StateType;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 
@@ -40,8 +40,8 @@ public class AttributeWizard extends Wizard {
     }
 
     protected boolean areFieldsNotNull () {
-        return (key.getSelectionModel().getSelectedItem() != null ||
-               key.valueProperty().get() != null) && !value.getText().isEmpty();
+        return (key.getSelectionModel().selectedItemProperty().isNotNull().get() ||
+               key.valueProperty().isNotNull().get()) && !value.getText().isEmpty();
     }
 
     @Override
@@ -58,10 +58,7 @@ public class AttributeWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        attributes = Arrays.asList(StateTags.values())
-                .stream().filter(tag -> tag.getType().equals(StateType.STRING))
-                .map(tag -> tag.getValue())
-                .collect(Collectors.toSet()); 
+        attributes = StateTags.getAllTextualAttributes();
         key.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
     }
     

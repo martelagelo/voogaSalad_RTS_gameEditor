@@ -4,14 +4,14 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
 
 
 /**
- * Implements the OR evaluator functionality
+ * Implements the OR functionality on two parameters
  * 
  * @author Zach
  */
 public class Or<A, B> extends Evaluator<A, B, Boolean> {
 
-    public Or (String id, Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "||", parameter1, parameter2);
+    public Or (Evaluatable<A> parameter1, Evaluatable<B> parameter2) {
+        super(Boolean.class, "||", parameter1, parameter2);
     }
 
     @Override

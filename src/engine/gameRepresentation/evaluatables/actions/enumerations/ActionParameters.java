@@ -12,6 +12,8 @@ import java.util.List;
 public enum ActionParameters {
     // Element element evaluators
     EE_EVAL(
+            "SetFocused",
+            "Bounce",
             "Attack",
             "Collision",
             "NotCollision",
@@ -20,7 +22,8 @@ public enum ActionParameters {
             "MoveBack",
             "MovePlayer",
             "RandomWaypoint",
-            "UpdateMovementDirection"),
+            "UpdateMovementDirection",
+            "FalseEvaluator"),
     // Number number evaluators
     NN_EVAL(
             "AdditionAssignment",
@@ -28,19 +31,26 @@ public enum ActionParameters {
             "Equals",
             "GreaterThan",
             "GreaterThanEqual",
+            "MultiplicationAssignment",
             "LessThan",
             "LessThanEqual",
             "NotEquals",
             "SubtractionAssignment"),
     // Boolean boolean evaluators
     BB_EVAL("And", "Equals", "Or"),
-    PLAYER_TYPE("my","another player"),
+    PLAYER_TYPE("my", "another player"),
     // Attributes
     ATTR(),
     // Strings
     STRING(),
     // Numbers
-    NUMBER();
+    NUMBER(),
+    // A comma delimited list of strings
+    STRING_LIST(),
+    // A comma delimited list of attributes
+    ATTR_LIST(),
+    // Designation between my object and another object
+    OBJECT_DESIGNATOR("me", "other object");
 
     String[] myOptions;
 

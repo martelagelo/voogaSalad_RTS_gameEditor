@@ -13,9 +13,9 @@ import engine.visuals.elementVisuals.animations.AnimationTag;
  * @author Jonathan Tseng, Nishad Agrawal
  *
  */
-// TODO: refector Grids into hierarchy
 public class DirectionGrid extends Grid {
 	
+    public static final int GRID_SIZE = 3;
     private static final String SELECTED_COLOR = "red";
     private static final Paint FILL_COLOR = Paint.valueOf("white");
     private List<AnimationTag> directions;
@@ -35,16 +35,13 @@ public class DirectionGrid extends Grid {
         resetExistingFill(SELECTED_COLOR, FILL_COLOR);
         Frame f = frameCols.get(col).get(row);
         f.setFill(Paint.valueOf(SELECTED_COLOR));
-        // I realize this is horrible code, but it is the simplest
-        // most efficient way of directly mapping x,y coor to animation tags
-        if (row == 1 && col == 1) directions.add(AnimationTag.HERE);
-        if (row > 1)
-            directions.add(AnimationTag.FORWARD);
-        else if (row < 1) directions.add(AnimationTag.BACKWARD);
+        int center = GRID_SIZE/2;
+        if (row == center && col == center) directions.add(AnimationTag.HERE);
+        if (row > center) directions.add(AnimationTag.FORWARD);
+        else if (row < center) directions.add(AnimationTag.BACKWARD);
 
-        if (col > 1)
-            directions.add(AnimationTag.RIGHT);
-        else if (col < 1) directions.add(AnimationTag.LEFT);
+        if (col > center) directions.add(AnimationTag.RIGHT);
+        else if (col < center) directions.add(AnimationTag.LEFT);
     }
 
     public List<AnimationTag> getDirections () {
@@ -53,7 +50,7 @@ public class DirectionGrid extends Grid {
 
     @Override
     protected void createColumns () {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GRID_SIZE; i++) {
             frameCols.add(i, new ArrayList<>());
             Group column = createColumn(i);
             column.setTranslateX(i * myFrameX);
@@ -64,7 +61,7 @@ public class DirectionGrid extends Grid {
     @Override
     protected Group createColumn (int col) {
         Group column = new Group();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GRID_SIZE; i++) {
             // this was added because lambdas need arguments that appear final
             int row = i;
             Frame frame = createFrame(i, col, Paint.valueOf("white"));

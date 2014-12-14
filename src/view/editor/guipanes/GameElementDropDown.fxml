@@ -8,7 +8,7 @@
 <TitledPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:id="elementDropDown" fx:controller="view.editor.ElementDropDownController">
 	<content>
-		<VBox>
+		<VBox fx:id="vboxRoot">
 			<padding>
 				<Insets top="0" bottom="0" right="0" left="0" />
 			</padding>
@@ -17,12 +17,7 @@
 					<maxWidth>
 						<Double fx:constant="MAX_VALUE" />
 					</maxWidth>
-				</Button>
-				<Button fx:id="addToLevelButton" VBox.vgrow="NEVER">
-					<maxWidth>
-						<Double fx:constant="MAX_VALUE" />
-					</maxWidth>
-				</Button>
+				</Button>				
 				<Button fx:id="deleteElementButton" VBox.vgrow="NEVER">
 					<maxWidth>
 						<Double fx:constant="MAX_VALUE" />

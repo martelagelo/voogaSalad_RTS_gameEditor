@@ -11,10 +11,14 @@
     -fx-color: #6BB8F6;
 }
 
-.grid, #root, #splash, #editorRoot, #myTreeView, #menuBar, #leftPane  {
+.grid, #dialogRoot, #splash, #scrollPane, #editorRoot, #myTreeView, #menuBar, #leftPane {
     -fx-background-color: #000000;
     -fx-background: #000000;
     -fx-color: #6BB8F6;
+}
+
+#imageScroll {
+    -fx-background-color: #FFFFFF;
 }
 
 .menu .label, .menu-item {
@@ -27,6 +31,7 @@
 
 .vbox {
 	-fx-background-color: black;
+	-fx-background: black;
 }
 
 .text-area .scroll-pane .content {

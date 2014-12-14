@@ -1,16 +1,11 @@
 package engine.visuals;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.scene.Group;
+import javafx.scene.shape.Line;
 import model.state.gameelement.StateTags;
 import engine.UI.InputManager;
 import engine.UI.ParticipantManager;
@@ -84,13 +79,14 @@ public class VisualManager {
         Map<Integer, String> map =
                 e != null ? e.getAbilityDescriptionMap(AbilityMatrix.NUM_ATTRIBUTES)
                          : new HashMap<>();
-        myAbilityMatrix.updateGridImages(map);
+        Map<String, Long> timerMap = e!=null ? e.getTimersCopy() : new HashMap<>();
+        myAbilityMatrix.updateGridImages(map, timerMap);
     }
 
     private SelectableGameElement findFirstSelectedElement (List<SelectableGameElement> list,
                                                             Participant user) {
         for (SelectableGameElement e : list) {
-            if (user.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue()))) {
+            if (user.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()))) {
                 if (e.getNumericalAttribute(StateTags.IS_SELECTED.getValue()).doubleValue() == 1) { return e; }
             }
         }

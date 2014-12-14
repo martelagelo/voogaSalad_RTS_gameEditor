@@ -11,8 +11,8 @@ import engine.stateManaging.GameElementManager;
 
 
 /**
- * Create an action that incriments an attribute to a max value based on a timer
- * 
+ * Create an action that increments an attribute to a max value based on a timer
+ * @see ActionOptions.ATTRIBUTE_INCRIMENT_ACTION
  * @author Zach
  *
  */
@@ -24,12 +24,11 @@ public class AttributeIncrementerAction extends Action {
     private Long myNumFrames;
     private String myTimerName;
 
-    public AttributeIncrementerAction (String id,
-                                       EvaluatorFactory factory,
+    public AttributeIncrementerAction (EvaluatorFactory factory,
                                        GameElementManager elementManager,
                                        ParticipantManager participantManager,
                                        String[] args) {
-        super(id, factory, elementManager, participantManager, args);
+        super(factory, elementManager, participantManager, args);
     }
 
     @Override
@@ -44,21 +43,22 @@ public class AttributeIncrementerAction extends Action {
         myMaxValueTag = args[2];
         myNumFrames = Long.valueOf(args[3]);
         myTimerName = args[4];
-        return new FalseEvaluator();
+        return new FalseEvaluator<>();
     }
 
+    /**
+     * Note: this evaluate implementation relies solely on java code as opposed to
+     * evaluatable trees. This is possible with the action implementation for more
+     * complex actions that would be too long to implement without vscript
+     */
     @Override
     protected Boolean evaluate (Evaluatable<?> action, ElementPair elements) {
         GameElement element = elements.getActor();
-        if (element.getTimer(myTimerName) > 0) {
-            System.out.println("Incrimenting");
+        if (element.getTimer(myTimerName) <= 0) {
             double parameter = element.getNumericalAttribute(myAttributeTag).doubleValue();
             double max = element.getNumericalAttribute(myAttributeAmountTag).doubleValue();
             double amount = element.getNumericalAttribute(myMaxValueTag).doubleValue();
             double newParameter = parameter + amount;
-
-            System.out.println(parameter);
-            System.out.println(newParameter);
             if (parameter > max) {
                 parameter = max;
             }

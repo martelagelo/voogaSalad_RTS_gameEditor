@@ -15,25 +15,26 @@ public class ParticipantValueParameter extends Parameter<Number> {
     private List<Participant> myParticipants;
     private String myAttributeTag;
 
-    public ParticipantValueParameter (String id,List<Participant> participants,
+    public ParticipantValueParameter (List<Participant> participants,
                                       String attributeName) {
-        super(Number.class, id);
+        super(Number.class);
         myParticipants = participants;
         myAttributeTag = attributeName;
 
     }
 
     /**
-     * Return the average of the value for all the participants
+     * Return the max of the value for all the participants
      */
     @Override
     public Number evaluate (ElementPair elements) {
-        double sum = 0;
-        int numParticipants = myParticipants.size();
+        double maxValue = 0;
         for (Participant p : myParticipants) {
-            sum += p.getAttributes().getNumericalAttribute(myAttributeTag).doubleValue();
+            double val = p.getAttributes().getNumericalAttribute(myAttributeTag).doubleValue();
+            if (val > maxValue)
+                maxValue = val;
         }
-        return sum / numParticipants;
+        return maxValue;
     }
 
     /**

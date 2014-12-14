@@ -2,35 +2,36 @@ package engine.gameRepresentation.evaluatables.parameters;
 
 import engine.gameRepresentation.evaluatables.ElementPair;
 
+
 /**
- * A basic string parameter
+ * A basic string parameter that wraps around and returns a string.
  *
  * @author Zach
  *
  */
 public class StringParameter extends Parameter<String> {
 
-	private String myString;
+    private String myString;
 
-	/**
-	 * Create a string parameter giving the string that the parameter references
-	 *
-	 * @param value
-	 */
-	public StringParameter(String id,String string) {
-		super(String.class,id);
-		myString = string;
-	}
+    /**
+     * Create a string parameter giving the string that the parameter references
+     *
+     * @param string the string to wrap
+     */
+    public StringParameter (String string) {
+        super(String.class);
+        myString = string;
+    }
 
-	@Override
-	public String evaluate(ElementPair elements) {
-		return myString;
-	}
+    @Override
+    public String evaluate (ElementPair elements) {
+        return myString;
+    }
 
-	@Override
-	public boolean setValue(ElementPair elements, String value) {
-		myString = value;
-		return true;
-	}
+    @Override
+    public boolean setValue (ElementPair elements, String value) {
+        myString = value;
+        return true;
+    }
 
 }

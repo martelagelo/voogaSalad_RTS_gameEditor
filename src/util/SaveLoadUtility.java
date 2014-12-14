@@ -15,7 +15,12 @@ import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 
-import model.exceptions.SaveLoadException;
+import util.exceptions.JSONLoadException;
+import util.exceptions.JSONSaveException;
+import util.exceptions.LoadImageException;
+import util.exceptions.SaveFileException;
+import util.exceptions.SaveImageException;
+import util.exceptions.SaveLoadException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -29,8 +34,6 @@ import com.google.gson.JsonSyntaxException;
  */
 
 public class SaveLoadUtility {
-    private static final String IMAGE_NOT_LOADED = "Image could not be loaded";
-    public static String FILE_SEPARATOR = System.getProperty("file.separator");
     private static Gson myGson = new Gson();
 
     /**
@@ -45,12 +48,12 @@ public class SaveLoadUtility {
      * @throws SaveLoadException
      */
 
-    public static <T> T loadResource (Class<?> className, String filePath) throws SaveLoadException {
+    public static <T> T loadResource (Class className, String filePath) throws SaveLoadException {
         T jsonRepresentation = null;
         try {
             jsonRepresentation = (T) myGson.fromJson(new FileReader(new File(filePath)), className);
         } catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
-            throw new SaveLoadException("Unable to load JSON file", e);
+            throw new JSONLoadException(e, filePath);
 
         }
         return jsonRepresentation;
@@ -70,7 +73,7 @@ public class SaveLoadUtility {
      */
 
     public static String save (JSONable jsonableClass, String filePath) throws SaveLoadException {
-        filePath = preProcess(filePath);     
+        filePath = preProcess(filePath);
         FileWriter writer;
         File file = null;
         try {
@@ -80,15 +83,10 @@ public class SaveLoadUtility {
             writer.write(json);
             writer.close();
         } catch (IOException | SaveLoadException e) {
-            throw new SaveLoadException(e.getMessage(), e);
+            throw new JSONSaveException(e, filePath);
         }
 
         return file.getPath();
-    }
-
-    private static String topLevelDirectory (String filePath) {
-        String contents = filePath.substring(0, filePath.lastIndexOf("\\") + 1);
-        return contents;
     }
 
     /**
@@ -96,7 +94,7 @@ public class SaveLoadUtility {
      * file if currently non-existent and required directories.
      * 
      * @param filePath
-     * @return
+     * @return File object at specified file path
      * @throws SaveLoadException
      */
     public static File obtainFile (String filePath) throws SaveLoadException {
@@ -106,7 +104,7 @@ public class SaveLoadUtility {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                throw new SaveLoadException("Unable to save at specified location", e);
+                throw new SaveFileException(e, filePath);
             }
         }
         return file;
@@ -131,7 +129,7 @@ public class SaveLoadUtility {
         try {
             Files.copy(sourceFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            throw new SaveLoadException("Unable to save image", e);
+            throw new SaveImageException(e, sourceFile.getName(), destFile.getName());
         }
         return destination;
     }
@@ -152,28 +150,20 @@ public class SaveLoadUtility {
      * @throws SaveLoadException
      */
     public static Image loadImage (String filePath) throws SaveLoadException {
-        if (fileExists(filePath)) {
-            File imageFile = obtainFile(filePath);
-            BufferedImage bufferedImage = null;
-            try {
-                bufferedImage = ImageIO.read(imageFile);
-            } catch (IOException e) {
-                throw new SaveLoadException("Unable to load image", e);
-
-            }
-            if (bufferedImage != null) {
-                WritableImage image = null;
-                // Optional second parameter to save pixel data (setting to
-                // null)
-                image = SwingFXUtils.toFXImage(bufferedImage, null);
-                return image;
-            }
+        File imageFile = obtainFile(filePath);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            throw new LoadImageException(e);
         }
-        throw new SaveLoadException(IMAGE_NOT_LOADED, new Exception());
-    }
-
-    private static boolean fileExists (String filePath) {
-        File file = new File(filePath);
-        return file != null;
+        if (bufferedImage != null) {
+            WritableImage image = null;
+            // Optional second parameter to save pixel data (setting to
+            // null)
+            image = SwingFXUtils.toFXImage(bufferedImage, null);
+            return image;
+        }
+        throw new SaveLoadException();
     }
 }

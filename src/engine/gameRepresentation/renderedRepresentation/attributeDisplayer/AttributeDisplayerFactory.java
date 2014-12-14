@@ -1,7 +1,6 @@
 package engine.gameRepresentation.renderedRepresentation.attributeDisplayer;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ResourceBundle;
 import model.state.gameelement.AttributeContainer;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
@@ -37,13 +36,14 @@ public class AttributeDisplayerFactory {
 		if (attributeDisplayerState.getTextValue() != null) {
 			return createTextualAttributeDisplayer(c, attributeDisplayerState,
 					attachee);
-		} else {
+		} 
+		else {
 			return createNumericalAttributeDisplayer(c,
 					attributeDisplayerState, attachee);
 		}
 
 	}
-
+	
 	private AttributeDisplayer createNumericalAttributeDisplayer(Class<?> c,
 			AttributeDisplayerState attributeDisplayerState,
 			AttributeContainer attachee) {

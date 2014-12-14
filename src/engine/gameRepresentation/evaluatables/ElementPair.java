@@ -5,7 +5,7 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 
 /**
  * A grouping for elements used in passing actor/actee to conditions and actions.
- * This is intentionally a data wrapper object to make passing parameters simpler.
+ * This is intentionally a data wrapper object to make passing parameters simpler into evaluatables.
  * 
  * @author Zach
  *

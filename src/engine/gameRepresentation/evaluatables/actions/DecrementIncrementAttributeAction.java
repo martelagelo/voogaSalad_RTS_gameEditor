@@ -24,26 +24,27 @@ import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.Actee
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
-
+//TODO fix this
 /**
  * An action that decrements a value on the other object's values and increments the value on the
- * other object's parameters. The string for this action is:
- * If other element is of type #, # its # by my # attribute to a minimum of # and # that amount to
- * my # with a cooldown timer named # with a value of # frames.
+ * other object's parameters. 
+ *
+ *@see ActionOptions.INCREMENT_DECREMENT_ACTION
  * 
  * @author Zach
  *
  */
+
+//TODO refactor to make smaller
 public class DecrementIncrementAttributeAction extends Action {
     private String myTimer;
     private long myTimerAmount;
 
-    public DecrementIncrementAttributeAction (String id,
-                                              EvaluatorFactory factory,
+    public DecrementIncrementAttributeAction (EvaluatorFactory factory,
                                               GameElementManager elementManager,
                                               ParticipantManager participantManager,
                                               String[] args) {
-        super(id, factory, elementManager, participantManager, args);
+        super(factory, elementManager, participantManager, args);
     }
 
     @Override
@@ -55,59 +56,59 @@ public class DecrementIncrementAttributeAction extends Action {
                                                                                      EvaluatorCreationException {
         // TODO fix this crap
         // Check that the object is of a given type
-        Evaluatable<?> typeString = new StringParameter("", args[0]);
-        Evaluatable<?> otherObject = new GameElementParameter("", new ActeeObjectIdentifier());
-        Evaluator<?, ?, ?> typeCheckEvaluator = new TypeCheck<>("", otherObject, typeString);
+        Evaluatable<?> typeString = new StringParameter(args[0]);
+        Evaluatable<?> otherObject = new GameElementParameter(new ActeeObjectIdentifier());
+        Evaluator<?, ?, ?> typeCheckEvaluator = new TypeCheck<>(otherObject, typeString);
         // Subtract my amount from the other object's attribute
         Evaluatable<?> otherObjectAttribute =
-                new NumericAttributeParameter("", args[1], elementManager,
+                new NumericAttributeParameter(args[1], elementManager,
                                               new ActeeObjectIdentifier());
         Evaluatable<?> myAmountAttribute =
-                new NumericAttributeParameter("", args[2], elementManager,
+                new NumericAttributeParameter(args[2], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> difference =
-                new Subtraction<>("", otherObjectAttribute, myAmountAttribute);
+                new Subtraction<>(otherObjectAttribute, myAmountAttribute);
         // If the difference is less than min, subtract the difference of this negative attribute
         // from my attribute
-        Evaluatable<?> minValue = new NumberParameter("", Double.valueOf(args[3]));
-        Evaluator<?, ?, ?> differenceEvaluator = new Addition<>("", myAmountAttribute, difference);
-        Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>("", difference, minValue);
+        Evaluatable<?> minValue = new NumberParameter(Double.valueOf(args[3]));
+        Evaluator<?, ?, ?> differenceEvaluator = new Addition<>(myAmountAttribute, difference);
+        Evaluator<?, ?, ?> differenceLessThan0 = new LessThan<>(difference, minValue);
         Evaluatable<?> myAttributeToSet =
-                new NumericAttributeParameter("", args[4], elementManager,
+                new NumericAttributeParameter(args[4], elementManager,
                                               new ActorObjectIdentifier());
         Evaluator<?, ?, ?> setAttributeIfNegative =
-                new SubtractionAssignment<>("", myAttributeToSet, differenceEvaluator);
+                new SubtractionAssignment<>(myAttributeToSet, differenceEvaluator);
         Evaluator<?, ?, ?> ifDiffLessThan0SetAttr =
-                new IfThen<>("", differenceLessThan0, setAttributeIfNegative);
+                new IfThen<>(differenceLessThan0, setAttributeIfNegative);
         // If the difference is greater than or equal to 0, add my subtraction attribute to my
         // attribute
         Evaluator<?, ?, ?> differenceGreaterThan0 =
-                new GreaterThanEqual<>("", difference, minValue);
+                new GreaterThanEqual<>(difference, minValue);
         Evaluator<?, ?, ?> setAttributeIfPositive =
-                new AdditionAssignment<>("", myAttributeToSet, myAmountAttribute);
+                new AdditionAssignment<>(myAttributeToSet, myAmountAttribute);
         Evaluator<?, ?, ?> ifDiffGreatorThan0SetAttr =
-                new IfThen<>("", differenceGreaterThan0, setAttributeIfPositive);
+                new IfThen<>(differenceGreaterThan0, setAttributeIfPositive);
         // Make an overall evaluator for the above two conditions for logic for player attribute
         // setting
         Evaluator<?, ?, ?> attributeSetter =
-                new And<>("", ifDiffLessThan0SetAttr, ifDiffGreatorThan0SetAttr);
+                new And<>(ifDiffLessThan0SetAttr, ifDiffGreatorThan0SetAttr);
 
         // Make evaluators to decide how to decrement the parameter value of the other object
         // Subtract the amount
         Evaluator<?, ?, ?> otherObjectAttributeSubtraction =
-                new SubtractionAssignment<>("", otherObjectAttribute, myAmountAttribute);
+                new SubtractionAssignment<>(otherObjectAttribute, myAmountAttribute);
         // If the amount is less than the min, make it the min
-        Evaluator<?, ?, ?> checkLessThanMin = new LessThan<>("", otherObjectAttribute, minValue);
-        Evaluator<?, ?, ?> setMin = new EqualsAssignment<>("", otherObjectAttribute, minValue);
+        Evaluator<?, ?, ?> checkLessThanMin = new LessThan<>(otherObjectAttribute, minValue);
+        Evaluator<?, ?, ?> setMin = new EqualsAssignment<>(otherObjectAttribute, minValue);
         Evaluator<?, ?, ?> ifAttributeLessThanMinMakeMin =
-                new IfThen<>("", checkLessThanMin, setMin);
+                new IfThen<>( checkLessThanMin, setMin);
         Evaluator<?, ?, ?> parameterSubtraction =
-                new And<>("", otherObjectAttributeSubtraction, ifAttributeLessThanMinMakeMin);
+                new And<>(otherObjectAttributeSubtraction, ifAttributeLessThanMinMakeMin);
         // Put it all together
         Evaluator<?, ?, ?> parameterSubtracting =
-                new And<>("", attributeSetter, parameterSubtraction);
+                new And<>(attributeSetter, parameterSubtraction);
         Evaluator<?, ?, ?> ifTypeAssignment =
-                new IfThen<>("", typeCheckEvaluator, parameterSubtracting);
+                new IfThen<>(typeCheckEvaluator, parameterSubtracting);
         myTimer = args[5];
         myTimerAmount = Long.valueOf(args[6]);
         return ifTypeAssignment;

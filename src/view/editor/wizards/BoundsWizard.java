@@ -3,7 +3,9 @@ package view.editor.wizards;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -27,7 +29,7 @@ public class BoundsWizard extends Wizard {
     private static final String ADD_POINT_KEY = "AddPoint";
     private static final String X_COR_KEY = "XCoordinate";
     private static final String Y_COR_KEY = "YCoordinate";
-    
+
     @FXML
     private VBox allPoints;
     @FXML
@@ -41,7 +43,7 @@ public class BoundsWizard extends Wizard {
         super.initialize();
         try {
             addPoint.textProperty().bind(MultiLanguageUtility.getInstance()
-                                                 .getStringProperty(ADD_POINT_KEY));
+                    .getStringProperty(ADD_POINT_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
@@ -58,10 +60,12 @@ public class BoundsWizard extends Wizard {
         xField.setText(x);
         xCoordinates.add(xField);
         TextField yField = new TextField();
-        
+
         try {
-            xField.promptTextProperty().bind(MultiLanguageUtility.getInstance().getStringProperty(X_COR_KEY));
-            yField.promptTextProperty().bind(MultiLanguageUtility.getInstance().getStringProperty(Y_COR_KEY));
+            xField.promptTextProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(X_COR_KEY));
+            yField.promptTextProperty().bind(MultiLanguageUtility.getInstance()
+                    .getStringProperty(Y_COR_KEY));
         }
         catch (LanguagePropertyNotFoundException e) {
             DialogBoxUtility.createMessageDialog(Arrays.toString(e.getStackTrace()));
@@ -78,12 +82,13 @@ public class BoundsWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return checkCoordinatesValid(xCoordinates) && checkCoordinatesValid(yCoordinates) && allPoints.getChildren().size() >= 4;
+        return checkCoordinatesValid(xCoordinates) && checkCoordinatesValid(yCoordinates) &&
+               allPoints.getChildren().size() >= 4;
     }
 
     private boolean checkCoordinatesValid (List<TextField> coordinates) {
         for (TextField field : coordinates) {
-            if (field.getText().isEmpty() || !Pattern.matches(NUM_REGEX, field.getText())) { return false; }
+            if (field.getText().isEmpty() || !isNumber(field.getText())) { return false; }
         }
         return true;
     }
@@ -106,8 +111,7 @@ public class BoundsWizard extends Wizard {
     @Override
     public void launchForEdit (WizardData oldValues) {
         String bounds = oldValues.getValueByKey(WizardDataType.BOUND_VALUES);
-        String[] points = bounds.split(",");
-        // TODO: FIX THIS, this doesn't work and don't add any points 
+        String[] points = bounds.split(",");       
         for (int i = 0; i < points.length; i += 2) {
             addXYPair(points[i], points[i + 1]);
         }

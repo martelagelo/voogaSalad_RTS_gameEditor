@@ -3,6 +3,7 @@ package view.splash;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,9 +17,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-import model.exceptions.SaveLoadException;
 import util.JSONableSet;
 import util.SaveLoadUtility;
+import util.exceptions.SaveLoadException;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.dialog.DialogBoxUtility;
@@ -46,7 +47,6 @@ public class SplashScreen extends GUIScreen {
     private static final String DUVALL_PATH = "resources/duvall.txt";
     public static final String EXISTING_GAMES =
             "src/resources/properties/view/existingGames.json";
-    // TODO make longer to scroll, 1 for now for the sake of testing
     private static final Integer LOAD_DURATION = 1;
 
     @FXML

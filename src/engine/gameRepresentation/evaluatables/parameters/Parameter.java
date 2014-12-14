@@ -25,10 +25,9 @@ public abstract class Parameter<T> extends Evaluatable<T> {
      * 
      * @param type
      *        is the type of this generic
-     * @param id is the id of the parameter tree @see Evaluatable
      */
-    public Parameter (Class<T> type, String id) {
-        super(type, id);
+    public Parameter (Class<T> type) {
+        super(type);
     }
 
     /**

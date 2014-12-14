@@ -71,7 +71,7 @@ public class GameElementManager {
     public SelectableGameElement addSelectableGameElementToLevel (String typeName,
                                                                   double x,
                                                                   double y,
-                                                                  String color) {
+                                                                  Number color) {
         SelectableGameElement newElement = myFactory
                 .createSelectableGameElement(typeName, x, y, color);
         myLevel.addElement(newElement);
@@ -146,7 +146,7 @@ public class GameElementManager {
     }
 
     private boolean checkOnTeam (SelectableGameElement e, Participant u) {
-        return u.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
+        return u.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()));
     }
 
     public void selectSingleUnit (Point2D clickLoc, boolean multiSelect, Participant u) {
@@ -224,7 +224,7 @@ public class GameElementManager {
                                                               Participant p) {
         return list
                 .stream()
-                .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue())
+                .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR.getValue())
                 		)).collect(Collectors.toList());
     }
 

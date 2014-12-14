@@ -1,11 +1,13 @@
 package view.editor.wizards;
 
 import java.util.List;
-import java.util.regex.Pattern;
-import util.multilanguage.LanguageException;
-import util.multilanguage.MultiLanguageUtility;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import util.multilanguage.LanguageException;
+import util.multilanguage.MultiLanguageUtility;
 
 
 /**
@@ -26,8 +28,8 @@ public class PositionWizard extends Wizard {
 
     @Override
     public boolean checkCanSave () {
-        return !xValue.getText().isEmpty() && Pattern.matches(NUM_REGEX, xValue.getText()) &&
-               !yValue.getText().isEmpty() && Pattern.matches(NUM_REGEX, yValue.getText());
+        return !xValue.getText().isEmpty() && isNumber(xValue.getText()) &&
+               !yValue.getText().isEmpty() && isNumber(yValue.getText());
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ActeeObjectIdentifier implements ObjectOfInterestIdentifier {
 
     @Override
     public List<GameElement> getElementOfInterest (GameElementManager elementManager,
-                                                        ElementPair elementPair, String elementTag) {
+                                                   ElementPair elementPair, String elementTag) {
         List<GameElement> elementsOfInterest = new ArrayList<GameElement>();
         elementsOfInterest.add(elementPair.getActee());
         return elementsOfInterest;

@@ -17,6 +17,10 @@ import model.exceptions.CampaignNotFoundException;
  */
 public class GameState extends DescribableState {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -7286615449971559602L;
     private List<CampaignState> myCampaigns;
     private List<HighScore> myHighScores;
     private GameUniverse myGameUniverse;

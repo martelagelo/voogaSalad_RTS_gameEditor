@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,10 +28,9 @@ public class GameElementState implements JSONable, Serializable {
 
     private static final long serialVersionUID = 6832117170246376287L;
 
-    // TODO: Edit explanation here
     /**
      * The actions for a given game element state will be stored in a map of
-     * Strings that represent the type of action e.g. collision, internal, etc.
+     * ActionTypes that represent the type of action e.g. collision, internal, etc.
      * to a list of Action wrappers of vscript commands of the actions to be executed. Conditions
      * were removed from this representation as actions internally check for
      * their own conditions.

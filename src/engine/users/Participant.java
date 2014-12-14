@@ -1,5 +1,7 @@
 package engine.users;
 
+import java.io.Serializable;
+import util.JSONable;
 import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.StateTags;
 
@@ -11,18 +13,24 @@ import model.state.gameelement.StateTags;
  * @author Michael D.
  *
  */
-public abstract class Participant {
+public abstract class Participant implements JSONable, Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 9150235534545105031L;
+    
+    
     protected AttributeContainer attributes;
-    protected String myTeamColor;
+    protected long myTeamColor;
     protected String myName;
     protected boolean isAI;
 
-    public Participant (String teamColor, String name) {
+    public Participant (long teamColor, String name) {
     	myTeamColor = teamColor;
         myName = name;
         attributes = new AttributeContainer();
-        attributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
+        attributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(), teamColor);
     }
 
     /**
@@ -54,11 +62,11 @@ public abstract class Participant {
      * @param otherTeamID
      * @return true if the team IDs are the same
      */
-    public boolean checkSameTeam (String otherTeamColor) {
-        return myTeamColor.equals(otherTeamColor);
+    public boolean checkSameTeam (Number otherTeamColor) {
+        return myTeamColor == otherTeamColor.longValue();
     }
 
-    public String getTeamColor () {
+    public long getTeamColor () {
         return myTeamColor;
     }
 

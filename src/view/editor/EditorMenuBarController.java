@@ -4,17 +4,13 @@ import java.awt.Dimension;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
+import model.data.WizardData;
+import model.data.WizardDataType;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import model.exceptions.CampaignNotFoundException;
-import model.exceptions.LevelNotFoundException;
-import model.state.LevelState;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 import view.editor.wizards.Wizard;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
 import view.editor.wizards.WizardUtility;
 import view.gui.GUIPanePath;
 import view.gui.MenuBarController;
@@ -58,12 +54,6 @@ public class EditorMenuBarController extends MenuBarController {
     
     private void saveGame() {
         ((EditorScreen) myScreen).updateModelToSave();
-        try {
-			LevelState level = myMainModel.getCampaign("shit").getLevel("shit");
-	        System.out.println("Model version of level state to save: " + level.toJSON());
-		} catch (LevelNotFoundException | CampaignNotFoundException e) {
-			e.printStackTrace();
-		}
         myMainModel.saveGame();
     }
 
@@ -77,7 +67,8 @@ public class EditorMenuBarController extends MenuBarController {
                 myMainModel.createLevel(data.getValueByKey(WizardDataType.NAME),
                                         data.getValueByKey(WizardDataType.CAMPAIGN_NAME),
                                         Double.parseDouble(data.getValueByKey(WizardDataType.WIDTH)),
-                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)));
+                                        Double.parseDouble(data.getValueByKey(WizardDataType.HEIGHT)),
+                                        data.getValueByKey(WizardDataType.IMAGE));
                 wiz.closeStage();
             }
             catch (Exception e1) {
