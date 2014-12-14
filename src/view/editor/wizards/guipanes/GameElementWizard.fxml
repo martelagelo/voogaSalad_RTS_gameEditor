@@ -17,6 +17,11 @@
 						<Double fx:constant="MAX_VALUE" />
 					</maxWidth>
 				</TextField>
+				<TextField fx:id="type">
+					<maxWidth>
+						<Double fx:constant="MAX_VALUE" />
+					</maxWidth>
+				</TextField>
 				<fx:include source="CRUDContainer.fxml" fx:id="triggers" />
 				<fx:include source="CRUDContainer.fxml" fx:id="stringAttributes" />
 				<fx:include source="CRUDContainer.fxml" fx:id="numberAttributes" />

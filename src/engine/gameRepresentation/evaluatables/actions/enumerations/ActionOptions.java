@@ -129,7 +129,7 @@ public enum ActionOptions {
                                      +
                                      "do # with both the objects AND "
                                      +
-                                     " perform # # (my attribute name) on # (my/other) player's # attribute.",
+                                     " perform # # (my attribute name) on # (my/other) player's # attribute #.",
                              ActionParameters.STRING,
                              ActionParameters.OBJECT_DESIGNATOR,
                              ActionParameters.ATTR,

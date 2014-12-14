@@ -4594,6 +4594,7 @@
     }
   ],
   "myGameUniverse": {
+    "myParticipantColors": [],
     "myNumericalAttributes": [
       {
         "myData": 350.0,
