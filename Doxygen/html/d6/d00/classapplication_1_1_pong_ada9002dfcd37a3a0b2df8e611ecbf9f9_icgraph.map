@@ -1,9 +1,0 @@
-<map id="application.Pong.generateNullAnimatorState" name="application.Pong.generateNullAnimatorState">
-<area shape="rect" id="node2" href="$d6/d00/classapplication_1_1_pong.html#a059c1503f302e2a7503d7c46fe1ddd6a" title="application.Pong.createBall" alt="" coords="263,5,457,32"/>
-<area shape="rect" id="node5" href="$d6/d00/classapplication_1_1_pong.html#af198a5e24972581c04081609ce8121d3" title="application.Pong.createBoundary" alt="" coords="243,56,477,83"/>
-<area shape="rect" id="node6" href="$d6/d00/classapplication_1_1_pong.html#a1030093d4dbc6d037dd70ced1a220167" title="application.Pong.createGoal\lDisplayMarker" alt="" coords="259,107,461,149"/>
-<area shape="rect" id="node7" href="$d6/d00/classapplication_1_1_pong.html#a4fbd748031f43b712ecce553e44e420f" title="application.Pong.createGoal\lRegion" alt="" coords="259,173,461,214"/>
-<area shape="rect" id="node8" href="$d6/d00/classapplication_1_1_pong.html#a5bdf26abd557720b83b5b204260ee9bd" title="application.Pong.createPaddle" alt="" coords="253,239,467,265"/>
-<area shape="rect" id="node3" href="$d6/d00/classapplication_1_1_pong.html#a0125f26aebd7e1cc9e3fae602e3997f8" title="application.Pong.hardCode\lAGame" alt="" coords="526,107,719,149"/>
-<area shape="rect" id="node4" href="$d6/d00/classapplication_1_1_pong.html#aacfcba740564585303fb8097744d21a5" title="application.Pong.start" alt="" coords="769,115,930,141"/>
-</map>

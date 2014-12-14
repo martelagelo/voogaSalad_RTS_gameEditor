@@ -1,8 +1,0 @@
-<map id="model.MainModel.removeSelectableGameElement" name="model.MainModel.removeSelectableGameElement">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#a5e586ccd36318309b2a0cbc804458c2d" title="model.MainModel.elementIs\lInUse" alt="" coords="337,7,538,49"/>
-<area shape="rect" id="node4" href="$de/d21/classmodel_1_1_main_model.html#aa9afa0072f15587d9ef2b6fd4eb564da" title="model.MainModel.getGameUniverse" alt="" coords="310,75,565,101"/>
-<area shape="rect" id="node6" href="$de/dda/classmodel_1_1_game_universe.html#aa09c3277333cae32387ca309a7bce9b0" title="model.GameUniverse.remove\lSelectableGameElementState" alt="" coords="329,126,545,167"/>
-<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="313,192,561,219"/>
-<area shape="rect" id="node3" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#a2924c42e7974279aab98cac167879520" title="model.state.GameState.get\lCampaigns" alt="" coords="613,5,816,46"/>
-<area shape="rect" id="node5" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ada7cc6194ba1f8235db868e033be6922" title="model.state.GameState.get\lGameUniverse" alt="" coords="613,70,816,111"/>
-</map>

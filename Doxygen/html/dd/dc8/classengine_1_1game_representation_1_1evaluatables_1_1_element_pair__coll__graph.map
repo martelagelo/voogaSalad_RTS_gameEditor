@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.evaluatables.ElementPair" name="engine.gameRepresentation.evaluatables.ElementPair">
-<area shape="rect" id="node2" href="$d4/de2/classengine_1_1game_representation_1_1rendered_representation_1_1_game_element.html" title="engine.gameRepresentation.rendered\lRepresentation.GameElement" alt="" coords="1675,166,1939,207"/>
-<area shape="rect" id="node3" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html" title="model.state.gameelement.\lGameElementState" alt="" coords="1196,107,1393,149"/>
-<area shape="rect" id="node4" href="$df/d74/interfaceutil_1_1_j_s_o_nable.html" title="util.JSONable" alt="" coords="629,5,733,32"/>
-<area shape="rect" id="node6" href="$da/dc5/classmodel_1_1state_1_1gameelement_1_1_attribute_container.html" title="model.state.gameelement.\lAttributeContainer" alt="" coords="583,107,780,149"/>
-</map>

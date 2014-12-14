@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.renderedRepresentation.Level.getGrid" name="engine.gameRepresentation.renderedRepresentation.Level.getGrid">
-<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#a056cc907590b732eaeec8eedb00837d3" title="engine.stateManaging.Game\lElementManager.setLevel" alt="" coords="318,5,525,46"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a7a3f6d4d4586f3bc336cacbb58037eeb" title="engine.Engine.createLevel" alt="" coords="574,12,765,39"/>
-<area shape="rect" id="node4" href="$dc/de2/classengine_1_1_engine.html#af201d1d894a31f20aa1e05f674d4584b" title="engine.Engine.instantiate\lManagers" alt="" coords="813,5,997,46"/>
-<area shape="rect" id="node5" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="1046,12,1205,39"/>
-</map>
