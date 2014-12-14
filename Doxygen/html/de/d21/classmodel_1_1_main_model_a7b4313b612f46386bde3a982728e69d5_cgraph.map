@@ -1,8 +1,0 @@
-<map id="model.MainModel.updateDescribableState" name="model.MainModel.updateDescribableState">
-<area shape="rect" id="node2" href="$de/d21/classmodel_1_1_main_model.html#ab5c91715fd7b1a435838682ef5627496" title="model.MainModel.getDescribable\lState" alt="" coords="345,37,580,78"/>
-<area shape="rect" id="node5" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#a9f973977b479381bb60eb32cfa56de1f" title="model.state.DescribableState.update\lDescription" alt="" coords="331,102,594,143"/>
-<area shape="rect" id="node6" href="$dc/d74/classmodel_1_1state_1_1_describable_state.html#a6d90466036db2d4bde77bb1ec51097ca" title="model.state.DescribableState.updateName" alt="" coords="312,168,613,195"/>
-<area shape="rect" id="node7" href="$de/d21/classmodel_1_1_main_model.html#a6d23ce35dd510459ea2dd46d3d59ef28" title="model.MainModel.updateObservers" alt="" coords="339,219,587,245"/>
-<area shape="rect" id="node3" href="$d6/d8b/classmodel_1_1state_1_1_game_state.html#ace433ae02537a00b741215ba33bcbbe6" title="model.state.GameState.get\lCampaign" alt="" coords="675,5,877,46"/>
-<area shape="rect" id="node4" href="$dd/d5f/classmodel_1_1state_1_1_campaign_state.html#a10f661d8ad2cc053207a299acbe83d4d" title="model.state.CampaignState.get\lLevel" alt="" coords="662,70,890,111"/>
-</map>

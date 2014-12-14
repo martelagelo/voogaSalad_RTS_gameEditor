@@ -1,7 +1,0 @@
-<map id="view.editor.wizards.BoundsWizard.updateData" name="view.editor.wizards.BoundsWizard.updateData">
-<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a8b5c3014ae6cff39c23e427462dc2128" title="view.editor.wizards.Wizard.add\lToData" alt="" coords="245,5,459,46"/>
-<area shape="rect" id="node4" href="$d0/d9a/classview_1_1editor_1_1wizards_1_1_bounds_wizard.html#aaee817819306c6512a7bcf66584a925f" title="view.editor.wizards.Bounds\lWizard.getCoordinates" alt="" coords="257,70,447,111"/>
-<area shape="rect" id="node5" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ad224bc849cb336f4afe785c1e53c92a0" title="view.editor.wizards.Wizard.set\lWizardType" alt="" coords="247,135,457,177"/>
-<area shape="rect" id="node3" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a9cc5ffae61bf745c8aad40f05ee31ab4" title="model.data.WizardData.add\lDataPair" alt="" coords="519,5,719,46"/>
-<area shape="rect" id="node6" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a1e736ec6491093474359e05d47f1650c" title="model.data.WizardData.setType" alt="" coords="507,143,731,169"/>
-</map>

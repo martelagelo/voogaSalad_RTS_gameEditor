@@ -1,5 +1,0 @@
-<map id="engine.visuals.Displayable" name="engine.visuals.Displayable">
-<area shape="rect" id="node2" href="$d8/d2f/classengine_1_1game_representation_1_1rendered_representation_1_1_drawable_game_element.html" title="engine.gameRepresentation.rendered\lRepresentation.DrawableGameElement" alt="" coords="243,5,517,46"/>
-<area shape="rect" id="node4" href="$d1/d3d/classengine_1_1visuals_1_1element_visuals_1_1_visualizer.html" title="engine.visuals.elementVisuals.\lVisualizer" alt="" coords="271,70,489,111"/>
-<area shape="rect" id="node3" href="$d4/d68/classengine_1_1game_representation_1_1rendered_representation_1_1_selectable_game_element.html" title="engine.gameRepresentation.rendered\lRepresentation.SelectableGameElement" alt="" coords="566,5,847,46"/>
-</map>

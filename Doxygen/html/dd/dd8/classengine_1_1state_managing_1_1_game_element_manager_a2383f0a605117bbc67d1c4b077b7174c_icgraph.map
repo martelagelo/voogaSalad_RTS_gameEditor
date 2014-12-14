@@ -1,9 +1,0 @@
-<map id="engine.stateManaging.GameElementManager.checkOnTeam" name="engine.stateManaging.GameElementManager.checkOnTeam">
-<area shape="rect" id="node2" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#ad49f94c118b947e6ac565560bf3ca14f" title="engine.stateManaging.Game\lElementManager.selectSingleUnit" alt="" coords="291,70,528,111"/>
-<area shape="rect" id="node5" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#abc104943b3831eee294618eaaa207401" title="engine.stateManaging.Game\lElementManager.selectUnitsInBounds" alt="" coords="277,135,541,177"/>
-<area shape="rect" id="node7" href="$dd/dd8/classengine_1_1state_managing_1_1_game_element_manager.html#af2b27c63c8557bc1b84990cd1e266f9f" title="engine.stateManaging.Game\lElementManager.setSelectedUnit\lCommand" alt="" coords="291,200,527,256"/>
-<area shape="rect" id="node3" href="$d6/d14/classengine_1_1_u_i_1_1_editor_input_manager.html#a3bf1a3596ba0f8e5f8586a9522da7397" title="engine.UI.EditorInputManager.primary\lClickOccurred" alt="" coords="602,5,865,46"/>
-<area shape="rect" id="node4" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a185ddda1d575d743ea889c24a32f8ff4" title="engine.UI.RunnerInputManager.primary\lClickOccurred" alt="" coords="598,70,869,111"/>
-<area shape="rect" id="node6" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#ac0304dd515c690c7cff4f732c3dd956a" title="engine.UI.RunnerInputManager.primary\lClickReleaseOccurred" alt="" coords="598,135,869,177"/>
-<area shape="rect" id="node8" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#a4709ebdf2608218227aab4d9af9ca2ca" title="engine.UI.RunnerInputManager.secondary\lClickOccurred" alt="" coords="590,207,877,249"/>
-</map>
