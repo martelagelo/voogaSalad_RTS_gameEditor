@@ -16,9 +16,9 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  */
 public class AdditionAssignment<A, B> extends Evaluator<A, B, Boolean> {
 
-    public AdditionAssignment (String id, Evaluatable<A> parameter1,
-                                        Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "+=", parameter1, parameter2);
+    public AdditionAssignment (Evaluatable<A> parameter1,
+                               Evaluatable<B> parameter2) {
+        super(Boolean.class, "+=", parameter1, parameter2);
     }
 
     @Override

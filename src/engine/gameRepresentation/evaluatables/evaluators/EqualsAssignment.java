@@ -10,9 +10,9 @@ import engine.gameRepresentation.evaluatables.Evaluatable;
  * @author Zach
  */
 public class EqualsAssignment<A, B> extends Evaluator<A, B, Boolean> {
-    public EqualsAssignment (String id, Evaluatable<A> parameter1,
-                                      Evaluatable<B> parameter2) {
-        super(Boolean.class, id, "==", parameter1, parameter2);
+    public EqualsAssignment (Evaluatable<A> parameter1,
+                             Evaluatable<B> parameter2) {
+        super(Boolean.class, "==", parameter1, parameter2);
     }
 
     @Override

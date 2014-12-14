@@ -7,27 +7,24 @@ import engine.gameRepresentation.evaluatables.evaluators.Evaluator;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.IfThen;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
-import engine.gameRepresentation.evaluatables.parameters.GameElementParameter;
-import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActeeObjectIdentifier;
-import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ActorObjectIdentifier;
 import engine.stateManaging.GameElementManager;
 
 
 /**
  * An action that checks a condition on objects and executes an action on the objects if the
  * condition holds true.
+ * @see ActionOptions.OBJECT_CONDITION_ACTION
  * 
  * @author Zach
  *
  */
 public class ObjectConditionAction extends Action {
 
-    public ObjectConditionAction (String id,
-                                  EvaluatorFactory factory,
+    public ObjectConditionAction (EvaluatorFactory factory,
                                   GameElementManager manager,
                                   ParticipantManager participantManager,
                                   String[] args) {
-        super(id, factory, manager, participantManager, args);
+        super(factory, manager, participantManager, args);
     }
 
     @Override
@@ -37,11 +34,9 @@ public class ObjectConditionAction extends Action {
                                                ParticipantManager participantManager)
                                                                                      throws ClassNotFoundException,
                                                                                      EvaluatorCreationException {
-        GameElementParameter me = new GameElementParameter("", new ActorObjectIdentifier());
-        GameElementParameter you = new GameElementParameter("", new ActeeObjectIdentifier());
-        Evaluatable<?> condition = factory.makeEvaluator(args[0], me, you);
-        Evaluatable<?> action = factory.makeEvaluator(args[1], me, you);
-        Evaluator<?, ?, ?> conditionActionEvaluator = new IfThen<>("", condition, action);
+        Evaluatable<?> condition = factory.makeEvaluator(args[0], ACTOR, ACTEE);
+        Evaluatable<?> action = factory.makeEvaluator(args[1], ACTOR, ACTEE);
+        Evaluator<?, ?, ?> conditionActionEvaluator = new IfThen<>(condition, action);
         return conditionActionEvaluator;
     }
 

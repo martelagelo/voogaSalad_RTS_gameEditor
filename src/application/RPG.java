@@ -135,6 +135,8 @@ public class RPG extends Application {
 
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_WIDTH.getValue(), 2000);
         levelState.attributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 2000);
+        levelState.attributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
+                                                  "resources/img/graphics/terrain/grass/GrassTile.jpg");
         levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
@@ -164,7 +166,7 @@ public class RPG extends Application {
 
     private SelectableGameElementState createSpawnPoint (double x, double y, String Color)
                                                                                           throws Exception {
-        SelectableGameElementState archerState = new SelectableGameElementState(x, y);
+        SelectableGameElementState archerState = new SelectableGameElementState(x, y, null);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
         archerState.attributes.setNumericalAttribute(StateTags.RELOAD_TIME.getValue(), 50);
@@ -246,7 +248,7 @@ public class RPG extends Application {
                                                          double movementSpeed,
                                                          int teamID,
                                                          String pictureURI) throws Exception {
-        SelectableGameElementState archerState = new SelectableGameElementState(x, y);
+        SelectableGameElementState archerState = new SelectableGameElementState(x, y, null);
         archerState.attributes.setNumericalAttribute(StateTags.X_POSITION.getValue(), x);
         archerState.attributes.setNumericalAttribute(StateTags.Y_POSITION.getValue(), y);
         archerState.attributes.setNumericalAttribute(StateTags.X_GOAL_POSITION.getValue(), x);

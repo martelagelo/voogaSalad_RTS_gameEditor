@@ -1,16 +1,19 @@
 package model;
 
+import java.util.Arrays;
 import java.util.function.BiConsumer;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import view.editor.wizards.WizardData;
-import view.editor.wizards.WizardDataType;
-import view.editor.wizards.WizardType;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerState;
+import engine.gameRepresentation.renderedRepresentation.attributeDisplayer.AttributeDisplayerTags;
 
 
 /**
@@ -28,13 +31,14 @@ public class GameElementStateFactory {
     public static DrawableGameElementState createDrawableGameElementState (WizardData data) {
         DrawableGameElementState state = (DrawableGameElementState)
                 addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);        
-
+        String[] types = data.getValueByKey(WizardDataType.TYPE).split(",");
+        Arrays.asList(types).forEach(type -> state.addType(type));
         return (DrawableGameElementState) addVisuals(data, state);
     }
 
     public static SelectableGameElementState createSelectableGameElementState (WizardData data) {
         SelectableGameElementState state = (SelectableGameElementState)
-                addEssentials(new SelectableGameElementState(0.0, 0.0), data);
+                addEssentials(new SelectableGameElementState(0.0, 0.0, null), data);
         return (SelectableGameElementState) addVisuals(data, state);
     }
 
@@ -55,14 +59,36 @@ public class GameElementStateFactory {
     private static DrawableGameElementState addVisuals (WizardData data,
                                                         DrawableGameElementState state) {        
         state.myAnimatorState = AnimatorStateFactory.createAnimatorState(data);
-        state.setBounds(createBounds(data));       
+        state.setBounds(createBounds(data, WizardType.BOUNDS));        
+        state.setVisionBounds(createBounds(data, WizardType.VISION_BOUNDS));
+        createAttributeDisplayerState(data, state);        
         return state;
     }
 
-    private static double[] createBounds (WizardData data) {        
-        if (data.getWizardDataByType(WizardType.BOUNDS).size() > 0) {
+    private static void createAttributeDisplayerState (WizardData data,
+                                                       DrawableGameElementState state) {
+        for (WizardData widget: data.getWizardDataByType(WizardType.WIDGET)) {            
+            String[] arguments = widget.getValueByKey(WizardDataType.WIDGET_PARAMETERS).split(",");
+            AttributeDisplayerState displayerState;
+            if (arguments.length == 2) {
+                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                                                widget.getValueByKey(WizardDataType.ATTRIBUTE), 
+                                                Double.parseDouble(arguments[0]), 
+                                                Double.parseDouble(arguments[1]));
+            }
+            else {
+                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                                                             widget.getValueByKey(WizardDataType.ATTRIBUTE), 
+                                                             arguments[0]);
+            }
+            state.addAttributeDisplayerState(displayerState);
+        }
+    }
+
+    private static double[] createBounds (WizardData data, WizardType boundsType) {        
+        if (data.getWizardDataByType(boundsType).size() > 0) {
             String bounds =
-                    data.getWizardDataByType(WizardType.BOUNDS).get(0)
+                    data.getWizardDataByType(boundsType).get(0)
                             .getValueByKey(WizardDataType.BOUND_VALUES);
             String[] points = bounds.split(",");
             double[] myBounds = new double[points.length];

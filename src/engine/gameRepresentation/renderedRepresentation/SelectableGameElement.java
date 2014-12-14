@@ -93,8 +93,6 @@ public class SelectableGameElement extends DrawableGameElement {
             updateSelfDueToFocusedElement();
         }
         super.update();
-        String teamColor = getTextualAttribute(StateTags.TEAM_COLOR.getValue());
-        // System.out.println("Updating selectable game element: " + teamColor);
         updateSelfDueToVisions();
         updateSelfDueToCurrentObjective();
     }

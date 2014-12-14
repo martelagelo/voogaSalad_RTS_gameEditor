@@ -3,16 +3,18 @@ package engine.gameRepresentation.evaluatables.parameters;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.users.Participant;
 
+
 /**
- * A parameter that wraps a participant
+ * A parameter that wraps around and returns a participant
+ * 
  * @author Zach
  *
  */
 public class ParticipantParameter extends Parameter<Participant> {
     private Participant myParticipant;
 
-    public ParticipantParameter (Participant participant, String id) {
-        super(Participant.class, id);
+    public ParticipantParameter (Participant participant) {
+        super(Participant.class);
         myParticipant = participant;
     }
 

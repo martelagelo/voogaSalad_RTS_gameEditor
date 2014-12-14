@@ -13,7 +13,6 @@ import engine.visuals.elementVisuals.animations.AnimationTag;
  * @author Jonathan Tseng, Nishad Agrawal
  *
  */
-// TODO: refector Grids into hierarchy
 public class DirectionGrid extends Grid {
 	
     public static final int GRID_SIZE = 3;

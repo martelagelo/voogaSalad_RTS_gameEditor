@@ -32,7 +32,6 @@ public class NullInputManager extends InputManager {
                                double mapTranslateY,
                                SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
     
     @Override
@@ -41,7 +40,6 @@ public class NullInputManager extends InputManager {
                                double mapTranslateY,
                                SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
 
     @Override
@@ -50,7 +48,6 @@ public class NullInputManager extends InputManager {
                                       double mapTranslateY,
                                       SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
     
     @Override
@@ -59,31 +56,26 @@ public class NullInputManager extends InputManager {
                                       double mapTranslateY,
                                       SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
 
     @Override
     public void keyPressed (KeyEvent e) {
         // do nothing
-        System.out.println("Null Input Manager");
     }
 
     @Override
     public void primaryDragOccurred (MouseEvent e, SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
     
     @Override
     public void secondaryDragOccurred (MouseEvent e, SelectionBox b) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
 
     @Override
     public void screenButtonClicked (int buttonID) {
         // do nothing
-        //System.out.println("Null Input Manager");
     }
 
 }

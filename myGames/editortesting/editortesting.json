@@ -1,0 +1,133 @@
+{
+  "myCampaigns": [
+    {
+      "myLevels": [
+        {
+          "attributes": {
+            "myNumericalAttributes": [
+              {
+                "myData": 2000.0,
+                "myName": "levelWidth"
+              },
+              {
+                "myData": 2000.0,
+                "myName": "levelHeight"
+              }
+            ],
+            "myTextualAttributes": [
+              {
+                "myData": "C:\\Users\\Jonathan Tseng\\Documents\\GitHub\\CS308\\voogasalad_TheException\\resourcesold\\gameelementresources\\terrain\\tree3.png",
+                "myName": "backgroundPath"
+              }
+            ]
+          },
+          "myTerrains": [],
+          "myUnits": [],
+          "myGoals": [],
+          "myIdentifier": {
+            "levelName": "level",
+            "campaignName": "campaign"
+          },
+          "myName": "level",
+          "myDescription": "",
+          "myHashingPrime": 31
+        }
+      ],
+      "myName": "campaign",
+      "myDescription": "",
+      "myHashingPrime": 31
+    }
+  ],
+  "myGameUniverse": {
+    "myParticipantColors": [],
+    "myNumericalAttributes": [
+      {
+        "myData": 0.0,
+        "myName": "xPosition"
+      },
+      {
+        "myData": 0.0,
+        "myName": "yPosition"
+      }
+    ],
+    "myTextualAttributes": [
+      {
+        "myData": "burger",
+        "myName": "name"
+      }
+    ],
+    "myGameElementStates": [],
+    "myDrawableGameElementStates": [],
+    "mySelectableGameElementStates": [
+      {
+        "attributeDisplayerStates": [],
+        "myAnimatorState": {
+          "imageTag": "gameelementresources/selectablegameelementstates/spritesheets/berserker.png",
+          "colorMaskTag": "gameelementresources/selectablegameelementstates/colormasks/berserker.png",
+          "viewportSize": {
+            "myWidth": 100,
+            "myHeight": 100
+          },
+          "numRows": 10,
+          "animationSequences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 1,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": false,
+              "myTags": [
+                "HERE",
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 0.0,
+              "myFrameCounter": 0
+            }
+          ]
+        },
+        "myVisionBounds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "myBounds": [
+          0.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        "myActions": {},
+        "attributes": {
+          "myNumericalAttributes": [
+            {
+              "myData": 0.0,
+              "myName": "xPosition"
+            },
+            {
+              "myData": 0.0,
+              "myName": "yPosition"
+            }
+          ],
+          "myTextualAttributes": [
+            {
+              "myData": "burger",
+              "myName": "name"
+            }
+          ]
+        },
+        "myTypes": []
+      }
+    ]
+  },
+  "myName": "editor testing",
+  "myDescription": "",
+  "myHashingPrime": 31
+}

@@ -21,6 +21,7 @@ import util.DeepCopy;
  *
  */
 public class GameUniverse {
+    private Set<Long> myParticipantColors;
     private Set<Attribute<Number>> myNumericalAttributes;
     private Set<Attribute<String>> myTextualAttributes;
     private Set<GameElementState> myGameElementStates;
@@ -28,6 +29,7 @@ public class GameUniverse {
     private Set<SelectableGameElementState> mySelectableGameElementStates;
 
     public GameUniverse () {
+        myParticipantColors = new HashSet<>();
         myNumericalAttributes = new HashSet<>();
         myTextualAttributes = new HashSet<>();
         myDrawableGameElementStates = new HashSet<>();
@@ -35,6 +37,14 @@ public class GameUniverse {
         myGameElementStates = new HashSet<>();
     }
 
+    public void addParticipantColor(Long color) {
+        myParticipantColors.add(color);
+    }
+    
+    public Set<Long> getParticipantColors() {
+        return Collections.unmodifiableSet(myParticipantColors);
+    }
+    
     public void addGameElementState (GameElementState ges) {
         myGameElementStates.add(ges);
         storeAttributes(ges);
@@ -67,16 +77,22 @@ public class GameUniverse {
         return Collections.unmodifiableSet(mySelectableGameElementStates);
     }
 
-    public void removeSelectableGameElementState (SelectableGameElementState sges) {
-        mySelectableGameElementStates.remove(sges);
+    public void removeSelectableGameElementState (String sges) {
+        Set<SelectableGameElementState> nonMatches = mySelectableGameElementStates.stream().filter(e -> (!e.getName().equals(sges)))
+                .collect(Collectors.toSet());
+        mySelectableGameElementStates = nonMatches; 
     }
 
-    public void removeDrawableGameElementState (DrawableGameElementState dges) {
-        myDrawableGameElementStates.remove(dges);
+    public void removeDrawableGameElementState (String dges) {
+        Set<DrawableGameElementState> nonMatches = myDrawableGameElementStates.stream().filter(e -> (!e.getName().equals(dges)))
+                        .collect(Collectors.toSet());
+        myDrawableGameElementStates = nonMatches;   
     }
 
     public void removeGameElementState (GameElementState ges) {
-        myGameElementStates.remove(ges);
+        Set<GameElementState> nonMatches = myGameElementStates.stream().filter(e -> (!e.getName().equals(ges)))
+                .collect(Collectors.toSet());
+        myGameElementStates = nonMatches;          
     }
 
     public GameElementState getGameElementState (String elementName) {

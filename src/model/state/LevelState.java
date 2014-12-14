@@ -86,6 +86,12 @@ public class LevelState extends DescribableState implements Serializable {
     public List<GameElementState> getGoals () {
         return myGoals;
     }
+    
+    public void removeElement(GameElementState state) {
+        if (myUnits.contains(state)) myUnits.remove(state);
+        if (myTerrains.contains(state)) myTerrains.remove(state);
+        if (myGoals.contains(state)) myGoals.remove(state);
+    }
 
     /**
      * 

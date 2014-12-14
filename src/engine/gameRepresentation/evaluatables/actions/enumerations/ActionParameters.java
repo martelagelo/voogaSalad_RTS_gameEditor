@@ -22,7 +22,8 @@ public enum ActionParameters {
             "MoveBack",
             "MovePlayer",
             "RandomWaypoint",
-            "UpdateMovementDirection"),
+            "UpdateMovementDirection",
+            "FalseEvaluator"),
     // Number number evaluators
     NN_EVAL(
             "AdditionAssignment",
@@ -44,11 +45,11 @@ public enum ActionParameters {
     STRING(),
     // Numbers
     NUMBER(),
-    //A comma delimited list of strings
+    // A comma delimited list of strings
     STRING_LIST(),
-    //A comma delimited list of attributes
+    // A comma delimited list of attributes
     ATTR_LIST(),
-    //Designation between my object and another object
+    // Designation between my object and another object
     OBJECT_DESIGNATOR("me", "other object");
 
     String[] myOptions;

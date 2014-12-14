@@ -89,8 +89,8 @@ public class AnimationGrid extends Grid {
         return column;
     }
 
-    public int getNumColumns () {
-        return frameCols.size();
+    public int getNumRows () {
+        return frameCols.get(0).size();
     }
 
 }

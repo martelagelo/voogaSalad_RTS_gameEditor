@@ -1,12 +1,20 @@
 package view.editor.wizards;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
 
@@ -25,10 +33,11 @@ import util.multilanguage.MultiLanguageUtility;
 public class LevelWizard extends Wizard {
 
     private final String NEW_LEVEL_DEFAULT_KEY = "NewLevelDefault";
-    private final String CAMPAIGN_KEY="Campaign";
-    private final String LEVEL_WIDTH_KEY="LevelWidth";
-    private final String LEVEL_HEIGHT_KEY="LevelHeight";
-    
+    private final String CAMPAIGN_KEY = "Campaign";
+    private final String LEVEL_WIDTH_KEY = "LevelWidth";
+    private final String LEVEL_HEIGHT_KEY = "LevelHeight";
+    private final String BACKGROUND_KEY = "Background";
+
     @FXML
     private ComboBox<String> campaignName;
     @FXML
@@ -37,16 +46,21 @@ public class LevelWizard extends Wizard {
     private TextField levelWidth;
     @FXML
     private TextField levelHeight;
-    
+    @FXML
+    private AnchorPane leftPane;
+    @FXML
+    private Button image;
+
     private ObservableList<String> campaigns;
+    private String backgroundPath;
 
     @Override
     public boolean checkCanSave () {
         return campaignName.getSelectionModel().selectedItemProperty().isNotNull().get() &&
                !levelName.getText().isEmpty() && !levelWidth.getText().isEmpty() &&
-               isNumber(levelWidth.getText()) &&               
+               isNumber(levelWidth.getText()) &&
                !levelHeight.getText().isEmpty() &&
-               isNumber(levelHeight.getText());
+               isNumber(levelHeight.getText()) && !backgroundPath.isEmpty();
     }
 
     @Override
@@ -56,6 +70,7 @@ public class LevelWizard extends Wizard {
         addToData(WizardDataType.NAME, levelName.getText());
         addToData(WizardDataType.WIDTH, levelWidth.getText());
         addToData(WizardDataType.HEIGHT, levelHeight.getText());
+        addToData(WizardDataType.IMAGE, backgroundPath);
     }
 
     @Override
@@ -66,23 +81,33 @@ public class LevelWizard extends Wizard {
             campaignName.promptTextProperty().bind(util.getStringProperty(CAMPAIGN_KEY));
             levelWidth.promptTextProperty().bind(util.getStringProperty(LEVEL_WIDTH_KEY));
             levelHeight.promptTextProperty().bind(util.getStringProperty(LEVEL_HEIGHT_KEY));
+            image.textProperty().bind(util.getStringProperty(BACKGROUND_KEY));
             super.attachTextProperties();
         }
         catch (LanguageException e) {
             displayErrorMessage(e.getMessage());
         }
     }
-    
+
     @Override
     public void initialize () {
         super.initialize();
+        backgroundPath = "";
         campaigns = FXCollections.observableList(new ArrayList<>());
         campaignName.setItems(campaigns);
+        image.setOnAction(e -> selectBackground());
+    }
+
+    private void selectBackground () {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(new Stage());
+        backgroundPath = (file.getPath() == null) ? "" : file.getPath();
     }
 
     @Override
     public void launchForEdit (WizardData oldValues) {
-        campaignName.getSelectionModel().select(oldValues.getValueByKey(WizardDataType.CAMPAIGN_NAME));
+        campaignName.getSelectionModel()
+                .select(oldValues.getValueByKey(WizardDataType.CAMPAIGN_NAME));
         levelName.setText(oldValues.getValueByKey(WizardDataType.NAME));
     }
 

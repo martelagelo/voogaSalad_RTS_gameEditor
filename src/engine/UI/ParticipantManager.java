@@ -8,12 +8,12 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import model.state.gameelement.StateTags;
+import engine.Engine;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
 import engine.stateManaging.GameElementManager;
 import engine.users.AIParticipant;
 import engine.users.HumanParticipant;
 import engine.users.Participant;
-import engine.visuals.ScrollablePane;
 
 
 /**
@@ -35,6 +35,8 @@ public class ParticipantManager {
                                GameElementManager gameElementManager) {
         myElementManager = gameElementManager;
         myAIUsers = new ArrayList<>();
+        //TODO this needs to be changed to be more dynamic
+        myAIUsers.add(new AIParticipant(2, "testAI"));
         humanUser = user;
         player1Resources = new SimpleObjectProperty<>();
     }
@@ -54,6 +56,8 @@ public class ParticipantManager {
      * @return
      */
     public List<Participant> getAI () {
+
+        System.out.println("Participant count:" + myAIUsers);
         return new ArrayList<>(myAIUsers);
     }
 
@@ -74,12 +78,12 @@ public class ParticipantManager {
          * creates a new AI team for it
          */
         for (SelectableGameElement element : allUnits) {
-            String teamColor = (element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()));
+            long teamColor = element.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()).longValue();
             boolean containsID =
                     myAIUsers.stream().filter(e -> e.checkSameTeam(teamColor))
                             .collect(Collectors.toList()).size() > 0;
-            if (!containsID && !teamColor.equalsIgnoreCase("BLUE")) {
-                myAIUsers.add(new AIParticipant(teamColor, "AI" + teamColor));
+            if (!containsID && teamColor != Engine.DEFAULT_PLAYER_COLOR) {
+                myAIUsers.add(new AIParticipant(teamColor, Long.toString(teamColor)));
             }
         }
         /**
@@ -88,7 +92,7 @@ public class ParticipantManager {
         for (AIParticipant p : myAIUsers) {
             for (SelectableGameElement e : allUnits
                     .stream()
-                    .filter(e -> p.checkSameTeam(e.getTextualAttribute(StateTags.TEAM_COLOR.getValue())
+                    .filter(e -> p.checkSameTeam(e.getNumericalAttribute(StateTags.TEAM_COLOR.getValue())
                             )).collect(Collectors.toList())) {
                 Random r = new Random();
                 if (r.nextDouble() > 0.99) {
@@ -107,7 +111,7 @@ public class ParticipantManager {
      * @param tag
      * @param value the value to adjust the current numerical attribute's value by
      */
-    public void adjustParticipantNumericalAttribute (String teamColor, String tag, double value) {
+    public void adjustParticipantNumericalAttribute (Number teamColor, String tag, double value) {
         for (Participant p : filterParticipants(teamColor)) {
             double currentVal = p.getAttributes().getNumericalAttribute(tag).doubleValue();
             p.getAttributes().setNumericalAttribute(tag, currentVal + value);
@@ -121,7 +125,7 @@ public class ParticipantManager {
      * @param tag
      * @param value
      */
-    public void setParticipantNumericalAttribute (String teamColor, String tag, Number value) {
+    public void setParticipantNumericalAttribute (Number teamColor, String tag, Number value) {
         for (Participant p : filterParticipants(teamColor)) {
             p.getAttributes().setNumericalAttribute(tag, value);
         }
@@ -134,7 +138,7 @@ public class ParticipantManager {
      * @param tag
      * @param value
      */
-    public void setParticipantTextualAttribute (String teamColor, String tag, String value) {
+    public void setParticipantTextualAttribute (Number teamColor, String tag, String value) {
         for (Participant p : filterParticipants(teamColor)) {
             p.getAttributes().setTextualAttribute(tag, value);
         }
@@ -146,7 +150,7 @@ public class ParticipantManager {
      * @param teamColor
      * @return
      */
-    private List<Participant> filterParticipants (String teamColor) {
+    private List<Participant> filterParticipants (Number teamColor) {
         // java allows casting subclass -> superclass but not List<subclass> -> list<superclass>
         List<Participant> participants = myAIUsers.stream().collect(Collectors.toList());
         if (humanUser.checkSameTeam(teamColor)) participants.add(humanUser);

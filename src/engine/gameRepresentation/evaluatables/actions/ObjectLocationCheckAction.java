@@ -7,7 +7,6 @@ import engine.UI.ParticipantManager;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.FalseEvaluatable;
-import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.gameRepresentation.evaluatables.evaluators.EvaluatorFactory;
 import engine.gameRepresentation.evaluatables.evaluators.exceptions.EvaluatorCreationException;
 import engine.gameRepresentation.evaluatables.parameters.NumberParameter;
@@ -17,14 +16,17 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
 import engine.users.Participant;
 
-
+/**
+ * @see ActionOptions.OBJECT_LOCATION_DETECTION
+ * @author Michael R.
+ *
+ */
 public class ObjectLocationCheckAction extends Action {
     private String playerTypeString;
     private String gameElementType;
     private int radius;
     private int xLocation;
     private int yLocation;
-    private static final ActionOptions description = ActionOptions.OBJECT_LOCATION_DETECTION; 
 
     GameElementManager manager;
     private ParticipantManager participants;
@@ -32,12 +34,11 @@ public class ObjectLocationCheckAction extends Action {
     private Evaluatable<?> evaluatorToUse;
     private int valueToSet;
 
-    public ObjectLocationCheckAction (String id,
-                                      EvaluatorFactory factory,
+    public ObjectLocationCheckAction (EvaluatorFactory factory,
                                       GameElementManager elementManager,
                                       ParticipantManager participantManager,
                                       String[] args) {
-        super(id, factory, elementManager, participantManager, args);
+        super(factory, elementManager, participantManager, args);
         this.manager = elementManager;
         this.participants = participantManager;
     }
@@ -51,8 +52,8 @@ public class ObjectLocationCheckAction extends Action {
         participants = participantManager;
         attributeToSet = args[5];
         valueToSet = Integer.parseInt(args[7]);
-        Evaluatable<?> elementParameter = new NumericAttributeParameter("",attributeToSet,manager,new ActorObjectIdentifier());
-        Evaluatable<?> value = new NumberParameter("", valueToSet);
+        Evaluatable<?> elementParameter = new NumericAttributeParameter(attributeToSet,manager,new ActorObjectIdentifier());
+        Evaluatable<?> value = new NumberParameter(valueToSet);
         
         playerTypeString = args[0];
         gameElementType = args[1];
@@ -77,7 +78,7 @@ public class ObjectLocationCheckAction extends Action {
         }
         for (Participant participant: matchingPlayers) {
             for (GameElement element: manager.findAllElementsOfType(gameElementType)) {
-                if (participant.checkSameTeam(element.getTextualAttribute(StateTags.TEAM_COLOR.getValue()))) {
+                if (participant.checkSameTeam(element.getNumericalAttribute(StateTags.TEAM_COLOR.getValue()))) {
                     int curXLocation = element.getNumericalAttribute(StateTags.X_POSITION.getValue()).intValue();
                     int curYLocation = element.getNumericalAttribute(StateTags.Y_POSITION.getValue()).intValue();
                     double xDelta = Math.abs(xLocation - curXLocation);

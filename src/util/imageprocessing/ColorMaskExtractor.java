@@ -58,7 +58,6 @@ public class ColorMaskExtractor {
                 System.out.print(String.format("(%03d,%03d,%03d)\t", red, green, blue));
                 // }
             }
-            //System.out.println();
         }
     }
 
