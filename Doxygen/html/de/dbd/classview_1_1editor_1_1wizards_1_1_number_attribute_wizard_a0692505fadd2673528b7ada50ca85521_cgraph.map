@@ -1,7 +1,0 @@
-<map id="view.editor.wizards.NumberAttributeWizard.updateData" name="view.editor.wizards.NumberAttributeWizard.updateData">
-<area shape="rect" id="node2" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#ad224bc849cb336f4afe785c1e53c92a0" title="view.editor.wizards.Wizard.set\lWizardType" alt="" coords="254,5,463,46"/>
-<area shape="rect" id="node4" href="$d1/d26/classview_1_1editor_1_1wizards_1_1_attribute_wizard.html#a57d2012acf92160e61def166930a5023" title="view.editor.wizards.Attribute\lWizard.storeKeyValuePair" alt="" coords="259,70,458,111"/>
-<area shape="rect" id="node3" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a1e736ec6491093474359e05d47f1650c" title="model.data.WizardData.setType" alt="" coords="512,12,736,39"/>
-<area shape="rect" id="node5" href="$d7/d40/classview_1_1editor_1_1wizards_1_1_wizard.html#a8b5c3014ae6cff39c23e427462dc2128" title="view.editor.wizards.Wizard.add\lToData" alt="" coords="517,70,731,111"/>
-<area shape="rect" id="node6" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#a9cc5ffae61bf745c8aad40f05ee31ab4" title="model.data.WizardData.add\lDataPair" alt="" coords="784,70,984,111"/>
-</map>
