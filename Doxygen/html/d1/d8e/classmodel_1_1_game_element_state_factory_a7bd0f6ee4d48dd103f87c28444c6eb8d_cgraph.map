@@ -1,6 +1,0 @@
-<map id="model.GameElementStateFactory.createGoal" name="model.GameElementStateFactory.createGoal">
-<area shape="rect" id="node2" href="$d7/da9/classmodel_1_1state_1_1gameelement_1_1_game_element_state.html#a9c933a8457618e7e8e5f257ee2211c07" title="model.state.gameelement.\lGameElementState.addAction" alt="" coords="398,5,615,46"/>
-<area shape="rect" id="node4" href="$d1/d8e/classmodel_1_1_game_element_state_factory.html#a0182be087dfefa408c6194ff5ca55ac1" title="model.GameElementStateFactory.create\lActionWrapper" alt="" coords="365,70,648,111"/>
-<area shape="rect" id="node3" href="$d5/d7f/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action_wrapper.html#aeb7b2a7580e1ba5d6e57a13cc00e9bd5" title="engine.gameRepresentation.evaluatables.actions.\lActionWrapper.getActionType" alt="" coords="696,5,1037,46"/>
-<area shape="rect" id="node5" href="$dc/d48/classmodel_1_1data_1_1_wizard_data.html#ae19ca8de1e400fb399d702d78c861a81" title="model.data.WizardData.get\lValueByKey" alt="" coords="768,70,965,111"/>
-</map>

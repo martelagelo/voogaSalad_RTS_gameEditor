@@ -1,5 +1,0 @@
-<map id="engine.elementFactories.AttributeDisplayerFactory.createNumericalAttributeDisplayer" name="engine.elementFactories.AttributeDisplayerFactory.createNumericalAttributeDisplayer">
-<area shape="rect" id="node2" href="$df/dac/classmodel_1_1state_1_1gameelement_1_1traits_1_1_attribute_displayer_state.html#ab263b834a560e13930d12a892729d988" title="model.state.gameelement.traits.\lAttributeDisplayerState.getMaxValue" alt="" coords="293,5,552,46"/>
-<area shape="rect" id="node3" href="$df/dac/classmodel_1_1state_1_1gameelement_1_1traits_1_1_attribute_displayer_state.html#ab5b095399733f89af838862aeb0d7c11" title="model.state.gameelement.traits.\lAttributeDisplayerState.getMinValue" alt="" coords="295,70,550,111"/>
-<area shape="rect" id="node4" href="$df/dac/classmodel_1_1state_1_1gameelement_1_1traits_1_1_attribute_displayer_state.html#aaaf67d1a30b83c2a84b7c404bbf5ded9" title="model.state.gameelement.traits.\lAttributeDisplayerState.getParameterTag" alt="" coords="280,135,565,177"/>
-</map>

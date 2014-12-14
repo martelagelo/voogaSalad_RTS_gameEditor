@@ -1,6 +1,0 @@
-<map id="model.sprite.SpriteImageGenerator.SpriteImageGenerator" name="model.sprite.SpriteImageGenerator.SpriteImageGenerator">
-<area shape="rect" id="node2" href="$d9/d0f/classutil_1_1_resource_bundle_retriever.html#a0990c37b1c5c0c6bea8c5625fdf82329" title="util.ResourceBundleRetriever.get\lBundle" alt="" coords="295,5,521,46"/>
-<area shape="rect" id="node4" href="$de/d01/classmodel_1_1sprite_1_1_sprite_image_generator.html#a6ee40edaf9ebe2dacf23997966e79b62" title="model.sprite.SpriteImage\lGenerator.populateColorMaskMap" alt="" coords="289,70,527,111"/>
-<area shape="rect" id="node3" href="$d9/d0f/classutil_1_1_resource_bundle_retriever.html#a9bdb43092dd5854ffb0f6c1383d1f39a" title="util.ResourceBundleRetriever.remove\lFileExtension" alt="" coords="594,5,849,46"/>
-<area shape="rect" id="node5" href="$d2/ddc/classmodel_1_1sprite_1_1_color_map_generator.html#a238663466a1715f56098813ca25d5eef" title="model.sprite.ColorMapGenerator.populate\lColorMaskMap" alt="" coords="576,70,867,111"/>
-</map>

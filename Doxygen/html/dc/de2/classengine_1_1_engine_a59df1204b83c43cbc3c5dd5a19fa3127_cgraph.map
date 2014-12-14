@@ -1,7 +1,0 @@
-<map id="engine.Engine.initializeVisualManager" name="engine.Engine.initializeVisualManager">
-<area shape="rect" id="node2" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#ad6d4b11c7b259638d92c5dd294ae03a8" title="engine.visuals.VisualManager.attach\lInputManager" alt="" coords="222,70,477,111"/>
-<area shape="rect" id="node5" href="$d3/d61/classengine_1_1visuals_1_1_visual_manager.html#ae3a6fc9ece227bd7eff08f163f41d790" title="engine.visuals.VisualManager.attach\lParticipantManager" alt="" coords="222,135,477,177"/>
-<area shape="rect" id="node3" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a14c11cc145b3264213ad4459e258a4c9" title="engine.visuals.Scrollable\lPane.attachInputManager" alt="" coords="552,5,739,46"/>
-<area shape="rect" id="node4" href="$dc/dbf/classengine_1_1visuals_1_1_ability_matrix.html#a8c12bf4db9d7ac71ad138c73a45b4954" title="engine.visuals.AbilityMatrix.attach\lInputManager" alt="" coords="526,70,765,111"/>
-<area shape="rect" id="node6" href="$de/d79/classengine_1_1visuals_1_1_scrollable_pane.html#a57a571960cb6334b284c20c5ac9d7380" title="engine.visuals.Scrollable\lPane.addToScene" alt="" coords="556,135,735,177"/>
-</map>
