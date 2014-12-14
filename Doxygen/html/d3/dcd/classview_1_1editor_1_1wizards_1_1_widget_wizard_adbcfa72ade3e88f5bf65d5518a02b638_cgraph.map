@@ -1,5 +1,0 @@
-<map id="view.editor.wizards.WidgetWizard.initialize" name="view.editor.wizards.WidgetWizard.initialize">
-<area shape="rect" id="node2" href="$d1/d6b/enummodel_1_1state_1_1gameelement_1_1_state_tags.html#ada1b9dca747cb1b5ef4e091bcc1654ab" title="model.state.gameelement.\lStateTags.getAllAttributes" alt="" coords="240,5,437,46"/>
-<area shape="rect" id="node3" href="$d3/dcd/classview_1_1editor_1_1wizards_1_1_widget_wizard.html#ad012cea0c36cbfbe4e58de5da1e79d0e" title="view.editor.wizards.Widget\lWizard.newAttribute" alt="" coords="245,70,432,111"/>
-<area shape="rect" id="node4" href="$d1/d6b/enummodel_1_1state_1_1gameelement_1_1_state_tags.html#a1556d941456f89505be70a1160d9be40" title="model.state.gameelement.\lStateTags.getAllNumericalAttributes" alt="" coords="485,70,739,111"/>
-</map>

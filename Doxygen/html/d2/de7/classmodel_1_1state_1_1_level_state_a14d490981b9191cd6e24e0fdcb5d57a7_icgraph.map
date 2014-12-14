@@ -1,5 +1,0 @@
-<map id="model.state.LevelState.getUnits" name="model.state.LevelState.getUnits">
-<area shape="rect" id="node2" href="$d1/df7/classengine_1_1element_factories_1_1_level_factory.html#a0558c33c2ce1c757e3464d18c84db2e7" title="engine.elementFactories.\lLevelFactory.createLevel" alt="" coords="251,5,434,46"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a3c93d3ffede59b58f39d796d016effe4" title="engine.Engine.instantiate\lManagers" alt="" coords="483,5,667,46"/>
-<area shape="rect" id="node4" href="$dc/de2/classengine_1_1_engine.html#a707225a32896b370f131105ef1c644e2" title="engine.Engine.Engine" alt="" coords="715,12,874,39"/>
-</map>

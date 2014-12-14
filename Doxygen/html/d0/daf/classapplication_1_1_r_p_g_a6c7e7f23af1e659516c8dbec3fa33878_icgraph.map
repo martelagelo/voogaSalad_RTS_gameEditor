@@ -1,5 +1,0 @@
-<map id="application.RPG.createMovingUnit" name="application.RPG.createMovingUnit">
-<area shape="rect" id="node2" href="$d0/daf/classapplication_1_1_r_p_g.html#ab7c6bd6b210231265c4afb6bf6c27341" title="application.RPG.createEnemyUnit" alt="" coords="291,5,527,32"/>
-<area shape="rect" id="node3" href="$d0/daf/classapplication_1_1_r_p_g.html#a57d0a7b674624b53b138a951b30f865d" title="application.RPG.hardCode\lAGame" alt="" coords="576,23,763,65"/>
-<area shape="rect" id="node4" href="$d0/daf/classapplication_1_1_r_p_g.html#a6b8f1624ae2607c67f4e8cda49b544e9" title="application.RPG.start" alt="" coords="811,31,965,57"/>
-</map>

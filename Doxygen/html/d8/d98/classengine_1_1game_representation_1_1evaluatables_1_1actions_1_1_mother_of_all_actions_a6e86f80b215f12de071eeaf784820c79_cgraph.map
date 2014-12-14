@@ -1,6 +1,0 @@
-<map id="engine.gameRepresentation.evaluatables.actions.MotherOfAllActions.initializeAction" name="engine.gameRepresentation.evaluatables.actions.MotherOfAllActions.initializeAction">
-<area shape="rect" id="node2" href="$d5/dee/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action.html#a71ecd5fff5af935d618db86d47785e2e" title="engine.gameRepresentation.evaluatables.actions.\lAction.identifyParticipantsOfInterest" alt="" coords="395,23,736,65"/>
-<area shape="rect" id="node5" href="$d5/dee/classengine_1_1game_representation_1_1evaluatables_1_1actions_1_1_action.html#aa3edc5fa6d19aa8e2fd3c54698b651ee" title="engine.gameRepresentation.evaluatables.actions.\lAction.makeObjectIdentifier" alt="" coords="395,89,736,130"/>
-<area shape="rect" id="node3" href="$de/d96/classengine_1_1_u_i_1_1_participant_manager.html#a84cef493ada18e1808bcc8bcb795ad97" title="engine.UI.ParticipantManager.getAI" alt="" coords="793,5,1039,32"/>
-<area shape="rect" id="node4" href="$de/d96/classengine_1_1_u_i_1_1_participant_manager.html#ab448ea7d5f1b3e22a28f2be3f47b397c" title="engine.UI.ParticipantManager.getUser" alt="" coords="785,56,1047,83"/>
-</map>
