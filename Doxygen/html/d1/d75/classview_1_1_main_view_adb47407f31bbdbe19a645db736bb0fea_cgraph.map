@@ -1,5 +1,0 @@
-<map id="view.MainView.update" name="view.MainView.update">
-<area shape="rect" id="node2" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html#aae150e39b5afbb66a64ef0972a18a72f" title="view.gui.GUIContainer.update" alt="" coords="213,45,421,72"/>
-<area shape="rect" id="node3" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html#aec439955e8ca7441c73b2f8378d902dd" title="view.gui.GUIContainer.model\lUpdate" alt="" coords="472,5,675,46"/>
-<area shape="rect" id="node4" href="$d0/d1c/classview_1_1gui_1_1_g_u_i_container.html#acc5e1491d53fb623544ba9c472abf080" title="view.gui.GUIContainer.engine\lUpdate" alt="" coords="470,70,677,111"/>
-</map>

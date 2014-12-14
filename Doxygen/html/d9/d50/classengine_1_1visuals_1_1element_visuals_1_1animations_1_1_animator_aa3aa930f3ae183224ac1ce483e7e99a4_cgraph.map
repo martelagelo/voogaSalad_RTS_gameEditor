@@ -1,5 +1,0 @@
-<map id="engine.visuals.elementVisuals.animations.Animator.setColorMasking" name="engine.visuals.elementVisuals.animations.Animator.setColorMasking">
-<area shape="rect" id="node2" href="$dc/de2/classengine_1_1_engine.html#aacf5e892c4b80db44270acd0d64b7429" title="engine.Engine.colorFromInt" alt="" coords="347,12,541,39"/>
-<area shape="rect" id="node4" href="$d1/d5c/classmodel_1_1sprite_1_1_sprite_image_container.html#aeda9017d9625cc566d6cc9a640db43e1" title="model.sprite.SpriteImage\lContainer.getSpritesheet" alt="" coords="352,63,536,105"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#a0800fec66979e73b98d70c4116f4b997" title="engine.Engine.colorString\lFromInt" alt="" coords="590,5,775,46"/>
-</map>

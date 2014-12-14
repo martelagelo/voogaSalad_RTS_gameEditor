@@ -1,4 +1,0 @@
-<map id="engine.stateManaging.GameLoop.pause" name="engine.stateManaging.GameLoop.pause">
-<area shape="rect" id="node2" href="$de/db7/classengine_1_1_u_i_1_1_runner_input_manager.html#aed338dcfef23593dc29149fe5fb7bce9" title="engine.UI.RunnerInputManager.key\lPressed" alt="" coords="261,5,504,46"/>
-<area shape="rect" id="node3" href="$dc/de2/classengine_1_1_engine.html#aa437b9a03f0e4cff821fc419a9d17e8f" title="engine.Engine.pause" alt="" coords="305,71,460,97"/>
-</map>

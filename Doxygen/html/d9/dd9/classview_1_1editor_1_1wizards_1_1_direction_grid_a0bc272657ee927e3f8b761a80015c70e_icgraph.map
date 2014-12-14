@@ -1,6 +1,0 @@
-<map id="view.editor.wizards.DirectionGrid.selectFrame" name="view.editor.wizards.DirectionGrid.selectFrame">
-<area shape="rect" id="node2" href="$d9/dd9/classview_1_1editor_1_1wizards_1_1_direction_grid.html#a20566ad434f30e9f91c5f4a7e33715f0" title="view.editor.wizards.Direction\lGrid.createColumn" alt="" coords="257,5,457,46"/>
-<area shape="rect" id="node4" href="$d3/d91/classview_1_1editor_1_1wizards_1_1_animation_wizard.html#a68f2bd92782ff01c65296cebe732b794" title="view.editor.wizards.Animation\lWizard.selectCorrectFrame" alt="" coords="253,70,461,111"/>
-<area shape="rect" id="node3" href="$d9/dd9/classview_1_1editor_1_1wizards_1_1_direction_grid.html#ab846e7a44677f72ba789e4c5e20d7757" title="view.editor.wizards.Direction\lGrid.createColumns" alt="" coords="513,5,713,46"/>
-<area shape="rect" id="node5" href="$d3/d91/classview_1_1editor_1_1wizards_1_1_animation_wizard.html#ace40b031fa60e2af7fea27713f0df944" title="view.editor.wizards.Animation\lWizard.launchForEdit" alt="" coords="509,70,717,111"/>
-</map>
