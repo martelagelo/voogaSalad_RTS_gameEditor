@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// Jonathan Tseng, jtt24
+
 package util.multilanguage;
 
 /**
@@ -6,7 +9,7 @@ package util.multilanguage;
  * @author Jonathan Tseng
  *
  */
-public abstract class LanguageException extends Exception {
+public abstract class LanguageException extends RuntimeException {
 
     /**
      * Auto-generated

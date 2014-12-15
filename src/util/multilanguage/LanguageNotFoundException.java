@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// Jonathan Tseng, jtt24
+
 package util.multilanguage;
 
 /**
