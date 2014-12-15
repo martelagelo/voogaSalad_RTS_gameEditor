@@ -49,7 +49,7 @@ public class AttributeWizard extends Wizard {
     }
 
     protected boolean areFieldsNotNull () {
-        return (keyChoice.isPresent() && !value.getText().isEmpty());
+        return (keyChoice.isPresent() && valueChoice.isPresent());
     }
 
     @Override
