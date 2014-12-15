@@ -12,7 +12,7 @@
 		<ScrollPane>
 			<VBox>
 				<ComboBox fx:id="actionType" />
-				<ComboBox fx:id="actionChoice" />
+				<ComboBox fx:id="action" />
 				<Text fx:id="message" />
 				<VBox fx:id="options" />
 				<Button defaultButton="true" fx:id="save" />

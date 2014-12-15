@@ -2,7 +2,9 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -18,7 +20,7 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
- * public ActionWrapper (String actionType, String actionName, String ... parameters)
+ * A wizard used for the creation of actions
  * 
  * @author Joshua, Nishad
  *
@@ -31,7 +33,7 @@ public class ActionWizard extends Wizard {
     @FXML
     private ComboBox<ActionType> actionType;
     @FXML
-    private ComboBox<ActionOptions> actionChoice;
+    private ComboBox<ActionOptions> action;
     @FXML
     private Text message;
     @FXML
@@ -41,11 +43,14 @@ public class ActionWizard extends Wizard {
 
     private Set<String> attributes;
     private List<ComboBox<String>> numberDropdowns;
+    
+    private Optional<ActionType> actionTypeChoice;
+    private Optional<String> actionChoice;
 
     @Override
     public boolean checkCanSave () {
-        return actionType.getSelectionModel().selectedItemProperty().isNotNull().get() &&
-               actionChoice.getSelectionModel().selectedItemProperty().isNotNull().get() &&
+        return actionTypeChoice.isPresent() &&
+               actionChoice.isPresent() &&
                dropdownsValid();
     }
 
@@ -66,7 +71,7 @@ public class ActionWizard extends Wizard {
         setWizardType(WizardType.TRIGGER);
         addToData(WizardDataType.ACTIONTYPE, actionType.getSelectionModel().getSelectedItem()
                 .name());
-        addToData(WizardDataType.ACTION, actionChoice.getSelectionModel().getSelectedItem().name());
+        addToData(WizardDataType.ACTION, action.getSelectionModel().getSelectedItem().name());
         addToData(WizardDataType.ACTION_PARAMETERS, getDropdownText());
     }
 
@@ -81,13 +86,33 @@ public class ActionWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        actionType.setItems(FXCollections.observableArrayList(ActionType.values()));
-        actionChoice.setItems(FXCollections.observableArrayList(ActionOptions.values()));
-        actionChoice.valueProperty()
-                .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
+        setUpActionTypeChoice();
+        setUpActionChoice();
         dropdowns = new ArrayList<>();
         attributes = StateTags.getAllAttributes();
         numberDropdowns = new ArrayList<>();
+    }
+    
+    private void setUpActionTypeChoice () {
+    	 actionType.setItems(FXCollections.observableArrayList(ActionType.values()));
+         actionTypeChoice = Optional.ofNullable(null);
+         actionType.setOnAction(e ->
+         		{
+         			actionTypeChoice = Optional.ofNullable(actionType.getValue());
+         		}
+         );
+    }
+    
+    private void setUpActionChoice () {
+    	action.setItems(FXCollections.observableArrayList(ActionOptions.values()));
+    	actionChoice = Optional.ofNullable(null);
+    	action.setOnAction(e ->
+    		{
+    			actionChoice = Optional.ofNullable(action.getSelectionModel().getSelectedItem().name());
+    		}		
+    	);
+    	action.valueProperty()
+                .addListener( (o, oldVal, newVal) -> buildOptionedString(newVal));
     }
 
     private void buildOptionedString (ActionOptions actionOption) {
@@ -132,7 +157,7 @@ public class ActionWizard extends Wizard {
     public void launchForEdit (WizardData oldValues) {
         actionType.getSelectionModel().select(ActionType.valueOf(oldValues
                 .getValueByKey(WizardDataType.ACTIONTYPE)));
-        actionChoice.getSelectionModel().select(ActionOptions.valueOf(oldValues
+        action.getSelectionModel().select(ActionOptions.valueOf(oldValues
                 .getValueByKey(WizardDataType.ACTION)));
         String[] params = oldValues.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
         for (int i = 0; i < dropdowns.size(); i++) {
