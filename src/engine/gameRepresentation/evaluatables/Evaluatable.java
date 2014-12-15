@@ -1,5 +1,6 @@
 package engine.gameRepresentation.evaluatables;
-
+//This entire file is part of my masterpiece.
+//Zachary Bears
 /**
  * An object that can evaluate a condition on an element to return a value.
  * Evaluators are generics to allow for the implementation of complex logic with
