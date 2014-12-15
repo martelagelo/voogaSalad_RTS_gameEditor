@@ -1,6 +1,8 @@
 package view.editor.wizards;
 
 import java.util.List;
+import java.util.Optional;
+
 import model.data.WizardData;
 import model.data.WizardDataType;
 import model.data.WizardType;
@@ -23,10 +25,12 @@ public class CampaignWizard extends Wizard {
     private final static String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
     @FXML
     private TextField name;
+    
+    private Optional<String> nameChoice;
 
     @Override
     public boolean checkCanSave () {
-        return !name.getText().isEmpty();
+        return nameChoice.isPresent();
     }
 
     @Override
@@ -46,6 +50,19 @@ public class CampaignWizard extends Wizard {
             displayErrorMessage(e.getMessage());
         }
     }
+    
+    @Override
+    public void initialize () {
+    	super.initialize();
+    	setUpName();
+    }
+    
+    private void setUpName () {
+    	nameChoice = Optional.ofNullable(null);
+    	name.setOnAction(e -> {
+    		nameChoice = Optional.of(name.getText());
+    	});
+    } 
 
     @Override
     public void launchForEdit (WizardData oldValues) {
