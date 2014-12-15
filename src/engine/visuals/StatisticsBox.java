@@ -2,6 +2,7 @@ package engine.visuals;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,9 +16,9 @@ import engine.UI.ParticipantManager;
  * @author John Lorenz
  *
  */
-public class StatisticsBox extends VBox {
+public class StatisticsBox extends VBox implements VisualDisplay {
     // TODO: actually implement this properly
-    public StatisticsBox (double xLayout, double yLayout, ParticipantManager manager) {
+    public StatisticsBox (ParticipantManager manager) {
         super();
         setLayoutX(xLayout);
         setLayoutY(yLayout);
@@ -31,6 +32,11 @@ public class StatisticsBox extends VBox {
 
         resourcesBox.getChildren().add(t);
         getChildren().add(resourcesBox);
+    }
+
+    @Override
+    public Node getNode () {
+        return this;
     }
 
 }

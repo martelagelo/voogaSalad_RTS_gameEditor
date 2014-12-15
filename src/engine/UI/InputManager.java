@@ -6,7 +6,7 @@ import model.MainModel;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.Participant;
-import engine.visuals.SelectionBox;
+import engine.visuals.SelectionShape;
 
 /**
  * Input Manager interface
@@ -30,23 +30,28 @@ public abstract class InputManager {
     }
 
     public abstract void primaryClickOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b);
+            double mapTranslateY, SelectionShape b);
 
     public abstract void secondaryClickOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b);
+            double mapTranslateY, SelectionShape b);
 
     public abstract void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b);
+            double mapTranslateY, SelectionShape b);
 
     public abstract void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b);
+            double mapTranslateY, SelectionShape b);
 
-    public abstract void primaryDragOccurred (MouseEvent e, SelectionBox b);
+    public abstract void primaryDragOccurred (MouseEvent e, SelectionShape b);
 
-    public abstract void secondaryDragOccurred (MouseEvent e, SelectionBox b);
+    public abstract void secondaryDragOccurred (MouseEvent e, SelectionShape b);
 
     public abstract void keyPressed (KeyEvent e);
 
     public abstract void screenButtonClicked (int buttonID);
+
+    public void mouseMoved (MouseEvent e) {
+        // TODO Auto-generated method stub
+        // use this to set the scrollablepane's scrolling speed
+    }
 
 }

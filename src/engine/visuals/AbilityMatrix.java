@@ -21,7 +21,7 @@ import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import engine.UI.InputManager;
 
-public class AbilityMatrix {
+public class AbilityMatrix implements VisualDisplay {
     private static final double GRID_SPACING = 2;
     public static final int MATRIX_NUM_ROWS = 4;
     public static final int MATRIX_NUM_COLS = 4;

@@ -169,7 +169,7 @@ public class Engine extends Observable implements Observer {
      *
      * @return The scene
      */
-    public ScrollablePane getScene () {
+    public Pane getScene () {
         return myVisualManager.getScrollingScene();
     }
 

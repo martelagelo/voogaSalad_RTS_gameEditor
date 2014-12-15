@@ -1,15 +1,14 @@
 package engine.visuals;
 
 import java.util.List;
-
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import model.sprite.ColorMapGenerator;
 import model.state.gameelement.StateTags;
 import engine.Engine;
 import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
@@ -20,7 +19,7 @@ import engine.gameRepresentation.renderedRepresentation.SelectableGameElement;
  * @author Michael D., John L.
  *
  */
-public class MiniMap {
+public class MiniMap implements VisualDisplay {
 
     public static final int CONTEXT_RECT_LINE_WIDTH = 2;
     public static final int CONTEXT_RECT_ARC_WIDTH = 10;
@@ -67,14 +66,15 @@ public class MiniMap {
      *
      * @return The canvas representing the minimap
      */
-    public Canvas getDisplay () {
+    public Node getNode () {
         return myDisplay;
     }
 
     /**
      * Updates the drawings and points on the minimap
      */
-    public void updateMiniMap (List<SelectableGameElement> unitList) {
+    @Override
+    public void update (List<SelectableGameElement> unitList) {
         initializeGraphicsContext();
         moveSceneBox();
         moveUnits(unitList);

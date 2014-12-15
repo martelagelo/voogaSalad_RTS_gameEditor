@@ -6,7 +6,7 @@ import model.MainModel;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.Participant;
-import engine.visuals.SelectionBox;
+import engine.visuals.SelectionShape;
 
 /**
  * Input Manager that has no functionality
@@ -23,25 +23,25 @@ public class NullInputManager extends InputManager {
 
     @Override
     public void primaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
         // do nothing
     }
 
     @Override
     public void secondaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
         // do nothing
     }
 
     @Override
     public void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         // do nothing
     }
 
     @Override
     public void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         // do nothing
     }
 
@@ -51,12 +51,12 @@ public class NullInputManager extends InputManager {
     }
 
     @Override
-    public void primaryDragOccurred (MouseEvent e, SelectionBox b) {
+    public void primaryDragOccurred (MouseEvent e, SelectionShape b) {
         // do nothing
     }
 
     @Override
-    public void secondaryDragOccurred (MouseEvent e, SelectionBox b) {
+    public void secondaryDragOccurred (MouseEvent e, SelectionShape b) {
         // do nothing
     }
 

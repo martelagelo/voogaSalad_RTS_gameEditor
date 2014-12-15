@@ -10,7 +10,7 @@ import model.MainModel;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.Participant;
-import engine.visuals.SelectionBox;
+import engine.visuals.SelectionShape;
 
 /**
  * Input Manager when the editor is toggled as opposed to the game runner does
@@ -29,7 +29,7 @@ public class EditorInputManager extends InputManager {
 
     @Override
     public void primaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
         Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         String drawable = myMainModel.getEditorChosenDrawable();
         String selectable = myMainModel.getEditorChosenSelectable();
@@ -58,20 +58,20 @@ public class EditorInputManager extends InputManager {
 
     @Override
     public void secondaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
         Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.moveSelectedUnit(mapPoint2d, myUser);
     }
 
     @Override
     public void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         // TODO: make this comment better
     }
 
     @Override
     public void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         // do nothing
     }
 
@@ -83,12 +83,12 @@ public class EditorInputManager extends InputManager {
     }
 
     @Override
-    public void primaryDragOccurred (MouseEvent e, SelectionBox b) {
+    public void primaryDragOccurred (MouseEvent e, SelectionShape b) {
         // do nothing b/c selection box not used
     }
 
     @Override
-    public void secondaryDragOccurred (MouseEvent e, SelectionBox b) {
+    public void secondaryDragOccurred (MouseEvent e, SelectionShape b) {
         // do nothing b/c selection box not used
     }
 

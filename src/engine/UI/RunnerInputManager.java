@@ -8,7 +8,7 @@ import model.MainModel;
 import engine.stateManaging.GameElementManager;
 import engine.stateManaging.GameLoop;
 import engine.users.Participant;
-import engine.visuals.SelectionBox;
+import engine.visuals.SelectionShape;
 
 /**
  *
@@ -29,7 +29,7 @@ public class RunnerInputManager extends InputManager {
 
     @Override
     public void primaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
         Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         b.primaryClick(e);
         myElementManager.selectSingleUnit(mapPoint2d, e.isShiftDown(), myUser);
@@ -37,7 +37,7 @@ public class RunnerInputManager extends InputManager {
 
     @Override
     public void secondaryClickOccurred (MouseEvent e, double mapTranslateX, double mapTranslateY,
-            SelectionBox b) {
+            SelectionShape b) {
 
         Point2D mapPoint2d = new Point2D(mapTranslateX + e.getX(), mapTranslateY + e.getY());
         myElementManager.setSelectedUnitCommand(mapPoint2d, e.isShiftDown(), myUser);
@@ -45,7 +45,7 @@ public class RunnerInputManager extends InputManager {
 
     @Override
     public void primaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         double[] points = b.clickReleased(e, mapTranslateX, mapTranslateY);
         if (points[0] != points[2] && points[1] != points[3]) {
             myElementManager.selectUnitsInBounds(points, e.isShiftDown(), myUser);
@@ -54,7 +54,7 @@ public class RunnerInputManager extends InputManager {
 
     @Override
     public void secondaryClickReleaseOccurred (MouseEvent e, double mapTranslateX,
-            double mapTranslateY, SelectionBox b) {
+            double mapTranslateY, SelectionShape b) {
         // do nothing
     }
 
@@ -72,12 +72,12 @@ public class RunnerInputManager extends InputManager {
     }
 
     @Override
-    public void primaryDragOccurred (MouseEvent e, SelectionBox b) {
-        b.reactToDrag(e);
+    public void primaryDragOccurred (MouseEvent e, SelectionShape b) {
+        b.resize(e);
     }
 
     @Override
-    public void secondaryDragOccurred (MouseEvent e, SelectionBox b) {
+    public void secondaryDragOccurred (MouseEvent e, SelectionShape b) {
         // do nothing
     }
 
