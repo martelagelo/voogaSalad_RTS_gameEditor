@@ -25,6 +25,9 @@ import util.multilanguage.MultiLanguageUtility;
  * @author Joshua, Nishad
  *
  */
+
+//This entire file is part of my masterpiece.
+//JOSHUA MILLER
 public class AttributeWizard extends Wizard {
 	
     @FXML

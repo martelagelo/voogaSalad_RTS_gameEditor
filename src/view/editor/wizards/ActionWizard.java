@@ -25,6 +25,9 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
  * @author Joshua, Nishad
  *
  */
+
+//This entire file is part of my masterpiece.
+//JOSHUA MILLER
 public class ActionWizard extends Wizard {
 
     private static final String EE_DELIMITER = "#";

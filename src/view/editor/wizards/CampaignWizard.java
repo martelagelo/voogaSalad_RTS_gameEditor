@@ -20,6 +20,9 @@ import util.multilanguage.MultiLanguageUtility;
  * @author Joshua, Nishad
  *
  */
+
+//This entire file is part of my masterpiece.
+//JOSHUA MILLER
 public class CampaignWizard extends Wizard {
 
     private final static String NEW_CAMPAIGN_DEFAULT_KEY = "NewCampaignDefault";
