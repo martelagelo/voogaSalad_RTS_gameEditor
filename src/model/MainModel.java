@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import javafx.scene.image.ImageView;
 import model.data.WizardData;
 import model.data.WizardDataType;
@@ -26,10 +27,10 @@ import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import util.JSONableSet;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
+import util.saveload.SaveLoadUtility;
 import view.dialog.DialogBoxUtility;
 import view.splash.SplashScreen;
 import engine.Engine;
@@ -43,6 +44,7 @@ import engine.visuals.elementVisuals.animations.AnimatorState;
  *
  */
 public class MainModel extends Observable {
+    private static final String DEFAULT_DELIMITER = "_";
     private static final String LOAD_GAME_ERROR_KEY = "LoadGameError";
     private GameState myGameState;
     private String myEditorChosenSelectableElement;
@@ -50,11 +52,13 @@ public class MainModel extends Observable {
     private String myEditorChosenColor;
     private GameSaveLoadMediator mySaveLoadMediator;
     private SpriteImageGenerator mySpriteImageGenerator;
+    private SaveLoadUtility mySaveLoadUtility = new SaveLoadUtility();
 
     public MainModel () throws SaveLoadException {
         clearEditorChosen();
         mySaveLoadMediator = new GameSaveLoadMediator();
         mySpriteImageGenerator = new SpriteImageGenerator();
+        mySaveLoadUtility = new SaveLoadUtility();
     }
 
     public void newGame (String gameName) {
@@ -114,10 +118,10 @@ public class MainModel extends Observable {
     public void saveGame (GameState game) {
         try {
             JSONableSet<String> existingGames =
-                    SaveLoadUtility.loadResource(JSONableSet.class,
+                    mySaveLoadUtility.loadResource(JSONableSet.class,
                                                  SplashScreen.EXISTING_GAMES);
             existingGames.add(game.getName());
-            SaveLoadUtility.save(existingGames, SplashScreen.EXISTING_GAMES);
+            mySaveLoadUtility.saveResource(existingGames, SplashScreen.EXISTING_GAMES, DEFAULT_DELIMITER);
             mySaveLoadMediator.saveGame(game, game.getName());
         }
         catch (SaveLoadException e) {

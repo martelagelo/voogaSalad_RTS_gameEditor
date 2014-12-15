@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
+import util.saveload.SaveLoadUtility;
 
 /**
  * A scrollablebackground pane for the game
@@ -51,7 +51,7 @@ public class ScrollableBackground extends Pane {
     public void tileBackground (String backgroundURI) {
         Image im = null;
         try {
-            im = SaveLoadUtility.loadImage(backgroundURI);
+            im = new SaveLoadUtility().loadImage(backgroundURI);
         } catch (SaveLoadException e) {
         }
         if (im != null) {

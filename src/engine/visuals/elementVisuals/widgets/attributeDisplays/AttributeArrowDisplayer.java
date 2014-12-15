@@ -4,8 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.state.gameelement.AttributeContainer;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
+import util.saveload.SaveLoadUtility;
 
 /**
  * Creates a selection arrow for units that are selected
@@ -39,7 +39,7 @@ public class AttributeArrowDisplayer extends AttributeDisplayer {
         Group group = new Group();
         Image arrow = null;
         try {
-            arrow = SaveLoadUtility.loadImage(imageURL);
+            arrow = new SaveLoadUtility().loadImage(imageURL);
         } catch (SaveLoadException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

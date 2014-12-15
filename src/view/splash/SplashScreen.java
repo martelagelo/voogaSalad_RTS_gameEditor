@@ -18,10 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import util.JSONableSet;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 import util.multilanguage.LanguageException;
 import util.multilanguage.MultiLanguageUtility;
+import util.saveload.SaveLoadUtility;
 import view.dialog.DialogBoxUtility;
 import view.gui.GUIScreen;
 import view.gui.ViewScreenPath;
@@ -73,7 +73,7 @@ public class SplashScreen extends GUIScreen {
     @Override
     public void init () {
         try {
-            JSONableSet<String> games = SaveLoadUtility.loadResource(JSONableSet.class,
+            JSONableSet<String> games = new SaveLoadUtility().loadResource(JSONableSet.class,
                                                                       EXISTING_GAMES);
             gameDropDown.setItems(FXCollections.observableList(new ArrayList<>(games)));
         }

@@ -17,8 +17,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
+import util.saveload.SaveLoadUtility;
 import engine.UI.InputManager;
 
 public class AbilityMatrix {
@@ -85,7 +85,7 @@ public class AbilityMatrix {
             if (!map.get(i).isEmpty()) {
                 Image im = null;
                 try {
-                    im = SaveLoadUtility.loadImage(map.get(i));
+                    im = new SaveLoadUtility().loadImage(map.get(i));
                 } catch (SaveLoadException e) {
                 }
                 if (im != null) {

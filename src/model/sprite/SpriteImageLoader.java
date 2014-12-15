@@ -1,8 +1,8 @@
 package model.sprite;
 
 import javafx.scene.image.Image;
-import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
+import util.saveload.SaveLoadUtility;
 
 /**
  * This class uses the mediator pattern to connect the SpriteImageGenerator with
@@ -15,6 +15,7 @@ import util.exceptions.SaveLoadException;
  */
 public class SpriteImageLoader {
     private static final String DEFAULT_COLORMASK = "resources/gameelementresources/default.png";
+    private static SaveLoadUtility mySaveLoadUtility = new SaveLoadUtility();
 
     /**
      * Loads the image of the color mask at the specified file path
@@ -25,7 +26,7 @@ public class SpriteImageLoader {
      * @throws SaveLoadException
      */
     public static Image loadTeamColorMask (String imageTag) throws SaveLoadException {
-        return (!imageTag.isEmpty()) ? SaveLoadUtility.loadImage(imageTag) : SaveLoadUtility
+        return (!imageTag.isEmpty()) ? mySaveLoadUtility.loadImage(imageTag) : mySaveLoadUtility
                 .loadImage(DEFAULT_COLORMASK);
     }
 
@@ -38,7 +39,7 @@ public class SpriteImageLoader {
      * @throws SaveLoadException
      */
     public static Image loadSpritesheet (String imageTag) throws SaveLoadException {
-        Image spritesheet = SaveLoadUtility.loadImage(imageTag);
+        Image spritesheet = mySaveLoadUtility.loadImage(imageTag);
         return spritesheet;
     }
 }

@@ -16,7 +16,7 @@ import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
 import model.state.gameelement.traits.AttributeDisplayerState;
 import model.state.gameelement.traits.AttributeDisplayerTags;
-import util.SaveLoadUtility;
+import util.saveload.SaveLoadUtility;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
@@ -162,7 +162,7 @@ public class RPG extends Application {
         archerState.myAttributes.setNumericalAttribute(StateTags.X_SPAWN_OFFSET.getValue(), -100);
         archerState.myAttributes.setNumericalAttribute(StateTags.Y_SPAWN_OFFSET.getValue(), -100);
 
-        AnimatorState archerAnimations = SaveLoadUtility.loadResource(AnimatorState.class,
+        AnimatorState archerAnimations = new SaveLoadUtility().loadResource(AnimatorState.class,
                 "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
 
@@ -252,7 +252,7 @@ public class RPG extends Application {
 
         archerState.setBounds(bounds);
 
-        AnimatorState archerAnimations = SaveLoadUtility.loadResource(AnimatorState.class,
+        AnimatorState archerAnimations = new SaveLoadUtility().loadResource(AnimatorState.class,
                 "resources/gameelementresources/animatorstate/archer.json");
         archerState.myAnimatorState = archerAnimations;
 

@@ -1,6 +1,9 @@
+//This entire file is part of my masterpiece.
+//Rahul Harikrishnan
 package util.exceptions;
 
 /**
+ * Exception class for failure to save an image.
  * 
  * @author Rahul
  *
@@ -15,6 +18,5 @@ public class SaveImageException extends SaveLoadException {
     public SaveImageException (Exception exception, Object... args) {
         super(String.format(myMessage, args), exception);
     }
-
 
 }

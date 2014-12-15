@@ -1,6 +1,9 @@
+//This entire file is part of my masterpiece.
+//Rahul Harikrishnan
 package util.exceptions;
 
 /**
+ * Exception class for failure to load an image file.
  * 
  * @author Rahul
  *
