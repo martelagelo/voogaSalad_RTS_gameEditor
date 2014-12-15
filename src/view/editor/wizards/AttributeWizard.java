@@ -2,7 +2,10 @@ package view.editor.wizards;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+
+import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -34,14 +37,16 @@ public class AttributeWizard extends Wizard {
     private final String ATTRIBUTE_KEY_KEY = "AttributeKey";
     private final String ATTRIBUTE_VALUE_KEY = "AttributeValue";
 
+    private Optional<String> valueChoice;
+    private Optional<String> keyChoice;
+    
     @Override
     public boolean checkCanSave () {
         return areFieldsNotNull();
     }
 
     protected boolean areFieldsNotNull () {
-        return (key.getSelectionModel().selectedItemProperty().isNotNull().get() ||
-               key.valueProperty().isNotNull().get()) && !value.getText().isEmpty();
+        return (keyChoice.isPresent() && !value.getText().isEmpty());
     }
 
     @Override
@@ -58,8 +63,24 @@ public class AttributeWizard extends Wizard {
     @Override
     public void initialize () {
         super.initialize();
-        attributes = StateTags.getAllTextualAttributes();
-        key.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+        setUpKeys();
+        setUpValue();
+    }
+    
+    private void setUpValue () {
+    	valueChoice = Optional.ofNullable(null);
+    	value.setOnAction(e -> {
+    		valueChoice = Optional.ofNullable(value.getText());
+    	});
+    }
+    
+    private void setUpKeys () {
+    	 attributes = StateTags.getAllTextualAttributes();
+         key.setItems(FXCollections.observableList(new ArrayList<>(attributes)));
+         keyChoice = Optional.ofNullable(null);
+         key.setOnAction(e -> {
+        	 keyChoice = Optional.ofNullable(key.getValue());
+         });
     }
     
     @Override
