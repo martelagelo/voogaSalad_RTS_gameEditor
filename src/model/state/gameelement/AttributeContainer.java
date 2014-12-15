@@ -1,4 +1,5 @@
 package model.state.gameelement;
+// THIS ENTIRE CLASS IS PART OF MY MASTERPIECE
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -7,19 +8,34 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+/**
+ * It was decided that all attributes for a game element would be saved in
+ * sets of attributes instead of in local instance variables. Although this
+ * may make it difficult at times to be sure of what attributes an object
+ * actually has, this choice was made to allow for the greatest amount of
+ * power for the VScript language as people creating the games will be able
+ * to use any numerical or string attribute of an object in their logic,
+ * allowing for much more power on the side of engine extensibility at the
+ * cost of some "parameter uncertainty" in the engine.
+ * 
+ * Creating an attribute container allows us to give attributes using composition to many objects.
+ * 
+ * @author Steve
+ *
+ */
 public class AttributeContainer implements Serializable {
-    /**
-     * 
-     */
+
     private static final long serialVersionUID = -3942254987685526285L;
-    
+
     private Set<Attribute<Number>> myNumericalAttributes;
     private Set<Attribute<String>> myTextualAttributes;
 
-    public AttributeContainer(){
+    public AttributeContainer () {
         myNumericalAttributes = new HashSet<>();
         myTextualAttributes = new HashSet<>();
     }
+
     /**
      * Get an attribute from an internal collection
      * 
@@ -34,12 +50,12 @@ public class AttributeContainer implements Serializable {
      *         attribute was not found
      */
     private <T> T getAttribute (Collection<Attribute<T>> collection,
-                                String attributeName, T defaultReturnObject) {
-        List<Attribute<T>> attributes = collection.stream()
-                .filter(o -> o.getName().equals(attributeName))
-                .collect(Collectors.toList());
-        return (attributes.size() != 0) ? attributes.get(0).getData()
-                                       : defaultReturnObject;
+                                String attributeName,
+                                T defaultReturnObject) {
+        List<Attribute<T>> attributes =
+                collection.stream().filter(o -> o.getName().equals(attributeName))
+                        .collect(Collectors.toList());
+        return (attributes.size() != 0) ? attributes.get(0).getData() : defaultReturnObject;
 
     }
 
@@ -56,12 +72,12 @@ public class AttributeContainer implements Serializable {
     public Number getNumericalAttribute (String name) {
         return getAttribute(myNumericalAttributes, name, new Double(0));
     }
-    
-    public Set<Attribute<Number>> getNumericalAttributes() {
+
+    public Set<Attribute<Number>> getNumericalAttributes () {
         return myNumericalAttributes;
     }
-    
-    public Set<Attribute<String>> getTextualAttributes() {
+
+    public Set<Attribute<String>> getTextualAttributes () {
         return myTextualAttributes;
     }
 
@@ -74,7 +90,8 @@ public class AttributeContainer implements Serializable {
      * @param attributeValue
      */
     private <T> void addAttribute (Collection<Attribute<T>> collection,
-                                   String attributeName, T attributeValue) {
+                                   String attributeName,
+                                   T attributeValue) {
         Attribute<T> attribute = new Attribute<>(attributeName, attributeValue);
         collection.remove(attribute); // Remove any old attribute that might
                                       // conflict with this new

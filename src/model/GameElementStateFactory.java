@@ -10,7 +10,7 @@ import model.state.gameelement.DrawableGameElementState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.traits.WidgetState;
 import model.state.gameelement.traits.AttributeDisplayerTags;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
@@ -60,29 +60,34 @@ public class GameElementStateFactory {
     private static DrawableGameElementState addVisuals (WizardData data,
                                                         DrawableGameElementState state) {        
         state.myAnimatorState = AnimatorStateFactory.createAnimatorState(data);
-        state.setBounds(createBounds(data, WizardType.BOUNDS));        
+        state.setBounds(createBounds(data, WizardType.BOUNDS));             
+        return state;
+    }
+    
+    private static SelectableGameElementState addVisuals (WizardData data, SelectableGameElementState state) {
+        addVisuals(data, (DrawableGameElementState) state);
+        createWidgetState(data, state);   
         state.setVisionBounds(createBounds(data, WizardType.VISION_BOUNDS));
-        createAttributeDisplayerState(data, state);        
         return state;
     }
 
-    private static void createAttributeDisplayerState (WizardData data,
-                                                       DrawableGameElementState state) {
+    private static void createWidgetState (WizardData data,
+                                                       SelectableGameElementState state) {
         for (WizardData widget: data.getWizardDataByType(WizardType.WIDGET)) {            
             String[] arguments = widget.getValueByKey(WizardDataType.WIDGET_PARAMETERS).split(",");
-            AttributeDisplayerState displayerState;
+            WidgetState widgetState;
             if (arguments.length == 2) {
-                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                widgetState = new WidgetState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
                                                 widget.getValueByKey(WizardDataType.ATTRIBUTE), 
                                                 Double.parseDouble(arguments[0]), 
                                                 Double.parseDouble(arguments[1]));
             }
             else {
-                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
+                widgetState = new WidgetState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
                                                              widget.getValueByKey(WizardDataType.ATTRIBUTE), 
                                                              arguments[0]);
             }
-            state.addAttributeDisplayerState(displayerState);
+            state.addWidgetState(widgetState);
         }
     }
 

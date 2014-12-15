@@ -74,7 +74,7 @@ public class GameElementFactory {
     }
 
     public SelectableGameElement createSelectableGameElement (SelectableGameElementState state) {
-        SelectableGameElement element = new SelectableGameElement(state, generateVisualizer(state));
+        SelectableGameElement element = new SelectableGameElement(state, generateVisualizerWithWidgets(state));
         generateActions(element, state);
         return element;
     }
@@ -105,5 +105,9 @@ public class GameElementFactory {
 
     private Visualizer generateVisualizer (DrawableGameElementState elementState) {
         return myVisualizerFactory.createVisualizer(elementState);
+    }
+    
+    private Visualizer generateVisualizerWithWidgets (SelectableGameElementState elementState) {
+        return myVisualizerFactory.createVisualizerWithWidgets(elementState);
     }
 }

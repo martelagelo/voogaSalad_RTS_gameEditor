@@ -14,7 +14,7 @@ import model.state.LevelState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
-import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.traits.WidgetState;
 import model.state.gameelement.traits.AttributeDisplayerTags;
 import util.SaveLoadUtility;
 import engine.Engine;
@@ -51,7 +51,7 @@ public class RPG extends Application {
         SelectableGameElementState hero = createMovingUnit(normalBounds, 600, 50, 50, 20, 20, 10,
                 1, uri);
         hero.myAttributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "BLUE");
-        hero.addAttributeDisplayerState(new AttributeDisplayerState(
+        hero.addWidgetState(new WidgetState(
                 AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER, StateTags.HEALTH.getValue(), 0,
                 1000));
         hero.addAction(new ActionWrapper(ActionType.INTERNAL,
@@ -98,7 +98,7 @@ public class RPG extends Application {
         String enemyUri = "resources/img/graphics/terrain/grass/1.png";
         SelectableGameElementState enemy = createEnemyUnit(normalBounds, 300, 35, 75, 600, 600, 2,
                 2, enemyUri);
-        enemy.addAttributeDisplayerState(new AttributeDisplayerState(
+        enemy.addWidgetState(new WidgetState(
                 AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER, StateTags.HEALTH.getValue(), 0, 300));
         enemy.myAttributes.setTextualAttribute(StateTags.NAME.getValue(), "Enemy");
         enemy.myAttributes.setTextualAttribute(StateTags.TEAM_COLOR.getValue(), "GREEN");

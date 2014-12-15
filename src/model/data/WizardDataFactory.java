@@ -3,10 +3,10 @@ package model.data;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import model.state.gameelement.Attribute;
 import model.state.gameelement.DrawableGameElementState;
-import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.traits.WidgetState;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
 import engine.gameRepresentation.evaluatables.actions.enumerations.ActionOptions;
 import engine.visuals.elementVisuals.animations.AnimationSequence;
@@ -61,21 +61,25 @@ public class WizardDataFactory {
             }
         }
         
-        if (state.getDisplayerStates() != null) {
-            for (AttributeDisplayerState displayState: state.getDisplayerStates()) {
+        for (AnimationSequence sequence: state.myAnimatorState.getAllAnimationSequences()) {
+            WizardData animData = new WizardData();
+            animData.setType(WizardType.ANIMATION_SEQUENCE);
+            // animData.addDataPair(WizardDataType.START_FRAME, sequence.
+            // TODO
+        }
+        return data;
+    }
+    
+    public static WizardData createWizardData(SelectableGameElementState state) {
+        WizardData data = createWizardData((DrawableGameElementState) state);
+        if (state.getWidgetStates() != null) {
+            for (WidgetState displayState: state.getWidgetStates()) {
                 WizardData displayData = new WizardData();
                 displayData.setType(WizardType.WIDGET);
                 displayData.addDataPair(WizardDataType.WIDGET_TYPE, displayState.getDisplayerTag().name());
                 displayData.addDataPair(WizardDataType.ATTRIBUTE, displayState.getParameterTag());
                 // TODO
             }
-        }
-        
-        for (AnimationSequence sequence: state.myAnimatorState.getAllAnimationSequences()) {
-            WizardData animData = new WizardData();
-            animData.setType(WizardType.ANIMATION_SEQUENCE);
-            // animData.addDataPair(WizardDataType.START_FRAME, sequence.
-            // TODO
         }
         return data;
     }

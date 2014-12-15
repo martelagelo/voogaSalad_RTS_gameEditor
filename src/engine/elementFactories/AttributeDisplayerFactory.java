@@ -3,7 +3,7 @@ package engine.elementFactories;
 import java.lang.reflect.InvocationTargetException;
 
 import model.state.gameelement.AttributeContainer;
-import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.traits.WidgetState;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
 /**
@@ -26,7 +26,7 @@ public class AttributeDisplayerFactory {
      * @return
      */
     public AttributeDisplayer createAttributeDisplayer (
-            AttributeDisplayerState attributeDisplayerState, AttributeContainer attachee) {
+            WidgetState attributeDisplayerState, AttributeContainer attachee) {
         Class<?> c = null;
         try {
             c = Class.forName(ATTRIBUTE_CLASS_LOCATIONS
@@ -43,7 +43,7 @@ public class AttributeDisplayerFactory {
     }
 
     private AttributeDisplayer createNumericalAttributeDisplayer (Class<?> c,
-            AttributeDisplayerState attributeDisplayerState, AttributeContainer attachee) {
+            WidgetState attributeDisplayerState, AttributeContainer attachee) {
         AttributeDisplayer displayer = null;
         try {
             displayer = (AttributeDisplayer) c.getDeclaredConstructor(AttributeContainer.class,
@@ -58,7 +58,7 @@ public class AttributeDisplayerFactory {
     }
 
     private AttributeDisplayer createTextualAttributeDisplayer (Class<?> c,
-            AttributeDisplayerState attributeDisplayerState, AttributeContainer attachee) {
+            WidgetState attributeDisplayerState, AttributeContainer attachee) {
         AttributeDisplayer displayer = null;
         try {
             displayer = (AttributeDisplayer) c.getDeclaredConstructor(AttributeContainer.class,

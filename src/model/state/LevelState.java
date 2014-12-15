@@ -1,5 +1,5 @@
 package model.state;
-
+//THIS ENTIRE CLASS IS PART OF MY MASTERPIECE
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -12,7 +12,7 @@ import util.JSONable;
  * @author Zach, Michael D., Stanley
  *
  */
-public class AttributeDisplayerState implements JSONable, Serializable {
+public class WidgetState implements JSONable, Serializable {
 
     private static final long serialVersionUID = -4791954709522087485L;
     private AttributeDisplayerTags myDisplayerTags;
@@ -37,7 +37,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
      * @param ForegroundColor
      *            The color in the foreground
      */
-    public AttributeDisplayerState (AttributeDisplayerTags displayerTag,
+    public WidgetState (AttributeDisplayerTags displayerTag,
             String numericParameterTag, double minAttributeValue, double maxAttributeValue) {
         this.myDisplayerTags = displayerTag;
         this.myParameterTag = numericParameterTag;
@@ -45,7 +45,7 @@ public class AttributeDisplayerState implements JSONable, Serializable {
         this.myMaxAttributeValue = maxAttributeValue;
     }
 
-    public AttributeDisplayerState (AttributeDisplayerTags displayerTag,
+    public WidgetState (AttributeDisplayerTags displayerTag,
             String textualParameterTag, String value) {
         this.myDisplayerTags = displayerTag;
         this.myParameterTag = textualParameterTag;

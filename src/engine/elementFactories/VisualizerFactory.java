@@ -1,7 +1,8 @@
 package engine.elementFactories;
 
 import model.state.gameelement.DrawableGameElementState;
-import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.SelectableGameElementState;
+import model.state.gameelement.traits.WidgetState;
 import engine.visuals.elementVisuals.Visualizer;
 import engine.visuals.elementVisuals.animations.Animator;
 
@@ -22,13 +23,18 @@ public class VisualizerFactory {
 
     public Visualizer createVisualizer (DrawableGameElementState elementState) {
         Animator animator = myAnimatorFactory.createAnimator(elementState);
-
         Visualizer newVisualizer = new Visualizer(animator, elementState.myAttributes);
-        for (AttributeDisplayerState ADS : elementState.myAttributeDisplayerStates) {
+        return newVisualizer;
+    }
+    
+    
+    public Visualizer createVisualizerWithWidgets(SelectableGameElementState elementState){
+        Animator animator = myAnimatorFactory.createAnimator(elementState);
+        Visualizer newVisualizer = new Visualizer(animator, elementState.myAttributes);
+        for (WidgetState ADS : elementState.myWidgetStates) {
             newVisualizer.addWidget(myWidgetFactory.createAttributeDisplayer(ADS,
                     elementState.myAttributes));
         }
-
         return newVisualizer;
     }
 }

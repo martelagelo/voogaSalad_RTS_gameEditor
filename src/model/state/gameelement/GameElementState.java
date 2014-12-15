@@ -1,5 +1,5 @@
 package model.state.gameelement;
-
+//THIS ENTIRE CLASS IS PART OF MY MASTERPIECE
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,16 +36,7 @@ public class GameElementState implements JSONable, Serializable {
      * their own conditions.
      */
     protected Map<ActionType, List<ActionWrapper>> myActions;
-    /**
-     * It was decided that all attributes for a game element would be saved in
-     * sets of attributes instead of in local instance variables. Although this
-     * may make it difficult at times to be sure of what attributes an object
-     * actually has, this choice was made to allow for the greatest amount of
-     * power for the VScript language as people creating the games will be able
-     * to use any numerical or string attribute of an object in their logic,
-     * allowing for much more power on the side of engine extensibility at the
-     * cost of some "parameter uncertainty" in the engine.
-     */
+
     public AttributeContainer myAttributes;
 
     public Set<String> myTypes;
