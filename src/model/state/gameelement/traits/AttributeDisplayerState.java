@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import util.JSONable;
 
+//This entire file is part of my masterpiece.
+//Michael Deng
 /**
  * A wrapper for all the savable information needed to represent an attribute
  * displayer. This is just a data wrapper and as such all of its instance
@@ -39,16 +41,14 @@ public class AttributeDisplayerState implements JSONable, Serializable {
      */
     public AttributeDisplayerState (AttributeDisplayerTags displayerTag,
             String numericParameterTag, double minAttributeValue, double maxAttributeValue) {
-        this.myDisplayerTags = displayerTag;
-        this.myParameterTag = numericParameterTag;
+        setDisplayerAndParameterTags(displayerTag, numericParameterTag);
         this.myMinAttributeValue = minAttributeValue;
         this.myMaxAttributeValue = maxAttributeValue;
     }
 
     public AttributeDisplayerState (AttributeDisplayerTags displayerTag,
             String textualParameterTag, String value) {
-        this.myDisplayerTags = displayerTag;
-        this.myParameterTag = textualParameterTag;
+        setDisplayerAndParameterTags(displayerTag, textualParameterTag);
         this.myTextValue = value;
     }
 
@@ -70,6 +70,12 @@ public class AttributeDisplayerState implements JSONable, Serializable {
 
     public String getTextValue () {
         return myTextValue;
+    }
+    
+    private void setDisplayerAndParameterTags(AttributeDisplayerTags displayerTag,
+            String parameterTag) {
+        this.myDisplayerTags = displayerTag;
+        this.myParameterTag = parameterTag;
     }
 
 }

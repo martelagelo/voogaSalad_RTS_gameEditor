@@ -6,6 +6,8 @@ import model.state.gameelement.AttributeContainer;
 import model.state.gameelement.traits.AttributeDisplayerState;
 import engine.visuals.elementVisuals.widgets.attributeDisplays.AttributeDisplayer;
 
+//This entire file is part of my masterpiece.
+//Michael Deng
 /**
  * A class that uses the factory pattern to create attribute displayers given
  * the game element to attach to and the AttributeDisplayerState to display.

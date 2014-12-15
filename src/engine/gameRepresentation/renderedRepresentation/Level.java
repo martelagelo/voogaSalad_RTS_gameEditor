@@ -203,7 +203,6 @@ public class Level {
                 lost = 1;
             }
         }
-
         return won - 2 * lost;
     }
 

@@ -18,6 +18,8 @@ import model.state.LevelState;
 import model.state.gameelement.GameElementState;
 import model.state.gameelement.SelectableGameElementState;
 import model.state.gameelement.StateTags;
+import model.state.gameelement.traits.AttributeDisplayerState;
+import model.state.gameelement.traits.AttributeDisplayerTags;
 import util.exceptions.SaveLoadException;
 import engine.Engine;
 import engine.gameRepresentation.evaluatables.actions.ActionWrapper;
@@ -54,6 +56,7 @@ public class Pong extends Application {
         double[] bounds = new double[] { 0, 0, 40, 0, 40, 40, 0, 40 };
         SelectableGameElementState paddle = createPaddle(350, 100, 1);
         paddle.myAttributes.setNumericalAttribute(StateTags.IS_SELECTED.getValue(), 1);
+        paddle.myAttributes.setNumericalAttribute(StateTags.HEALTH.getValue(), 100);
         paddle.setBounds(bounds);
         paddle.addAction(new ActionWrapper(ActionType.BUTTON,
                 ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me", StateTags.LAST_BUTTON_CLICKED_ID
@@ -63,6 +66,12 @@ public class Pong extends Application {
                 ActionOptions.CHECK_ATTR_SET_ATTR_ACTION, "me", StateTags.LAST_BUTTON_CLICKED_ID
                         .getValue(), "Equals", "2", "me", StateTags.X_VELOCITY.getValue(),
                 "EqualsAssignment", "3"));
+        paddle.addAttributeDisplayerState(new AttributeDisplayerState(
+                AttributeDisplayerTags.ATTRIBUTE_ARROW_DISPLAYER, StateTags.IS_SELECTED.getValue(),
+                0, 1));
+        paddle.addAttributeDisplayerState(new AttributeDisplayerState(
+                AttributeDisplayerTags.ATTRIBUTE_BAR_DISPLAYER, StateTags.HEALTH.getValue(), 0, 100));
+
         SelectableGameElementState enemyPaddle = createPaddle(350, 700, 2);
         enemyPaddle.setBounds(bounds);
         enemyPaddle.myAttributes.setNumericalAttribute(StateTags.TEAM_COLOR.getValue(),
@@ -116,7 +125,6 @@ public class Pong extends Application {
         levelState.myAttributes.setNumericalAttribute(StateTags.LEVEL_HEIGHT.getValue(), 1000);
         levelState.myAttributes.setTextualAttribute(StateTags.BACKGROUND_PATH.getValue(),
                 "resources/img/graphics/terrain/grass/GrassTile.jpg");
-        levelState.addGoal(createGoal());
 
         CampaignState campaignState = new CampaignState("testCampaign");
         campaignState.addLevel(levelState);
@@ -140,12 +148,6 @@ public class Pong extends Application {
         Engine engine = new Engine(model2, model2.getLevel(new LevelIdentifier("testLevel",
                 "testCampaign")));
         return engine;
-    }
-
-    private GameElementState createGoal () {
-        GameElementState ges = new GameElementState();
-        ges.myAttributes.setNumericalAttribute("GoalSatisfied", 0);
-        return ges;
     }
 
     private SelectableGameElementState createGoalDisplayMarker () throws SaveLoadException {

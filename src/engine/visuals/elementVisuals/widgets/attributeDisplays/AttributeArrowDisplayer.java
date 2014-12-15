@@ -7,6 +7,8 @@ import model.state.gameelement.AttributeContainer;
 import util.SaveLoadUtility;
 import util.exceptions.SaveLoadException;
 
+//This entire file is part of my masterpiece.
+//Michael Deng
 /**
  * Creates a selection arrow for units that are selected
  * 

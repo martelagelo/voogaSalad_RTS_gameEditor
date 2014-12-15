@@ -24,6 +24,9 @@ import engine.users.Participant;
  *
  */
 public class ParticipantManager {
+    
+    private static final String AI_CONSTANT = "AI";
+    
     private List<AIParticipant> myAIUsers;
     private HumanParticipant humanUser;
 
@@ -32,6 +35,7 @@ public class ParticipantManager {
     public ParticipantManager (HumanParticipant user) {
         myAIUsers = new ArrayList<>();
         humanUser = user;
+        initializeAIParticipant();
         player1Resources = new SimpleObjectProperty<>();
     }
 
@@ -99,6 +103,10 @@ public class ParticipantManager {
         }
     }
 
+    private void initializeAIParticipant() {
+        myAIUsers.add(new AIParticipant(0, AI_CONSTANT));
+    }
+    
     /**
      * Used to adjust the participant's (by ID value) numerical attribute by the
      * adjustment value

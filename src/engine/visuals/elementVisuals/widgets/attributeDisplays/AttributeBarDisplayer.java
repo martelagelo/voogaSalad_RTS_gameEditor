@@ -6,6 +6,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import model.state.gameelement.AttributeContainer;
 
+//This entire file is part of my masterpiece.
+//Michael Deng
 /**
  * A displaying module that displays an attribute in a bar-like form
  *
@@ -15,6 +17,8 @@ import model.state.gameelement.AttributeContainer;
 public class AttributeBarDisplayer extends AttributeDisplayer {
     public final static double ATTRIBUTE_BAR_WIDTH = 30;
     public final static double ATTRIBUTE_BAR_HEIGHT = 5;
+    public final static double BORDER_PADDING = 4;
+    public final static double BORDER_OFFSET = 2;
 
     public final static String FG_COLOR = "Red";
     public final static String BG_COLOR = "Green";
@@ -43,7 +47,7 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
     protected Group createDisplay () {
         Group bar = new Group();
         Group group = new Group();
-        Rectangle border = new Rectangle(ATTRIBUTE_BAR_WIDTH + 4, ATTRIBUTE_BAR_HEIGHT + 4);
+        Rectangle border = new Rectangle(ATTRIBUTE_BAR_WIDTH + BORDER_PADDING, ATTRIBUTE_BAR_HEIGHT + BORDER_PADDING);
         border.setFill(Color.BLACK);
         Rectangle r = new Rectangle(ATTRIBUTE_BAR_WIDTH, ATTRIBUTE_BAR_HEIGHT);
         r.setFill(Paint.valueOf(FG_COLOR));
@@ -52,8 +56,8 @@ public class AttributeBarDisplayer extends AttributeDisplayer {
         group.getChildren().add(border);
         bar.getChildren().add(r);
         bar.getChildren().add(myAttributeRectangle);
-        bar.setLayoutX(2);
-        bar.setLayoutY(2);
+        bar.setLayoutX(BORDER_OFFSET);
+        bar.setLayoutY(BORDER_OFFSET);
         group.getChildren().add(bar);
         return group;
     }

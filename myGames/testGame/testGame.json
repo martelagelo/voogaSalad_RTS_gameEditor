@@ -6,11 +6,11 @@
           "myAttributes": {
             "myNumericalAttributes": [
               {
-                "myData": 2000,
+                "myData": 1000,
                 "myName": "levelWidth"
               },
               {
-                "myData": 2000,
+                "myData": 1000,
                 "myName": "levelHeight"
               }
             ],
@@ -24,9 +24,217 @@
           "myTerrains": [],
           "myUnits": [
             {
+              "myAttributeDisplayerStates": [
+                {
+                  "myDisplayerTags": "ATTRIBUTE_ARROW_DISPLAYER",
+                  "myParameterTag": "isSelected",
+                  "myMinAttributeValue": 0.0,
+                  "myMaxAttributeValue": 1.0
+                },
+                {
+                  "myDisplayerTags": "ATTRIBUTE_BAR_DISPLAYER",
+                  "myParameterTag": "health",
+                  "myMinAttributeValue": 0.0,
+                  "myMaxAttributeValue": 100.0
+                }
+              ],
+              "myAnimatorState": {
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                40.0,
+                0.0,
+                40.0,
+                40.0,
+                0.0,
+                40.0
+              ],
+              "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "HeadingUpdate"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myParameters": [
+                      "EqualsAssignment",
+                      "1",
+                      "isSelected"
+                    ],
+                    "myActionType": "INTERNAL"
+                  }
+                ],
+                "BUTTON": [
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "1",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-3"
+                    ],
+                    "myActionType": "BUTTON"
+                  },
+                  {
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myParameters": [
+                      "me",
+                      "lastButtonID",
+                      "Equals",
+                      "2",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "3"
+                    ],
+                    "myActionType": "BUTTON"
+                  }
+                ]
+              },
+              "myAttributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 350.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 1,
+                    "myName": "isSelected"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 100,
+                    "myName": "health"
+                  },
+                  {
+                    "myData": 6,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 100.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": [
+                "paddle"
+              ]
+            },
+            {
               "myAttributeDisplayerStates": [],
               "myAnimatorState": {
-                "myNumRows": 0
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
               },
               "myVisionBounds": [
                 0.0,
@@ -42,27 +250,243 @@
                 0.0,
                 0.0,
                 0.0,
+                1000.0,
+                10.0,
+                1000.0,
+                10.0,
+                0.0
+              ],
+              "myActions": {},
+              "myAttributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": -10.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": -10.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": -10.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": [
+                "boundary"
+              ]
+            },
+            {
+              "myAttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
                 0.0,
                 0.0,
                 0.0,
                 0.0,
                 0.0
               ],
+              "myBounds": [
+                0.0,
+                0.0,
+                0.0,
+                1000.0,
+                10.0,
+                1000.0,
+                10.0,
+                0.0
+              ],
+              "myActions": {},
+              "myAttributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 800.0,
+                    "myName": "xPosition"
+                  },
+                  {
+                    "myData": 800.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 800.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 255,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": [
+                "boundary"
+              ]
+            },
+            {
+              "myAttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                1500.0,
+                0.0,
+                1500.0,
+                10.0,
+                0.0,
+                10.0
+              ],
               "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "ball",
+                      "me",
+                      "spawnScore",
+                      "EqualsAssignment",
+                      "1",
+                      "Addition",
+                      "me",
+                      "0",
+                      "FalseEvaluator",
+                      "AdditionAssignment",
+                      "1",
+                      "other",
+                      "resources"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "ball",
+                      "me",
+                      "ySpawnOffset",
+                      "EqualsAssignment",
+                      "75",
+                      "AdditionAssignment",
+                      "me",
+                      "ySpawnOffset",
+                      "FalseEvaluator",
+                      "Addition",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
                 "INTERNAL": [
                   {
                     "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "isSpawn",
+                      "spawnScore",
                       "Equals",
                       "1",
-                      "Enemy",
-                      "unitCost",
-                      "Resources",
-                      "1",
-                      "500",
-                      "health,movementSpeed",
-                      "specialThing,specialThing"
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
                     ],
                     "myActionType": "INTERNAL"
                   }
@@ -71,59 +495,80 @@
               "myAttributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 1500.0,
+                    "myData": 0.0,
                     "myName": "xPosition"
                   },
                   {
                     "myData": 1,
-                    "myName": "isSpawn"
+                    "myName": "1"
                   },
                   {
-                    "myData": 50,
-                    "myName": "reloadTime"
+                    "myData": 0.0,
+                    "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": -100,
+                    "myData": 900,
                     "myName": "xSpawnOffset"
                   },
                   {
-                    "myData": 1500.0,
+                    "myData": -10.0,
                     "myName": "yPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "unitCost"
-                  },
-                  {
-                    "myData": -100,
+                    "myData": 500,
                     "myName": "ySpawnOffset"
                   },
                   {
-                    "myData": 10,
-                    "myName": "specialThing"
+                    "myData": -10.0,
+                    "myName": "yGoalPosition"
                   },
                   {
-                    "myData": 0,
-                    "myName": "movementSpeed"
+                    "myData": 0.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": -10.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 16776960,
+                    "myName": "teamColor"
                   }
                 ],
-                "myTextualAttributes": []
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
               },
               "myTypes": [
-                "spawner"
+                "goal"
               ]
             },
             {
-              "myAttributeDisplayerStates": [
-                {
-                  "myDisplayerTags": "ATTRIBUTE_BAR_DISPLAYER",
-                  "myParameterTag": "health",
-                  "myMinAttributeValue": 0.0,
-                  "myMaxAttributeValue": 1000.0
-                }
-              ],
+              "myAttributeDisplayerStates": [],
               "myAnimatorState": {
-                "myNumRows": 0
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
               },
               "myVisionBounds": [
                 0.0,
@@ -138,309 +583,152 @@
               "myBounds": [
                 0.0,
                 0.0,
-                100.0,
+                1500.0,
                 0.0,
-                100.0,
-                100.0,
+                1500.0,
+                10.0,
                 0.0,
-                100.0
+                10.0
               ],
               "myActions": {
-                "BUTTON": [
+                "COLLISION": [
                   {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
                     "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "healCost",
+                      "ball",
                       "me",
-                      "lastButtonID",
-                      "Equals",
-                      "active",
-                      "me",
-                      "health",
-                      "AdditionAssignment",
-                      "healAmount",
-                      "me",
-                      "blah",
-                      "Equals",
-                      "active",
-                      "Equals",
-                      "a",
-                      "zero",
-                      "SubtractionAssignment",
-                      "healCost",
-                      "my",
-                      "resources",
+                      "spawnScore",
+                      "EqualsAssignment",
                       "1",
-                      "HealingCooldown"
+                      "Addition",
+                      "me",
+                      "0",
+                      "FalseEvaluator",
+                      "AdditionAssignment",
+                      "1",
+                      "my",
+                      "resources"
                     ],
-                    "myActionType": "BUTTON"
+                    "myActionType": "COLLISION"
                   },
                   {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
                     "myParameters": [
-                      "my",
-                      "resources",
-                      "GreaterThanEqual",
-                      "levelUpCost",
+                      "ball",
                       "me",
-                      "lastButtonID",
-                      "Equals",
-                      "levelUpButtonID",
-                      "me",
-                      "maxHealth",
+                      "ySpawnOffset",
+                      "EqualsAssignment",
+                      "75",
                       "AdditionAssignment",
-                      "levelUpHealthIncrease",
                       "me",
-                      "attack",
-                      "AdditionAssignment",
-                      "levelUpAttackIncrease",
-                      "Equals",
-                      "a",
-                      "",
-                      "SubtractionAssignment",
-                      "levelUpCost",
-                      "my",
-                      "resources",
-                      "b",
-                      ""
+                      "ySpawnOffset",
+                      "FalseEvaluator",
+                      "Addition",
+                      "0",
+                      "0",
+                      "0"
                     ],
-                    "myActionType": "BUTTON"
-                  }
-                ],
-                "FOCUSED": [
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "Follow"
-                    ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "COLLISION"
                   }
                 ],
                 "INTERNAL": [
                   {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+                    "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
                     "myParameters": [
-                      "me",
-                      "health",
-                      "LessThanEqual",
-                      "0",
-                      "me",
-                      "toDie",
-                      "EqualsAssignment",
-                      "1"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "UpdateMovementDirection"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "MovePlayer"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
-                    "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-                    "myParameters": [
-                      "me",
-                      "toDie",
+                      "spawnScore",
                       "Equals",
                       "1",
-                      "me",
-                      "isDead",
-                      "EqualsAssignment",
-                      "1"
+                      "goalMarker",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "",
+                      "",
+                      "spawnScore",
+                      "0"
                     ],
                     "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "",
-                      "Equals",
-                      "",
-                      "me",
-                      "health",
-                      "GreaterThanEqual",
-                      "maxHealth",
-                      "me",
-                      "health",
-                      "EqualsAssignment",
-                      "maxHealth",
-                      "me",
-                      "",
-                      "Equals",
-                      "",
-                      "Equals",
-                      "a",
-                      "zero",
-                      "Equals",
-                      "df",
-                      "my",
-                      "w",
-                      "f",
-                      "w"
-                    ],
-                    "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ]
               },
               "myAttributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 20.0,
+                    "myData": 0.0,
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 100,
-                    "myName": "levelUpCost"
-                  },
-                  {
-                    "myData": 16,
-                    "myName": "levelUpButtonID"
-                  },
-                  {
-                    "myData": 35,
-                    "myName": "levelUpAttackIncrease"
-                  },
-                  {
-                    "myData": 20.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 5000,
-                    "myName": "healAmount"
-                  },
-                  {
-                    "myData": 20.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
-                    "myData": 600.0,
-                    "myName": "health"
-                  },
-                  {
                     "myData": 1,
-                    "myName": "active"
+                    "myName": "1"
                   },
                   {
-                    "myData": 10.0,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 20.0,
-                    "myName": "xGoalPosition"
-                  },
-                  {
-                    "myData": 20.0,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 50,
-                    "myName": "healCost"
-                  },
-                  {
-                    "myData": 50.0,
-                    "myName": "reloadTime"
-                  },
-                  {
-                    "myData": 50,
-                    "myName": "levelUpHealthIncrease"
-                  },
-                  {
-                    "myData": 20.0,
+                    "myData": 0.0,
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 50.0,
-                    "myName": "attack"
+                    "myData": 900,
+                    "myName": "xSpawnOffset"
                   },
                   {
-                    "myData": 600.0,
-                    "myName": "maxHealth"
+                    "myData": 850.0,
+                    "myName": "yPosition"
                   },
                   {
-                    "myData": 1000,
-                    "myName": "HealingCooldown"
+                    "myData": -800,
+                    "myName": "ySpawnOffset"
+                  },
+                  {
+                    "myData": 850.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 0.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 850.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 16776960,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
-                    "myData": "resources/gameelementresources/commands/buildOffensive.png",
-                    "myName": "attributeDescription16"
-                  },
-                  {
-                    "myData": "resources/img/graphics/buttons/commands/defend.png",
-                    "myName": "attributeDescription1"
-                  },
-                  {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "BLUE",
-                    "myName": "teamColor"
                   }
                 ]
               },
               "myTypes": [
-                "archer"
+                "goal"
               ]
             },
             {
-              "myAttributeDisplayerStates": [
-                {
-                  "myDisplayerTags": "ATTRIBUTE_BAR_DISPLAYER",
-                  "myParameterTag": "health",
-                  "myMinAttributeValue": 0.0,
-                  "myMaxAttributeValue": 300.0
-                }
-              ],
+              "myAttributeDisplayerStates": [],
               "myAnimatorState": {
-                "myNumRows": 0
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
               },
               "myVisionBounds": [
                 0.0,
@@ -455,35 +743,49 @@
               "myBounds": [
                 0.0,
                 0.0,
-                100.0,
+                40.0,
                 0.0,
-                100.0,
-                100.0,
+                40.0,
+                40.0,
                 0.0,
-                100.0
+                40.0
               ],
               "myActions": {
-                "FOCUSED": [
+                "COLLISION": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
                     "myParameters": [
-                      "Follow"
+                      "SetFocused"
                     ],
-                    "myActionType": "FOCUSED"
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "SetFocused"
+                    ],
+                    "myActionType": "COLLISION"
                   }
                 ],
                 "INTERNAL": [
                   {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "MovePlayer"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
                     "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
                       "me",
-                      "health",
-                      "LessThanEqual",
+                      "yVelocity",
+                      "NotEquals",
                       "0",
                       "me",
-                      "toDie",
+                      "yVelocity",
                       "EqualsAssignment",
-                      "1"
+                      "0"
                     ],
                     "myActionType": "INTERNAL"
                   },
@@ -493,7 +795,254 @@
                       "UpdateMovementDirection"
                     ],
                     "myActionType": "INTERNAL"
+                  }
+                ],
+                "FOCUSED": [
+                  {
+                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myParameters": [
+                      "FollowX"
+                    ],
+                    "myActionType": "FOCUSED"
+                  }
+                ]
+              },
+              "myAttributes": {
+                "myNumericalAttributes": [
+                  {
+                    "myData": 350.0,
+                    "myName": "xPosition"
                   },
+                  {
+                    "myData": 350.0,
+                    "myName": "xTempGoalPosition"
+                  },
+                  {
+                    "myData": 700.0,
+                    "myName": "yPosition"
+                  },
+                  {
+                    "myData": 700.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 3,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 700.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 32768,
+                    "myName": "teamColor"
+                  }
+                ],
+                "myTextualAttributes": [
+                  {
+                    "myData": "STANDING",
+                    "myName": "currentAction"
+                  }
+                ]
+              },
+              "myTypes": [
+                "paddle"
+              ]
+            },
+            {
+              "myAttributeDisplayerStates": [],
+              "myAnimatorState": {
+                "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+                "myColorMaskTag": "",
+                "myViewportSize": {
+                  "myWidth": 39,
+                  "myHeight": 39
+                },
+                "myNumRows": 1,
+                "myAnimationSquences": [
+                  {
+                    "myStartFrame": 0,
+                    "myStopFrame": 0,
+                    "myCurrentFrame": 0,
+                    "myRepeatFlag": true,
+                    "myTags": [
+                      "DO_NOTHING"
+                    ],
+                    "mySlownessMultiplier": 1.0,
+                    "myFrameCounter": 0
+                  }
+                ]
+              },
+              "myVisionBounds": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "myBounds": [
+                0.0,
+                0.0,
+                40.0,
+                0.0,
+                40.0,
+                40.0,
+                0.0,
+                40.0
+              ],
+              "myActions": {
+                "COLLISION": [
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "paddle",
+                      "me",
+                      "0",
+                      "Equals",
+                      "0",
+                      "Equals",
+                      "me",
+                      "0",
+                      "Bounce",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "boundary",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "-1",
+                      "MultiplicationAssignment",
+                      "me",
+                      "xVelocity",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "PERFORM_CALCULATION_ON_VALUE",
+                    "myParameters": [
+                      "MultiplicationAssignment",
+                      "1.2",
+                      "movementSpeed"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "goal",
+                      "me",
+                      "xPosition",
+                      "EqualsAssignment",
+                      "1",
+                      "Multiplication",
+                      "me",
+                      "xGoalPosition",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "goal",
+                      "me",
+                      "yPosition",
+                      "EqualsAssignment",
+                      "1",
+                      "Multiplication",
+                      "me",
+                      "yGoalPosition",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "goal",
+                      "me",
+                      "xVelocity",
+                      "EqualsAssignment",
+                      "0",
+                      "Multiplication",
+                      "me",
+                      "0",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "goal",
+                      "me",
+                      "movementSpeed",
+                      "EqualsAssignment",
+                      "1",
+                      "Multiplication",
+                      "me",
+                      "MinMovementSpeed",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  },
+                  {
+                    "myActionName": "OBJECT_TYPE_CHECK_ACTION",
+                    "myParameters": [
+                      "goal",
+                      "me",
+                      "yVelocity",
+                      "EqualsAssignment",
+                      "1",
+                      "Multiplication",
+                      "me",
+                      "movementSpeed",
+                      "FalseEvaluator",
+                      "Equals",
+                      "0",
+                      "my",
+                      "0"
+                    ],
+                    "myActionType": "COLLISION"
+                  }
+                ],
+                "INTERNAL": [
                   {
                     "myActionName": "ACT_ON_OBJECTS_ACTION",
                     "myParameters": [
@@ -502,148 +1051,73 @@
                     "myActionType": "INTERNAL"
                   },
                   {
-                    "myActionName": "ACT_ON_OBJECTS_ACTION",
+                    "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
                     "myParameters": [
-                      "HeadingUpdate"
-                    ],
-                    "myActionType": "INTERNAL"
-                  },
-                  {
-                    "myActionName": "MOTHER_OF_ALL_ACTIONS",
-                    "myParameters": [
-                      "my",
-                      "",
-                      "Equals",
-                      "",
                       "me",
-                      "toDie",
-                      "Equals",
-                      "active",
+                      "movementSpeed",
+                      "GreaterThan",
+                      "8",
                       "me",
-                      "isDead",
+                      "movementSpeed",
                       "EqualsAssignment",
-                      "active",
-                      "me",
-                      "asdf",
-                      "Equals",
-                      "active",
-                      "Equals",
-                      "a",
-                      "123",
-                      "AdditionAssignment",
-                      "myValue",
-                      "my",
-                      "resources",
-                      "b",
-                      "zero"
+                      "8"
                     ],
                     "myActionType": "INTERNAL"
-                  }
-                ],
-                "COLLISION": [
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "NotCollision",
-                      "RandomWaypoint"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "MoveBack"
-                    ],
-                    "myActionType": "COLLISION"
-                  },
-                  {
-                    "myActionName": "OBJECT_CONDITION_ACTION",
-                    "myParameters": [
-                      "Collision",
-                      "Attack"
-                    ],
-                    "myActionType": "COLLISION"
                   }
                 ]
               },
               "myAttributes": {
                 "myNumericalAttributes": [
                   {
-                    "myData": 600.0,
+                    "myData": 350.0,
                     "myName": "xPosition"
                   },
                   {
-                    "myData": 600.0,
-                    "myName": "yPosition"
-                  },
-                  {
-                    "myData": 600.0,
-                    "myName": "yGoalPosition"
-                  },
-                  {
-                    "myData": 300.0,
-                    "myName": "health"
-                  },
-                  {
-                    "myData": 1,
-                    "myName": "active"
-                  },
-                  {
-                    "myData": 2.0,
-                    "myName": "movementSpeed"
-                  },
-                  {
-                    "myData": 600.0,
-                    "myName": "xGoalPosition"
-                  },
-                  {
-                    "myData": 600.0,
-                    "myName": "yTempGoalPosition"
-                  },
-                  {
-                    "myData": 30,
-                    "myName": "myValue"
-                  },
-                  {
-                    "myData": 0,
-                    "myName": "zero"
-                  },
-                  {
-                    "myData": 75.0,
-                    "myName": "reloadTime"
-                  },
-                  {
-                    "myData": 600.0,
+                    "myData": 350.0,
                     "myName": "xTempGoalPosition"
                   },
                   {
-                    "myData": 35.0,
-                    "myName": "attack"
+                    "myData": 350.0,
+                    "myName": "yPosition"
                   },
                   {
-                    "myData": 300.0,
-                    "myName": "maxHealth"
+                    "myData": 4,
+                    "myName": "MinMovementSpeed"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "yGoalPosition"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "movementSpeed"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "xGoalPosition"
+                  },
+                  {
+                    "myData": 350.0,
+                    "myName": "yTempGoalPosition"
+                  },
+                  {
+                    "myData": 2,
+                    "myName": "yVelocity"
+                  },
+                  {
+                    "myData": 16711680,
+                    "myName": "teamColor"
                   }
                 ],
                 "myTextualAttributes": [
                   {
-                    "myData": "Enemy",
-                    "myName": "name"
-                  },
-                  {
                     "myData": "STANDING",
                     "myName": "currentAction"
-                  },
-                  {
-                    "myData": "GREEN",
-                    "myName": "teamColor"
                   }
                 ]
               },
               "myTypes": [
-                "Enemy",
-                "archer"
+                "ball"
               ]
             }
           ],
@@ -655,10 +1129,23 @@
                     "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
                     "myParameters": [
                       "my",
-                      "Resources",
+                      "resources",
                       "GreaterThanEqual",
-                      "1000",
+                      "5",
                       "Won",
+                      "EqualsAssignment",
+                      "1"
+                    ],
+                    "myActionType": "INTERNAL"
+                  },
+                  {
+                    "myActionName": "PLAYER_ATTRIBUTE_CONDITION",
+                    "myParameters": [
+                      "other",
+                      "resources",
+                      "GreaterThanEqual",
+                      "5",
+                      "Lost",
                       "EqualsAssignment",
                       "1"
                     ],
@@ -667,12 +1154,7 @@
                 ]
               },
               "myAttributes": {
-                "myNumericalAttributes": [
-                  {
-                    "myData": 0,
-                    "myName": "GoalSatisfied"
-                  }
-                ],
+                "myNumericalAttributes": [],
                 "myTextualAttributes": []
               },
               "myTypes": []
@@ -697,129 +1179,53 @@
     "myParticipantColors": [],
     "myNumericalAttributes": [
       {
-        "myData": 1500.0,
+        "myData": 350.0,
         "myName": "xPosition"
       },
       {
-        "myData": 1,
-        "myName": "isSpawn"
-      },
-      {
-        "myData": 50,
-        "myName": "reloadTime"
-      },
-      {
-        "myData": -100,
-        "myName": "xSpawnOffset"
-      },
-      {
-        "myData": 1500.0,
-        "myName": "yPosition"
-      },
-      {
-        "myData": 0,
-        "myName": "unitCost"
-      },
-      {
-        "myData": -100,
-        "myName": "ySpawnOffset"
-      },
-      {
-        "myData": 10,
-        "myName": "specialThing"
-      },
-      {
-        "myData": 0,
-        "myName": "movementSpeed"
-      },
-      {
-        "myData": 100,
-        "myName": "levelUpCost"
-      },
-      {
-        "myData": 16,
-        "myName": "levelUpButtonID"
-      },
-      {
-        "myData": 35,
-        "myName": "levelUpAttackIncrease"
-      },
-      {
-        "myData": 5000,
-        "myName": "healAmount"
-      },
-      {
-        "myData": 20.0,
-        "myName": "yGoalPosition"
-      },
-      {
-        "myData": 600.0,
-        "myName": "health"
-      },
-      {
-        "myData": 1,
-        "myName": "active"
-      },
-      {
-        "myData": 20.0,
-        "myName": "xGoalPosition"
-      },
-      {
-        "myData": 20.0,
-        "myName": "yTempGoalPosition"
-      },
-      {
-        "myData": 50,
-        "myName": "healCost"
-      },
-      {
-        "myData": 50,
-        "myName": "levelUpHealthIncrease"
-      },
-      {
-        "myData": 20.0,
+        "myData": 350.0,
         "myName": "xTempGoalPosition"
       },
       {
-        "myData": 50.0,
-        "myName": "attack"
+        "myData": 100.0,
+        "myName": "yPosition"
       },
       {
-        "myData": 600.0,
-        "myName": "maxHealth"
+        "myData": 1,
+        "myName": "isSelected"
       },
       {
-        "myData": 1000,
-        "myName": "HealingCooldown"
+        "myData": 100.0,
+        "myName": "yGoalPosition"
       },
       {
-        "myData": 30,
-        "myName": "myValue"
+        "myData": 100,
+        "myName": "health"
       },
       {
-        "myData": 0,
-        "myName": "zero"
+        "myData": 6,
+        "myName": "movementSpeed"
+      },
+      {
+        "myData": 350.0,
+        "myName": "xGoalPosition"
+      },
+      {
+        "myData": 100.0,
+        "myName": "yTempGoalPosition"
+      },
+      {
+        "myData": 255,
+        "myName": "teamColor"
       }
     ],
     "myTextualAttributes": [
-      {
-        "myData": "resources/gameelementresources/commands/buildOffensive.png",
-        "myName": "attributeDescription16"
-      },
-      {
-        "myData": "resources/img/graphics/buttons/commands/defend.png",
-        "myName": "attributeDescription1"
-      },
       {
         "myData": "STANDING",
         "myName": "currentAction"
       },
       {
-        "myData": "BLUE",
-        "myName": "teamColor"
-      },
-      {
-        "myData": "Enemy",
+        "myData": "goalMarker",
         "myName": "name"
       }
     ],
@@ -827,106 +1233,41 @@
     "myDrawableGameElementStates": [],
     "mySelectableGameElementStates": [
       {
-        "myAttributeDisplayerStates": [],
-        "myAnimatorState": {
-          "myNumRows": 0
-        },
-        "myVisionBounds": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "myBounds": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "myActions": {
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_CONDITION_CREATE_OBJECT_ACTION",
-              "myParameters": [
-                "isSpawn",
-                "Equals",
-                "1",
-                "Enemy",
-                "unitCost",
-                "Resources",
-                "1",
-                "500",
-                "health,movementSpeed",
-                "specialThing,specialThing"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ]
-        },
-        "myAttributes": {
-          "myNumericalAttributes": [
-            {
-              "myData": 1500.0,
-              "myName": "xPosition"
-            },
-            {
-              "myData": 1,
-              "myName": "isSpawn"
-            },
-            {
-              "myData": 50,
-              "myName": "reloadTime"
-            },
-            {
-              "myData": -100,
-              "myName": "xSpawnOffset"
-            },
-            {
-              "myData": 1500.0,
-              "myName": "yPosition"
-            },
-            {
-              "myData": 0,
-              "myName": "unitCost"
-            },
-            {
-              "myData": -100,
-              "myName": "ySpawnOffset"
-            },
-            {
-              "myData": 10,
-              "myName": "specialThing"
-            },
-            {
-              "myData": 0,
-              "myName": "movementSpeed"
-            }
-          ],
-          "myTextualAttributes": []
-        },
-        "myTypes": [
-          "spawner"
-        ]
-      },
-      {
         "myAttributeDisplayerStates": [
+          {
+            "myDisplayerTags": "ATTRIBUTE_ARROW_DISPLAYER",
+            "myParameterTag": "isSelected",
+            "myMinAttributeValue": 0.0,
+            "myMaxAttributeValue": 1.0
+          },
           {
             "myDisplayerTags": "ATTRIBUTE_BAR_DISPLAYER",
             "myParameterTag": "health",
             "myMinAttributeValue": 0.0,
-            "myMaxAttributeValue": 1000.0
+            "myMaxAttributeValue": 100.0
           }
         ],
         "myAnimatorState": {
-          "myNumRows": 0
+          "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+          "myColorMaskTag": "",
+          "myViewportSize": {
+            "myWidth": 39,
+            "myHeight": 39
+          },
+          "myNumRows": 1,
+          "myAnimationSquences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 0,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            }
+          ]
         },
         "myVisionBounds": [
           0.0,
@@ -941,109 +1282,36 @@
         "myBounds": [
           0.0,
           0.0,
-          100.0,
+          40.0,
           0.0,
-          100.0,
-          100.0,
+          40.0,
+          40.0,
           0.0,
-          100.0
+          40.0
         ],
         "myActions": {
-          "BUTTON": [
+          "COLLISION": [
             {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
+              "myActionName": "OBJECT_TYPE_CHECK_ACTION",
               "myParameters": [
+                "boundary",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-1",
+                "MultiplicationAssignment",
+                "me",
+                "xVelocity",
+                "FalseEvaluator",
+                "Equals",
+                "0",
                 "my",
-                "resources",
-                "GreaterThanEqual",
-                "healCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "active",
-                "me",
-                "health",
-                "AdditionAssignment",
-                "healAmount",
-                "me",
-                "blah",
-                "Equals",
-                "active",
-                "Equals",
-                "a",
-                "zero",
-                "SubtractionAssignment",
-                "healCost",
-                "my",
-                "resources",
-                "1",
-                "HealingCooldown"
+                "0"
               ],
-              "myActionType": "BUTTON"
-            },
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "resources",
-                "GreaterThanEqual",
-                "levelUpCost",
-                "me",
-                "lastButtonID",
-                "Equals",
-                "levelUpButtonID",
-                "me",
-                "maxHealth",
-                "AdditionAssignment",
-                "levelUpHealthIncrease",
-                "me",
-                "attack",
-                "AdditionAssignment",
-                "levelUpAttackIncrease",
-                "Equals",
-                "a",
-                "",
-                "SubtractionAssignment",
-                "levelUpCost",
-                "my",
-                "resources",
-                "b",
-                ""
-              ],
-              "myActionType": "BUTTON"
-            }
-          ],
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
+              "myActionType": "COLLISION"
             }
           ],
           "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "me",
-                "health",
-                "LessThanEqual",
-                "0",
-                "me",
-                "toDie",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
             {
               "myActionName": "ACT_ON_OBJECTS_ACTION",
               "myParameters": [
@@ -1059,191 +1327,123 @@
               "myActionType": "INTERNAL"
             },
             {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
+              "myActionName": "PERFORM_CALCULATION_ON_VALUE",
               "myParameters": [
-                "me",
-                "toDie",
-                "Equals",
+                "EqualsAssignment",
                 "1",
-                "me",
-                "isDead",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "",
-                "Equals",
-                "",
-                "me",
-                "health",
-                "GreaterThanEqual",
-                "maxHealth",
-                "me",
-                "health",
-                "EqualsAssignment",
-                "maxHealth",
-                "me",
-                "",
-                "Equals",
-                "",
-                "Equals",
-                "a",
-                "zero",
-                "Equals",
-                "df",
-                "my",
-                "w",
-                "f",
-                "w"
+                "isSelected"
               ],
               "myActionType": "INTERNAL"
             }
           ],
-          "COLLISION": [
+          "BUTTON": [
             {
-              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
+                "me",
+                "lastButtonID",
+                "Equals",
+                "1",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "-3"
               ],
-              "myActionType": "COLLISION"
+              "myActionType": "BUTTON"
             },
             {
-              "myActionName": "OBJECT_CONDITION_ACTION",
+              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
               "myParameters": [
-                "Collision",
-                "MoveBack"
+                "me",
+                "lastButtonID",
+                "Equals",
+                "2",
+                "me",
+                "xVelocity",
+                "EqualsAssignment",
+                "3"
               ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
+              "myActionType": "BUTTON"
             }
           ]
         },
         "myAttributes": {
           "myNumericalAttributes": [
             {
-              "myData": 20.0,
+              "myData": 350.0,
               "myName": "xPosition"
+            },
+            {
+              "myData": 350.0,
+              "myName": "xTempGoalPosition"
+            },
+            {
+              "myData": 100.0,
+              "myName": "yPosition"
+            },
+            {
+              "myData": 1,
+              "myName": "isSelected"
+            },
+            {
+              "myData": 100.0,
+              "myName": "yGoalPosition"
             },
             {
               "myData": 100,
-              "myName": "levelUpCost"
-            },
-            {
-              "myData": 16,
-              "myName": "levelUpButtonID"
-            },
-            {
-              "myData": 35,
-              "myName": "levelUpAttackIncrease"
-            },
-            {
-              "myData": 20.0,
-              "myName": "yPosition"
-            },
-            {
-              "myData": 5000,
-              "myName": "healAmount"
-            },
-            {
-              "myData": 20.0,
-              "myName": "yGoalPosition"
-            },
-            {
-              "myData": 600.0,
               "myName": "health"
             },
             {
-              "myData": 1,
-              "myName": "active"
-            },
-            {
-              "myData": 10.0,
+              "myData": 6,
               "myName": "movementSpeed"
             },
             {
-              "myData": 20.0,
+              "myData": 350.0,
               "myName": "xGoalPosition"
             },
             {
-              "myData": 20.0,
+              "myData": 100.0,
               "myName": "yTempGoalPosition"
             },
             {
-              "myData": 50,
-              "myName": "healCost"
-            },
-            {
-              "myData": 50.0,
-              "myName": "reloadTime"
-            },
-            {
-              "myData": 50,
-              "myName": "levelUpHealthIncrease"
-            },
-            {
-              "myData": 20.0,
-              "myName": "xTempGoalPosition"
-            },
-            {
-              "myData": 50.0,
-              "myName": "attack"
-            },
-            {
-              "myData": 600.0,
-              "myName": "maxHealth"
-            },
-            {
-              "myData": 1000,
-              "myName": "HealingCooldown"
+              "myData": 255,
+              "myName": "teamColor"
             }
           ],
           "myTextualAttributes": [
             {
-              "myData": "resources/gameelementresources/commands/buildOffensive.png",
-              "myName": "attributeDescription16"
-            },
-            {
-              "myData": "resources/img/graphics/buttons/commands/defend.png",
-              "myName": "attributeDescription1"
-            },
-            {
               "myData": "STANDING",
               "myName": "currentAction"
-            },
-            {
-              "myData": "BLUE",
-              "myName": "teamColor"
             }
           ]
         },
         "myTypes": [
-          "archer"
+          "paddle"
         ]
       },
       {
-        "myAttributeDisplayerStates": [
-          {
-            "myDisplayerTags": "ATTRIBUTE_BAR_DISPLAYER",
-            "myParameterTag": "health",
-            "myMinAttributeValue": 0.0,
-            "myMaxAttributeValue": 300.0
-          }
-        ],
+        "myAttributeDisplayerStates": [],
         "myAnimatorState": {
-          "myNumRows": 0
+          "myImageTag": "resourcesold/gameelementresources/icons/commands/22.png",
+          "myColorMaskTag": "",
+          "myViewportSize": {
+            "myWidth": 39,
+            "myHeight": 39
+          },
+          "myNumRows": 1,
+          "myAnimationSquences": [
+            {
+              "myStartFrame": 0,
+              "myStopFrame": 0,
+              "myCurrentFrame": 0,
+              "myRepeatFlag": true,
+              "myTags": [
+                "DO_NOTHING"
+              ],
+              "mySlownessMultiplier": 1.0,
+              "myFrameCounter": 0
+            }
+          ]
         },
         "myVisionBounds": [
           0.0,
@@ -1258,195 +1458,42 @@
         "myBounds": [
           0.0,
           0.0,
-          100.0,
           0.0,
-          100.0,
-          100.0,
           0.0,
-          100.0
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
-        "myActions": {
-          "FOCUSED": [
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "Follow"
-              ],
-              "myActionType": "FOCUSED"
-            }
-          ],
-          "INTERNAL": [
-            {
-              "myActionName": "CHECK_ATTR_SET_ATTR_ACTION",
-              "myParameters": [
-                "me",
-                "health",
-                "LessThanEqual",
-                "0",
-                "me",
-                "toDie",
-                "EqualsAssignment",
-                "1"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "UpdateMovementDirection"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "MovePlayer"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "ACT_ON_OBJECTS_ACTION",
-              "myParameters": [
-                "HeadingUpdate"
-              ],
-              "myActionType": "INTERNAL"
-            },
-            {
-              "myActionName": "MOTHER_OF_ALL_ACTIONS",
-              "myParameters": [
-                "my",
-                "",
-                "Equals",
-                "",
-                "me",
-                "toDie",
-                "Equals",
-                "active",
-                "me",
-                "isDead",
-                "EqualsAssignment",
-                "active",
-                "me",
-                "asdf",
-                "Equals",
-                "active",
-                "Equals",
-                "a",
-                "123",
-                "AdditionAssignment",
-                "myValue",
-                "my",
-                "resources",
-                "b",
-                "zero"
-              ],
-              "myActionType": "INTERNAL"
-            }
-          ],
-          "COLLISION": [
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "NotCollision",
-                "RandomWaypoint"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "MoveBack"
-              ],
-              "myActionType": "COLLISION"
-            },
-            {
-              "myActionName": "OBJECT_CONDITION_ACTION",
-              "myParameters": [
-                "Collision",
-                "Attack"
-              ],
-              "myActionType": "COLLISION"
-            }
-          ]
-        },
+        "myActions": {},
         "myAttributes": {
           "myNumericalAttributes": [
             {
-              "myData": 600.0,
+              "myData": 0,
               "myName": "xPosition"
             },
             {
-              "myData": 600.0,
+              "myData": 0,
               "myName": "yPosition"
             },
             {
-              "myData": 600.0,
-              "myName": "yGoalPosition"
-            },
-            {
-              "myData": 300.0,
-              "myName": "health"
-            },
-            {
-              "myData": 1,
-              "myName": "active"
-            },
-            {
-              "myData": 2.0,
-              "myName": "movementSpeed"
-            },
-            {
-              "myData": 600.0,
-              "myName": "xGoalPosition"
-            },
-            {
-              "myData": 600.0,
-              "myName": "yTempGoalPosition"
-            },
-            {
-              "myData": 30,
-              "myName": "myValue"
-            },
-            {
-              "myData": 0,
-              "myName": "zero"
-            },
-            {
-              "myData": 75.0,
-              "myName": "reloadTime"
-            },
-            {
-              "myData": 600.0,
-              "myName": "xTempGoalPosition"
-            },
-            {
-              "myData": 35.0,
-              "myName": "attack"
-            },
-            {
-              "myData": 300.0,
-              "myName": "maxHealth"
+              "myData": 255,
+              "myName": "teamColor"
             }
           ],
           "myTextualAttributes": [
             {
-              "myData": "Enemy",
+              "myData": "goalMarker",
               "myName": "name"
             },
             {
               "myData": "STANDING",
               "myName": "currentAction"
-            },
-            {
-              "myData": "GREEN",
-              "myName": "teamColor"
             }
           ]
         },
         "myTypes": [
-          "Enemy",
-          "archer"
+          "goalMarker"
         ]
       }
     ]

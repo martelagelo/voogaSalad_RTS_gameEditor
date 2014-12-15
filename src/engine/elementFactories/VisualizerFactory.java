@@ -5,6 +5,8 @@ import model.state.gameelement.traits.AttributeDisplayerState;
 import engine.visuals.elementVisuals.Visualizer;
 import engine.visuals.elementVisuals.animations.Animator;
 
+//This entire file is part of my masterpiece.
+//Michael Deng
 /**
  *
  * @author Steve, Michael D.

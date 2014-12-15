@@ -151,7 +151,6 @@ public class Engine extends Observable implements Observer {
     public void update (Observable observable, Object arg) {
         if (observable instanceof GameLoop) {
             myGameLoop.stop();
-            myUser.getAttributes();
             updateObservers();
         }
     }
