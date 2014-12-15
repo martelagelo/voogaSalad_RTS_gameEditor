@@ -1,8 +1,8 @@
+// This entire file is part of my masterpiece.
+// Nishad Agrawal (nna6)
 package model;
 
-import java.util.Arrays;
 import java.util.function.BiConsumer;
-
 import model.data.WizardData;
 import model.data.WizardDataType;
 import model.data.WizardType;
@@ -18,12 +18,17 @@ import engine.gameRepresentation.evaluatables.actions.enumerations.ActionType;
 
 
 /**
- * Factory that creates a SavableGameElementState based on the info args
+ * Factory that creates a GameElementState of the specified type based upon the
+ * data that is stored within a WizardData. This factory has the ability to generate
+ * plain GameElementStates, DrawableGameElementStates, SelectableGameElementStates, along
+ * with Goals which are just simplified GameElementStates that can only hold a singular action.
  * 
  * @author Nishad Agrawal, Jonathan Tseng
  *
  */
 public class GameElementStateFactory {
+
+    private static final int DISPLAYER_STATE_NUMERIC_ARGUMENTS = 2;
 
     public static GameElementState createGameElementState (WizardData data) {
         return addEssentials(new GameElementState(), data);
@@ -31,9 +36,7 @@ public class GameElementStateFactory {
 
     public static DrawableGameElementState createDrawableGameElementState (WizardData data) {
         DrawableGameElementState state = (DrawableGameElementState)
-                addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);        
-        String[] types = data.getValueByKey(WizardDataType.TYPE).split(",");
-        Arrays.asList(types).forEach(type -> state.addType(type));
+                addEssentials(new DrawableGameElementState(0.0, 0.0, null), data);
         return (DrawableGameElementState) addVisuals(data, state);
     }
 
@@ -50,44 +53,50 @@ public class GameElementStateFactory {
     }
 
     private static ActionWrapper createActionWrapper (WizardData data) {
-        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");        
-        ActionWrapper wrapper = new ActionWrapper(ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)), 
-                                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)), 
-                                                  params);
+        String[] params = data.getValueByKey(WizardDataType.ACTION_PARAMETERS).split(",");
+        ActionWrapper wrapper =
+                new ActionWrapper(
+                                  ActionType.valueOf(data.getValueByKey(WizardDataType.ACTIONTYPE)),
+                                  ActionOptions.valueOf(data.getValueByKey(WizardDataType.ACTION)),
+                                  params);
         return wrapper;
     }
 
     private static DrawableGameElementState addVisuals (WizardData data,
-                                                        DrawableGameElementState state) {        
+                                                        DrawableGameElementState state) {
         state.myAnimatorState = AnimatorStateFactory.createAnimatorState(data);
-        state.setBounds(createBounds(data, WizardType.BOUNDS));        
+        state.setBounds(createBounds(data, WizardType.BOUNDS));
         state.setVisionBounds(createBounds(data, WizardType.VISION_BOUNDS));
-        createAttributeDisplayerState(data, state);        
+        createAttributeDisplayerState(data, state);
         return state;
     }
 
     private static void createAttributeDisplayerState (WizardData data,
                                                        DrawableGameElementState state) {
-        for (WizardData widget: data.getWizardDataByType(WizardType.WIDGET)) {            
+        for (WizardData widget : data.getWizardDataByType(WizardType.WIDGET)) {
             String[] arguments = widget.getValueByKey(WizardDataType.WIDGET_PARAMETERS).split(",");
             AttributeDisplayerState displayerState;
-            if (arguments.length == 2) {
-                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
-                                                widget.getValueByKey(WizardDataType.ATTRIBUTE), 
-                                                Double.parseDouble(arguments[0]), 
-                                                Double.parseDouble(arguments[1]));
+            if (arguments.length == DISPLAYER_STATE_NUMERIC_ARGUMENTS) {
+                displayerState =
+                        new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget
+                                .getValueByKey(WizardDataType.WIDGET_TYPE)),
+                                                    widget.getValueByKey(WizardDataType.ATTRIBUTE),
+                                                    Double.parseDouble(arguments[0]),
+                                                    Double.parseDouble(arguments[1]));
             }
             else {
-                displayerState = new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget.getValueByKey(WizardDataType.WIDGET_TYPE)), 
-                                                             widget.getValueByKey(WizardDataType.ATTRIBUTE), 
-                                                             arguments[0]);
+                displayerState =
+                        new AttributeDisplayerState(AttributeDisplayerTags.valueOf(widget
+                                .getValueByKey(WizardDataType.WIDGET_TYPE)),
+                                                    widget.getValueByKey(WizardDataType.ATTRIBUTE),
+                                                    arguments[0]);
             }
             state.addAttributeDisplayerState(displayerState);
         }
     }
 
-    private static double[] createBounds (WizardData data, WizardType boundsType) {        
-        if (data.getWizardDataByType(boundsType).size() > 0) {
+    private static double[] createBounds (WizardData data, WizardType boundsType) {
+        if (!data.getWizardDataByType(boundsType).isEmpty()) {
             String bounds =
                     data.getWizardDataByType(boundsType).get(0)
                             .getValueByKey(WizardDataType.BOUND_VALUES);
@@ -103,21 +112,20 @@ public class GameElementStateFactory {
 
     private static GameElementState addEssentials (GameElementState state, WizardData data) {
         state.myAttributes.setTextualAttribute(StateTags.NAME.getValue(),
-                                             data.getValueByKey(WizardDataType.NAME));
+                                               data.getValueByKey(WizardDataType.NAME));
 
-        addToState( (String key, String value) ->
-                   state.myAttributes.setTextualAttribute(key, value),
+        addToState( (key, value) -> state.myAttributes.setTextualAttribute(key, value),
                    data, WizardType.STRING_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
-        addToState( (String key, String value) ->
-                   state.myAttributes.setNumericalAttribute(key, Double.parseDouble(value)),
+        addToState( (key, value) -> state.myAttributes.setNumericalAttribute(key, Double
+                .parseDouble(value)),
                    data, WizardType.NUMBER_ATTRIBUTE, WizardDataType.ATTRIBUTE,
                    WizardDataType.VALUE);
 
-        for (WizardData wiz : data.getWizardDataByType(WizardType.TRIGGER)) {            
-            state.addAction(createActionWrapper(wiz));            
-        }        
+        data.getWizardDataByType(WizardType.TRIGGER)
+                .forEach(wiz -> state.addAction(createActionWrapper(wiz)));
+
         return state;
     }
 

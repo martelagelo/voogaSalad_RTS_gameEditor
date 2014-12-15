@@ -1,12 +1,11 @@
+// This entire file is part of my masterpiece.
+// Nishad Agrawal (nna6)
 package view.editor.wizards;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
-import model.data.WizardData;
-import model.data.WizardDataType;
-import model.data.WizardType;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,6 +14,9 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.data.WizardData;
+import model.data.WizardDataType;
+import model.data.WizardType;
 import util.multilanguage.LanguageException;
 import util.multilanguage.LanguagePropertyNotFoundException;
 import util.multilanguage.MultiLanguageUtility;
@@ -35,23 +37,18 @@ import view.gui.GUIController;
  */
 public abstract class Wizard implements GUIController {
 
-    private static final int ERROR_DISPLAY_DURATION = 3000;
-    private final static String SAVE_KEY = "Save";
-    private static final String ERROR_KEY = "SaveError";
-    public static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
-
     @FXML
     protected SplitPane root;
     @FXML
     protected Button save;
-
     @FXML
     protected Text errorMessage;
 
-    /**
-     * Default error message
-     */
-
+    private static final int ERROR_DISPLAY_DURATION = 3000;
+    private static final String NO_STAGE_MESSAGE = "No stage has been initialized. Can't close.";
+    private final static String SAVE_KEY = "Save";
+    private static final String ERROR_KEY = "SaveError";
+    public static final String NUM_REGEX = "-?[0-9]+\\.?[0-9]*";
     private Consumer<WizardData> mySaveConsumer;
     private WizardData myUserInput;
     private Stage myStage;
@@ -74,8 +71,7 @@ public abstract class Wizard implements GUIController {
     public void initialize () {
         attachTextProperties();
         myUserInput = new WizardData();
-        mySaveConsumer = (myUserInput) -> {
-        };
+        mySaveConsumer = (myUserInput) -> {};
         save.setOnAction(e -> save());
     }
 
@@ -136,7 +132,7 @@ public abstract class Wizard implements GUIController {
      * @return whether or not the data is acceptable to send to the model for the creation of
      *         whatever this wizard is intended to produce
      */
-    public abstract boolean checkCanSave ();
+    protected abstract boolean checkCanSave ();
 
     /**
      * This method is the essential method within the wizard where the concrete implementation
@@ -144,7 +140,7 @@ public abstract class Wizard implements GUIController {
      * Please be sure to use the given methods addToData(String, String) and
      * addWizardData(WizardData).
      */
-    public abstract void updateData ();
+    protected abstract void updateData ();
 
     public abstract void launchForEdit (WizardData oldValues);
 
@@ -203,7 +199,12 @@ public abstract class Wizard implements GUIController {
      * @return The stage which holds this Wizard.
      */
     public void closeStage () {
-        myStage.close();
+        try {
+            myStage.close();
+        }
+        catch (NullPointerException exception) {
+            DialogBoxUtility.createMessageDialog(NO_STAGE_MESSAGE);
+        }
     }
 
     /**
@@ -219,8 +220,8 @@ public abstract class Wizard implements GUIController {
             displayErrorMessage(e.getMessage());
         }
     }
-    
-    protected boolean isNumber(String value) {
+
+    protected boolean isNumber (String value) {
         return Pattern.matches(NUM_REGEX, value);
     }
 

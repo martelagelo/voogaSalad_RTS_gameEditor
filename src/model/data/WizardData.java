@@ -1,9 +1,13 @@
+// This entire file is part of my masterpiece.
+// Nishad Agrawal (nna6)
 package model.data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -44,8 +48,8 @@ public class WizardData {
         myWizards.clear();
     }
 
-    public Map<WizardDataType, String> getData () {
-        return myData;
+    public Set<WizardDataType> getKeys () {
+        return Collections.unmodifiableSet(myData.keySet());
     }
 
     public List<WizardData> getWizards () {

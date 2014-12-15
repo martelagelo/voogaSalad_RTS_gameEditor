@@ -124,7 +124,7 @@ public class CRUDContainer implements GUIController {
             myWizardDatas.remove(oldData);
             myWizardDatas.add(data);
             oldData.clear();
-            for (WizardDataType type : data.getData().keySet()) {
+            for (WizardDataType type : data.getKeys()) {
                 oldData.addDataPair(type, data.getValueByKey(type));
             }
             myTextConsumer.accept(button, data);

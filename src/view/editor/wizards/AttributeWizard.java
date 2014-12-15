@@ -1,3 +1,5 @@
+// This entire file is part of my masterpiece.
+// Nishad Agrawal (nna6)
 package view.editor.wizards;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class AttributeWizard extends Wizard {
     private final String ATTRIBUTE_VALUE_KEY = "AttributeValue";
 
     @Override
-    public boolean checkCanSave () {
+    protected boolean checkCanSave () {
         return areFieldsNotNull();
     }
 
@@ -45,7 +47,7 @@ public class AttributeWizard extends Wizard {
     }
 
     @Override
-    public void updateData () {
+    protected void updateData () {
         setWizardType(WizardType.STRING_ATTRIBUTE);
         storeKeyValuePair();
     }
