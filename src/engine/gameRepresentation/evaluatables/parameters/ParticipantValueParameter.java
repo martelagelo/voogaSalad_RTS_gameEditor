@@ -41,7 +41,7 @@ public class ParticipantValueParameter extends Parameter<Number> {
      * Set the value to be a certain number for all participants
      */
     @Override
-    public boolean setValue (ElementPair elements, Number value) {
+    protected boolean setEvaluatableValue (ElementPair elements, Number value) {
         myParticipants.forEach(participant -> participant.getAttributes().setNumericalAttribute(
                 myAttributeTag, value));
         return true;

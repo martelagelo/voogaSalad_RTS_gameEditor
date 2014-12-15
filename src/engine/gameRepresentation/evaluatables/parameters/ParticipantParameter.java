@@ -23,7 +23,7 @@ public class ParticipantParameter extends Parameter<Participant> {
     }
 
     @Override
-    public boolean setValue (ElementPair elements, Participant value) {
+    protected boolean setEvaluatableValue (ElementPair elements, Participant value) {
         return false;
     };
 

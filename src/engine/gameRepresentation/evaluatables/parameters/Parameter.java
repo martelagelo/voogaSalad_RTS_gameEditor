@@ -3,6 +3,7 @@ package engine.gameRepresentation.evaluatables.parameters;
 import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 
+
 /**
  * A parameter for an evaluator. Contains whatever internal logic is required
  * for the retrieving and setting of the parameter. Essentially, it provides the
@@ -23,7 +24,7 @@ public abstract class Parameter<T> extends Evaluatable<T> {
      * propogating generic uncertainty.
      *
      * @param type
-     *            is the type of this generic
+     *        is the type of this generic
      */
     public Parameter (Class<T> type) {
         super(type);
@@ -34,7 +35,7 @@ public abstract class Parameter<T> extends Evaluatable<T> {
      * evaluatable methods to ensure compliance with the composite pattern.
      *
      * @param elements
-     *            the element pair to act on
+     *        the element pair to act on
      * @return the value of the evaluator
      */
     @Override
@@ -45,13 +46,13 @@ public abstract class Parameter<T> extends Evaluatable<T> {
      * attribute of the object being referenced. This is intended.
      *
      * @param elements
-     *            the element pair to act on
+     *        the element pair to act on
      * @param value
-     *            the value to set
+     *        the value to set
      * @return true if value setting was successful. False if value could not be
      *         found
      */
     @Override
-    public abstract boolean setValue (ElementPair elements, T value);
+    protected abstract boolean setEvaluatableValue (ElementPair elements, T value);
 
 }

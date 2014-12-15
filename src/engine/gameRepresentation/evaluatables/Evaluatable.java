@@ -19,8 +19,8 @@ public abstract class Evaluatable<T> {
      * Create an evaluatable
      *
      * @param type
-     *            the type of the class T of the evaluatable. Used as a
-     *            workaround for the poor implementation of generics by Java
+     *        the type of the class T of the evaluatable. Used as a
+     *        workaround for the poor implementation of generics by Java
      */
     public Evaluatable (Class<T> type) {
         myType = type;
@@ -37,10 +37,10 @@ public abstract class Evaluatable<T> {
      * Sets the evaluatable's value to a given value
      *
      * @param value
-     *            the value to set the evaluatable's stored computation value to
+     *        the value to set the evaluatable's stored computation value to
      * @return a boolean indicating whether setting was successful
      */
-    public boolean setValue (ElementPair elements, T value) {
+    protected boolean setEvaluatableValue (ElementPair elements, T value) {
         return false;
     }
 
@@ -58,5 +58,23 @@ public abstract class Evaluatable<T> {
      */
     public Class<T> getType () {
         return myType;
+    }
+
+    /**
+     * Sets the evaluatable's value to a given value. A generic object must be used
+     * due to java generics type erasure. A suppress warnings was added once again due to
+     * type erasure. All casting is checked.
+     *
+     * @param value
+     *        the value to set the evaluatable's stored computation value to
+     * 
+     * @return a boolean indicating whether setting was successful
+     */
+    @SuppressWarnings("unchecked")
+    public boolean setValue (ElementPair myElementPair, Object cast) {
+        if (myType.isInstance(cast))
+            return setEvaluatableValue(myElementPair, (T) cast);
+        return false;
+
     }
 }

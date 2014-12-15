@@ -33,7 +33,7 @@ public class StringAttributeParameter extends AttributeParameter<String> {
     }
 
     @Override
-    public boolean setValue (List<GameElement> elements, String attributeTag, String value) {
+    protected boolean setValue (List<GameElement> elements, String attributeTag, String value) {
         elements.forEach(element -> element.setTextualAttribute(attributeTag, value));
         return true;
     }

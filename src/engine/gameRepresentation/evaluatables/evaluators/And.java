@@ -1,7 +1,6 @@
 package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
-
 /**
  * An evaluator that implements the boolean AND functionality
  *

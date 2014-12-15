@@ -26,7 +26,7 @@ public class ElementPromiseParameter extends Parameter<ElementPromise> {
     }
 
     @Override
-    public boolean setValue (ElementPair elements, ElementPromise value) {
+    protected boolean setEvaluatableValue (ElementPair elements, ElementPromise value) {
         return false;
     }
 

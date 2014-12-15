@@ -1,7 +1,8 @@
 package engine.gameRepresentation.evaluatables.evaluators;
 
 import engine.gameRepresentation.evaluatables.Evaluatable;
-
+//This entire file is part of my masterpiece.
+//Zachary Bears
 /**
  * Perform addition on two numbers. Return a boolean indicating whether the
  * addition was successful

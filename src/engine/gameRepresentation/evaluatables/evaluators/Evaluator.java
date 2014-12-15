@@ -5,6 +5,8 @@ import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.Evaluatable;
 import engine.gameRepresentation.evaluatables.parameters.helpers.ElementPromise;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
+//This entire file is part of my masterpiece.
+//Zachary Bears
 
 /**
  * An abstract class for evaluators that acts on parameters to provide for
@@ -14,11 +16,11 @@ import engine.gameRepresentation.renderedRepresentation.GameElement;
  *
  * @author Zach
  * @param <A>
- *            The type returned by the first parameter of the evaluatable
+ *        The type returned by the first parameter of the evaluatable
  * @param <B>
- *            the type returned by the second parameter of the evaluatable
+ *        the type returned by the second parameter of the evaluatable
  * @param <T>
- *            the type returned by the evaluatable
+ *        the type returned by the evaluatable
  */
 public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
     private String myEvaluatorRepresentation;
@@ -32,24 +34,19 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * and will be used in the creation of evaluators by a factory.
      *
      * @param type
-     *            the return type of the evaluator. Used to bypass Java generic
-     *            type erasure
-     * @param id
-     *            an id used by all leaves of an evaluatable tree to reference
-     *            the tree as a whole
+     *        the return type of the evaluator. Used to bypass Java generic
+     *        type erasure
      * @param evaluatorRepresentation
-     *            the representation of the evaluator e.g. "<=", "==","+="
-     * @param elementManager
-     *            the main game element manager
+     *        the string representation of the evaluator e.g. "<=", "==","+="
      * @param parameter1
-     *            a string representation of the parameter on the left side of
-     *            the evaluator
+     *        a string representation of the parameter on the left side of
+     *        the evaluator
      * @param parameter2
-     *            a string representation of the parameter on the right side of
-     *            the evaluator
+     *        a string representation of the parameter on the right side of
+     *        the evaluator
      */
     public Evaluator (Class<T> type, String evaluatorRepresentation, Evaluatable<A> parameter1,
-            Evaluatable<B> parameter2) {
+                      Evaluatable<B> parameter2) {
         super(type);
         myEvaluatorRepresentation = evaluatorRepresentation;
         myParameter1 = parameter1;
@@ -62,9 +59,9 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * methods implements necessary class overrides.
      *
      * @param item1
-     *            the object on the left side of the evaluator
+     *        the object on the left side of the evaluator
      * @param item2
-     *            the object on the right side of the evaluator
+     *        the object on the right side of the evaluator
      * @return the result of the evaluation on the two objects
      */
     protected T evaluate (Object item1, Object item2) {
@@ -117,8 +114,8 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * Evaluate the evaluator on the element pair
      *
      * @param elements
-     *            a pairing of the current element and the element that is being
-     *            examined by it
+     *        a pairing of the current element and the element that is being
+     *        examined by it
      */
     @Override
     public T evaluate (ElementPair elements) {
@@ -137,33 +134,27 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * to allow other code other code in the program to be cleaner.
      *
      * @param parameter1Value
-     *            the value of the first parameter
+     *        the value of the first parameter
      * @param parameter2Value
-     *            the value of the second parameter
+     *        the value of the second parameter
      * @return the result of evaluating on the two parameters
      */
     public T delegateEvaluator (A parameter1Value, B parameter2Value) {
 
         Class<A> type1 = myParameter1.getType();
         Class<B> type2 = myParameter2.getType();
-        if (type1.equals(Number.class) && type2.equals(Number.class)) {
-            return evaluate((Number) parameter1Value, (Number) parameter2Value);
-        }
-        if (type1.equals(GameElement.class) && type2.equals(GameElement.class)) {
-            return evaluate((GameElement) parameter1Value, (GameElement) parameter2Value);
-        }
-        if (type1.equals(Boolean.class) && type2.equals(Boolean.class)) {
-            return evaluate((Boolean) parameter1Value, (Boolean) parameter2Value);
-        }
-        if (type1.equals(GameElement.class) && type2.equals(String.class)) {
-            return evaluate((GameElement) parameter1Value, (String) parameter2Value);
-        }
-        if (type1.equals(GameElement.class) && type2.equals(ActionRepresentation.class)) {
-            return evaluate((GameElement) parameter1Value, (ActionRepresentation) parameter2Value);
-        }
-        if (type1.equals(GameElement.class) && type2.equals(ElementPromise.class)) {
-            return evaluate((GameElement) parameter1Value, (ElementPromise) parameter2Value);
-        }
+        if (type1.equals(Number.class) && type2.equals(Number.class)) { return evaluate((Number) parameter1Value,
+                                                                                        (Number) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(GameElement.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                                  (GameElement) parameter2Value); }
+        if (type1.equals(Boolean.class) && type2.equals(Boolean.class)) { return evaluate((Boolean) parameter1Value,
+                                                                                          (Boolean) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(String.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                             (String) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(ActionRepresentation.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                                           (ActionRepresentation) parameter2Value); }
+        if (type1.equals(GameElement.class) && type2.equals(ElementPromise.class)) { return evaluate((GameElement) parameter1Value,
+                                                                                                     (ElementPromise) parameter2Value); }
         return evaluate(parameter1Value, parameter2Value);
     }
 
@@ -186,36 +177,34 @@ public abstract class Evaluator<A, B, T> extends Evaluatable<T> {
      * assignment operators.
      *
      * @param value
-     *            the value to set the first parameter to
+     *        the value to set the first parameter to
      * @return a boolean indicating whether the setting was successful
      */
     protected boolean setParameter1Value (Object value) {
-        try {
-            myParameter1.setValue(myElementPair, myParameter1.getType().cast(value));
-            return true;
-        } catch (Exception e) {
-            // parameter could not be set. Do nothing
-            return false;
-        }
+        return setParameterValue(myParameter1, value);
     }
 
     /**
-     * Set the value for the second parameter. I understant that this code is a
-     * large amount of repeat from above. This had to happen due to javafx
-     * generics type erasure.
-     *
-     * @param value
-     *            the value to set the first parameter to
-     * @return a boolean indicating whether the setting was successful
+     * Set the value of the second parameter to a certain value
+     * 
+     * @param value the value to set the parameter to
+     * @return a boolean indicating whether assignment was successful
      */
     protected boolean setParameter2Value (Object value) {
-        try {
-            myParameter2.setValue(myElementPair, myParameter2.getType().cast(value));
-            return true;
-        } catch (Exception e) {
-            // parameter could not be set. Do nothing
-            return false;
-        }
+        return setParameterValue(myParameter2, value);
+    }
+
+    /**
+     * Set the value of a parameter to a given value. Used by
+     * assignment operators.
+     *
+     * @param parameter the parameter whose value should be set
+     * @param value
+     *        the value to set the first parameter to
+     * @return a boolean indicating whether the setting was successful
+     */
+    private boolean setParameterValue (Evaluatable<?> parameter, Object value) {
+        return parameter.setValue(myElementPair, value);
     }
 
     @Override

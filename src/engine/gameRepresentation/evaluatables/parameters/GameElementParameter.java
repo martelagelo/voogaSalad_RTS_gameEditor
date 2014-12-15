@@ -4,7 +4,6 @@ import engine.gameRepresentation.evaluatables.ElementPair;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
-
 /**
  * A parameter that takes in an object of interest identifier and returns the
  * object that is being referenced based on the currently supplied elementPair.
@@ -46,7 +45,7 @@ public class GameElementParameter extends Parameter<GameElement> {
     }
 
     @Override
-    public boolean setValue (ElementPair elements, GameElement value) {
+    protected boolean setEvaluatableValue (ElementPair elements, GameElement value) {
         // A parameter does not have the ability to set a referenced element's
         // identifier
         return false;

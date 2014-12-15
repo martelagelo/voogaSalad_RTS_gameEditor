@@ -5,7 +5,8 @@ import java.util.List;
 import engine.gameRepresentation.evaluatables.parameters.objectIdentifiers.ObjectOfInterestIdentifier;
 import engine.gameRepresentation.renderedRepresentation.GameElement;
 import engine.stateManaging.GameElementManager;
-
+//This entire file is part of my masterpiece.
+//Zachary Bears
 /**
  * An attribute parameter that acts on a numerical value from the given object
  *
@@ -44,7 +45,7 @@ public class NumericAttributeParameter extends AttributeParameter<Number> {
      * @see AttributeParameter#setValue
      */
     @Override
-    public boolean setValue (List<GameElement> elements, String attributeTag, Number value) {
+    protected boolean setValue (List<GameElement> elements, String attributeTag, Number value) {
         elements.stream().forEach(element -> element.setNumericalAttribute(attributeTag, value));
         return true;
     }

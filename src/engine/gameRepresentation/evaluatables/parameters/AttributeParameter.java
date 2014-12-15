@@ -101,7 +101,7 @@ public abstract class AttributeParameter<T> extends Parameter<T> {
     protected abstract T getValue (List<GameElement> elements, String attributeTag);
 
     @Override
-    public boolean setValue (ElementPair elements, T attributeValue) {
+    protected boolean setEvaluatableValue (ElementPair elements, T attributeValue) {
         return setValue(getElementsOfInterest(myManager, elements, myElementTag), myAttributeTag,
                 attributeValue);
     }

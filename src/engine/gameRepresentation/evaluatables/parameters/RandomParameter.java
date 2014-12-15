@@ -38,7 +38,7 @@ public class RandomParameter extends Parameter<Number> {
     }
 
     @Override
-    public boolean setValue (ElementPair elements, Number value) {
+    protected boolean setEvaluatableValue (ElementPair elements, Number value) {
         return false;
     }
 

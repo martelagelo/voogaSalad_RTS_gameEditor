@@ -28,7 +28,7 @@ public class NumberParameter extends Parameter<Number> {
     }
 
     @Override
-    public boolean setValue (ElementPair elements, Number value) {
+    protected boolean setEvaluatableValue (ElementPair elements, Number value) {
         myValue = value;
         return true;
     }
