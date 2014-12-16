@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
  * @author Zach, Stanley
  *
  */
+
+//This entire file is part of my masterpiece.
+//Stanley Yuan
+
 public enum StateTags {
 
     BACKGROUND_PATH(StateType.STRING, "backgroundPath"),
