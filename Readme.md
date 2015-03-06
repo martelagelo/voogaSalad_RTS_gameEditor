@@ -2,15 +2,15 @@ voogasalad
 ==========
 
 <h1>Team Members</h1>
-Michael Deng
-Zachary Bears
-Josh Miller
-John Lorenz
-Rahul Harikrishnan
-Steve Kuznetsov
-Jonathan Tseng
-Nishad Agrawal
-Michael Ren
+Michael Deng <br>
+Zachary Bears <br>
+Josh Miller <br>
+John Lorenz <br>
+Rahul Harikrishnan <br>
+Steve Kuznetsov <br>
+Jonathan Tseng <br>
+Nishad Agrawal <br>
+Michael Ren <br>
 Stanley Yuan
 
 ==================
